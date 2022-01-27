@@ -67,7 +67,7 @@
 
 
 % Muda de Chapter ou Capítulos para Aulas
-\addto\captionsbrazil{\renewcommand{\chaptername}{Semana}}
+%\addto\captionsbrazil{\renewcommand{\chaptername}{Semana}}
 \addto\captionsbrazil{\renewcommand{\partname}{M\'odulo}}
 %\addto\captionsbrazil{\renewcommand{\contentsname}{\textbf{\'Indice}}}
 
@@ -138,15 +138,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 % Begin document
 % ---------------
 \begin{document}
@@ -158,9 +149,9 @@
 %%%%%%%%%%%%%%%%%%%%
 
 \noindent
-{\huge Autor}
+{\huge Autores}
 \\[0.3cm]
-Leandro Cioletti
+Leandro Cioletti, Ayrton Anjos, Caio Tomás, Matheus Freitas, Thiago Tomás
 \\
 \bigskip
 \\[-0.1cm]
@@ -176,12 +167,9 @@ Versão 1.  Janeiro -- Maio de 2022
    \textbf{Seminário de Tópicos em Análise \\ Notas de Aula.  Janeiro -- Maio de 2022}
    \footnote{
    		Copyright \copyright\ 
-   		\textbf{2022 Leandro Cioletti -- Todos os direitos reservados.}
+   		\textbf{2022 Leandro Cioletti, Ayrton Anjos, Caio Tomás, Matheus Freitas, Thiago Tomás -- Todos os direitos reservados.}
    	}
  }
-
-
-
 
 
 
@@ -246,49 +234,58 @@ Versão 1.  Janeiro -- Maio de 2022
 %%%%%%%%%%%%%%%%%%%% Conteúdo das aulas    
 \mainmatter 
 
+\addcontentsline{toc}{part}{Preliminares}
+\part*{Preliminares}
+
+\include{Semanas/background}
+
+% Semana 1 
+%\include{Semanas/semana1}
+% Lista 1
+%\include{Listas/lista1}
+
+% Semana 2 
+%\include{Semanas/semana2}
+% Lista 2
+%\include{Listas/lista2}
+
+% Semana 3
+%\include{Semanas/semana3}
+% Lista 3
+%\include{Listas/lista3}
+
+% Semana 4
+%\include{Semanas/semana4}
+% Lista 4
+%\include{Listas/lista4}
+
+% Semana 5
+%\include{Semanas/semana5}
+%\include{Listas/lista5}
+
+% Semana 6
+%\include{Semanas/semana6}
+
+% Semana 7 
+%\include{Semanas/semana7}
+% Lista 6
+%\include{Listas/lista6}
+
+
 \addcontentsline{toc}{part}{Módulo 1}
 \part*{Módulo 1}
 
-% Semana 1 
-\include{Semanas/semana1}
-% Lista 1
-\include{Listas/lista1}
+\include{Semanas/modulo1}
 
-% Semana 2 
-\include{Semanas/semana2}
-% Lista 2
-\include{Listas/lista2}
-
-% Semana 3
-\include{Semanas/semana3}
-% Lista 3
-\include{Listas/lista3}
-
-%
-%% Semana 4
-\include{Semanas/semana4}
-%% Lista 4
-\include{Listas/lista4}
-%
-%% Semana 5
-\include{Semanas/semana5}
-\include{Listas/lista5}
-%
-%% Semana 6
-%\include{Semanas/semana6}
-%
-%
 \addcontentsline{toc}{part}{Módulo 2}
 \part*{Módulo 2}
-%
-% Semana 7 
-\include{Semanas/semana7}
-% Lista 6
-\include{Listas/lista6}
 
- 
+\include{Semanas/modulo2}
 
+\addcontentsline{toc}{part}{Módulo 3}
+\part*{Módulo 3}
 
+\include{Semanas/modulo3}
 
 
 
