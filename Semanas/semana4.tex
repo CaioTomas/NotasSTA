@@ -1,0 +1,882 @@
+% !TeX spellcheck = pt_BR
+\chapter[Semana 4]{}
+\chaptermark{}
+
+\hfill%
+\begin{minipage}{13cm}
+\begin{flushright}
+\rightskip=0.5cm
+\textit{``
+	... in effect, if one extends these functions by allowing complex values for the arguments, then 
+	there arises a harmony and regularity which whithout it would remain hidden ''}
+\\[0.1cm]
+\rightskip=0.5cm
+---B. Riemann, 1851
+\end{flushright}
+\end{minipage}
+
+
+
+
+\section{Os Ramos do Argumento e do Logaritmo}
+
+Vamos começar esta seção estuando funções conhecidas como ramos do argumento.
+Elas serão de grande utilidade no estudo da função logaritmo complexo, ou melhor,
+no estudo dos diversos ramos do logaritmo, como ficará claro a frente.
+
+\begin{definicao}[Ramo do Argumento]
+\label{def-ramo-argumento}
+\index{Ramo!do argumento}
+Seja $U\subset \mathbb{C}^{*}\equiv \mathbb{C}\setminus\{0\}$ um conjunto aberto conexo. Uma função contínua $\arg:U\to\mathbb{R}$
+satisfazendo 
+
+\begin{align}\label{def-eq-ramo}
+\frac{z}{|z|}=\exp(i\arg(z)), \quad \forall z\in U,
+\end{align}
+
+é chamada de um ramo do argumento.
+\end{definicao}
+
+
+Não é uma tarefa completamente trivial construir ramos do argumento. Apesar 
+deles estarem totalmente ligados a ideia intuitiva de ângulo expressá-los
+analiticamente é às vezes um pouco trabalhoso. Antes de construirmos um ramo
+propriamente dito, vamos estudar quais propriedades tais funções têm para
+ir entendendo melhor como eles funcionam do ponto de vista analítico. 
+
+\begin{proposicao}
+Não existe nenhum ramo do argumento definido em todo $\mathbb{C}^{*}$, isto é,
+não existe nenhuma função contínua definida em todo o conjunto $\mathbb{C}^{*}$
+satisfazendo a igualdade \eqref{def-eq-ramo} para todo $z\in\mathbb{C}^{*}$.
+\end{proposicao}
+
+\begin{proof}
+A prova é por contradição. Suponha que exista tal função $\arg:\mathbb{C}^{*}\to\mathbb{R}$. 
+Considere a curva $\gamma:[-\pi,\pi]\to\mathbb{C}$ dada por 
+$\gamma(t)=\cos t+i\sen t$. É claro que $\gamma$ é uma função contínua
+de $[-\pi,\pi]$ em $\mathbb{C}$ e portanto a composta $\arg\circ \gamma$ é uma função 
+contínua de $[-\pi,\pi]$ em $\mathbb{R}$. Por \eqref{def-eq-ramo} para qualquer 
+$t\in [-\pi,\pi]$ temos que 
+\begin{align*}
+\cos t+i\sen t = \frac{\cos t+i\sen t}{|\cos t+i\sen t|}
+&=
+\exp(i\arg(\gamma(t)))
+\\[0.2cm]
+&=
+\cos(\arg(\gamma(t)))+ i\sen(\arg(\gamma(t))).
+\end{align*}
+Desta forma $\arg(\gamma(t))=t+2k(t)\pi$, onde para cada $t\in [-\pi,\pi]$ 
+temos $k(t)\in\mathbb{Z}$. Já que $t\longmapsto \arg(\gamma(t))$ é 
+contínua e $[-\pi,\pi]$ é conexo segue que $k(t)\equiv k$, 
+onde $k$ é alguma constante inteira. Logo $\arg(\gamma(t))=t+2k\pi$
+para todo $t\in [-\pi,\pi]$. 
+Pela definição de $\gamma$ temos que se $t\to \pi$ então $\gamma(t)\to -1$
+e assim 
+\[
+\arg(-1) = \lim_{t\to \pi} \arg(\gamma(t)) = \lim_{t\to \pi} t+2k\pi = (2k+1)\pi.
+\] 
+Novamente pela definição de $\gamma$ temos que se $t\to-\pi$ então 
+$\gamma(t)\to -1$ e portanto 
+\[
+\arg(-1) = \lim_{t\to -\pi} \arg(\gamma(t)) = \lim_{t\to -\pi} t+2k\pi = (2k-1)\pi.
+\]
+O que é uma contradição com a equação anterior.
+\end{proof}
+
+\bigskip 
+
+
+Uma inspeção cuidadosa da prova acima revela, na verdade, que nenhum ramo do argumento 
+pode conter em seu domínio nenhum conjunto da forma $D(0,r)\setminus\{0\}$ 
+não importa quão pequeno 
+seja $r>0$.
+Em outras palavras, dentro do domínio $U$ de um ramo qualquer do argumento, não pode ser 
+possível ``circular a origem'', isto é, encontrar um círculo (totalmente contido em $U$) 
+de forma que a origem esteja dentro da região delimitada por este círculo. 
+Na verdade, com um pouco mais de trabalho poderíamos generalizar esta afirmação de
+um circulo para uma curva de Jordan suave por partes. Portanto para encontrar ramos
+do argumento devemos criar barreiras para que existam tais curvas circundando a origem.
+A maneira mais natural de criarmos tais ``barreiras''
+seria olhando para a família de todos os conjuntos da 
+forma $D(0,r)\setminus\{0\}$, com $r>0$ e para cada raio $r>0$ fixado, 
+remover um ponto de $\partial D(0,r)$. Entretanto isto não pode ser feito 
+de maneira completamente aleatória. Más escolhas da remoção destes pontos poderiam
+não ser efetivas para bloquear a existência de curvas de Jordan suave por partes
+circundando a origem. 
+
+Além do mais, é preciso levar em conta que 
+a equação \eqref{def-eq-ramo} deve ser válida. 
+Por falar na equação \eqref{def-eq-ramo}, observe que se $z\in U$ 
+e se $\alpha z\in U$, onde $\alpha>0$ então
+\[
+\exp(i\arg(\alpha z))= \frac{\alpha z}{|\alpha z|} = \frac{z}{|z|} = \exp(i\arg(z)).
+\]
+
+Esta observação sugere que funções contínuas definidas em 
+$\partial D(0,1)\setminus\{z_0\}$, onde $z_0=\cos\phi+i\sen\phi$ 
+é um ponto qualquer em $\partial D(0,1)$,
+satisfazendo \eqref{def-eq-ramo} podem eventualmente ser estendidas a funções contínuas
+definidas em toda a região $\mathbb{C}^{*}\setminus L_{\phi}$, onde  
+$L_{\phi}$ é o segmento de reta dado por 
+$L_{\phi}\equiv \{t(\cos\phi+i\sen \phi)\in \mathbb{C}: t>0\}$.
+Entretanto não é muito simples exibir uma tal função em termos da variável 
+complexa $z$ e ou suas coordenadas. Esta será nossa próxima tarefa, descrever tal função.
+Ela será a função que fornece um ângulo entre $-\pi$ e $\pi$ para qualquer 
+número complexo em $\mathbb{C}^{*}\setminus L_{\pi}$. 
+
+Antes de definir analiticamente esta função precisamos 
+introduzir algumas notações. Vamos chamar de $\arccos$
+a função inversa da função $\cos:(0,\pi)\to(-1,1)$. Vamos denotar por 
+$\arcsen$ a inversa da função $\sen:(-\pi/2,\pi/2)\to(-1,1)$ e finalmente
+denotamos por $\widetilde{\arccos}$ a inversa da função $\cos:(-\pi,0)\to (-1,1)$.
+
+\begin{teorema}\label{teo-def-ramo-principal-argumento}
+A função $\arg:\mathbb{C}\setminus L_{\pi}\to (-\pi,\pi)$ dada por 
+\[
+\arg(z)
+=
+\begin{cases}
+\arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right),
+&\text{se}\ z\in U_1\equiv \{w\in\mathbb{C}: \Im(w)>0\};
+\\[0.6cm]
+\arcsen\left( \displaystyle\frac{\Im(z)}{|z|} \right),
+&\text{se}\ z\in U_2\equiv \{w\in\mathbb{C}: \Re(w)>0\};
+\\[0.6cm]
+\widetilde{\arccos}\left( \displaystyle\frac{\Re(z)}{|z|} \right),
+&\text{se}\ z\in U_3\equiv \{w\in\mathbb{C}: \Im(w)<0\};
+\end{cases}
+\]
+é uma função bem-definida e contínua em $\mathbb{C}\setminus L_{\pi}$ e satisfaz
+\[
+\frac{z}{|z|} = \exp(i\arg(z)),\quad \forall z\in \mathbb{C}\setminus L_{\pi}.
+\]
+A função $\arg$ definida acima é chamada de ramo principal do argumento.
+\index{Ramo!principal do argumento}
+\end{teorema}
+
+
+\begin{proof}
+Primeiro é preciso mostra que a função $\arg$ está bem-definida. Isto é,
+
+\begin{enumerate}[i)]
+\item se $z\in U_1\cap U_2$ então 
+\[
+\arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right)
+=
+\arcsen\left( \displaystyle\frac{\Im(z)}{|z|} \right);
+\]
+
+\item se $z\in U_2\cap U_3$ então 
+\[
+\arcsen\left( \displaystyle\frac{\Im(z)}{|z|} \right)
+=
+\widetilde{\arccos}\left( \displaystyle\frac{\Re(z)}{|z|} \right).
+\]
+\end{enumerate}
+
+Já que a prova de ambos itens são análogas, vamos apresentar apenas a
+prova do item i).
+
+Seja $z\in U_1\cap U_2$ e assuma que 
+
+\begin{align}\label{eq-aux2-arg-principal}
+\arg(z) 
+=
+\arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right).
+\end{align}
+Tomando o cosseno nos dois lados da igualdade acima e depois elevando o resultado ao quadrado 
+ficamos com a seguinte identidade
+\begin{align*}
+\cos(\arg(z))^2
+=
+\cos^2 \left(  \arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right) \right)
+=
+\frac{\Re(z)^2}{|z|^2}.
+\end{align*}
+Usando que $\sen^{2}x+\cos^{2}x=1$, na igualdade acima, obtemos
+\begin{align*}
+1-\sen(\arg(z))^2 = \frac{\Re(z)^2}{|z|^2}.
+\end{align*}
+Já que $|z|^2= \Re^2(z)+\Im^2(z)$ segue da igualdade acima que
+\begin{align}\label{eq-aux1-arg-principal}
+\sen(\arg(z))^2 
+= 1 - \frac{\Re(z)^2}{|z|^2} 
+= \frac{\Re(z)^2+\Im(z)^2}{|z|^2}-\frac{\Re(z)^2}{|z|^2}
+= \frac{\Im(z)^2}{|z|^2}.
+\end{align}
+Como estamos considerando que $z\in U_1\cap U_2$, temos que $\Re(z)>0$ e $\Im(z)>0$. 
+Pelo Lema \ref{lema-re-im-modulo} temos que $0<\Re(z)/|z|<1$.
+Lembrando de como definimos a função $\arccos$, temos 
+$\arccos([0,1))=(0,\pi/2]$ e daí segue que 
+\[
+\arg(z) 
+=
+\arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right)
+\in 
+(0,\pi/2]
+\quad \Longrightarrow\quad 
+\sen(\arg(z))\geq 0.
+\]
+Destas observações e  de \eqref{eq-aux1-arg-principal}
+temos
+\[
+\sen(\arg(z))
+=
+|\sen(\arg(z))|
+=
+\sqrt{\sen(\arg(z))^2}
+=
+\sqrt{
+\frac{\Im(z)^2}{|z|^2}
+}
+=
+\frac{|\Im(z)|}{|z|}
+=
+\frac{\Im(z)}{|z|}.
+\]
+Tomando agora $\arcsen$ em ambos lados na igualdade acima, ficamos com
+\[
+\arg(z) = \arcsen\left( \displaystyle\frac{\Im(z)}{|z|} \right)
+\]
+Desta igualdade e de \eqref{eq-aux2-arg-principal} 
+concluímos finalmente a prova do item i).
+
+
+A continuidade da função $\arg:\mathbb{C}^{*}\setminus L_{\pi}\to \mathbb{R}$
+é simples de ser demonstrada. De fato, para qualquer $z_0\in U_1$ temos pela definição  
+de $U_1$ que $\Im(z_0)>0$ e consequentemente $-1<\Re(z_0)/|z_0|<1$. Já que  
+$\arccos$ é contínua no ponto $\Re(z_0)/|z_0|$ segue que
+\begin{align*}
+\lim_{z\to z_0}\arg(z) 
+= 
+\lim_{z\to z_0} \arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right)
+&=
+\arccos\left( \lim_{z\to z_0}\displaystyle\frac{\Re(z)}{|z|} \right)
+\\[0.2cm]
+&=
+\arccos\left( \displaystyle\frac{\Re(z_0)}{|z_0|} \right)
+=
+\arg(z_0).
+\end{align*}
+
+A continuidade nos pontos de $U_2$ e $U_3$ são provadas de maneira análoga.
+
+Para concluir a prova deste teorema resta apenas mostrar a validade de
+\eqref{def-eq-ramo}. Primeiro vamos mostrar que \eqref{def-eq-ramo} é 
+válida para todo $z\in U_1\cap U_2$. De fato, neste caso podemos usar a 
+identidade do item i) da primeira parte desta prova para verficar que 
+\begin{align*}
+\exp(i\arg(z))
+&=
+\cos( \arg(z))+i\sen (\arg(z))
+\\[0.2cm]
+&
+=
+\cos\left( \arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right) \right)
++
+i\sen \left( \arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right) \right)
+\\[0.2cm]
+&
+=
+\cos\left( \arccos\left( \displaystyle\frac{\Re(z)}{|z|} \right) \right)
++
+i\sen \left( \arcsen\left( \displaystyle\frac{\Im(z)}{|z|} \right) \right)
+\\[0.2cm]
+&=
+\frac{\Re(z)}{|z|}+i \frac{\Im(z)}{|z|} 
+=
+\frac{z}{|z|}.
+\end{align*}
+Analogamente provamos a validade de \eqref{def-eq-ramo}
+para os demais pontos de $\mathbb{C}^{*}\setminus L_{\pi}$. 
+Com esta observação finalmente encerramos a prova do teorema.
+\end{proof}
+
+\bigskip 
+
+Na prática, não usamos as fórmulas dada pelo teorema anterior. Pois o 
+valor do ramo principal do argumento de um número complexo $z$ em 
+$\mathbb{C}^{*}\setminus L_{\pi}$ é simplesmente o único ângulo entre $-\pi$
+e $\pi$ formado vetor determinado por $z$ e pelo eixo real.
+A fórmula obtida no teorema é importante para dar uma descrição analítica
+precisa deste ângulo e também mais adequada, do que esta descrição 
+heurística, para ser usada na prova de outros resultados. 
+
+
+
+
+\bigskip 
+
+Antes de prosseguir vamos apresentar algumas 
+propriedades de ramos do argumento genéricos.
+O primeiro destes resultados caracteriza todos os possíveis 
+ramos do argumento definidos num mesmo domínio.
+
+\begin{proposicao}\label{prop-arg1-arg2-2kpi}
+Seja $U\subset\mathbb{C}^{*}$ um domínio. Se $\arg_1:U\to\mathbb{R}$ e 
+$\arg_2:U\to\mathbb{R}$ são ramos do argumento em $U$, 
+então existe uma constante $k\in\mathbb{Z}$
+tal que $\arg_1(z)=\arg_2(z)+2k\pi$, para todo $z\in U$.
+\end{proposicao}
+
+\begin{proof}
+Já que $\arg_1(z)$ e $\arg_2(z)$ são ramos do argumento em $U$ temos que
+\[
+\exp(i\arg_1(z))=\frac{z}{|z|}=\exp(i\arg_2(z)).
+\]
+Portanto $\cos(\arg_1(z))=\cos(\arg_2(z))$ e 
+$\sen(\arg_1(z))=\sen(\arg_2(z))$. Segue das propriedades básicas das funções 
+trigonométricas que existe um inteiro $k(z)$ tal que  
+$\arg_1(z)=\arg_2(z)+2k(z)\pi$. Desta forma a aplicação
+\[
+z\longmapsto k(z)\equiv \frac{1}{2\pi}(\arg_1(z)-\arg_2(z)) 
+\]
+define uma função contínua. Já que $U$ é conexo e $k(z)\in\mathbb{Z}$,
+segue da continuidade da função $z\longmapsto k(z)$ que ela é identicamente constante, isto é, existe 
+$k\in\mathbb{Z}$ tal que $k(z)\equiv k$ para todo $z\in U$.
+\end{proof}
+
+
+\bigskip
+
+Devemos observar que, em geral, é mais difícil estabelecer relações 
+entre distintos ramos do argumento definidos em domínios distintos.
+Assim, se $\arg_1:U\to\mathbb{R}$ e $\arg_2:V\to\mathbb{R}$ 
+são ramos do argumento com $U\neq V$, não temos relações muito claras
+entre este ramos. Não é possível em alguns casos dizer nem o que acontece 
+em $U\cap V$ já que este conjunto poderia ser vazio ou ter uma infinidade
+de componentes conexas. 
+
+
+Além do ramo principal do argumento, vamos dar destaque nestas notas
+a outros ramos definidos em domínios maximais de $\mathbb{C}^{*}$.
+Para definir estes outros ramos primeiro fixamos um ângulo $\phi\in \mathbb{R}$.
+Em seguida, consideramos o segmento de reta 
+$L_{\phi}\equiv \{t(\cos\phi+i\sen \phi)\in \mathbb{C}: t>0\}$ e o 
+aberto conexo $\mathbb{C}^{*}\setminus L_{\phi}$.
+Definimos o ramo do argumento $\arg_{\phi}:\mathbb{C}^{*}\setminus L_{\phi}\to\mathbb{R}$
+por $\arg_{\phi}(z)= \theta(z)$, onde $\theta(z)$ é o único ângulo satisfazendo 
+\[
+\frac{z}{|z|}=\exp(i\theta(z))\quad\text{e}\quad -2\pi+\phi<\theta(z)<\phi.
+\]  
+Infelizmente esta definição é bastante inadequada para provarmos que a função 
+$z\longmapsto \arg_{\phi}(z)$ é contínua, como fizemos para o ramo principal.
+Por outro lado, ela torna a discussão mais geométrica e intuitiva e com um pouco 
+de esforço o leitor interessado pode adaptar a expressão do ramo principal do 
+argumento, e obter uma descrição explícita para $\arg_{\phi}(z)$ em 
+termos da variável complexa $z$; e eventualmente verificar que a mesma está bem
+definida e é contínua em $\mathbb{C}^{*}\setminus L_{\phi}$. 
+
+
+\bigskip 
+
+
+
+\begin{definicao}[Ramo do Logaritmo]
+\label{def-ramo-logaritmo}
+\index{Ramo!do logaritmo}
+Seja $U\subset \mathbb{C}^{*}\equiv \mathbb{C}\setminus\{0\}$ um conjunto aberto conexo e $\widetilde{\arg}:U\to\mathbb{R}$ um ramo do argumento definido em $U$. Então a função $f:U\subset \mathbb{C}^{*}\to\mathbb{C}$ dada por 
+\begin{align}\label{def-eq-ramo-log}
+f(z) = \ln |z|+ i\,\widetilde{\arg}(z), \quad \forall z\in U,
+\end{align}
+é chamada de um ramo do logaritmo em $U$. No caso especial em que  
+$U=\mathbb{C}^{*}\setminus L_{\phi}$ 
+e a função $\widetilde{arg}$ é tomada como sendo a função $\arg_{\phi}$, definida acima, então este ramo do logaritmo será denotado 
+por $\log_{\phi}$. 
+\end{definicao}
+
+
+
+\begin{definicao}[Ramo Principal do Logaritmo]
+\label{def-ramo-principal-log}
+O ramo principal do logaritmo 
+\index{Ramo!principal do logaritmo}
+é definido como sendo a função 
+$\log:\mathbb{C}^{*}\setminus L_{\pi}\to\mathbb{C}$
+dada por 
+\[
+\log(z) = \ln |z| +i \arg(z),
+\]
+onde $arg: \mathbb{C}^{*}\setminus L_{\pi}\to \mathbb{R}$ 
+é o ramo principal do argumento como definido no enunciado do Teorema
+ \ref{teo-def-ramo-principal-argumento}. 
+\end{definicao}
+
+
+Observamos que a o ramo principal do logaritmo coincide com a função 
+$\log_{\pi}$, apresentada na definição anterior. 
+Isto é, para todo $z\in \mathbb{C}^{*}\setminus L_{\pi}$ 
+temos $\log(z) = \log_{\pi}(z)$.
+
+
+\begin{proposicao}\label{prop-explogz}
+A função 
+$\log_{\phi}:\mathbb{C}^{*}\setminus L_{\phi} 
+\to \{z\in\mathbb{C}: -2\pi+\phi<\Im(z)<\phi \}$
+define uma aplicação bijetiva cuja inversa é a função exponencial restrita à faixa 
+$\{z\in\mathbb{C}: -2\pi+\phi<\Im(z)<\phi \}$. Isto é,
+\[
+\exp(\log_{\phi}(z))=z,  \qquad  \forall z\in \mathbb{C}^{*}\setminus L_{\phi}
+\]
+e 
+\[
+\log_{\phi}(\exp(z))=z,\qquad  \forall z\in \{z\in\mathbb{C}: -2\pi+\phi<\Im(z)<\phi \}.
+\]
+\end{proposicao}
+
+
+\begin{proof}
+Vamos mostrar inicialmente que $\log_{\phi}$ é uma inversa à direita,
+em $\mathbb{C}^{*}\setminus L_{\phi}$, da função exponencial. Isto é,
+$\exp(\log_{\phi}(z))=z$, para todo $z\in \mathbb{C}^{*}\setminus L_{\phi}$.
+De fato, para qualquer que seja $z\in \mathbb{C}^{*}\setminus L_{\phi}$ temos
+\[
+\exp(\log_{\phi}(z))
+=
+\exp(\ln|z|+i\,\arg_{\phi}(z))
+=
+e^{\ln |z|}\cdot \exp(i\,\arg_{\phi}(z))
+\\
+=
+|z|\cdot \frac{z}{|z|} = z.
+\]
+Por outro lado, para cada $z\in \{z\in\mathbb{C}: -2\pi+\phi<\Im(z)<\phi \}$
+temos 
+\begin{align*}
+\log_{\phi}(\exp(z)) 
+&= 
+\ln|\exp(z)|+ i\arg_{\phi}(\exp(z))
+\\
+&=
+\ln(\exp(\Re(z)))+ i\arg_{\phi}\Big(\exp(\Re(z))\exp(i\,\Im(z))\Big)
+\\
+&=
+\Re(z)+ i\arg_{\phi}(\exp(i\,\Im(z)))
+\\
+&=
+\Re(z)+ i\,\Im(z) = z.
+\end{align*}
+\end{proof}
+
+
+
+\begin{lema}[Diferenciabilidade dos ramos do logaritmo]
+Para qualquer $\phi\in\mathbb{R}$ fixado a função 
+$\log_{\phi}:\mathbb{C}^{*}\setminus L_{\phi} 
+\to \{z\in\mathbb{C}: -2\pi+\phi<\Im(z)<\phi \}$
+define uma função holomorfa em $\mathbb{C}^{*}\setminus L_{\phi}$ e além do mais, 
+sua derivada é dada por
+\[
+\frac{d}{dz}\log_{\phi}(z)= \frac{1}{z}, 
+\qquad \forall z\in \mathbb{C}^{*}\setminus L_{\phi}.
+\]
+\end{lema}
+
+\begin{proof}
+Pela Proposição \ref{prop-explogz} sabemos que 
+para quaisquer $z,w\in \mathbb{C}^{*}\setminus L_{\phi}$ temos
+\begin{align}\label{eq-aux1-dif-logaritmo}
+\frac{\log_{\phi}(z)-\log_{\phi}(w)}{z-w}
+=
+\frac{\log_{\phi}(z)-\log_{\phi}(w)}{\exp(\log_{\phi}(z)) -\exp(\log_{\phi}(w))}.
+\end{align}
+Para mostrar que $\log_{\phi}$ tem derivada complexa no ponto $z$ basta 
+mostrar que a expressão acima tem limite quando $w\to z$.
+Para ver que este limite existe, vamos considerar a seguinte mudança de variáveis:
+$s=\log_{\phi}(z)$ e $t=\log_{\phi}(w)$. 
+Já que $\log_{\phi}$ é uma função contínua em $\mathbb{C}^{*}\setminus L_{\phi}$
+temos que se $w\to z$, então $t\to s$. Portanto segue da diferenciabilidade
+da função exponencial complexa e da Proposição \ref{prop-explogz} 
+que o seguinte limite existe
+\begin{align*}
+\frac{d}{dz}\log_{\phi}(z)
+&=\lim_{w\to z}
+\frac{\log_{\phi}(z)-\log_{\phi}(w)}{z-w}
+\\[0.3cm]
+&=
+\lim_{w\to z}
+\frac{\log_{\phi}(z)-\log_{\phi}(w)}{\exp(\log_{\phi}(z)) -\exp(\log_{\phi}(w))}
+\\[0.3cm]
+&=
+\lim_{t\to s}
+\frac{s-t}{\exp(s) -\exp(t)}
+\\[0.2cm]
+&=
+\frac{1}{\exp(s)}
+=
+\frac{1}{\exp(\log_{\phi}(z))}
+=
+\frac{1}{z}.
+\end{align*}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dados $\alpha,\beta\in \mathbb{R}$ é possível estabelecer uma relação simples entre
+$\arg_{\alpha}(z)$ e $\arg_{\beta}(z)$, para qualquer 
+$z\in (\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$.
+
+Como ilustrado na figura abaixo, podemos ter para alguns pontos do plano complexo
+$w\in (\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$
+a igualdade $\arg_{\alpha}(w) = \arg_{\beta}(w)$.
+Basta que estes valores do argumento estejam na interseção dos intervalos abertos 
+$(-2\pi+\alpha,\alpha)$ e $(-2\pi+\beta,\beta)$ temos que 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.60\linewidth]{"Figuras/ramos-argumento1"}
+\caption{Relação entre valores de ramos distintos do argumento. A região hachurada em
+verde é onde temos $\arg_{\alpha}(w)=\arg_{\beta}(w)$. Nos demais pontos deste intervalos
+os valores deste ramos do argumento diferem de exatamente $2\pi$.}
+\label{fig:ramos-argumento1}
+\end{figure}
+
+Se temos $\alpha<\beta$ como na Figura \ref{fig:ramos-argumento1} 
+($|\beta-\alpha|<2\pi$) e $z$ é um ponto em 
+$(\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$ 
+tal que $\arg_{\beta}(z)>\alpha$, então $\arg_{\alpha}(z)=\arg_{\beta}(z)-2\pi$.
+
+
+Na verdade, dados $\alpha,\beta\in\mathbb{R}$ quaisquer, podemos mostrar que sempre existe $k\in\mathbb{Z}$ tal que para todo 
+$z\in (\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$  
+temos 
+\begin{align}\label{eq-arg-alpha-arg-beta}
+\arg_{\alpha}(z)=\arg_{\beta}(z)+2k\pi
+\end{align}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\linewidth]{"Figuras/ramos-argumento2"}
+\caption{Neste exemplo podemos ver como calcular o valor da constante que aparece na equação 
+\ref{eq-arg-alpha-arg-beta}. Aqui temos $\arg_{\alpha}(z)=\arg_{\beta}(z)+2k\pi$, onde $k=-4$.}
+\label{fig:ramos-argumento2}
+\end{figure}
+
+Dado $x\in\mathbb{R}$ vamos denotar o menor inteiro maior que $x$
+por $\lceil x\rceil$. Às vezes, nos referimos a $\lceil x\rceil$
+como o ``teto de $x$''. O teto de $x$ também pode ser caracterizado por
+$\lceil x\rceil = \sup\{k\in \mathbb{Z}: x\leq k \}$. Analogamente,
+definimos o ``piso de $x$'' como sendo o maior inteiro menor que $x$,
+notação $\lfloor x\rfloor$. 
+Alternativamente, podemos caracterizar o piso de $x$ pela expressão 
+$\lfloor x\rfloor = \inf\{k\in\mathbb{Z}: k\leq x\}$.
+
+
+\begin{proposicao}\label{prop-arg_beta-arg_alpha}
+Dados $\alpha,\beta\in\mathbb{R}$ e
+$z\in (\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$  
+temos que 
+\[
+\arg_{\alpha}(z)=\arg_{\beta}(z)+2k\pi,\qquad  \text{onde}\ 
+k = 
+\left\lfloor \frac{\alpha-\arg_{\beta}(z)}{2\pi} \right\rfloor
+=
+\left\lceil \frac{\arg_{\alpha}(z)-\beta}{2\pi} \right\rceil. 
+\]
+\end{proposicao}
+
+\begin{proof}
+Já que 
+$z\in (\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$
+segue da definição de ramo do argumento que
+\begin{align*}
+\cos(\arg_{\alpha}(z))+i \sen(\arg_{\alpha}(z))
+&=
+\exp(i\,\arg_{\alpha}(z))
+\\ 
+&= 
+\frac{z}{|z|} 
+\\
+&= 
+\exp(i\,\arg_{\beta}(z)) 
+=
+\cos(\arg_{\beta}(z))+i \sen(\arg_{\beta}(z)).
+\end{align*}
+Portanto 
+\[
+\begin{cases}
+\cos(\arg_{\alpha}(z))=\cos(\arg_{\beta}(z));
+\\[0.2cm]
+\sen(\arg_{\alpha}(z))=\sen(\arg_{\beta}(z)).
+\end{cases}
+\]
+Logo, existe $k\in\mathbb{Z}$ tal que 
+$\arg_{\alpha}(z)= \arg_{\beta}(z)+2k\pi$.
+Desta forma temos que
+\begin{align*}
+k
+&=
+\frac{\arg_{\alpha}(z)-\arg_{\beta}(z)}{2\pi}
+\\
+&=
+\frac{\arg_{\alpha}(z)-\alpha+\alpha-\arg_{\beta}(z)}{2\pi}
+\\
+&=
+\frac{\arg_{\alpha}(z)-\alpha}{2\pi}
++
+\frac{\alpha-\arg_{\beta}(z)}{2\pi}.
+\end{align*}
+Lembrando que $-2\pi+\alpha<\arg_{\alpha}(z)<\alpha$,
+podemos concluir que 
+\[
+-1<\frac{\arg_{\alpha}(z)-\alpha}{2\pi}<0.
+\]
+Deste fato e da igualdade anterior, segue que
+\[
+k< \frac{\alpha-\arg_{\beta}(z)}{2\pi}<k+1
+\quad \Longrightarrow \quad 
+\left\lfloor \frac{\alpha-\arg_{\beta}(z)}{2\pi} \right\rfloor = k.
+\]
+
+Analogamente, temos 
+\begin{align*}
+k
+=
+\frac{\arg_{\alpha}(z)-\beta}{2\pi}
++
+\frac{\beta-\arg_{\beta}(z)}{2\pi}.
+\end{align*}
+Como $-2\pi+\beta<\arg_{\beta}(z)<\beta$ segue que 
+\[
+0<\frac{\beta-\arg_{\beta}(z)}{2\pi}<1.
+\]
+Portanto
+\[
+k-1<\frac{\arg_{\alpha}(z)-\beta}{2\pi}<k
+\quad \Longrightarrow \quad
+k= \left\lceil \frac{\arg_{\alpha}(z)-\beta}{2\pi} \right\rceil.
+\]
+\end{proof}
+
+
+
+\begin{observacao}
+A Proposição \ref{prop-arg_beta-arg_alpha} pode ser vista como 
+uma generalização da Proposição \ref{prop-arg1-arg2-2kpi} 
+já que nesta última os ramos argumento não precisam estar 
+definidos em domínios idênticos.
+\end{observacao}
+
+
+
+\begin{corolario}
+Dados $\alpha,\beta\in\mathbb{R}$ e
+$z\in (\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$  
+temos que 
+\[
+\log_{\alpha}(z)=\log_{\beta}(z)+i2k\pi,\qquad  \text{onde}\ 
+k = 
+\left\lfloor \frac{\alpha-\arg_{\beta}(z)}{2\pi} \right\rfloor
+=
+\left\lceil \frac{\arg_{\alpha}(z)-\beta}{2\pi} \right\rceil. 
+\]
+\end{corolario}
+\begin{proof}
+A prova é uma aplicação direta da definição dos ramos do logaritmo e da Proposição 
+\ref{prop-arg_beta-arg_alpha}. De fato, para qualquer 
+$z\in (\mathbb{C}^{*}\setminus L_{\alpha})\cap(\mathbb{C}^{*}\setminus L_{\beta})$  
+temos
+\begin{align*}
+\log_{\alpha}(z)
+&=
+\ln|z|+i\,\arg_{\alpha}(z)
+\\[0.3cm]
+&=
+\ln|z|+i( \arg_{\beta}(z) + 2k\pi)
+\\[0.3cm]
+&=
+[\ln|z|+i\,\arg_{\beta}(z)] + i2k\pi
+\\[0.3cm]
+&=
+\log_{\beta}(z)+ i2k\pi.
+\end{align*}
+\end{proof}
+
+\section{Potências Arbitrárias}
+
+Já que definimos a exponencial complexa e os ramos do logaritmo, 
+podemos agora introduzir o conceito de potencias arbitrárias. 
+
+\begin{definicao}\label{def-potencias-arbitrarias}
+Fixe $w\in\mathbb{C}$ e $\phi\in\mathbb{R}$. 
+Dado $z\in \mathbb{C}\setminus L_{\phi}$ definimos $z^w$ (ou  $z^{w|_{\phi}}$
+quando for necessário especificar o valor de $\phi$) como
+sendo o número complexo $f_{w,\phi}(z)$, onde 
+$f_{w,\phi}: \mathbb{C}\setminus L_{\phi}\to \mathbb{C}$ 
+é a função dada por $f_{w,\phi}(z) = \exp(w\log_{\phi}(z))$.  
+\end{definicao}
+
+
+Para $w\in\mathbb{C}$ fixado e $\phi\in\mathbb{R}$ escolhido, temos que a aplicação
+$(\mathbb{C}\setminus L_{\phi}) \ni z\longmapsto z^{w}=\exp(w\log_{\phi}(z))$
+define uma aplicação holomorfa em $\mathbb{C}\setminus L_{\phi}$. O ramo 
+principal da função $z\longmapsto z^{w}$ é obtido quando escolhemos $\phi=\pi$ 
+e consequentemente $\log_{\phi}$ como o ramo principal do logaritmo. 
+
+Pela regra da cadeia (Teorema \ref{teo-regra-da-cadeia}),
+Proposição \ref{prop-explogz} e equação \ref{eq-razao-exps} temos que
+\begin{align*}
+\frac{d}{dz}z^w 
+= 
+\frac{d}{dz}\exp(w\log_{\phi}(z)) 
+&=
+\exp(w\log_{\phi}(z))\frac{d}{dz}[w\log_{\phi}(z)]
+\\
+&=
+\exp(w\log_{\phi}(z))\frac{w}{z}
+\\
+&=
+\exp(w\log_{\phi}(z))\frac{w}{\exp(\log_{\phi}(z))}
+\\
+&=
+w\frac{\exp(w\log_{\phi}(z))}{\exp(\log_{\phi}(z))}
+\\
+&=
+w \exp((w-1)\log_{\phi}(z)).
+\\
+&=
+wz^{w-1}.
+\end{align*}
+
+O que mostra que, independentemente da escolha do ramo do logaritmo temos sempre 
+\[
+\frac{d}{dz}z^w = wz^{w-1}.
+\]
+
+Outra observação importante é que a função introduzida na 
+Definição \ref{def-potencias-arbitrarias} generaliza, em um certo sentido, 
+a noção usual de potência já que para qualquer $n\in\mathbb{N}$ e 
+$z\in \mathbb{C}\setminus L_{\pi}$ temos: 
+\[
+z^n  
+=  
+\exp(n\log(z))
+=
+\underbrace{\exp(\log(z))\cdot\ldots\cdot\exp(\log(z))}_{n-\mathrm{vezes}}
+= z\cdot\ldots\cdot z.
+\]
+
+Outra observação importante é que estas funções nos permitem construir raízes 
+$n$-ésimas de um número complexo $w$. Para isto basta observar que 
+escolhido o ramo principal do logaritmo e
+$w\in \mathbb{C}\setminus L_{\pi}$ temos que $w^{\frac{1}{n}}$ é uma
+solução da equação $z^n=w$. De fato, 
+\[
+w^{\frac{1}{n}}
+=
+\exp\Big(\frac{1}{n}\log(w)\Big)
+=
+\exp\Big(\frac{1}{n}(\ln|w|+i\arg(w))\Big)
+=
+|w|^{\frac{1}{n}}\exp\Big(i\frac{\arg(w)}{n}\Big).
+\]
+
+
+Na verdade, podemos construir todas as raízes $n$-ésimas de $w$
+considerando todos os possíveis ramos de $w^{\frac{1}{n}}$.
+Para simplificar a discussão vamos introduzir a seguinte notação para os
+ramos da raíz $n$-ésima. 
+\index{Raíz!$n$-ésima de $z$}
+Dado $\phi\in\mathbb{R}$ e $w\in \mathbb{C}\setminus L_{\phi}$
+vamos denotar $\exp((1/n)\log_{\phi}(w))$ por $\sqrt[n]{w}^{\,\phi}$.
+\begin{proposicao}\label{prop-ramos-raizes-raizes-nesimas}
+Para qualquer $n\in\mathbb{N}$ e $w\in\mathbb{C}$ fixados temos 
+\[
+\{ \sqrt[n]{w}^{\,\phi} \in \mathbb{C}: \phi\in\mathbb{R}\ \text{e}\ w\in 
+\mathbb{C}\setminus L_{\phi} \}
+=
+\{ z\in\mathbb{C}: z^n=w\}.
+\]
+\end{proposicao}
+
+Em seguida, mostramos as principais ideias envolvidas na prova da 
+proposição acima para o caso especial em que $n=2$ e $w=-1$. 
+
+\begin{exemplo}
+\label{exemplo-raiz-menos-um} 
+Vamos mostrar que 
+\[
+\{ \sqrt{-1}^{\,\phi} \in \mathbb{C}: \phi\in\mathbb{R}\ \text{e}\ (-1)\in 
+\mathbb{C}\setminus L_{\phi} \}
+=
+\{ z\in\mathbb{C}: z^2=-1\}
+=
+\{-i,i\}.
+\]
+\end{exemplo}
+
+
+Inicialmente escolhemos um ramo qualquer do argumento onde temos mais facilidade 
+para determinar o valor de $\arg_{\phi}(-1)$. Por exemplo, vamos tomar $\phi=0$.
+Neste caso, $\arg_{0}(-1)=-\pi$. Para qualquer $\phi\neq (2k+1)\pi$, com $k\in\mathbb{Z}$,
+temos que $(-1)\in (\mathbb{C}\setminus L_{\phi})\cap (\mathbb{C}\setminus L_{0})$.
+Desta forma podemos aplicando a Proposição \ref{prop-arg_beta-arg_alpha} e assim concluir que
+para quaisquer tais valores de $\phi$ temos 
+\[
+\arg_{\phi}(-1) = \arg_{0}(-1) + 2\pi
+\left\lfloor \frac{\phi-\arg_{0}(-1)}{2\pi}\right\rfloor 
+=
+-\pi + 2\pi
+\left\lfloor \frac{\phi+\pi}{2\pi}\right\rfloor 
+\]
+
+Logo, se $\phi\in\mathbb{R}$ não é um múltiplo ímpar
+de $\pi$ então temos 
+\begin{align*}
+\sqrt{-1}^{\,\phi} 
+&=
+\exp\Big(\frac{1}{2}\ln|-1|+i\frac{\arg_{\phi}(-1)}{2}  \Big)
+\\[0.3cm]
+&=
+\exp\Big(i\frac{\arg_{\phi}(-1)}{2}  \Big)
+\\[0.3cm]
+&=
+\exp\Big(i \big(-\frac{\pi}{2} + \pi
+\left\lfloor \frac{\phi+\pi}{2\pi}\right\rfloor \big) \Big).
+\end{align*}
+Fazendo $\phi$ variar em $\mathbb{R}\setminus\{(2k+1)\pi: k\in\mathbb{Z}\}$
+podemos observar que a expressão acima assume os seguintes valores
+\[
+\left\{\exp\Big(i \big(-\frac{\pi}{2} + k\pi \big)\Big) : k\in\mathbb{Z}\right\} 
+=
+\{ e^{-i\frac{\pi}{2}}, e^{i\frac{\pi}{2}} \}
+=
+\{-i,i\}.
+\]
+
+
+\bigskip 
+
+Observamos que para qualquer que seja $w\in \mathbb{C}\setminus L_{\phi}$ sempre temos 
+\begin{align*}
+\sqrt{w}^{\,\phi} \sqrt{w}^{\,\phi} 
+&= 
+\left[\exp\Big(\frac{1}{2}\ln|w|+i\frac{1}{2}\arg_{\phi}(w)\Big)\right]^2
+\\
+&=
+\exp\Big(\ln|w|+i\arg_{\phi}(w)\Big)
+\\
+&=
+\exp(\log_{\phi}(w))
+\\
+&=
+w.
+\end{align*}
+
+Mas, em geral, podemos ter
+\[
+\sqrt{zw}^{\,\phi} \neq  \sqrt{z}^{\,\phi} \sqrt{w}^{\,\phi} 
+\quad\text{e também}\quad 
+\sqrt{z^2}^{\,\phi} \neq  \sqrt{z}^{\,\phi} \sqrt{z}^{\,\phi}.
+\]
+mesmo que $z, w$, $zw$ e $z^2$ sejam pontos de $\mathbb{C}\setminus L_{\phi}$.

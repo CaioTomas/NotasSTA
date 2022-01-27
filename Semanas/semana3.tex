@@ -1,0 +1,1702 @@
+% !TeX spellcheck = pt_BR
+\chapter[Semana 3]{}
+\chaptermark{}
+
+
+
+\hfill%
+\begin{minipage}{12cm}
+	\begin{flushright}
+		\rightskip=0.5cm
+		\textit{``At the basis of the distance concept lies, for example, 
+		the concept of a convergent point sequence and their defined limits,
+		and one can, choosing these ideas as those fundamental to the point 
+		set theory, eliminate the notions of distance ... Thirdly, 
+		we can associate with each point of the set certain parts of the space
+		called neighborhoods, and these can again be made building stones of the 
+		theory with the elimination of the distance concept. Here the view
+		of a set is in consideration of the association between elements and
+		subsets.''}
+		\\[0.1cm]
+		\rightskip=0.5cm
+		---F. Hausdorff, 1949
+	\end{flushright}
+\end{minipage}
+
+
+
+
+\section{Limites, Continuidade de Funções Complexas}
+
+Uma função complexa é uma função $f:U\subset \mathbb{C}\to\mathbb{C}$ definida em algum 
+subconjunto $U\subset \mathbb{C}$ e tomando valores em $\mathbb{C}$
+que associa cada ponto $z\in U$ um número complexo $f(z)$.
+Podemos também descrever tais funções usando coordenadas, isto é,
+para $z=x+iy\in U$ temos 
+$f(z)=f(x+iy)=u(x,y)+iv(x,y)$, onde $u(x,y)=\Re(f(x+iy))=$ e $v(x,y)=\Im(f(x+iy))$.
+
+
+Por exemplo, a função $f:\mathbb{C}\to\mathbb{C}$ dada por $f(z)=z^2$ pode ser
+descrita em coordenadas por 
+$f(x+iy) = (x+iy)^2 = x^2-y^2+2ixy$.
+Em geral, é prudente evitar trabalhar com coordenadas. 
+Mas isto não quer dizer que não devemos usá-las, mas sim 
+avaliar cuidadosamente se uso delas facilitará ou viabilizará o estudo 
+do problema. Um dos resultados mais importantes da próxima seção
+às chamadas Condições de Cauchy-Riemann, fornecem um exemplo 
+importante de como a descrição de uma função complexa em termos de suas coordenadas
+pode ser poderosa. 
+
+\bigskip 
+
+A noção de limite associado a uma função $f:A\subset \mathbb{C}\to\mathbb{C}$ 
+consiste simplesmente numa tradução da Definição \ref{definicao-limite-R2}.
+Por questão de simplicidade, como na seção anterior, vamos considera apenas 
+funções definidas em algum conjunto $A\subset\mathbb{C}$
+cujo o interior é não-vazio. 
+
+\begin{definicao}\label{def-limite-func-complexa}
+\index{Limite!de uma função complexa}
+Sejam $A\subset \mathbb{C}$ um conjunto cujo interior é não-vazio, $f:A\to\mathbb{C}$ uma 
+função e $z_0\in \overline{A}$. Dizemos que um número complexo $w_0$ 
+é o limite de $f(z)$ quando $z$ tende a $z_0$ se, dado qualquer $\varepsilon>0$ é possível
+encontrar $\delta>0$ tal que se $z\in A$ e  $0<|z-z_0|<\delta$ então  temos $|f(z)-w_0|<\varepsilon$.
+O limite será denotado por
+\[
+\lim_{z\to z_0} f(z) = w_0\qquad \text{ou} \qquad f(z)\xrightarrow{\ z\to z_0\ }w_0.
+\]
+\end{definicao}
+É comum referir-se ao fato de que $f(z)\xrightarrow{\ z\to z_0\ }w_0$, dizendo simplesmente
+que $f(z)$ converge para $w_0$, quando $z$ tende a $z_0$.
+
+A intuição deste conceito de limite é totalmente análoga a de limite de funções em $\mathbb{R}^2$.
+Ou seja, dado qualquer $\varepsilon>0$ podemos encontrar um $\delta\equiv \delta(\varepsilon,z_0)$ 
+tal que todo ponto $z$ que está $\delta$-próximo de $z_0$ é enviado por $f$ $\varepsilon$-próximo de $w_0$.
+
+\begin{exemplo}
+Seja $f:\mathbb{C}\to\mathbb{C}$ dada por $f(z)=z^2$.  Seja $z_0=i$. Então, segundo a definição acima 
+temos 
+\[
+\lim_{z\to i } f(z) = -1.
+\]
+De fato, dado $\varepsilon>0$, tome $\delta = \sqrt{1+\varepsilon} -1$. Desta forma, sempre que tomamos
+$z$ tal que $|z-(-i)|<\delta$, temos
+\begin{align*}
+|z^2-(-1)|=|z^2+1|= |(z+i)(z-i)| 
+&= |z+i|\cdot |z-i|
+\\
+&<
+(\sqrt{1+\varepsilon} -1) |z-i|
+\\
+&=
+(\sqrt{1+\varepsilon} -1) |z+i-2i|
+\\
+&\leqslant
+(\sqrt{1+\varepsilon} -1) (|z+i|+|2i|)
+\\
+&<
+(\sqrt{1+\varepsilon} -1) (\sqrt{1+\varepsilon} -1+2)
+\\
+&=
+(\sqrt{1+\varepsilon} -1) (\sqrt{1+\varepsilon} +1)
+\\
+&=
+(\sqrt{1+\varepsilon})^2-1^2
+\\
+&=
+\varepsilon.
+\end{align*}
+\end{exemplo}
+
+Uma propriedade muito importante e naturalmente esperada de qualquer definição de limite é que o mesmo
+seja único. Neste caso é simples verificar a unicidade do limite, basta aplicar a desigualdade triangular como
+segue. Se $f(z)\to w_0$, quando $z\to z_0$ e $f(z)\to w_1$, quando $z\to z_0$, então dado $\varepsilon>0$
+sabemos que existe $\delta>0$ tal que se $0<|z-z_0|<\delta$ 
+então $|f(z)-w_0|<\varepsilon/2$ e $|f(z)-w_1|<\varepsilon/2$.
+Logo $|w_0-w_1| = |w_0-f(z)+f(z)-w_1|\leq |f(z)-w_0|+|f(z)-w_1|<\varepsilon/2+\varepsilon/2 = \varepsilon$.
+Para a desigualdade acima ser válida para todo $\varepsilon$ é necessário que $|w_0-w_1|=0$, o que queríamos
+demonstrar.
+
+
+\bigskip
+
+O limite de uma função complexa pode ser expresso também em termos de suas coordenadas. Em outras palavras, 
+uma função complexa tem limite se, e somente se, suas partes real e imaginária
+têm limite. Mais precisamente, se escrevemos $f(z)=u(x,y)+iv(x,y)$, onde $z=x+iy$ e se existe 
+o limite $\lim_{z\to z_0}f(z)=w_0$, onde $z_0=x_0+iy_0$ e $w_0=u_0+iv_0$, então temos
+\begin{align*}
+\lim_{(x,y)\to (x_0,y_0)} u(x,y) = u_0
+\qquad\text{e}\qquad 
+\lim_{(x,y)\to (x_0,y_0)} v(x,y) = v_0.
+\end{align*}
+
+Para verificar que ambas igualdades vamos aplicar o Lema \ref{lema-re-im-modulo} que 
+garante
+\[
+|u(x,y)-u_0|\leqslant |f(z)-w_0|
+\qquad \text{e}\qquad 
+|v(x,y)-v_0|\leqslant |f(z)-w_0|.
+\]
+Assim, dado $\varepsilon>0$, existe $\delta>0$ tal que 
+se $z\in A$ e  $|z-z_0|<\delta$ (ou  $\|(x,y)-(x_0,y_0)\|<\delta$), 
+então $|f(z)-w_0|<\varepsilon$. Logo segue das últimas duas desigualdades que $|u(x,y)-u_0|<\varepsilon$
+e $|v(x,y)-v_0|<\varepsilon$ o que prova a afirmação sobre os limites das funções coordenadas $u$ e $v$.
+A recíproca pode ser provada de forma análoga simplesmente substituindo o argumento do Lema \ref{lema-re-im-modulo}
+pela desigualdade triangular.
+
+As propriedades do limite de uma função complexa são análogas às do limite de funções reais, já que 
+tudo que são usadas em ambas definições são as estruturas de distância (que na reta é definida pelo valor absoluto e no 
+plano complexo pela norma) e de corpo. Relacionamos abaixo algumas das mais básicas e úteis:
+
+
+\begin{lema}\label{lema-limite-f-limitada}
+Seja  $A\subset \mathbb{C}$ conjunto de interior não-vazio, $f:A\to\mathbb{C}$ uma função complexa
+e $z_0\in \overline{A}$. Suponha 
+\[
+\lim_{z\to z_0} f(z) = w_0.
+\]
+Então existe algum $r>0$ tal que $f$ é limitada no conjunto $V(A,r)\equiv \{z\in A: 0<|z-z_0|<r\}$,
+isto é, existe uma constante $M$ (que pode depender de $z_0$ e $r$) tal que   $|f(z)|\leq M$
+para todo $z\in V(A,r)$.
+\end{lema}
+\begin{proof}
+Pela definição de limite, dado $\varepsilon=1$ existe $\delta>0$ tal que para todo $z\in A$ com 
+$0<|z-z_0|<\delta$, temos $|f(z)-w_0|<1$. Pela segunda desigualdade triangular segue que 
+$|f(z)|-|w_0|\leqslant |f(z)-w_0|<1$, o que implica que $|f(z)|\leqslant 1+|w_0|$. 
+Para finalizar a prova basta tomar $M\equiv 1+|w_0|$ e $r=\delta$.
+\end{proof}
+
+
+\begin{proposicao}\label{prop-propriedades-limite-funcao-complexa}
+Sejam $A\subset \mathbb{C}$ conjunto de interior não-vazio, $f_1,f_2:A\to\mathbb{C}$ duas funções complexas
+e $z_0\in \overline{A}$. Se 
+\[
+\lim_{z\to z_0} f_1(z) = w_1\qquad\text{e}\qquad \lim_{z\to z_0} f_2(z) = w_2
+\]
+então 
+\begin{enumerate}
+\item $\displaystyle \lim_{z\to z_0} cf_1(z) = c \lim_{z\to z_0} f_1(z) = cw_1$, onde $c$ é uma constante complexa;
+\item $\displaystyle \lim_{z\to z_0} (f_1(z)+f_2(z)) = \lim_{z\to z_0} f_1(z) + \lim_{z\to z_0}f_2(z) = w_1+w_2$;
+\item $\displaystyle \lim_{z\to z_0} (f_1(z)\cdot f_2(z)) = \lim_{z\to z_0} f_1(z) \cdot \lim_{z\to z_0}f_2(z) = w_1\cdot w_2$;
+\item se $w_1\neq 0$ então $\displaystyle \lim_{z\to z_0}\frac{1}{f_1(z)} = \frac{1}{w_1}$.
+\end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+Vamos provar os itens $\mathit{2}$ e $\mathit{3}$. A prova dos itens restantes é semelhante. 
+
+Prova do item $\mathit{2}$. Pela definição de limite, dado $\varepsilon>0$ existem $\delta_1,\delta_2>0$ tais que se $|z-z_0|<\delta_1$
+então $|f_1(z)-w_1|<\varepsilon/2$ e se $|z-z_0|<\delta_2$ então $|f_2(z)-w_2|<\varepsilon/2$.
+Portanto, se $|z-z_0|<\delta\equiv \min\{\delta_1,\delta_2\}$ temos da desigualdade triangular que  
+\[
+|f_1(z)+f_2(z) - (w_1+w_2)|\leqslant |f_1(z)-w_1|+|f_2(z)-w_2| <\frac{\varepsilon}{2}+\frac{\varepsilon}{2} = \varepsilon,
+\]
+mostrando que $f_1(z)+f_2(z)\xrightarrow{\ z\to z_0\ }w_1+w_2$.
+
+Prova do item $\mathit{3}$. Pela definição de limite dado $\varepsilon>0$ sabemos que existe $\delta_1>0$
+tal que se $|z-z_0|<\delta_1$, então $|f_1(z)-w_1|<\varepsilon/2|w_2|$. Pelo Lema \ref{lema-limite-f-limitada}
+existem $\delta_2>0$ e uma constante $M>0$ tal que se $|z-z_0|<\delta_2$, então $|f_1(z)|\leqslant M$.
+Também pela definição de limite podemos encontrar $\delta_3>0$ tal que se $|z-z_0|<\delta_3$ 
+então $|f_2(z)-w_2|<\varepsilon/2M$. Aplicando a desigualdade triangular temos
+\begin{align*}
+|f_1(z)f_2(z) - w_1w_2 | &=  |f_1(z)f_2(z)- f_1(z)w_2+f_1(z)w_2-w_1w_2|
+\\
+&\leqslant 
+|f_1(z)f_2(z)- f_1(z)w_2|+|f_1(z)w_2-w_1w_2|
+\\
+&=
+|f_1(z)|\, |f_2(z)-w_2| + |w_2|\, |f_1(z)-w_1|
+\\
+&\leqslant
+M \frac{\varepsilon}{2M}+|w_2| \frac{\varepsilon}{2|w_2|}
+=
+\varepsilon.
+\end{align*}
+Mostrando assim que $f_1(z)\cdot f_2(z)\xrightarrow{\ z\to z_0\ }w_1\cdot w_2$.
+\end{proof}
+
+De maneira semelhante às funções de $\mathbb{R}ˆ2$ definimos o conceito de continuidade.  
+
+\begin{definicao}[Função Contínua]
+\label{def-func-complexa-continua}
+\index{Função!contínua}
+Sejam $A\subset \mathbb{C}$ um aberto e $f:A\to\mathbb{C}$ uma função. Dizemos que 
+$f$ é contínua em $z_0\in A$ se 
+\[
+\lim_{z\to z_0} f(z) = f(z_0).
+\]
+Se $f$ é contínua em todo ponto $z_0\in A$, dizemos que $f$ é contínua em $A$.
+\end{definicao}
+
+Note que a continuidade de uma função complexa é equivalente a continuidade de 
+suas funções coordenadas. Isto é, $f:A\to\mathbb{C}$ é contínua se, e somente se,
+as funções $z\longmapsto \Re(z)$ e $z\longmapsto \Im(z)$ são contínuas em $A$.
+
+Podemos também verificar diretamente à partir da definição 
+que $f:\mathbb{C}\to\mathbb{C}$ dada por $f(z)=\overline{z}$ é uma função contínua em $\mathbb{C}$.
+Usando a proposição anterior podemos também verificar facilmente que 
+a função $g:\mathbb{C}^{*}\to\mathbb{C}$ dada por $g(z) = 1/z$ é contínua em $\mathbb{C}^{*}$.
+
+A seguir vamos mostrar que uma versão da  Proposição \ref{prop-propriedades-limite-funcao-complexa}
+para o caso de funções contínuas. Além disto vamos incluir nesta nova proposição uma afirmação sobre
+a continuidade de composições e para isto vamos relembrar o conceito de composição de funções. 
+Sejam $A,B\subset \mathbb{C}$ conjuntos abertos, $f:B\to\mathbb{C}$ e $g:A\to\mathbb{C}$
+funções tais que $g(A)\subset B$. Sob estas condições podemos definir a função composta $f\circ g: A\to\mathbb{C}$
+pela expressão $f\circ g(z) \equiv f(g(z))$, para cada $z\in A$.
+
+\begin{proposicao}
+Sejam $A,B\subset \mathbb{C}$ abertos e $f_1:B\to\mathbb{C}$, $f_2:B\to\mathbb{C}$ e $g:A\to\mathbb{C}$ 
+funções complexas tais que $g(A)\subset B$. Suponha que $f_1$ e $f_2$ são contínuas em $z_0\in B$ e
+que $f_1$ é contínua em $g(z_1)$, onde $z_1\in A$. Então 
+\begin{enumerate}
+	\item são contínuas em $z_0\in B$ as funções:
+		\begin{itemize}
+			\item  $cf_1:B\to\mathbb{C}$; 
+			\item  $f_1+f_2:B\to\mathbb{C}$;
+			\item $f_1\cdot f_2: B\to\mathbb{C}$.
+		\end{itemize}
+
+	\item se $f_1(z_0)\neq 0$ então a função $\displaystyle\frac{1}{f_1}:B\setminus\{z\in B: f_1(z)=0\} \to \mathbb{C}$
+	é contínua em $z_0$;
+	
+	\item a função $f_1\circ g :A\to\mathbb{C}$ é contínua em $z_1$.
+\end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+As provas dos itens $\mathit{1}$ e $\mathit{2}$ são idênticas aos respectivos itens da Proposição \ref{prop-propriedades-limite-funcao-complexa} por isto faremos apenas a prova do item $\mathit{3}$.
+Dado $\varepsilon>0$ segue da continuidade de $f_1$ no ponto $g(z_1)$, 
+que existe $\delta_1>0$ tal que se $|w-g(z_1)|<\delta_1$
+então $|f_1(w)-f_1(g(z_1))|<\varepsilon$. Pela continuidade de $g$ em $z_1$ podemos encontrar $\delta_2>0$
+tal que se $|z-z_1|<\delta_2$ então $|g(z)-g(z_1)|<\delta_1$. Assim,
+tomando $\delta=\delta_2$ temos que se 
+ se $|z-z_1|<\delta$ então $|f_1(g(z))-f_1(g(z_1))|<\varepsilon$.
+\end{proof}
+
+
+\section{A Derivada Complexa}
+
+Nesta seção vamos definir a derivada complexa de uma função $f:A\subset\mathbb{C}\to\mathbb{C}$.
+Para facilitar vamos trabalhar apenas com funções definidas em subconjuntos abertos de $\mathbb{C}$.
+A noção de derivada complexa é uma noção que diferencia o cálculo de variáveis reais e complexas.
+A partir dela veremos surgir uma teoria de cálculo diferencial completamente nova e rica de propriedades
+interessantes. As novidades oriundas desta nova noção de derivada 
+fazem desta, uma teoria extremamente útil em diversas aplicações em matemática pura e aplicada, 
+física, engenharia e muitas outras áreas.
+
+\begin{definicao}\label{def-derivada-complexa}
+\index{Derivada!complexa}
+Sejam $A\subset\mathbb{C}$ um aberto e $f:A\to\mathbb{C}$ uma função. Dizemos que $f$
+tem derivada no sentido complexo em $z_0\in A$ se existe o seguinte limite 
+\[
+f'(z_0) \equiv \lim_{z\to z_0} \frac{f(z)-f(z_0)}{z-z_0}.
+\]
+\end{definicao}
+
+A diferença marcante aqui é que apesar da derivada ser definida como no caso de funções reais,
+pelo limite de quocientes de Newton, agora o quociente de Newton é tomado no sentido da divisão 
+de números complexos. Esta que parece uma pequena diferença terá consequências fantásticas!
+
+Observamos que analogamente ao caso de funções reais a derivada complexa
+pode também ser obtida  pelo seguinte limite 
+\[
+f'(z_0) = \lim_{h\to 0} \frac{f(z_0+h)-f(z_0)}{h}.
+\]
+
+Abaixo analisamos a existência da derivada complexa de duas funções bastante simples e importantes
+neste texto.
+
+\begin{exemplo}
+A função $f:\mathbb{C}\to\mathbb{C}$ tem derivada complexa em qualquer $z_0\in\mathbb{C}$, além do mais
+$f'(z_0)=2z_0$. 
+Para verificar este fato, basta observar que 
+\[
+\lim_{z\to z_0}\frac{ f(z)-f(z_0)}{z-z_0} 
+=
+\lim_{z\to z_0} \frac{z^2-z_0^2}{z-z_0}
+=
+\lim_{z\to z_0} \frac{(z-z_0)(z+z_0)}{z-z_0}
+=
+\lim_{z\to z_0} z+z_0
+=
+2z_0.
+\]
+\end{exemplo}
+ 
+O próximo exemplo mostra como a derivada complexa pode ser radicalmente diferente da derivada 
+no sentido real. 
+
+\begin{exemplo}
+Considere a função $f:\mathbb{C}\to\mathbb{C}$ dada por $f(z)=\overline{z}$, para todo $z\in\mathbb{C}$.
+Então não existe nenhum ponto do plano complexo onde esta função tenha derivada.
+
+Para verificar este fato vamos considerar $z_0$ um ponto arbitrário fixado e o quociente de Newton 
+\begin{align*}
+\frac{f(z)-f(z_0)}{z-z_0}
+&=
+\frac{\overline{z}-\overline{z_0}}{z-z_0}
+\\
+&=
+\frac{\overline{z}-\overline{z_0}}{z-z_0} \cdot \frac{\overline{z}-\overline{z_0}}{\overline{z}-\overline{z_0}}
+=
+\frac{(\overline{z}-\overline{z_0})^2}{|z-z_0|^2} 
+\\
+&=
+\frac{(x-x_0+i(y-y_0))^2}{(x-x_0)^2+(y-y_0)^2}
+\\
+&=
+\frac{(x-x_0)^2-(y-y_0)^2+2i(x-x_0)(y-y_0)}{(x-x_0)^2+(y-y_0)^2}.
+\end{align*}
+Agora vamos fazer $z$ se aproximar de $z_0$ por retas paralelas aos eixos coordenados que passando por 
+$z_0$.
+
+Primeiro consideramos  $z$ da forma $z=t+iy_0$, onde $t\in\mathbb{R}$. Neste caso obtemos, das identidades acima,
+para $t\neq x_0$ a seguinte igualdade
+\begin{align*}
+\frac{f(t+iy_0)-f(z_0)}{(t+iy_0)-z_0}
+&=
+\frac{(t-x_0)^2-(y_0-y_0)^2+2i(t-x_0)(y_0-y_0)}{(t-x_0)^2+(y_0-y_0)^2}
+\\
+&=
+\frac{(t-x_0)^2}{(t-x_0)^2}=1.
+\end{align*}
+
+Por outro lado, se consideramos $z$ da forma $z=x_0+it$, onde $t\in\mathbb{R}$ temos para $t\neq y_0$
+\begin{align*}
+\frac{f(x_0+it)-f(z_0)}{(x_0+it)-z_0}
+&=
+\frac{(x_0-x_0)^2-(t-y_0)^2+2i(x_0-x_0)(t-y_0)}{(x_0-x_0)^2+(t-y_0)^2}
+\\
+&=
+-\frac{(t-y_0)^2}{(t-y_0)^2}=-1.
+\end{align*}
+Como os limite quando $z$ tende a $z_0$ do quociente de Newton ao longo destes dois caminhos é distinto
+segue que não pode existir a derivada de $f$ no ponto $z_0$. Mas já que $z_0$ é arbitrário, concluímos que
+esta função não tem derivada em nenhum ponto do plano complexo.
+\end{exemplo}
+
+O exemplo acima, mostra como o conceito de derivada complexa é novo. Além do mais ele mostra
+que em $\mathbb{C}$ é muito simples construir um função que é contínua em todos pontos
+mas não é derivável em ponto algum. Existem funções com propriedades semelhantes definidas da reta na reta,
+mas são muito mais complicadas de serem construídas. 
+
+
+\begin{proposicao}\label{prop-diferenciavel-continua}
+Sejam $A\subset\mathbb{C}$ um aberto e  $f:A\to\mathbb{C}$ uma função derivável em $z_0\in A$.
+Então $f$ é contínua em $z_0$.
+\end{proposicao}
+\begin{proof}
+Basta observar que 
+\begin{align*}
+\lim_{z\to z_0} (f(z)-f(z_0))
+&=
+\lim_{z\to z_0} (f(z)-f(z_0))\, \frac{z-z_0}{z-z_0}
+\\
+&=
+\lim_{z\to z_0}  (z-z_0)\, \frac{f(z)-f(z_0)}{z-z_0}
+\\
+&=
+0\cdot f'(z_0)=0.
+\end{align*}
+\end{proof}
+
+
+\begin{proposicao}\label{prop-derivada}
+Sejam $A\subset\mathbb{C}$ um aberto, $f$ e $g$ funções diferenciáveis em $z_0\in A$. 
+Então temos 
+\begin{enumerate}
+	\item $(cf)'(z_0) = cf'(z_0)$, para qualquer constante $c\in\mathbb{C}$;
+	\item $(f+g)'(z_0) = f'(z_0)+g'(z_0)$;
+	\item $(f\cdot g)'(z_0) = f'(z_0)g(z_0)+f(z_0)g'(z_0)$;
+	\item $\displaystyle\left( \frac{1}{f} \right)'(z_0) = -\frac{f'(z_0)}{f(z_0)^2}$, se $f(z_0)\neq 0$.
+	\item $\displaystyle\left( \frac{f}{g} \right)'(z_0) = \frac{f'(z_0)g(z_0)-f(z_0)g'(z_0)}{g(z_0)^2}$, se $g(z_0)\neq 0$.
+\end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+A prova dos itens $\mathit{1},\ \mathit{2}$ e $\mathit{3}$ são semelhantes a das proposições anteriores.
+Por isto vamos apresentar somente a prova dos itens $\mathit{4}$ e $\mathit{5}$.
+
+Para provar $\mathit{4}$ primeiro observamos que podemos reescrever o 
+quociente de Newton de $1/f$ como segue já que  $f(z_0)\neq 0$. 
+\begin{align*}
+\frac{ \displaystyle \frac{1}{f(z)}  -  \frac{1}{f(z_0)}  }{z-z_0}
+=
+\frac{ \displaystyle  \frac{ f(z_0)-f(z) }{ f(z)f(z_0) }    }{z-z_0}
+=
+- \frac{1}{f(z)f(z_0)}\cdot   \frac{f(z)-f(z_0)}{z-z_0},
+\end{align*}
+Como estamos assumindo que $f$ é derivável em $z_0$ segue da Proposição \ref{prop-diferenciavel-continua}
+que $f$ é contínua em $z_0$. Desta forma podemos tomar o limite, quando $z$ tende a $z_0$ na expressão 
+à direita da igualdade acima obtendo 
+\[
+\lim_{z\to z_0} \frac{ \displaystyle \frac{1}{f(z)}  -  \frac{1}{f(z_0)}  }{z-z_0}
+ = 
+- \lim_{z\to z_0} \frac{1}{f(z)f(z_0)}\cdot   \frac{f(z)-f(z_0)}{z-z_0}
+=
+-\frac{f'(z_0)}{f(z_0)^2}.
+\]
+
+A prova do item $\mathit{5}$. Já que estamos assumindo que $g$ é derivável em $z_0$ e também $g(z_0)\neq 0$
+podemos aplicar os itens $\mathit{3}$ e $\mathit{4}$ para concluir que 
+\begin{align*}
+\left( \frac{f}{g} \right)'(z_0) 
+=
+\left( f \cdot \frac{1}{g}\right)'(z_0)
+&=
+f'(z_0) \frac{1}{g(z_0)} + f(z_0)\left( \frac{1}{g}\right)'(z_0)
+\\[0.3cm]
+&=
+ \frac{f'(z_0)}{g(z_0)}  -f(z_0)\frac{g'(z_0)}{g(z_0)^2}
+\\[0.2cm]
+&=
+\frac{f'(z_0)g(z_0)-f(z_0)g'(z_0)}{g(z_0)^2}. 
+\end{align*} 
+\end{proof}
+
+\begin{teorema}[Regra da Cadeia]
+\label{teo-regra-da-cadeia}
+\index{Regra da Cadeia}
+Sejam $A, B$ abertos de $\mathbb{C}$ e $f:B\to\mathbb{C}$ e $g:A\to\mathbb{C}$ funções tais que $g(A)\subset B$.
+Se $g$ é derivável em $z_0$ e $f$ é derivável em $f(g(z_0))$, então 
+\[
+(f\circ g)'(z_0) = f'(g(z_0))g'(z_0).
+\]
+\end{teorema}
+
+\begin{proof}
+Defina a função $h:B\to\mathbb{C}$ como segue
+\[
+h(w)
+=
+\begin{cases}
+\displaystyle\frac{f(w)-f(g(z_0))}{w-g(z_0)}- f'(g(z_0)),&\text{se}\ w\neq g(z_0);\\
+0,&\text{se}\ w=g(z_0).
+\end{cases} 
+\]
+Observe que $h$ está bem definida em $B$ e é contínua em $g(z_0)$
+uma vez que $f$, por hipótese, é derivável em $g(z_0)$. 
+Como também é continuidade $g$ em $z_0$, temos
+\begin{align}\label{eq-aux1-regra-cadeia}
+\lim_{z\to z_0} (h\circ g)(z) = h(g(z_0))=0.
+\end{align}
+Para todo $w\in B$ temos a seguinte igualdade (válida também para $w=g(z_0)$)
+\[
+f(w)-f(g(z_0))= ( h(w)+f'(g(z_0)))\,(w-g(z_0)).
+\]
+Substituindo $w$ por $g(z)$ na identidade acima e dividindo ambos os lados por $z-z_0$ obtemos:
+\[
+\frac{ f(g(z)) - f(g(z_0))  }{ z-z_0 } 
+=  
+\big(  h(g(z))+ f'(g(z_0))   \big) 
+\,\frac{g(z)-g(z_0)}{z-z_0}.
+\]
+Lembrando de \eqref{eq-aux1-regra-cadeia}  
+podemos concluir  da expressão do lado direito da igualdade acima que existe a derivada de $f\circ g$
+em $z_0$ e temos
+\begin{align*}
+(f\circ g)'(z_0)
+&=
+\lim_{z\to z_0}
+\frac{ f(g(z)) - f(g(z_0))  }{ z-z_0 } 
+\\[0.2cm]
+&=  
+\lim_{z\to z_0}
+\big(  h(g(z))+ f'(g(z_0))   \big) \frac{g(z)-g(z_0)}{z-z_0}
+\\[0.2cm]
+&=
+f'(g(z_0))g'(z_0).
+\qedhere
+\end{align*}
+\end{proof}
+
+
+\section{As Condições de Cauchy-Riemann}
+
+Nesta seção vamos analisar algumas das consequências da existência da derivada complexa.
+Em particular, estaremos interessados nas propriedades funções coordenadas de uma função 
+que tem derivada complexa em uma certa região do plano complexo. Um dos resultados
+principais são as condições de Cauchy-Riemann e sua recíproca enunciados na sequência.
+
+\begin{proposicao}[Condições de Cauchy-Riemann]
+\label{prop-cond-Cauchy-Riemann}
+\index{Condições!de Cauchy-Riemann}
+Seja $A\subset \mathbb{C}$ um aberto, $z_0=x_0+iy_0\in A$ e $f:A\to\mathbb{C}$
+uma função da forma $f(x+iy)=u(x,y)+iv(x,y)$  derivável em $z_0$. Então
+\[
+\frac{\partial}{\partial x}u(x_0,y_0)=\frac{\partial}{\partial y}v(x_0,y_0)
+\quad\text{e}\quad
+\frac{\partial}{\partial x}v(x_0,y_0)=-\frac{\partial}{\partial y}u(x_0,y_0).
+\]
+\end{proposicao}
+
+\begin{proof}
+Primeiro passo é expressar em coordenadas o quociente de Newton de $f$ como segue:
+\begin{align*}
+\frac{f(z)-f(z_0)}{z-z_0}
+&=
+\frac{u(x,y)-u(x_0,y_0)+i(v(x,y)-v(x_0,y_0))}{x-x_0+i(y-y_0)}
+\\[0.3cm]
+&=
+\frac{u(x,y)-u(x_0,y_0)+i(v(x,y)-v(x_0,y_0))}{x-x_0+i(y-y_0)}\cdot \frac{x-x_0-i(y-y_0)}{x-x_0-i(y-y_0)}
+\\[0.3cm]
+&=
+\frac{u(x,y)-u(x_0,y_0)+i(v(x,y)-v(x_0,y_0))}{(x-x_0)^2+(y-y_0)^2}\cdot\big(x-x_0-i(y-y_0)\big)
+\\[0.3cm]
+&=
+\frac{(u(x,y)-u(x_0,y_0))(x-x_0)+(v(x,y)-v(x_0,y_0))(y-y_0)}{(x-x_0)^2+(y-y_0)^2}
+\\
+&\quad +i
+\frac{(v(x,y)-v(x_0,y_0))(x-x_0)-(u(x,y)-u(x_0,y_0))(y-y_0)}{(x-x_0)^2+(y-y_0)^2}.
+\end{align*}
+
+Já que estamos assumindo que $f$ é diferenciável em $z_0$ o limite, quando $z\to z_0$, 
+do quociente de Newton acima existe e é independente do caminho.
+Desta forma podemos tomá-lo ao longo dos segmentos de reta passando por $z_0$ e paralelos aos eixos 
+coordenados. 
+
+Tomando o limite, na igualdade acima, quando $z\to z_0$ ao longo da reta $t+iy_0$, com $t\to x_0$ obtemos
+\begin{align*}
+f'(z_0)
+&=
+\lim_{t\to x_0} 
+\frac{f(t+iy_0)-f(z_0)}{t+iy_0-(x_0+iy_0)}
+\\[0.3cm]
+&=
+\lim_{t\to x_0} 
+\frac{(u(t,y_0)-u(x_0,y_0))(t-x_0)+(v(t,y_0)-v(x_0,y_0))(y_0-y_0)}{(t-x_0)^2+(y_0-y_0)^2}
+\\
+&\quad +i \lim_{t\to x_0} 
+\frac{(v(t,y_0)-v(x_0,y_0))(t-x_0)-(u(t,y_0)-u(x_0,y_0))(y_0-y_0)}{(t-x_0)^2+(y_0-y_0)^2}
+\\[0.3cm]
+&=
+\lim_{t\to x_0} 
+\frac{u(t,y_0)-u(x_0,y_0)}{t-x_0} 
++i \lim_{t\to x_0} 
+\frac{v(t,y_0)-v(x_0,y_0)}{t-x_0}
+\\[0.3cm]
+&=
+\frac{\partial }{\partial x}u(x_0,y_0) + i\frac{\partial }{\partial x}v(x_0,y_0).
+\end{align*}
+
+Repetindo o procedimento acima, mas agora fazendo $z$ tender a $z_0$ pela reta 
+$x_0+it$, com $t\to y_0$ temos
+
+\begin{align*}
+f'(z_0)
+&=
+\lim_{t\to y_0} 
+\frac{f(x_0+it)-f(z_0)}{x_0+it-(x_0+iy_0)}
+\\[0.3cm]
+&=
+\lim_{t\to y_0} 
+\frac{(u(x_0,t)-u(x_0,y_0))(x_0-x_0)+(v(t,y_0)-v(x_0,y_0))(t-y_0)}{(x_0-x_0)^2+(t-y_0)^2}
+\\
+&\quad +i \lim_{t\to y_0} 
+\frac{(v(x_0,t)-v(x_0,y_0))(x_0-x_0)-(u(x_0,t)-u(x_0,y_0))(t-y_0)}{(x_0-x_0)^2+(t-y_0)^2}
+\\[0.3cm]
+&=
+\lim_{t\to y_0} 
+\frac{v(x_0,t)-v(x_0,y_0)}{t-y_0} 
+-i \lim_{t\to x_0} 
+\frac{u(t,y_0)-u(x_0,y_0)}{t-y_0}
+\\[0.3cm]
+&=
+\frac{\partial }{\partial y}v(x_0,y_0) -i \frac{\partial }{\partial y}u(x_0,y_0).
+\end{align*}
+
+Dos dois últimos conjuntos de igualdades segue o resultado.
+\end{proof}
+
+Uma maneira muito prática de lembrar das condições de Cauchy-Riemann consistem em lembrar que 
+$f$ vista como função de $\mathbb{R}^2$ em $\mathbb{R}^2$ tem derivada total representada
+por sua matriz Jacobiana (matriz dos gradientes das funções coordenadas) $2\times 2$ como mostrado abaixo:
+\[
+Df(x_0,y_0)
+=
+\begin{pmatrix}
+\displaystyle \frac{\partial}{\partial x}u(x_0,y_0) & \displaystyle \frac{\partial}{\partial y} u(x_0,y_0)
+\\[0.5cm] 
+\displaystyle \frac{\partial}{\partial x}v(x_0,y_0) & \displaystyle \frac{\partial}{\partial y} v(x_0,y_0)
+\end{pmatrix}.
+\]
+Desta forma para que este Jacobiano represente um número complexo e necessário que ele seja da forma 
+\[
+\begin{pmatrix}
+a&b\\
+-b&a
+\end{pmatrix}
+\]
+o que se traduz precisamente nas condições de Cauchy-Riemann.
+
+\bigskip 
+
+Como vimos acima as condições de Cauchy-Riemann são necessárias para que $f$ seja derivável em um 
+ponto $z_0$ em seu domínio. Mas o exemplo abaixo mostra que elas podem, em geral, não ser suficientes
+para garantir a existência da derivada complexa
+
+\begin{exemplo}
+A função $f:\mathbb{C}\to\mathbb{C}$ dada por 
+\[
+f(x+iy)
+=
+\begin{cases}
+0,& \text{se}\ xy=0;
+\\
+1,& \text{se}\ xy\neq 0.
+\end{cases}
+\]
+satisfaz as condições de Cauchy-Riemann em $z_0=0$, pois as derivadas parciais das funçoões coordenadas $u$ e $v$
+são nulas na origem. Porém ela não pode ter derivada complexa na origem
+já que ela não é nem mesmo contínua neste ponto.
+\end{exemplo}
+
+Uma condição razoavelmente geral que a garante a existência da derivada complexa de uma função $f$
+satisfazendo as condições de Cauchy-Riemann será dada na próxima proposição. Mas para prová-la
+vamos precisar do seguinte lema auxiliar
+
+\begin{lema}\label{lema-aux-reciproca-CR}
+Sejam $A\subset\mathbb{R}^2$ aberto e $F:A\to\mathbb{R}$ uma função admitindo derivadas parciais contínuas 
+em $(x_0,y_0)\in A$. Então temos 
+\begin{align}\label{eq-aux1-lema-aux-reciproca-CR}
+F(x,y)-F(x_0,y_0)
+&=
+(x-x_0)\left(  \frac{\partial }{\partial x}F(x_0,y_0) +H(x-x_0,y-y_0) \right)
+\\
+&\quad +
+(y-y_0)\left(  \frac{\partial }{\partial y}F(x_0,y_0) +K(x-x_0,y-y_0) \right),
+\end{align}
+onde 
+\begin{align*}
+\lim_{(x,y)\to (x_0,y_0)} H(x-x_0,y-y_0)=0
+\quad\text{e}\quad
+\lim_{(x,y)\to (x_0,y_0)} H(x-x_0,y-y_0)=0.
+\end{align*}
+\end{lema}
+
+\begin{proof}
+A prova deste lema é baseada no Teorema do Valor Médio para funções definidas na reta.
+Vamos considerar $x=x_0+h$ e $y=y_0+k$. Como $A$ é aberto existe $\delta>0$ tal que 
+se $\|(h,k)\|<\delta$ então $(x_0+h,y_0+k)\in A$. 
+
+Note que 
+\begin{align}\label{eq-aux1-lema-prep-reciproca-CR}
+F(x_0+h,y_0+k) -F(x_0,y_0) 
+&= 
+F(x_0+h,y_0+k)-F(x_0,y_0+k) 
+\nonumber \\
+&\quad + F(x_0,y_0+k)-F(x_0,y_0).
+\end{align}
+Aplicando o Teorema do Valor Médio a primeira diferença, do lado direito da igualdade acima, podemos
+garantir que existe $0<t<1$ tal que 
+\[
+\frac{F(x_0+h,y_0+k)-F(x_0,y_0+k)}{h} = \frac{\partial }{\partial x}F(x_0+th,y_0+k).
+\]
+Como estamos assumindo que as derivadas parciais de $F$ são contínuas, temos que 
+a diferença que aparece abaixo tende a zero, quando $(h,k)\to (0,0)$
+\[
+H(h,k) = \frac{\partial}{\partial x}F(x_0+th,y_0+k)-\frac{\partial}{\partial x}F(x_0,y_0).
+\]
+Isolando o termo $\frac{\partial}{\partial x}F(x_0+th,y_0+k)$ na igualdade acima 
+e o substituindo na igualdade anterior, obtemos a seguinte identidade
+\begin{align}\label{eq-aux2-lema-prep-reciproca-CR}
+F(x_0+h,y_0+k)-F(x_0,y_0+k) = h \left( \frac{\partial}{\partial x}F(x_0,y_0) + H(h,k)  \right).
+\end{align}
+
+Similarmente, temos para a segunda diferença em \eqref{eq-aux1-lema-prep-reciproca-CR}
+podemos mostrar que existe $0<t'<1$ tal que
+\[
+\frac{F(x_0,y_0+k)-F(x_0,y_0)}{t'}
+=
+\frac{\partial }{\partial x}F(x_0,y_0+t'k).
+\]
+Pela continuidade das derivadas parciais temos  
+\[
+K(h,k) = \frac{\partial }{\partial y}F(x_0,y_0+t'k)-\frac{\partial}{\partial y}F(x_0,y_0)
+\]
+tende a zero quando $(h,k)\to (0,0)$. Procedendo de maneira análoga obtemos 
+\begin{align}\label{eq-aux3-lema-prep-reciproca-CR}
+F(x_0,y_0+k)-F(x_0,y_0) = k\left( \frac{\partial }{\partial x}F(x_0,y_0) + K(h,k)  \right).
+\end{align}
+Para encerrar a prova basta somar as igualdades 
+\eqref{eq-aux2-lema-prep-reciproca-CR} e \eqref{eq-aux3-lema-prep-reciproca-CR}.
+\end{proof}
+
+
+\begin{proposicao}\label{prop-reciproca-CR}
+Sejam $A\subset\mathbb{C}$ um aberto e $f:A\to\mathbb{C}$ uma função complexa
+dada por $f(x+iy)=u(x,y)+iv(x,y)$, admitindo derivadas parciais 
+\[
+\frac{\partial }{\partial x}u(x,y),\quad 
+\frac{\partial }{\partial y}u(x,y),\quad 
+\frac{\partial }{\partial x}v(x,y),\quad 
+\frac{\partial }{\partial y}v(x,y),
+\]
+em todos os pontos de algum disco $D(z_0,r)\subset A$ e contínuas em $z_0=x_0+iy_0$.
+Se as Condições de Cauchy-Riemann são satisfeitas em $z_0$ então $f$ possui derivada em $z_0$.
+Além do mais, temos que $f'(z_0)$ pode ser descrita de duas formas alternativas:
+\[
+f'(z_0) 
+=
+\frac{\partial}{\partial x}u(x_0,y_0) +i \frac{\partial}{\partial x}v(x_0,y_0) 
+\]
+ou
+\[
+f'(z_0)
+=
+\frac{\partial }{\partial y}v(x_0,y_0) -i \frac{\partial }{\partial y}u(x_0,y_0).
+\]
+\end{proposicao}
+
+\begin{proof}
+Uma das ideias principais desta prova é escrever a função $f$ em termos de suas coordenadas e em
+seguida usar o Lema \ref{lema-aux-reciproca-CR}. 
+
+Para cada $z\in A$ temos 
+\begin{align*}
+f(z)-f(z_0)
+&=
+u(x,y)-u(x_0,y_0)+i(v(x,y)-v(x_0,y_0))
+\\[0.3cm]
+&=
+(x-x_0)\left( \frac{\partial}{\partial x}u(x_0,y_0) +H_1(x-x_0,y-y_0)  \right)
+\\
+&\quad + 
+(y-y_0)\left( \frac{\partial}{\partial y}u(x_0,y_0) +K_1(x-x_0,y-y_0)  \right)
+\\
+&\quad +
+i (x-x_0)\left( \frac{\partial}{\partial x}v(x_0,y_0) +H_2(x-x_0,y-y_0)  \right)
+\\
+&\quad +
+i (y-y_0)\left( \frac{\partial}{\partial y}v(x_0,y_0) +K_2(x-x_0,y-y_0)  \right).
+\end{align*}
+Usando as condições de Cauchy-Riemann podemos reescrever a igualdade acima como segue
+\begin{align*}
+f(z)-f(z_0)
+&=
+(z-z_0)\left(  \frac{\partial}{\partial x}u(x_0,y_0) +i \frac{\partial}{\partial x}v(x_0,y_0)   \right)
+\\
+&\quad +
+(H_1(x-x_0,y-y_0) +i H_2(x-x_0,y-y_0)) (x-x_0)
+\\
+&\quad +
+(K_1(x-x_0,y-y_0) +i K_2(x-x_0,y-y_0)) (y-y_0).
+\end{align*}
+
+Próximo passo é dividir ambos os lados da igualdade acima por $z-z_0$, ficando com a seguinte identidade
+\begin{align}\label{eq-aux1-reciproca-CR}
+\frac{f(z)-f(z_0)}{z-z_0}
+&=
+\frac{\partial}{\partial x}u(x_0,y_0) +i \frac{\partial}{\partial x}v(x_0,y_0) 
+\nonumber\\
+&\quad +
+(H_1(x-x_0,y-y_0) +i H_2(x-x_0,y-y_0)) \frac{x-x_0}{z-z_0}
+\nonumber\\
+&\quad +
+(K_1(x-x_0,y-y_0) +i K_2(x-x_0,y-y_0)) \frac{y-y_0}{z-z_0}.
+\end{align}
+
+Pelo Lema \ref{lema-re-im-modulo} temos para todo $z\neq z_0$
+\[
+\left| \frac{x-x_0}{z-z_0} \right|\leqslant 1
+\qquad\text{e}\qquad 
+\left| \frac{y-y_0}{z-z_0} \right|\leqslant 1.
+\]
+Estas duas estimativas junto com o fato que as quatro funções $H_1,H_2,K_1$ e $K_2$
+tendem a zero quando $z\to z_0$ implicam em 
+\[
+\lim_{z\to z_0}
+(H_1(x-x_0,y-y_0) +i H_2(x-x_0,y-y_0)) \frac{x-x_0}{z-z_0}
+=
+0
+\]
+e
+\[
+\lim_{z\to z_0}
+(K_1(x-x_0,y-y_0) +i K_2(x-x_0,y-y_0)) \frac{x-x_0}{z-z_0}
+=
+0.
+\]
+Usando estes dois limites e a  igualdade \eqref{eq-aux1-reciproca-CR} podemos finalmente verificar que existe o limite
+\[
+f'(z_0)
+=
+\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+=
+\frac{\partial}{\partial x}u(x_0,y_0) +i \frac{\partial}{\partial x}v(x_0,y_0) .
+\]
+\end{proof}
+
+\begin{exemplo}
+Uma aplicação direta da Proposição \ref{prop-reciproca-CR} mostra que a função  
+$f(z) =z\overline{z}$ só possui derivada na origem. De fato, neste caso temos 
+$f(x+iy)= x+ 2+y^2$, logo $u(x,y)=x^2+y^2$ e $v(x,y)=0$ para todo $x+iy\in\mathbb{C}$. 
+Logo
+\[
+\frac{\partial }{\partial x}u(x,y) = 2x,\quad 
+\frac{\partial }{\partial y}u(x,y)= 2y,\quad 
+\frac{\partial }{\partial x}v(x,y) = 0,\quad 
+\frac{\partial }{\partial y}v(x,y) = 0.
+\]
+
+Da Proposição \ref{prop-cond-Cauchy-Riemann} segue que em todos os pontos onde $f$ 
+tem derivada as Condições de Cauchy-Riemann devem ser satisfeitas. Analisando 
+a derivads parciais acima verificamo que as condições de Cauchy-Riemann são verficadas apenas no ponto $z=0$.
+Como  as derivadas parciais de $u$ e $v$ são contínuas podemos aplicar a  Proposição \ref{prop-reciproca-CR}
+para garantir que existe $f'(0)=0$. Então $f$ possui derivada apenas em $z=0$.
+\end{exemplo}
+
+
+
+Podemos reformular, heuristicamente, as condições de Cauchy-Riemann em termos das variáveis $z$ e $\overline{z}$.
+Para fazer isto usamos inicialmente as seguintes relações
+\begin{align}\label{eq-CR-z-zbarra}
+x = \frac{z+\overline{z}}{2}
+\qquad\text{e}\qquad 
+y=\frac{z-\overline{z}}{2i}.
+\end{align}
+Depois representamos uma função complexa, em coordenadas, em termos dessas variáveis como
+mostrado abaixo
+\begin{align*}
+f(x+iy) = u(x,y)+iv(x,y) 
+= 
+u\left( \frac{z+\overline{z}}{2},\frac{z-\overline{z}}{2i} \right) 
++
+v\left( \frac{z+\overline{z}}{2},\frac{z-\overline{z}}{2i} \right).
+\end{align*}
+Em seguida apelamos para uma suposta  Regra da Cadeia para concluir que 
+\begin{align}\label{eq-aux1-CR-z-zbarra}
+\frac{\partial f}{\partial \overline{z}}
+=
+\frac{\partial u}{\partial x}
+\frac{\partial x}{\partial \overline{z}}
++
+\frac{\partial u}{\partial y}
+\frac{\partial y}{\partial \overline{z}}
++i
+\left(
+\frac{\partial v}{\partial x}
+\frac{\partial x}{\partial \overline{z}}
++
+\frac{\partial v}{\partial y}
+\frac{\partial y}{\partial \overline{z}}
+\right)
+\end{align}
+Pensando em $z$ e $\overline{z}$ nas igualdades \eqref{eq-CR-z-zbarra} como variáveis, temos que
+\[
+\frac{\partial x}{\partial \overline{z}} = \frac{\partial }{\partial \overline{z}}\left( \frac{z+\overline{z}}{2} \right) = \frac{1}{2}
+\quad\text{e}\quad
+\frac{\partial y}{\partial \overline{z}} = \frac{\partial }{\partial \overline{z}}\left( \frac{z-\overline{z}}{2i} \right)=-\frac{1}{2i}
+\]
+Usando estas duas relações em \eqref{eq-aux1-CR-z-zbarra} ficamos com
+\[
+\frac{\partial f}{\partial \overline{z}}
+=
+\frac{1}{2}
+\frac{\partial u}{\partial x}
+-
+\frac{1}{2i}
+\frac{\partial u}{\partial y}
++i
+\left(
+\frac{1}{2}
+\frac{\partial v}{\partial x}
+-
+\frac{1}{2i}
+\frac{\partial v}{\partial y}
+\right)
+=
+\frac{1}{2} \left( \frac{\partial u}{\partial x}-\frac{\partial v}{\partial y} \right)
++
+\frac{i}{2} \left( \frac{\partial u}{\partial y}+\frac{\partial v}{\partial x} \right).
+\]
+Assim é imediato verificar que as Condições de Cauchy-Riemann são válidas se, e somente se,
+\[
+\frac{\partial f}{\partial \overline{z}} = 0
+\]
+o que é o mesmo que dizer (no caso em que as todas derivadas parciais de $u$ e $v$ são contínuas) 
+que se $f$ tem derivada complexa se, e somente se, ela não depende 
+da ``variável'' $\overline{z}$.
+
+\bigskip 
+
+Podemos refazer a discussão acima de maneira completamente rigorosa, considerando a linguagem de 
+operadores lineares agindo em determinados espaços vetoriais complexos 
+de funções como, por exemplo, agindo em  
+\[
+C^1(A,\mathbb{C}) 
+=
+\left\{ 
+	f:A\to\mathbb{C}:
+		\begin{array}{c}
+		f(x+iy)= u(x,y)+iv(x,y) 
+		\ \text{e}
+		\\[0.2cm]
+		\displaystyle\frac{\partial u}{\partial x}, \frac{\partial u}{\partial y} , \frac{\partial v}{\partial x} \ \text{e} \ 
+		\frac{\partial v}{\partial y} \ \text{são contínuas em}\ A
+		\end{array}
+\right\}.  
+\]
+Ao leitor não acostumado com este tipo de linguagem, observamos que $C^1(A,\mathbb{C}) $ 
+é um conjunto, onde cada um dos seus elementos é uma função $f:A\to\mathbb{C}$
+como definida acima.
+
+Vamos definir então operadores lineares, conhecidos também como ``operadores de derivação'',
+como sendo aplicações lineares que pegam uma função $f:A\to\mathbb{C}$ e levam em outra 
+função. No nosso caso eles são:
+\[
+\frac{\partial }{\partial z}: C^1(A,\mathbb{C}) \to C(A,\mathbb{C})
+\qquad\text{e}\qquad 
+\frac{\partial }{\partial \overline{z}}: C^1(A,\mathbb{C}) \to (C(A),\mathbb{C}),
+\]
+onde $C(A,\mathbb{C})$ é o espaço vetorial sobre $\mathbb{C}$ das funções complexas 
+contínuas definidas em $A$ e tomando valores em  $\mathbb{C}$. 
+O primeiro deste operadores leva uma função $f\in C^1(A,\mathbb{C})$ 
+em uma outra função $\frac{\partial}{\partial z}f$
+\[
+C^1(A,\mathbb{C}) \ni f\quad \longmapsto\quad \frac{\partial}{\partial z}f \in C(A,\mathbb{C})
+\]
+que é definida para cada $x+iy\in A$ pela seguinte expressão 
+\begin{align*}
+\frac{\partial}{\partial z}f(x+iy) 
+&\equiv
+\frac{1}{2}
+\left( 
+\frac{\partial}{\partial x} +\frac{1}{i}\frac{\partial  }{\partial y}\right)(u(x,y)+iv(x,y)) 
+\\
+&\equiv 
+\frac{1}{2}
+	\left( 
+		\frac{\partial}{\partial x}u(x,y)
+		+i\frac{\partial}{\partial x}v(x,y) 
+		+\frac{1}{i}\frac{\partial  }{\partial y}u(x,y) 
+		+\frac{\partial  }{\partial y}v(x,y) 
+	\right) 
+\\
+&=
+\frac{1}{2}
+\left( 
+\frac{\partial}{\partial x}u(x,y) +\frac{\partial  }{\partial y}v(x,y) 
++i
+	\left( 
+		\frac{\partial}{\partial x}v(x,y) 
+		-\frac{\partial  }{\partial y}u(x,y) 
+	\right)
+\right),
+\end{align*}
+onde $\partial/\partial x$ e $\partial/\partial y$, como de costume, denotam as derivadas parciais
+de funções de $\mathbb{R}^2$ para $\mathbb{R}$,
+com respeito a $x$ e $y$, respectivamente. 
+
+O segundo operador  é definido de maneira análoga e para ele temos a seguinte expressão
+\begin{align*}
+	\frac{\partial}{\partial \overline{z}}f(x+iy) 
+	&\equiv
+	\frac{1}{2}
+	\left( 
+	\frac{\partial}{\partial x} -\frac{1}{i}\frac{\partial  }{\partial y}\right)(u(x,y)+iv(x,y)) 
+	\\
+	&=
+	\frac{1}{2}
+	\left( 
+	\frac{\partial}{\partial x}u(x,y) -\frac{\partial  }{\partial y}v(x,y) 
+	+i
+	\left( 
+	\frac{\partial}{\partial x}v(x,y) 
+	+\frac{\partial  }{\partial y}u(x,y) 
+	\right)
+	\right).
+\end{align*}
+
+
+
+De forma mais resumida podemos pensar nestes operadores formalmente como 
+\[
+\frac{\partial}{\partial z}  \equiv  \frac{1}{2}\left( \frac{\partial}{\partial x}+ \frac{1}{i}\frac{\partial}{\partial y} \right)
+\qquad\text{e}\qquad
+\frac{\partial}{\partial \overline{z}}  \equiv  \frac{1}{2}\left( \frac{\partial}{\partial x}-\frac{1}{i}\frac{\partial  }{\partial y} \right),
+\]
+respectivamente.
+
+\begin{proposicao}[Versão Funcional das Condições de Cauchy-Riemann]
+\label{prop-functional-CR}
+Sejam $A\subset \mathbb{C}$ um conjunto aberto e $f\in C^1(A,\mathbb{C})$. 
+Então $f$ é derivável no sentido complexo no ponto $z=x+iy\in A$
+se, e somente se, 
+\[
+\frac{\partial}{\partial \overline{z}}f(x+iy) = 0.
+\]
+\end{proposicao}
+\begin{proof}
+Vamos supor inicialmente que $f$ é derivável no sentido complexo em $z\in A$.
+Com visto acima, para toda $f\in C^1(A,\mathbb{C})$ temos
+\begin{align*}
+	\frac{\partial}{\partial \overline{z}}f(x+iy) 
+=
+	\frac{1}{2}
+	\left( 
+	\frac{\partial}{\partial x}u(x,y) -\frac{\partial  }{\partial y}v(x,y) 
+	+i
+	\left( 
+	\frac{\partial}{\partial x}v(x,y) 
+	+\frac{\partial  }{\partial y}u(x,y) 
+	\right)
+	\right).
+\end{align*}
+Já que $f$ é derivável em $z\in A$ segue da Proposição \ref{prop-cond-Cauchy-Riemann}
+que as Condições de Cauchy-Riemann são válidas e portanto a parte real e imaginárias da igualdade
+acima são nulas, ou seja 
+\[
+	\frac{\partial}{\partial \overline{z}}f(x+iy)  = 0.
+\]
+
+Reciprocamente, se $\frac{\partial}{\partial \overline{z}}f(x+iy) = 0$, então as Condições de Cauchy-Riemann
+são satisfeitas. Como estamos assumindo que $f\in C^1(A,\mathbb{C})$ sabemos que as derivadas parciais
+de $u$ e $v$ são contínuas em qualquer ponto $z\in A$. Assim podemos aplicar a Proposição \ref{prop-reciproca-CR}
+para garantir que $f$ tem derivada no sentido complexo em $z$.
+\end{proof}
+
+\bigskip 
+
+
+De maneira análoga para todo $r=2,3,4,\ldots$ podemos definir o espaço $C^r(A,\mathbb{C})$ 
+como sendo o espaço das funções complexas definidas em $A$ cujas as funções coordenadas
+$u$ e $v$ têm derivadas parciais de todas as ordens entre 1 e $r$, contínuas em $A$. Note que 
+se $r\geqslant 2$ então $C^r(A,\mathbb{C})$ é um subespaço de $C^1(A,\mathbb{R})$.
+Assim podemos considerar que nossos operadores lineares $\partial /\partial z$ e $\partial/\partial\overline{z}$
+como operadores lineares definidos em $C^r(A,\mathbb{C})$. Para $r\geqslant 2$ faz sentido aplicar 
+este operadores sucessivamente (no máximo duas vezes). 
+Por exemplo, para $f\in C^2(A,\mathbb{R})$ está bem definida a seguinte 
+função
+\[
+\frac{\partial}{\partial z} \frac{\partial}{\partial \overline{z}} f(x+iy).
+\] 
+
+Pelo Teorema de Clairaut-Schwarz (visto no Cálculo 2) 
+sabemos que se as funções $u:A\subset\mathbb{R}^2\to\mathbb{R}$ e $v:A\subset\mathbb{R}^2\to\mathbb{R}$ 
+são de classe $C^2$ em um aberto $A\subset\mathbb{R}^2$
+então para qualquer ponto $(x,y)\in A$ temos
+\[
+\frac{\partial^2}{\partial x\partial y}u(x,y) = \frac{\partial^2}{\partial y\partial x}u(x,y)
+\qquad\text{e}\qquad 
+\frac{\partial^2}{\partial x\partial y}v(x,y) = \frac{\partial^2}{\partial y\partial x}v(x,y).
+\]
+Desta maneira, se consideramos o operador $\frac{\partial}{\partial z} \frac{\partial}{\partial \overline{z}}$ 
+agindo em $C^2(A,\mathbb{R})$ podemos usar o  Teorema de Clairaut-Schwarz  para verificar que:
+\begin{align*}
+\frac{\partial}{\partial z} \frac{\partial}{\partial \overline{z}}
+&=
+\frac{1}{2}\left( \frac{\partial}{\partial x}+ \frac{1}{i}\frac{\partial}{\partial y} \right)
+\frac{1}{2}\left( \frac{\partial}{\partial x}-\frac{1}{i}\frac{\partial  }{\partial y} \right)
+\\
+&=
+\frac{1}{4}
+\left( 
+	\frac{\partial}{\partial x} \frac{\partial}{\partial x} 
+	-
+	\frac{1}{i}\frac{\partial}{\partial x}\frac{\partial  }{\partial y}
+	+
+	\frac{1}{i}\frac{\partial}{\partial y}\frac{\partial}{\partial x}
+	-
+	\frac{1}{i^2}\frac{\partial}{\partial y} \frac{\partial  }{\partial y}
+\right)
+\\
+&=
+\frac{1}{4}
+\left( 
+\frac{\partial}{\partial x} \frac{\partial}{\partial x} 
+-
+\frac{1}{i}\frac{\partial}{\partial x}\frac{\partial  }{\partial y}
++
+\frac{1}{i}\frac{\partial}{\partial x}\frac{\partial}{\partial y}
++
+\frac{\partial}{\partial y} \frac{\partial  }{\partial y}
+\right)
+\\
+&=
+\frac{1}{4}\left( \frac{\partial^2}{\partial x\partial x} + \frac{\partial^2}{\partial y\partial y}   \right)
+\\
+&=
+\frac{1}{4} \Delta,
+\end{align*}
+onde $\Delta$ é o operador Laplaciano. Este fatos demostram que para toda $f\in C^2(A,\mathbb{C})$
+com $f=u+iv$  temos
+\begin{align}\label{eq-aux-CR-harmonica}
+\frac{\partial}{\partial z} \frac{\partial}{\partial \overline{z}} f(x+iy)
+=
+\frac{1}{4}(\Delta u(x,y)+ i \Delta v(x,y)).
+\end{align}
+
+Lembramos que uma função $u:A\subset\mathbb{R}^2\to\mathbb{R}$ é dita uma {\bf função harmônica} em $A$,
+\index{Função!harmônica}
+se para todo $(x,y)\in A$ temos que 
+\[
+\Delta u(x,y) = 0,\quad \text{equivalentemente}\quad  \frac{\partial^2}{\partial x\partial x}u(x,y) + \frac{\partial^2}{\partial y\partial y}u(x,y)=0. 
+\]
+
+As funções harmônicas são muito presentes em várias das aplicações mais interessantes do Cálculo Diferencial e Integral
+em Física, Engenharias, Biologia, Economia e em várias outras áreas; inclusive na Matemática pura.
+Nosso próximo resultado estabelece uma relação forte entre funções harmônicas e funções deriváveis no sentido complexo.
+\begin{lema}\label{lema-holomorfas-harmonicas}
+Se uma função complexa $f:A\to\mathbb{C}$ definida em um aberto $A\subset\mathbb{C}$ e dada por
+$f(z)=u(x,y)+iv(x,y)$  tem derivada, no sentido complexo, em todos os pontos de $A$ 
+e as derivadas parciais de primeira e segunda ordem de $u$ e $v$ são contínuas em $A$, 
+então a partes real e imaginárias de $f$ são funções harmônicas em $A$, isto é,  $u$ e $v$ são funções harmônicas em $A$.
+\end{lema}
+
+\begin{proof}
+Já que $f$ tem derivada complexa em todo ponto de $A$ segue da  Proposição \ref{prop-functional-CR} 	
+que 
+\[
+\frac{\partial}{\partial \overline{z}}f=0
+\quad \Longrightarrow\quad 
+\frac{\partial }{\partial z}\frac{\partial}{\partial \overline{z}}f=0.
+\]
+Deste fato e da identidade \eqref{eq-aux-CR-harmonica} concluímos que 
+\[
+\frac{1}{4}(\Delta u(x,y)+ i \Delta v(x,y))
+=
+\frac{\partial}{\partial z} \frac{\partial}{\partial \overline{z}} f(x+iy)
+=
+0
+\]
+e consequentemente que ambas $u$ e $v$ são funções harmônicas em $A$.
+\end{proof}
+
+
+\section{Funções Holomorfas}
+
+Podemos finalmente definir o objeto central 
+destas notas que é o conceito de função holomorfa.
+Estas funções são conhecidas também na 
+literatura (mais antiga) como funções regulares
+ou diferenciáveis no sentido complexo. 
+A última nomenclatura é bastante mais natural, 
+dada que estas funções serão definidas em termos de limites de quocientes de Newton,
+exatamente como ocorre no caso de funções da reta na reta. Mas apesar da semelhança,
+uma função holomorfa de uma variável complexa irá satisfazer propriedades muito mais fortes
+do que  uma função diferenciável da reta na reta. Por exemplo, iremos mostrar que uma função 
+holomorfa é infinitamente derivável no sentido complexo! Este fato contrasta absurdamente
+com o que pode ocorrer para funções reais. Pois uma função de $\mathbb{R}$ em $\mathbb{R}$  
+pode ter uma derivada e não possuir uma segunda derivada. É simples imaginar diversos 
+exemplos de funções reais satisfazendo esta propriedade. Na verdade, um fato muito mais 
+impressionante é válido: uma função holomorfa é sempre analítica, no sentido que ela admite 
+uma expansão em série de potências convergente em bolas em volta de cada um dos pontos de seu 
+domínio (séries de potências complexas serão discutidas nas seções seguintes). Por 
+esta razão, as funções holomorfas, muitas vezes, são chamadas de funções analíticas.
+Esta propriedade é outra diferença marcante entre as funções que admitem derivadas no sentido complexo e
+real. Já que existem diversos exemplos de funções deriváveis no sentido real possuindo 
+infinitas derivadas e que não admitem representações em séries de potências em todos os 
+pontos de seu domínio.
+
+
+
+\begin{definicao}[Função Holomorfa]
+\label{def-func-holomorfa}
+\index{Função!holomorfa}
+Seja $A\subset\mathbb{C}$ aberto e $f:A\to\mathbb{C}$ uma função. Dizemos que 
+$f$ é holomorfa em $A$ se $f'(z)$ existe para todo $z\in A$. 
+\end{definicao}
+
+Note que a Proposição \ref{prop-reciproca-CR} fornece uma poderosa ferramenta
+para verificar que se uma função complexa é holomorfa em um determinado aberto $A$.
+Além do mais, vale a pena mencionar que a Proposição \ref{prop-functional-CR}
+caracteriza as funções holomorfas como aquelas que não dependem da ``variável'' $\overline{z}$.
+
+Na verdade, existe um resultado muito mais forte do que os mencionados acima, 
+devido a Loomann e Menchoff, 
+fornecendo condições suficientes para que uma função 
+complexa $f:A\to\mathbb{C}$ seja holomorfa. Este resultado é conhecido hoje 
+em dia como Teorema de Loomann-Menchof e ele afirma que se $f$ é uma função contínua 
+e existem as derivadas parciais de $u$ e $v$ e estas por sua vez satisfazem as condições de 
+Cauchy-Riemann em todos os pontos de $A$ então $f$ é holomorfa.
+Este teorema foi enunciado inicialmente pelo famoso matemático Paul Montel em \cite{Montel13} e uma primeira ``prova'' foi dada por 
+Herman Loomann em \cite{Loomann23}. Escrevemos  prova entre aspas, porque havia um problema no argumento de Loomann, 
+e este foi posteriormente reparado por Menchoff em um livro \cite{Menchoff36} em 1936 editado por Paul Montel. 
+Há hoje dia versões mais simples destas provas até mesmo
+em livros didáticos como o de Narasimha-Nievergelt \cite{MR1803086}. 
+Neste livro os autores provam este teorema no Capítulo 1, em uma seção que ocupa 6 páginas. 
+Aos leitores realmente interessados nesta versão recomendamos começar a leitura desta prova
+lendo o artigo de Gray e Morris de 1978, publicado na famosa American Mathematical Monthly \cite{MR470179}.
+Neste artigo os autores abordam os aspectos históricos deste teorema, 
+e também comentam sobre os pontos obscuros de vários trabalhos que abordaram este problema.
+
+\bigskip
+
+
+Um exemplo muito importante de função holomorfa é uma função polinomial de grau $n$,
+isto é, $p:\mathbb{C}\to\mathbb{C}$ dada por 
+\[
+p(z)= a_0+a_1z+a_2z^2+\ldots +a_nz^n,
+\]
+onde $a_0,a_1,\ldots,a_n$ são números complexos fixados chamados de coeficientes de $p$.
+Para verificar que esta função polinomial é de fato holomorfa em $\mathbb{C}$ basta mostrar
+que a função $f:\mathbb{C}\to\mathbb{C}$ dada por $f(z)=z^m$ é holomorfa para qualquer $m\in \mathbb{N}$
+e em seguida, aplicar sucessivamente a Proposição \ref{prop-derivada}.
+Para isto observe que a seguinte identidade algébrica é satisfeita
+\[
+\frac{z^m-z_0^m}{z-z_0}
+=
+z^{m-1}+z^{m-2}z_0+z^{m-3}z_0^2+\ldots+z^{2}z_0^{m-2}+zz_0^{m-1}.
+\] 
+Já que o lado direito da igualdade acima é uma soma de funções contínuas em todo $\mathbb{C}$ 
+podemos tomar o limite, quando $z\to z_0$, na igualdade acima e portanto temos que $f$ é derivável e além do mais
+\begin{align*}
+f'(z_0) 
+&= 
+\lim_{z\to z_0} \frac{z^m-z_0^m}{z-z_0}
+\\
+&=
+\lim_{z\to z_0} 
+z^{m-1}+z^{m-2}z_0+z^{m-3}z_0^2+\ldots+z^{2}z_0^{m-2}+zz_0^{m-1}
+\\
+&=
+mz_{0}^{m-1}.
+\end{align*}
+
+Daí segue que qualquer que seja $z\in \mathbb{C}$ temos $f'(z)=mz^{m-1}$ logo
+\[
+p'(z) = a_1+2a_2z+3a_3z^2+\ldots +na_nz^{n-1}.
+\]
+
+Podemos usar este fato e novamente a Proposição \ref{prop-derivada} para verificar que 
+uma função racional é holomorfa no conjunto onde seu denominador não se anula.
+Mais precisamente, sejam $p:\mathbb{C}\to\mathbb{C}$ e $q:\mathbb{C}\to\mathbb{C}$ 
+funções polinomiais. Seja $A$ o conjunto de todos os pontos do plano complexo 
+exceto os zeros do polinômio $q$, isto é, 
+$A=\mathbb{C}\setminus \{z\in \mathbb{C}: q(z)=0\}$. Vamos ver mais a frente
+que o conjunto de zeros de qualquer polinômio de uma variável complexa com coeficientes
+complexos é finito. Usando este fato podemos verificar que $A$ é um aberto do plano complexo. Agora 
+considere a função racional $f:A\to\mathbb{C}$ definida por 
+\[
+f(z) =\frac{p(z)}{q(z)}.
+\]
+Pelo exemplo anterior e pela Proposição \ref{prop-derivada} temos que $f$ é holomorfa em $A$.
+
+Observamos também que a regra da cadeia fornece uma ferramenta para construir novas funções 
+holomorfas a partir de composições de funções holomorfas já conhecidas.
+
+
+\begin{definicao}[Função Inteira]
+\label{def-func-inteira}
+\index{Função!inteira}
+Uma função complexa $f:\mathbb{C}\to\mathbb{C}$ é dita uma função inteira se $f$ é holomorfa em todo $\mathbb{C}$.	
+\end{definicao}
+
+
+\begin{definicao}[Ponto Singular]
+\label{def-singularidade}
+\index{Ponto!singular}\index{Singularidade}
+Um ponto singular de uma função complexa $f$ é um ponto $z_0$ do plano complexo 
+tal que existe um disco $D(z_0,r)$ no qual $f$ é holomorfa, exceto em $z_0$. 	
+\end{definicao}
+
+
+Por exemplo, as funções constantes e polinômios são funções inteiras.
+Já a função $f:\mathbb{C}\setminus\{0\}\to \mathbb{C}$ dada por $f(z)=1/z$ 
+tem um ponto singular (ou uma singularidade isolada) na origem. Um exemplo de uma função 
+possuindo dois pontos singulares é dado pela função racional
+\[
+f(z) = \frac{2}{(z+1)^2(z-2i)^3},
+\]
+Neste exemplo $z=-1$ e $z=2i$ são pontos singulares, ou singularidades isoladas da função $f$.
+
+Por outro lado, a função $f(z)=\overline{z}$ não possui pontos singulares, pois esta função 
+não é derivável em ponto algum.
+
+
+\section{A Exponencial Complexa}
+
+Nesta seção vamos apresentar a função exponencial complexa bem como várias de suas propriedades
+elementares. Inicialmente vamos adotar uma notação especial para esta função $\exp(z)$.
+Após estabelecer várias semelhanças desta com a função exponencial real $x\longmapsto e^x$,
+com quem o leitor já está bem acostumado, passamos a usar, quando for conveniente 
+a notação $e^z$. 
+
+
+\begin{definicao}[Função Exponencial]
+\label{def-func-exp}
+\index{Função!exponencial complexa}
+A função exponencial complexa será denotada por 
+$\exp:\mathbb{C}\to\mathbb{C}$ e definida para cada ponto
+$z=x+iy\in\mathbb{C}$ pela expressão 
+\[
+\exp(z) = e^{x}(\cos y+i\sen y).
+\]	
+\end{definicao} 
+
+Para facilitar vamos nos referir a função exponencial complexa $z\longmapsto \exp(z)$ 
+simplesmente por função exponencial. Descrita em coordenadas a função exponencial,
+calculada em $z=x+iy$,
+tem a seguinte forma $\exp(z)=u(x,y)+iv(x,y)$, onde
+\[
+u(x,y)= e^{x}\cos y   \qquad{e}\qquad v(x,y)=e^x\sen y. 
+\]
+
+Note que sua descrição é coordenadas é suficientemente simples 
+de forma que podemos aplicar imediatamente os
+resultados da seção anterior como, por exemplo, as Condições de 
+Cauchy-Riemann e a Proposição \ref{prop-reciproca-CR} para
+concluir que $z\longmapsto \exp(z)$ define uma função inteira. De fato,
+já que para todo $x+iy\in\mathbb{C}$
+\begin{align*}
+&\frac{\partial}{\partial x}u(x,y) = e^{x}\cos y,
+\qquad 
+\frac{\partial}{\partial y}u(x,y) = -e^{x}\sen y,
+\\[0.4cm]
+&\frac{\partial}{\partial x}v(x,y) = e^{x}\sen y,
+\qquad 
+\frac{\partial}{\partial y}v(x,y) = e^{x}\cos y,
+\end{align*}
+as Condições de Cauchy-Riemann são válidas em todos os pontos do plano complexo.
+Além do mais, como as funções $u$ e $v$ possuem derivadas parciais contínuas segue 
+da Proposição \ref{prop-reciproca-CR} que $z\longmapsto \exp(z)$ é derivável em 
+cada $z\in\mathbb{C}$ e portanto inteira.
+Além do mais a Proposição \ref{prop-reciproca-CR} também 
+fornece uma fórmula para derivada complexa em termos das funções coordenadas que é a seguinte:
+\begin{align*}
+\exp'(z) 
+&= 
+\frac{\partial}{\partial x}u(x,y) +i \frac{\partial}{\partial x}v(x,y) 
+\\[0.2cm]
+&=
+e^{x}\cos y+i e^{x}\cos y 
+\\[0.2cm]
+&= e^x(\cos y+i\sen y)
+\\[0.2cm]
+&=
+\exp(z).
+\end{align*}
+
+Note também que se $z$ é real, isto é, $z=x+i0$ então $\exp(x)=e^{x}$.
+Como no caso caso da exponencial real a imagem de qualquer ponto pela 
+função exponencial complexa é sempre diferente de zero. Uma maneira de 
+ver isto é verificando o módulo de $\exp(z)$ é não-nulo. De fato,
+para qualquer que seja $z=x+iy\in\mathbb{C}$ temos 
+\begin{align*}
+|\exp(z)| 
+&= 
+|e^{x}(\cos y+i\sen y)| 
+\\[0.2cm]
+&= |e^x|\cdot|\cos y +i\sen y|
+\\[0.2cm]
+&=
+|e^x| \sqrt{\cos^2y+\sen^2y}
+\\[0.2cm]
+&= e^{x} > 0.
+\end{align*}
+
+
+A exponencial complexa possui uma propriedade análoga à uma das propriedades
+fundamentais da exponencial real que é a identidade $e^{x}e^{y}=e^{x+y}$, válida
+para todo par $x,y\in\mathbb{R}$. 
+Dados quaisquer números complexos $z_1=x_1+iy_1$ e $z_2=x_2+iy_2$ temos que 
+\[
+\exp(z_1)\cdot \exp(z_2) = \exp(z_1+z_2).
+\] 
+Esta identidade é consequência direta da definição da função exponencial complexa e 
+das identidades trigonométricas fundamentais, como mostrado abaixo:
+\begin{align*}
+\exp(z_1)&\cdot \exp(z_2)
+=
+e^{x_1}(\cos y_1+i\sen y_1)
+\, 
+e^{x_2}(\cos y_2+i\sen y_2)
+\\[0.2cm]
+&=
+e^{x_1}e^{x_2}\, (\cos y_1+i\sen y_1)(\cos y_2+i\sen y_2)
+\\[0.2cm]
+&=
+e^{x_1+x_2}(\cos y_1\cos y_2-\sen y_1\sen y_2 +i [\sen y_1\cos y_2+\cos y_1\sen y_2] )
+\\[0.2cm]
+&=
+e^{x_1+x_2}(\cos(y_1+y_2)+i\sen(y_1+y_2))
+\\[0.2cm]
+&=
+\exp( (x_1+x_2)+i(y_1+y_2) )
+\\[0.2cm]
+&=
+\exp(z_1+z_2).
+\end{align*}
+
+A identidade $e^{-x}= 1/e^{x}$ também possui uma contrapartida na exponencial
+complexa. Para provar esta generalização só precisamos 
+usar a definição da exponencial complexa, as propriedades algébricas básicas
+dos números complexos e lembrar que o cosseno é uma função
+par, $\cos(-x)=\cos(x)$, e o seno é uma função ímpar, $\sen(-y)=-\sen(y)$.
+Em seguida, proceder como segue
+\begin{align*}
+\frac{1}{\exp(z)}
+&=
+\frac{1}{e^{x}(\cos y+i\sen y)}
+\\[0.3cm]
+&=
+\frac{1}{e^{x}(\cos y+i\sen y)}\cdot \frac{\cos y-i\sen y}{\cos y-i \sen y}
+\\[0.3cm]
+&=
+\frac{e^{-x}(\cos y-i\sen y)}{\cos^2 y+\sen^2 y}
+\\[0.3cm]
+&=
+e^{-x}(\cos(-y)+i\sen(-y))
+\\[0.3cm]
+&=
+\exp(-x-iy)
+\\[0.3cm]
+&=
+\exp(-z).
+\end{align*}
+
+Como consequência das identidades acima temos para quaisquer $z_1,z_2\in\mathbb{C}$
+que 
+\begin{align}\label{eq-razao-exps}
+\frac{\exp(z_1)}{\exp(z_2)} = \exp(z_1)\exp(-z_2)=\exp(z_1-z_2).
+\end{align}
+
+
+Usando as identidades estabelecidas 
+acima temos para quaisquer $z\in\mathbb{C}$ e $n\in\mathbb{Z}$ que 
+\[
+\exp(z)^n = \exp(nz).
+\]
+Para verificar a validade deste fato basta proceder uma indução formal em $n$.
+
+\bigskip 
+
+Agora vamos mostrar algumas diferenças entre a exponencial real e complexa. 
+Em $\mathbb{R}$ temos bem definida a função $x\longmapsto e^{\frac{1}{n}x}$
+para qualquer $n\in\mathbb{Z}$. O número $e^{\frac{1}{n}x}$ é caracterizado 
+como sendo o único número real tal que o produto dele por ele mesmo $n$ vezes é
+igual $e^x$. Em outras palavras, $y=e^{\frac{1}{n}x}$ é a única solução real 
+da equção $y^n=e^x$. Considerando que a única solução real 
+desta equação seja definição de $e^{\frac{1}{n}x}$, podemos nos perguntar o 
+que aconteceria se considerarmos sua generalização natural para números complexos.
+Isto é, $w^n=\exp(z)$. Para facilitar, consideramos separadamente os casos 
+em que $n$ é positivo e negativo. Para $n$ inteiro positivo  
+esta equação é um caso particular da equação $w^n=w_0$,
+que como vimos, possui exatamente $n$ soluções distintas se $w_0\neq 0$, 
+que é o caso de $w_0=\exp(z)\neq 0$. 
+
+Desta forma não é possível pensar na relação $z\longmapsto \exp(z)^{\frac{1}{n}}$
+como uma função. Pois, para cada $z$ podemos associar $n$ distintas 
+raízes $n$-ésimas de $\exp(z)$ uma para cada solução da equação $w^n = \exp(z)$. 
+Na literatura é comum entretanto se referir a relação $z\longmapsto \exp(z)^{\frac{1}{n}}$
+como uma {\textit função multiforme}. 
+
+Usando a fórmula deduzida em \eqref{eq-sol-ZN=w}, juntamente com a definição 
+da exponencial complexa, temos para cada 
+$0\leqslant j\leqslant n-1$ que o número complexo
+\begin{align*}
+e^{\frac{x}{n}} 
+	\left( 
+		\cos\Big( \frac{y+2\pi\, j}{n} \Big)  
+		+i
+		\sen\Big( \frac{y+2\pi\, j}{n} \Big)  
+	\right)
+=
+\exp\Big( \frac{z+2\pi\, j}{n}  \Big)
+\end{align*}
+é uma raíz $n$-ésima de $\exp(z)$. As vezes, abusamos da notação 
+e escrevemos 
+\[
+\exp(z)^{\frac{1}{n}} = \exp\Big( \frac{z+2\pi\, j}{n}  \Big),
+\qquad \forall\, j\in\{0,1,\ldots,n-1\}.
+\]
+
+Discussão semelhante é válida para potencias racionais da exponencial, isto é 
+$\exp(z)^{\frac{m}{n}}$, onde $m\in\mathbb{Z}$ e $n\in \mathbb{Z}\setminus\{0\}$.
+Como no caso das raízes $n$-ésimas da função exponencial complexa, a relação 
+$z\longmapsto \exp(z)^{\frac{m}{n}}$ não irá, em geral, definir uma função e 
+sim um função multiforme que vamos denotar por 
+\[
+\exp(z)^{\frac{m}{n}} = \exp\Big( \frac{m}{n}(z+2\pi\, j)  \Big),
+\qquad \forall\, j\in\{0,1,\ldots,n-1\}.
+\]
+
+
+Esta duas novidades são consequências da periodicidade da função 
+exponencial complexa, isto é, 
+\[
+\exp(z+2i\pi) = e^{x}(\cos(y+2\pi)+i\sen(u+2\pi))=e^{x}(\cos y+i\sen y) = \exp(z).
+\]
+
+Desta forma a função exponencial mapeia retas paralelas ao eixo imaginário em 
+círculos centrados na origem e retas paralelas ao eixo real são enviadas em
+semi-retas saindo da origem. 
+
+
+\bigskip 
+Usando novamente que as funções trigonométricas cosseno e seno são 
+funções par e ímpar, respectivamente, podemos verificar que o conjugado 
+da exponencial é simplesmente a exponencial do conjugado, mais precisamente 
+para todo $z\in\mathbb{C}$ temos:
+\begin{align*}
+\overline{\exp(z)}
+&=
+\overline{e^{x}(\cos y+i\sen y)}
+\\
+&=
+e^{x}(\cos y-i\sen y)
+=
+e^{x}(\cos(-y)+i\sen(-y))
+=
+\exp(\overline{z}).
+\end{align*}
+
+
+
+Por último, mencionamos mais uma importante propriedade que a
+exponencial é sobrejetora em $\mathbb{C}^{*}$, isto é,
+$\exp:\mathbb{C}\to\mathbb{C}^{*}$ é uma aplicação sobrejetora.
+Para verificar que $\exp(\mathbb{C})=\mathbb{C}^{*}$, escolha
+um ponto arbitrário $w=a+ib\in \mathbb{C}^{*}$.
+Considere a equação 
+\[
+e^{x}(\cos y+i\sen y) = \exp(z) = w = a+ib
+\]
+Como $w\neq 0$ podemos representá-lo em coordenadas polares como segue
+$w=|w|(\cos \theta+i\sen\theta)$. Logo
+\[
+e^{x}(\cos y+i\sen y) = |w|(\cos \theta+i\sen\theta)
+\]
+e portanto tomando $x=\ln |w|$ e $y=\theta +2k\pi$, onde $k\in \mathbb{Z}$
+temos que $\exp(x+iy)=w$,
+mostrando que aplicação exponencial complexa é sobrejetiva em $\mathbb{C}^{*}$.
+
+
+
+Note que se $z\in\mathbb{C}$ é imaginário puro, isto é, $z=iy$ 
+para algum $y\in\mathbb{C}$ temos que $\exp(z)=\exp(iy)=\cos y+i\sen y$.
+Esta observa mostra que podemos escrever um número complexo em sua forma
+polar da seguinte maneira $w=r\exp(i\theta)$. 
+
+Pelo fato da função exponencial complexa $\exp$ poder 
+ser vista como uma extensão da função exponencial
+real $x\longmapsto e^{x}$ e ter muitas propriedades semelhantes 
+vamos adotar também no caso complexo a notação $e^z$. 
+Observe que as propriedades demostradas acima permitem verificar que, por exemplo,
+que se $z=x+iy$ então $e^z=e^xe^y$.
+
+
+\section{Funções Trigonométricas e Trigonométricas Hiperbólicas Complexas}
+
+Definimos as funções seno e cosseno complexos como segue 
+\index{Função!seno complexo}\index{Função!cosseno complexo}
+\[
+\cos z = \frac{1}{2}\big( e^{iz}+e^{-iz} \big)
+\qquad\text{e}\qquad 
+\sen z = \frac{1}{2i}\big( e^{iz}-e^{-iz} \big)
+\]
+
+Observe que similarmente ao caso real, as derivadas destas funções são dadas por
+\[
+\frac{d}{dz}\cos z = -\sen z 
+\qquad\text{e}\qquad
+\frac{d}{dz}\sen z = \cos z,
+\quad \forall z\in \mathbb{C}.
+\]
+Em particular, estas funções são inteiras. 
+
+As funções seno e cosseno complexas definidas acima, 
+podem ser vistas como extensões das funções trigonométricas 
+reais. Para ver isto vamos determinar suas representações em coordenadas
+\begin{align*}
+\cos z 
+&= 
+\frac{1}{2}\big( e^{iz}+e^{-iz} \big)
+\\
+&=
+\frac{1}{2}\big( e^{-y+ix}+e^{y-ix} \big)
+\\
+&=
+\frac{1}{2}\big( e^{-y}(\cos x+i\sen x)+ e^{y}(\cos(-x)+i\sen(-x) \big)
+\\
+&=
+\frac{1}{2}\big( (e^{y}+e^{-y}) \cos x +i\, (e^{y}-e^{-y}) \sen x  \big)
+\\
+&=
+\cosh y \cos x +i \senh y \sen x.
+\end{align*}
+Agora fica claro que se $z=x+i0$ então $\cos z = \cos x$.  
+
+Analogamente, podemos mostrar que se $z=x+iy$ então 
+\[
+\sen z =  \cosh y \sen x -i \senh y \cos x.
+\]
+
+Observe que as funções seno e cosseno complexos \textbf{não} são funções limitadas
+em todo plano complexo.
+
+Outra maneira interessante de definir estas funções é por meio dos seguintes
+problemas de valor inicial (PVI) complexos
+
+\[
+z\longmapsto \sen z
+\qquad \text{é a única solução do PVI}
+\qquad 
+\begin{cases}
+f''(z)=-f(z);
+\\[0.2cm]
+f(0)=0 \ \text{e}\ f'(0)=1.
+\end{cases}
+\]
+e
+\[
+z\longmapsto \cos z
+\qquad \text{é a única solução do PVI}
+\qquad 
+\begin{cases}
+f''(z)=-f(z);
+\\[0.2cm]
+f(0)=1 \ \text{e}\ f'(0)=0.
+\end{cases}
+\]
+Vamos voltar a esta abordagem mais a frente depois de estabelecer 
+analiticidade e a representação integral destas funções. \\
+
+
+As funções trigonométricas hiperbólicas são definidas como segue
+\index{Função!seno hiperbólico complexo}
+\index{Função!cosseno hiperbólico complexo}
+\[
+\cosh z= \frac{e^z+e^{-z}}{2}
+\qquad\text{e}\qquad
+\senh z = \frac{e^{z}-e^{-z}}{2}.
+\]
+
+Estas duas funções possuem generalizações muito mais naturais do que de
+as funções trigonométricas. Do ponto de vista de suas relações em termos 
+de derivadas temos 
+\[
+\frac{d}{dz}\cosh z = \senh z 
+\qquad \text{e}\qquad 
+\frac{d}{dz}\senh z = \cosh z.
+\]
+Analogamente estas funções são soluções dos seguintes problemas de valor
+inicial 
+\[
+\begin{cases}
+f''(z)=f(z);
+\\[0.2cm]
+f(0)=0 \ \text{e}\ f'(0)=1,
+\end{cases}
+\qquad \text{e}\qquad 
+\begin{cases}
+f''(z)=f(z);
+\\[0.2cm]
+f(0)=0 \ \text{e}\ f'(0)=1,
+\end{cases}
+\]
+respectivamente.
+
+Do ponto de vistas da equações diferencias ou dos PVI's temos que
+estas funções trigonométricas e as trigonométricas hiperbólicas 
+são descritas de maneira totalmente similares em $\mathbb{R}$ e $\mathbb{C}$.
+As diferenças entre elas, como por exemplo, a não limitação das funções seno e
+cosseno complexos são devidas apenas à natureza dos domínios 
+onde estas funções estão definidas bem como da derivada complexa.
+
+As funções tagente, secante, cossecante e suas análogas hiperbólicas são
+definidas de maneira análoga ao caso real.  
+
+
+

@@ -1,0 +1,110 @@
+% !TeX spellcheck = pt_BR
+\chapter*{Lista 6}
+\addcontentsline{toc}{chapter}{Lista 6}
+\markboth{Lista 6}{Lista 6}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% Inicio da Lista de Exercícios 
+\begin{enumerate}[leftmargin=*]
+
+
+	\item 
+	Seja $\gamma:[a,b]\to\mathbb{R}^2$ um caminho suave inteiramente contido em 
+	um aberto conexo $U\subset\mathbb{R}^2$. 
+	Seja $F:U\subset\mathbb{R}^2\to\mathbb{R}^2$ um campo vetorial contínuo 
+	dado por $F(x,y)=(u(x,y),v(x,y))$. Fazendo a identificação natural
+	de $U$ com um subconjunto do plano complexo podemos observar que o campo vetorial $F$
+	induz uma função complexa $f:U\to\mathbb{C}$ contínua. 
+	Usando a definição escreva a integral de linha de $F$ e em seguida 
+	a integral complexa de $f$. Explique quais são as diferenças entre
+	estes conceitos.  
+	
+	
+	\item A função $f:\mathbb{C}\to\mathbb{C}$ dada por $f(z)=z^2$
+	induz um campo de vetores $F$ em $\mathbb{R}^2$. Descreva este campo 
+	em coordenadas, em seguida calcule a integral de linha (real),
+	e a integral complexa deste campo, ao longo do círculo unitário
+	no sentido anti-horário.  
+
+	\item Seja $U\subset \mathbb{C}$ um aberto conexo contendo a origem e 
+	$h:U\to\mathbb{C}$ uma função contínua (não necessariamente holomorfa).
+	Para cada $r>0$ fixado considere a curva suave 
+	$\gamma_r:[0,2\pi]\to\mathbb{C}$ dada por $\gamma_r(t)=re^{it}$. 
+	Mostre que 
+	\[
+	\lim_{r\to 0} \int_{\gamma_r} \frac{h(z)}{z}\, dz  =2\pi i h(0).
+	\]
+	(Dica: use a técnica apresentada na prova do Teorema de Cauchy-Goursat.)
+	
+	\item Sejam $R$ um retângulo contido em um domínio estrelado $\Omega\subset\mathbb{C}$ e  
+	$f:\Omega\to\mathbb{C}$ uma função holomorfa. Mostre que
+	\[
+		\int_{\partial R} f(z)\, dz = 0.
+	\]  
+
+
+	
+	\item O objetivo deste exercício é provar que a transformada de Fourier da
+	função $f:\mathbb{R}\to\mathbb{R}$ dada por $f(x)=e^{-\pi x^2}$
+	é ela mesma. 
+	
+	Primeiro lembramos que a transformada de Fourier desta função
+	é definida para cada $\xi\in\mathbb{R}$ pela expressão
+	\[
+	\mathcal{F}(f)(\xi)
+	=
+	\lim_{R\to \infty} 
+	\int_{-R}^{R} e^{ -\pi x^2  } e^{ 2\pi i x\xi }\, dx
+	\equiv 
+	\int_{-\infty}^{\infty} e^{ -\pi x^2  } e^{ 2\pi i x\xi }\, dx.
+	\]
+	Para calcular a transformada de Fourier acima vamos 
+	precisar usar o seguinte fato bem-conhecido
+	\[
+	\lim_{R\to\infty} \int_{-R}^{R} e^{-\pi x^2}\, dx = 1
+	\]
+	e seguir os seguintes passos:
+		\begin{itemize}
+			\item Mostre que basta considerar $\xi\geqslant 0$, isto é, 
+			$\mathcal{F}(f)(\xi)=\mathcal{F}(f)(-\xi)$, para todo $\xi\geqslant 0$.
+			
+			\item Para cada $R,\xi>0$, considere o contorno $\gamma_{R}$ consistindo do 
+			retângulo no plano complexo cujos os vértices são os pontos 
+			$R, R+i\xi, -R+i\xi,-R$. Faça o esboço deste contorno;
+			
+			\item Defina a função $g(z)=e^{-\pi z^2}$ e mostre que é possível 
+			usar o exercício anterior para calcular a integral 
+			$\int_{\gamma_{R}} g(z)\, dz$ para cada $R>0$;
+			
+			\item Sejam $I_1(R)$ e $I_2(R)$ as 
+			integrais da função $g$ ao longo dos segmentos de reta
+			unindo os pontos $R$ à $R+i\xi$ e $-R$ à $-R+i\xi$, respectivamente.
+			Mostre que existem constantes $C_1,C_2>0$ tais que 
+			$|I_1(R)|\leqslant C_1 e^{-\pi R^2}$
+			e que $|I_2(R)|\leqslant C_2 e^{-\pi R^2}$.
+			
+			\item Conclua que 
+			\[\mathcal{F}(f)(\xi) = f(\xi). \]
+		\end{itemize}
+	
+	
+	\item Calcular $\int_{\gamma} f(z)\, dz$, onde
+		\begin{itemize}
+			\item[a)] $f(z)=z\overline{z}$ e $\gamma(t)=e^{it}, 0\leq t\leq 2\pi$.
+			\item[b)] $\displaystyle f(z)=\frac{z+1}{z}$ e $\gamma(t)= 3e^{it}, 0\leq t\leq 2\pi$.
+			\item[c)] $\displaystyle f(z)=\frac{z+1}{z}$ e 
+						$\gamma(t) = \frac{1}{4}e^{it}, 0\leq t\leq 2\pi$.
+			\item[d)] $\displaystyle f(z)=\frac{z+1}{z}$ e 
+						$\gamma(t) = 5i+e^{it}, 0\leq t\leq 2\pi$.			
+			\item[e)] $\displaystyle f(z)=\frac{1}{z^2-2}$ e $\gamma(t) = 2+e^{it}, 0\leq t\leq 2\pi$. 
+			\item[f)] $\displaystyle f(z)=\frac{1}{z^2-2}$ e $\gamma(t) = 2e^{it}, 0\leq t\leq 2\pi$. 
+			\item[g)] $\displaystyle f(z)= \pi e^{\pi\overline{z}}$ e $\gamma$ é o quadrado
+						de vértices $0,1,1+i$ e $i$, orientado no sentido anti-horário.
+		\end{itemize}
+	
+
+
+\end{enumerate}

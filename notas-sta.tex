@@ -1,0 +1,313 @@
+\documentclass[12pt,oneside]{book}
+
+\usepackage{etoolbox}
+\usepackage[brazil]{babel}
+\usepackage[shortlabels]{enumitem}
+%%%%%
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{brazil}
+%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%%%%% Subapendices
+\usepackage{appendix}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+\usepackage{bm}
+
+
+%%%%%% Configuração de Numeração dos SubApêndices
+\AtBeginEnvironment{subappendices}{%
+\chapter*{Ap\^{e}ndice}
+\addcontentsline{toc}{chapter}{Ap\^endice}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+}
+
+\usepackage{amsfonts}		% Fonte do texto
+%%%%%%%%%%%%%%%%%%%%% PACOTES USADOS PARA FAZER A CAPA
+%
+
+\usepackage[a4paper,bottom=2cm]{geometry} % geometry/margins of page
+\savegeometry{origin}
+\geometry{rmargin=2cm,lmargin=2cm}% for the title page
+\usepackage{multicol}		% multicolumn environments
+\usepackage{tikz}			% used for the 'logo' (remove if unwanted)
+\usepackage{subfig}			% Usada para alinhar o logo da capa
+\usepackage{enumitem}        % Usado para personalizar o ambiente de enumeração
+\usepackage{dsfont}
+\usepackage{graphicx}
+%
+%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[nottoc,numbib]{tocbibind}
+
+%\usepackage{imakeidx}\makeindex
+\usepackage{makeidx}
+\makeindex
+
+
+\usepackage{amsmath,amsthm,amssymb,color}
+%\usepackage[Lenny]{fncychap} % Usado para decorar Headers and footers
+%
+%
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage[font={scriptsize} ]{caption}
+
+
+%\usepackage{ccicons} % Pacote usado para Inclusão de ícone de copyright
+
+%Permite quebra de páginas em equações longas no ambiente align e align*
+\allowdisplaybreaks
+
+% Retira a enumeração dos Capítulos
+\def\numberline#1{}
+
+
+
+
+% Muda de Chapter ou Capítulos para Aulas
+\addto\captionsbrazil{\renewcommand{\chaptername}{Semana}}
+\addto\captionsbrazil{\renewcommand{\partname}{M\'odulo}}
+%\addto\captionsbrazil{\renewcommand{\contentsname}{\textbf{\'Indice}}}
+
+
+
+
+%%%%%%%%%%%%% INICIO - Alguns Comandos Úteis
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\F}{\mathcal{F}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+
+
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{proposicao}[teorema]{Proposição}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{corolario}[teorema]{Corolário}
+\newtheorem{definicao}[teorema]{Definição}
+\newtheorem{observacao}[teorema]{Observação}
+\newtheorem{exemplo}[teorema]{Exemplo}
+\newtheorem{exercicio}[teorema]{Exercício}
+%
+\renewenvironment{proof}[1][Demonstração]
+{\noindent\textbf{#1. \ }}{\hspace{\stretch{1}}\rule{1ex}{1ex}}
+%
+
+
+% operadores matemáticos
+\DeclareMathOperator{\e}{e}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Graf}{Graf}
+\DeclareMathOperator{\intt}{int}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\senh}{senh}
+\DeclareMathOperator{\arcsen}{arcsen}
+\renewcommand{\ker}{Nuc}
+\DeclareMathOperator{\supp}{supp}
+%%%%%%%%%%%%% FIM    - Alguns Comandos Úteis
+
+
+
+%   Comandos para gerar texto em cores
+\definecolor{Red}{cmyk}{0,1,1,0}
+\def\red{\color{Red}}
+\definecolor{Blue}{cmyk}{1,1,0,0}
+\def\blue{\color{Blue}}
+\definecolor{White}{cmyk}{0,0,0,0}
+\def\white{\color{White}}
+%  
+
+
+
+% Novos Comandos
+\newcommand{\tn}{\textnormal}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Begin document
+% ---------------
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%  Capa
+\frontmatter 
+\include{Capa/Capa-PTM}
+
+%%%%%%%%%%%%%%%%%%%%
+
+\noindent
+{\huge Autor}
+\\[0.3cm]
+Leandro Cioletti
+\\
+\bigskip
+\\[-0.1cm]
+Versão 1.  Janeiro -- Maio de 2022
+\\[0.3cm]
+\noindent
+
+
+
+\vfill
+{\fontsize{14pt}{14pt}\selectfont
+	\noindent
+   \textbf{Seminário de Tópicos em Análise \\ Notas de Aula.  Janeiro -- Maio de 2022}
+   \footnote{
+   		Copyright \copyright\ 
+   		\textbf{2022 Leandro Cioletti -- Todos os direitos reservados.}
+   	}
+ }
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%  Índice
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Página}\par}
+
+
+
+% Cria o ambiente de Lista de Exercicios
+% Não numerado e com a decoração igual ao
+% das Aulas - Isto é na verdade apenas uma
+% modificação do chapter*
+%%\makeatletter
+%%
+%%\ChNameVar{\fontsize{14}{16}\usefont{OT1}{phv}{m}{n}\selectfont}
+%%\ChNumVar{\fontsize{60}{62}\usefont{OT1}{ptm}{m}{n}\selectfont}
+%%\ChTitleVar{\Huge\bfseries\rm}
+%%\ChRuleWidth{1pt}
+%%
+%%
+%%\renewcommand{\DOTIS}[1]{%
+%%
+%%\settowidth{\px}{\CNV\FmN{Lista de Exerc\'icios}}
+%%    \addtolength{\px}{2pt}
+%%    \settoheight{\py}{\CNV\FmN{Lista de Exerc\'icios}}
+%%    \addtolength{\py}{1pt}
+%%
+%%    \settoheight{\pyy}{\CNoV\thechapter}
+%%    \addtolength{\pyy}{-2pt}
+%%    \setlength{\myhi}{\pyy}
+%%    \addtolength{\myhi}{-1\py}
+%%    \par
+%%    \parbox[b]{\textwidth}{%
+%%    \rule[\py]{\RW}{\myhi}%
+%%    \hskip -\RW%
+%%    \rule[\pyy]{\px}{\RW}%
+%%    \hskip -\px%
+%%    \raggedright%
+%%    \CNV\FmN{Lista de Exerc\'icios}\space\CNoV %
+%%    \hskip1pt%
+%%    \mghrulefill{\RW}%
+%%    \rule{\RW}{\pyy}\par\nobreak%
+%%    \vskip -\baselineskip%
+%%    \vskip -\pyy%
+%%    \hskip \mylen%
+%%    \mghrulefill{\RW}\par\nobreak%
+%%    \vskip \pyy}%
+%%    \vskip -2\p@}
+%%\makeatother
+%%%
+
+
+
+
+
+
+
+
+
+ 
+%%%%%%%%%%%%%%%%%%%% Conteúdo das aulas    
+\mainmatter 
+
+\addcontentsline{toc}{part}{Módulo 1}
+\part*{Módulo 1}
+
+% Semana 1 
+\include{Semanas/semana1}
+% Lista 1
+\include{Listas/lista1}
+
+% Semana 2 
+\include{Semanas/semana2}
+% Lista 2
+\include{Listas/lista2}
+
+% Semana 3
+\include{Semanas/semana3}
+% Lista 3
+\include{Listas/lista3}
+
+%
+%% Semana 4
+\include{Semanas/semana4}
+%% Lista 4
+\include{Listas/lista4}
+%
+%% Semana 5
+\include{Semanas/semana5}
+\include{Listas/lista5}
+%
+%% Semana 6
+%\include{Semanas/semana6}
+%
+%
+\addcontentsline{toc}{part}{Módulo 2}
+\part*{Módulo 2}
+%
+% Semana 7 
+\include{Semanas/semana7}
+% Lista 6
+\include{Listas/lista6}
+
+ 
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%% Referências e Índice Remissivo
+\backmatter
+%
+\bibliographystyle{babalpha}
+\bibliography{referencias}
+
+
+\pagestyle{empty}
+\printindex 			% Gera Índice Remissivo
+
+
+
+\end{document}
