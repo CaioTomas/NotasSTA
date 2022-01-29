@@ -1,5 +1,6 @@
 % !TeX spellcheck = pt_BR
-\chapter[Semana 5]{}
+%\chapter[Semana 5]{}
+\chapter[Funções Analíticas e Séries de Potências]{Funções Analíticas e Séries de Potências}
 \chaptermark{}
 
 
@@ -1751,9 +1752,9 @@ então, $R$ é exatamente o raio de convergência
 da série de potências $\sum_{n=0}^{\infty}a_nz^n$.
 \end{proposicao} 
 
-\begin{proof}
-{\red Em andamento...}
-\end{proof}
+%\begin{proof}
+%{\red Em andamento...}
+%\end{proof}
 
 
 \begin{proposicao}
@@ -1770,11 +1771,11 @@ Se $R=\min\{R_1,R_2\}$, então para todo $z\in D(0,R)$ temos
 \]
 \end{proposicao}
 
-\begin{proof}
-Já que séries de potências são definidas em termos de limites de somas parciais, 
-as propriedades enunciadas nesta proposição 
-são consequências imediatas das propriedades elementares de limite.
-\end{proof}
+%\begin{proof}
+%Já que séries de potências são definidas em termos de limites de somas parciais, 
+%as propriedades enunciadas nesta proposição 
+%são consequências imediatas das propriedades elementares de limite.
+%\end{proof}
 
 
 
@@ -1796,9 +1797,9 @@ Além do mais, a série de potências $\sum_{n=0}^{\infty}c_nz^n$ é absolutamen
 para todo $z\in D(0,R)$.
 \end{proposicao}
 
-\begin{proof}
-{\red Em andamento...}
-\end{proof}
+%\begin{proof}
+%{\red Em andamento...}
+%\end{proof}
 
 
 
@@ -1817,9 +1818,9 @@ g(z) = \sum_{n=1}^{\infty}na_nz^{n-1}
 define uma função complexa em todo o disco $D(0,R)$.
 \end{proposicao}
 
-\begin{proof}
-{\red Em andamento ...}
-\end{proof}
+% \begin{proof}
+% {\red Em andamento ...}
+% \end{proof}
 
 \begin{teorema}
 Seja $(a_n)_{n\in\mathbb{N}\cup\{0\}}$ uma sequência arbitrária de números complexos.
@@ -1840,9 +1841,9 @@ $f'$ pode ser obtida simplesmente
 por derivação termo-a-termo da série de potências de $f$.
 \end{teorema}
 
-\begin{proof}
-{\red Em andamento ...}
-\end{proof}
+% \begin{proof}
+% {\red Em andamento ...}
+% \end{proof}
 
 
 
@@ -1868,9 +1869,9 @@ que representa $f^{(k)}$ pode ser obtida simplesmente
 por $k$ derivações sucessivas termo-a-termo da série de potências de $f$.
 \end{corolario}
 
-\begin{proof}
-{\red Em andamento...}
-\end{proof}
+% \begin{proof}
+% {\red Em andamento...}
+% \end{proof}
 
 
 \begin{corolario}[Séries de Taylor]
@@ -2248,76 +2249,76 @@ Para quaisquer $z,w\in\mathbb{C}$ e $n\in\mathbb{N}$ temos
 (w+z)^n = \sum_{k=0}^n \binom{n}{k}z^{k}w^{n-k}, 
 \quad \text{onde}\quad \binom{n}{k} = \frac{n!}{(n-k)!k!}.
 \end{align}
-
 \end{proposicao}
-\begin{proof}
-Observamos que é possível apresentar uma prova desta proposição 
-usando argumentos idênticos a maioria
-daqueles empregados nas provas em que $z$ e $w$ são 
-números reais. Praticamente os seguindo \textit{ipsis litteris}.  
-Isto porque a maioria destas provas, no caso real, 
-só se utiliza da estrutura de corpo de $\mathbb{R}$
-e das relações de Stifel para os coeficientes binomiais.
 
-\medskip 
+% \begin{proof}
+% Observamos que é possível apresentar uma prova desta proposição 
+% usando argumentos idênticos a maioria
+% daqueles empregados nas provas em que $z$ e $w$ são 
+% números reais. Praticamente os seguindo \textit{ipsis litteris}.  
+% Isto porque a maioria destas provas, no caso real, 
+% só se utiliza da estrutura de corpo de $\mathbb{R}$
+% e das relações de Stifel para os coeficientes binomiais.
 
-Por questão de completude, vamos apresentar aqui
-uma prova alternativa da validade desta proposição,
-que é enunciada para números complexos, explorando a fórmula do 
-Binômio de Newton conhecida para números reais. 
+% \medskip 
 
-Para isto, primeiro observamos que para todo $x\in\mathbb{R}$, temos
-da fórmula do Binômio de Newton, para números reais, que
-\[
-(1+x)^n = \sum_{k=0}^n \binom{n}{k}x^k.
-\]
-Olhando com cuidado a identidade acima, o leitor pode observar que ela
-revela que $x=-1$ é uma raíz, de 
-multiplicidade $n$, do polinômio $p:\mathbb{R}\to\mathbb{R}$,
-de grau $n$, dado por
-\[
-p(x) = \sum_{k=0}^n \binom{n}{k}x^k.
-\]
+% Por questão de completude, vamos apresentar aqui
+% uma prova alternativa da validade desta proposição,
+% que é enunciada para números complexos, explorando a fórmula do 
+% Binômio de Newton conhecida para números reais. 
 
-Considere agora a função polinomial $P:\mathbb{C}\to\mathbb{C}$ 
-cujos os coeficientes são os mesmos de $p(x)$, isto é, 
-\[
-P(z) = \sum_{k=0}^n \binom{n}{k}z^k.
-\]
-Já que os coeficientes dos polinômios $p$ e $P$ são os mesmos, temos que 
-$\mathrm{grau}(P)=n$,
-e que $z=-1$ também é uma raíz de $P$ de multiplicidade $n$.
-Pois toda raíz de $p$ é obviamente uma raíz de $P$. Eventualmente, poderíamos imaginar que
-$P$ poderia ter raízes outras complexas com parte imaginária  não-nula.
-Mas isto não pode acontecer por causa do 
-algoritmo de divisão de Euclides para polinômios,
-que garante que $(z+1)^n$ é um fator de $P(z)$. 
-Mas como $\mathrm{grau}(P)=n$ então sua fatoração é exatamente 
-esta $(z+1)^n$. Assim temos
-\[
-\sum_{k=0}^n \binom{n}{k}z^k  = P(z) = (z+1)^n, \qquad \forall z\in\mathbb{C} 
-\]
+% Para isto, primeiro observamos que para todo $x\in\mathbb{R}$, temos
+% da fórmula do Binômio de Newton, para números reais, que
+% \[
+% (1+x)^n = \sum_{k=0}^n \binom{n}{k}x^k.
+% \]
+% Olhando com cuidado a identidade acima, o leitor pode observar que ela
+% revela que $x=-1$ é uma raíz, de 
+% multiplicidade $n$, do polinômio $p:\mathbb{R}\to\mathbb{R}$,
+% de grau $n$, dado por
+% \[
+% p(x) = \sum_{k=0}^n \binom{n}{k}x^k.
+% \]
 
-Agora podemos usar a identidade acima para 
-verificar a validade de fórmula do Binômio de Newton 
-para quaisquer $z\in\mathbb{C}$ e 
-$w\in\mathbb{C}\setminus\{0,-z\}$. De fato, 
-\begin{align*}
-(w+z)^n 
-= 
-w^n\Big(1+\frac{z}{w}\Big)^n 
-= 
-w^n 
-P\Big(\frac{z}{w}\Big) = 
-w^n
-\sum_{k=0}^n \binom{n}{k}\frac{z^k}{w^k}
-=
-\sum_{k=0}^n \binom{n}{k}z^k\,w^{n-k}.
-\end{align*}
+% Considere agora a função polinomial $P:\mathbb{C}\to\mathbb{C}$ 
+% cujos os coeficientes são os mesmos de $p(x)$, isto é, 
+% \[
+% P(z) = \sum_{k=0}^n \binom{n}{k}z^k.
+% \]
+% Já que os coeficientes dos polinômios $p$ e $P$ são os mesmos, temos que 
+% $\mathrm{grau}(P)=n$,
+% e que $z=-1$ também é uma raíz de $P$ de multiplicidade $n$.
+% Pois toda raíz de $p$ é obviamente uma raíz de $P$. Eventualmente, poderíamos imaginar que
+% $P$ poderia ter raízes outras complexas com parte imaginária  não-nula.
+% Mas isto não pode acontecer por causa do 
+% algoritmo de divisão de Euclides para polinômios,
+% que garante que $(z+1)^n$ é um fator de $P(z)$. 
+% Mas como $\mathrm{grau}(P)=n$ então sua fatoração é exatamente 
+% esta $(z+1)^n$. Assim temos
+% \[
+% \sum_{k=0}^n \binom{n}{k}z^k  = P(z) = (z+1)^n, \qquad \forall z\in\mathbb{C} 
+% \]
 
-Para finalizar a prova, basta observar que \eqref{eq-form-binom-newton}
-é obviamente verdadeira nos casos em que $w=0$ ou $w=-z$.
-\end{proof}
+% Agora podemos usar a identidade acima para 
+% verificar a validade de fórmula do Binômio de Newton 
+% para quaisquer $z\in\mathbb{C}$ e 
+% $w\in\mathbb{C}\setminus\{0,-z\}$. De fato, 
+% \begin{align*}
+% (w+z)^n 
+% = 
+% w^n\Big(1+\frac{z}{w}\Big)^n 
+% = 
+% w^n 
+% P\Big(\frac{z}{w}\Big) = 
+% w^n
+% \sum_{k=0}^n \binom{n}{k}\frac{z^k}{w^k}
+% =
+% \sum_{k=0}^n \binom{n}{k}z^k\,w^{n-k}.
+% \end{align*}
+
+% Para finalizar a prova, basta observar que \eqref{eq-form-binom-newton}
+% é obviamente verdadeira nos casos em que $w=0$ ou $w=-z$.
+% \end{proof}
 
 \bigskip
 
