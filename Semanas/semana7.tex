@@ -86,6 +86,7 @@ Então a função
 \end{proposicao}
 
 \begin{lema}[Lema Técnico]
+\label{lema-tecnico}
 Sejam $U\subset\mathbb{C}$ um domínio, $f:U\to\mathbb{C}$ uma função contínua e
 $\gamma(t), a\leq t\leq b$ um caminho suave por partes em $U$, de comprimento $l(\gamma)$.
 Seja $K\geq 0$ um número real tal que $|f(\gamma(t))| \leq K$ para todo $a\leq t\leq b$. Então
@@ -94,8 +95,137 @@ Seja $K\geq 0$ um número real tal que $|f(\gamma(t))| \leq K$ para todo $a\leq 
 \end{equation*}
 \end{lema}
 
+\begin{teorema}
+Seja $f:U\to \mathbb{C}$ uma função contínua definida no domínio $U\subset\mathbb{C}$. As seguintes afirmações são equivalentes:
+\begin{enumerate}[(i)]
+    \item $f$ tem uma primitiva em $U$
+    \item $\int_{\gamma} f(z) dz = 0$ para qualquer caminho $\gamma$ fechado e suave por partes em $U$.
+    \item $\int_{\lambda} f(z) dz$ só depende dos pontos inicial e final de qualquer caminho $\lambda$ suave por partes em $U$.
+\end{enumerate}
+\end{teorema}
+
 
 \section[Os teoremas de Cauchy]{Os teoremas de Cauchy}
-\begin{center}
-Em construção...
-\end{center}
+
+\begin{teorema}
+\label{teo:cauchy-goursat}
+Sejam $U$ um domínio em $\mathbb{C}$ e $f: U \to \mathbb{C}$ uma função holomorfa. Suponha que $\Delta \subset U$ é uma triângulo que limita
+uma região inteiramente contida em $U$. Então
+\begin{equation*}
+    \int_{\Delta} f(z) dz = 0.
+\end{equation*}
+\end{teorema}
+
+
+\begin{definicao}
+Seja $U\subset\mathbb{C}$ um domínio. Dizemos que $U$ é estrelado se existe um ponto $z_0\in U$
+tal que dado qualquer ponto $z\in U$, o segmento de reta $\overline{z_0z}$ está inteiramente contido em $U$. 
+O ponto $z_0$ é chamado um centro do domínio $U$.
+\end{definicao}
+
+
+\begin{corolario}
+Sejam $U\subset\mathbb{C}$ um domínio estrelado e $f:U\to\mathbb{C}$ uma
+função holomorfa. Então $f$ admite uma primitiva em $U$.
+\end{corolario}
+
+
+\begin{corolario}[Teorema de Cauchy-Goursat bis.]
+Sejam $U\subset\mathbb{C}$ um domínio estrelado e $f:U\to\mathbb{C}$ uma função holomorfa.
+Se $\gamma$ é um caminho fechado suave por partes em $U$, então
+\begin{equation*}
+    \int_{\gamma} f(z) dz = 0.
+\end{equation*}
+\end{corolario}
+
+
+\begin{teorema}[Fórmula Integral de Cauchy]
+\label{teo:form-integral-cauchy}
+Seja $f:U \to \mathbb{C}$ uma função holomorfa definida no domínio $U\subset\mathbb{C}$.
+Sejam $\overline{D}(z_0, r_0)$ um disco fechado inteiramente contido em $U$ e $\Gamma$ sua fronteira, orientada compativelmente. 
+Se $z$ é um ponto qualquer no interior de $\overline{D}(z_0, r_0)$ então
+\begin{equation*}
+    f(z) = \frac{1}{2\pi i}\int_{\Gamma} \frac{f(w)}{w-z}dw.
+\end{equation*}
+\end{teorema}
+
+
+\begin{corolario}
+Seja $f:U\to\mathbb{C}$ holomorfa com $U$ domínio. Então $f$ tem derivadas de todas as ordens em todos os pontos de $U$ e
+\begin{equation*}
+    f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\gamma} \frac{f(w)}{(w-z)^{n+1}}dw, \forall z\in U,
+\end{equation*}
+onde $\gamma$ é qualquer circunferência centrada em $z$, percorrida no sentido anti-horário e limitando um disco fechado contido em $U$.
+\end{corolario}
+
+
+\begin{corolario}[Estimativas de Cauchy]
+Seja $f$ uma função holomorfa definida no disco $D(z_0, R)$ e suponha que
+$|f|\leq K$ em $D(z_0, R)$. Então
+\begin{equation*}
+    |f^{(n)}(z_0)| \leq \frac{n!K}{R^n}.
+\end{equation*}
+\end{corolario}
+
+
+\begin{corolario}[Teorema de Liouville]
+Seja $f$ função inteira. Se existe $K\geq 0$ tal que $|f(z)|\leq K$ então $f$ é uma função constante.
+\end{corolario}
+
+
+\begin{lema}
+Seja $D(a,r), r>0$, um disco e $f: D(a,r)\to\mathbb{C}$ uma função holomorfa. 
+Se a imagem de $f$ está contida no interior de uma circunferência $|w| - \alpha$, então $f$ é uma função constante.
+\end{lema}
+
+
+\begin{corolario}[Princípio do Módulo Máximo]
+Sejam $U$ um domínio em $\mathbb{C}$ e $f:U\to\mathbb{C}$ uma função holomorfa.
+Suponha que existe um ponto $a\in U$ tal que $|f(a)| \geq |f(z)|, \forall z\in U$. Então $f$ é uma função constante.
+\end{corolario}
+
+
+\begin{teorema}
+Sejam $f:U\to\mathbb{C}$ uma função holomorfa com $U$ domínio e $z_0\in U$ qualquer.
+Então
+\begin{equation*}
+    f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n,
+\end{equation*}
+ou seja, $f$ é dada por sua série de Taylor de centro em $z_0$ e, portanto, é uma função analítica.
+Ademais, essa série converge em qualquer disco (aberto) $D(z_0, r) \subset U$, isto é, o raio de convergência $R$ da série acima é a menor entre as distâncias de $z_0$ aos pontos da fronteira de $U$.
+\end{teorema}
+
+
+\begin{teorema}[Teorema de Cauchy]
+\label{teo-cauchy}
+Sejam $U\subset\mathbb{C}$ um domínio e $f:U\to\mathbb{C}$ uma função holomorfa. Seja $V\subset U$ um subconjunto fechado e limitado, cuja fronteira $\partial V$ consiste de um número finito de curvas de Jordan
+suaves por partes, $\partial V = \gamma_1\cup\cdots\gamma_n$, e tal que
+$V\setminus\partial V$ é domínio. Então
+\begin{equation*}
+    \int_{\partial V} f(z) dz = 0.
+\end{equation*}
+\end{teorema}
+
+\begin{teorema}[Fórmula Integral de Cauchy bis.]
+Seja $f:U\to\mathbb{C}$ uma função holomorfa definida no domínio $U$. Seja $V$ uma região fechada e limitada inteiramente contida em $U$, 
+cuja fronteira $\partial V$ é uma curva de Jordan suave por partes, orientada no sentido anti-horário, sendo $V\setminus\partial V$ um domínio.
+Se $z_0$ é um ponto qualquer no interior de $V$, então
+\begin{equation*}
+    f(z_0) = \frac{1}{2\pi i}\int_{\partial V} \frac{f(w)}{w-z_0} dw.
+\end{equation*}
+\end{teorema}
+
+
+\begin{teorema}[Teorema de Morera]
+\label{teo-morera}
+Sejam $U\subset\mathbb{C}$ domínio e $f:U\to\mathbb{C}$ uma função contínua.
+Se $\int_{\Delta} f(z) dz = 0$ para todo caminho triangular $\Delta\subset U$, então $f$ é holomorfa em $U$.
+\end{teorema}
+
+
+\section[Singularidades, resíduos e o Teorema de Rouché]{Singularidades, resíduos e o Teorema de Rouché}
+
+\begin{teorema}[Teorema de Laurent]
+\label{teo-laurent}
+Seja $f$ uma função holomorfa...
+\end{teorema}
