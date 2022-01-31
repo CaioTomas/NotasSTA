@@ -28,17 +28,71 @@
 \section{A Integral Complexa}
 
 \begin{lema}
-Sejam $U \subset \mathbb{C}$ um domínio
+Sejam $U \subset \mathbb{C}$ um domínio e $f:U \to \mathbb{C}$ uma função holomorfa. Se $f'(z) = 0$ para
+todo ponto $z\in U$, então $f$ é uma função constante.
 \end{lema}
 
+\begin{definicao}
+\label{def:integral-complexa}
+A integral da função $f$ ao longo do caminho $\gamma$ é
+o número complexo
+\begin{equation*}
+    \int_{\gamma} f(z) dz = \int_a^b f(\gamma(t))\gamma'(t) dt,
+\end{equation*}
+sendo $\gamma:[a,b]\to\mathbb{C}$ um caminho suave e
+$f:U \to \mathbb{C}$ função contínua com $U$ domínio.
+\end{definicao}
+
+\begin{definicao}
+Sejam $f$ e $U$ como na Definição \ref{def:integral-complexa} e
+$\gamma = \gamma_1*\gamma_2*\cdots*\gamma_n$ um caminho suave por partes em $U$.
+A integral de $f(z)$ ao longo de $\gamma$ é o número complexo
+\begin{equation*}
+    \int_{\gamma} f(z)dz = \sum_{i=1}^n\int_{\gamma_i} f(z)dz.
+\end{equation*}
+\end{definicao}
 
 
 
 \section[Primitivas e o Teorema Fundamental do Cálculo]
 {Primitivas e o Teorema Fundamental\\ do Cálculo}
-\begin{center}
-Em construção...
-\end{center}
+
+\begin{definicao}
+\label{def:primitiva-complexa}
+Seja $f:U \to \mathbb{C}$ uma função contínua com $U\subset\mathbb{C}$ domínio. Uma função $F:U\to\mathbb{C}$
+é chamada primitiva de $f$ se $F$ é holomorfa em $U$ e $F'(z) = f(z), \forall z\in U$.
+\end{definicao}
+
+\begin{teorema}
+Sejam $U\subset\mathbb{C}$ domínio, $f:U\to\mathbb{C}$ função contínua,
+$F$ uma primitiva de $f$ em $U$ e $\gamma$ um caminho suave por partes em $U$ unindo $z_0$ a $z_1$. Então
+\begin{equation*}
+    \int_{\gamma} f(z)dz = F(z_1) - F(z_0).
+\end{equation*}
+Em particular, se o caminho é fechado então
+\begin{equation*}
+    \int_{\gamma} f(z)dz = 0.
+\end{equation*}
+\end{teorema}
+
+\begin{proposicao}
+Seja $\displaystyle{ f(z) = \sum_{n=0}^{\infty} a_n(z-z_0)^n }$
+definida por uma série de potências com raio de convergência $R>0$.
+Então a função
+\begin{equation*}
+    F(z) = \sum_{n=0}^{\infty} \frac{a_n}{n+1}(z-z_0)^{n+1}
+\end{equation*}
+é uma primitiva de $f$ e a série que a define converge para $|z-z_0| < R$.
+\end{proposicao}
+
+\begin{lema}[Lema Técnico]
+Sejam $U\subset\mathbb{C}$ um domínio, $f:U\to\mathbb{C}$ uma função contínua e
+$\gamma(t), a\leq t\leq b$ um caminho suave por partes em $U$, de comprimento $l(\gamma)$.
+Seja $K\geq 0$ um número real tal que $|f(\gamma(t))| \leq K$ para todo $a\leq t\leq b$. Então
+\begin{equation*}
+    \left| \int_{\gamma}f(z)dz \right| \leq Kl(\gamma).
+\end{equation*}
+\end{lema}
 
 
 \section[Os teoremas de Cauchy]{Os teoremas de Cauchy}
