@@ -1,0 +1,200 @@
+\chapter[Continuação analítica]{Continuação analítica}
+\chaptermark{}
+
+\hfill%
+\begin{minipage}{10cm}
+\begin{flushright}
+\rightskip=0.5cm
+\textit{``The greatest strategy is doomed if it's implemented badly.''}
+\\[0.1cm]
+\rightskip=0.5cm
+--- Bernhard Riemann
+\end{flushright}
+\end{minipage}
+
+\section{O princípio da reflexão de Schwarz}
+
+% acho que aqui é melhor seguir o Stein, só dar uma complementada no argumento
+% falando do caso de apenas o vértice estar sobre o eixo real
+
+\section{Continuação analítica ao longo de caminhos}
+
+% aulas 1 e 2
+% vou deixar só os enunciados e definições por enquanto, depois
+% que terminar a aula 3 eu volto e complemento com a discussão
+
+\begin{definicao}
+\label{def-elemento-funcao}
+Um elemento de função é um par $(f, G)$ onde $G$ é um domínio e $f$
+é uma função analítica em $G$. Dado um elemento de função $(f,G)$, 
+definimos o germe de $f$ em $a$, denotado por $[f]_a$, 
+como a coleção de todos os elementos de função $(g,D)$ tais que 
+$a\in D$ e $f(z) = g(z)$ para todo $z$ em uma vizinhança de $a$.
+\end{definicao}
+
+
+\begin{definicao}
+\label{def-continuacao-analitica}
+Seja $\gamma: [0,1] \to \mathbb{C}$ um caminho e suponha que para cada
+$t\in[0,1]$ existe um elemento de função $(f_t, D_t)$ tal que
+\begin{enumerate}[(a)]
+    \item $\gamma(t) \in D_t$;
+    \item para cada $t\in[0,1]$ existe $\delta > 0$ tal que se $|s-t| < \delta$
+    então $\gamma(s) \in D_t$ e $[f_s]_{\gamma(s)} = [f_t]_{\gamma(s)}$.
+\end{enumerate}
+Nesse caso, dizemos que $(f_1, D_1)$ é a continuação analítica de $(f_0,D_0)$ ao 
+longo de $\gamma$ ou ainda que $(f_1, D_1)$ é obtido a partir de $(f_0,D_0)$ por
+continuação analítica ao longo de $\gamma$.
+\end{definicao}
+
+
+\begin{proposicao}
+\label{prop-unicidade-continuacao-analitica-caminho}
+Seja $\gamma: [0,1]\to\mathbb{C}$ um caminho de $a$ para $b$ e sejam
+\begin{align*}
+    \left\{ (f_t, D_t): 0\leq t\leq 1 \right\}, \\
+    \left\{ (g_t, B_t): 0\leq t\leq 1 \right\}
+\end{align*}
+continuações analíticas ao longo de $\gamma$ tais que $[f_0]_a = [g_0]_a$.
+Então $[f_1]_b = [g_1]_b$.
+\end{proposicao}
+
+\begin{proof}
+A ideia é mostrar que
+\begin{equation*}
+    T = \left\{ t\in [0,1] : [f_t]_{\gamma(t)}= [g_t]_{\gamma(t)} \right\}
+\end{equation*}
+é aberto e fechado em $[0,1]$ (com a topologia induzida pela topologia usual da reta)...
+\end{proof}
+
+
+\begin{observacao}
+Note que o caminho $\gamma$ na 
+Proposição \ref{prop-unicidade-continuacao-analitica-caminho} é o
+mesmo para $f$ e $g$! Isso será muito relevante a seguir devido ao seguinte exemplo.
+
+Defina $\arg_0: \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\} \to (-\pi/2, \pi/2)$,
+que é uma restrição do ramo principal do argumento a um domínio mais ``restrito''.
+
+\begin{center}
+    \textbf{diagrama slide 4 aula 3}
+\end{center}
+
+Considere também a função analítica 
+$f: \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\} \to\mathbb{C}$
+dada por $f(z) = \ln(z) + i\arg_0(z)$.
+
+\begin{center}
+    \textbf{diagrama slide 5 aula 3}
+\end{center}
+
+Vamos definir na região do diagrama da esquerda uma continuação analítica
+$\left\{ (f_t, D_t), t\in [0,1] \right\}$ ao longo de $\gamma_1$, 
+com $-1\in D_1$, $f_1(-1) = i\pi/2$,
+$D_0 = \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\}$ e $f_0 = f$.
+
+Na região mostrada no diagrama da direita, vamos definir uma continuação analítica
+$\left\{ (g_t, B_t), t\in [0,1] \right\}$ ao longo de $\gamma_2$,
+com $-1\in B_1$, $g_1(-1) = -i\pi/2$, 
+$B_0 = \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\}$ e $g_0 = f$.
+
+Note que podemos usar essas continuações analíticas para construir duas
+\textbf{extensões analíticas} $F:U_1\to\mathbb{C}$ e $G:U_2\to\mathbb{C}$, 
+com $F(z) = f_t(z), z\in D_t$ e $G(z) = g_t(z), z\in B_t$, 
+sendo $U_1$ e $U_2$ as uniões do domínio original de $f$
+com as regiões azul e vermelha, respectivamente. Ora, mas note que
+$F$ e $G$, apesar de coincidirem no domínio original de $f$, são distintas!
+
+Esse fato parece, à primeira vista, contradizer o princípio da identidade. 
+Entretanto, isso não acontece porque $F$ e $G$ não estão definidas no mesmo
+domínio. À segunda vista, pode parecer que a conclusão em que chegamos contradiz
+a Proposição \ref{prop-unicidade-continuacao-analitica-caminho}. Mas isso também 
+não ocorre, porque $F$ e $G$ foram construídas por caminhos distintos!
+\end{observacao}
+
+
+\begin{definicao}
+\label{def-continuacao-analitica-germe}
+Se $\gamma: [0,1]\to\mathbb{C}$ é um caminho de $a$ para $b$ e 
+$\left\{ (f_t, D_t): 0\leq t\leq 1 \right\}$ é uma continuação analítica ao
+longo de $\gamma$, então o germe $[f_1]_b$ é a continuação analítica de
+$[f_0]_a$ ao longo de $\gamma$.
+\end{definicao}
+
+Note que é preciso usar a Proposição \ref{prop-unicidade-continuacao-analitica-caminho}
+para verificar que a definição acima está bem posta.
+
+\begin{observacao}
+Sejam $U_1, U_2\subseteq\mathbb{C}$ domínios não-vazios tais que $U_1\cap U_2$
+também é um domínio não-vazio.
+
+\begin{center}
+    \textbf{diagrama slide 9 aula 3}
+\end{center}
+
+Sejam ainda $f:U_1\to\mathbb{C}$ e $g:U_2\to\mathbb{C}$ funções analíticas
+tais que $f(z) = g(z), \forall z\in U_1\cap U_2$. Nesse caso, dizemos que
+$g$ é uma continuação analítica de $f$ a $U_2$ e vice-versa: $f$ é 
+uma continuação analítica de $g$ a $U_1$.
+
+Essas duas aplicações podem ser usadas para construir uma extensão analítica
+$F: U_1\cup U_2\to\mathbb{C}$ dada por partes:
+\begin{equation*}
+    F(z) = \begin{cases}
+    f(z), z\in U_1; \\
+    g(z), z\in U_2.
+    \end{cases}
+\end{equation*}
+Nesse caso, $(f,U_1)$ e $(g,U_2)$ são os elementos de função de $F$. 
+Essa é a motivação para a definição de \textit{elemento de função}.
+
+Vale reiterar que extensões analíticas por continuações analíticas disintas
+não precisam coincidir. No diagrama abaixo temos $F: U\cup V\to\mathbb{C}$
+e $G:U\cup W\to\mathbb{C}$ analíticas, com
+\begin{align*}
+    F(z) &= \begin{cases}
+    f(z), z\in U; \\
+    g(z), z\in V.
+    \end{cases}, \\
+    G(z) &= \begin{cases}
+    f(z), z\in U; \\
+    h(z), z\in W.
+    \end{cases}
+\end{align*}
+mas $F\neq G$.
+
+\begin{center}
+    \textbf{diagrama slide 11 aula 3}
+\end{center}
+
+\end{observacao}
+
+
+\begin{definicao}
+\label{def-funcao-analitica-completa}
+Se $(f,G)$ é um elemento de função, então a função analítica completa obtida
+a partir de $(f,G)$ é a coleção $\mathcal{F}$ de todos os germes $[g]_b$ 
+para os quais existem $a\in G$ e um caminho $\gamma$ de $a$ para $b$ 
+tais que $[g]_b$ é a continuação analítica de $[f]_a$ ao longo de $\gamma$.
+\end{definicao}
+
+
+\begin{definicao}
+Uma coleção de germes $\mathcal{F}$ é chamada função analítica completa se
+existe um elemento de função $(f,G)$ tal que $\mathcal{F}$ é a função analítica
+completa obtida de $(f,G)$.
+\end{definicao}
+
+
+\section{Teorema de Monodromia}
+
+% explicar o termo "monodromia" (wikipedia)
+
+\begin{lema}
+\label{lema-raio-convergencia-continuo}
+Sejam $\gamma: [0,1]\to\mathbb{C}$ um caminho e 
+$\left\{ (f_t, D_t): 0\leq t\leq 1 \right\}$ uma continuação analítica ao longo de
+$\gamma$. Para $t\in[0,1]$, seja $R(t)$ o raio de convergência da expansão em 
+série de potências de $f_t$ em torno de $z=\gamma(t)$. Então ou $R(t) \equiv\infty$
+ou $R: [0,1]\to (0, \infty)$ é uma função contínua.
+\end{lema}
