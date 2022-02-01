@@ -19,9 +19,8 @@
 
 \section{Continuação analítica ao longo de caminhos}
 
-% aulas 1 e 2
-% vou deixar só os enunciados e definições por enquanto, depois
-% que terminar a aula 3 eu volto e complemento com a discussão
+% fazer a discussão introdutória (slides da Aula 1 e início dos slides da Aula 2)
+% finalizar a parte da Aula 3 (comentar teo da uniformização e começar a parte de monodromia)
 
 \begin{definicao}
 \label{def-elemento-funcao}
@@ -64,7 +63,56 @@ A ideia é mostrar que
 \begin{equation*}
     T = \left\{ t\in [0,1] : [f_t]_{\gamma(t)}= [g_t]_{\gamma(t)} \right\}
 \end{equation*}
-é aberto e fechado em $[0,1]$ (com a topologia induzida pela topologia usual da reta)...
+é aberto e fechado em $[0,1]$ (com a topologia induzida pela topologia usual da reta).
+Isso, juntamente aos fatos de que $T$ é não-vazio ($0\in T$) e $[0,1]$ é conexo, 
+nos permitirá concluir que $T = [0,1]$ e, em particular, $1\in T$.
+
+Para mostrar que $T$ é aberto, seja $t\in T$ não nulo e diferente de 1 
+(se $t=1$ terminamos). Por definição de continuação analítica, existe $\delta > 0$
+tal que se $|s-t|<\delta$ então $\gamma(s) \in D_t\cap B_t$ e 
+\begin{equation*}
+    \begin{cases}
+    [f_s]_{\gamma(s)} = [f_t]_{\gamma(s)} \\
+    [g_s]_{\gamma(s)} = [g_t]_{\gamma(s)}.
+    \end{cases}
+\end{equation*}
+Seja $H\subseteq D_t\cap B_t$ tal que $\gamma(s), \gamma(t)\in H$. 
+
+\begin{center}
+    \textbf{diagrama slide 17 aula 2}
+\end{center}
+
+Como $t\in T$,
+$f_t(z) = g_t(z), \forall z\in H$. Logo, $[f_t]_{\gamma(s)} = [g_t]_{\gamma(s)}$
+para todo $\gamma(s)\in D_t\cap D_s$. Segue então das duas igualdades acima que
+$[f_s]_{\gamma(s)} = [g_s]_{\gamma(s)}$ se $|s-t|<\delta$. Logo, 
+$(t-\delta, t+\delta)\subseteq T$ e, como $t$ é um ponto qualquer de $T$, temos
+$T$ aberto em $[0,1]$.
+
+Agora, para mostrar que $T$ é também fechado em $[0,1]$, tome $t$ um ponto limite 
+de $T$ e escolha $\delta>0$ tal que $\gamma(s) \in D_t\cap B_t$ e
+\begin{equation*}
+    \begin{cases}
+    [f_s]_{\gamma(s)} = [f_t]_{\gamma(s)} \\
+    [g_s]_{\gamma(s)} = [g_t]_{\gamma(s)}.
+    \end{cases}
+\end{equation*}
+sempre que $|s-t|<\delta$. Como $t$ é ponto limite de $T$, existe $s\in T$ com
+$|s-t|<\delta$. Seja então $G$ um domínio tal que 
+$\gamma((t-\delta, t+\delta))\subseteq G\subseteq D_t\cap B_t$.
+Em particular, temos $\gamma(s)\in G$ e, por definição de $T$, segue que
+$f_s(z) = g_s(z), \forall z\in G$. Usando novamente as duas igualdades anteriores, 
+podemos garantir que
+\begin{equation*}
+    \begin{cases}
+    f_s(z) = f_t(z) \\
+    g_s(z) = g_t(z)
+    \end{cases}, \forall z\in G
+\end{equation*}
+donde segue que $f_t(z) = g_t(z), \forall z\in G$. Ora, já que $G$ é aberto 
+(e portanto possui um ponto limite em $D_t\cap B_t$), segue que 
+$[f_t]_{\gamma(t)} = [g_t]_{\gamma(t)}$, ou seja, $t\in T$ e, consequentemente,
+$T$ contém todos os seus pontos limites, i.e., é fechado.
 \end{proof}
 
 
@@ -122,7 +170,8 @@ $[f_0]_a$ ao longo de $\gamma$.
 \end{definicao}
 
 Note que é preciso usar a Proposição \ref{prop-unicidade-continuacao-analitica-caminho}
-para verificar que a definição acima está bem posta.
+para verificar que a definição acima está bem posta. Ademais, note que ela torna
+as coisas mais práticas, pois nos permite simplificar a descrição dos $D_t$'s.
 
 \begin{observacao}
 Sejam $U_1, U_2\subseteq\mathbb{C}$ domínios não-vazios tais que $U_1\cap U_2$
@@ -169,6 +218,8 @@ mas $F\neq G$.
 
 \end{observacao}
 
+Damos sequência com duas definições que, à primeira vista, não parecem ter 
+nada a ver com os termos por elas definidos.
 
 \begin{definicao}
 \label{def-funcao-analitica-completa}
@@ -185,6 +236,26 @@ existe um elemento de função $(f,G)$ tal que $\mathcal{F}$ é a função anal�
 completa obtida de $(f,G)$.
 \end{definicao}
 
+Note que esta definição nos permite ``esquecer'' do ponto $a$ mencionado na
+Definição \ref{def-funcao-analitica-completa}. Podemos escolher qualquer ponto
+de $G$, já que ele é um domínio.
+
+A pergunta natural a se fazer é: ``por que a terminologia de 
+\textbf{função analítica completa} é adequada quando nos referimos a uma
+coleção de germes?'', e a resposta é surpreendente. Vamos mostrar que
+podemos construir uma função a partir da coleção $\mathcal{F}$ de germes.
+
+Inicialmente, consideremos a coleção
+\begin{equation*}
+    \mathcal{R} = \left\{ (z, [g]_z) : [g]_z \in \mathcal{F} \right\}.
+\end{equation*}
+Definimos então $\widetilde{\mathcal{F}}:\mathcal{R}\to\mathbb{C}$ por
+\begin{equation*}
+    \widetilde{\mathcal{F}}((z, [g]_z)) = g(z),
+\end{equation*}
+ou seja, escolhemos um ``representante'' do germe e calculamos sua imagem em $z$.
+
+{\red Falar do teorema de uniformização...}
 
 \section{Teorema de Monodromia}
 
