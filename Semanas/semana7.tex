@@ -227,5 +227,136 @@ Se $\int_{\Delta} f(z) dz = 0$ para todo caminho triangular $\Delta\subset U$, e
 
 \begin{teorema}[Teorema de Laurent]
 \label{teo-laurent}
-Seja $f$ uma função holomorfa...
+Seja $f$ uma função holomorfa no anel $A(a, \rho_1, \rho_2)$. Então
+\begin{equation*}
+    f(z) = \sum_{m=1}^{\infty} b_m\frac{1}{(z-a)^m} + \sum_{n=0}^{\infty} a_n(z-a)^n,
+\end{equation*}
+sendo que a primeira série converge absolutamente fora do disco fechado $\overline{D}(a, \rho_1)$
+e a segunda série converge absolutamente no disco (aberto) $D(a, \rho_2)$. 
+Ademais, essa expansão é única e os coeficientes $b_m$ e $a_n$ são dados por
+\begin{align*}
+    b_m &= \frac{1}{2\pi i}\int_{\gamma} f(z)(z-a)^{m-1} dz, m\geq 1 \\
+    a_n &= \frac{1}{2\pi i}\int_{\gamma} \frac{f(w)}{(w-a)^{n+1}} dw, n\geq 0,
+\end{align*}
+sendo $\gamma$ uma circunferência de centro $a$ orientada no sentido anti-horário 
+e contida no anel $A(a, \rho_1, \rho_2)$.
 \end{teorema}
+
+
+\begin{definicao}
+Dizemos que 
+\begin{itemize}
+    \item $a$ é singularidade removível de $f$ se $b_m = 0$ para $m\geq 1$;
+    \item $a$ é polo de ordem $k$ de $f$ se $b_k\neq 0$ e $b_m = 0$ para $m>k$;
+    \item $a$ é singularidade essencial de $f$ se $b_m\neq 0$ para infinitos valores de $m$.
+\end{itemize}
+\end{definicao}
+
+
+\begin{proposicao}
+Seja $f$ uma função holomorfa no anel $A(a, 0, \rho)$. As seguintes afirmações são equivalentes.
+\begin{enumerate}[(i)]
+    \item $a$ é singularidade removível de $f$;
+    \item existe $\displaystyle{\lim_{z\to a} f(z)}$;
+    \item $|f|$ é limitado em algum anel $A(a, 0, \delta) \subset A(a, 0, \rho)$.
+\end{enumerate}
+\end{proposicao}
+
+
+\begin{corolario}
+Se $b_m\neq 0$ para algum $m\geq 1$, então $|f|$ é ilimitado em qualquer disco de centro $a$.
+\end{corolario}
+
+
+\begin{proposicao}
+Se $f$ é função holomorfa no anel $A(a, 0, \rho)$, então $a$ é um polo de ordem $k$ de $f$
+se, e somente se, $\displaystyle{ \lim_{z\to a} (z-a)^k f(z) }$ existe e é um número complexo não nulo.
+\end{proposicao}
+
+
+\begin{corolario}
+Se $f$ é holomorfa no anel $A(a, 0, \rho)$ e $a$ é polo de ordem $k$ de $f$ então
+$\displaystyle{ \lim_{z\to a} |f(z)| = \infty }$.
+\end{corolario}
+
+
+\begin{teorema}[Teorema de Casorati-Weierstrass]
+\label{teo-casorati-weierstrass}
+Seja $f$ uma função holomorfa no anel $A(a,0,\rho)$ e suponha que $a$ é singularidade essencial de $f$.
+Então, dados $0<r\leq\rho, \varepsilon > 0$ e $\alpha\in\mathbb{C}$, existe um número complexo $\beta$
+no anel $A(a,0,r)$ tal que $|f(\beta) - \alpha| < \varepsilon$.
+\end{teorema}
+
+
+\begin{definicao}
+Se $f$ é uma função holomorfa no anel $A(a, 0, \rho)$, o resíduo de $f$ em $a$ é o coeficiente $b_1$
+do termo $(z-a)^{-1}$ de sua série de Laurent com centro em $a$, denotado por $\res(f, a)$.
+\end{definicao}
+
+
+\begin{teorema}[Teorema dos Resíduos]
+\label{teo-residuos}
+Seja $f$ uma função holomorfa num domínio $U\setminus\{ a_1, a_2, \dots, a_m \}$. Suponha que 
+$\gamma \subset U\setminus\{ a_1, a_2, \dots, a_m \}$ é uma curva de Jordan suave por partes,
+orientada no sentido anti-horário, tal que a região fechada e limitada por ela determinada está
+contida em $U$ e contém todos os pontos $ a_1, a_2, \dots, a_m$. Então
+\begin{equation*}
+    \frac{1}{2\pi i}\int_{\gamma} f(z) dz = \sum_{i=1}^m \res(f, a_i).
+\end{equation*}
+\end{teorema}
+
+
+\begin{proposicao}
+Seja $f$ uma função holomorfa no anel $A(a, 0, \rho)$ e suponha que $a$ é polo de ordem 1 de $f$.
+Então $\res(f,a) = \displaystyle{ \lim_{z\to a} (z-a) f(z) }$.
+\end{proposicao}
+
+
+\begin{proposicao}
+Seja $f$ uma função holomorfa no anel $A(a, 0, \rho)$ e suponha que $a$ é polo de ordem $k>1$ de $f$.
+Considere a função $g(z) = (z-a)^k f(z)$. Então
+\begin{equation*}
+    \res(f, a) = \frac{g^{(k-1)}(a)}{(k-1)!}.
+\end{equation*}
+\end{proposicao}
+
+
+\begin{teorema}
+\label{teo-contador-zeros}
+Seja $f$ uma função holomorfa num domínio $U\setminus\{ a_1, a_2, \dots, a_m \}$. Suponha que 
+$\gamma \subset U\setminus\{ a_1, a_2, \dots, a_m \}$ é uma curva de Jordan suave por partes,
+orientada no sentido anti-horário, tal que a região fechada e limitada por ela determinada está
+contida em $U$ e contém todos os pontos $ a_1, a_2, \dots, a_m$. Ademais, suponha que todos esses
+pontos sejam polos de $f$ e que $f$ não tem zeros ao longo de $\gamma$. Então
+\begin{equation*}
+    \frac{1}{2\pi i}\int_{\gamma} \frac{f'(z)}{f(z)} dz = \mathcal{Z} - \mathcal{P},
+\end{equation*}
+sendo $\mathcal{Z}$ o número de zeros de $f$ na região interior a $\gamma$ (contados com multiplicidade)
+e $\mathcal{P}$ o número de polos de $f$ na região interior a $\gamma$ (contados com multiplicidade).
+\end{teorema}
+
+
+\begin{corolario}
+Nas mesmas hipóteses do Teorema \ref{teo-contador-zeros}, se $f$ e $h$ são funções holomorfas em $U$,
+então
+\begin{equation*}
+    \frac{1}{2\pi i}\int_{\gamma} h(z)\frac{f'(z)}{f(z)} dz = \sum_{\xi_j} h(\xi_j)m_{\xi_j}(f),
+\end{equation*}
+sendo $\xi_1, \xi_2, \dots, \xi_l$ os zeros de $f$ na região interior a $\gamma$ e $m_{\xi_j}(f)$
+a multiplicidade de $\xi_j$ como zero de $f$.
+\end{corolario}
+
+
+\begin{teorema}[Teorema de Rouché]
+\label{teo-rouche}
+Sejam $f$ e $g$ duas funções holomorfas definidas num domínio $U\subset\mathbb{C}$. Seja $V\subset U$
+uma região fechada e limitada cuja fronteira $\partial V$ é uma curva de Jordan suave por partes, com
+$V\setminus\partial V$ um domínio. Se
+\begin{equation*}
+    |f(z) - g(z)| < |f(z)|, \forall z\in\partial V,
+\end{equation*}
+então $f$ e $g$ têm o mesmo número de zeros no interior de $V$, cada um deles contados com multiplicidade.
+\end{teorema}
+
+Interpretação dinâmica do resíduo?
+Cálculo de integrais usando resíduos?
