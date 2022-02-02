@@ -17,6 +17,128 @@
 % acho que aqui é melhor seguir o Stein, só dar uma complementada no argumento
 % falando do caso de apenas o vértice estar sobre o eixo real
 
+Neste capítulo, vamos tratar de continuações analíticas ao longo de caminhos.
+Para iniciar a discussão, começamos abordando um princípio simples que nos permite
+estender holomorficamente certas funções analíticas a domínios ``maiores'': 
+o princípio da reflexão de Schwarz.
+
+A demonstração desse teorema consiste de duas partes: precisamos definir a 
+(candidata a) extensão e checar que ela é holomorfa. Começamos com o segundo passo.
+
+Seja $\Omega\subseteq\mathbb{C}$ um aberto simétrico com respeito à reta real, ou seja,
+\begin{equation*}
+    z\in\Omega \iff \overline{z}\in\Omega.
+\end{equation*}
+Denotemos por $\Omega^+$ a porção de $\Omega$ no semi-plano superior e por $\Omega^-$
+a porção de $\Omega$ no semi-plano inferior.
+
+\begin{center}
+    \textbf{diagrama fig.11 Stein p.58}
+\end{center}
+
+Por fim, denotemos por $I$ o conjunto que ``sobrou'' de $\Omega$: 
+$I = \Omega\cap\mathbb{R}$. É claro então que
+\begin{equation*}
+    \Omega = \Omega^+ \cup I \cup \Omega^-
+\end{equation*}
+e os casos interessantes do teorema a seguir ocorrem quando $I\neq\varnothing$.
+
+\begin{teorema}[Princípio da simetria]
+\label{teo-principio-simetria}
+Se $f^+$ e $f^-$ são funções holomorfas em $\Omega^+$ e $\Omega^-$, respectivamente,
+que se estendem continuamente para $I$ e tais que $f^+(x) = f^-(x), \forall x\in I$,
+então a função $f$ definida em $\Omega$ por
+\begin{equation*}
+    f(z) = \begin{cases}
+    f^+(z), z\in\Omega^+ \\
+    f^+(z) = f^-(z), z\in I \\
+    f^-(z), z\in\Omega^-
+    \end{cases}
+\end{equation*}
+é holomorfa em todo $\Omega$.
+\end{teorema}
+
+Apresentamos aqui a demonstração dada em \cite{MR1976398}, pp. 58-59, 
+devido à sua simplicidade e clareza. Um argumento mais rigoroso pode ser 
+encontrado em \cite{MR503901}, pp. 213-214.
+
+\begin{proof}
+Note, antes de mais nada, que por definição temos $f$ contínua em $\Omega$.
+A nossa única dificuldade se encontra em mostrar a holomorficidade de $f$ em $I$.
+
+Seja $D$ um disco centrado em um ponto de $I$ e inteiramente contido em $\Omega$.
+Usando o Teorema de Morera, vamos mostrar que $f$ é holomorfa em $D$. Para tal,
+seja $T$ um triângulo em $D$. Se $T$ não intercepta $I$, então
+\begin{equation*}
+    \int_T f(z) dz = 0
+\end{equation*}
+já que $f$ é holomorfa nos semi-discos superior e inferior. Suponhamos, então,
+que $T$ intercepta $I$ e analisemos os três casos que surgem:
+\paragraph{Caso I:} $T$ tem apenas um vértice sobre $I$. Nesse caso, se 
+$Q_{\varepsilon}$ é o quadrilátero obtido levantando levemente o vértice sobre $I$,
+temos
+\begin{equation*}
+    \int_{Q_{\varepsilon}} f(z) dz = 0
+\end{equation*}
+pois esse quadrilátero está inteiramente contido no semi-disco superior. Daí,
+fazendo $\varepsilon\to 0$, segue por continuidade que
+\begin{equation*}
+    \int_T f(z) dz = 0.
+\end{equation*}
+
+\paragraph{Caso II:} $T$ tem um lado sobre $I$. Nesse caso, podemos supor sem perda
+de generalidade que o restante de $T$ está no semi-disco superior. Se $T_{\varepsilon}$
+é o triângulo obtido de $T$ levantando levemente a aresta que está sobre $I$, temos
+\begin{equation*}
+    \int_{T_{\varepsilon}} f(z) dz = 0
+\end{equation*}
+pois esse novo triângulo está contido no semi-disco superior. Daí, fazendo 
+$\varepsilon\to 0$, segue por continuidade que
+\begin{equation*}
+    \int_T f(z) dz = 0.
+\end{equation*}
+
+\begin{center}
+    \textbf{diagrama p.59 Stein}
+\end{center}
+
+\paragraph{Caso III:} $T$ tem duas arestas interceptando $I$. Nesse caso, o interior
+de $T$ intercepta $I$ e podemos reduzir esse caso aos anteriores se escrevermos $T$
+como união de triângulos que têm um lado ou um vértice sobre $I$.
+
+Portanto, pelo Teorema de Morera segue que $f$ é holomorfa em $D$, como desejado.
+\end{proof}
+
+Podemos agora enunciar o princípio da reflexão, usando a mesma notação acima.
+
+\begin{teorema}[Princípio da Reflexão de Schwarz]
+\label{teo-reflexao-schwarz}
+Suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende continuamente 
+para $I$ e tal que $f$ toma valores reais em $I$. Então existe uma função $F$
+holomorfa em todo o $\Omega$ tal que $F\big|_{\Omega^+} = f$.
+\end{teorema}
+
+\begin{proof}
+A ideia é definir $F$ em $\Omega^-$ por
+\begin{equation*}
+    F(z) = \overline{f(\overline{z})}.
+\end{equation*}
+Para mostrar que $F$ é holomorfa em $\Omega^-$, notamos que se $z, z_0\in\Omega^-$
+então $\overline{z}, \overline{z_0}\in\Omega^+$ e, portanto, a expansão de $f$
+em série de potências em torno de $\overline{z_0}$ nos dá
+\begin{equation*}
+    f(\overline{z}) = \sum_{n=0}^{\infty} a_n(\overline{z} - \overline{z_0})^n,
+\end{equation*}
+donde segue que
+\begin{equation*}
+    F(z) = \sum_{n=0}^{\infty} \overline{a_n}(z - z_0)^n,
+\end{equation*}
+ou seja, $F$ é holomorfa em $\Omega^-$. Como $f$ toma valores reais em $I$, temos
+$\overline{f(x)} = f(x), \forall x\in I$ e, portanto, $F$ se estende continuamente
+a $I$. Invocando o princípio da simetria, terminamos a prova.
+\end{proof}
+
+
 \section{Continuação analítica ao longo de caminhos}
 
 % fazer a discussão introdutória (slides da Aula 1 e início dos slides da Aula 2)
@@ -259,7 +381,30 @@ ou seja, escolhemos um ``representante'' do germe e calculamos sua imagem em $z$
 
 \section{Teorema de Monodromia}
 
-% explicar o termo "monodromia" (wikipedia)
+Monodromia é o estudo de como objetos da Análise, Topologia Algébrica, Geometria
+Algébrica e Geometria Diferencial se comportam à medida que 
+``circundam uma singularidade''. O dá origem ao fenômeno de monodromia são certas
+funções que gostaríamos de definir falham em ter um valor único quando ``circulam''
+uma singularidade (e.g., o logaritmo).
+
+Como vimos acima com o exemplo do logaritmo, continuações analíticas em 
+caminhos distintos não precisam coincidir. O leitor familiar com teoria de
+homotopia poderia pensar que uma condição suficiente para a
+igualdade das continuações pode ser dada em termos dessa teoria. Entretanto,
+como todas as curvas no plano (complexo) são homotópicas, o resultado teria
+de ser fraseado em termos de homotopia em um domínio próprio de $\mathbb{C}$,
+que é o conteúdo do teorema de monodromia.
+
+Ainda assim, em domínios mais ``malucos'', a teoria de homotopia não é suficiente
+e é preciso apelar para a homologia. Manteremos a discussão no nível mais ``baixo'',
+sem utilizar a linguagem de homologia, haja vista que tais
+ferramentas são deveras \textit{overkill} para os nossos propósitos.
+
+Retornando à discussão sobre o teorema de monodromia: sabemos que se $(f,D)$ é
+um elemento de função e $a\in D$, então $f$ tem uma expansão em série de potências
+em torno de $a$. O primeiro passo para demonstrar o teorema de Monodromia será
+estudar o comportamento do raio de convergência da continuação analítica ao longo
+de um caminho.
 
 \begin{lema}
 \label{lema-raio-convergencia-continuo}
@@ -269,3 +414,129 @@ $\gamma$. Para $t\in[0,1]$, seja $R(t)$ o raio de convergência da expansão em
 série de potências de $f_t$ em torno de $z=\gamma(t)$. Então ou $R(t) \equiv\infty$
 ou $R: [0,1]\to (0, \infty)$ é uma função contínua.
 \end{lema}
+
+\begin{proof}
+Suponha, inicialmente, que existe $0\leq t\leq 1$ tal que $R(t)\equiv\infty$.
+Vamos mostrar que
+\begin{equation*}
+    T = \left\{ t\in[0,1] : R(t)\equiv\infty \right\}
+\end{equation*}
+é fechado e aberto, donde seguirá que $T = [0,1]$ por conexidade.
+
+Da hipótese de existência de um $t\in T$, podemos escrever
+\begin{equation*}
+    f_t(z) = \sum_{n=0}^\infty a_n(\gamma(t))(z - \gamma(t))^n, \forall z\in D_t
+\end{equation*}
+e, ademais, a séria acima define uma função inteira (devido ao raio de convergência
+infinito). Como $D_t$ é conexo, podemos estender $f_t$ a uma função inteira $F_t$.
+
+Pelas condições de compatibilidade da Definição \ref{def-continuacao-analitica},
+existe $\delta > 0$ tal que se $|s-t|<\delta$ então 
+$[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$. Portanto, se
+$(F_t,\mathbb{C}) \in [f_t]_{\gamma(s)}$ então $(F_t,\mathbb{C}) \in [f_s]_{\gamma(s)}$.
+Note que $(F_t,\mathbb{C}) \in [f_s]_{\gamma(s)}$ implica $F_t(z) = f_s(z)$, para todo
+$z\in D_s$. Portanto, 
+\begin{align*}
+    \sum_{n=0}^\infty \widetilde{a_n}(\gamma(s))(z-\gamma(s))^n 
+    =
+    F_t(z)
+    =
+    f_s(z)
+    =
+    \sum_{n=0}^\infty a_n(\gamma(s))(z-\gamma(s))^n,
+\end{align*}
+onde a série à direita é a expansão em série de potências de $F_t$ em torno 
+de $\gamma(s)$. Pelo princípio da identidade, devemos ter 
+$a_n(\gamma(s)) = \widetilde{a_n(\gamma(s))}, \forall n$ e, como o raio 
+de convergência da série à direita é infinito (pois $F_t$ é inteira), segue
+que $R(s) = \infty$. Portanto, temos $T$ aberto.
+
+Para mostrar que $T$ é fechado, seja $(s_n)_{n\in\mathbb{N}}\subseteq T$ uma
+sequência em $T$ que converge para um $t$ fixado. Sabemos que existe 
+$\delta = \delta(t)$ tal que se $|s-t|<\delta$ então 
+$[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$. Como $s_n\xrightarrow{n\to\infty} t$,
+existe $n_0\in\mathbb{N}$ tal que se $n\geq n_0$ então $|s_n - t|<\delta$.
+Logo, para um $n$ satisfazendo tal condição, temos
+$[f_t]_{\gamma(s_n)} = [f_{s_n}]_{\gamma(s_n)}$. Temos então
+\begin{align*}
+    \sum_{j=0}^\infty \widetilde{a_j}(\gamma(t))(z-\gamma(t))^j
+    =
+    f_t(z)
+    \stackrel{z\in D_{s_n}}{=}
+    f_{s_n}(z)
+    =
+    \sum_{j=0}^\infty a_n(\gamma(t))(z-\gamma(t))^n.
+\end{align*}
+Ora, então $\widetilde{a_j}(\gamma(t)) = a_j(\gamma(t))$ e, por hipótese, temos
+\begin{equation*}
+    R(t) := \frac{1}{\displaystyle{\limsup_{j\to\infty}} \sqrt{ |a_j(\gamma(t))| } } 
+    = \infty,
+\end{equation*}
+de modo que $R(t) = \infty$ e, portanto, $T$ é fechado.
+
+Segue então que se existe $t\in [0,1]$ tal que $R(t) = \infty$, então
+$R(t) \equiv\infty$ em $[0,1]$.
+
+Resta analisar o caso $R(t) < \infty, \forall t\in[0,1]$. Por analiticidade, podemos
+supor também que $R(t) > 0$ em $[0,1]$.
+
+Fixe $t\in [0,1]$ e considere a expansão em série de potência
+\begin{equation*}
+    f_t(z) = \sum_{n=0}^{\infty} a_n(\gamma(t))(z-\gamma(t))^n.
+\end{equation*}
+Seja $\delta_1$ tal que 
+\begin{enumerate}[i)]
+    \item se $|s-t|<\delta_1$ então $\gamma(s)\in D_t\cap D(\gamma(t), R(t));$
+    
+    \begin{center}
+        \textbf{diagrama slide 31 aula 3}
+    \end{center}
+    
+    \item $[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$.
+\end{enumerate}
+Fixe $s$ tal que $|s-t<\delta_1|$. Note que podemos pensar em $f_t$ como uma 
+função analítica em $D(\gamma(t), R(t))$ (basta estendê-la analiticamente caso
+$D(\gamma(t), R(t))$ tenha pontos fora de $D_t$). Note, ainda, que existe uma 
+vizinhança $W\subseteq\mathbb{C}$ de $\gamma(s)$ tal que 
+$f_t(z) = f_s(z), \forall z\in W$.
+
+\begin{center}
+    \textbf{diagrama slide 32 aula 3}
+\end{center}
+
+A menos de estender analiticamente, podemos pensar em $f_s$ como uma função analítica
+em $D_s\cup D(\gamma(t), R(t))$. Suponha que
+\begin{equation*}
+    f_s(z) = \sum_{n=0}^\infty a_n(\gamma(s))(z-\gamma(s))^n
+\end{equation*}
+seja a expansão em série de potências de $f_s$ em torno de $\gamma(s)$. Temos então
+\begin{equation*}
+    R(t) - |\gamma(t) - \gamma(s)| \leq R(s).
+\end{equation*}
+Por outro lado, podemos também pensar em $f_t$ como analítica em 
+$D_t\cup D(\gamma(s), R(s))$ e expandir
+\begin{equation*}
+    f_t(z) = \sum_{n=0}^\infty a_n(\gamma(t))(z-\gamma(t))^n,
+\end{equation*}
+obtendo
+\begin{equation*}
+    R(s) - |\gamma(t) - \gamma(s)| \leq R(t).
+\end{equation*}
+Juntando as duas desigualdade, obtemos
+\begin{equation*}
+    -|\gamma(t) - \gamma(s)| \leq R(t) - R(s) \leq |\gamma(t) - \gamma(s)| 
+    \iff
+    |R(t) - R(s)| \leq |\gamma(t) - \gamma(s)|.
+\end{equation*}
+A última desigualdade implica, então, que $t\mapsto R(t)$ define uma função contínua,
+encerrando a demonstração.
+\end{proof}
+
+É interessante observar que o final da demonstração anterior nos permite dizer
+mais do que ``$R(t)$ é uma função contínua em $[0,1]$''. De fato, definindo o que
+vem a ser um 
+\href{https://en.wikipedia.org/wiki/Modulus_of_continuity}{módulo de continuidade},
+notamos que $R(t)$ tem o mesmo módulo de continuidade que $\gamma$; por exemplo, se
+$\gamma$ é Lipschitz, então $R(t)$ também o é 
+(e isso é facilmente verificado com a última desigualdade da demonstração).
+Dito de outro modo, $R(t)$ herda o módulo de continuidade de $\gamma$.
