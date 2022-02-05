@@ -536,3 +536,71 @@ notamos que $R(t)$ tem o mesmo módulo de continuidade que $\gamma$; por exemplo
 $\gamma$ é Lipschitz, então $R(t)$ também o é 
 (e isso é facilmente verificado com a última desigualdade da demonstração).
 Dito de outro modo, $R(t)$ herda o módulo de continuidade de $\gamma$.
+
+\begin{lema}
+\label{ext-epsilon-proximas}
+Seja $\gamma: [0,1] \to \mathbb{C}$ um caminho do ponto $a$ para o ponto $b$ e seja $\{(f_t, D_t): 0 \leq t \leq 1\}$ uma continuação analítica ao longo de $\gamma$. Existe um $\varepsilon > 0$ tal que, se $\sigma :[0,1] \to \mathbb{C}$ é um caminho de $a$ para $b$ satisfazendo $|\gamma(t) - \sigma(t)| < \varepsilon$ para todo $t$ e $\{(g_t, B_t): 0 \leq t \leq 1\}$ é uma continuação analítica ao longo de $\sigma$ com $[f_0]_a = [g_0]_a$, então $[f_1]_b = [g_1]_b$.
+\end{lema}
+\begin{proof}
+Novamente, aqui, $R(t)$ é o raio de convergência da serie de potências da função $f_t$ em torno de $\gamma(t)$. Pelo Lema anterior, temos que $R(t) \equiv \infty$ ou $0 < R(t) < \infty$, onde $R(t) > 0$ devido ao fato de que cada função $f_t$ é analítica em $D_t$. 
+
+Se $R(t) \equiv \infty$, então qualquer $\varepsilon > 0$ escolhido é suficiente para que o Lema seja válido. Como o raio de convergência é infinito para cada $t$, podemos estender a função $g_t$ analiticamente para a função definida pela série de potências da expansão de $f_t$ usando o princípio da identidade.
+
+Suponha agora que $0 < R(t) < \infty$. No restante da demonstração, vamos supor que $D_t$ é o disco de centro $\gamma(t)$ e raio $R(t)$. Isto pode ser feito, pois, caso $D_t$ não fosse um disco, então, ou $D_t \subseteq D(\gamma(t),R(t))$ ou $D(\gamma(t),R(t)) \subseteq D_t$ e poderíamos sempre estender $f_t$ usando o princípio da identidade. Isto simplificará os argumentos.
+
+Escolha um $\varepsilon$ satisfazendo
+$$0 < \varepsilon < \frac{1}{2}\min\{R(t): t \in [0,1]\}.$$
+Para cada $t \in [0,1]$, temos $|\gamma(t) - \sigma(t)| < \varepsilon < R(t)$, então $\sigma(t) \in B_t \cap D_t$ para todo $t$. Queremos mostrar que $[f_1]_b = [g_1]_b$, o que pode ser feito mostrando que $f_1(z) = g_1(z)$ para todo $z \in B_1 \cap D_1$. Como é difícil mostrar isso para o valor particular $t=1$ diretamente, vamos passar a uma estratégia que já adotamos antes.
+
+Defina
+$$T = \{t \in [0,1]: f_t(z) = g_t(z) \forall z \in B_t \cap D_t\}.$$
+$T$ não é vazio, por conta da hipótese $[f_0]_a = [g_0]_a$. Vamos mostrar que $T$ é aberto e fechado no conexo $[0,1]$, ou seja, $T = [0,1]$. Seja $t \in T$; existe um $\delta > 0$ tal que
+\begin{align}
+\label{Eq5}
+    &|\gamma(s) - \gamma(t)| < \varepsilon \ \ \ \ \ [f_s]_{\gamma(s)} = [f_t]_{\gamma(s)} \\
+    &|\sigma(s) - \sigma(t)| < \varepsilon \ \ \ \ \ [g_s]_{\gamma(s)} = [g_t]_{\gamma(s)} \\
+    &\sigma(s) \in B_t
+\end{align}
+sempre que $|s-t|<\delta$. Aqui, usamos a continuidade da funções $\gamma$ e $\sigma$ e a condição de compatibilidade da definição de continuação analítica ao longo de um caminho.
+
+Seja $G$ a intercessão $B_s \cap B_t \cap D_s \cap D_t$. Vamos mostrar que $\sigma(s) \in G$, então $G \neq \emptyset$. Pela definição de continuação ao longo de um caminho, temos $\sigma(s) \in B_t \cap B_s$. Da hipótese do Lema,
+$$|\sigma(s) - \gamma(s)| < \varepsilon < R(s),$$
+donde segue que $\sigma(s) \in D_s$. Usando a desigualdade triangular e as condições em \ref{Eq5}, temos que 
+\begin{align*}
+|\sigma(s) - \gamma(t)| &= |\sigma(s) - \gamma(s) + \gamma(s) - \gamma(t)| \\
+&\leq |\sigma(s) - \gamma(s)| + |\gamma(s) - \gamma(t)| \\
+&< 2\varepsilon < R(t).
+\end{align*}
+Isto mostra que $\sigma(s) \in D_t$ e, portanto, $\sigma(s) \in G$.
+
+Como $t \in T$, temos que $f_t(z) = g_t(z)$ para todo $z$ em $G$. As condições em \ref{Eq5} implicam que 
+\begin{align*}
+    \begin{cases}
+    f_s(z) &= f_t(z) \\
+    g_s(z) &= g_t(z)
+    \end{cases}
+\end{align*}
+sempre que $z \in G$. Segue que $f_s(z) = g_s(z)$ para todo $z \in G$. Pelo princípio da identidade, podemos concluir que $f_s(z) = g_s(z) \forall z \in D_s \cap B_s$, então $s \in T$ sempre que $|s-t|< \delta$, o que mostra que $T$ é aberto.
+
+Vamos mostrar agora que $T$ é também fechado. Lembre-se que um conjunto é fechado se, e somente se, contém todos os seus pontos de acumulação. Seja $t$ um ponto de acumulação de $T$ e $\{s_n\}$ uma sequência de pontos em $T$ com $s_n \to t$. Novamente, existe um $\delta > 0$ tal que valem as condições em \ref{Eq5} sempre que $|s-t|<\delta$; existe também um $N \in \mathbb{N}$ tal que 
+$$ n \geq N \implies |s_n - t| < \delta .$$
+Aplicando um raciocínio totalmente análogo ao que fizemos antes, mostra-se que $\sigma(s_n) \in G = B_s \cap B_t \cap D_s \cap D_t$. Como consequência de condições de compatibilidade análogas àquelas listadas em \ref{Eq5}, temos
+
+\begin{align*}
+    \begin{cases}
+    f_s_n(z) &= f_t(z) \\
+    g_s_n(z) &= g_t(z)
+    \end{cases}
+\end{align*}
+
+sempre que $z \in G$. Agora, $s_n \in T$, então 
+$$f_t(z) = f_s_n(z) = g_s_n(z) = g_t(z)$$
+para todo $z$ em $G$. Aplicando o princípio da identidade, concluímos que $t \in T$. Logo, $T$ é fechado. Isto demonstra o Lema.
+\end{proof}
+
+\begin
+
+
+
+
+
