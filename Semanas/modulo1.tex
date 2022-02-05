@@ -538,7 +538,7 @@ $\gamma$ é Lipschitz, então $R(t)$ também o é
 Dito de outro modo, $R(t)$ herda o módulo de continuidade de $\gamma$.
 
 \begin{lema}
-\label{ext-epsilon-proximas}
+\label{lema-ext-epsilon-proximas}
 Seja $\gamma: [0,1] \to \mathbb{C}$ um caminho do ponto $a$ para o ponto $b$ e seja
 $\{(f_t, D_t): 0 \leq t \leq 1\}$ uma continuação analítica ao longo de $\gamma$. 
 Existe um $\varepsilon > 0$ tal que, se $\sigma :[0,1] \to \mathbb{C}$ é um caminho 
@@ -562,7 +562,13 @@ Suponha agora que $0 < R(t) < \infty$. No restante da demonstração, vamos supo
 $D_t$ é o disco de centro $\gamma(t)$ e raio $R(t)$. Isto pode ser feito, pois, caso
 $D_t$ não fosse um disco, então, ou $D_t \subseteq D(\gamma(t),R(t))$ ou
 $D(\gamma(t),R(t)) \subseteq D_t$ e poderíamos sempre estender $f_t$ usando o 
-princípio da identidade. Isto simplificará os argumentos.
+princípio da identidade. Por motivos inteiramente análogos, podemos supor também
+que $B_t$ são discos centrados em $\beta(t)$. Essas suposições simplificarão 
+os argumentos.
+
+\begin{center}
+    \textbf{diagrama slide 5 Aula 4}
+\end{center}
 
 Escolha um $\varepsilon$ satisfazendo
 \begin{equation*}
@@ -600,7 +606,13 @@ sempre que $|s-t|<\delta$. Aqui, usamos a continuidade da funções $\gamma$ e $
 e a condição de compatibilidade da definição de continuação analítica ao longo de um
 caminho.
 
-Seja $G = B_s \cap B_t \cap D_s \cap D_t$. Vamos mostrar que 
+Seja $G = B_s \cap B_t \cap D_s \cap D_t$, como ilustrado abaixo. 
+
+\begin{center}
+    \textbf{diagrama slide 8 Aula 4}
+\end{center}
+
+Vamos mostrar que 
 $\sigma(s) \in G$, de modo que $G \neq \emptyset$. Pela definição de continuação 
 ao longo de um caminho, temos $\sigma(s) \in B_t \cap B_s$. Da hipótese do Lema,
 \begin{equation*}
@@ -661,31 +673,94 @@ Isto demonstra o Lema.
 
 \begin{definicao}
 \label{def-continuacao-irrestrita}
-% definição de continuação analítica irrestrita, slide 12 da Aula 4
+Sejam $(f,D)$ um elemento de função e $G\subseteq\mathbb{C}$ domínio tal que 
+$D\subseteq G$. Vamos dizer que $f$ admite uma continuação analítica irrestrita a 
+$G$ se para qualquer caminho $\gamma$ com ponto inicial em $D$ existe uma continuação
+analítica $\{(f_t, D_t) : 0\leq t\leq 1\}$ ao longo de $\gamma$.
 \end{definicao}
 
+É importante frisar, novamente, que $f$ admitir continuação analítica irrestrita 
+\textbf{não significa} que as continuações por caminhos distintos irão coincidir.
+Veja o seguinte exemplo.
+
 \begin{exemplo}
-% exemplo do log, slide 13 da Aula 4
+Sejam $D = D(1,1) = \{ z\in\mathbb{C} : |z-1|<1 \}$ e $f:D\to\mathbb{C}$ dada por
+$f(z) = \displaystyle{\exp\left( \frac{1}{2}\log_0(z) \right)}$, onde
+$\log_0:D\to\mathbb{C}$ é a restrição do ramo principal do logaritmo ao disco aberto
+$D(1,1)$. Se $G = \mathbb{C}^*$, então $(f,D)$ admite continuação analítica irrestrita
+a $G$.
+
+Entretanto, as continuações analíticas podem ser distintas, como vimos quando
+construímos duas continuações analíticas do logaritmo tais que uma valia 
+$i\pi/2$ em $-1$ e outra valia $-i\pi/2$ em $-1$.
 \end{exemplo}
 
-\begin{definicao}
+\begin{observacao}
+Continuações analíticas irrestritas não são um fato da vida!
+
+Falar de
+\begin{equation*}
+    z\mapsto \int_{\gamma} \frac{f(w)}{w-z}dw
+\end{equation*}
+definir uma função analítica com singularidades não isoladas (conjunto de singularidades
+denso).
+\end{observacao}
+
+\begin{definicao}[Curvas FEP-homotópicas]
 \label{def-fep-homotopicas}
-% definição de curvas fep homotopicas, slide 14 da Aula 4
+Se $\gamma_0, \gamma_1 :[0,1]\to G\subseteq\mathbb{C}$ são curvas suaves por partes
+tomando valores em $G$ e tais que $\gamma_0(0) = \gamma_1(0) = a$ e 
+$\gamma_0(1) = \gamma_1(1) = b$, dizemos que elas são \textit{fixed-end-points}
+homotópicas (FEP-homotópicas) se existe uma aplicação contínua 
+$\Gamma:[0,1]\times [0,1] \to G\subseteq\mathbb{C}$ tal que
+\begin{align*}
+    \Gamma(t,0) &= \gamma_0(t) \qquad \Gamma(t,1) = \gamma_1(t) \\
+    \Gamma(0,s) &= a \qquad \Gamma(1,s) = b
+\end{align*}
+
+\begin{center}
+    \textbf{diagrama slide 15 Aula 4}
+\end{center}
+
 \end{definicao}
 
 \begin{definicao}
 \label{def-homotopica-a-zero}
-% definição de homotopia a um ponto, slide 16 da Aula 4
+Seja $\gamma:[0,1]\to G\subseteq\mathbb{C}$ uma curva fechada suave por partes.
+Dizemos que $\gamma$ é homotópica a zero, denotando $\gamma\sim 0$, se $\gamma$
+é homotópica a uma curva constante, ou seja, existe uma aplicação contínua 
+$\Gamma:[0,1]\times [0,1] \to G\subseteq\mathbb{C}$ tal que
+\begin{align*}
+    \Gamma(0,s) &= \Gamma(1,s) \\
+    \Gamma(t,1) &= \Gamma(t',1), \forall t, t'\in [0,1] \\
+    \Gamma(t,0) &= \gamma(t)
+\end{align*}
+
+\begin{center}
+    \textbf{diagrama curva homotópica a zero}
+\end{center}
+
 \end{definicao}
 
 \begin{definicao}
 \label{def-simplesmente-conexo}
-% definição de simplesmente conexo, slide 17 da Aula 4
+Um domínio $G\subseteq\mathbb{C}$ é simplesmente conexo se toda curva fechada
+suave por partes $\gamma: [0,1]\to G\subseteq\mathbb{C}$ é homotópica a 0.
+
+\begin{center}
+    \textbf{diagrama slide 17 Aula 4}
+\end{center}
+
 \end{definicao}
 
-\begin{teorema}[Teorema da Monodromia]
+\begin{teorema}[Teorema de Monodromia]
 \label{teo-monodromia}
-% teo da monodromia, slide 18 da Aula 4
+Sejam $(f,D)$ um elemento de função e $G\subseteq\mathbb{C}$ um domínio tal que 
+$D\subseteq G$ e $(f,D)$ admite continuação analítica irrestrita em $G$. Sejam
+$a\in D, b\in G$, $\gamma_0, \gamma_1$ caminhos em $G$ e 
+$\{ (f_t, D_t) : 0\leq t\leq 1 \}$, $\{ (g_t, B_t) : 0\leq t\leq 1 \}$ continuações
+analíticas ao longo de $\gamma_0$ e $\gamma_1$, respectivamente. 
+Se $\gamma_0$ e $\gamma_1$ são FEP-homotópicas em $G$, então $[f_1]_b = [g_1]_b$.
 \end{teorema}
 
 \begin{proof}
@@ -693,11 +768,28 @@ a
 \end{proof}
 
 \begin{corolario}
-% corolario slide 22 Aula 4
+Seja $(f,D)$ um elemento de função que admite continuação analítica irrestrita no
+domínio simplesmente conexo $G$, com $D\subseteq G$. Existe uma extensão analítica
+$F:G\to\mathbb{C}$ de $f:D\to\mathbb{C}$, isto é, $F\big|_D \equiv f$.
 \end{corolario}
 
 \begin{proof}
-a
+Fixe $a\in D$. Se $\gamma$ é um caminho suave ligando $a$ e $z$ e se 
+$\{ (f_t, D_t) : 0\leq t\leq 1 \}$ é uma continuação analítica de $(f,D)$ ao longo de
+$\gamma$, defina $F(z, \gamma) \equiv f_1(z)$. Já que $G$ é simplesmente conexo,
+$F(z, \gamma) = F(z,\beta)$ para quaisquer dois caminhos suaves em $G$ ligando $a$ e $z$.
+Portanto, $z\mapsto F(z)\equiv F(z, \gamma)$ é uma função bem definida em $G$ 
+(pois independe do caminho escolhido).
+
+Afirmamos que essa função é analítica. De fato, $F(w) = f_1(w), \forall w\in D(z,r)$
+para algum $r$ positivo. Pelo Lema \ref{lema-ext-epsilon-proximas} segue a afirmação.
+Para algum $\Tilde{r}>0$ temos $D(a, \Tilde{r}) \subseteq D$ e 
+$f\big|_{D(a, \Tilde{r})} \equiv F$, de modo que $F\big|_G \equiv f$.
+
+\begin{center}
+    \textbf{diagrama slide 24 Aula 4}
+\end{center}
+
 \end{proof}
 
 
