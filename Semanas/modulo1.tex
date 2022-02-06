@@ -125,9 +125,10 @@
     
     \begin{teorema}[Princípio da Reflexão de Schwarz]
     \label{teo-reflexao-schwarz}
-        Suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende continuamente 
-        para $I$ e tal que $f$ toma valores reais em $I$. Então existe uma função $F$
-        holomorfa em todo o $\Omega$ tal que $F\big|_{\Omega^+} = f$.
+        Suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende 
+        continuamente para $I$ e tal que $f$ toma valores reais em $I$. 
+        Então existe uma função $F$ holomorfa em todo o $\Omega$ tal que
+        $F\big|_{\Omega^+} = f$.
     \end{teorema}
         
     \begin{proof}
@@ -161,219 +162,235 @@
 
 % fazer a discussão introdutória (slides da Aula 1 e início dos slides da Aula 2)
 
-\begin{definicao}
-\label{def-elemento-funcao}
-Um elemento de função é um par $(f, G)$ onde $G$ é um domínio e $f$
-é uma função analítica em $G$. Dado um elemento de função $(f,G)$, 
-definimos o germe de $f$ em $a$, denotado por $[f]_a$, 
-como a coleção de todos os elementos de função $(g,D)$ tais que 
-$a\in D$ e $f(z) = g(z)$ para todo $z$ em uma vizinhança de $a$.
-\end{definicao}
+    \begin{definicao}
+        \label{def-elemento-funcao}
+        Um elemento de função é um par $(f, G)$ onde $G$ é um domínio e $f$
+        é uma função analítica em $G$. Dado um elemento de função $(f,G)$, 
+        definimos o germe de $f$ em $a$, denotado por $[f]_a$, 
+        como a coleção de todos os elementos de função $(g,D)$ tais que 
+        $a\in D$ e $f(z) = g(z)$ para todo $z$ em uma vizinhança de $a$.
+    \end{definicao}
 
 
-\begin{definicao}
-\label{def-continuacao-analitica}
-Seja $\gamma: [0,1] \to \mathbb{C}$ um caminho e suponha que para cada
-$t\in[0,1]$ existe um elemento de função $(f_t, D_t)$ tal que
-\begin{enumerate}[(a)]
-    \item $\gamma(t) \in D_t$;
-    \item para cada $t\in[0,1]$ existe $\delta > 0$ tal que se $|s-t| < \delta$
-    então $\gamma(s) \in D_t$ e $[f_s]_{\gamma(s)} = [f_t]_{\gamma(s)}$.
-\end{enumerate}
-Nesse caso, dizemos que $(f_1, D_1)$ é a continuação analítica de $(f_0,D_0)$ ao 
-longo de $\gamma$ ou ainda que $(f_1, D_1)$ é obtido a partir de $(f_0,D_0)$ por
-continuação analítica ao longo de $\gamma$.
-\end{definicao}
+    \begin{definicao}
+    \label{def-continuacao-analitica}
+        Seja $\gamma: [0,1] \to \C$ um caminho e suponha que para cada
+        $t\in[0,1]$ existe um elemento de função $(f_t, D_t)$ tal que
+        \begin{enumerate}[(a)]
+            \item $\gamma(t) \in D_t$;
+            \item para cada $t\in[0,1]$ existe $\delta > 0$ tal que se $|s-t| < \delta$
+            então $\gamma(s) \in D_t$ e $[f_s]_{\gamma(s)} = [f_t]_{\gamma(s)}$.
+        \end{enumerate}
+        Nesse caso, dizemos que $(f_1, D_1)$ é a continuação analítica de $(f_0,D_0)$ ao 
+        longo de $\gamma$ ou ainda que $(f_1, D_1)$ é obtido a partir de $(f_0,D_0)$ por
+        continuação analítica ao longo de $\gamma$.
+    \end{definicao}
 
 
-\begin{proposicao}
-\label{prop-unicidade-continuacao-analitica-caminho}
-Seja $\gamma: [0,1]\to\mathbb{C}$ um caminho de $a$ para $b$ e sejam
-\begin{align*}
-    \left\{ (f_t, D_t): 0\leq t\leq 1 \right\}, \\
-    \left\{ (g_t, B_t): 0\leq t\leq 1 \right\}
-\end{align*}
-continuações analíticas ao longo de $\gamma$ tais que $[f_0]_a = [g_0]_a$.
-Então $[f_1]_b = [g_1]_b$.
-\end{proposicao}
+    \begin{proposicao}
+    \label{prop-unicidade-continuacao-analitica-caminho}
+        Seja $\gamma: [0,1]\to\C$ um caminho de $a$ para $b$ e sejam
+        \begin{align*}
+            \left\{ (f_t, D_t): 0\leq t\leq 1 \right\}, \\
+            \left\{ (g_t, B_t): 0\leq t\leq 1 \right\}
+        \end{align*}
+        continuações analíticas ao longo de $\gamma$ tais que $[f_0]_a = [g_0]_a$.
+        Então $[f_1]_b = [g_1]_b$.
+    \end{proposicao}
 
-\begin{proof}
-A ideia é mostrar que
-\begin{equation*}
-    T = \left\{ t\in [0,1] : [f_t]_{\gamma(t)}= [g_t]_{\gamma(t)} \right\}
-\end{equation*}
-é aberto e fechado em $[0,1]$ (com a topologia induzida pela topologia usual da reta).
-Isso, juntamente aos fatos de que $T$ é não-vazio ($0\in T$) e $[0,1]$ é conexo, 
-nos permitirá concluir que $T = [0,1]$ e, em particular, $1\in T$.
-
-Para mostrar que $T$ é aberto, seja $t\in T$ não nulo e diferente de 1 
-(se $t=1$ terminamos). Por definição de continuação analítica, existe $\delta > 0$
-tal que se $|s-t|<\delta$ então $\gamma(s) \in D_t\cap B_t$ e 
-\begin{equation*}
-    \begin{cases}
-    [f_s]_{\gamma(s)} = [f_t]_{\gamma(s)} \\
-    [g_s]_{\gamma(s)} = [g_t]_{\gamma(s)}.
-    \end{cases}
-\end{equation*}
-Seja $H\subseteq D_t\cap B_t$ tal que $\gamma(s), \gamma(t)\in H$. 
-
-\begin{center}
-    \textbf{diagrama slide 17 aula 2}
-\end{center}
-
-Como $t\in T$,
-$f_t(z) = g_t(z), \forall z\in H$. Logo, $[f_t]_{\gamma(s)} = [g_t]_{\gamma(s)}$
-para todo $\gamma(s)\in D_t\cap D_s$. Segue então das duas igualdades acima que
-$[f_s]_{\gamma(s)} = [g_s]_{\gamma(s)}$ se $|s-t|<\delta$. Logo, 
-$(t-\delta, t+\delta)\subseteq T$ e, como $t$ é um ponto qualquer de $T$, temos
-$T$ aberto em $[0,1]$.
-
-Agora, para mostrar que $T$ é também fechado em $[0,1]$, tome $t$ um ponto limite 
-de $T$ e escolha $\delta>0$ tal que $\gamma(s) \in D_t\cap B_t$ e
-\begin{equation*}
-    \begin{cases}
-    [f_s]_{\gamma(s)} = [f_t]_{\gamma(s)} \\
-    [g_s]_{\gamma(s)} = [g_t]_{\gamma(s)}.
-    \end{cases}
-\end{equation*}
-sempre que $|s-t|<\delta$. Como $t$ é ponto limite de $T$, existe $s\in T$ com
-$|s-t|<\delta$. Seja então $G$ um domínio tal que 
-$\gamma((t-\delta, t+\delta))\subseteq G\subseteq D_t\cap B_t$.
-Em particular, temos $\gamma(s)\in G$ e, por definição de $T$, segue que
-$f_s(z) = g_s(z), \forall z\in G$. Usando novamente as duas igualdades anteriores, 
-podemos garantir que
-\begin{equation*}
-    \begin{cases}
-    f_s(z) = f_t(z) \\
-    g_s(z) = g_t(z)
-    \end{cases}, \forall z\in G
-\end{equation*}
-donde segue que $f_t(z) = g_t(z), \forall z\in G$. Ora, já que $G$ é aberto 
-(e portanto possui um ponto limite em $D_t\cap B_t$), segue que 
-$[f_t]_{\gamma(t)} = [g_t]_{\gamma(t)}$, ou seja, $t\in T$ e, consequentemente,
-$T$ contém todos os seus pontos limites, i.e., é fechado.
-\end{proof}
-
-
-\begin{observacao}
-Note que o caminho $\gamma$ na 
-Proposição \ref{prop-unicidade-continuacao-analitica-caminho} é o
-mesmo para $f$ e $g$! Isso será muito relevante a seguir devido ao seguinte exemplo.
-
-Defina $\arg_0: \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\} \to (-\pi/2, \pi/2)$,
-que é uma restrição do ramo principal do argumento a um domínio mais ``restrito''.
-
-\begin{center}
-    \textbf{diagrama slide 4 aula 3}
-\end{center}
-
-Considere também a função analítica 
-$f: \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\} \to\mathbb{C}$
-dada por $f(z) = \ln(z) + i\arg_0(z)$.
-
-\begin{center}
-    \textbf{diagrama slide 5 aula 3}
-\end{center}
-
-Vamos definir na região do diagrama da esquerda uma continuação analítica
-$\left\{ (f_t, D_t), t\in [0,1] \right\}$ ao longo de $\gamma_1$, 
-com $-1\in D_1$, $f_1(-1) = i\pi/2$,
-$D_0 = \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\}$ e $f_0 = f$.
-
-Na região mostrada no diagrama da direita, vamos definir uma continuação analítica
-$\left\{ (g_t, B_t), t\in [0,1] \right\}$ ao longo de $\gamma_2$,
-com $-1\in B_1$, $g_1(-1) = -i\pi/2$, 
-$B_0 = \left\{ z\in\mathbb{C} : \Re(z) > 0 \right\}$ e $g_0 = f$.
-
-Note que podemos usar essas continuações analíticas para construir duas
-\textbf{extensões analíticas} $F:U_1\to\mathbb{C}$ e $G:U_2\to\mathbb{C}$, 
-com $F(z) = f_t(z), z\in D_t$ e $G(z) = g_t(z), z\in B_t$, 
-sendo $U_1$ e $U_2$ as uniões do domínio original de $f$
-com as regiões azul e vermelha, respectivamente. Ora, mas note que
-$F$ e $G$, apesar de coincidirem no domínio original de $f$, são distintas!
-
-Esse fato parece, à primeira vista, contradizer o princípio da identidade. 
-Entretanto, isso não acontece porque $F$ e $G$ não estão definidas no mesmo
-domínio. À segunda vista, pode parecer que a conclusão em que chegamos contradiz
-a Proposição \ref{prop-unicidade-continuacao-analitica-caminho}. Mas isso também 
-não ocorre, porque $F$ e $G$ foram construídas por caminhos distintos!
-\end{observacao}
+    \begin{proof}
+        A ideia é mostrar que
+        %
+        \begin{equation*}
+            T = \left\{ t\in [0,1] : [f_t]_{\gamma(t)}= [g_t]_{\gamma(t)} \right\}
+        \end{equation*}
+        %
+        é aberto e fechado em $[0,1]$ (com a topologia induzida pela topologia usual da reta).
+        Isso, juntamente aos fatos de que $T$ é não-vazio ($0\in T$) e $[0,1]$ é conexo, 
+        nos permitirá concluir que $T = [0,1]$ e, em particular, $1\in T$.
+        
+        Para mostrar que $T$ é aberto, seja $t\in T$ não nulo e diferente de 1 
+        (se $t=1$ terminamos). Por definição de continuação analítica, existe $\delta > 0$
+        tal que se $|s-t|<\delta$ então $\gamma(s) \in D_t\cap B_t$ e
+        %
+        \begin{equation*}
+            \begin{cases}
+            [f_s]_{\gamma(s)} = [f_t]_{\gamma(s)} \\
+            [g_s]_{\gamma(s)} = [g_t]_{\gamma(s)}.
+            \end{cases}
+        \end{equation*}
+        %
+        Seja $H\subseteq D_t\cap B_t$ tal que $\gamma(s), \gamma(t)\in H$. 
+        %
+        \begin{center}
+            \textbf{diagrama slide 17 aula 2}
+        \end{center}
+        %
+        Como $t\in T$,
+        $f_t(z) = g_t(z), \forall z\in H$. Logo, $[f_t]_{\gamma(s)} = [g_t]_{\gamma(s)}$
+        para todo $\gamma(s)\in D_t\cap D_s$. Segue então das duas igualdades acima que
+        $[f_s]_{\gamma(s)} = [g_s]_{\gamma(s)}$ se $|s-t|<\delta$. Logo, 
+        $(t-\delta, t+\delta)\subseteq T$ e, como $t$ é um ponto qualquer de $T$, temos
+        $T$ aberto em $[0,1]$.
+        
+        Agora, para mostrar que $T$ é também fechado em $[0,1]$, tome $t$ um ponto 
+        limite de $T$ e escolha $\delta>0$ tal que $\gamma(s) \in D_t\cap B_t$ e
+        %
+        \begin{equation*}
+            \begin{cases}
+                [f_s]_{\gamma(s)} = [f_t]_{\gamma(s)} \\
+                [g_s]_{\gamma(s)} = [g_t]_{\gamma(s)}.
+            \end{cases}
+        \end{equation*}
+        %
+        sempre que $|s-t|<\delta$. Como $t$ é ponto limite de $T$, existe $s\in T$ com
+        $|s-t|<\delta$. Seja então $G$ um domínio tal que 
+        $\gamma((t-\delta, t+\delta))\subseteq G\subseteq D_t\cap B_t$.
+        Em particular, temos $\gamma(s)\in G$ e, por definição de $T$, segue que
+        $f_s(z) = g_s(z), \forall z\in G$. Usando novamente as duas igualdades anteriores, 
+        podemos garantir que
+        %
+        \begin{equation*}
+            \begin{cases}
+                f_s(z) = f_t(z) \\
+                g_s(z) = g_t(z)
+            \end{cases}, \forall z\in G
+        \end{equation*}
+        %
+        donde segue que $f_t(z) = g_t(z), \forall z\in G$. Ora, já que $G$ é aberto 
+        (e portanto possui um ponto limite em $D_t\cap B_t$), segue que 
+        $[f_t]_{\gamma(t)} = [g_t]_{\gamma(t)}$, ou seja, $t\in T$ e, consequentemente,
+        $T$ contém todos os seus pontos limites, i.e., é fechado.
+    \end{proof}
 
 
-\begin{definicao}
-\label{def-continuacao-analitica-germe}
-Se $\gamma: [0,1]\to\mathbb{C}$ é um caminho de $a$ para $b$ e 
-$\left\{ (f_t, D_t): 0\leq t\leq 1 \right\}$ é uma continuação analítica ao
-longo de $\gamma$, então o germe $[f_1]_b$ é a continuação analítica de
-$[f_0]_a$ ao longo de $\gamma$.
-\end{definicao}
+    \begin{observacao}
+        Note que o caminho $\gamma$ na 
+        Proposição \ref{prop-unicidade-continuacao-analitica-caminho} é o
+        mesmo para $f$ e $g$! Isso será muito relevante a seguir devido ao 
+        seguinte exemplo.
+        
+        Defina $\arg_0: \left\{ z\in\C : \Re(z) > 0 \right\} \to (-\pi/2, \pi/2)$,
+        que é uma restrição do ramo principal do argumento a um domínio mais ``restrito''.
+        %
+        \begin{center}
+            \textbf{diagrama slide 4 aula 3}
+        \end{center}
+        %
+        Considere também a função analítica 
+        $f: \left\{ z\in\C : \Re(z) > 0 \right\} \to\C$
+        dada por $f(z) = \ln(z) + i\arg_0(z)$.
+        %
+        \begin{center}
+            \textbf{diagrama slide 5 aula 3}
+        \end{center}
+        %
+        Vamos definir na região do diagrama da esquerda uma continuação analítica
+        $\left\{ (f_t, D_t), t\in [0,1] \right\}$ ao longo de $\gamma_1$, 
+        com $-1\in D_1$, $f_1(-1) = i\pi/2$,
+        $D_0 = \left\{ z\in\C : \Re(z) > 0 \right\}$ e $f_0 = f$.
+        
+        Na região mostrada no diagrama da direita, vamos definir uma continuação analítica
+        $\left\{ (g_t, B_t), t\in [0,1] \right\}$ ao longo de $\gamma_2$,
+        com $-1\in B_1$, $g_1(-1) = -i\pi/2$, 
+        $B_0 = \left\{ z\in\C : \Re(z) > 0 \right\}$ e $g_0 = f$.
+        
+        Note que podemos usar essas continuações analíticas para construir duas
+        \textbf{extensões analíticas} $F:U_1\to\C$ e $G:U_2\to\C$, 
+        com $F(z) = f_t(z), z\in D_t$ e $G(z) = g_t(z), z\in B_t$, 
+        sendo $U_1$ e $U_2$ as uniões do domínio original de $f$
+        com as regiões azul e vermelha, respectivamente. Ora, mas note que
+        $F$ e $G$, apesar de coincidirem no domínio original de $f$, são distintas!
+        
+        Esse fato parece, à primeira vista, contradizer o princípio da identidade. 
+        Entretanto, isso não acontece porque $F$ e $G$ não estão definidas no mesmo
+        domínio. À segunda vista, pode parecer que a conclusão em que chegamos contradiz
+        a Proposição \ref{prop-unicidade-continuacao-analitica-caminho}. Mas isso também 
+        não ocorre, porque $F$ e $G$ foram construídas por caminhos distintos!
+    \end{observacao}
+
+
+    \begin{definicao}
+    \label{def-continuacao-analitica-germe}
+        Se $\gamma: [0,1]\to\C$ é um caminho de $a$ para $b$ e 
+        $\left\{ (f_t, D_t): 0\leq t\leq 1 \right\}$ é uma continuação analítica ao
+        longo de $\gamma$, então o germe $[f_1]_b$ é a continuação analítica de
+        $[f_0]_a$ ao longo de $\gamma$.
+    \end{definicao}
 
 Note que é preciso usar a Proposição \ref{prop-unicidade-continuacao-analitica-caminho}
 para verificar que a definição acima está bem posta. Ademais, note que ela torna
 as coisas mais práticas, pois nos permite simplificar a descrição dos $D_t$'s.
 
-\begin{observacao}
-Sejam $U_1, U_2\subseteq\mathbb{C}$ domínios não-vazios tais que $U_1\cap U_2$
-também é um domínio não-vazio.
-
-\begin{center}
-    \textbf{diagrama slide 9 aula 3}
-\end{center}
-
-Sejam ainda $f:U_1\to\mathbb{C}$ e $g:U_2\to\mathbb{C}$ funções analíticas
-tais que $f(z) = g(z), \forall z\in U_1\cap U_2$. Nesse caso, dizemos que
-$g$ é uma continuação analítica de $f$ a $U_2$ e vice-versa: $f$ é 
-uma continuação analítica de $g$ a $U_1$.
-
-Essas duas aplicações podem ser usadas para construir uma extensão analítica
-$F: U_1\cup U_2\to\mathbb{C}$ dada por partes:
-\begin{equation*}
-    F(z) = \begin{cases}
-    f(z), z\in U_1; \\
-    g(z), z\in U_2.
-    \end{cases}
-\end{equation*}
-Nesse caso, $(f,U_1)$ e $(g,U_2)$ são os elementos de função de $F$. 
-Essa é a motivação para a definição de \textit{elemento de função}.
-
-Vale reiterar que extensões analíticas por continuações analíticas distintas
-não precisam coincidir. No diagrama abaixo temos $F: U\cup V\to\mathbb{C}$
-e $G:U\cup W\to\mathbb{C}$ analíticas, com
-\begin{align*}
-    F(z) &= \begin{cases}
-    f(z), z\in U; \\
-    g(z), z\in V.
-    \end{cases}, \\
-    G(z) &= \begin{cases}
-    f(z), z\in U; \\
-    h(z), z\in W.
-    \end{cases}
-\end{align*}
-mas $F\neq G$.
-
-\begin{center}
-    \textbf{diagrama slide 11 aula 3}
-\end{center}
-
-\end{observacao}
+    \begin{observacao}
+        Sejam $U_1, U_2\subseteq\C$ domínios não-vazios tais que $U_1\cap U_2$
+        também é um domínio não-vazio.
+        %
+        \begin{center}
+            \textbf{diagrama slide 9 aula 3}
+        \end{center}
+        %
+        Sejam ainda $f:U_1\to\C$ e $g:U_2\to\C$ funções analíticas
+        tais que $f(z) = g(z), \forall z\in U_1\cap U_2$. Nesse caso, dizemos que
+        $g$ é uma continuação analítica de $f$ a $U_2$ e vice-versa: $f$ é 
+        uma continuação analítica de $g$ a $U_1$.
+        
+        Essas duas aplicações podem ser usadas para construir uma extensão analítica
+        $F: U_1\cup U_2\to\C$ dada por partes:
+        %
+        \begin{equation*}
+            F(z) = 
+            \begin{cases}
+                f(z), z\in U_1; \\
+                g(z), z\in U_2.
+            \end{cases}
+        \end{equation*}
+        %
+        Nesse caso, $(f,U_1)$ e $(g,U_2)$ são os elementos de função de $F$. 
+        Essa é a motivação para a definição de \textit{elemento de função}.
+        
+        Vale reiterar que extensões analíticas por continuações analíticas distintas
+        não precisam coincidir. No diagrama abaixo temos $F: U\cup V\to\C$
+        e $G:U\cup W\to\C$ analíticas, com
+        %
+        \begin{align*}
+            F(z) &= 
+            \begin{cases}
+                f(z), z\in U; \\
+                g(z), z\in V.
+            \end{cases}, \\
+            G(z) &= 
+            \begin{cases}
+                f(z), z\in U; \\
+                h(z), z\in W.
+            \end{cases}
+        \end{align*}
+        %
+        mas $F\neq G$.
+        %
+        \begin{center}
+            \textbf{diagrama slide 11 aula 3}
+        \end{center}
+        %
+    \end{observacao}
 
 Damos sequência com duas definições que, à primeira vista, não parecem ter 
 nada a ver com os termos por elas definidos.
 
-\begin{definicao}
-\label{def-funcao-analitica-completa}
-Se $(f,G)$ é um elemento de função, então a função analítica completa obtida
-a partir de $(f,G)$ é a coleção $\mathcal{F}$ de todos os germes $[g]_b$ 
-para os quais existem $a\in G$ e um caminho $\gamma$ de $a$ para $b$ 
-tais que $[g]_b$ é a continuação analítica de $[f]_a$ ao longo de $\gamma$.
-\end{definicao}
+    \begin{definicao}
+    \label{def-funcao-analitica-completa}
+        Se $(f,G)$ é um elemento de função, então a função analítica completa obtida
+        a partir de $(f,G)$ é a coleção $\mathcal{F}$ de todos os germes $[g]_b$ 
+        para os quais existem $a\in G$ e um caminho $\gamma$ de $a$ para $b$ 
+        tais que $[g]_b$ é a continuação analítica de $[f]_a$ ao longo de $\gamma$.
+    \end{definicao}
 
 
-\begin{definicao}
-Uma coleção de germes $\mathcal{F}$ é chamada função analítica completa se
-existe um elemento de função $(f,G)$ tal que $\mathcal{F}$ é a função analítica
-completa obtida de $(f,G)$.
-\end{definicao}
+    \begin{definicao}
+        Uma coleção de germes $\mathcal{F}$ é chamada função analítica completa se
+        existe um elemento de função $(f,G)$ tal que $\mathcal{F}$ é a função analítica
+        completa obtida de $(f,G)$.
+    \end{definicao}
 
 Note que esta definição nos permite ``esquecer'' do ponto $a$ mencionado na
 Definição \ref{def-funcao-analitica-completa}. Podemos escolher qualquer ponto
@@ -385,13 +402,17 @@ coleção de germes?'', e a resposta é surpreendente. Vamos mostrar que
 podemos construir uma função a partir da coleção $\mathcal{F}$ de germes.
 
 Inicialmente, consideremos a coleção
+%
 \begin{equation*}
     \mathcal{R} = \left\{ (z, [g]_z) : [g]_z \in \mathcal{F} \right\}.
 \end{equation*}
-Definimos então $\widetilde{\mathcal{F}}:\mathcal{R}\to\mathbb{C}$ por
+%
+Definimos então $\widetilde{\mathcal{F}}:\mathcal{R}\to\C$ por
+%
 \begin{equation*}
     \widetilde{\mathcal{F}}((z, [g]_z)) = g(z),
 \end{equation*}
+%
 ou seja, escolhemos um ``representante'' do germe e calculamos sua imagem em $z$.
 
 {\red Falar do teorema de uniformização...}
@@ -409,7 +430,7 @@ caminhos distintos não precisam coincidir. O leitor familiar com teoria de
 homotopia poderia pensar que uma condição suficiente para a
 igualdade das continuações pode ser dada em termos dessa teoria. Entretanto,
 como todas as curvas no plano (complexo) são homotópicas, o resultado teria
-de ser fraseado em termos de homotopia em um domínio próprio de $\mathbb{C}$,
+de ser fraseado em termos de homotopia em um domínio próprio de $\C$,
 que é o conteúdo do teorema de monodromia.
 
 Ainda assim, em domínios mais ``malucos'', a teoria de homotopia não é suficiente
@@ -423,131 +444,155 @@ em torno de $a$. O primeiro passo para demonstrar o teorema de Monodromia será
 estudar o comportamento do raio de convergência da continuação analítica ao longo
 de um caminho.
 
-\begin{lema}
-\label{lema-raio-convergencia-continuo}
-Sejam $\gamma: [0,1]\to\mathbb{C}$ um caminho e 
-$\left\{ (f_t, D_t): 0\leq t\leq 1 \right\}$ uma continuação analítica ao longo de
-$\gamma$. Para $t\in[0,1]$, seja $R(t)$ o raio de convergência da expansão em 
-série de potências de $f_t$ em torno de $z=\gamma(t)$. Então ou $R(t) \equiv\infty$
-ou $R: [0,1]\to (0, \infty)$ é uma função contínua.
-\end{lema}
+    \begin{lema}
+    \label{lema-raio-convergencia-continuo}
+        Sejam $\gamma: [0,1]\to\C$ um caminho e 
+        $\left\{ (f_t, D_t): 0\leq t\leq 1 \right\}$ uma continuação analítica ao longo de
+        $\gamma$. Para $t\in[0,1]$, seja $R(t)$ o raio de convergência da expansão em 
+        série de potências de $f_t$ em torno de $z=\gamma(t)$. Então ou $R(t) \equiv\infty$
+        ou $R: [0,1]\to (0, \infty)$ é uma função contínua.
+    \end{lema}
 
-\begin{proof}
-Suponha, inicialmente, que existe $0\leq t\leq 1$ tal que $R(t)\equiv\infty$.
-Vamos mostrar que
-\begin{equation*}
-    T = \left\{ t\in[0,1] : R(t)\equiv\infty \right\}
-\end{equation*}
-é fechado e aberto, donde seguirá que $T = [0,1]$ por conexidade.
-
-Da hipótese de existência de um $t\in T$, podemos escrever
-\begin{equation*}
-    f_t(z) = \sum_{n=0}^\infty a_n(\gamma(t))(z - \gamma(t))^n, \forall z\in D_t
-\end{equation*}
-e, ademais, a séria acima define uma função inteira (devido ao raio de convergência
-infinito). Como $D_t$ é conexo, podemos estender $f_t$ a uma função inteira $F_t$.
-
-Pelas condições de compatibilidade da Definição \ref{def-continuacao-analitica},
-existe $\delta > 0$ tal que se $|s-t|<\delta$ então 
-$[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$. Portanto, se
-$(F_t,\mathbb{C}) \in [f_t]_{\gamma(s)}$ então $(F_t,\mathbb{C}) \in [f_s]_{\gamma(s)}$.
-Note que $(F_t,\mathbb{C}) \in [f_s]_{\gamma(s)}$ implica $F_t(z) = f_s(z)$, para todo
-$z\in D_s$. Portanto, 
-\begin{align*}
-    \sum_{n=0}^\infty \widetilde{a_n}(\gamma(s))(z-\gamma(s))^n 
-    =
-    F_t(z)
-    =
-    f_s(z)
-    =
-    \sum_{n=0}^\infty a_n(\gamma(s))(z-\gamma(s))^n,
-\end{align*}
-onde a série à direita é a expansão em série de potências de $F_t$ em torno 
-de $\gamma(s)$. Pelo princípio da identidade, devemos ter 
-$a_n(\gamma(s)) = \widetilde{a_n(\gamma(s))}, \forall n$ e, como o raio 
-de convergência da série à direita é infinito (pois $F_t$ é inteira), segue
-que $R(s) = \infty$. Portanto, temos $T$ aberto.
-
-Para mostrar que $T$ é fechado, seja $(s_n)_{n\in\mathbb{N}}\subseteq T$ uma
-sequência em $T$ que converge para um $t$ fixado. Sabemos que existe 
-$\delta = \delta(t)$ tal que se $|s-t|<\delta$ então 
-$[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$. Como $s_n\xrightarrow{n\to\infty} t$,
-existe $n_0\in\mathbb{N}$ tal que se $n\geq n_0$ então $|s_n - t|<\delta$.
-Logo, para um $n$ satisfazendo tal condição, temos
-$[f_t]_{\gamma(s_n)} = [f_{s_n}]_{\gamma(s_n)}$. Temos então
-\begin{align*}
-    \sum_{j=0}^\infty \widetilde{a_j}(\gamma(t))(z-\gamma(t))^j
-    =
-    f_t(z)
-    \stackrel{z\in D_{s_n}}{=}
-    f_{s_n}(z)
-    =
-    \sum_{j=0}^\infty a_n(\gamma(t))(z-\gamma(t))^n.
-\end{align*}
-Ora, então $\widetilde{a_j}(\gamma(t)) = a_j(\gamma(t))$ e, por hipótese, temos
-\begin{equation*}
-    R(t) := \frac{1}{\displaystyle{\limsup_{j\to\infty}} \sqrt{ |a_j(\gamma(t))| } } 
-    = \infty,
-\end{equation*}
-de modo que $R(t) = \infty$ e, portanto, $T$ é fechado.
-
-Segue então que se existe $t\in [0,1]$ tal que $R(t) = \infty$, então
-$R(t) \equiv\infty$ em $[0,1]$.
-
-Resta analisar o caso $R(t) < \infty, \forall t\in[0,1]$. Por analiticidade, podemos
-supor também que $R(t) > 0$ em $[0,1]$.
-
-Fixe $t\in [0,1]$ e considere a expansão em série de potência
-\begin{equation*}
-    f_t(z) = \sum_{n=0}^{\infty} a_n(\gamma(t))(z-\gamma(t))^n.
-\end{equation*}
-Seja $\delta_1$ tal que 
-\begin{enumerate}[i)]
-    \item se $|s-t|<\delta_1$ então $\gamma(s)\in D_t\cap D(\gamma(t), R(t));$
-    
-    \begin{center}
-        \textbf{diagrama slide 31 aula 3}
-    \end{center}
-    
-    \item $[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$.
-\end{enumerate}
-Fixe $s$ tal que $|s-t<\delta_1|$. Note que podemos pensar em $f_t$ como uma 
-função analítica em $D(\gamma(t), R(t))$ (basta estendê-la analiticamente caso
-$D(\gamma(t), R(t))$ tenha pontos fora de $D_t$). Note, ainda, que existe uma 
-vizinhança $W\subseteq\mathbb{C}$ de $\gamma(s)$ tal que 
-$f_t(z) = f_s(z), \forall z\in W$.
-
-\begin{center}
-    \textbf{diagrama slide 32 aula 3}
-\end{center}
-
-A menos de estender analiticamente, podemos pensar em $f_s$ como uma função analítica
-em $D_s\cup D(\gamma(t), R(t))$. Suponha que
-\begin{equation*}
-    f_s(z) = \sum_{n=0}^\infty a_n(\gamma(s))(z-\gamma(s))^n
-\end{equation*}
-seja a expansão em série de potências de $f_s$ em torno de $\gamma(s)$. Temos então
-\begin{equation*}
-    R(t) - |\gamma(t) - \gamma(s)| \leq R(s).
-\end{equation*}
-Por outro lado, podemos também pensar em $f_t$ como sendo analítica no conjunto
-$D_t\cup D(\gamma(s), R(s))$ e expandir
-\begin{equation*}
-    f_t(z) = \sum_{n=0}^\infty a_n(\gamma(t))(z-\gamma(t))^n,
-\end{equation*}
-obtendo
-\begin{equation*}
-    R(s) - |\gamma(t) - \gamma(s)| \leq R(t).
-\end{equation*}
-Juntando as duas desigualdade, obtemos
-\begin{equation*}
-    -|\gamma(t) - \gamma(s)| \leq R(t) - R(s) \leq |\gamma(t) - \gamma(s)| 
-    \iff
-    |R(t) - R(s)| \leq |\gamma(t) - \gamma(s)|.
-\end{equation*}
-A última desigualdade implica, então, que $t\mapsto R(t)$ define uma função contínua,
-encerrando a demonstração.
-\end{proof}
+    \begin{proof}
+        Suponha, inicialmente, que existe $0\leq t\leq 1$ tal que $R(t)\equiv\infty$.
+        Vamos mostrar que
+        %
+        \begin{equation*}
+            T = \left\{ t\in[0,1] : R(t)\equiv\infty \right\}
+        \end{equation*}
+        %
+        é fechado e aberto, donde seguirá que $T = [0,1]$ por conexidade.
+        
+        Da hipótese de existência de um $t\in T$, podemos escrever
+        %
+        \begin{equation*}
+            f_t(z) = \sum_{n=0}^\infty a_n(\gamma(t))(z - \gamma(t))^n, \forall z\in D_t
+        \end{equation*}
+        %
+        e, ademais, a séria acima define uma função inteira (devido ao raio de convergência
+        infinito). Como $D_t$ é conexo, podemos estender $f_t$ a uma função inteira $F_t$.
+        
+        Pelas condições de compatibilidade da Definição \ref{def-continuacao-analitica},
+        existe $\delta > 0$ tal que se $|s-t|<\delta$ então 
+        $[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$. Portanto, se
+        $(F_t,\C) \in [f_t]_{\gamma(s)}$ então $(F_t,\C) \in [f_s]_{\gamma(s)}$.
+        Note que $(F_t,\C) \in [f_s]_{\gamma(s)}$ implica $F_t(z) = f_s(z)$, para todo
+        $z\in D_s$. Portanto, 
+        %
+        \begin{align*}
+            \sum_{n=0}^\infty \widetilde{a_n}(\gamma(s))(z-\gamma(s))^n 
+            =
+            F_t(z)
+            =
+            f_s(z)
+            =
+            \sum_{n=0}^\infty a_n(\gamma(s))(z-\gamma(s))^n,
+        \end{align*}
+        %
+        onde a série à direita é a expansão em série de potências de $F_t$ em torno 
+        de $\gamma(s)$. Pelo princípio da identidade, devemos ter 
+        $a_n(\gamma(s)) = \widetilde{a_n(\gamma(s))}, \forall n$ e, como o raio 
+        de convergência da série à direita é infinito (pois $F_t$ é inteira), segue
+        que $R(s) = \infty$. Portanto, temos $T$ aberto.
+        
+        Para mostrar que $T$ é fechado, seja $(s_n)_{n\in\N}\subseteq T$ uma
+        sequência em $T$ que converge para um $t$ fixado. Sabemos que existe 
+        $\delta = \delta(t)$ tal que se $|s-t|<\delta$ então 
+        $[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$. Como $s_n\xrightarrow{n\to\infty} t$,
+        existe $n_0\in\N$ tal que se $n\geq n_0$ então $|s_n - t|<\delta$.
+        Logo, para um $n$ satisfazendo tal condição, temos
+        $[f_t]_{\gamma(s_n)} = [f_{s_n}]_{\gamma(s_n)}$. Temos então
+        %
+        \begin{align*}
+            \sum_{j=0}^\infty \widetilde{a_j}(\gamma(t))(z-\gamma(t))^j
+            =
+            f_t(z)
+            \stackrel{z\in D_{s_n}}{=}
+            f_{s_n}(z)
+            =
+            \sum_{j=0}^\infty a_n(\gamma(t))(z-\gamma(t))^n.
+        \end{align*}
+        %
+        Ora, então $\widetilde{a_j}(\gamma(t)) = a_j(\gamma(t))$ e, por hipótese, temos
+        %
+        \begin{equation*}
+            R(t) := \frac{1}{\displaystyle{\limsup_{j\to\infty}} \sqrt{ |a_j(\gamma(t))| } } 
+            = \infty,
+        \end{equation*}
+        %
+        de modo que $R(t) = \infty$ e, portanto, $T$ é fechado.
+        
+        Segue então que se existe $t\in [0,1]$ tal que $R(t) = \infty$, então
+        $R(t) \equiv\infty$ em $[0,1]$.
+        
+        Resta analisar o caso $R(t) < \infty, \forall t\in[0,1]$. Por analiticidade, podemos
+        supor também que $R(t) > 0$ em $[0,1]$.
+        
+        Fixe $t\in [0,1]$ e considere a expansão em série de potência
+        %
+        \begin{equation*}
+            f_t(z) = \sum_{n=0}^{\infty} a_n(\gamma(t))(z-\gamma(t))^n.
+        \end{equation*}
+        %
+        Seja $\delta_1$ tal que 
+        %
+        \begin{enumerate}[i)]
+            \item se $|s-t|<\delta_1$ então $\gamma(s)\in D_t\cap D(\gamma(t), R(t));$
+            %
+            \begin{center}
+                \textbf{diagrama slide 31 aula 3}
+            \end{center}
+            %
+            \item $[f_t]_{\gamma(s)} = [f_s]_{\gamma(s)}$.
+        \end{enumerate}
+        %
+        Fixe $s$ tal que $|s-t<\delta_1|$. Note que podemos pensar em $f_t$ como uma 
+        função analítica em $D(\gamma(t), R(t))$ (basta estendê-la analiticamente caso
+        $D(\gamma(t), R(t))$ tenha pontos fora de $D_t$). Note, ainda, que existe uma 
+        vizinhança $W\subseteq\C$ de $\gamma(s)$ tal que 
+        $f_t(z) = f_s(z), \forall z\in W$.
+        %
+        \begin{center}
+            \textbf{diagrama slide 32 aula 3}
+        \end{center}
+        %
+        A menos de estender analiticamente, podemos pensar em $f_s$ como uma função analítica
+        em $D_s\cup D(\gamma(t), R(t))$. Suponha que
+        %
+        \begin{equation*}
+            f_s(z) = \sum_{n=0}^\infty a_n(\gamma(s))(z-\gamma(s))^n
+        \end{equation*}
+        %
+        seja a expansão em série de potências de $f_s$ em torno de $\gamma(s)$. Temos então
+        %
+        \begin{equation*}
+            R(t) - |\gamma(t) - \gamma(s)| \leq R(s).
+        \end{equation*}
+        %
+        Por outro lado, podemos também pensar em $f_t$ como sendo analítica no conjunto
+        $D_t\cup D(\gamma(s), R(s))$ e expandir
+        %
+        \begin{equation*}
+            f_t(z) = \sum_{n=0}^\infty a_n(\gamma(t))(z-\gamma(t))^n,
+        \end{equation*}
+        %
+        obtendo
+        %
+        \begin{equation*}
+            R(s) - |\gamma(t) - \gamma(s)| \leq R(t).
+        \end{equation*}
+        %
+        Juntando as duas desigualdade, obtemos
+        %
+        \begin{equation*}
+            -|\gamma(t) - \gamma(s)| \leq R(t) - R(s) \leq |\gamma(t) - \gamma(s)| 
+            \iff
+            |R(t) - R(s)| \leq |\gamma(t) - \gamma(s)|.
+        \end{equation*}
+        %
+        A última desigualdade implica, então, que $t\mapsto R(t)$ define uma função contínua,
+        encerrando a demonstração.
+    \end{proof}
 
 É interessante observar que o final da demonstração anterior nos permite dizer
 mais do que ``$R(t)$ é uma função contínua em $[0,1]$''. De fato, definindo o que
@@ -558,260 +603,330 @@ $\gamma$ é Lipschitz, então $R(t)$ também o é
 (e isso é facilmente verificado com a última desigualdade da demonstração).
 Dito de outro modo, $R(t)$ herda o módulo de continuidade de $\gamma$.
 
-\begin{lema}
-\label{lema-ext-epsilon-proximas}
-Seja $\gamma: [0,1] \to \mathbb{C}$ um caminho do ponto $a$ para o ponto $b$ e seja
-$\{(f_t, D_t): 0 \leq t \leq 1\}$ uma continuação analítica ao longo de $\gamma$. 
-Existe um $\varepsilon > 0$ tal que, se $\sigma :[0,1] \to \mathbb{C}$ é um caminho 
-de $a$ para $b$ satisfazendo $|\gamma(t) - \sigma(t)| < \varepsilon$ para todo $t$ 
-e $\{(g_t, B_t): 0 \leq t \leq 1\}$ é uma continuação analítica ao longo de $\sigma$ 
-com $[f_0]_a = [g_0]_a$, então $[f_1]_b = [g_1]_b$.
-\end{lema}
+    \begin{lema}
+    \label{lema-ext-epsilon-proximas}
+        Seja $\gamma: [0,1] \to \C$ um caminho do ponto $a$ para o ponto $b$ e seja
+        $\{(f_t, D_t): 0 \leq t \leq 1\}$ uma continuação analítica ao longo de $\gamma$. 
+        Existe um $\varepsilon > 0$ tal que, se $\sigma :[0,1] \to \C$ é um caminho 
+        de $a$ para $b$ satisfazendo $|\gamma(t) - \sigma(t)| < \varepsilon$ para todo $t$ 
+        e $\{(g_t, B_t): 0 \leq t \leq 1\}$ é uma continuação analítica ao longo de $\sigma$ 
+        com $[f_0]_a = [g_0]_a$, então $[f_1]_b = [g_1]_b$.
+    \end{lema}
 
-\begin{proof}
-Novamente, aqui, $R(t)$ é o raio de convergência da série de potências da função 
-$f_t$ em torno de $\gamma(t)$. Pelo Lema anterior, temos que $R(t) \equiv \infty$ 
-ou $0 < R(t) < \infty$, onde $R(t) > 0$ devido ao fato de que cada função $f_t$ é
-analítica em $D_t$. 
+    \begin{proof}
+        Novamente, aqui, $R(t)$ é o raio de convergência da série de potências da função 
+        $f_t$ em torno de $\gamma(t)$. Pelo Lema anterior, temos que $R(t) \equiv \infty$ 
+        ou $0 < R(t) < \infty$, onde $R(t) > 0$ devido ao fato de que cada função $f_t$ é
+        analítica em $D_t$. 
+        
+        Se $R(t) \equiv \infty$, então qualquer $\varepsilon > 0$ escolhido é suficiente 
+        para que o Lema seja válido. Como o raio de convergência é infinito para cada $t$,
+        podemos estender a função $g_t$ analiticamente para a função definida pela série de
+        potências da expansão de $f_t$ usando o princípio da identidade.
+        
+        Suponha agora que $0 < R(t) < \infty$. No restante da demonstração, vamos supor que 
+        $D_t$ é o disco de centro $\gamma(t)$ e raio $R(t)$. Isto pode ser feito, pois, caso
+        $D_t$ não fosse um disco, então, ou $D_t \subseteq D(\gamma(t),R(t))$ ou
+        $D(\gamma(t),R(t)) \subseteq D_t$ e poderíamos sempre estender $f_t$ usando o 
+        princípio da identidade. Por motivos inteiramente análogos, podemos supor também
+        que $B_t$ são discos centrados em $\beta(t)$. Essas suposições simplificarão 
+        os argumentos.
+        %
+        \begin{center}
+            \textbf{diagrama slide 5 Aula 4}
+        \end{center}
+        %
+        Escolha um $\varepsilon$ satisfazendo
+        %
+        \begin{equation*}
+        0 < \varepsilon < \frac{1}{2}\min\{R(t): t \in [0,1]\}.
+        \end{equation*}
+        %
+        Note que $R$ alcança o mínimo pois é uma função contínua no compacto $[0,1]$. 
+        Dito de outro modo, existe $t_* \in [0,1]$ tal que $R(t_*) = \min\{R(t): t \in [0,1]\}$.
+        
+        Para cada $t \in [0,1]$, temos $|\gamma(t) - \sigma(t)| < \varepsilon < R(t)$, então
+        $\sigma(t) \in B_t \cap D_t$ para todo $t$. Queremos mostrar que $[f_1]_b = [g_1]_b$, 
+        o que pode ser feito mostrando que $f_1(z) = g_1(z)$ para todo $z \in B_1 \cap D_1$. 
+        Como é difícil mostrar isso para o valor particular $t=1$ diretamente, vamos passar 
+        a uma estratégia que já adotamos antes: mostrar que um determinado conjunto é aberto
+        e fechado relativo a $[0,1]$.
+        
+        Defina
+        %
+        \begin{equation*}
+        T = \{t \in [0,1]: f_t(z) = g_t(z) \forall z \in B_t \cap D_t\}.
+        \end{equation*}
+        %
+        $T$ não é vazio por conta da hipótese $[f_0]_a = [g_0]_a$. Vamos mostrar que $T$ é
+        aberto e fechado no conexo $[0,1]$, ou seja, $T = [0,1]$. Seja $t \in T$; 
+        existe um $\delta > 0$ tal que
+        %
+        \begin{align}
+        \label{Eq5}
+            &|\gamma(s) - \gamma(t)| < \varepsilon, \ \ \ \ \ [f_s]_{\gamma(s)} =
+            [f_t]_{\gamma(s)} \\
+            &|\sigma(s) - \sigma(t)| < \varepsilon, \ \ \ \ \ [g_s]_{\gamma(s)} =
+            [g_t]_{\gamma(s)} \\
+            &\sigma(s) \in B_t
+        \end{align}
+        %
+        sempre que $|s-t|<\delta$. Aqui, usamos a continuidade da funções $\gamma$ e $\sigma$ 
+        e a condição de compatibilidade da definição de continuação analítica ao longo de um
+        caminho.
+        
+        Seja $G = B_s \cap B_t \cap D_s \cap D_t$, como ilustrado abaixo. 
+        %
+        \begin{center}
+            \textbf{diagrama slide 8 Aula 4}
+        \end{center}
+        %
+        Vamos mostrar que 
+        $\sigma(s) \in G$, de modo que $G \neq \emptyset$. Pela definição de continuação 
+        ao longo de um caminho, temos $\sigma(s) \in B_t \cap B_s$. Da hipótese do Lema,
+        %
+        \begin{equation*}
+        |\sigma(s) - \gamma(s)| < \varepsilon < R(s),
+        \end{equation*}
+        %
+        donde segue que $\sigma(s) \in D_s$. Usando a desigualdade triangular e as condições em \ref{Eq5}, temos que
+        %
+        \begin{align*}
+        |\sigma(s) - \gamma(t)| &= |\sigma(s) - \gamma(s) + \gamma(s) - \gamma(t)| \\
+        &\leq |\sigma(s) - \gamma(s)| + |\gamma(s) - \gamma(t)| \\
+        &< 2\varepsilon < R(t).
+        \end{align*}
+        %
+        Isto mostra que $\sigma(s) \in D_t$ e, portanto, $\sigma(s) \in G$.
+        
+        Como $t \in T$, temos que $f_t(z) = g_t(z)$ para todo $z$ em $G$. 
+        As condições em \ref{Eq5} implicam que 
+        %
+        \begin{align*}
+            \begin{cases}
+                f_s(z) = f_t(z) \\
+                g_s(z) = g_t(z)
+            \end{cases}
+        \end{align*}
+        %
+        sempre que $z \in G$. Segue que $f_s(z) = g_s(z)$ para todo $z \in G$. 
+        Pelo princípio da identidade, podemos concluir que 
+        $f_s(z) = g_s(z) \forall z \in D_s \cap B_s$, ou seja, $s \in T$ sempre que 
+        $|s-t|< \delta$, o que mostra que $T$ é aberto.
+        
+        Vamos mostrar agora que $T$ é também fechado. Lembre-se que um conjunto é fechado 
+        se, e somente se, contém todos os seus pontos de acumulação. Sejam $t$ um ponto de
+        acumulação de $T$ e $\{s_n\}$ uma sequência de pontos em $T$ com $s_n \to t$. 
+        Novamente, existe um $\delta > 0$ tal que valem as condições em \ref{Eq5} sempre que
+        $|s-t|<\delta$; existe também um $N \in \N$ tal que
+        %
+        \begin{equation*}
+        n \geq N \implies |s_n - t| < \delta.
+        \end{equation*}
+        %
+        Aplicando um raciocínio totalmente análogo ao que fizemos antes, mostra-se que
+        $\sigma(s_n) \in G = B_s \cap B_t \cap D_s \cap D_t$. Como consequência das 
+        condições de compatibilidade análogas àquelas listadas em \ref{Eq5} 
+        (apenas trocando $s \leftrightarrow s_n)$, temos
+        %
+        \begin{align*}
+            \begin{cases}
+                f_{s_n}(z) = f_t(z) \\
+                g_{s_n}(z) = g_t(z)
+            \end{cases}
+        \end{align*}
+        %
+        sempre que $z \in G$. Agora, $s_n \in T$, então
+        %
+        \begin{equation*}
+            f_t(z) = f_{s_n}(z) = g_{s_n}(z) = g_t(z), \forall z\in G
+        \end{equation*}
+        %
+        Aplicando o princípio da identidade, concluímos que $t \in T$. Logo, $T$ é fechado. 
+        Isto demonstra o Lema.
+    \end{proof}
 
-Se $R(t) \equiv \infty$, então qualquer $\varepsilon > 0$ escolhido é suficiente 
-para que o Lema seja válido. Como o raio de convergência é infinito para cada $t$,
-podemos estender a função $g_t$ analiticamente para a função definida pela série de
-potências da expansão de $f_t$ usando o princípio da identidade.
-
-Suponha agora que $0 < R(t) < \infty$. No restante da demonstração, vamos supor que 
-$D_t$ é o disco de centro $\gamma(t)$ e raio $R(t)$. Isto pode ser feito, pois, caso
-$D_t$ não fosse um disco, então, ou $D_t \subseteq D(\gamma(t),R(t))$ ou
-$D(\gamma(t),R(t)) \subseteq D_t$ e poderíamos sempre estender $f_t$ usando o 
-princípio da identidade. Por motivos inteiramente análogos, podemos supor também
-que $B_t$ são discos centrados em $\beta(t)$. Essas suposições simplificarão 
-os argumentos.
-
-\begin{center}
-    \textbf{diagrama slide 5 Aula 4}
-\end{center}
-
-Escolha um $\varepsilon$ satisfazendo
-\begin{equation*}
-0 < \varepsilon < \frac{1}{2}\min\{R(t): t \in [0,1]\}.
-\end{equation*}
-
-Note que $R$ alcança o mínimo pois é uma função contínua no compacto $[0,1]$. 
-Dito de outro modo, existe $t_* \in [0,1]$ tal que $R(t_*) = \min\{R(t): t \in [0,1]\}$.
-
-Para cada $t \in [0,1]$, temos $|\gamma(t) - \sigma(t)| < \varepsilon < R(t)$, então
-$\sigma(t) \in B_t \cap D_t$ para todo $t$. Queremos mostrar que $[f_1]_b = [g_1]_b$, 
-o que pode ser feito mostrando que $f_1(z) = g_1(z)$ para todo $z \in B_1 \cap D_1$. 
-Como é difícil mostrar isso para o valor particular $t=1$ diretamente, vamos passar 
-a uma estratégia que já adotamos antes: mostrar que um determinado conjunto é aberto
-e fechado relativo a $[0,1]$.
-
-Defina
-\begin{equation*}
-T = \{t \in [0,1]: f_t(z) = g_t(z) \forall z \in B_t \cap D_t\}.
-\end{equation*}
-
-$T$ não é vazio por conta da hipótese $[f_0]_a = [g_0]_a$. Vamos mostrar que $T$ é 
-aberto e fechado no conexo $[0,1]$, ou seja, $T = [0,1]$. Seja $t \in T$; 
-existe um $\delta > 0$ tal que
-\begin{align}
-\label{Eq5}
-    &|\gamma(s) - \gamma(t)| < \varepsilon, \ \ \ \ \ [f_s]_{\gamma(s)} =
-    [f_t]_{\gamma(s)} \\
-    &|\sigma(s) - \sigma(t)| < \varepsilon, \ \ \ \ \ [g_s]_{\gamma(s)} =
-    [g_t]_{\gamma(s)} \\
-    &\sigma(s) \in B_t
-\end{align}
-
-sempre que $|s-t|<\delta$. Aqui, usamos a continuidade da funções $\gamma$ e $\sigma$ 
-e a condição de compatibilidade da definição de continuação analítica ao longo de um
-caminho.
-
-Seja $G = B_s \cap B_t \cap D_s \cap D_t$, como ilustrado abaixo. 
-
-\begin{center}
-    \textbf{diagrama slide 8 Aula 4}
-\end{center}
-
-Vamos mostrar que 
-$\sigma(s) \in G$, de modo que $G \neq \emptyset$. Pela definição de continuação 
-ao longo de um caminho, temos $\sigma(s) \in B_t \cap B_s$. Da hipótese do Lema,
-\begin{equation*}
-|\sigma(s) - \gamma(s)| < \varepsilon < R(s),
-\end{equation*}
-
-donde segue que $\sigma(s) \in D_s$. Usando a desigualdade triangular e as condições em \ref{Eq5}, temos que 
-\begin{align*}
-|\sigma(s) - \gamma(t)| &= |\sigma(s) - \gamma(s) + \gamma(s) - \gamma(t)| \\
-&\leq |\sigma(s) - \gamma(s)| + |\gamma(s) - \gamma(t)| \\
-&< 2\varepsilon < R(t).
-\end{align*}
-
-Isto mostra que $\sigma(s) \in D_t$ e, portanto, $\sigma(s) \in G$.
-
-Como $t \in T$, temos que $f_t(z) = g_t(z)$ para todo $z$ em $G$. 
-As condições em \ref{Eq5} implicam que 
-\begin{align*}
-    \begin{cases}
-    f_s(z) = f_t(z) \\
-    g_s(z) = g_t(z)
-    \end{cases}
-\end{align*}
-
-sempre que $z \in G$. Segue que $f_s(z) = g_s(z)$ para todo $z \in G$. 
-Pelo princípio da identidade, podemos concluir que 
-$f_s(z) = g_s(z) \forall z \in D_s \cap B_s$, ou seja, $s \in T$ sempre que 
-$|s-t|< \delta$, o que mostra que $T$ é aberto.
-
-Vamos mostrar agora que $T$ é também fechado. Lembre-se que um conjunto é fechado 
-se, e somente se, contém todos os seus pontos de acumulação. Sejam $t$ um ponto de
-acumulação de $T$ e $\{s_n\}$ uma sequência de pontos em $T$ com $s_n \to t$. 
-Novamente, existe um $\delta > 0$ tal que valem as condições em \ref{Eq5} sempre que
-$|s-t|<\delta$; existe também um $N \in \mathbb{N}$ tal que 
-\begin{equation*}
-n \geq N \implies |s_n - t| < \delta.
-\end{equation*}
-
-Aplicando um raciocínio totalmente análogo ao que fizemos antes, mostra-se que
-$\sigma(s_n) \in G = B_s \cap B_t \cap D_s \cap D_t$. Como consequência das 
-condições de compatibilidade análogas àquelas listadas em \ref{Eq5} 
-(apenas trocando $s \leftrightarrow s_n)$, temos
-\begin{align*}
-    \begin{cases}
-    f_{s_n}(z) = f_t(z) \\
-    g_{s_n}(z) = g_t(z)
-    \end{cases}
-\end{align*}
-
-sempre que $z \in G$. Agora, $s_n \in T$, então 
-\begin{equation*}
-f_t(z) = f_{s_n}(z) = g_{s_n}(z) = g_t(z), \forall z\in G
-\end{equation*}
-
-Aplicando o princípio da identidade, concluímos que $t \in T$. Logo, $T$ é fechado. 
-Isto demonstra o Lema.
-\end{proof}
-
-\begin{definicao}
-\label{def-continuacao-irrestrita}
-Sejam $(f,D)$ um elemento de função e $G\subseteq\mathbb{C}$ domínio tal que 
-$D\subseteq G$. Vamos dizer que $f$ admite uma continuação analítica irrestrita a 
-$G$ se para qualquer caminho $\gamma$ com ponto inicial em $D$ existe uma continuação
-analítica $\{(f_t, D_t) : 0\leq t\leq 1\}$ ao longo de $\gamma$.
-\end{definicao}
+    \begin{definicao}
+    \label{def-continuacao-irrestrita}
+        Sejam $(f,D)$ um elemento de função e $G\subseteq\C$ domínio tal que 
+        $D\subseteq G$. Vamos dizer que $f$ admite uma continuação analítica irrestrita a 
+        $G$ se para qualquer caminho $\gamma$ com ponto inicial em $D$ existe uma continuação
+        analítica $\{(f_t, D_t) : 0\leq t\leq 1\}$ ao longo de $\gamma$.
+    \end{definicao}
 
 É importante frisar, novamente, que $f$ admitir continuação analítica irrestrita 
 \textbf{não significa} que as continuações por caminhos distintos irão coincidir.
 Veja o seguinte exemplo.
 
-\begin{exemplo}
-Sejam $D = D(1,1) = \{ z\in\mathbb{C} : |z-1|<1 \}$ e $f:D\to\mathbb{C}$ dada por
-$f(z) = \displaystyle{\exp\left( \frac{1}{2}\log_0(z) \right)}$, onde
-$\log_0:D\to\mathbb{C}$ é a restrição do ramo principal do logaritmo ao disco aberto
-$D(1,1)$. Se $G = \mathbb{C}^*$, então $(f,D)$ admite continuação analítica irrestrita
-a $G$.
+    \begin{exemplo}
+        Sejam $D = D(1,1) = \{ z\in\C : |z-1|<1 \}$ e $f:D\to\C$ dada por
+        $f(z) = \displaystyle{\exp\left( \frac{1}{2}\log_0(z) \right)}$, onde
+        $\log_0:D\to\C$ é a restrição do ramo principal do logaritmo ao disco aberto
+        $D(1,1)$. Se $G = \C^*$, então $(f,D)$ admite continuação analítica irrestrita
+        a $G$.
+        
+        Entretanto, as continuações analíticas podem ser distintas, como vimos quando
+        construímos duas continuações analíticas do logaritmo tais que uma valia 
+        $i\pi/2$ em $-1$ e outra valia $-i\pi/2$ em $-1$.
+    \end{exemplo}
 
-Entretanto, as continuações analíticas podem ser distintas, como vimos quando
-construímos duas continuações analíticas do logaritmo tais que uma valia 
-$i\pi/2$ em $-1$ e outra valia $-i\pi/2$ em $-1$.
-\end{exemplo}
+    \begin{observacao}
+        Continuações analíticas irrestritas não são um fato da vida!
+        
+        Falar de
+        %
+        \begin{equation*}
+            z\mapsto \int_{\gamma} \frac{f(w)}{w-z}dw
+        \end{equation*}
+        %
+        definir uma função analítica com singularidades não isoladas 
+        (conjunto de singularidades denso).
+    \end{observacao}
 
-\begin{observacao}
-Continuações analíticas irrestritas não são um fato da vida!
+    \begin{definicao}[Curvas FEP-homotópicas]
+    \label{def-fep-homotopicas}
+        Se $\gamma_0, \gamma_1 :[0,1]\to G\subseteq\C$ são curvas 
+        suaves por partes tomando valores em $G$ e tais que 
+        $\gamma_0(0) = \gamma_1(0) = a$ e $\gamma_0(1) = \gamma_1(1) = b$, 
+        dizemos que elas são \textit{fixed-end-points}
+        homotópicas (FEP-homotópicas) se existe uma aplicação contínua 
+        $\Gamma:[0,1]\times [0,1] \to G\subseteq\C$ tal que
+        %
+        \begin{align*}
+            \Gamma(t,0) &= \gamma_0(t) \qquad \Gamma(t,1) = \gamma_1(t) \\
+            \Gamma(0,s) &= a \qquad \Gamma(1,s) = b
+        \end{align*}
+        %
+        \begin{center}
+            \textbf{diagrama slide 15 Aula 4}
+        \end{center}
+        %
+    \end{definicao}
 
-Falar de
-\begin{equation*}
-    z\mapsto \int_{\gamma} \frac{f(w)}{w-z}dw
-\end{equation*}
-definir uma função analítica com singularidades não isoladas (conjunto de singularidades
-denso).
-\end{observacao}
+    \begin{definicao}
+    \label{def-homotopica-a-zero}
+        Seja $\gamma:[0,1]\to G\subseteq\C$ uma curva fechada suave por partes.
+        Dizemos que $\gamma$ é homotópica a zero, denotando $\gamma\sim 0$, se $\gamma$
+        é homotópica a uma curva constante, ou seja, existe uma aplicação contínua 
+        $\Gamma:[0,1]\times [0,1] \to G\subseteq\C$ tal que
+        %
+        \begin{align*}
+            \Gamma(0,s) &= \Gamma(1,s) \\
+            \Gamma(t,1) &= \Gamma(t',1), \forall t, t'\in [0,1] \\
+            \Gamma(t,0) &= \gamma(t)
+        \end{align*}
+        %
+        \begin{center}
+            \textbf{diagrama curva homotópica a zero}
+        \end{center}
+        %
+    \end{definicao}
 
-\begin{definicao}[Curvas FEP-homotópicas]
-\label{def-fep-homotopicas}
-Se $\gamma_0, \gamma_1 :[0,1]\to G\subseteq\mathbb{C}$ são curvas suaves por partes
-tomando valores em $G$ e tais que $\gamma_0(0) = \gamma_1(0) = a$ e 
-$\gamma_0(1) = \gamma_1(1) = b$, dizemos que elas são \textit{fixed-end-points}
-homotópicas (FEP-homotópicas) se existe uma aplicação contínua 
-$\Gamma:[0,1]\times [0,1] \to G\subseteq\mathbb{C}$ tal que
-\begin{align*}
-    \Gamma(t,0) &= \gamma_0(t) \qquad \Gamma(t,1) = \gamma_1(t) \\
-    \Gamma(0,s) &= a \qquad \Gamma(1,s) = b
-\end{align*}
+    \begin{definicao}
+    \label{def-simplesmente-conexo}
+        Um domínio $G\subseteq\C$ é simplesmente conexo se toda curva fechada
+        suave por partes $\gamma: [0,1]\to G\subseteq\C$ é homotópica a 0.
+        %
+        \begin{center}
+            \textbf{diagrama slide 17 Aula 4}
+        \end{center}
+        %
+    \end{definicao}
 
-\begin{center}
-    \textbf{diagrama slide 15 Aula 4}
-\end{center}
+    \begin{teorema}[Teorema de Monodromia]
+    \label{teo-monodromia}
+        Sejam $(f,D)$ um elemento de função e $G\subseteq\C$ um domínio tal que 
+        $D\subseteq G$ e $(f,D)$ admite continuação analítica irrestrita em $G$. Sejam
+        $a\in D, b\in G$, $\gamma_0, \gamma_1$ caminhos em $G$ e 
+        $\{ (f_t, D_t) : 0\leq t\leq 1 \}$, $\{ (g_t, B_t) : 0\leq t\leq 1 \}$ continuações
+        analíticas ao longo de $\gamma_0$ e $\gamma_1$, respectivamente. 
+        Se $\gamma_0$ e $\gamma_1$ são FEP-homotópicas em $G$, então $[f_1]_b = [g_1]_b$.
+    \end{teorema}
 
-\end{definicao}
+    \begin{proof}
+        Já que $\gamma_0, \gamma_1$ são FEP-homotópicas em $G$, existe uma função contínua
+        $\Gamma: [0,1]\times[0,1]\to G\subseteq\C$ tal que
+        %
+        \begin{align*}
+            \Gamma(t,0) &= \gamma_0(t) \qquad \Gamma(t,1) = \gamma_1(t) \\
+            \Gamma(0,s) &= a \qquad \Gamma(1,s) = b
+        \end{align*}
+        %
+        para todo $s\in [0,1]$. Fixe um tal $s$ e considere o caminho 
+        $\gamma_2(t) := \Gamma(t,s)$. Por hipótese, existe uma continuação analítica
+        $\{ (h_{t,s}, D_{t,s}) : 0\leq t\leq 1 \}$ de $(f,D)$ ao longo de 
+        $\gamma_2 \equiv \Gamma(\cdot, s)$. Pela 
+        Proposição \ref{prop-unicidade-continuacao-analitica-caminho}, sabemos que
+        %
+        \begin{align*}
+            [h_{1,1}]_b &= [g_1]_b, \\
+            [h_{1,0}]_b &= [f_1]_b.
+        \end{align*}
+        %
+        Portanto, para atingir o nosso objetivo (que é mostrar que $[f_1]_b = [g_1]_b$),
+        basta mostrar que $[h_{1,0}]_b = [h_{1,1}]_b$. Para tanto, vamos usar a técnica
+        de sempre: argumentar por conexidade.
+        
+        Defina
+        %
+        \begin{equation*}
+            U = \left\{ u\in [0,1] : [h_{1,u}]_b = [h_{1,0}]_b \right\}.
+        \end{equation*}
+        %
+        Por hipótese, temos $0\in U$ e, portanto, $U\neq\varnothing$. Queremos mostrar que
+        $1\in U$ e, para tanto, vamos mostrar que $U$ é simultaneamente aberto e fechado
+        relativamente a $[0,1]$.
+        
+        Primeiro, afirmamos que dado $u\in [0,1]$ existe $\delta > 0$ tal que se 
+        $|u - v| < \delta$ então $[h_{1,u}]_b = [h_{1,v}]_b$. De fato, fixado $u\in [0,1]$,
+        aplique o Lema \ref{lema-ext-epsilon-proximas} para encontrar $\varepsilon > 0$
+        tal que se $\sigma$ é um caminho qualquer de $a$ para $b$ com 
+        $|\gamma_u(t) - \sigma(t)| < \varepsilon$ para todo $t$, e se 
+        $\{ (k_t, E_t): 0\leq t\leq 1 \}$ é uma continuação analítica qualquer de $(f,D)$
+        ao longo de $\sigma$, então
+        %
+        \begin{equation*}
+            [h_{1,u}]_b = [k_1]_b.
+        \end{equation*}
+        %
+        Como $\Gamma$ é uniformemente contínua, existe $\delta > 0$ tal que se $|u-v|<\delta$
+        então $|\gamma_u(t) - \gamma_v(t)| = |\Gamma(t,u) - \Gamma(t,v)| < \varepsilon$
+        para todo $t$. Usando que $[h_{1,u}]_b = [k_1]_b$, a nossa afirmação segue.
+        
+        Tomemos $u\in U$ e seja $\delta > 0$ como na afirmação acima. Por definição de $U$,
+        temos $(u-\delta, u+\delta) \subset U$, ou seja, $U$ é aberto. Por outro lado, dado
+        $u\in\overline{U}$ e escolhendo $\delta$ como na afirmação acima novamente, então 
+        existe $v\in U$ tal que $|u-v| < \delta$. Mas, pela afirmação, 
+        $[h_{1,u}]_b = [h_{1,v}]_b$; e, como $v\in U$, $[h_{1,v}]_b = [h_{1,0}]_b$.
+        Logo, $[h_{1,u}]_b = [h_{1,0}]_b$, isto é, $u\in U$ e, portanto, $U$ é fechado.
+        
+        Como $[0,1]$ é conexo, segue que $U = [0,1]$ e $1\in U$, como desejado.
+    \end{proof}
 
-\begin{definicao}
-\label{def-homotopica-a-zero}
-Seja $\gamma:[0,1]\to G\subseteq\mathbb{C}$ uma curva fechada suave por partes.
-Dizemos que $\gamma$ é homotópica a zero, denotando $\gamma\sim 0$, se $\gamma$
-é homotópica a uma curva constante, ou seja, existe uma aplicação contínua 
-$\Gamma:[0,1]\times [0,1] \to G\subseteq\mathbb{C}$ tal que
-\begin{align*}
-    \Gamma(0,s) &= \Gamma(1,s) \\
-    \Gamma(t,1) &= \Gamma(t',1), \forall t, t'\in [0,1] \\
-    \Gamma(t,0) &= \gamma(t)
-\end{align*}
+    \begin{corolario}
+        Seja $(f,D)$ um elemento de função que admite continuação analítica irrestrita no
+        domínio simplesmente conexo $G$, com $D\subseteq G$. Existe uma extensão analítica
+        $F:G\to\C$ de $f:D\to\C$, isto é, $F\big|_D \equiv f$.
+    \end{corolario}
 
-\begin{center}
-    \textbf{diagrama curva homotópica a zero}
-\end{center}
-
-\end{definicao}
-
-\begin{definicao}
-\label{def-simplesmente-conexo}
-Um domínio $G\subseteq\mathbb{C}$ é simplesmente conexo se toda curva fechada
-suave por partes $\gamma: [0,1]\to G\subseteq\mathbb{C}$ é homotópica a 0.
-
-\begin{center}
-    \textbf{diagrama slide 17 Aula 4}
-\end{center}
-
-\end{definicao}
-
-\begin{teorema}[Teorema de Monodromia]
-\label{teo-monodromia}
-Sejam $(f,D)$ um elemento de função e $G\subseteq\mathbb{C}$ um domínio tal que 
-$D\subseteq G$ e $(f,D)$ admite continuação analítica irrestrita em $G$. Sejam
-$a\in D, b\in G$, $\gamma_0, \gamma_1$ caminhos em $G$ e 
-$\{ (f_t, D_t) : 0\leq t\leq 1 \}$, $\{ (g_t, B_t) : 0\leq t\leq 1 \}$ continuações
-analíticas ao longo de $\gamma_0$ e $\gamma_1$, respectivamente. 
-Se $\gamma_0$ e $\gamma_1$ são FEP-homotópicas em $G$, então $[f_1]_b = [g_1]_b$.
-\end{teorema}
-
-\begin{proof}
-a
-\end{proof}
-
-\begin{corolario}
-Seja $(f,D)$ um elemento de função que admite continuação analítica irrestrita no
-domínio simplesmente conexo $G$, com $D\subseteq G$. Existe uma extensão analítica
-$F:G\to\mathbb{C}$ de $f:D\to\mathbb{C}$, isto é, $F\big|_D \equiv f$.
-\end{corolario}
-
-\begin{proof}
-Fixe $a\in D$. Se $\gamma$ é um caminho suave ligando $a$ e $z$ e se 
-$\{ (f_t, D_t) : 0\leq t\leq 1 \}$ é uma continuação analítica de $(f,D)$ ao longo de
-$\gamma$, defina $F(z, \gamma) \equiv f_1(z)$. Já que $G$ é simplesmente conexo,
-$F(z, \gamma) = F(z,\beta)$ para quaisquer dois caminhos suaves em $G$ ligando $a$ e $z$.
-Portanto, $z\mapsto F(z)\equiv F(z, \gamma)$ é uma função bem definida em $G$ 
-(pois independe do caminho escolhido).
-
-Afirmamos que essa função é analítica. De fato, $F(w) = f_1(w), \forall w\in D(z,r)$
-para algum $r$ positivo. Pelo Lema \ref{lema-ext-epsilon-proximas} segue a afirmação.
-Para algum $\Tilde{r}>0$ temos $D(a, \Tilde{r}) \subseteq D$ e 
-$f\big|_{D(a, \Tilde{r})} \equiv F$, de modo que $F\big|_G \equiv f$.
-
-\begin{center}
-    \textbf{diagrama slide 24 Aula 4}
-\end{center}
-
-\end{proof}
+    \begin{proof}
+        Fixe $a\in D$. Se $\gamma$ é um caminho suave ligando $a$ e $z$ e se 
+        $\{ (f_t, D_t) : 0\leq t\leq 1 \}$ é uma continuação analítica de $(f,D)$ ao longo de
+        $\gamma$, defina $F(z, \gamma) \equiv f_1(z)$. Já que $G$ é simplesmente conexo,
+        $F(z, \gamma) = F(z,\beta)$ para quaisquer dois caminhos suaves em $G$ ligando $a$ e $z$.
+        Portanto, $z\mapsto F(z)\equiv F(z, \gamma)$ é uma função bem definida em $G$ 
+        (pois independe do caminho escolhido).
+        
+        Afirmamos que essa função é analítica. De fato, $F(w) = f_1(w), \forall w\in D(z,r)$
+        para algum $r$ positivo. Pelo Lema \ref{lema-ext-epsilon-proximas} segue a afirmação.
+        Para algum $\Tilde{r}>0$ temos $D(a, \Tilde{r}) \subseteq D$ e 
+        $f\big|_{D(a, \Tilde{r})} \equiv F$, de modo que $F\big|_G \equiv f$.
+        %
+        \begin{center}
+            \textbf{diagrama slide 24 Aula 4}
+        \end{center}
+        %
+    \end{proof}
 
 
 
