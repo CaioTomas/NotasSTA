@@ -315,7 +315,7 @@ o valor desta soma é maior que a integral $\int_{N}^{M+1}f(x)\, dx$.}
 Para obter a segunda desigualdade raciocinamos de maneira análoga (bastando apenas
 deslocar os retângulo que aparecem na figura acima para esquerda) como mostra
 a Figura \ref{fig:teste-integral-redimensionado2}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.63\linewidth]{Figuras/teste-integral-redimensionado2}
 \caption{A área hachurada corresponde novamente a soma $\sum_{n=N}^{M}a_n$. Ela é
@@ -844,7 +844,7 @@ $w\in U$ tal que
 |f_{n_0(\varepsilon,z)}(w)-f(w)| \geqslant \varepsilon 
 \]
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{Figuras/convergencia-pontual-redimensionado}
 \caption{Na figura acima, temos uma sequência de funções 
@@ -1893,9 +1893,9 @@ portanto é absolutamente convergente para todo ponto $z$ no
 disco de convergência $D(0,R)$.
 \end{corolario}
 
-
-\subsection[Séries de Potências Centradas em $z={z_0}$]
-{Séries de Potências Centradas em \boldmath$z={z_0}$}
+% usar o \texorpdf... é necessário aqui pro Latex não implicar com o modo matemática e/ou símbolos desse modo
+\subsection[Séries de Potências Centradas em \texorpdfstring{$z=z_0$}{z=z0}]
+{Séries de Potências Centradas em \texorpdfstring{\boldmath$z=z_0$}{z=z0}}
 \label{subsec-series-pot-em-z0}
 
 
@@ -1998,7 +1998,7 @@ $R_{z_0}>0$ tal que
 f(z) = \sum_{n=0}^{\infty}a_n(z-z_0)^n, \qquad \forall z\in D(z_0,R_{z_0}).
 \]
 \end{definicao}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\linewidth]{Figuras/func-analitica-1}
 \caption{Nesta figura mostramos como os vários discos de convergência, das expansões em série de potencias de uma função analítica $f$ definida em $U$ poderiam ter raios distintos.}
@@ -2101,7 +2101,7 @@ afirma que podemos primeiro somar cada linha desta matriz e em seguida
 somar estas somas e que isto é igual a somar as colunas da matriz e 
 depois somar estas somas.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.75\linewidth]{Figuras/fubini-anm}
 \caption{Pensando em toda a lista de $a_{n,m}$'s como uma espécie de matrix com infinitas linhas e infinitas colunas. A hipótese do Teorema \ref{teo-fubini-discreto} é que a soma dos valores absolutos das linhas desta matriz formam um nova sequência $(L_n)_{n\in\mathbb{N}\cup\{0\}}$ cuja a série associada é converge.}
@@ -2383,7 +2383,7 @@ f(z) = \sum_{n=0}^{\infty} b_n(z-z_1)^n, \qquad \forall z\in D(z_1,R_{z_1}).
 \] 
 \end{teorema}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.55\linewidth]{Figuras/Rz1-func-analitica}
 \caption{O raio de convergência da série de potencias centrada em $z_1$ é pelo menos $R_{z_1}=R-|z_0-z_1|$.}
@@ -2644,7 +2644,7 @@ F(z)
 
 \bigskip 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{Figuras/Raio-func-analitica-muda-centro}
 \caption{Note que apesar da série de potencias \eqref{eq-aux-exe-muda-centro-serie}, 
@@ -3061,7 +3061,7 @@ para todo $z$ satisfazendo $0<|z-w|<\delta$ temos $z\notin \mathcal{Z}(f)$.
 Em outras palavras, $w$ é um zero isolado de $f$.
 \end{lema}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.45\linewidth]{Figuras/zeros-isolados1}
 \caption{O único zero de $f$ dentro do conjunto $\{z\in\mathbb{C}: 0<|z-w|<\delta\}$}
@@ -3153,7 +3153,7 @@ $D(z_0,r_0)\subset D(w,R)$, com $r_0>0$.
 Então $f\equiv 0$ em $D(w,R)$. Em particular, $a_n=0$ para todo $n\geqslant 0$.
 \end{lema}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{Figuras/zeros-isolados2}
 \caption{A função $f$ se anula em todos os pontos do disco aberto $D(z_0,r_0)$}
@@ -3172,7 +3172,7 @@ Já que $f$ se anula em todos os ponto de $L_1\cap D(z_0,r_0)$
 e $f$ é contínua em $z_1\in D(0,R)$ segue que $f(z_1)=0$. 
 Ou seja, $z_1\in\mathcal{Z}(f)$. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{Figuras/zeros-isolados3}
 \caption{Construção da sequência $(z_n)_{n\in\mathbb{N}}$. O primeiro ponto da construção é mostrado acima. Ele é definido como sendo o ponto onde a reta $L_1$ intercepta o disco aberto $D(z_0,r_0)$.}
@@ -3252,7 +3252,7 @@ Então o conjunto de zeros de $f$, notação
 $\mathcal{Z}(f)\equiv \{w\in\mathbb{C}: f(w)=0\}$,
 é vazio ou formado apenas por pontos isolados. Isto é, 
 para cada $z_1\in \mathcal{Z}(f)$, existe $\delta\equiv\delta_{z_1}>0$ tal que 
-se $z$ satifaz $0<|z-z_1|<\delta$ então $z\notin \mathcal{Z}(f)$.
+se $z$ satisfaz $0<|z-z_1|<\delta$ então $z\notin \mathcal{Z}(f)$.
 \end{teorema}
 
 
@@ -3324,7 +3324,7 @@ tal que $f(z)=g(z)$, para todo $z\in I$.
 Então $f(z)=g(z)$ para todo $z\in U\cap V$.
 \end{teorema}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.65\linewidth]{Figuras/zeros-isolados4}
 \caption{O conjunto $I$ onde $f$ e $g$ coincidem é marcado de vermelho. Note que nesta figura $z_0$ é um ponto aderente a $I$. Pois ele pode ser obtido como limite de uma
@@ -3451,7 +3451,7 @@ o ``primeiro instante'' em que a curva $\gamma$ deixa
 o conjunto $\mathcal{Z}(h)$, embora, a rigor,
 ele não seja exatamente isto.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.55\linewidth]{Figuras/zeros-isolados5}
 \caption{Esta figura ilustra a definição de $t^{*}$. A parte em vermelho corresponde a imagem por $\gamma$ do intervalo $[0,t]$ com $t<t^{*}$. Como comentado o ponto $\gamma(t^{*})$ pode ser intuitivamente pensado como o ponto onde o caminho $\gamma$ está prestes a deixar $\mathcal{Z}(h)$.}
@@ -3516,7 +3516,7 @@ todo ponto do disco aberto $D( \gamma(t^{*}), R_{\gamma(t^{*})})$,
 com raio $R_{\gamma(t^{*})}$ positivo. 
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.6\linewidth]{Figuras/zeros-isolados6}
 \caption{O disco $D(\gamma(t^{*}),R^{*})$}
@@ -3665,7 +3665,7 @@ e além do mais, para todo $z\in I$, temos que
 $f_{w}(z)=g_{w}(z)$. 
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.4\linewidth]{Figuras/zeros-isolados7}
 \caption{Para $z\in\mathbb{R}$ temos que $f_{w}(z)=g_{w}(z)$.}

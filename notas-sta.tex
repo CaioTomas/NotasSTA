@@ -1,5 +1,9 @@
 \documentclass[12pt,oneside]{book}
 
+%% troque h ou h! -> H para ter colocação de floats mais robusta
+\usepackage{float}
+%%
+
 \usepackage{etoolbox}
 \usepackage[brazil]{babel}
 \usepackage[shortlabels]{enumitem}
@@ -131,10 +135,12 @@
 
 
 
-
-
-
-
+% não mostra avisos de badness <= 10.000 e overfull/underfull <= 30 pt
+% obs.: 30 pt ~ 10,545 mm 
+\hfuzz = 30pt
+\vfuzz = 30pt
+\hbadness = 10001
+\vbadness = \maxdimen
 
 
 
@@ -280,10 +286,6 @@ Versão 1.  Janeiro -- Maio de 2022
 
 
 
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 %%%%%%%%%%%%%%%%%% Referências e Índice Remissivo
@@ -295,7 +297,6 @@ Versão 1.  Janeiro -- Maio de 2022
 
 \pagestyle{empty}
 \printindex 			% Gera Índice Remissivo
-
 
 
 \end{document}

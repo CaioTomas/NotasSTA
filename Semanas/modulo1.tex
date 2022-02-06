@@ -3,138 +3,159 @@
 
 \hfill%
 \begin{minipage}{10cm}
-\begin{flushright}
-\rightskip=0.5cm
-\textit{``The greatest strategy is doomed if it's implemented badly.''}
-\\[0.1cm]
-\rightskip=0.5cm
---- Bernhard Riemann
-\end{flushright}
+    \begin{flushright}
+    \rightskip=0.5cm
+        \textit{``The greatest strategy is doomed if it's implemented badly.''}
+        \\[0.1cm]
+    \rightskip=0.5cm
+    --- Bernhard Riemann
+    \end{flushright}
 \end{minipage}
 
-\section{O princípio da reflexão de Schwarz}
-
-Neste capítulo, vamos tratar de continuações analíticas ao longo de caminhos.
-Para iniciar a discussão, começamos abordando um princípio simples que nos permite
-estender holomorficamente certas funções analíticas a domínios ``maiores'': 
-o princípio da reflexão de Schwarz.
-
-A demonstração desse teorema consiste de duas partes: precisamos definir a 
-(candidata a) extensão e checar que ela é holomorfa. Começamos com o segundo passo.
-
-Seja $\Omega\subseteq\mathbb{C}$ um aberto simétrico com respeito à reta real, ou seja,
-\begin{equation*}
-    z\in\Omega \iff \overline{z}\in\Omega.
-\end{equation*}
-Denotemos por $\Omega^+$ a porção de $\Omega$ no semi-plano superior e por $\Omega^-$
-a porção de $\Omega$ no semi-plano inferior.
-
-\begin{center}
-    \textbf{diagrama fig.11 Stein p.58}
-\end{center}
-
-Por fim, denotemos por $I$ o conjunto que ``sobrou'' de $\Omega$: 
-$I = \Omega\cap\mathbb{R}$. É claro então que
-\begin{equation*}
-    \Omega = \Omega^+ \cup I \cup \Omega^-
-\end{equation*}
-e os casos interessantes do teorema a seguir ocorrem quando $I\neq\varnothing$.
-
-\begin{teorema}[Princípio da simetria]
-\label{teo-principio-simetria}
-Se $f^+$ e $f^-$ são funções holomorfas em $\Omega^+$ e $\Omega^-$, respectivamente,
-que se estendem continuamente para $I$ e tais que $f^+(x) = f^-(x), \forall x\in I$,
-então a função $f$ definida em $\Omega$ por
-\begin{equation*}
-    f(z) = \begin{cases}
-    f^+(z), z\in\Omega^+ \\
-    f^+(z) = f^-(z), z\in I \\
-    f^-(z), z\in\Omega^-
-    \end{cases}
-\end{equation*}
-é holomorfa em todo $\Omega$.
-\end{teorema}
-
-Apresentamos aqui a demonstração dada em \cite{MR1976398}, pp. 58-59, 
-devido à sua simplicidade e clareza. Um argumento mais rigoroso pode ser 
-encontrado em \cite{MR503901}, pp. 213-214.
-
-\begin{proof}
-Note, antes de mais nada, que por definição temos $f$ contínua em $\Omega$.
-A nossa única dificuldade se encontra em mostrar a holomorficidade de $f$ em $I$.
-
-Seja $D$ um disco centrado em um ponto de $I$ e inteiramente contido em $\Omega$.
-Usando o Teorema de Morera, vamos mostrar que $f$ é holomorfa em $D$. Para tal,
-seja $T$ um triângulo em $D$. Se $T$ não intercepta $I$, então
-\begin{equation*}
-    \int_T f(z) dz = 0
-\end{equation*}
-já que $f$ é holomorfa nos semi-discos superior e inferior. Suponhamos, então,
-que $T$ intercepta $I$ e analisemos os três casos que surgem:
-\paragraph{Caso I:} $T$ tem apenas um vértice sobre $I$. Nesse caso, se 
-$Q_{\varepsilon}$ é o quadrilátero obtido levantando levemente o vértice sobre $I$,
-temos
-\begin{equation*}
-    \int_{Q_{\varepsilon}} f(z) dz = 0
-\end{equation*}
-pois esse quadrilátero está inteiramente contido no semi-disco superior. Daí,
-fazendo $\varepsilon\to 0$, segue por continuidade que
-\begin{equation*}
-    \int_T f(z) dz = 0.
-\end{equation*}
-
-\paragraph{Caso II:} $T$ tem um lado sobre $I$. Nesse caso, podemos supor sem perda
-de generalidade que o restante de $T$ está no semi-disco superior. Se $T_{\varepsilon}$
-é o triângulo obtido de $T$ levantando levemente a aresta que está sobre $I$, temos
-\begin{equation*}
-    \int_{T_{\varepsilon}} f(z) dz = 0
-\end{equation*}
-pois esse novo triângulo está contido no semi-disco superior. Daí, fazendo 
-$\varepsilon\to 0$, segue por continuidade que
-\begin{equation*}
-    \int_T f(z) dz = 0.
-\end{equation*}
-
-\begin{center}
-    \textbf{diagrama p.59 Stein}
-\end{center}
-
-\paragraph{Caso III:} $T$ tem duas arestas interceptando $I$. Nesse caso, o interior
-de $T$ intercepta $I$ e podemos reduzir esse caso aos anteriores se escrevermos $T$
-como união de triângulos que têm um lado ou um vértice sobre $I$.
-
-Portanto, pelo Teorema de Morera segue que $f$ é holomorfa em $D$, como desejado.
-\end{proof}
-
-Podemos agora enunciar o princípio da reflexão, usando a mesma notação acima.
-
-\begin{teorema}[Princípio da Reflexão de Schwarz]
-\label{teo-reflexao-schwarz}
-Suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende continuamente 
-para $I$ e tal que $f$ toma valores reais em $I$. Então existe uma função $F$
-holomorfa em todo o $\Omega$ tal que $F\big|_{\Omega^+} = f$.
-\end{teorema}
-
-\begin{proof}
-A ideia é definir $F$ em $\Omega^-$ por
-\begin{equation*}
-    F(z) = \overline{f(\overline{z})}.
-\end{equation*}
-Para mostrar que $F$ é holomorfa em $\Omega^-$, notamos que se $z, z_0\in\Omega^-$
-então $\overline{z}, \overline{z_0}\in\Omega^+$ e, portanto, a expansão de $f$
-em série de potências em torno de $\overline{z_0}$ nos dá
-\begin{equation*}
-    f(\overline{z}) = \sum_{n=0}^{\infty} a_n(\overline{z} - \overline{z_0})^n,
-\end{equation*}
-donde segue que
-\begin{equation*}
-    F(z) = \sum_{n=0}^{\infty} \overline{a_n}(z - z_0)^n,
-\end{equation*}
-ou seja, $F$ é holomorfa em $\Omega^-$. Como $f$ toma valores reais em $I$, temos
-$\overline{f(x)} = f(x), \forall x\in I$ e, portanto, $F$ se estende continuamente
-a $I$. Invocando o princípio da simetria, terminamos a prova.
-\end{proof}
-
+\section{O princípio da reflexão de Schwarz} %
+\label{sec:Schwarz} %
+    Neste capítulo, vamos tratar de continuações analíticas ao longo de caminhos.
+    Para iniciar a discussão, começamos abordando um princípio simples que nos permite
+    estender holomorficamente certas funções analíticas a domínios ``maiores'': 
+    o princípio da reflexão de Schwarz.
+    
+    A demonstração desse teorema consiste de duas partes: precisamos definir a 
+    (candidata a) extensão e checar que ela é holomorfa. Começamos com o segundo passo.
+    
+    Seja $\Omega\subseteq\C$ um aberto simétrico com respeito à reta real, ou seja,
+    %
+    \begin{equation*}
+        z\in\Omega \iff \overline{z}\in\Omega.
+    \end{equation*}
+    %
+    Denotemos por 
+    $\Omega^+$ a porção de $\Omega$ no semi-plano superior e por 
+    $\Omega^-$ a porção de $\Omega$ no semi-plano inferior.
+    %
+    \begin{center}
+        \textbf{diagrama fig.11 Stein p.58}
+    \end{center}
+    %
+    Por fim, denotemos por $I$ o conjunto que ``sobrou'' de $\Omega$: 
+    $I = \Omega\cap\R$. É claro então que
+    %
+    \begin{equation*}
+        \Omega = \Omega^+ \cup I \cup \Omega^-
+    \end{equation*}
+    %
+    e os casos interessantes do teorema a seguir ocorrem quando $I\neq\varnothing$.
+    
+    \begin{teorema}[Princípio da simetria]
+    \label{teo-principio-simetria}
+        Se $f^+$ e $f^-$ são funções holomorfas em $\Omega^+$ e $\Omega^-$, respectivamente,
+        que se estendem continuamente para $I$ e tais que $f^+(x) = f^-(x), \forall x\in I$,
+        então a função $f$ definida em $\Omega$ por
+        %
+        \begin{equation*}
+            f(z) =  \begin{cases}
+                      f^+(z),          & z\in\Omega^+ \\
+                      f^+(z) = f^-(z), & z\in I       \\
+                      f^-(z),          & z\in\Omega^-
+                    \end{cases}
+        \end{equation*}
+        %
+        é holomorfa em todo $\Omega$.
+    \end{teorema}
+    
+    Apresentamos aqui a demonstração dada em \cite{MR1976398}, pp. 58-59, 
+    devido à sua simplicidade e clareza. Um argumento mais rigoroso pode ser 
+    encontrado em \cite{MR503901}, pp. 213-214.
+    
+    \begin{proof}
+        Note, antes de mais nada, que por definição temos $f$ contínua em $\Omega$.
+        A nossa única dificuldade se encontra em mostrar a holomorficidade de $f$ em $I$.
+        
+        Seja $D$ um disco centrado em um ponto de $I$ e inteiramente contido em $\Omega$.
+        Usando o Teorema de Morera, vamos mostrar que $f$ é holomorfa em $D$. Para tal,
+        seja $T$ um triângulo em $D$. Se $T$ não intercepta $I$, então
+        %
+        \begin{equation*}
+            \int_T f(z) \, dz = 0
+        \end{equation*}
+        %
+        já que $f$ é holomorfa nos semi-discos superior e inferior. 
+        Suponhamos, então, que $T$ intercepta $I$ e analisemos os três casos que surgem:
+        \paragraph{Caso I:} $T$ tem apenas um vértice sobre $I$. Nesse caso, se 
+        $Q_\varepsilon$ é o quadrilátero obtido levantando levemente o vértice sobre $I$, 
+        temos
+        %
+        \begin{equation*}
+            \int_{Q_\varepsilon} f(z) \,dz = 0
+        \end{equation*}
+        %
+        pois esse quadrilátero está inteiramente contido no semi-disco superior. Daí,
+        fazendo $\varepsilon\to 0$, segue por continuidade que
+        %
+        \begin{equation*}
+            \int_T f(z) \, dz = 0.
+        \end{equation*}
+        
+        \paragraph{Caso II:} $T$ tem um lado sobre $I$. Nesse caso, podemos supor sem perda
+        de generalidade que o restante de $T$ está no semi-disco superior. Se $T_\varepsilon$
+        é o triângulo obtido de $T$ levantando levemente a aresta que está sobre $I$, temos
+        %
+        \begin{equation*}
+            \int_{T_\varepsilon} f(z) \, dz = 0
+        \end{equation*}
+        %
+        pois esse novo triângulo está contido no semi-disco superior. Daí, fazendo 
+        $\varepsilon\to 0$, segue por continuidade que
+        %
+        \begin{equation*}
+            \int_T f(z) \, dz = 0.
+        \end{equation*}
+        
+        \begin{center}
+            \textbf{diagrama p.59 Stein}
+        \end{center}
+        
+        \paragraph{Caso III:} $T$ tem duas arestas interceptando $I$. Nesse caso, o interior
+        de $T$ intercepta $I$ e podemos reduzir esse caso aos anteriores se escrevermos $T$
+        como união de triângulos que têm um lado ou um vértice sobre $I$.
+        
+        Portanto, pelo Teorema de Morera segue que $f$ é holomorfa em $D$, como desejado.
+    \end{proof}
+    
+    Podemos agora enunciar o princípio da reflexão, usando a mesma notação acima.
+    
+    \begin{teorema}[Princípio da Reflexão de Schwarz]
+    \label{teo-reflexao-schwarz}
+        Suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende continuamente 
+        para $I$ e tal que $f$ toma valores reais em $I$. Então existe uma função $F$
+        holomorfa em todo o $\Omega$ tal que $F\big|_{\Omega^+} = f$.
+    \end{teorema}
+        
+    \begin{proof}
+        A ideia é definir $F$ em $\Omega^-$ por
+        %
+        \begin{equation*}
+            F(z) = \overline{f(\overline{z})} .
+        \end{equation*}
+        %
+        Para mostrar que $F$ é holomorfa em $\Omega^-$, notamos que se $z, z_0\in\Omega^-$
+        então $\overline{z}, \overline{z_0}\in\Omega^+$ e, portanto, a expansão de $f$
+        em série de potências em torno de $\overline{z_0}$ nos dá
+        %
+        \begin{equation*}
+            f(\overline{z}) = \sum_{n=0}^{\infty} a_n (\overline{z} - \overline{z_0})^n,
+        \end{equation*}
+        %
+        donde segue que
+        %
+        \begin{equation*}
+            F(z) = \sum_{n=0}^{\infty} \overline{a_n} (z - z_0)^n,
+        \end{equation*}
+        %
+        ou seja, $F$ é holomorfa em $\Omega^-$. Como $f$ toma valores reais em $I$, temos
+        $\overline{f(x)} = f(x), \forall x\in I$ e, portanto, $F$ se estende continuamente
+        a $I$. Invocando o princípio da simetria, terminamos a prova.
+    \end{proof}
+%
 
 \section{Continuação analítica ao longo de caminhos}
 
