@@ -158,6 +158,128 @@
     \end{proof}
 %
 
+\section{O logaritmo de uma função}
+
+Vamos investigar se é possível definir o logaritmo complexo para uma função holomorfa 
+$f: G \to \C$, onde $G$ é um domínio contendo a origem. Caso tal construção fosse possível,
+então $\log f(z)$ seria a primitiva de $f'(z)/f(z)$. O princípio do argumento nos mostra que
+%
+\begin{equation*}
+    \int_\gamma \frac{f'(z)}{f(z)} dz = 2\pi i K,
+\end{equation*}
+%
+onde $\gamma$ é uma curva fechada e $K$ é um inteiro. Isto significa que $\log f(z)$ muda 
+de um tanto $2\pi i K$ cada vez que a variável $z$ percorre $\gamma$; como consequência disso,
+a parte imaginária do logaritmo (o argumento) muda de um tanto $2 \pi K$. No entanto, uma
+função holomorfa que admite uma primitiva é tal que sua integral ao longo de uma curva fechada
+é sempre nula. Isto mostra que deveríamos ter
+%
+\begin{equation*}
+    \int_\gamma \frac{f'(z)}{f(z)} \, dz = 0,
+\end{equation*}
+o que nos mostra que não podemos definir $\log f(z)$.
+
+De uma forma mais precisa, definir o logaritmo para a função $f$ significa escolher um ramo 
+do logaritmo em $G$, i.e., uma função $g: G \to \C$ tal que 
+%
+\begin{equation*}
+    \exp(g(z)) = f(z), \forall z \in G.  
+\end{equation*}
+%
+Já vimos que esta construção não será possível por conta do princípio do argumento, mas a
+seguir faremos uma tentativa de definir tal função e veremos em detalhes por que não é 
+possível fazê-la.
+
+Vamos tratar de um caso específico em que $G$ é um domínio contendo a origem e 
+$\gamma: [0,1] \to \C$ é uma circunferência com centro em $0$, $\gamma = r\exp{2 \pi i t}$, 
+em que $r > 0$ é tal que os pontos de $\gamma$ estão em $G$. Vamos supor que $f$ tem apenas 
+uma singularidade $z_0$ no interior da região delimitada por $\gamma$. Sendo $\gamma$ uma
+aplicação contínua, temos que a curva que ela parametriza é um compacto de $\C$, pois é o
+conjunto $\gamma([0,1])$ e $[0,1]$ é compacto em $\R$. Isso significa que podemos escolher um
+número finito de bolas $B_i$ centradas nos pontos $\gamma(t_i)$, com $t_i \in [0,1]$ e 
+$i \in \{1,\dots, n\}$. Vamos supor que $t_1 < t_2 < \cdots < t_n$ e que 
+$\gamma(t_1) = \gamma(t_n)$.  Os raios das bolas $B_i$ podem ser escolhidos todos iguais a
+algum $\varepsilon > 0$ tal que $z_0 \not \in B_i$ e $B_i \subseteq G$ para todo $i$.
+
+A ideia é escolher, para cada $i$, um ramo $\mathcal{L}_i$ do logaritmo em $\C$ tal que 
+$\log f(z)$ esteja bem definido na bola $B_i$. Essa escolha deve ser feita de tal modo que
+$\mathcal{L}_i$ e $\mathcal{L}_{i+1}$ coincidam na interseção $B_i \cap B_{i+1}$ para todo $i$.
+Dessa forma, usando o princípio da identidade, vamos definir $\log f(z)$ estendendo o primeiro
+ramo analiticamente para os outros ramos em um subconjunto de $G$ que não contém $z_0$. 
+É importante excluir $z_0$, pois $\log$ não está definido em $0$ em nenhum ramo.
+
+Denote $a_i = \gamma(t_i)$. Vamos mostrar que podemos definir $\log f(z)$ em $B_i$. 
+O que precisamos aqui é que seja possível escolher uma semirreta 
+$L_\phi = \{s(\cos \phi, \sin \phi): s > 0\}$ que não intercepte $f(B_i)$; caso contrário, 
+não poderíamos definir a imagem de todos os pontos de $f(B_i)$ por um mesmo ramo do logaritmo.
+Nesta parte a discussão fica um pouco mais técnica, então vamos apenas enunciar o resultado 
+que usaremos. 
+%
+\begin{teorema}
+    Seja $f: G \to \C$ uma função holomorfa, onde $G$ é um domínio. 
+    Se $U \subseteq G$ é um aberto tal que $\overline{U} \subseteq G$, então
+    \begin{itemize}
+        \item $f(\partial U) \subseteq \partial f(U)$;
+        \item $f(U)$ é aberto.
+    \end{itemize}
+\end{teorema}
+%
+Faremos a hipótese adicional daqui em diante de que $\overline{B}_i \subseteq G$. 
+Este teorema nos permite concluir que podemos, de fato, escolher algum $L_\phi$ 
+bom o bastante para definir o ramo $\mathcal{L}_i$. Observe ainda que $0 \not \in f(B_i)$.
+
+Passemos agora à construção de $\log f(z)$. Começamos com $B_1$ centrado em $\gamma(t_1)$
+escolhendo um ramo $\mathcal{L}_1$ adequado, denotamos a semirreta $L_\phi$ correspondente por
+$L_{\phi_1}$. Para o próximo ramo, $\mathcal{L}_2$, escolhemos $\phi_2$ tal que $L_{\phi_2}$
+não intercepte a interseção $f(B_1) \cap f(B_2)$. Dessa forma, 
+$\log_{\phi_1} f(z) = \log_{\phi_2} f(z)$ para todo $z$ nesta interseção. 
+Neste ponto, conseguimos definir $\log f(z)$ em $B_1 \cup B_2$ da seguinte forma:
+%
+\begin{equation*}
+    \log f(z) =
+    \begin{cases}
+        \log_{\phi_1} f(z), z \in B_1 \\
+        \log_{\phi_2} f(z), z \in B_2.
+    \end{cases}
+\end{equation*}
+%
+Continuamos dessa maneira e fazemos agora o mesmo para a escolha de $L_{\phi_3}$, 
+restringindo nossa atenção à interseção $f(B_2) \cap f(B_3)$. Por simplicidade, 
+vamos escrever $l_i(z) =  \log_{\phi_i} f(z)$. Observe que, como $a_n = a_1$, 
+definiremos um total de $n-1$ ramos do logaritmo. Quando chegarmos na última bola, 
+$B_n \ (= B_1)$, temos uma condição de compatibilidade adicional a ser verificada. 
+Devemos ter $l_{n-1}(z) = l_1(z)$ para todo $z$ em $B_{n-1} \cap B_1$. Vamos supor que isso
+tenha sido feito com sucesso.
+
+Denote por $\gamma_j$ a função $\gamma$ restita ao intervalo $[t_{j-1},t_j]$, ou seja, ela
+parametriza o pedaço de $\gamma$ que vai de $a_{j-1}$ para $a_j$. Adicionamos daqui em diante 
+a hipótese de que $a_i$ e $a_{i+1}$ são pontos de $B_i$ para todo $i$. Pelo teorema fundamental
+do cálculo, temos
+%
+\begin{equation*}
+    \int_{\gamma_j} = \frac{f'(z)}{f(z)}\, dz = l_j(a_j) - l_j(a_{j-1}).  
+\end{equation*}
+%
+Integrando em $\gamma$ e usando o princípio do argumento, obtemos
+\begin{align*}
+    2 \pi i K &= \int_{\gamma} = \frac{f'(z)}{f(z)}\, dz \\
+    &= \sum_{j=1}^{n-1}\int_{\gamma_j} = \frac{f'(z)}{f(z)}\, dz \\
+    &= [l_1(a_2) - l_1(a_1)] + [l_2(a_3) - l_2(a_2)] + \cdots \\
+    &+ [l_{n-2}(a_{n-1}) - l_{n-2}(a_{n-2})] + [l_{n-1}(a_{n}) - l_{n-1}(a_{n-1})] \\
+    &= l_{n-1}(a_n) - l_1(a_1)\\
+    &= 0,
+\end{align*}
+onde $K$ é a multiplicidade do zero $z_0$ de $f$. Observe que as condições de compatibilidade,
+que são satisfeitas por construção ($l_i$ e $l_{i+1}$ são coincidentes na interseção 
+$B_i \cap B_{i+1}$), fazem com que a soma acima tenha vários cancelamentos, restando apenas o
+termo na penúltima igualdade. A soma então se anula por conta da condição de compatibilidade
+adicional que supomos ser satisfeita ($l_{n-1}(z) = l_1(z)$ para todo $z$ em 
+$B_{n-1} \cap B_1$). Lembre-se ainda que $a_1 = a_n$.
+
+Por esta contradição, concluímos que não podemos definir $\log f(z)$ desta forma que fizemos.
+Este é apenas um caso particular, mas mostra um pouco do por quê não é possível fazer tal
+construção.
+
 \section{Continuação analítica ao longo de caminhos}
 
 % fazer a discussão introdutória (slides da Aula 1 e início dos slides da Aula 2)
