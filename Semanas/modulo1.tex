@@ -893,16 +893,25 @@ Veja o seguinte exemplo.
     \end{exemplo}
 
     \begin{observacao}
-        Continuações analíticas irrestritas não são um fato da vida!
+        É importante ressaltar que continuações analíticas irrestritas não são um fato da vida!
+        Não é de se esperar que toda função possa ser continuada analiticamente de maneira
+        irrestrita.
         
-        Falar de
+        De fato, considere
         %
         \begin{equation*}
-            z\mapsto \int_{\gamma} \frac{f(w)}{w-z}dw
+            z\mapsto \int_{\gamma} \frac{f(w)}{w-z}dw,
         \end{equation*}
         %
-        definir uma função analítica com singularidades não isoladas 
-        (conjunto de singularidades denso).
+        sendo $\gamma$ uma circunferência, por exemplo. Ora, em todo ponto de $\gamma$
+        temos uma singularidade desta função, de maneira que o conjunto de singularidades
+        dela é denso em $\C$, e isso não nos permite encontrar continuação analítica 
+        irrestrita dessa função. De fato, como o conjunto de singularidades é denso, as 
+        singularidades não são isoladas, ou seja, dada uma singularidade e uma vizinhança
+        qualquer dela, existe outra singularidade nessa mesma vizinhança. Intuitivamente, 
+        isso não nos permite ``escapar'' do interior da região delimitada por $\gamma$ para
+        construir uma continuação analítica, de maneira que não é possível continuar 
+        essa função de maneira analítica e irrestrita.
     \end{observacao}
 
     \begin{definicao}[Curvas FEP-homotópicas]
