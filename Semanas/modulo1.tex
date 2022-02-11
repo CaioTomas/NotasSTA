@@ -1085,36 +1085,66 @@ Veja o seguinte exemplo.
     
     \begin{teorema}[Princípio da Reflexão de Schwarz]
     \label{teo-reflexao-schwarz}
-        Suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende 
+        Seja $\omega\subseteq\C$ um domínio simétrico e
+        suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende 
         continuamente para $I$ e tal que $f$ toma valores reais em $I$. 
         Então existe uma função $F$ holomorfa em todo o $\Omega$ tal que
         $F\big|_{\Omega^+} = f$.
     \end{teorema}
         
     \begin{proof}
-        A ideia é definir $F$ em $\Omega^-$ por
+        A ideia é definir $F$ por
         %
         \begin{equation*}
-            F(z) = \overline{f(\overline{z})} .
+            F(z) =
+            %
+            \begin{cases}
+                f(z), & z \in \Omega^+ \\
+                f(z), & z \in I \\
+                \overline{f(\overline{z})}, & z\in\Omega^-   
+            \end{cases}
+            %
         \end{equation*}
         %
-        Para mostrar que $F$ é holomorfa em $\Omega^-$, notamos que se $z, z_0\in\Omega^-$
-        então $\overline{z}, \overline{z_0}\in\Omega^+$ e, portanto, a expansão de $f$
-        em série de potências em torno de $\overline{z_0}$ nos dá
+        Note que se tomarmos $f^+ \equiv f$ e $f^- \equiv \overline{f(\overline{z})}$, 
+        em acordo com o princípio da simetria, temos que para qualquer $z_0\in I$
+        %
+        \begin{align*}
+            \lim_{\substack{ z\to z_0 \\ \Im(z) > 0 }} f^+(z) 
+            = 
+            \overline{f(z_0)}
+            =
+            \overline{\lim_{\substack{ z\to z_0 \\ \Im(z) > 0 }} f(z)}
+            =
+            \lim_{\substack{ z\to z_0 \\ \Im(z) < 0 }} \overline{f(\overline{z})}
+            =
+            \lim_{\substack{ z\to z_0 \\ \Im(z) < 0 }} f^-(z),
+        \end{align*}
+        %
+        ou seja, $f^+(z_0) = f^-(z_0)$ para todo $z_0\in I$. Portanto, mostrando que 
+        $F$ é holomorfa em $\Omega^-$ poderemos usar o princípio da simetria para 
+        concluir a holomorficidade de $F$ em todo $\Omega$.
+        
+        Sejam $z, z_0\in\Omega^-$ então $\overline{z}, \overline{z_0}\in\Omega^+$. 
+        Desta forma, temos que
         %
         \begin{equation*}
-            f(\overline{z}) = \sum_{n=0}^{\infty} a_n (\overline{z} - \overline{z_0})^n,
+            F(z) 
+            = 
+            \overline{f(\overline{z})} 
+            =
+            \overline{ \sum_{n=0}^{\infty}a_n(\overline{z} - \overline{z_0})^n }
+            =
+            \sum_{n=0}^{\infty}\overline{a_n}(z-z_0)^n,
         \end{equation*}
         %
-        donde segue que
-        %
-        \begin{equation*}
-            F(z) = \sum_{n=0}^{\infty} \overline{a_n} (z - z_0)^n,
-        \end{equation*}
-        %
-        ou seja, $F$ é holomorfa em $\Omega^-$. Como $f$ toma valores reais em $I$, temos
-        $\overline{f(x)} = f(x), \forall x\in I$ e, portanto, $F$ se estende continuamente
-        a $I$. Invocando o princípio da simetria, terminamos a prova.
+        onde a segunda igualdade vale para todo 
+        $\overline{z}\in D(\overline{z_0}, R_{\overline{z_0}}(f))$.
+        
+        Ora, uma vez que para todo $z\in D(z_0, R_{\overline{z_0}}(f))$ temos
+        $\overline{z}\in D(\overline{z_0}, R_{\overline{z_0}}(f))$, segue da equação acima
+        que $R_{z_0}(F)\geq R_{\overline{z_0}}(f)$ e, portanto, $F$ é holomorfa em
+        $D(z_0, R_{z_0}(F))$.
     \end{proof}
 %
 
