@@ -1060,7 +1060,6 @@ Veja o seguinte exemplo.
             \int_{\Delta} f(z)\, dz \equiv \int_0^1 f(\gamma(t))\gamma'(t)\, dt = 0
         \end{equation*}
         %
-        
         \paragraph{Parte II:} $\Delta$ tem duas arestas interceptando $I$. Nesse caso, o interior
         de $\Delta$ intercepta $I$ e podemos reduzir esse caso a um dos anteriores se escrevermos 
         $\Delta$ como união de triângulos que têm um lado ou um vértice sobre $I$ da seguinte forma:
@@ -1150,3 +1149,78 @@ Veja o seguinte exemplo.
 
 \section{O teorema da aproximação de Runge}
 \label{sec:aprox-runge}
+    % explicação e introdução bla bla
+    %
+    \begin{teorema}[Weierstrass]
+    \label{teo:aprox-weierstrass}
+        Se $f:[a,b]\to\R$ é uma função contínua, então existe uma sequência $(p_n)_{n\in\N}$,
+        $p_n:[a,b]\to\R$ de funções polinomiais tal que $p_n\xrightarrow[n\to\infty]{\text{unif.}} f$,
+        ou seja, dado $\varepsilon > 0$ existe $n_0\in\N$ tal que
+        %
+        \begin{equation*}
+            \|f - p_n\|_{\infty} 
+            := 
+            \sup_{x\in [a,b]} |f(x) - p_n(x)| < \varepsilon, \forall n\geq n_0.
+        \end{equation*}
+        %
+    \end{teorema}
+    %
+    % explicação e discussão bla bla
+    %
+    \begin{teorema}[Runge]
+    \label{teo:aprox-runge}
+        Qualquer função holomorfa em uma vizinhança de um compacto $K\subseteq\C$ pode ser
+        aproximada uniformemente em $K$ por funções racionais cujas singularidades estão em
+        $K^c$.
+        
+        Ademais, se $K^c$ é conexo então qualquer função holomorfa em uma vizinhança de $K$
+        pode ser aproximada uniformemente em $K$ por polinômios.
+    \end{teorema}
+    %
+    % explicação da estratégia da prova bla bla
+    \begin{lema}
+    \label{lema1-runge}
+        Sejam $\Omega\subseteq\C$ um aberto, $f:\Omega\to\C$ uma função holomorfa e 
+        $K\subseteq\Omega$ um compacto. Existe uma quantidade finita de segmentos de reta
+        $\gamma_1, \gamma_2, \dots, \gamma_N$ em $\Omega\setminus K$ tais que
+        %
+        \begin{equation*}
+            f(z) = \sum_{n=1}^{N}\frac{1}{2\pi i}\int_{\gamma_n}\frac{f(w)}{w-z} \, dw.
+        \end{equation*}
+        %
+    \end{lema}
+    %
+    \begin{proof}
+        prova do reticulado de quadrados
+    \end{proof}
+    %
+    % explicação do próximo passo da prova do teorema bla bla
+    %
+    \begin{lema}
+    \label{lema2-runge}
+        Para qualquer segmento de reta $\gamma$ contido em $\Omega\setminus K$, existe uma sequência
+        de funções racionais com singularidades em $\gamma$ que aproxima a integral
+        %
+        \begin{equation*}
+            \int_{\gamma} \frac{f(w)}{w-z} \, dw   
+        \end{equation*}
+        %
+        uniformemente em $K$.
+    \end{lema}
+    %
+    \begin{proof}
+        prova usando convergência uniforme
+    \end{proof}
+    %
+    % explicação do último passo bla bla
+    %
+    \begin{lema}
+    \label{lema3-runge}
+        Se $K^c$ é conexo e $z_0\notin K$, então a função $\displaystyle{\frac{1}{1-z_0}}$ pode
+        ser uniformemente aproximada por polinômios em $K$.
+    \end{lema}
+    %
+    \begin{proof}
+        talvez falar que a prova tá no Márcio pra não ficar repetindo?   
+    \end{proof}
+    %
