@@ -1153,126 +1153,257 @@ Veja o seguinte exemplo.
     Nesta seção, tratamos do Teorema da aproximação de Runge, que é, num certo sentido, uma generalização do Teorema de Weierstrass enunciado abaixo.
     
     \begin{teorema}[Weierstrass]
-    Seja $f:[a,b] \to \R$ uma função contínua. Existe uma sequência $\{p_n\}$ de polinômios tal que $p_n \to f$ uniformemente.
+    \label{teo:aprox-weierstrass}
+        Seja $f:[a,b] \to \R$ uma função contínua. Existe uma sequência $\{p_n\}_{n\in\N}$ 
+        de polinômios tal que $p_n \xrightarrow[n\to\infty]{\text{unif.}} f$.
     \end{teorema}
     
-    Convergência uniforme significa que, dado qualquer $\varepsilon > 0$, existe $N \in \N$ tal que 
-    $$n \geq N \implies \sup \{|f(x) - p_n(x)| : x \in [a,b] \} < \varepsilon.$$
-    Este teorema mostra que podemos aproximar por polinômios uma função contínua qualquer definida num intervalo fechado de uma forma global. Além disso, esta aproximação é uniforme, ou seja, escolhido qualquer $\varepsilon > 0$, conseguimos encontrar um polinômio $p_n$ tal que $f(x)$ está $\varepsilon-$próximo de $p_n(x)$ para todo $x$ em $[a,b]$. Se não fosse uniforme, poderia ocorrer que, para cada $\varepsilon > 0$, teriamos que encontrar um polinômio distinto para que a aproximação seja boa o suficiente.
+    Convergência uniforme significa que, dado qualquer $\varepsilon > 0$, existe $N \in \N$ 
+    tal que 
+    %
+    \begin{equation*}
+        n \geq N \implies \sup \{|f(x) - p_n(x)| : x \in [a,b] \} < \varepsilon.
+    \end{equation*}
+    %
+    Este teorema mostra que podemos aproximar, por polinômios, uma função contínua qualquer 
+    definida num intervalo fechado de uma forma global. Além disso, esta aproximação é uniforme, 
+    ou seja, escolhido qualquer $\varepsilon > 0$, conseguimos encontrar um polinômio $p_n$ 
+    tal que $f(x)$ está $\varepsilon-$próximo de $p_n(x)$ para todo $x$ em $[a,b]$. 
+    Se não fosse uniforme, poderia ocorrer que, para cada $\varepsilon > 0$, 
+    teríamos que encontrar um polinômio distinto para que a aproximação fosse boa o suficiente.
     
-    No plano complexo, podemos aproximar (localmente) uma função holomorfa pelas somas parcias de sua séria de Taylor. O Teorema de Runge faz a aproximação (global) de funções holomorfas num compacto por funções racionais. Para que a aproximação por polinômios seja possível, é uma hipótese adicional. Além disso, ele é, em grande parte, uma consequência da fórmula integral de Cauchy.
-    
+    No plano complexo, podemos aproximar (localmente) uma função holomorfa pelas somas parciais 
+    de sua série de Taylor. O Teorema de Runge faz a aproximação (global) de funções holomorfas 
+    num compacto por funções racionais. Para que a aproximação por polinômios seja possível, 
+    é necessária uma hipótese adicional. Além disso, esse teorema é, em grande parte, 
+    consequência da fórmula integral de Cauchy, como veremos na demonstração.
+    %
     \begin{teorema}[Runge]
     \label{TR}
-    \begin{enumerate}
-        \item Qualquer função holomorfa definida em uma vizinhança de um compacto $K$ pode ser aproximada uniformemente em $K$ por funções racionais cujas singularidades estão em $K^c$.
-        \item Se $K^c$ é conexo, qualquer função holomorfa em uma vizinhança aberta de $K$ pode ser aproximada em $K$ por polinômios.
-    \end{enumerate}
+        O teorema consiste de dois pontos:
+        \begin{enumerate}
+            \item Qualquer função holomorfa definida em uma vizinhança de um compacto $K$ 
+            pode ser aproximada uniformemente em $K$ por funções racionais cujas singularidades 
+            estão em $K^c$.
+            \item Se $K^c$ é conexo, qualquer função holomorfa em uma vizinhança aberta de $K$ 
+            pode ser aproximada em $K$ por polinômios.
+        \end{enumerate}
     \end{teorema}
-    
+    %
     A prova deste teorema será consequência de três lemas que provaremos a seguir.
-    
+    %
     \begin{lema}
     \label{LR1}
-    Seja $f$ uma função holomorfa definida no aberto $\Omega$ e seja $K \subseteq \Omega$ um compacto. Existem finitos segmentos de reta $\gamma_1, \dots, \gamma_N$ em $\Omega - K$ tais que
-    $$f(z) = \sum^{N}_{j=1}\frac{1}{2 \pi i}\int_{\gamma_j}\frac{f(w)}{w-z}\,dw  \ \ \ \ \forall z \in K.$$
+        Seja $f$ uma função holomorfa definida no aberto $\Omega$ e seja $K \subseteq \Omega$ 
+        um compacto. Existem finitos segmentos de reta $\gamma_1, \dots, \gamma_N$ em 
+        $\Omega - K$ tais que
+        %
+        \begin{equation*}
+        f(z) 
+        = 
+        \sum^{N}_{j=1}\frac{1}{2 \pi i}\int_{\gamma_j}\frac{f(w)}{w-z} \, dw  \, , \forall z \in K.
+        \end{equation*}
+        %
     \end{lema}
-    
+    %
     \begin{proof}
-    Seja $d = c \cdot d(K, \Omega^c)$, onde $0 < c < 1/\sqrt{2}$ e $d(K, \Omega^c) = \inf \{d(z,w) : z \in K, w \in \Omega^c\}$. Considere um reticulado de quadrados com lados medem $d$ e são paralelos aos eixos coordenados (veja Figura \ref{}). Seja $\mathcal{Q} = \{Q_1, \dots, Q_M\}$ o conjunto finito dos quadrados unidos aos seus interiores que interceptam o conjunto $K$. Observe que podemos fazer isto porque $K$ é compacto. Vamos chamar, daqui em diante, dee quadrados os elementos de $\mathcal{Q}$.
-    
-    Sejam $\gamma_j$, com $j \in \{1, \dots, N\}$, os lados dos quadrados em $\mathcal{Q}$ que não são lados de quadrados adjacentes de $\mathcal{Q}$. Pela escolha de $d$, temos que $d\sqrt{2}$ é a medida da diagonal dos quadrados e é menor que $d(K, \Omega^c)$, logo, $\gamma_j$ está contido em $\Omega$ para todo $j$.
-    
-    Se $z$ está em $K$ e $z \in Q_m - \partial Q_m$, então, pela fórmula integral de Cauchy,
-    \begin{equation*}
-    \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\, dw = 
-    \begin{cases}
-        &f(z), \text{se } m = j \\
-        &0, \text{se } m \neq j.
-    \end{cases}
-    \end{equation*}
-    Portanto, para todo $z$ de $K$ que não está no bordo de nenhum quadrado de $\mathcal{Q}$, temos
-    $$f(z) = \sum^{M}_{m=1}\frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\,dw.$$
-    
-    Como $f$ é contínua em $K$, para $z_0 \in K \cap \partial Q_j$ para algum $j$, temos
-    \begin{align*}
-        f(z_0) &= \lim_{z \to z_0} f(z) \\
-            &= \lim_{z \to z_0} \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\,dw\\
-            &= \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z_0}\,dw,
-    \end{align*}
-    onde o limite é tomado com $z \in K$. Portanto, está demonstrado o lema.
+        Seja $d = c \cdot d(K, \Omega^c)$, onde $0 < c < 1/\sqrt{2}$ e
+        %
+        \begin{equation*}
+        d(K, \Omega^c) = \inf \{d(z,w) : z \in K, w \in \Omega^c\}.
+        \end{equation*}
+        %
+        Considere um reticulado de quadrados com lados de medida $d$ e paralelos aos eixos 
+        coordenados (veja Figura \ref{}). Seja $\mathcal{Q} = \{Q_1, \dots, Q_M\}$ o conjunto 
+        dos quadrados unidos aos seus interiores que interceptam o conjunto $K$ (finito pois
+        $K$ é compacto). Vamos chamar, daqui em diante, os elementos de $\mathcal{Q}$ de quadrados.
+        %
+        \begin{center}
+            {\bf diagrama reticulado Stein}
+        \end{center}
+        %
+        Sejam $\gamma_j$, com $j \in \{1, \dots, N\}$, os lados dos quadrados em $\mathcal{Q}$ 
+        que não são lados de quadrados adjacentes de $\mathcal{Q}$. Pela escolha de $d$, temos 
+        que $d\sqrt{2}$ é a medida da diagonal dos quadrados e é menor que $d(K, \Omega^c)$, 
+        logo $\gamma_j\subset\Omega$ para todo $j$.
+        
+        Se $z$ está em $K$ e $z \in Q_m - \partial Q_m$, então, pela fórmula integral de Cauchy,
+        %
+        \begin{equation*}
+            \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\, dw 
+            = 
+            \begin{cases}
+                f(z), &m = j \\
+                0, &m \neq j.
+            \end{cases}
+        \end{equation*}
+        %
+        Portanto, para todo $z\in K$ que não está no bordo de nenhum quadrado de $\mathcal{Q}$, 
+        temos
+        %
+        \begin{equation*}
+            f(z) = \sum^{M}_{m=1}\frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\,dw.
+        \end{equation*}
+        %
+        Como $f$ é contínua em $K$, para $z_0 \in K \cap \partial Q_j$ para algum $j$, temos
+        %
+        \begin{align*}
+            f(z_0) &= \lim_{\substack{z \to z_0 \\ z\in K}} f(z) \\
+                   &= \lim_{\substack{z \to z_0 \\ z\in K}} 
+                   \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\,dw \\
+                   &= \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z_0}\,dw,
+        \end{align*}
+        %
+        Portanto, está demonstrado o lema.
     \end{proof}
-    
+    %
     \begin{lema}
     \label{LR2}
-    Para qualquer segmento de reta contido em $\Omega - K$, existe uma sequência de funções racionais com singularidades em $\gamma$ que aproxima
-    $$\int_\gamma \frac{f(w)}{w-z}\,dw$$
-    uniformemente em $K$.
+        Para qualquer segmento de reta contido em $\Omega - K$, existe uma sequência 
+        de funções racionais com singularidades em $\gamma$ que aproxima
+        %
+        \begin{equation*}
+        \int_\gamma \frac{f(w)}{w-z}\,dw
+        \end{equation*}
+        %
+        uniformemente em $K$.
     \end{lema}
-    
+    %
     \begin{proof}
-    Seja $\gamma : [0,1] \to \C$ um segmento de reta conforme o teorema e denote por $F(z,t)$ a expressão 
-    $$\frac{f(\gamma(t))}{\gamma(t) - z}\gamma'(t).$$
-    $F$ é uma função contínua em $K \times [0,1]$ e
-    $$\int_\gamma \frac{f(w)}{w-z}\,dw = \int_{0}^{1}F(z,t)\,dt.$$
-    
-    Fixado $z \in K$ e dado $\varepsilon > 0$, existe um $\delta > 0$ tal que
-    \begin{equation}
-    \label{ER1}
-    |t_1 - t_2| < \delta_z \implies |F(z,t_1) - F(z,t_2)| < \varepsilon
-    \end{equation}
-    Pela continuidade de $F$, existe um $\eta_z > 0$ tal que, para $z_1$ satisfazendo $|z-z_1| < \eta_z$, ainda vale (\ref{ER1}). Como $K$ é compacto, podemos escolher um $\delta>0$ tal que 
-    \begin{equation}
-    \label{ER2}
-    |t_1 - t_2| < \delta \implies \sup \{|F(z,t_1) - F(z,t_2)| : z \in K\} < \varepsilon.   
-    \end{equation}
-    
-    Podemos escrever a integral de $F(z,t)$ de $0$ a $1$ como o limite de uma soma de Riemann (que converge uniformemente):
-    $$\int_{0}^{1}F(z,t) \, dt = \lim_{n \to \infty}\frac{1}{n}\sum_{j=1}^{n}F(z,t_j),$$
-    onde cada $F(z,t_j)$ é uma função racional. Denote
-    $$g(z) = \int_{0}^{1}F(z,t) \, dt \ \ \ \ g_n(z) = \frac{1}{n}\sum_{j=1}^{n}F(z,t_j).$$ 
-    Usando as considerações anteriores, temos que 
-    \begin{align*}
-        |g(z) - g_n(z)| &\leq \sum_{k=1}^{n}\frac{1}{n}\Big |\int_{\frac{k-1}{n}}^{\frac{k}{n}}F(z,k/n) - F(z,n) \, dt \Big |\\
-        &\leq \sum_{k=1}^{n}\frac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}}|F(z,k/n) - F(z,n)| \, dt \to 0,
-    \end{align*}
-    onde usamos (\ref{ER2}). Observe que $g(z)$ é a expressão que queriamos aproximar (uniformemente) por funções racionais, então o Lema está demonstrado.
+        Seja $\gamma : [0,1] \to \C$ um segmento de reta conforme o teorema e denote
+        %
+        \begin{equation*}
+            F(z,t) = \frac{f(\gamma(t))}{\gamma(t) - z}\gamma'(t).
+        \end{equation*}
+        %
+        Note que $F$ é uma função contínua em $K \times [0,1]$ e que
+        %
+        \begin{equation*}
+            \int_\gamma \frac{f(w)}{w-z}\,dw = \int_{0}^{1}F(z,t)\,dt.
+        \end{equation*}
+        %
+        Fixado $z \in K$ e dado $\varepsilon > 0$, existe um $\delta_z > 0$ tal que
+        %
+        \begin{equation}
+        \label{ER1}
+            |t_1 - t_2| < \delta_z \implies |F(z,t_1) - F(z,t_2)| < \varepsilon
+        \end{equation}
+        %
+        Pela continuidade de $F$, existe um $\eta_z > 0$ tal que, para $z_1$ satisfazendo 
+        $|z-z_1| < \eta_z$, ainda vale \eqref{ER1}. Como $K$ é compacto, podemos escolher 
+        um $\delta > 0$ tal que
+        %
+        \begin{equation}
+        \label{ER2}
+            |t_1 - t_2| < \delta \implies \sup \{|F(z,t_1) - F(z,t_2)| : z \in K\} < \varepsilon.   
+        \end{equation}
+        %
+        Podemos escrever a integral de $F(z,t)$ de $0$ a $1$ como o limite de uma soma de Riemann 
+        (que converge uniformemente):
+        %
+        \begin{equation*}
+            \int_{0}^{1}F(z,t) \, dt = \lim_{n \to \infty}\frac{1}{n}\sum_{j=1}^{n}F(z,t_j),
+        \end{equation*}
+        %
+        onde cada $F(z,t_j)$ é uma função racional. Denote
+        %
+        \begin{equation*}
+            g(z) = \int_{0}^{1}F(z,t) \, dt \, , g_n(z) = \frac{1}{n}\sum_{j=1}^{n}F(z,t_j).
+        \end{equation*}
+        %
+        Usando as considerações anteriores, temos que 
+        \begin{align*}
+            |g(z) - g_n(z)| 
+            &\leq 
+            \sum_{k=1}^{n}\frac{1}{n}\left|\int_{\frac{k-1}{n}}^{\frac{k}{n}}F(z,k/n) - F(z,n) \, dt \right| \\
+            &\leq \sum_{k=1}^{n}\frac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}}|F(z,k/n) - F(z,n)| \, dt
+            \to 0,
+        \end{align*}
+        onde usamos \eqref{ER2}. Observe que $g(z)$ é a expressão que queríamos aproximar
+        (uniformemente) por funções racionais, então o Lema está demonstrado.
     \end{proof}
+    %
+    Para ilustrar a necessidade da hipótese da conexidade de $K^c$, damos um exemplo. 
+    Considere a função $f: \C^* \to \C$ dada pela regra $z \mapsto 1/z$ e o compacto 
+    $\partial \mathbb{D}$, o bordo do disco unitário  $\mathbb{D}$. Vamos mostrar que $f$ não
+    pode ser aproximada por polinômios em $\partial D$, mesmo com esse conjunto sendo compacto.
+    Observe ainda que o seu complementar é um conjunto desconexo.
     
-    Para ilustrar a necessidade da hipótese da conexidade de $K^c$, damos um exemplo. Considere a função $f: \C^* \to \C$ dada pela regra $z \mapsto 1/z$ e o compacto $\partial \mathbb{D}$, o bordo do disco unitário  $\mathbb{D}$. Vamos mostrar que $f$ não tem aproximação por polinômios em $\partial D$, mesmo sendo um compacto. Observe ainda que o seu complementar é um conjunto desconexo.
-    
-    Por integração complexa, sabemos que 
-    $$\int_{\partial \mathbb{D}}f(z) \, dz = 2 \pi i.$$
-    Suponha, por contradição, que $f$ tenha uma aproximação uniforme por polinômios em $\partial \mathbb{D}$. Então existe uma sequência $\{p_n\}$ de polinômios tal que, dado $\varepsilon > 0$, existe $N \in \N$ tal que
-    $$n \geq N \implies \sup \{|f(z) - p_n(z)|: z \in \partial \mathbb{D}\} < \varepsilon.$$
-    Além disso, a integral de qualquer polinômio ao redor de uma curva simples e fechada é sempre igual a zero, pois polinômios são funções inteiras. Segue que
-    
+    Pelo Teorema dos Resíduos, por exemplo, sabemos que
+    %
+    \begin{equation*}
+        \int_{\partial \mathbb{D}}f(z) \, dz = 2 \pi i.
+    \end{equation*}
+    %
+    Suponha, por contradição, que $f$ tenha uma aproximação uniforme por polinômios em 
+    $\partial \mathbb{D}$. Então existe uma sequência $\{p_n\}$ de polinômios tal que, 
+    dado $\varepsilon > 0$, existe $N \in \N$ tal que
+    %
+    \begin{equation*}
+        n \geq N \implies \sup \{|f(z) - p_n(z)|: z \in \partial \mathbb{D}\} < \varepsilon.
+    \end{equation*}
+    %
+    Além disso, a integral de qualquer polinômio ao redor de uma curva simples e fechada é sempre
+    igual a zero, pois polinômios são funções inteiras. Segue que
+    %
     \begin{align*}
-        \left|\int_{\partial \mathbb{D}} f(z) \, dz\right| & = \left|\int_{\partial \mathbb{D}} f(z) \, dz - \int_{\partial \mathbb{D}} p_n(z) \, dz\right| \\
+        \left|\int_{\partial \mathbb{D}} f(z) \, dz\right| 
+        &= \left|\int_{\partial \mathbb{D}} f(z) \, dz - \int_{\partial \mathbb{D}} p_n(z) \, dz\right| \\
         &= \left|\int_{\partial \mathbb{D}} f(z) - p_n(z)\, dz\right| \\
-        &\leq \int_{\partial \mathbb{D}}|f(z) - p_n(z)| \, dz \to 0,
+        &\leq \int_{\partial \mathbb{D}}|f(z) - p_n(z)| \, dz \xrightarrow{n\to\infty} 0,
     \end{align*}
-    conforme $n \to \infty$. Isto é uma clara contradição e mostra a importância da hipótese de que $K^c$ seja conexo.
+    %
+    Isto é uma clara contradição e mostra a importância da hipótese de que $K^c$ seja {\bf conexo}.
+    %
     \begin{lema}
     \label{LR3}
-    Se $K^c$ é conexo e $z_0 \not \in K$, então $1/(z-z_0)$ pode ser aproximado em $K$ por polinômios.
+        Se $K^c$ é conexo e $z_0 \not \in K$, então $\displaystyle{\frac{1}{z-z_0}}$ 
+        pode ser aproximado em $K$ por polinômios.
     \end{lema}
-    
+    %
     \begin{proof}
-    Seja $D$ um disco com centro na origem que contém $K$, isto é possível porque $K$ é compacto. Sendo $z_1 \not \in D$, podemos aproximar $1/(z-z_1)$ por polinômios definidos em $K$, veja que
-    $$\frac{1}{z-z_1} = \frac{-1}{z_1}\frac{1}{1-\frac{z}{z_1}} = - \sum_{n=1}^{\infty}\frac{z^n}{z_1^{n+1}}.$$
-    Esta série converge sempre que $|z| < |z_1|$ e, em particular, converge uniformemente para todo $z \in K$. As suas somas parciais, então, são uma aproximação uniforme do modo que queriamos. Como consequência disso, podemos aproximar da mesma forma qualquer potência $1/(z-z_1)^k$.
-    
-    Como $K^c$ é conexo, existe uma curva $\gamma : [0,1] \to \C$ inteiramente contida em $K^c$ tal que $\gamma(0) = z_0$ e $\gamma(1) =  z_1$. Defina $\rho = \frac{1}{2}d(K,\gamma)$; devemos ter $\rho > 0$ pois ambos $K$ e $\gamma$ são compactos. Seja $\{w_0, w_1, \dots, w_l\}$ uma sequência finita de pontos em $\gamma$ com $w_0 = z_0$, $w_l = z_1$ e $|w_j - w_{j+1}| < \rho$ para $0 \leq j < l$. Sendo $w = w_j$ para algum $j$ temos que, se $w'$ satisfaz $|w - w'| < \rho$, podemos aproximar $\frac{1}{z-w}$ por polinômios em $\frac{1}{z-w'}$, basta ver que
-    \begin{align*}
-    \frac{1}{z-w} &= \frac{1}{z - w' + w' - w}\\
-        &= \frac{1}{z-w'}\frac{1}{1 - \frac{w - w'}{z - w'}}\\
-        &= \sum_{n = 0}^{\infty}\frac{(w-w')^n}{(z-w')^{n+1}},
-    \end{align*}
-    onde a convergência é uniforme para $|w-w'| < |z-w'|$. Isto acontece para todo $z \in K$, pois $|z-w'|> \rho$.
-    
-    Fazendo isto repetidamente para os pontos da sequência finita $\{w_j\}$, vemos que $1/(z-z_0)$ pode ser aproximado por polinômios em $1/(z-z_1)$ que, por sua vez, pode ser aproximado por polinômios em $K$.
-    
+        Seja $D$ um disco com centro na origem que contém $K$ (tal disco existe porque 
+        $K$ é compacto). Sendo $z_1 \not \in D$, podemos aproximar $1/(z-z_1)$ por polinômios
+        definidos em $K$. De fato, veja que
+        %
+        \begin{equation*}
+        \frac{1}{z-z_1}
+        =
+        \frac{-1}{z_1}\cdot\frac{1}{1-\frac{z}{z_1}} = - \sum_{n=1}^{\infty}\frac{z^n}{z_1^{n+1}}.
+        \end{equation*}
+        %
+        Esta série converge sempre que $|z| < |z_1|$ e, em particular, converge uniformemente 
+        para todo $z \in K$. As suas somas parciais, então, são uma aproximação uniforme, 
+        como afirmado. Como consequência disso, podemos aproximar da mesma forma qualquer 
+        potência $1/(z-z_1)^k$.
+        
+        Como $K^c$ é conexo, existe uma curva $\gamma : [0,1] \to \C$ inteiramente contida em 
+        $K^c$ tal que $\gamma(0) = z_0$ e $\gamma(1) =  z_1$. Defina $\rho = \frac{1}{2}d(K,\gamma)$;
+        devemos ter $\rho > 0$ pois ambos $K$ e $\gamma$ são compactos. 
+        Seja $\{w_0, w_1, \dots, w_l\}$ uma sequência finita de pontos em $\gamma$ com $w_0 = z_0$,
+        $w_l = z_1$ e $|w_j - w_{j+1}| < \rho$ para $0 \leq j < l$. Sendo $w = w_j$ para algum $j$,
+        temos que se $w'$ satisfaz $|w - w'| < \rho$, podemos aproximar $\frac{1}{z-w}$ 
+        por polinômios em $\frac{1}{z-w'}$. De fato, basta notar que
+        %
+        \begin{align*}
+            \frac{1}{z-w} &= \frac{1}{z - w' + w' - w}\\
+                          &= \frac{1}{z-w'}\frac{1}{1 - \frac{w - w'}{z - w'}}\\
+                          &= \sum_{n = 0}^{\infty}\frac{(w-w')^n}{(z-w')^{n+1}},
+        \end{align*}
+        %
+        onde a convergência é uniforme para $|w-w'| < |z-w'|$. Isto acontece para todo 
+        $z \in K$, pois $|z-w'|> \rho$.
+        
+        Fazendo isto repetidamente para os pontos da sequência finita $\{w_j\}$, vemos que 
+        $1/(z-z_0)$ pode ser aproximado por polinômios em $1/(z-z_1)$ que, por sua vez, pode 
+        ser aproximado por polinômios em $K$.
     \end{proof}
+    %
     
-    O Lema \ref{LR1} nos dá uma expressão para $f$ em $K$ em termos de uma certa soma em que vemos claramente a fórmula integral de Cauchy. O Lema \ref{LR2} mostra que cada parcela dessa soma pode ser aproximada por funções racionais de forma uniforme; além disso, as singularidades dessas funções estão fora de $K$. Isto demonstra o item 1 do Teorema de Runge. Em essência, o Lema \ref{LR3} implica o segundo item do Teorema porque os denominadores das funções racionais do item 1 poderão ser aproximados por polinômios quando aplicamos a hipótese de $K^c$ ser conexo.
+    O Lema \ref{LR1} nos dá uma expressão para $f$ em $K$ em termos de uma certa soma em 
+    que vemos claramente a fórmula integral de Cauchy. O Lema \ref{LR2} mostra que cada parcela 
+    dessa soma pode ser aproximada por funções racionais de forma uniforme; além disso, as
+    singularidades dessas funções estão fora de $K$. Isto demonstra o item 1 do Teorema de Runge. 
+    Em essência, o Lema \ref{LR3} implica o segundo item do Teorema porque os denominadores das
+    funções racionais do item 1 poderão ser aproximados por polinômios quando aplicamos a hipótese
+    de conexidade de $K^c$.
