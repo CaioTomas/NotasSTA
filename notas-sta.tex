@@ -88,6 +88,11 @@
 \renewcommand{\Re}{\mathrm{Re}}
 \renewcommand{\Im}{\mathrm{Im}}
 
+% shortcuts dos mandrake
+\newcommand{\y}{\gamma}
+\newcommand{\e}{\varepsilon} % overwrite do operador na linha 112
+\newcommand{\D}{\mathbb{D}}
+%
 
 \newtheorem{teorema}{Teorema}[chapter]
 \newtheorem{proposicao}[teorema]{Proposição}
@@ -104,16 +109,17 @@
 
 
 % operadores matemáticos
-\DeclareMathOperator{\e}{e}
-\DeclareMathOperator{\vol}{vol}
-\DeclareMathOperator{\Id}{Id}
-\DeclareMathOperator{\Graf}{Graf}
-\DeclareMathOperator{\intt}{int}
+% os não usados foram comentados -- Thiago
+% \DeclareMathOperator{\e}{e}
+% \DeclareMathOperator{\vol}{vol}
+% \DeclareMathOperator{\Id}{Id}
+% \DeclareMathOperator{\Graf}{Graf}
+% \DeclareMathOperator{\intt}{int}
 \DeclareMathOperator{\sen}{sen}
-\DeclareMathOperator{\senh}{senh}
+\DeclareMathOperator{\senh}{senh} % não foi usado, mas deve ser útil
 \DeclareMathOperator{\arcsen}{arcsen}
-\renewcommand{\ker}{Nuc}
-\DeclareMathOperator{\supp}{supp}
+% \renewcommand{\ker}{Nuc}
+\DeclareMathOperator{\supp}{supp} % não foi usado, mas deve ser útil
 \DeclareMathOperator{\res}{res}
 %%%%%%%%%%%%% FIM    - Alguns Comandos Úteis
 
@@ -150,8 +156,7 @@
 %%%%%%%%%%%%%%%%%%  Capa
 \frontmatter 
 \include{Capa/Capa-PTM}
-
-%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
 
 \noindent
 {\huge Autores}
