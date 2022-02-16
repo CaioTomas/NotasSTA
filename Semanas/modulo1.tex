@@ -1488,10 +1488,297 @@
 \section{Integrais Complexas Impróprias e a Transformada de Fourier}
 \label{sec:integrais-e-transf-fourier}
 
-% intro com teoria da medida (vide gravação Aula 8 & notas TPM GitHub Cioletti)
-
-% seguir slides Aula 8:
-%   - motivar a definição de integral imprópria usando a teoria da medida de Lebesgue
-%   - falar do valor principal de Cauchy
-%   - falar de "caminhos infinitos" (definidos na reta toda)
-%   - transformada de Fourier
+    Neste seção, começamos a tratar da transformada de Fourier. Para tanto, é necessário
+    primeiro definir de maneira mais rigorosa a integral complexa e a integral imprópria e,
+    para este objetivo, tratamos brevemente da medida de Lebesgue. Buscamos fazer o máximo da
+    teoria no âmbito da integração de Riemann, mas em alguns enunciados são necessárias hipóteses
+    que utilizam a medida de Lebesgue.
+    
+    \subsection{Uma brevíssima introdução à medida de Lebesgue}
+        %
+        \begin{definicao}
+        \label{def-medida-lebesgue}
+            A medida de Lebesgue é a correspondência
+            %
+            \begin{equation*}
+                \Leb: \mathcal{A}\subset\mathcal{P}(\R) \to [0, +\infty] \subseteq\overline{\R} 
+                = \R\cup\{-\infty, +\infty\},
+            \end{equation*}
+            %
+            sendo $\mathcal{A}$ uma $\sigma$-álgebra adequada\footnote{Não vamos falar da
+            estrutura exata dessa $\sigma$-álgebra; basta saber que ela é maior que os borelianos
+            mas menor que o conjunto das partes.} e $\overline{\R}$ a reta real estendida, tal que
+            %
+            \begin{equation*}
+                \Leb(A) = \inf_{\mathcal{C}} \sum_{n\in\N} (b_n - a_n), \, \forall A\in\mathcal{A},
+            \end{equation*}
+            %
+            onde $\mathcal{C}$ é a família de coberturas abertas $\mathscr{C}$ de $A$ por intervalos
+            disjuntos, i.e.,
+            %
+            \begin{equation*}
+                \mathscr{C} = \bigcup_{n\in\N} I_n, \text{ com } I_n = (a_n, b_n)\subseteq\R
+                \text{ e } I_j\cap I_k = \varnothing, j\neq k.
+            \end{equation*}
+            %
+        \end{definicao}
+        %
+        Com essa definição, temos, por exemplo, que
+        %
+        \begin{align*}
+            \Leb([a,b]) = b-a = \Leb((a,b))
+        \end{align*}
+        %
+        e também que a medida de Lebesgue de uma união disjunta é a soma das medidas, ou seja,
+        %
+        \begin{equation*}
+            \Leb\left( \bigsqcup_k I_k \right) = \sum_k \Leb(I_k).
+        \end{equation*}
+        %
+        Um tratamento mais aprofundado e no contexto de Teoria da Probabilidade pode ser
+        encontrado \href{https://github.com/leandro-mat/Notas-PTM/blob/master/notas.pdf}{aqui}.
+        Antes de rumar para a integração, vamos apenas mostrar uma propriedade interessante
+        da medida de Lebesgue: todo conjunto enumerável tem medida nula.
+        %
+        \begin{proposicao}
+        \label{enumeravel-medida-nula}
+            $\Leb(\mathcal{Q}) = 0$ para todo $\mathcal{Q}$ enumerável.
+        \end{proposicao}
+        %
+        \begin{proof}
+            Seja $\{ p_1, p_2, \dots, p_n, \dots \}$ uma enumeração de $\mathcal{Q}$ e considere
+            a cobertura de $\mathcal{Q}$ pelos intervalos
+            %
+            \begin{equation*}
+                I_n = \left(p_n - \frac{\e}{2^n}, p_n + \frac{\e}{2^n} \right),
+            \end{equation*}
+            %
+            sendo $\e>0$ qualquer. Daí, temos
+            %
+            \begin{align*}
+                \Leb(\mathcal{Q}) &\leq \sum_{n\in\N} \Leb(I_n) \\
+                                  &= \sum_{n\in\N} \frac{2\e}{2^n} \\
+                                  &= 2\e\sum_{n\in\N} \frac{1}{2^n} \\
+                                  &= 2\e.
+            \end{align*}
+            %
+            Como $\e$ é qualquer, segue que $\Leb(\mathcal{Q}) = 0$.
+        \end{proof}
+        %
+        \begin{corolario}
+            $\Leb(\Q) = 0$.
+        \end{corolario}
+        %
+        Mostramos que todo conjunto enumerável tem medida de Lebesgue nula, mas a volta
+        não vale! Dito de outro modo, existem conjuntos não-enumeráveis com medida nula.
+        Um exemplo clássico é o conjunto de Cantor, $\mathbf{C}$.
+        %
+        \begin{proposicao}
+        \label{cantor-medida-nula}
+            O conjunto de Cantor, $\mathbf{C}$, tem medida de Lebesgue nula.
+        \end{proposicao}
+        %
+        \begin{proof}
+            Para mostrar essa fato, vamos olhar para os ``pedaços'' removidos do conjunto de
+            Cantor e usar o fato de que $\Leb([0,1]) = 1$. No passo $N$ da construção de 
+            $\mathbf{C}$, removemos um comprimento de
+            %
+            \begin{equation*}
+                \sum_{n=1}^N \frac{2^{n-1}}{3^n}=\frac{1}{2}\sum_{n=1}^N \left(\frac{2}{3}\right)^n
+                \xrightarrow{N\to +\infty} \frac{1}{2}\cdot\frac{2/3}{1/3} = 1.
+            \end{equation*}
+            %
+            Dado $\e>0$, existe $N_0\in N$ tal que
+            %
+            \begin{equation*}
+                \frac{1}{2}\sum_{n=1}^{N_0} \left(\frac{2}{3}\right)^n > 1 - \e.
+            \end{equation*}
+            %
+            Seja $\{I_k\}$ a família de intervalos que corresponde a essa soma. Ora, então
+            $\left( \bigcup_k I_k \right)^c$ é uma cobertura de $\mathbf{C}$ com soma
+            dos comprimentos menor que $\e$. Da arbitrariedade de $\e$, segue que
+            $\Leb(\mathbf{C}) = 0$.
+        \end{proof}
+        %
+        
+    \subsection{Integrais Impróprias e o Valor Principal de Cauchy}
+        %
+        Se $f:[a,b]\to\R$ é uma função limitada tal que o seu conjunto de pontos de descontinuidade
+        tem medida de Lebesgue nula, então existe a integral de Riemann de $f$, ou seja, existe
+        o limite
+        %
+        \begin{equation*}
+            \lim_{n\to\infty} \frac{b-a}{n}\sum_{j=1}^n f(x_j^*) = \int_a^b f(x) \, dx,
+        \end{equation*}
+        %
+        sendo $x_j^*$ o ponto médio do intervalo 
+        $\displaystyle{ \left[ a + \frac{b-a}{n}(j-1), a + \frac{b-a}{n}j \right] }$.
+        
+        A discussão feita acima sobre a medida de Lebesgue nos permite ver que impor a condição
+        de que as descontinuidades de $f$ tenha medida nula não é, de modo algum, restritiva demais:
+        funções com os mais diferentes tipos de conjuntos de descontinuidade estão nessa classe.
+        %
+        \begin{definicao}
+        \label{def-riemann-integravel}
+            Seja $f:\R\to\R$ uma função com conjunto de descontinuidades de medida nula. Suponha
+            que $f$ é limitada em cada compacto $[a,b]\subseteq\R$, isto é, tal que
+            %
+            \begin{equation*}
+                \sup_{x\in [a,b]} |f(x)| < +\infty.
+            \end{equation*}
+            %
+            Se existir
+            %
+            \begin{equation*}
+                \lim_{\substack{b\to +\infty \\ a\to -\infty}} \int_a^b f(x) \, dx 
+                \equiv \int_{\R} f(x) \, dx \in\overline{\R},
+            \end{equation*}
+            %
+            dizemos que $f$ é Riemann integrável em $\R$.
+        \end{definicao}
+        %
+        Aqui é conveniente observar o seguinte: por vezes, é dito apenas ``integrável'' ao invés
+        de ``Riemann integrável'' ou ``Lebesgue integrável'' (que não definimos). É importante
+        saber a qual dessas duas o contexto se refere, pois no caso de Riemann integrável queremos
+        1) saber se o limite acima existe e 2) quanto ele vale (podendo ser infinito); por outro
+        lado, no caso de Lebesgue integrável queremos saber apenas se o limite acima é finito,
+        pois ele sempre existe nesse segundo contexto. Aqui, a menos que dito o contrário,
+        estaremos nos referindo à integrabilidade de Riemann.
+        
+        Ademais, vamos reservar o símbolo
+        %
+        \begin{equation*}
+            \int_{\R} f(x) \, dx
+        \end{equation*}
+        %
+        para a integral acima, em que os limites superior e inferior da integral definida
+        convergem para infinito a qualquer taxa.
+        %
+        \begin{definicao}
+        \label{def-valor-principal}
+            O Valor Principal de Cauchy de uma função $f:\R\to\R$, quando existe, é dado pelo limite
+            %
+            \begin{equation*}
+                \lim_{a\to +\infty} \int_{-a}^a f(x) \, dx 
+                \equiv \text{VP}\left( \int_{-\infty}^{\infty} f(x) \, dx \right)
+                \equiv \int_{-\infty}^{\infty} f(x) \, dx
+            \end{equation*}
+            %
+        \end{definicao}
+        %
+        Fica evidente desta definição que se $f:\R\to\R$ é Riemann integrável, então
+        %
+        \begin{equation*}
+            \int_{\R} f(x) \, dx = \int_{-\infty}^{\infty} f(x) \, dx,
+        \end{equation*}
+        %
+        ou seja, a integral é dada pelo Valor Principal de Cauchy. Isto nos permite trabalhar de
+        maneira mais fácil: se sabemos que o limite da Definição \ref{def-riemann-integravel} 
+        existe, podemos calculá-lo utilizando o limite da Definição \ref{def-valor-principal}, 
+        que é muito mais facilmente tratável do que o primeiro.
+        
+    \subsection{Integrais de Funções Complexas}
+        %
+        Vamos trabalhar com dois tipos de integrais de funções que tomam valores em $\C$:
+        %
+        \begin{enumerate}
+            \item integrar $\widetilde{f}:[a,b]\to\C$, com 
+            $\widetilde{f}(t) = \widetilde{f_1}(t) + i\widetilde{f_2}(t)$;
+            %
+            \item integrar $f:U\to\C$ ao longo de um caminho $\gamma:[a,b]\to\C$ suave por
+            partes tal que $\gamma(t)\in U, \forall t\in [a,b]$.
+        \end{enumerate}
+        %
+        Para as funções do primeiro tipo, definimos a integral motivados pela definição da integral
+        de Riemann, utilizando a ideia de média.
+        %
+        \begin{definicao}
+        \label{def-integral-complexa-tipo-1}
+            Seja $f:[a,b]\to\C$ uma função complexa dada por $f(t) = f_1(t) + if_2(t)$, sendo
+            $f_1, f_2$ funções que tomam valores em $\R$. Supondo $f_1$ e $f_2$ Riemann
+            integráveis em $[a,b]$, definimos
+            %
+            \begin{equation*}
+                \int_a^b f(t) \, dt = \lim_{n\to\infty}\left(\frac{b-a}{n}\sum_{j=1}^n f(t_j^*)\right),
+            \end{equation*}
+            %
+            com $t_j^*$ o ponto médio do intervalo 
+            $\displaystyle{ \left[ a + \frac{b-a}{n}(j-1), a + \frac{b-a}{n}j \right] }$.
+        \end{definicao}
+        %
+        Já que estamos assumindo $f_1, f_2$ Riemann integráveis em $[a,b]$, temos que
+        %
+        \begin{align*}
+            \int_a^b f(t) \, dt &= \lim_{n\to\infty}\left(\frac{b-a}{n}\sum_{j=1}^n f(t_j^*)\right) \\
+                                &= \lim_{n\to\infty}\left(\frac{b-a}{n}\sum_{j=1}^n [f_1(t_j^*) 
+                                + if_2(t_j^*)] \right) \\
+                                &= \lim_{n\to\infty}\left(\frac{b-a}{n}\sum_{j=1}^n f_1(t_j^*)\right)
+                                + i\lim_{n\to\infty}\left(\frac{b-a}{n}\sum_{j=1}^n f_2(t_j^*)\right) \\
+                                &= \int_a^b f_1(t) \, dt + i\int_a^b f_2(t) \, dt.
+        \end{align*}
+        %
+        Isso nos mostra o porquê da ``definição razoável'' da integral complexa no primeiro caso
+        ser o número complexo formado pelas integrais de cada uma das partes: a definição através
+        da mesma ideia da integral de Riemann.
+        %
+        \begin{definicao}
+        \label{def-integral-complexa-impropria-tipo-1}
+            Seja $f:\R\to\C$ uma função complexa tal que suas partes real e imaginária,
+            $f_1\equiv\Re(f)$ e $f_2\equiv\Im(f)$, são funções Riemann integráveis em $\R$.
+            Então, definimos a integral de $f$ em $\R$ por
+            %
+            \begin{equation*}
+                \int_{\R} f(t) \, dt=\lim_{\substack{b\to +\infty \\ a\to -\infty}}\int_a^b f(t) \, dt
+                                    = \int_{\R} f_1(t) \, dt + i\int_{\R} f_2(t) \, dt
+            \end{equation*}
+            %
+        \end{definicao}
+        %
+        De maneira análoga definimos o Valor Principal de Cauchy:
+        %
+        \begin{definicao}
+        \label{def-valor-principal-integral-complexa-tipo-1}
+            O Valor Principal de Cauchy de uma função $f:\R\to\C$, tal que suas partes 
+            real e imaginária, $f_1\equiv\Re(f)$ e $f_2\equiv\Im(f)$, são funções Riemann 
+            integráveis em $\R$ é
+            %
+            \begin{equation*}
+                \lim_{a\to +\infty} \int_{-a}^a f(t) \, dt
+                \equiv \text{VP}\left( \int_{-\infty}^{\infty} f(t) \, dt \right)
+                \equiv \int_{-\infty}^{\infty} f(t) \, dt
+                = \int_{-\infty}^{\infty} f_1(t) \, dt + i\int_{-\infty}^{\infty} f_2(t) \, dt
+            \end{equation*}
+            %
+        \end{definicao}
+        %
+        Para funções do segundo tipo, isto é, funções $f:U\subseteq\C\to\C$, vamos utilizar o
+        conceito de integral de linha. Portanto, precisamos fixar um caminho suave por partes
+        $\gamma:[0,1]\to\C$ (normalizado). Assim, definimos
+        %
+        \begin{equation}
+        \label{def-integral-complexa-tipo-2}
+            \int_{\gamma} f(z) \, dz \equiv \int_0^1 f(\gamma(t))\gamma'(t) \, dt,
+        \end{equation}
+        %
+        onde a integral no lado direito é a integral de $g:[0,1]\to\C$ dada por 
+        $g(t) = f(\gamma(t))\gamma'(t), \forall t\in [0,1]$.
+        
+        Para que \eqref{def-integral-complexa-tipo-2} esteja bem definida, precisamos que
+        $g$ seja Riemann integrável em $[a,b]$ e que a integral independe da parametrização
+        de $\gamma$.
+        
+        De maneira análoga, se $\gamma:\R\to\C$ é um caminho suave com $\gamma(\R)$ um
+        subconjunto do domínio de $f$, definimos
+        %
+        \begin{align*}
+            \int_{\gamma} f(z) \, dz \equiv \int_{\R} f(\gamma(t))\gamma'(t) \, dt
+                                     \equiv \lim_{\substack{b\to +\infty \\ a\to -\infty}} 
+                                     \int_a^b f(\gamma(t))\gamma'(t) \, dt,
+        \end{align*}
+        %
+        desde que o último limite existe em $\overline{\C} = \C\cup\{\infty\}$. Intuitivamente,
+        $\gamma:\R\to\C$ seria um caminho ``infinito''; entretanto, vamos reservar o termo ``caminho''
+        para $\gamma:[0,1]\to\C$.
+        
+    \subsection{A Transformada de Fourier}
+        %
