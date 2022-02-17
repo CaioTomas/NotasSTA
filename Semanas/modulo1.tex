@@ -1991,6 +1991,42 @@
             %
         \end{exemplo}
         %
+    \subsection{Existência da transformada de Fourier em \texorpdfstring{$\mathfrak{F}_a$}{Fa}}
+        %
+        Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
+        Para tanto, considere a sequência $(a_n)_{n\in\N}$ de números complexos dados por
+        %
+        \begin{equation*}
+            a_n = \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi, \forall n\in\N,
+        \end{equation*}
+        %
+        sendo $k\in\Z$ e $0<b<a$ fixados. Afirmamos que
+        %
+        \begin{proposicao}
+        \label{prop-transf-fourier-definida-fa}
+            Existe $I \equiv I(k,b) \in\C$ tal que $a_n\xrightarrow{n\to\infty} I$.
+        \end{proposicao}
+        %
+        \begin{proof}
+            Para mostrar o enunciado, vamos mostrar que $(a_n)_{n\in\N}$ é de Cauchy.
+        \end{proof}
+        %
+        \begin{corolario}
+            Para quaisquer $k\in\Z$ e $0\leq b < a$ fixados existe o limite
+            %
+            \begin{equation*}
+                \lim_{N\to +\infty} \int_{-N}^N f(\xi + ib) e^{\pm 2\pi ik\xi} 
+                \equiv \int_{-\infty}^{\infty} f(\xi + ib) e^{\pm 2\pi ik\xi}.
+            \end{equation*}
+            %
+        \end{corolario}
+        %
+        \begin{proof}
+            a
+        \end{proof}
+        %
+    \subsection{Ação da transformada de Fourier em \texorpdfstring{$\mathfrak{F}$}{F}}
+        %
         \begin{teorema}
         \label{teo-transf-fourier-decai-exp}
             Se $f\in\mathfrak{F}_a$ para algum $a>0$, então
@@ -2132,5 +2168,83 @@
             Note que quanto ``mais larga'' for a faixa $S_a$ na qual podemos estender $f$, ``maior'' será o 
             decaimento de $\widehat{h}$, i.e., mais rápido ela decairá, porque poderemos escolher valores de
             $b$ maiores.
+        \end{proof}
+        %
+        \begin{corolario}
+        \label{transf-fourier-inv-por-shift}
+            A demonstração do Teorema \ref{teo-transf-fourier-decai-exp} nos deu o seguinte fato,
+            para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\mathfrak{F}_a$:
+            \begin{align*}
+                \int_{-\infty}^{\infty} f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
+                =
+                \int_{-\infty}^{\infty} f(x)e^{-2\pi ix\xi} \, dx
+                =
+                \widehat{f}(\xi).
+            \end{align*}
+        \end{corolario}
+        %
+        Separamos o fato acima como corolário pois ele será bastante usado e não é algo exclusivo da
+        demonstração do Teorema \ref{teo-transf-fourier-decai-exp}. Podemos, agora, definir a classe
+        $\mathfrak{F}$.
+        %
+        \begin{definicao}[Classe $\mathfrak{F}$]
+        \label{def-classe-F}
+            A classe $\mathfrak{F}$ é o espaço de todas as funções que pertencem a $\mathfrak{F}_a$
+            para algum $a>0$, isto é,
+            %
+            \begin{equation*}
+                \mathfrak{F} = \bigcup_{a>0} \mathfrak{F}_a.
+            \end{equation*}
+            %
+        \end{definicao}
+        %
+        Com essa classe, podemos mostrar a validade da fórmula de inversão da transformada.
+        %
+        \begin{teorema}
+        \label{teo-inv-transf-fourier}
+            Se $f\in\mathfrak{F}$, vale a igualdade
+            %
+            \begin{equation*}
+                f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi, \forall x\in\R.
+            \end{equation*}
+            %
+        \end{teorema}
+        %
+        Para provar o lema, vamos precisar do seguinte lema.
+        %
+        \begin{lema}
+        \label{lema-int-exp}
+            Se $A>0$ e $B\in\R$, então
+            %
+            \begin{equation*}
+                \int_0^{\infty} e^{-(A+iB)\xi} \, d\xi = \frac{1}{A+iB}.
+            \end{equation*}
+            %
+        \end{lema}
+        %
+        \begin{proof}
+            Caso especial da transformada de Laplace...
+        \end{proof}
+        %
+        Vamos então à prova do Teorema \ref{teo-inv-transf-fourier}.
+        %
+        \begin{proof}
+            a
+        \end{proof}
+        %
+        Com essas ferramentas em mãos, podemos demonstrar a fórmula da soma de Poisson.
+        %
+        \begin{teorema}[Fórmula da Soma de Poisson]
+        \label{teo-form-soma-poisson}
+            Se $f\in\mathfrak{F}$, então
+            %
+            \begin{equation*}
+                \sum_{n\in\Z} f(n) = \sum_{n\in\Z} \widehat{f}(n).
+            \end{equation*}
+            %
+        \end{teorema}
+        %
+        \begin{proof}
+            a
         \end{proof}
         %
