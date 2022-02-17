@@ -1837,3 +1837,161 @@
         Como veremos, todos esses resultados são consequências da Fórmula Integral de Cauchy.
         
     \subsection{A classe \texorpdfstring{$\mathcal{F}$}{F}}
+        %
+        Vamos, aqui, considerar uma classe de funções que é adequada aos nossos estudos, mas
+        que não é a mais geral possível para se desenvolver a teoria de Fourier. Dito de outro
+        modo, a nossa classe de funções com transformada de Fourier, $\mathcal{F}$, pode ser
+        ampliada.
+        
+        A construção de $\mathcal{F}$ será feita em duas etapas.
+        
+        \paragraph{1ª etapa.} Defina, para cada $a>0$,
+        %
+        \begin{equation*}
+            \mathcal{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
+            f \text{ é holomorfa em } S_a\subseteq U \text{ e } f(\R)\subseteq\R \right\},
+        \end{equation*}
+        %
+        sendo $S_a$ a faixa horizontal contendo o eixo real com largura $2a$. Vamos supor, ainda,
+        que existe uma constante $A>0$ tal que
+        %
+        \begin{equation*}
+            |f(x+iy)| \leq \frac{A}{1 + x^2}, \, \forall x\in\R, |y|<a.
+        \end{equation*}
+        %
+        \begin{center}
+            {\bf diagrama slide 19 Aula 8}
+        \end{center}
+        %
+        Note que a constante $A$ é uniforme na reta $y = \Im(z)$, isto é, $A$ independe da 
+        ``altura'' em que estamos na faixa.
+        
+        Vamos dar alguns exemplos de funções que satisfazem essas condições.
+        %
+        \begin{exemplo}
+            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathcal{F}_a, \forall a>0$.
+            De fato, dado $a>0$, temos que
+            %
+            \begin{align*}
+                |f(x+iy)| &= |\exp(-\pi(x+iy)^2)| \\
+                          &= |\exp(-\pi(x^2-y^2+2ixy))| \\
+                          &= \exp(-\pi x^2)\exp(\pi y^2) \\
+                          &\leq \exp(-\pi x^2)\underbrace{\exp(\pi a^2)}_{\equiv A}.
+            \end{align*}
+            %
+            Resta analisar $\exp(-\pi x^2)$. Expandindo em série de Taylor, temos
+            %
+            \begin{equation*}
+                \exp(\pi x^2) = 1 + \pi x^2 + \frac{(\pi x^2)^2}{2!} + \frac{(\pi x^2)^3}{3!} + \cdots
+                              \geq 1 + \pi x^2.
+            \end{equation*}
+            %
+            Logo,
+            %
+            \begin{equation*}
+                \frac{1}{\exp(\pi x^2)}\leq\frac{1}{1+\pi x^2}\leq\frac{1}{1+x^2},\forall x\in\R.
+            \end{equation*}
+            %
+            Daí, segue que
+            %
+            \begin{align*}
+                |f(x+iy)| \leq A\exp(-\pi x^2) \leq \frac{A}{1+x^2}
+            \end{align*}
+            %
+            e, portanto, $f\in\mathcal{F}_a, \forall a>0$.
+        \end{exemplo}
+        %
+        \begin{exemplo}
+            Dado $c>0$ fixo, temos que $f:\C\setminus\{\pm ic\}\to\C$ dada por
+            %
+            \begin{equation*}
+                f(z) = \frac{1}{\pi}\cdot\frac{c}{c^2 + z^2}
+            \end{equation*}
+            %
+            pertence a $\mathcal{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
+            mas ela está relacionada ao núcleo de Poisson, que, por sua vez, tem relação com
+            as soluções estacionárias do problema de Dirichlet do calor no semi-plano superior.}.
+            
+            De fato, note primeiramente que $|c^2+z^2| = |z-ic|\cdot |z+ic|$ é invariante por
+            conjugação.
+            %
+            \begin{center}
+                {\bf diagrama slide 24 Aula 8}
+            \end{center}
+            %
+            Escolha $2c = d \gg a$ e seja $R_{a,d} = [-d,d]\times[-a,a]$.
+            Considere a função $h$ dada por $h(z) = z^2 + c^2$. Ela é inteira, de modo que
+            pelo Teorema do Módulo Máximo temos
+            %
+            \begin{equation*}
+                \min_{z\in R_{a,d}} |h(z)| = \min_{z\in\partial R_{a,d}} |h(z)| = |a+c|\cdot|a-c|.
+            \end{equation*}
+            %
+            Portanto, para todo $z\in R_{a,d}$ temos
+            %
+            \begin{align*}
+                |f(z)| &= \frac{1}{2\pi}\cdot\frac{c}{|z^2 + c^2|} \\
+                       &\leq \frac{1}{2\pi}\cdot\frac{c}{|a+c|\cdot|a-c|} \\
+                       &= \frac{1}{2\pi}\cdot\frac{c}{|a+c|\cdot|a-c|}\cdot\frac{1+x^2}{1+x^2} \\
+                       &\leq\frac{1}{2\pi}\cdot\frac{c(1+d^2)}{|a+c|\cdot|a-c|}\cdot\frac{1}{1+x^2}.
+            \end{align*}
+            %
+            Agora, vaoms estimar $|f(z)|$ com $|z|\geq d = 2c$. Temos que
+            %
+            \begin{equation*}
+                |z|\geq 2c \implies |z|^2 \geq 4c^2 \implies \frac{1}{4} \leq \frac{c^2}{|z|^2},
+            \end{equation*}
+            %
+            donde, pela segunda desigualdade triangular, segue que
+            %
+            \begin{align*}
+                \frac{3}{4} = \left|1 - \frac{c^2}{|z|^2}\right| \leq \left|1 + \frac{c^2}{z^2}\right|.
+            \end{align*}
+            %
+            Ademais, se $x\geq 0$ é tal que $2c \leq x^2$, então
+            %
+            \begin{equation*}
+                \frac{1}{x^2} = \frac{1+x^2}{x^2}\cdot\frac{1}{x^2+1}
+                              \leq \left( 1+\frac{1}{x^2} \right)\frac{1}{x^2+1}
+                              \leq \left( 1+\frac{1}{2c} \right)\frac{1}{x^2+1}.
+            \end{equation*} 
+            %
+            Portanto,
+            %
+            \begin{align*}
+                \frac{1}{|z^2+c^2|} &= \frac{1}{|z|^2\left|1+\frac{c^2}{z^2}\right|} \\
+                                    &\leq \frac{4}{3}\frac{1}{|z|^2} \\
+                                    &\leq \frac{4}{3}\left(1+\frac{1}{2c}\right)\cdot\frac{1}{|z|^2+1} \\
+                                    &= \frac{4}{3}\left(1+\frac{1}{2c}\right)\cdot\frac{1}{x^2+y^2+1} \\
+                                    &\leq \frac{4}{3}\left(1+\frac{1}{2c}\right)\cdot\frac{1}{1+x^2}.
+            \end{align*}
+            %
+            Tomando
+            %
+            \begin{equation*}
+                A =\frac{1}{2\pi}\cdot\frac{c(1+4c^2)}{|a+c|\cdot|a-c|}
+                +\frac{4}{3}\left(1+\frac{1}{2c}\right),
+            \end{equation*}
+            %
+            temos
+            %
+            \begin{equation*}
+                |f(z)| \leq \frac{A}{1+ x^2}, \forall z\in S_a.
+            \end{equation*}
+            %
+        \end{exemplo}
+        %
+        \begin{teorema}
+        \label{teo-transf-fourier-decai-exp}
+            Se $f\in\mathcal{F}_a$ para algum $a>0$, então
+            %
+            \begin{equation*}
+                |\widehat{f}(\xi)| \leq Be^{-2\pi b|\xi|}, \forall 0\leq b < a.
+            \end{equation*}
+            %
+        \end{teorema}
+        %
+        \begin{proof}
+            a   
+        \end{proof}
+        %
