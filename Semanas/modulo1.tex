@@ -1859,9 +1859,19 @@
             |f(x+iy)| \leq \frac{A}{1 + x^2}, \, \forall x\in\R, |y|<a.
         \end{equation*}
         %
-        \begin{center}
-            {\bf diagrama slide 19 Aula 8}
-        \end{center}
+        \begin{figure}[H]
+				\centering 
+				\begin{tikzpicture}
+				\draw (-5,2)--(5,2);
+				\draw (-5,-2)--(5,-2);
+				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
+				\draw[-latex] (0,-3)--(0,3) node [at end,above]{$\Im$};
+				\node [at={(0,2)}, above right]{$a$};
+				\node [at={(0,-2)}, below left]{$-a$};
+				\draw[red] (-5,1.2)--(5,1.2) node [at end,above]{$y=\Im(z)$};
+				\node [at={(0,1.2)}, above left]{$y$};
+				\end{tikzpicture}
+			\end{figure}
         %
         Note que a constante $A$ é uniforme na reta $y = \Im(z)$, isto é, $A$ independe da 
         ``altura'' em que estamos na faixa.
@@ -1992,6 +2002,134 @@
         \end{teorema}
         %
         \begin{proof}
-            a   
+            Recorde que
+            %
+            \begin{equation*}
+            \widehat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi ix\xi} \, dx.
+            \end{equation*}
+            %
+            Se $b=0$, então
+            %
+            \begin{align*}
+                |\widehat{f}(\xi)| &= \left| \int_{-\infty}^{\infty} f(x) e^{-2\pi ix\xi} \, dx \right| \\
+                                   &\leq \int_{-\infty}^{\infty} |f(x)|\cdot |e^{-2\pi ix\xi}| \, dx \\
+                                   &\leq \int_{-\infty}^{\infty} \frac{A}{1+x^2} \, dx \\
+                                   &= A\pi < +\infty,
+            \end{align*}
+            %
+            o que prova a afirmação tomando-se $B=A\pi$.
+            
+            Agora, suponhamos que $0 < b < a$ e assumamos inicialmente que $\xi > 0$.
+            A estratégia será usar a teoria de Cauchy para deformar o contorno de integração e obter
+            o decaimento desejado.
+            
+            Considere então a função $g$ dada por $g(z) = f(z)\exp(-2\pi iz\xi)$. Observe que $\xi$
+            está fixado. Consideramos então o contorno mostrado no diagrama abaixo.
+            %
+            \begin{figure}[H]
+				\centering 
+				\begin{tikzpicture}
+				\draw (4,0)--(4,-3)--(-4,-3)--(-4,0)--cycle;
+				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
+				\draw[-latex] (0,-4)--(0,2) node [at end,above]{$\Im$};
+				\node[at={(4,0)}, above]{$R$};
+				\node [at= {(4,-3)}, below]{$R-ib$};
+				\node[at={(-4,-3)}, below]{$-R-ib$};
+				\node [at= {(-4,0)}, above]{$-R$};
+				\node [at={(2.7,0)}, above]{$\gamma_1$};
+				\node [at={(4,-2.2)}, right]{$\gamma_2$};
+				\node [at={(-2,-3)}, below]{$\gamma_3$};
+				\node [at={(-4,-1.2)}, left]{$\gamma_4$};
+				\draw[->] (2.5,0)--(2.9,0);
+				\draw[->] (4,-2)--(4,-2.2);
+				\draw[->] (-1.8,-3)--(-2,-3);
+				\draw[->] (-4,-1.3)--(-4,-1.2);
+				\end{tikzpicture}
+				\caption{Contorno no caso $\xi > 0$.}
+			\end{figure}
+            %
+            Daí, temos que
+            %
+            \begin{align*}
+                \left|\int_{\gamma_4} g(z) \, dz\right| &= \left|\int_{-R-ib}^{-R} g(z) \, dz\right| \\
+                                                        &\leq \int_0^b \left| f(-R-it)e^{-2\pi i(R-it)\xi}
+                                                        \right|\, dt \\
+                                                        &\leq \int_0^b \frac{A}{R^2}e^{-2\pi t\xi} \, dt \\
+                                                        &= \frac{K}{R^2}.
+            \end{align*}
+            %
+            Analogamente, mostra-se que
+            %
+            \begin{equation*}
+                \left|\int_{\gamma_2} g(z) \, dz\right| \leq \frac{\widetilde{K}}{R^2}.
+            \end{equation*}
+            %
+            Pelo Teorema de Cauchy, temos
+            %
+            \begin{align*}
+                0 = \int_{\gamma_1*\gamma_2*\gamma_3*\gamma_4} g(z) \, dz 
+                \implies -\int_{\gamma_3} g(z) \, dz = \int_{\gamma_1} g(z) \, dz 
+                                                     + \int_{\gamma_2*\gamma_4} g(z) \, dz.
+            \end{align*}
+            %
+            Por definição de integral complexa, temos
+            %
+            \begin{align*}
+                -\int_{\gamma_3} g(z) \, dz &= \int_{\gamma_3^-} g(z) \, dz \\
+                                            &= \int_{-R}^R g(x-ib) \, dx \\
+                                            &= \int_{-R}^R f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
+            \end{align*}
+            %
+            e também
+            %
+            \begin{equation*}
+                \int_{\gamma_1} g(z) \, dz = \int_{-R}^R g(x) \, dx = \int_{-R}^R f(x)e^{-2\pi ix\xi} \, dx.
+            \end{equation*}
+            %
+            Tomando o limite para $R\to +\infty$, obtemos
+            %
+            \begin{align*}
+                \int_{-\infty}^{\infty} f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
+                =
+                \int_{-\infty}^{\infty} f(x)e^{-2\pi ix\xi} \, dx
+                =
+                \widehat{f}(\xi),
+            \end{align*}
+            %
+            donde segue que
+            %
+            \begin{align*}
+                |\widehat{f}(\xi)| &=\left|\int_{-\infty}^{\infty} f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx\right| \\
+                                   &\leq\int_{-\infty}^{\infty}|f(x-ib)|e^{-2\pi ix\xi}e^{-2\pi i(-ib)\xi}\,dx \\
+                                   &= \int_{-\infty}^{\infty}|f(x-ib)|e^{-2\pi b\xi} \,dx \\
+                                   &= \int_{-\infty}^{\infty}|f(x-ib)|e^{-2\pi b|\xi|} \,dx \\
+                                   &\leq \int_{-\infty}^{\infty} \frac{A}{1+x^2}e^{-2\pi b|\xi|} \, dx \\
+                                   &= Be^{-2\pi b|\xi|}.
+            \end{align*}
+            %
+            Isso prova o resultado para $\xi > 0$. Para $\xi < 0$, procedemos de maneira análoga considerando
+            o contorno abaixo.
+            %
+            \begin{figure}[H]
+				\centering 
+				\begin{tikzpicture}
+				\draw (4,0)--(4,3)--(-4,3)--(-4,0)--cycle;
+				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
+				\draw[-latex] (0,-2)--(0,4) node [at end,above]{$\Im$};
+				\node[at={(4,0)}, below]{$R$};
+				\node [at= {(4,3)}, above]{$R+ib$};
+				\node[at={(-4,3)}, above]{$-R+ib$};
+				\node [at= {(-4,0)}, below]{$-R$};
+				%\node [at={(4,1.5)}, right]{$\gamma_R$};
+				\draw[->] (-2.3,3)--(-2.5,3);
+				\draw[->] (-4,1.7)--(-4,1.5);
+				\draw[->] (2.5,0)--(2.7,0);
+				\draw[->] (4,2.2)--(4,2.5);
+				\end{tikzpicture}
+				\caption{Contorno no caso $\xi < 0$.}
+			\end{figure}
+            %
+            Note que quanto ``mais larga'' for a faixa $S_a$ na qual podemos estender $f$, ``maior'' será o 
+            decaimento de $\widehat{h}$, i.e., mais rápido ela decairá.
         \end{proof}
         %
