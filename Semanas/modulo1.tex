@@ -358,15 +358,15 @@
     \begin{definicao}
     \label{def-funcao-analitica-completa}
         Se $(f,G)$ é um elemento de função, então a função analítica completa obtida
-        a partir de $(f,G)$ é a coleção $\mathcal{F}$ de todos os germes $[g]_b$ 
+        a partir de $(f,G)$ é a coleção $\mathfrak{F}$ de todos os germes $[g]_b$ 
         para os quais existem $a\in G$ e um caminho $\y$ de $a$ para $b$ 
         tais que $[g]_b$ é a continuação analítica de $[f]_a$ ao longo de $\y$.
     \end{definicao}
 
 
     \begin{definicao}
-        Uma coleção de germes $\mathcal{F}$ é chamada função analítica completa se
-        existe um elemento de função $(f,G)$ tal que $\mathcal{F}$ é a função analítica
+        Uma coleção de germes $\mathfrak{F}$ é chamada função analítica completa se
+        existe um elemento de função $(f,G)$ tal que $\mathfrak{F}$ é a função analítica
         completa obtida de $(f,G)$.
     \end{definicao}
 
@@ -377,18 +377,18 @@
     A pergunta natural a se fazer é: ``por que a terminologia de 
     \textbf{função analítica completa} é adequada quando nos referimos a uma
     coleção de germes?'', e a resposta é surpreendente. Vamos mostrar que
-    podemos construir uma função a partir da coleção $\mathcal{F}$ de germes.
+    podemos construir uma função a partir da coleção $\mathfrak{F}$ de germes.
 
     Inicialmente, consideremos a coleção
     %
     \begin{equation*}
-        \mathcal{R} = \left\{ (z, [g]_z) : [g]_z \in \mathcal{F} \right\}.
+        \mathcal{R} = \left\{ (z, [g]_z) : [g]_z \in \mathfrak{F} \right\}.
     \end{equation*}
     %
-    Definimos então $\widetilde{\mathcal{F}}:\mathcal{R}\to\C$ por
+    Definimos então $\widetilde{\mathfrak{F}}:\mathcal{R}\to\C$ por
     %
     \begin{equation*}
-        \widetilde{\mathcal{F}}((z, [g]_z)) = g(z),
+        \widetilde{\mathfrak{F}}((z, [g]_z)) = g(z),
     \end{equation*}
     %
     ou seja, escolhemos um ``representante'' do germe e calculamos sua imagem em $z$.
@@ -1836,19 +1836,19 @@
         %
         Como veremos, todos esses resultados são consequências da Fórmula Integral de Cauchy.
         
-    \subsection{A classe \texorpdfstring{$\mathcal{F}$}{F}}
+    \subsection{A classe \texorpdfstring{$\mathfrak{F}$}{F}}
         %
         Vamos, aqui, considerar uma classe de funções que é adequada aos nossos estudos, mas
         que não é a mais geral possível para se desenvolver a teoria de Fourier. Dito de outro
-        modo, a nossa classe de funções com transformada de Fourier, $\mathcal{F}$, pode ser
+        modo, a nossa classe de funções com transformada de Fourier, $\mathfrak{F}$, pode ser
         ampliada.
         
-        A construção de $\mathcal{F}$ será feita em duas etapas.
+        A construção de $\mathfrak{F}$ será feita em duas etapas.
         
         \paragraph{1ª etapa.} Defina, para cada $a>0$,
         %
         \begin{equation*}
-            \mathcal{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
+            \mathfrak{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
             f \text{ é holomorfa em } S_a\subseteq U \text{ e } f(\R)\subseteq\R \right\},
         \end{equation*}
         %
@@ -1879,7 +1879,7 @@
         Vamos dar alguns exemplos de funções que satisfazem essas condições.
         %
         \begin{exemplo}
-            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathcal{F}_a, \forall a>0$.
+            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathfrak{F}_a, \forall a>0$.
             De fato, dado $a>0$, temos que
             %
             \begin{align*}
@@ -1908,7 +1908,7 @@
                 |f(x+iy)| \leq A\exp(-\pi x^2) \leq \frac{A}{1+x^2}
             \end{align*}
             %
-            e, portanto, $f\in\mathcal{F}_a, \forall a>0$.
+            e, portanto, $f\in\mathfrak{F}_a, \forall a>0$.
         \end{exemplo}
         %
         \begin{exemplo}
@@ -1918,7 +1918,7 @@
                 f(z) = \frac{1}{\pi}\cdot\frac{c}{c^2 + z^2}
             \end{equation*}
             %
-            pertence a $\mathcal{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
+            pertence a $\mathfrak{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
             mas ela está relacionada ao núcleo de Poisson, que, por sua vez, tem relação com
             as soluções estacionárias do problema de Dirichlet do calor no semi-plano superior.}.
             
@@ -1993,7 +1993,7 @@
         %
         \begin{teorema}
         \label{teo-transf-fourier-decai-exp}
-            Se $f\in\mathcal{F}_a$ para algum $a>0$, então
+            Se $f\in\mathfrak{F}_a$ para algum $a>0$, então
             %
             \begin{equation*}
                 |\widehat{f}(\xi)| \leq Be^{-2\pi b|\xi|}, \forall 0\leq b < a.
