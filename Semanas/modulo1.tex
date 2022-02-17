@@ -1813,3 +1813,27 @@
             f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi.
         \end{equation*}
         %
+        Vamos assumir que $f:\R\to\R$ admite uma extensão analítica a uma faixa horizontal contendo
+        o eixo real e tendo decaimento moderado no infinito (vamos precisar mais à frente o quão
+        moderado esse decaimento deve ser). Com isso, veremos mais à frente que essas hipóteses
+        nos permitem concluir que
+        %
+        \begin{itemize}
+            \item $\widehat{f}$ converge;
+            %
+            \item $\widehat{f}$ decai exponencialmente no infinito;
+            %
+            \item a inversa de $\widehat{f}$ existe e é dada como em \eqref{def-inv-trans-fourier}
+            %
+            \item vale a famosa fórmula da soma de Poisson:
+            %
+            \begin{equation}
+            \label{def-soma-poisson}
+                \sum_{n\in\Z} f(n) = \sum_{n\in\Z} \widehat{f}(n).
+            \end{equation}
+            %
+        \end{itemize}
+        %
+        Como veremos, todos esses resultados são consequências da Fórmula Integral de Cauchy.
+        
+    \subsection{A classe \texorpdfstring{$\mathcal{F}$}{F}}
