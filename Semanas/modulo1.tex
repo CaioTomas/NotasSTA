@@ -937,9 +937,15 @@
     $\Omega^+$ a porção de $\Omega$ no semi-plano superior e por 
     $\Omega^-$ a porção de $\Omega$ no semi-plano inferior.
     %
-    \begin{center}
-        \textbf{diagrama fig.11 Stein p.58}
-    \end{center}
+    % \begin{center}
+    %     \textbf{diagrama fig.11 Stein p.58}
+    % \end{center}
+    \begin{figure}[H]\centering
+        \includegraphics{%
+            Figuras/conjunto simétrico.pdf
+        }
+        \caption{Exemplo de conjunto simétrico com relação ao eixo real.}
+    \end{figure}
     %
     Por fim, denotemos por $I$ o conjunto que ``sobrou'' de $\Omega$: 
     $I = \Omega\cap\R$. É claro então que
@@ -1013,11 +1019,14 @@
         $\text{dist}(T_{\e}(\Delta), \partial D) > 0$ (pois essa translação
         é uma função contínua). Observe os dois casos ilustrados a seguir, onde assumimos
         sem perda de generalidade que $\Delta$ intercepta apenas $\Omega^+$.
-        
-        \begin{center}
-            {\bf Casos 1 e 2, slides 11 e 12 da Aula 6}
-        \end{center}
-        
+        %
+        \begin{figure}[H]\centering
+            \includegraphics[width=0.8\textwidth]{%
+                Figuras/casos 1 e 2 schwarz.pdf
+            }
+            \caption{Caso 1 (em cima) e 2 (abaixo) da Parte I da demonstração.}
+        \end{figure}
+        %
         Em ambos, temos
         %
         \begin{equation*}
@@ -1075,9 +1084,12 @@
         %
         Os diagramas abaixo ilustram as situações.
         %
-        \begin{center}
-            {\bf diagrama slide 16 Aula 6}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics[width=0.8\textwidth]{
+                Figuras/slide 16 aula 6.pdf
+            }
+            \caption{As duas possibilidades da Parte II da demonstração.}
+        \end{figure}
         %
         Portanto, pelo Teorema de Morera segue que $f$ é holomorfa em $D$, como desejado.
     \end{proof}
@@ -1221,8 +1233,7 @@
         $K$ é compacto). Vamos chamar, daqui em diante, os elementos de $\mathcal{Q}$ de quadrados.
         %
         \begin{figure}[H]\centering
-            \caption{A união dos caminhos $\y_j$ está negritada.}
-            \begin{tikzpicture}[scale=1.5]
+            \begin{tikzpicture}[scale=1.9]
         		% bolha externa 
         		\begin{scope}[scale=1.6, shift={(0.08, 0)}]
         			\draw plot [smooth cycle] coordinates {
@@ -1296,6 +1307,7 @@
         			(0, 0.4) 
         		;
         	\end{tikzpicture}
+        	\caption{A união dos caminhos $\y_j$ está negritada.}
         	\label{fig:reticulado runge}
         \end{figure}
         %
@@ -1685,8 +1697,8 @@
             \item integrar $\widetilde{f}:[a,b]\to\C$, com 
             $\widetilde{f}(t) = \widetilde{f_1}(t) + i\widetilde{f_2}(t)$;
             %
-            \item integrar $f:U\to\C$ ao longo de um caminho $\gamma:[a,b]\to\C$ suave por
-            partes tal que $\gamma(t)\in U, \forall t\in [a,b]$.
+            \item integrar $f:U\to\C$ ao longo de um caminho $\y:[a,b]\to\C$ suave por
+            partes tal que $\y(t)\in U, \forall t\in [a,b]$.
         \end{enumerate}
         %
         Para as funções do primeiro tipo, definimos a integral motivados pela definição da integral
@@ -1751,34 +1763,53 @@
             %
         \end{definicao}
         %
+        Os resultados que vamos apresentar mais à frente são válidos para funções Riemann
+        integráveis em $\R$ e vamos mostrar que a classe de funções que será de nosso interesse
+        satisfaz essa propriedade.
+        
         Para funções do segundo tipo, isto é, funções $f:U\subseteq\C\to\C$, vamos utilizar o
         conceito de integral de linha. Portanto, precisamos fixar um caminho suave por partes
-        $\gamma:[0,1]\to\C$ (normalizado). Assim, definimos
+        $\y:[0,1]\to\C$ (normalizado). Assim, definimos
         %
         \begin{equation}
         \label{def-integral-complexa-tipo-2}
-            \int_{\gamma} f(z) \, dz \equiv \int_0^1 f(\gamma(t))\gamma'(t) \, dt,
+            \int_{\y} f(z) \, dz \equiv \int_0^1 f(\y(t))\y'(t) \, dt,
         \end{equation}
         %
         onde a integral no lado direito é a integral de $g:[0,1]\to\C$ dada por 
-        $g(t) = f(\gamma(t))\gamma'(t), \forall t\in [0,1]$.
+        $g(t) = f(\y(t))\y'(t), \forall t\in [0,1]$.
         
         Para que \eqref{def-integral-complexa-tipo-2} esteja bem definida, precisamos que
         $g$ seja Riemann integrável em $[a,b]$ e que a integral independe da parametrização
-        de $\gamma$.
+        de $\y$.
         
-        De maneira análoga, se $\gamma:\R\to\C$ é um caminho suave com $\gamma(\R)$ um
+        De maneira análoga, se $\y:\R\to\C$ é um caminho suave com $\y(\R)$ um
         subconjunto do domínio de $f$, definimos
         %
         \begin{align*}
-            \int_{\gamma} f(z) \, dz \equiv \int_{\R} f(\gamma(t))\gamma'(t) \, dt
+            \int_{\y} f(z) \, dz \equiv \int_{\R} f(\y(t))\y'(t) \, dt
                                      \equiv \lim_{\substack{b\to +\infty \\ a\to -\infty}} 
-                                     \int_a^b f(\gamma(t))\gamma'(t) \, dt,
+                                     \int_a^b f(\y(t))\y'(t) \, dt,
         \end{align*}
         %
         desde que o último limite existe em $\overline{\C} = \C\cup\{\infty\}$. Intuitivamente,
-        $\gamma:\R\to\C$ seria um caminho ``infinito''; entretanto, vamos reservar o termo ``caminho''
-        para $\gamma:[0,1]\to\C$.
+        $\y:\R\to\C$ seria um caminho ``infinito''; entretanto, vamos reservar o termo ``caminho''
+        para $\y:[0,1]\to\C$.
         
     \subsection{A Transformada de Fourier}
+        %
+        Se $f:\R\to\R$ é uma função satisfazendo certas condições de regularidade e decaimento,
+        sua transformada de Fourier é definida por
+        %
+        \begin{equation}
+        \label{def-transf-fourier}
+            \widehat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi ix\xi} \, dx.
+        \end{equation}
+        %
+        Veremos ainda que, quando existir, a inversa dessa transformada será dada por
+        %
+        \begin{equation*}
+        \label{def-inv-trans-fourier}
+            f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi.
+        \end{equation*}
         %
