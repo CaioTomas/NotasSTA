@@ -1397,7 +1397,7 @@
         onde cada $F(z,t_j)$ é uma função racional. Denote
         %
         \begin{equation*}
-            g(z) = \int_{0}^{1}F(z,t) \, dt \, , g_n(z) = \frac{1}{n}\sum_{j=1}^{n}F(z,t_j).
+            g(z) = \int_{0}^{1}F(z,t) \, dt \, ,  \ \ \ \ g_n(z) = \frac{1}{n}\sum_{j=1}^{n}F(z,t_j).
         \end{equation*}
         %
         Usando as considerações anteriores, temos que 
@@ -1412,10 +1412,12 @@
         (uniformemente) por funções racionais, então o Lema está demonstrado.
     \end{proof}
     %
+    \\ \\
+    
     Para ilustrar a necessidade da hipótese da conexidade de $K^c$, damos um exemplo. 
     Considere a função $f: \C^* \to \C$ dada pela regra $z \mapsto 1/z$ e o compacto 
     $\partial \D$, o bordo do disco unitário  $\D$. Vamos mostrar que $f$ não
-    pode ser aproximada por polinômios em $\partial D$, mesmo com esse conjunto sendo compacto.
+    pode ser aproximada por polinômios em $\partial D$, mesmo esse conjunto sendo compacto.
     Observe ainda que o seu complementar é um conjunto desconexo.
     
     Pelo Teorema dos Resíduos, por exemplo, sabemos que
@@ -1488,6 +1490,7 @@
         ser aproximado por polinômios em $K$.
     \end{proof}
     %
+    \\
     
     O Lema \ref{LR1} nos dá uma expressão para $f$ em $K$ em termos de uma certa soma em 
     que vemos claramente a fórmula integral de Cauchy. O Lema \ref{LR2} mostra que cada parcela 
@@ -1689,6 +1692,23 @@
         existe, podemos calculá-lo utilizando o limite da Definição \ref{def-valor-principal}, 
         que é muito mais facilmente tratável do que o primeiro.
         
+        Observamos que nem toda função que tem um valor principal de Cauchy é Riemann integrável. Considere
+        %
+        \begin{equation*}
+            \lim_{\substack{b\to +\infty \\ a\to -\infty}} \int_a^b \sin{x} \, dx. 
+        \end{equation*}
+        %
+        Se escolhemos taxas particulares $b = (2n+1)\pi/2$ e $a = 2n\pi$ vemos que essa integral converge a $1$. 
+        Se $b = 2n\pi$ e $a = (2n+1)\pi/2$, então ela converge a $-1$. Portanto, este limite não existe e 
+        $\sin{x}$ não é Riemann integrável. No entanto, se $a = b = r$, i.e., se consideramos a mesma taxa, 
+        a integral resulta em
+        %
+        \begin{equation*}
+            \lim_{r \to \infty} - \cos r + \cos(-r) = 0,
+        \end{equation*}
+        %
+        pois $\cos r = \cos(-r)$. Portanto, $\sin{x}$ tem um valor principal de Cauchy.
+        %
     \subsection{Integrais de Funções Complexas}
         %
         Vamos trabalhar com dois tipos de integrais de funções que tomam valores em $\C$:
