@@ -2009,6 +2009,38 @@
         %
         \begin{proof}
             Para mostrar o enunciado, vamos mostrar que $(a_n)_{n\in\N}$ é de Cauchy.
+            
+            Lembrando que $f\in\mathfrak{F}_a$, dado $\e>0$ podemos encontrar $n_0\in\N$ 
+            tal que se $n \geq n_0$ então
+            %
+            \begin{align*}
+                \left| \int_{\R\setminus[-n,n]} f(\xi + ib)e^{2\pi ik\xi} \, d\xi \right| 
+                &\leq \int_{\R\setminus[-n,n]} |f(\xi + ib)| \, d\xi \\
+                &\leq \int_{\R\setminus[-n,n]} \frac{A}{1+\xi^2} \, d\xi \\
+                &< \e,
+            \end{align*}
+            %
+            onde
+            %
+            \begin{equation*}
+                \int_{\R\setminus[-n,n]} = \int_{-\infty}^{-n} + \int_n^{+\infty}.
+            \end{equation*}
+            %
+            Assim, tomando $m,n\geq n_0$ (e supondo s.p.g. que $m>n$), temos
+            %
+            \begin{align*}
+                |a_m - a_n| &= \left| \int_{-m}^m f(\xi + ib)e^{2\pi ik\xi} \, d\xi 
+                            - \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi \right| \\
+                            &= \left| \int_{-m}^{-n} f(\xi + ib)e^{2\pi ik\xi} \, d\xi 
+                            + \int_{n}^m f(\xi + ib)e^{2\pi ik\xi} \, d\xi \right| \\
+                            &\leq \int_{-m}^{-n} |f(\xi + ib)| \, d\xi 
+                            + \int_{n}^m |f(\xi + ib)| \, d\xi \\
+                            &\leq \int_{\R\setminus[-n,n]} |f(\xi + ib)| \, d\xi \\
+                            &\leq \int_{\R\setminus[-n,n]} \frac{A}{1+\xi^2} \, d\xi \\
+                            &< \e.
+            \end{align*}
+            %
+            Portanto, $(a_n)_{n\in\N}$ é de Cauchy e, da completude de $\C$, segue a afirmação.
         \end{proof}
         %
         \begin{corolario}
@@ -2022,7 +2054,24 @@
         \end{corolario}
         %
         \begin{proof}
-            a
+            Dado $\e>0$, tome $I\equiv I(k,b)$ dado na proposição anterior e seja $n = \lfloor N \rfloor$. 
+            Então existe $n_0\in\N$ tal que $N\geq n_0$ implica que
+            %
+            \begin{align*}
+                \left| \int_{-N}^N f(\xi + ib)e^{2\pi ik\xi} \, d\xi - I \right| 
+                &= \Bigg| \int_{-N}^N f(\xi + ib)e^{2\pi ik\xi} \, d\xi 
+                - \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi \\
+                &+ \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi - I \Bigg| \\
+                &\leq \left| \int_{-N}^N f(\xi + ib)e^{2\pi ik\xi} \, d\xi 
+                - \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi \right| \\
+                &+ \left| \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi - I \right| \\
+                &< \int_{\R\setminus[-n,n]} |f(\xi + ib)| \, d\xi + \frac{\e}{2} \\
+                &< \e.
+            \end{align*}
+            %
+            Esse resultado nos diz, essencialmente, que os limites $n$ e $-n$ da integração podem
+            ser tomados como números reais e não apenas inteiros. A rigor, é esse o resultado que mostra
+            que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
         \end{proof}
         %
     \subsection{Ação da transformada de Fourier em \texorpdfstring{$\mathfrak{F}$}{F}}
@@ -2223,15 +2272,41 @@
         \end{lema}
         %
         \begin{proof}
-            Caso especial da transformada de Laplace...
+            Esse resultado pode ser visto como um caso especial da transformada de Laplace,
+            %
+            \begin{equation*}
+                \mathcal{L}\{f\}(s) = \int_0^{\infty} f(\xi) e^{-s\xi} \, d\xi,
+            \end{equation*}
+            %
+            bastando tomar $f(\xi)\equiv 1$ e $s = (A+iB)$.
+            
+            Uma outra maneira de provar isto é ``no braço'': já que $A > 0$, temos $|e^{-(A+iB)\xi}| = e^{-A\xi}$
+            e, portanto, a integral do enunciado converge. Por definição,
+            %
+            \begin{equation*}
+                \int_0^{\infty} e^{-(A+iB)\xi} \, d\xi = \lim_{R\to\infty} \int_0^R e^{-(A+iB)\xi} \, d\xi.
+            \end{equation*}
+            %
+            Note que
+            %
+            \begin{equation*}
+                \int_0^R e^{-(A+iB)\xi} \, d\xi = -\frac{e^{-(A+iB)\xi}}{A+iB}\Bigg|_0^R,
+            \end{equation*}
+            %
+            de modo que
+            %
+            \begin{equation*}
+                \lim_{R\to\infty} \int_0^R e^{-(A+iB)\xi} \, d\xi = \frac{1}{A+iB}.
+            \end{equation*}
+            %
         \end{proof}
         %
-        Vamos então à prova do Teorema \ref{teo-inv-transf-fourier}.
-        %
-        \begin{proof}
+        
+        \begin{proof}[Prova do Teorema \ref{teo-inv-transf-fourier}]
             a
         \end{proof}
         %
+        
         Com essas ferramentas em mãos, podemos demonstrar a fórmula da soma de Poisson.
         %
         \begin{teorema}[Fórmula da Soma de Poisson]
