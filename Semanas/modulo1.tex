@@ -2243,13 +2243,26 @@
         \label{transf-fourier-inv-por-shift}
             A demonstração do Teorema \ref{teo-transf-fourier-decai-exp} nos deu o seguinte fato,
             para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\mathfrak{F}_a$:
+            %
             \begin{align*}
                 \int_{-\infty}^{\infty} f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
                 =
                 \int_{-\infty}^{\infty} f(x)e^{-2\pi ix\xi} \, dx
                 =
-                \widehat{f}(\xi).
+                \widehat{f}(\xi)
             \end{align*}
+            %
+            para $\xi > 0$ e
+            %
+            \begin{align*}
+                \int_{-\infty}^{\infty} f(x+ib)e^{-2\pi i(x+ib)\xi} \, dx
+                =
+                \int_{-\infty}^{\infty} f(x)e^{-2\pi ix\xi} \, dx
+                =
+                \widehat{f}(\xi)
+            \end{align*}
+            %
+            para $\xi < 0$.
         \end{corolario}
         %
         Separamos o fato acima como corolário pois ele será bastante usado e não é algo exclusivo da
@@ -2323,7 +2336,84 @@
         %
         
         \begin{proof}[Prova do Teorema \ref{teo-inv-transf-fourier}]
-            a
+            Aqui, novamente, precisamos estar atentos ao sinal de $\xi$. Primeiro, note que
+            %
+            \begin{equation*}
+                \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi 
+                = \int_{-\infty}^{0} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi 
+                + \int_{0}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi.
+            \end{equation*}
+            %
+            Vamos começar analisando a segunda parcela.
+            
+            Digamos que $f\in\mathfrak{F}_a$ para algum $a>0$. Escolha $b\in\R$ tal que $0 < b < a$.
+            Lembrando do Corolário \ref{transf-fourier-inv-por-shift} e usando o Teorema de Fubini, temos
+            %
+            \begin{align*}
+                \int_{0}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi
+                &= \int_{0}^{\infty} \left[ \int_{-\infty}^{\infty} f(u-ib)e^{-2\pi i(u-ib)\xi} \, du \right] 
+                    e^{2\pi ix\xi} \, d\xi \\
+                &= \int_{-\infty}^{\infty} \left[ \int_{0}^{\infty} f(u-ib)e^{-2\pi i(u-ib)\xi}e^{2\pi ix\xi} \, d\xi
+                    \right] \, du \\
+                &= \int_{-\infty}^{\infty} f(u-ib) \left[ \int_{0}^{\infty} e^{-2\pi i(u-ib)\xi}e^{2\pi ix\xi} \, d\xi
+                    \right] \, du \\
+                &= \int_{-\infty}^{\infty} f(u-ib)\cdot\frac{1}{2\pi b + 2\pi i(u-x)} \, du \\
+                &= \int_{-\infty}^{\infty} \cdot\frac{f(u-ib)}{2\pi i (-ib + u - x)} \, du \\
+                &= \frac{1}{2\pi i} \int_{-\infty}^{\infty} \frac{f(\gamma_1(u))}{\gamma_1(u)-x}\gamma_1'(u) \, du \\
+                &\equiv \frac{1}{2\pi i}\int_{\gamma_1} \frac{f(w)}{w-x} \, dw,
+            \end{align*}
+            %
+            sendo $\gamma_1(u) = u-ib, u\in\R$. Procedendo de maneira análoga para a primeira parcela, obtemos
+            %
+            \begin{equation*}
+                \int_{-\infty}^0 \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi 
+                = -\frac{1}{2\pi i}\int_{\gamma_2} \frac{f(w)}{w-x} \, dw,
+            \end{equation*}
+            %
+            sendo $\gamma_2(u) = u+ib, b\in\R$. Ilustramos os ``caminhos'' abaixo.
+            %
+            \begin{center}
+                {\bf diagrama dos caminhos slide 27 Aula 9}
+            \end{center}
+            %
+            A estratégia agora será truncar esses dois ``caminhos'', formando o retângulo abaixo, e mostrar que
+            as integrais nos caminhos verticais vão para zero quando $R\to\infty$.
+            %
+            \begin{center}
+                {\bf diagrama do retângulo slide 27 Aula 9}
+            \end{center}
+            %
+            Defina $\beta_R \equiv \beta_R^1*\beta_R^2*\beta_R^3*\beta_R^4$. Usando a Fórmula Integral de Cauchy
+            e lembrando que $R > |x|$, temos
+            %
+            \begin{align*}
+                f(x) = \frac{1}{2\pi i}\int_{\beta_R} \frac{f(w)}{w-x} \, dw
+                \implies f(x) = \lim_{R\to\infty} \left( \frac{1}{2\pi i}\int_{\beta_R} \frac{f(w)}{w-x} \, dw \right).
+            \end{align*}
+            %
+            Vamos estimar a integral ao longo de $\beta_R^4$ (e analogamente ao longo de $\beta_R^2$):
+            %
+            \begin{align*}
+                \left| \int_{\beta_R^4} \frac{f(w)}{w-x} \, dw \right| 
+                &\leq \int_{\beta_R^4} \frac{|f(w)|}{|w-x|} \, |dw| \\
+                &\leq \int_{\beta_R^4} \frac{A}{1+R^2}\cdot\frac{1}{R-|x|} \, |dw| \\
+                &= \frac{A}{1+R^2}\cdot\frac{1}{R-|x|}\cdot 2b \\
+                &= \frac{1}{R^2}\cdot\frac{2A}{(1+1/R^2)(1-|x|/R)} \xrightarrow{R\to\infty} 0.
+            \end{align*}
+            %
+            Como tomamos valores absolutos, a estimativa para $\beta_R^2$ é a mesma. Portanto,
+            %
+            \begin{align*}
+                f(x) &= \lim_{R\to\infty} \left( \frac{1}{2\pi i}\int_{\beta_R} \frac{f(w)}{w-x} \, dw \right) \\
+                     &= \frac{1}{2\pi i} \lim_{R\to\infty} \left( \int_{\beta_R^1} \frac{f(w)}{w-x} \, dw 
+                        + \int_{\beta_R^3} \frac{f(w)}{w-x} \, dw \right) \\
+                     &= \frac{1}{2\pi i}\left( \int_{\gamma_1} \frac{f(w)}{w-x} \, dw 
+                        + \int_{\gamma_2^-} \frac{f(w)}{w-x} \, dw \right) \\
+                     &= \int_{0}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi 
+                        + \int_{-\infty}^0 \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi \\
+                     &= \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi.
+            \end{align*}
+            %
         \end{proof}
         %
         
