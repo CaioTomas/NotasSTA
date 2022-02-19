@@ -1886,8 +1886,8 @@
 				\draw (-5,-2)--(5,-2);
 				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
 				\draw[-latex] (0,-3)--(0,3) node [at end,above]{$\Im$};
-				\node [at={(0,2)}, above right]{$a$};
-				\node [at={(0,-2)}, below left]{$-a$};
+				\node [at={(0,2)}, above right]{$ia$};
+				\node [at={(0,-2)}, below right]{$-ia$};
 				\draw[red] (-5,1.2)--(5,1.2) node [at end,above]{$y=\Im(z)$};
 				\node [at={(0,1.2)}, above left]{$y$};
 				\end{tikzpicture}
@@ -2372,16 +2372,50 @@
             %
             sendo $\gamma_2(u) = u+ib, b\in\R$. Ilustramos os ``caminhos'' abaixo.
             %
-            \begin{center}
-                {\bf diagrama dos caminhos slide 27 Aula 9}
-            \end{center}
-            %
+            \begin{figure}[H]
+				\centering 
+				\begin{tikzpicture}
+				\draw (-5,2)--(5,2);
+				\draw (-5,-2)--(5,-2);
+				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
+				\draw[-latex] (0,-3)--(0,3) node [at end,above]{$\Im$};
+				\node [at={(0,2)}, above right]{$ia$};
+				\node [at={(0,-2)}, below right]{$-ia$};
+				\draw[-latex,teal] (-5,1.2)--(5,1.2) node [at end,above]{$\gamma_2$};
+				\node [at={(0,1.2)}, above left]{$ib$};
+				\draw[-latex,teal] (-5,-1.2)--(5,-1.2) node [at end,above]{$\gamma_1$};
+				\node [at={(0,-1.2)}, above left]{$-ib$};
+				\end{tikzpicture}
+			\end{figure}
+        %
             A estratégia agora será truncar esses dois ``caminhos'', formando o retângulo abaixo, e mostrar que
             as integrais nos caminhos verticais vão para zero quando $R\to\infty$.
             %
-            \begin{center}
-                {\bf diagrama do retângulo slide 27 Aula 9}
-            \end{center}
+            \begin{figure}[H]
+				\centering 
+				\begin{tikzpicture}
+				\draw (4,2)--(-4,2)--(-4,-2)--(4,-2)--cycle;
+				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
+				\draw[-latex] (0,-4)--(0,4) node [at end,above]{$\Im$};
+				\node[at={(4,0)}, below right]{$R$};
+				%\node [at= {(4,-3)}, below]{$R-ib$};
+				%\node[at={(-4,-3)}, below]{$-R-ib$};
+				\node [at= {(-4,0)}, below left]{$-R$};
+				\node [at={(2,-2)}, below]{$\beta_R^1$};
+				\node [at={(4,1)}, right]{$\beta_R^2$};
+				\node [at={(2,2)}, above]{$\beta_R^3$};
+				\node [at={(-4,1)}, left]{$\beta_R^4$};
+				\draw[-latex] (4,0.9)--(4,1);
+				\draw[-latex] (4,-1.1)--(4,-1);
+				\draw[-latex] (2.1,2)--(2,2);
+				\draw[-latex] (-1.9,2)--(-2,2);
+				\draw[-latex] (-4,1.1)--(-4,1);
+				\draw[-latex] (-4,-0.9)--(-4,-1);
+				\draw[-latex] (-2.1,-2)--(-2,-2);
+				\draw[-latex] (1.9,-2)--(2,-2);
+				\end{tikzpicture}
+				\caption{Contorno no caso $\xi > 0$.}
+			\end{figure}
             %
             Defina $\beta_R \equiv \beta_R^1*\beta_R^2*\beta_R^3*\beta_R^4$. Usando a Fórmula Integral de Cauchy
             e lembrando que $R > |x|$, temos
