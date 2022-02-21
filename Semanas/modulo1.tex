@@ -1940,6 +1940,162 @@
             %
         \end{exemplo}
         %
+        Para finalizar, vamos mostrar que a transformada de Fourier de $f(x) = e^{-\pi x^2}$ é
+        ela mesma, ou seja, dado $\xi\in\R$ temos
+        %
+        \begin{equation*}
+            \widehat{f}(\xi) = \int_{-\infty}^{\infty} e^{-\pi x^2}e^{-2\pi ix\xi} \, d\xi 
+                             = e^{-\pi \xi^2}.
+        \end{equation*}
+        %
+        Considerando a mudança de variáveis $u=-x$, temos
+        %
+        \begin{align*}
+            \widehat{f}(-\xi) 
+            &=
+            \lim_{R\to \infty} 
+            \int_{-R}^{R} e^{ -\pi x^2  } e^{ -2\pi i x(-\xi) }\, dx
+            \\[0.3cm]
+            &=
+            \lim_{R\to \infty} 
+            \int_{R}^{-R} e^{ -\pi (-u)^2  } e^{ -2\pi i u\xi }(-1)\, du
+            \\[0.3cm]
+            &=
+            \lim_{R\to \infty} 
+            \int_{-R}^{R} e^{ -\pi u^2  } e^{ -2\pi i u\xi }\, du
+            =
+            \lim_{R\to \infty} 
+            \int_{-R}^{R} e^{ -\pi x^2  } e^{ -2\pi i x\xi }\, dx
+            =
+            \widehat{f}(\xi).
+        \end{align*}
+        %
+        Considere o caminho $\y_{R}$  esboçado na figura abaixo:
+        %
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{Figuras/caminho-gamaR-transf-Fourier-gaussiana.pdf}
+            \caption{Esboço do traço do caminho $\gamma_{R}$, orientado positivamente.}
+            \label{fig:cont-transf-fourier-gaussiana}
+        \end{figure}
+        %
+        Os caminhos suaves $\y_1,\y_2,\y_3$ e $\y_4$ podem ser parametrizadas da seguinte forma:
+        %
+        \begin{equation*}
+            \begin{array}{ll}
+                \y_1(t) = t,				&-R\leqslant t\leqslant R;
+                \\[0.15cm]
+                \y_2(t) = R+it,				&\phantom{-}0\leqslant t\leqslant \xi;
+                \\[0.15cm]
+                \y_3^{-}(t) = t+i\xi,		&-R\leqslant t\leqslant R;
+                \\[0.15cm]
+                \y_4^{-}(t) = -R+it,		&\phantom{-}0\leqslant t\leqslant \xi.
+            \end{array}
+        \end{equation*}
+        %
+        Ademais, note que a função $g:\C\to\C$ dada por 
+        $g(z)=e^{-\pi z^2}$ é uma função inteira. Como, para cada $R>0$, 
+        o caminho $\y_R$ é um caminho fechado suave por partes, 
+        então temos do Teorema de Cauchy-Goursat que
+        %
+        \begin{equation*}
+            \int_{\y_R} g(z)\, dz=0.
+        \end{equation*}
+        %
+        Vamos estimar primeiro a integral de $g$ ao longo de $\y_2$ usando o Lema Técnico:
+        %
+        \begin{align*}
+            \left| \int_{\y_2} g(z)\, dz \right|
+            &=
+            \left| \int_{0}^{\xi} g(\y_2(t))\,\y_2'(t)\, dt \right|
+            \\[0.3cm]
+            &=
+            \left| \int_{0}^{\xi} g(R+it)\,i\, dt \right|
+            \\[0.3cm]
+            &=
+            \left| \int_{0}^{\xi} \exp(-\pi(R^2+2Rit-t^2)) \, dt \right|
+            \\[0.3cm]
+            &=
+            \left| \int_{0}^{\xi} \exp(-\pi R^2) \exp(-2\pi iRt) \exp(\pi t^2) \, dt \right|
+            \\[0.3cm]
+            &\leqslant
+            \int_{0}^{\xi} \exp(-\pi R^2) |\exp(-2\pi iRt)| \exp(\pi t^2) \, dt
+            \\[0.3cm]
+            &\leqslant
+            \int_{0}^{\xi} \exp(-\pi R^2)\, dt
+            \\[0.3cm]
+            &=
+            \xi \exp(-\pi R^2).
+        \end{align*}
+        %
+        De maneira completamente análoga podemos estimar a integral de $g$ ao longo de $\y_4$.
+        Do exposto acima, temos que
+        %
+        \begin{align*}
+            0 
+            &= \int_{\gamma_{R}} g(z)\, dz 
+            \\
+            &=
+            \int_{\y_1} g(z)\, dz+\int_{\y_2} g(z)\, dz+\int_{\y_3} g(z)\, dz+\int_{\y_4} g(z)\, dz.
+        \end{align*}
+        %
+        Portanto, segue que 
+        %
+        \begin{equation*}
+            \int_{\y^{-}_3} g(z)\, dz = \int_{\y_1} g(z)\, dz + 
+            \int_{\y_2} g(z)\, dz+\int_{\y_4} g(z)\, dz.
+        \end{equation*}
+        %
+        Logo, pela definição de integral complexa e da igualdade acima, temos
+        %
+        \begin{align*}
+            \int_{-R}^{R} e^{-\pi(t+i\xi)^2}\, dt
+            &=
+            \int_{\y^{-}_3} g(z)\, dz 
+            \\[0.3cm]
+            &=
+            \int_{\y_1} g(z)\, dz + 
+            \int_{\y_2} g(z)\, dz+\int_{\y_4} g(z)\, dz
+            \\[0.3cm]
+            &=
+            \int_{-R}^{R} g(\y(t))\y'_{1}(t)\, dt + 
+            \int_{\y_2} g(z)\, dz+\int_{\y_4} g(z)\, dz
+            \\[0.3cm]
+            &=
+            \int_{-R}^{R} e^{-\pi t^2}\, dt + 
+            \int_{\y_2} g(z)\, dz+\int_{\y_4} g(z)\, dz.
+        \end{align*}
+        %
+        Podemos agora tomar o limite quando $R\to\infty$ em ambos
+        lados da igualdade acima em seguida usar a identidade
+        %
+        \begin{equation*}
+            \lim_{R\to\infty} \int_{-R}^R e^{-\pi x^2} \, dx = 1,
+        \end{equation*}
+        %
+        para obter
+        %
+        \begin{equation*}
+            \int_{-\infty}^{\infty} e^{-\pi(t+i\xi)^2}\, dt
+            =
+            \int_{-\infty}^{\infty} e^{-\pi t^2}\, dt = 1.
+        \end{equation*}
+        %
+        Desenvolvendo o quadrado no integrando da integral que aparece
+        à esquerda na igualdade acima, ficamos com
+        %
+        \begin{equation*}
+            \int_{-\infty}^{\infty} e^{-\pi t^2} e^{-2\pi i t\xi }  e^{\pi\xi^2}\, dt = 1
+            \quad \Longrightarrow\quad 
+            \int_{-\infty}^{\infty} e^{-\pi t^2} e^{2\pi i t\xi } \, dt = e^{-\pi\xi^2},
+        \end{equation*}
+        %
+        o que mostra que a transformada de Fourier de $f$ é ela mesma, como afirmado.
+        Um último comentário é adequado: mostrar que a transformada de Fourier da
+        gaussiana é ela mesma aponta para a {\bf possibilidade} de que a transformada
+        de Fourier tenha inversa, uma vez que ela admite ``ponto fixo''. Veremos que,
+        sob certas condições, essa inversa realmente existe.
+        %
     \subsection{Existência da transformada de Fourier em \texorpdfstring{$\mathfrak{F}_a$}{Fa}}
         %
         Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
