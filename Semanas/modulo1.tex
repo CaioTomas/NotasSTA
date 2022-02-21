@@ -1233,80 +1233,9 @@
         $K$ é compacto). Vamos chamar, daqui em diante, os elementos de $\mathcal{Q}$ de quadrados.
         %
         \begin{figure}[H]\centering
-            \begin{tikzpicture}[scale=1.9]
-        		% bolha externa 
-        		\begin{scope}[scale=1.6, shift={(0.08, 0)}]
-        			\draw plot [smooth cycle] coordinates {
-        				(1, 0)
-        				(0.9, 0.6)
-        				(0.5, 0.866)
-        				(0, 1)
-        				(-0.5, 0.9)
-        				(-0.866, 0.5)
-        				(-1, 0)
-        				(-0.866, -0.5)
-        				(-0.5, -0.85)
-        				(0, -0.95)
-        				(0.45, -0.866)
-        				(0.866, -0.5)
-        			}
-        			;
-        		\end{scope}
-        		
-        		% bolha interna
-        		\draw plot [smooth cycle] coordinates {
-        			(0.9, 0)
-        			(0.8, 0.7)
-        			(0.5, 0.7)
-        			(-0.3, 0.1)
-        			(-0.9, 0)
-        			(-0.5, -0.8)
-        			(0,-0.9)
-        			(0.5, -0.8)
-        		}
-        		;
-        		
-        		% quadriculado todo
-        		\foreach \i in {-1, -0.8, ..., 1}{
-        			\draw [thin, dashed] 
-        				(\i, 1.2) --++ (0,-2.4)				
-        				(-1.2, \i) --++ (2.4,0)
-        			;
-        		}
-        	
-        		% delineado
-        		\draw [
-        		    thick, 
-        		    rounded corners=0.3pt, 
-        		    fill=gray!80,
-        		    fill opacity=0.5
-        		]
-        			(1, 0) --++ 
-        			(0, 0.8) --++
-        			(-0.2, 0) --++
-        			(0, 0.2) --++
-        			(-0.4, 0) --++
-        			(0, -0.2) --++
-        			(-0.2, 0) --++ 
-        			(0, -0.2) --++
-        			(-0.2, 0) --++ 
-        			(0, -0.2) --++
-        			(-0.2, 0) --++ 
-        			(0, -0.2) --++
-        			(-0.8, 0) --++
-        			(0, -0.8) --++
-        			(0.2, 0) --++
-        			(0, -0.2) --++
-        			(0.2, 0) --++
-        			(0, -0.2) --++
-        			(1.2, 0) --++
-        			(0, 0.2) --++
-        			(0.2, 0) --++
-        			(0, 0.4) --++
-        			(0.2, 0) --++
-        			(0, 0.4) 
-        		;
-        	\end{tikzpicture}
+            \includegraphics{
+                Figuras/reticulado-para-Runge.pdf
+            }
         	\caption{A união dos caminhos $\y_j$ está negritada.}
         	\label{fig:reticulado runge}
         \end{figure}
@@ -2358,8 +2287,8 @@
                 &= \int_{-\infty}^{\infty} f(u-ib) \left[ \int_{0}^{\infty} e^{-2\pi i(u-ib)\xi}e^{2\pi ix\xi} \, d\xi
                     \right] \, du \\
                 &= \int_{-\infty}^{\infty} f(u-ib)\cdot\frac{1}{2\pi b + 2\pi i(u-x)} \, du \\
-                &= \int_{-\infty}^{\infty} \cdot\frac{f(u-ib)}{2\pi i (-ib + u - x)} \, du \\
-                &= \frac{1}{2\pi i} \int_{-\infty}^{\infty} \frac{f(\gamma_1(u))}{\gamma_1(u)-x}\gamma_1'(u) \, du \\
+                &= \int_{-\infty}^{\infty} \frac{f(u-ib)}{2\pi i (-ib + u - x)} \, du \\
+                &= \frac{1}{2\pi i} \int_{-\infty}^{\infty} \frac{f(\gamma_1(u))}{\gamma_1(u)-x}\, \gamma_1'(u) \, du \\
                 &\equiv \frac{1}{2\pi i}\int_{\gamma_1} \frac{f(w)}{w-x} \, dw,
             \end{align*}
             %
@@ -2463,7 +2392,159 @@
             %
         \end{teorema}
         %
+        Antes da demonstração, fazemos uma observação que nos será útil. Se $|w| > 1$, 
+        então $|1/w| < 1$ e podemos fazer uma expansão usando a série geométrica como abaixo:
+        %
+        \begin{align*}
+            \frac{1}{w-1} &= \frac{1}{w}\cdot\frac{1}{1-\frac{1}{w}} 
+            = w^{-1}\sum_{n = 0}^{\infty}w^{-n}.
+        \end{align*}
+        %
+        Analogamente, se $|w|<1$, temos
+        %
+        \begin{align*}
+            \frac{1}{w-1} &= -\frac{1}{1-w}
+            = -\sum_{n = 0}^{\infty}w^{n}.
+        \end{align*}
+        %
         \begin{proof}
-            a
+            Como $f\in\mathfrak{F}$, existe $a > 0$ tal que $f\in\mathfrak{F}_a$. Seja 
+            $b$ um número real que satisfaz $0<b<a$. A função $1/(e^{2\pi i z} - 1)$ 
+            tem polos simples sobre os números inteiros, então
+            %
+            \begin{equation*}
+                g(z) = \frac{f(z)}{e^{2\pi i z} - 1}
+            \end{equation*}
+            %
+            tem os mesmos polos simples, já que $f$ é holomorfa em $S_a$. 
+            
+            Observe ainda que, com $n \in \Z$,
+            %
+            \begin{align*}
+                \lim_{z \to n} (z-n)g(z) & = \lim_{z \to n} \frac{(z-n)f(z)}{e^{2\pi i z} - 1}\\
+                &= \lim_{z \to n} \frac{f(z) + (z-n)f'(z)}{2\pi ie^{2\pi i z}} \\
+                &= \frac{f(n)}{2\pi i},
+            \end{align*}
+            %
+            ou seja, o resíduo de $g$ em $n \in \Z$ é $f(n)/2\pi i$. Para o cálculo do limite acima,
+            usamos a regra de L'Hôpital.
+            
+            Considere o contorno $\y_N$ na figura abaixo. 
+            %
+            \begin{center}
+                {\bf diagrama slide 6 aula 10}
+            \end{center}
+            %
+            Pelo teorema dos resíduos, temos que 
+            %
+            \begin{align*}
+                \int_{\y_N}g(z)\,dz &= 2\pi i\sum_{n=-N}^{N}\res(g,n)\\
+                &= 2 \pi i\sum_{n=-N}^{N}\frac{f(n)}{2 \pi i}\\
+                &= \sum_{n=-N}^{N}f(n).
+            \end{align*}
+            %
+            O resultado que procuramos será obtido quando tomarmos o limite $N \to \infty$. 
+            
+            Separe o contorno $\y_N$ em quatro curvas conforme o diagrama abaixo. 
+            %
+            \begin{center}
+                {\bf slide 11 Aula 11}
+            \end{center}
+            %
+            As integrais sobre
+            $\y_N^e$ e $\y_N^d$ vão a zero quando $N \to \infty$. Para verificar isto, usamos o 
+            Lema Técnico (Lema \ref{}) e a hipótese de decaimento quadrático sobre $f$. 
+            Denotaremos $R = N + 1/2$.
+            %
+            \begin{align*}
+                \Bigg |\int_{\y_N^d} \frac{f(z)}{e^{2 \pi i z} - 1}\,dz\Bigg| 
+                &\leq \int_{\y_N^d} \frac{|f(z)|}{|e^{2 \pi i z} - 1|}\,|dz| \\
+                &\leq \int_{\y_N^d} \frac{A}{1 + R^2}\cdot\frac{1}{|e^{2 \pi i z} - 1|}\,|dz| \\
+                &\leq \int_{\y_N^d} \frac{A}{1 + R^2}\cdot\frac{1}{e^{-2\pi b} + 1}\,|dz| \\
+                & = \frac{A2b}{(1 + R^2)(e^{-2\pi b} + 1)} \xrightarrow{N \to \infty} 0.
+            \end{align*}
+            %
+            Na terceira desigualdade, usamos o fato que $|e^{2\pi i z} - 1| \geq e^{-2 \pi b} + 1$ 
+            para $z \in \y_N^d$. Para $t \in [-b,b]$,
+            %
+            \begin{align*}
+                |e^{2 \pi i z} - 1| &= |e^{2 \pi i(R+ + i t)} - 1| \\
+                &= |e^{\pi i}e^{-2\pi t} - 1| \\
+                & = |(-1)e^{-2\pi t} - 1| \\
+                &= |e^{-2\pi t} + 1| \\
+                &\geq e^{-2\pi b} + 1.
+            \end{align*}
+            %
+            Vamos denotar por $\y^1$ e $\y^2$ as partes inferior e superior, respectivamente, 
+            do contorno $\y_N$ quando $N \to \infty$. Pelo que vimos até aqui,
+            %
+            \begin{equation*}
+                \sum_{n \in \Z}f(n) = \int_{\y^1}\frac{f(z)}{e^{2\pi i z} - 1}\,dz 
+                                    + \int_{\y^2}\frac{f(z)}{e^{2\pi i z} - 1}\,dz.
+            \end{equation*}
+            %
+            A parametrização de $\y^1$ é $t - ib$ com $t \in \R$, então, para $z \in \y^1$, 
+            temos 
+            %
+            \begin{equation*}
+                |e^{2\pi i z}| = |e^{2\pi i(t - ib)}| = |e^{2\pi it}e^{2\pi b}| = e^{2\pi b} >1.
+            \end{equation*}
+            %
+            Pela observação que fizemos antes da demonstração,
+            %
+            \begin{equation*}
+             \frac{1}{e^{2\pi i z}-1} = e^{-2\pi i z}\sum_{n=0}^{\infty}e^{-2\pi i nz}.
+            \end{equation*}
+            %
+            Para $z \in \y^2$, temos
+            %
+            \begin{equation*}
+                |e^{2\pi i z}| = |e^{2\pi i(-t + ib)}| = |e^{-2\pi it}e^{-2\pi b}| = e^{-2\pi b} <1
+            \end{equation*}
+            %
+            e segue
+            %
+            \begin{equation*}
+                \frac{1}{e^{2\pi i z}-1} = -\sum_{n=0}^{\infty}e^{2\pi i nz}.
+            \end{equation*}
+            %
+            Portanto
+            %
+            \begin{align*}
+                \sum_{n \in \Z}f(n) &= \int_{\y^1} f(z) e^{-2\pi i z} 
+                \sum_{n=0}^{\infty} e^{-2\pi i nz}\,dz 
+                + \int_{\y^2} f(z)(-1) \sum_{n=0}^{\infty} e^{2\pi i nz}\,dz\\
+                &= \int_{-\infty}^{\infty}f(\xi - ib)e^{-2\pi i (\xi - ib)}
+                \sum_{n=0}^{\infty}e^{-2\pi i n(\xi - ib)}\,d\xi 
+                + \int_{-\infty}^{\infty}f(\xi - ib)
+                \sum_{n=0}^{\infty}e^{2\pi i n(\xi - ib)}\,d\xi \\
+                &= \sum_{n=0}^{\infty} \int_{-\infty}^{\infty}f(\xi - ib)
+                e^{-2\pi i (n+1)(\xi - ib)}\,d\xi 
+                + \sum_{n=0}^{\infty} \int_{-\infty}^{\infty}f(\xi - ib)(-1)
+                e^{2\pi i n(\xi - ib)}\,d\xi \\
+                &= \sum_{n=0}^{\infty} \hat{f}(n+1) + \sum_{n=0}^{\infty} \hat{f}(-n) \\
+                &= \sum_{n \in \Z} \hat{f}(n).
+            \end{align*}
+            %
         \end{proof}
+        %
+        
+        Observe que no final da demonstração anterior usamos que, no cálculo da 
+        transformada de Fourier, podemos mudar a reta por onde integramos, como mostrado 
+        na demonstração do Teorema \ref{teo-transf-fourier-decai-exp}. Além disso, trocamos
+        a ordem da série com o somatório sem dar muitas justificativas. 
+        O que justifica essa troca é o lema a seguir.
+        %
+        \begin{lema}
+            Seja $f \in \mathfrak{F}_a$. Para qualquer $b$ real satisfazendo $0 < b < a$, 
+            temos que os seguintes limites
+            %
+            \begin{equation*}
+            \int_{-\infty}^{\infty}f(\xi + ib)\sum_{n=0}^{\infty}e^{2\pi i n(\xi + ib)}\,d\xi, 
+            \hspace{7pt}
+            \sum_{n=0}^{\infty} \int_{-\infty}^{\infty}f(\xi + ib)e^{2\pi ni(\xi + ib)}\,d\xi
+            \end{equation*}
+            %
+            existem e são iguais.
+        \end{lema}
         %
