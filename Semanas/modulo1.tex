@@ -1975,7 +1975,7 @@
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.6\linewidth]{Figuras/caminho-gamaR-transf-Fourier-gaussiana.pdf}
-            \caption{Esboço do traço do caminho $\gamma_{R}$, orientado positivamente.}
+            \caption{Esboço do traço do caminho $\y_{R}$, orientado positivamente.}
             \label{fig:cont-transf-fourier-gaussiana}
         \end{figure}
         %
@@ -2033,7 +2033,7 @@
         %
         \begin{align*}
             0 
-            &= \int_{\gamma_{R}} g(z)\, dz 
+            &= \int_{\y_{R}} g(z)\, dz 
             \\
             &=
             \int_{\y_1} g(z)\, dz+\int_{\y_2} g(z)\, dz+\int_{\y_3} g(z)\, dz+\int_{\y_4} g(z)\, dz.
@@ -2228,10 +2228,10 @@
 				\node [at= {(4,-3)}, below]{$R-ib$};
 				\node[at={(-4,-3)}, below]{$-R-ib$};
 				\node [at= {(-4,0)}, above]{$-R$};
-				\node [at={(2.7,0)}, above]{$\gamma_1$};
-				\node [at={(4,-2.2)}, right]{$\gamma_2$};
-				\node [at={(-2,-3)}, below]{$\gamma_3$};
-				\node [at={(-4,-1.2)}, left]{$\gamma_4$};
+				\node [at={(2.7,0)}, above]{$\y_1$};
+				\node [at={(4,-2.2)}, right]{$\y_2$};
+				\node [at={(-2,-3)}, below]{$\y_3$};
+				\node [at={(-4,-1.2)}, left]{$\y_4$};
 				\draw[->] (2.5,0)--(2.9,0);
 				\draw[->] (4,-2)--(4,-2.2);
 				\draw[->] (-1.8,-3)--(-2,-3);
@@ -2243,7 +2243,7 @@
             Daí, temos que
             %
             \begin{align*}
-                \left|\int_{\gamma_4} g(z) \, dz\right| &= \left|\int_{-R-ib}^{-R} g(z) \, dz\right| \\
+                \left|\int_{\y_4} g(z) \, dz\right| &= \left|\int_{-R-ib}^{-R} g(z) \, dz\right| \\
                                                         &\leq \int_0^b \left| f(-R-it)e^{-2\pi i(R-it)\xi}
                                                         \right|\, dt \\
                                                         &\leq \int_0^b \frac{A}{R^2}e^{-2\pi t\xi} \, dt \\
@@ -2253,21 +2253,21 @@
             Analogamente, mostra-se que
             %
             \begin{equation*}
-                \left|\int_{\gamma_2} g(z) \, dz\right| \leq \frac{\widetilde{K}}{R^2}.
+                \left|\int_{\y_2} g(z) \, dz\right| \leq \frac{\widetilde{K}}{R^2}.
             \end{equation*}
             %
             Pelo Teorema de Cauchy, temos
             %
             \begin{align*}
-                0 = \int_{\gamma_1*\gamma_2*\gamma_3*\gamma_4} g(z) \, dz 
-                \implies -\int_{\gamma_3} g(z) \, dz = \int_{\gamma_1} g(z) \, dz 
-                                                     + \int_{\gamma_2*\gamma_4} g(z) \, dz.
+                0 = \int_{\y_1*\y_2*\y_3*\y_4} g(z) \, dz 
+                \implies -\int_{\y_3} g(z) \, dz = \int_{\y_1} g(z) \, dz 
+                                                     + \int_{\y_2*\y_4} g(z) \, dz.
             \end{align*}
             %
             Por definição de integral complexa, temos
             %
             \begin{align*}
-                -\int_{\gamma_3} g(z) \, dz &= \int_{\gamma_3^-} g(z) \, dz \\
+                -\int_{\y_3} g(z) \, dz &= \int_{\y_3^-} g(z) \, dz \\
                                             &= \int_{-R}^R g(x-ib) \, dx \\
                                             &= \int_{-R}^R f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
             \end{align*}
@@ -2275,7 +2275,7 @@
             e também
             %
             \begin{equation*}
-                \int_{\gamma_1} g(z) \, dz = \int_{-R}^R g(x) \, dx = \int_{-R}^R f(x)e^{-2\pi ix\xi} \, dx.
+                \int_{\y_1} g(z) \, dz = \int_{-R}^R g(x) \, dx = \int_{-R}^R f(x)e^{-2\pi ix\xi} \, dx.
             \end{equation*}
             %
             Tomando o limite para $R\to +\infty$, obtemos
@@ -2312,7 +2312,7 @@
 				\node [at= {(4,3)}, above]{$R+ib$};
 				\node[at={(-4,3)}, above]{$-R+ib$};
 				\node [at= {(-4,0)}, below]{$-R$};
-				%\node [at={(4,1.5)}, right]{$\gamma_R$};
+				%\node [at={(4,1.5)}, right]{$\y_R$};
 				\draw[->] (-2.3,3)--(-2.5,3);
 				\draw[->] (-4,1.7)--(-4,1.5);
 				\draw[->] (2.5,0)--(2.7,0);
@@ -2446,18 +2446,18 @@
                     \right] \, du \\
                 &= \int_{-\infty}^{\infty} f(u-ib)\cdot\frac{1}{2\pi b + 2\pi i(u-x)} \, du \\
                 &= \int_{-\infty}^{\infty} \frac{f(u-ib)}{2\pi i (-ib + u - x)} \, du \\
-                &= \frac{1}{2\pi i} \int_{-\infty}^{\infty} \frac{f(\gamma_1(u))}{\gamma_1(u)-x}\, \gamma_1'(u) \, du \\
-                &\equiv \frac{1}{2\pi i}\int_{\gamma_1} \frac{f(w)}{w-x} \, dw,
+                &= \frac{1}{2\pi i} \int_{-\infty}^{\infty} \frac{f(\y_1(u))}{\y_1(u)-x}\, \y_1'(u) \, du \\
+                &\equiv \frac{1}{2\pi i}\int_{\y_1} \frac{f(w)}{w-x} \, dw,
             \end{align*}
             %
-            sendo $\gamma_1(u) = u-ib, u\in\R$. Procedendo de maneira análoga para a primeira parcela, obtemos
+            sendo $\y_1(u) = u-ib, u\in\R$. Procedendo de maneira análoga para a primeira parcela, obtemos
             %
             \begin{equation*}
                 \int_{-\infty}^0 \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi 
-                = -\frac{1}{2\pi i}\int_{\gamma_2} \frac{f(w)}{w-x} \, dw,
+                = -\frac{1}{2\pi i}\int_{\y_2} \frac{f(w)}{w-x} \, dw,
             \end{equation*}
             %
-            sendo $\gamma_2(u) = u+ib, b\in\R$. Ilustramos os ``caminhos'' abaixo.
+            sendo $\y_2(u) = u+ib, b\in\R$. Ilustramos os ``caminhos'' abaixo.
             %
             \begin{figure}[H]
 				\centering 
@@ -2468,9 +2468,9 @@
 				\draw[-latex] (0,-3)--(0,3) node [at end,above]{$\Im$};
 				\node [at={(0,2)}, above right]{$ia$};
 				\node [at={(0,-2)}, below right]{$-ia$};
-				\draw[-latex,teal] (-5,1.2)--(5,1.2) node [at end,above]{$\gamma_2$};
+				\draw[-latex,teal] (-5,1.2)--(5,1.2) node [at end,above]{$\y_2$};
 				\node [at={(0,1.2)}, above left]{$ib$};
-				\draw[-latex,teal] (-5,-1.2)--(5,-1.2) node [at end,above]{$\gamma_1$};
+				\draw[-latex,teal] (-5,-1.2)--(5,-1.2) node [at end,above]{$\y_1$};
 				\node [at={(0,-1.2)}, above left]{$-ib$};
 				\end{tikzpicture}
 			\end{figure}
@@ -2528,8 +2528,8 @@
                 f(x) &= \lim_{R\to\infty} \left( \frac{1}{2\pi i}\int_{\beta_R} \frac{f(w)}{w-x} \, dw \right) \\
                      &= \frac{1}{2\pi i} \lim_{R\to\infty} \left( \int_{\beta_R^1} \frac{f(w)}{w-x} \, dw 
                         + \int_{\beta_R^3} \frac{f(w)}{w-x} \, dw \right) \\
-                     &= \frac{1}{2\pi i}\left( \int_{\gamma_1} \frac{f(w)}{w-x} \, dw 
-                        + \int_{\gamma_2^-} \frac{f(w)}{w-x} \, dw \right) \\
+                     &= \frac{1}{2\pi i}\left( \int_{\y_1} \frac{f(w)}{w-x} \, dw 
+                        + \int_{\y_2^-} \frac{f(w)}{w-x} \, dw \right) \\
                      &= \int_{0}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi 
                         + \int_{-\infty}^0 \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi \\
                      &= \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi.
@@ -2611,7 +2611,7 @@
             %
             As integrais sobre
             $\y_N^e$ e $\y_N^d$ vão a zero quando $N \to \infty$. Para verificar isto, usamos o 
-            Lema Técnico (Lema \ref{}) e a hipótese de decaimento quadrático sobre $f$. 
+            Lema Técnico (Lema \ref{lema-tecnico}) e a hipótese de decaimento quadrático sobre $f$. 
             Denotaremos $R = N + 1/2$.
             %
             \begin{align*}
