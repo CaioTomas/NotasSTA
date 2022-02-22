@@ -2706,3 +2706,26 @@
             existem e são iguais.
         \end{lema}
         %
+        \begin{proof}
+            a
+        \end{proof}
+        %
+    \subsection{O teorema de Paley-Wiener}
+        Nesta seção vamos adotar um ponto de vista um pouco diferente acerca da nossa $f:\R\to\R$: 
+        ao invés de assumir qualquer analiticidade em $f$, vamos assumir a validade da fórmula de 
+        inversão de Fourier, isto é,
+        que vale
+        %
+        \begin{equation*}
+            f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi
+        \end{equation*}
+        %
+        se
+        %
+        \begin{equation*}
+            \widehat{f}(x) = \int_{-\infty}^{\infty} f(x) e^{-2\pi ix\xi} \, dx.
+        \end{equation*}
+        %
+        Dito de outro modo, vamos trabalhar com funções para as quais existe a transformada de Fourier
+        e vale a fórmula de inversão dada no Teorema \ref{teo-inv-transf-fourier}. A esta segunda
+        hipótese, chamaremos {\bf Hipótese da Fourier Inversa}, H.F.I.
