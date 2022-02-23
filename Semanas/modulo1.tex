@@ -2911,6 +2911,97 @@
             \end{align*}
             %
             e fica mostrada a volta. A prova da ida será dividida em 3 passos.
-            \paragraph{Passo 1.} a
+            %
+            \paragraph{Passo 1.} Vamos mostrar que se $f:\C\to\C$ é uma
+            função inteira satisfazendo
+            %
+            \begin{equation*}
+                |f(x+iy)| \leq \frac{A'e^{2\pi M|y|}}{1+x^2},
+            \end{equation*}
+            %
+            então $\widehat{f}(\xi) = 0$ sempre que $|\xi| > M$.
+            
+            Para mostrar a afirmação, vamos considerar primeiro $\xi>M$.
+            Do Corolário \ref{transf-fourier-inv-por-shift}, temos que
+            %
+            \begin{align*}
+                \widehat{f}(\xi) 
+                = \int_{-\infty}^{\infty} f(x)e^{-2\pi ix\xi} \, dx
+                = \int_{-\infty}^{\infty} f(x-iy)e^{-2\pi i(x-iy)\xi} \, dx,
+            \end{align*}
+            %
+            ou seja, movemos o caminho para baixo de $y>0$ (uma quantidade
+            fixa, mas arbitrária). Dessa identidade e da hipótese, temos
+            %
+            \begin{align*}
+                |\widehat{f}(\xi)| 
+                \leq A'\int_{-\infty}^{\infty} \frac{ e^{2\pi My 
+                - 2\pi y\xi}}{1+x^2} \, dx 
+                = \frac{A'}{\pi}e^{-2\pi y(\xi - M)}
+                = Ce^{-2\pi y(\xi - M)}.
+            \end{align*}
+            %
+            Lembrando que $\xi>M$ e tomando o limite quando $y\to +\infty$,
+            concluímos que $\widehat{f}(\xi) = 0$. Para $\xi<-M$, movemos
+            o contorno no sentido oposto:
+            %
+            \begin{align*}
+                \widehat{f}(\xi) 
+                = \int_{-\infty}^{\infty} f(x)e^{-2\pi ix\xi} \, dx
+                = \int_{-\infty}^{\infty} f(x+iy)e^{-2\pi i(x+iy)\xi} \, dx,
+            \end{align*}
+            %
+            com $y>0$ fixo (mas arbitrário). Daí, segue usando a hipótese que
+            %
+            \begin{align*}
+                |\widehat{f}(\xi)| 
+                \leq A'\int_{-\infty}^{\infty} \frac{ e^{-2\pi My 
+                + 2\pi y\xi}}{1+x^2} \, dx 
+                = \frac{A'}{\pi}e^{-2\pi y(M - \xi)}
+                = Ce^{-2\pi y(M -\xi)}.
+            \end{align*}
+            %
+            Lembrando que $-\xi > M$ e tomando o limite para $y\to +\infty$,
+            concluímos novamente que $\widehat{f}(\xi) = 0$ e fica mostrada
+            a afirmação.
+            %
+            \paragraph{Passo 2.} Agora, vamos mostrar que se $f:\C\to\C$
+            é uma função inteira satisfazendo a condição mais fraca
+            %
+            \begin{equation*}
+                |f(x+iy)| \leq Ae^{2\pi M|y|},
+            \end{equation*}
+            %
+            então $\widehat{f}(\xi) = 0$ sempre que $|\xi| > M$. Note
+            que essa condição é mais fraca que a do Passo 1, mas mais
+            forte que a da hipótese do teorema.
+            
+            Para provar essa afirmação, suponhamos inicialmente $\xi>M$.
+            Sejam $\e>0$ e $f_{\e}:C\setminus\{i/\e\}\to\C$ dada por
+            %
+            \begin{equation*}
+                f_{\e}(z) = \frac{f(z)}{(1 + i\e z)^2}.
+            \end{equation*}
+            %
+            yadayada
+            %
+            \paragraph{Passo 3.} Por fim, vamos mostrar que as hipóteses
+            do teorema garantem que
+            %
+            \begin{equation*}
+                |f(x+iy)| \leq Ae^{2\pi M|y|},
+            \end{equation*}
+            %
+            de sorte que $\widehat{f}(\xi) = 0$ se $|\xi| > M$. Dito
+            de outro modo, vamos mostrar que as hipóteses do teorema
+            nos permitem concluir o decaimento mais forte dado acima
+            que, pelo Passo 2, nos permite concluir que $\widehat{f}$
+            se anula fora de $[-M,M]$ e, portanto, seu suporte está
+            contido nesse compacto.
+            
+            Para verificar esta última afirmação, primeiro notamos que,
+            a menos de multiplicação por constante, basta mostrar que se
+            $|f(x)| \leq 1$ e $|f(z)| \leq e^{2\pi M|z|}, \forall z\in\C$,
+            então $|f(x+iy)| \leq e^{2\pi M|y|}$.
         \end{proof}
         %
