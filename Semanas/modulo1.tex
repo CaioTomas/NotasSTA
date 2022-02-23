@@ -2729,3 +2729,188 @@
         Dito de outro modo, vamos trabalhar com funções para as quais existe a transformada de Fourier
         e vale a fórmula de inversão dada no Teorema \ref{teo-inv-transf-fourier}. A esta segunda
         hipótese, chamaremos {\bf Hipótese da Fourier Inversa}, H.F.I.
+        
+        É possível mostrar, ainda, que a existência da transformada de Fourier e o 
+        Teorema \ref{teo-inv-transf-fourier} podem ser obtidos fazendo-se as seguintes hipóteses
+        sobre $f$ e $\widehat{f}$:
+        %
+        \begin{align*}
+            \forall x\in\R, |f(x)| &\leq \frac{A}{1+x^2}; \\
+            \forall \xi\in\R, |\widehat{f}(\xi)| &\leq \frac{A'}{1+\xi^2},
+        \end{align*}
+        %
+        com $A,A' > 0$ constantes.
+        %
+        \begin{teorema}
+        \label{teo-extensao-analitica-transf-decai-exp}
+            Seja $f:\R\to\R$ uma função satisfazendo H.F.I. e tal que para algumas constantes $a,A > 0$
+            temos $|\widehat{f}(\xi)| \leq Ae^{-2\pi a|\xi|}$. Então, para todo $b\in\R$ tal que 
+            $0<b<a$, $f$ admite uma extensão analítica à faixa $S_b = \{ z\in\C \ : \ |\Im(z)| < b \}$,
+            ou seja, existe uma função $F:S_b\to\C$ holomorfa tal que $F\big|_{\R} \equiv f$.
+        \end{teorema}
+        %
+        \begin{proof}
+            Defina
+            %
+            \begin{equation*}
+                f_n(z) = \int_{-n}^{n} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi.
+            \end{equation*}
+            %
+            A rigor, para o que faremos a seguir, seria necessário mostrar que $f_n(z)$ está bem
+            definida (no contexto da integração de Riemann), mostrando que $\widehat{f}$ é contínua
+            e o integrando é limitado para cada $z$ fixo. No contexto de teoria da medida, 
+            não precisaríamos nos preocupar com isso. No que segue, vamos supor $f_n(z)$ bem 
+            definida sem demonstração, mas é possível mostrar isso. Além disso, vamos
+            também utilizar o teorema de Fubini para trocar a ordem de integração 
+            (o que, a rigor, também precisaria ser demonstrado como permitido).
+            
+            Já que para qualquer curva de Jordan suave por partes em $\C$ temos
+            %
+            \begin{align*}
+                \int_{\y} f_n(z) \, dz &= \int_{\y} \int_{-n}^n \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \, dz \\
+                                       &= \int_{-n}^n \left[ \int_{\y} \widehat{f}(\xi)e^{2\pi iz\xi} \, dz 
+                                        \right] \, d\xi \\
+                                       &= \int_{-n}^n \widehat{f}(\xi) \left[ \int_{\y} e^{2\pi iz\xi} \, dz
+                                       \right] \, d\xi = 0,
+            \end{align*}
+            %
+            segue do Teorema de Morera que $f_n:\C\to\C$ é uma função inteira.
+            
+            Ademais, uma vez que $|\widehat{f}(\xi)| \leq Ae^{-2\pi a|\xi|}$, a seguinte expressão 
+            está bem definida para todo $z\in S_b$:
+            %
+            \begin{equation*}
+                F(z) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi.
+            \end{equation*}
+            %
+            De fato,
+            %
+            \begin{align*}
+                \left| \int_{\R\setminus [-n,n]} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right|
+                &\leq \int_{\R\setminus [-n,n]} |\widehat{f}(\xi)|e^{2\pi b|\xi|} \, d\xi \\
+                &\leq \int_{\R\setminus [-n,n]} Ae^{-2\pi (a-b)|\xi|} \, d\xi \xrightarrow{n\to\infty} 0,
+            \end{align*}
+            %
+            onde usamos que
+            %
+            \begin{equation*}
+                \Re(2\pi iz\xi) = -2\pi\xi\Im(z) \leq 2\pi b|\xi|
+            \end{equation*}
+            %
+            na primeira desigualdade, o decaimento de $\widehat{f}$ na segunda desigualdade e
+            o fato de que $0<b<a$ para calcular o limite quando $n\to\infty$.
+            
+            Por fim, basta considerarmos as restrições de $f_n$ a $S_b$ e observar que a sequência
+            $(f_n)_{n\in\N}$ dessas restrições converge uniformemente para $F:S_b\to\C$ dada acima.
+            
+            De fato, dado $\e>0$ existe $n_0\in\N$ tal que se $n\geq n_0$ então, para todo $z\in S_b$,
+            %
+            \begin{align*}
+                |F(z) - f_n(z)| &= \left| \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi -
+                \int_{-n}^{n} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\
+                &= \left| \int_{\R\setminus [-n,n]} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\
+                &\leq \int_{\R\setminus [-n,n]} A e^{-2\pi (a-b)|\xi|} \, d\xi \\ 
+                &< \e.
+            \end{align*}
+            %
+            Portanto, $F:S_b\to\C$ é holomorfa. Como estamos assumindo $H.F.I.$, ou seja, que
+            %
+            \begin{equation*}
+                f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi,
+            \end{equation*}
+            %
+            temos que
+            %
+            \begin{equation*}
+                F(z) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi
+            \end{equation*}
+            %
+            define uma extensão analítica de $f:\R\to\R$ em $S_b$.
+        \end{proof}
+        %
+        
+        Este teorema tem um corolário interessante e inusitado:
+        %
+        \begin{corolario}
+        \label{corolario-teo-extensao-analitica-transf-decai-exp}
+            Se $f:\R\to\R$ satisfaz H.F.I. e $\widehat{f}(\xi) = O(e^{-2\pi a|\xi|})$ para algum $a>0$ 
+            e $f$ se anula em um intervalo aberto $(a,b)$ não-vazio, então $f\equiv 0$.
+        \end{corolario}
+        %
+        \begin{proof}
+            Pelo teorema anterior, existe uma extensão analítica $F:S_b\to\C$ de $f$. Como
+            $f\big|_{(a,b)} \equiv 0$, segue que $F\big|_{(a,b)} \equiv 0$. Pelo Princípio da Identidade,
+            temos $F\equiv 0$ em $S_b$ e, em particular, $0 \equiv F\big|_{\R} \equiv f$.
+        \end{proof}
+        %
+        
+        Para enunciar o teorema de Paley-Wiener, precisamos da definição de suporte de uma função.
+        %
+        \begin{definicao}
+        \label{def-suporte}
+            Seja $f:\R\to\R$ uma função contínua. Definimos o suporte de $f$, denotado $\supp(f)$, por
+            %
+            \begin{equation*}
+                \supp(f) \equiv \overline{\{ x\in\R \ : \ |f(x)| > 0 \}}.
+            \end{equation*}
+            %
+            Em termos informais, o suporte é o conjunto (fechado) dos pontos onde $f$ não se anula.
+        \end{definicao}
+        %
+        \begin{teorema}
+        \label{teo-paley-wiener}
+            Seja $f:\R\to\R$ uma função contínua tal que $\displaystyle{ |f(x)| \leq \frac{A'}{1+x^2} }$
+            para todo $x\in R$, com $A'>0$. A função $f$ admite uma extensão inteira com
+            $|f(z)| \leq Ae^{2\pi M|z|}$ para algum par de constantes positivas $A,M$ se, e somente se,
+            o suporte de $\widehat{f}$ está contido no fechado $[-M,M]$.
+        \end{teorema}
+        %
+        Antes de ir para a demonstração, que é muito elegante, é interessante observar que o enunciado
+        do teorema é totalmente quantitativo: dada uma $f$ com decaimento moderado no infinito, 
+        a taxa de crescimento da (possível) extensão de $f$ determina onde
+        o suporte da transformada de Fourier estará contido, e não apenas que ele é compacto, por exemplo.
+        
+        %
+        \begin{proof}
+            Vamos assumir, inicialmente, que $\widehat{f}$ tem suporte contido em $[-M,M]$ 
+            (a rigor, novamente, precisaríamos mostrar que $\widehat{f}$ é contínua e fazer
+            considerações análogas às discutidas no teorema anterior).
+            
+            Do fato que $\widehat{f}(\xi) = 0$ sempre que $|\xi| > M$ e da continuidade de $\widehat{f}$, 
+            temos que $\displaystyle{ K\equiv \sup_{\xi\in\R} |\widehat{f}(\xi)| < +\infty }$.
+            Portanto, para todo $\xi\in\R$, temos
+            %
+            \begin{equation*}
+                |\widehat{f}(\xi)| \leq K = \frac{K(1+|\xi|^2)}{1+|\xi|^2} \leq \frac{K(1 + M^2)}{1+|\xi|^2}.
+            \end{equation*}
+            %
+            Isso nos mostra que $\widehat{f}$ também tem decaimento moderado no infinito. Como 
+            mencionamos anteriormente, isso e o decaimento moderado de $f$ no infinito nos permite
+            concluir que $f$ satisfaz H.I.F. e, portanto,
+            %
+            \begin{equation*}
+                f(x) = \int_{-M}^M \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi.
+            \end{equation*}
+            %
+            Como essa integral é realizada em um compacto, podemos verificar que
+            %
+            \begin{equation*}
+                F(z) = \int_{-M}^M \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi
+            \end{equation*}
+            %
+            define uma extensão inteira de $f$. Ademais, dado $z\in\C$, temos
+            %
+            \begin{align*}
+                |F(z)| &= \left| \int_{-M}^M \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\
+                       &\leq \int_{-M}^M |\widehat{f}(\xi)|\cdot|e^{2\pi iz\xi}| \, d\xi \\
+                       &\leq K \int_{-M}^M e^{\Re(2\pi iz\xi)} \, d\xi \\
+                       &= K \int_{-M}^M e^{-2\pi\Im(z)\xi} \, d\xi \\
+                       &\leq 2MK \sup_{\xi\in[-M,M]} e^{-2\pi\Im(z)\xi} \\
+                       &\leq 2MKe^{2\pi M|z|} \\
+                       &= Ae^{2\pi M|z|},
+            \end{align*}
+            %
+            e fica mostrada a volta. A prova da ida será dividida em 3 passos.
+            \paragraph{Passo 1.} a
+        \end{proof}
+        %
