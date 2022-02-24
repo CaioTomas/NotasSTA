@@ -2992,6 +2992,43 @@
                 f_{\e}(z) = \frac{f(z)}{(1 + i\e z)^2}.
             \end{equation*}
             %
+            Note que, sendo $z=x+iy$, temos
+            %
+            \begin{align*}
+                \left| \frac{1}{(1+i\e z)^2} \right| &= \frac{1}{|1+i\e z|^2} \\
+                                                     &= \frac{1}{|1-\e y + i\e x|^2} \\
+                                                     &= \frac{1}{(1-\e y)^2 + \e^2x^2} \\
+                                                     &\leq 1
+            \end{align*}
+            %
+            pois $1-\e y \geq 1$ já que $y\geq 0$ e $\e^2x^2 \geq 0$. Ademais, 
+            %
+            \begin{equation*}
+                \frac{1}{(1+i\e z)^2} \xrightarrow{\e \to 0} 1.
+            \end{equation*}
+            %
+            Em particular, isso mostra que $\widehat{f_{\e}}(\xi) \to \widehat{f}(\xi)$ quando
+            $\e\to 0$ pois
+            %
+            \begin{align*}
+                | \widehat{f_{\e}}(\xi) - \widehat{f}(\xi) | &= \left| \int_{-\infty}^{\infty} 
+                f(x)e^{-2\pi ix\xi}\cdot\left[\frac{1}{(1+i\e x)^2} - 1\right] \, dx \right| \\
+                &\leq \int_{-\infty}^{\infty} |f(x)|\cdot\left| \frac{1}{(1+i\e x)^2} - 1 \right| \, dx \\
+                &\leq \int_{-\infty}^{\infty} \frac{A'}{1+x^2}\cdot\left|\frac{1}{(1+i\e x)^2} - 1\right| \, dx \\
+                &\leq \int_{-\infty}^{\infty} \frac{A'}{1+x^2}\cdot 2\e\cdot\frac{1}{\sqrt{\e^2 + 1/x^2}} \, dx ...
+            \end{align*}
+            %
+            onde estimamos
+            %
+            \begin{align*}
+                \left| \frac{1}{(1+i\e x)^2} - 1 \right| &= \frac{|\e^2x^2 - 2i\e x|}{|1+i\e x|^2} \\
+                                                         &= \frac{|\e^2x^2 - 2i\e x|}{1+\e^2x^2} \\
+                                                         &= \frac{\sqrt{\e^4x^4 + 4\e^2x^2}}{1+\e^2x^2} \\
+                                                         &= \e\cdot\frac{\sqrt{\e^2 + 4/x^2}}{\e^2 + 1/x^2} \\
+                                                         &\leq 2\e\cdot\frac{\sqrt{\e^2 + 1/x^2}}{\e^2 + 1/x^2} \\
+                                                         &= 2\e\cdot\frac{1}{\sqrt{\e^2 + 1/x^2}}.
+            \end{align*}
+            %
             yadayada
             %
             \paragraph{Passo 3.} Por fim, vamos mostrar que as hipóteses
