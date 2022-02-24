@@ -3029,7 +3029,17 @@
                                                          &= 2\e\cdot\frac{1}{\sqrt{\e^2 + 1/x^2}}.
             \end{align*}
             %
-            yadayada
+            yadayada (mostrar que segue daí que $\widehat{f_{\e}}(\xi) \xrightarrow{\e\to 0} \widehat{f}(\xi)$).
+            
+            Agora, observamos que para $|x|\geq 1$
+            %
+            \begin{align*}
+                |f_{\e}(x+iy)| &\leq \frac{Ae^{2\pi M|y|}}{1 + \e x^2} \\
+                               &= \frac{Ae^{2\pi M|y|}}{1+x^2}\cdot\frac{1+x^2}{1 + \e x^2} \\
+                               &\leq \frac{A}{2\e}\cdot\frac{e^{2\pi M|y|}}{1+x^2}
+            \end{align*}
+            %
+            yadayada (essa cota não vale para $|x| < 1$, algo de errado não está certo...)
             %
             \paragraph{Passo 3.} Por fim, vamos mostrar que as hipóteses
             do teorema garantem que
