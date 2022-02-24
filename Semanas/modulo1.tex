@@ -3059,5 +3059,210 @@
             a menos de multiplicação por constante, basta mostrar que se
             $|f(x)| \leq 1$ e $|f(z)| \leq e^{2\pi M|z|}, \forall z\in\C$,
             então $|f(x+iy)| \leq e^{2\pi M|y|}$.
+            
+            E para mostrar essa nova afirmação, equivalente à anterior,
+            vamos utilizar o teorema de Phragmén-Lindelöf:
+            %
+            \begin{teorema}[Phragmén-Lindelöf]
+                Suponha $F$ uma função holomorfa no setor
+                %
+                \begin{equation*}
+                    S = \{ z\in\C : -\pi/4 < \arg_0 z < \pi/4 \}
+                \end{equation*}
+                %
+                e contínua em $\overline{S}$ (o fecho de $S$). Suponha
+                $|F(z)| \leq 1$ em $\partial S$ e que existem constantes
+                $c,C>0$ tais que $|F(z)| \leq Ce^{c|z|}$ para todo $z\in S$.
+                Então
+                %
+                \begin{equation*}
+                    |F(z)| \leq 1, \forall z\in S.
+                \end{equation*}
+                %
+            \end{teorema}
+            %
+            O que o teorema acima diz é que se $F$ é limitada por $1$ no
+            bordo do setor e não cresce demais no infinito (a rigor, tem
+            crescimento no infinito de no máximo ordem 1), então ela é,
+            na verdade, limitada por $1$ em todo o setor.
+            
+            Podemos ver a necessidade da hipótese de crescimento não
+            excessivo no infinito com o exemplo $F(z) = e^{z^2}$:
+            temos $F$ limitada por $1$ no bordo de $S$ (basta escrever
+            $z = x+iy$, tomar o módulo e usar que $x=\pm y$ no bordo),
+            mas, se $x\in\R$, então $F(x)\xrightarrow{x\to\infty} \infty$.
+            
+            Vamos então apresentar a demonstração do teorema de
+            Phragmén-Lindelöf e, em seguida, finalizar a demonstração do
+            teorema de Paley-Wiener.
+            
+            %
+            \begin{proof}
+                A ideia da prova é usar a função $e^{z^2}$ a nosso favor,
+                modificando-a trocando o expoente $2$ de $z$ por um expoente
+                $0<\alpha<2$. Dado $\e>0$, seja
+                %
+                \begin{equation*}
+                    F_{\e}(z) = F(z)e^{-\e z^{\alpha}}.
+                \end{equation*}
+                %
+                Estamos considerando o ramo principal do logaritmo, de modo
+                que se $z = re^{i\theta}$ (com $-\pi < \theta < \pi$), então
+                $z^{\alpha} = r^{\alpha}e^{\alpha i\theta}$. Portanto,
+                $F_{\e}$ é holomorfa em $S$ e contínua até o bordo.
+                Ademais,
+                %
+                \begin{equation*}
+                    |e^{-\e z^{\alpha}}| = e^{-\e r^{\alpha}\cos (\alpha\theta)}
+                \end{equation*}
+                %
+                e, como $-\pi /4 < \theta < \pi /4$, temos
+                %
+                \begin{equation*}
+                    -\frac{\pi}{2} < -\alpha\frac{\pi}{4} 
+                    < \alpha\theta < \alpha\frac{\pi}{4} < \frac{\pi}{2},
+                \end{equation*}
+                %
+                donde segue que $\cos(\alpha\theta) > 0$ em $S$. Isso, com
+                o fato de $|F(z)| \leq Ce^{c|z|}$ mostra que $F_{\e}$ decresce
+                rapidamente em $\overline{S}$ quando $|z|\to\infty$ e, em
+                particular, $F_{\e}$ é limitada. Afirmamos que 
+                $|F_{\e}(z)| \leq 1$ para todo $z\in\overline{S}$.
+                
+                Para ver isso, defina
+                %
+                \begin{equation*}
+                    M = \sup_{z\in\overline{S}} |F_{\e}(z)|.
+                \end{equation*}
+                %
+                Supondo $F\not\equiv 0$, seja $\{w_j\}$ uma sequência tal 
+                que $|F_{\e}(w_j)|\to M$. Do decaimento de $F_{\e}$ e 
+                do fato que $M\neq 0$, a sequência não pode ir para o
+                infinito e, portanto, ela tende a um $w\in\overline{S}$.
+                Pelo princípio do módulo máximo, $w\in\partial S$. Ora, 
+                mas no bordo temos $|F(z)| \leq 1$
+                por hipótese e também $|e^{-\e z^{\alpha}}| \leq 1$, de
+                modo que $M\leq 1$ e segue a afirmação. Daí, basta fazer
+                $\e\to 0$ e fica provado o teorema.
+            \end{proof}
+            %
+            
+            A menos de composição por uma rotação, podemos supor que
+            o setor no teorema de Phragmén-Lindelöf é o primeiro quadrante,
+            que iremos denotar por $\mathcal{Q}_1$. Daí, note que 
+            $\partial\mathcal{Q}_1 = \R_+^* \cup i\R_+^*$ e defina
+            %
+            \begin{equation*}
+                F(z) = f(z)e^{2\pi i Mz}
+            \end{equation*}
+            %
+            e note que $F$ é limitada por 1 para $z\in\R_+^*$ e para
+            $z\in i\R_+^*$. Como também temos $|F(z)| \leq Ce^{c|z|}$
+            em $\mathcal{Q}_1$, concluímos pelo teorema de Phragmén-Lindelöf
+            que que $|F(z)| \leq 1, \forall z\in\mathcal{Q}$, o que implica
+            $|f(z)| \leq e^{2\pi M y} = e^{2\pi M|y|}$.
+            
+            Similarmente, para o segundo quadrante, $\mathcal{Q}_2$,
+            temos $\partial\mathcal{Q}_2 = \R_-^* \cup i\R_+^*$ e 
+            podemos definir a mesma $F$ acima, e temos novamente que 
+            $F$ é limitada por $1$ em
+            $\partial\mathcal{Q}_2$ e segue do teorema de Phragmén-Lindelöf 
+            que $|F(z)| \leq 1, \forall z\in\mathcal{Q}_2$ e, daí,
+            $|f(z)| \leq e^{2\pi My} = e^{2\pi M|y|}$ novamente.
+            
+            Para o terceiro quadrante, $\mathcal{Q}_3$,
+            temos $\partial\mathcal{Q}_3 = \R_-^* \cup i\R_-^*$ e 
+            podemos definir 
+            %
+            \begin{equation*}
+                F(z) = f(z)e^{-2\pi i Mz}.
+            \end{equation*}
+            %
+            Temos novamente que $F$ é limitada por $1$ em
+            $\partial\mathcal{Q}_3$ e segue do teorema de Phragmén-Lindelöf 
+            que $|F(z)| \leq 1, \forall z\in\mathcal{Q}_3$ e, daí,
+            $|f(z)| \leq e^{-2\pi My} = e^{2\pi M|y|}$ novamente.
+            
+            Por fim, para o quarto quadrante, $\mathcal{Q}_4$, podemos
+            tomar a mesma $F$ do terceiro quadrante para concluir que 
+            $F$ é limitada por $1$ em 
+            $\partial\mathcal{Q}_4 = \R_+^* \cup i\R_-^*$ e segue
+            do teorema de Phragmén-Lindelöf que $|F(z)| \leq 1,
+            \forall z\in\mathcal{Q}_4$ e, daí, $|f(z)| \leq e^{-2\pi My}
+            = e^{2\pi M|y|}$.
+            
+            Fica provado, então, o teorema de Paley-Wiener.
+        \end{proof}
+        %
+        
+        Para terminar a seção, apresentamos um teorema que usa da
+        ideia por trás do teorema de Paley-Wiener, mas agora caracterizando
+        as funções cujas transformadas de Fourier se anulam para
+        todo $\xi < 0$.
+        
+        Esse teorema é importante no contexto de EDP's para a solução
+        do problema de Dirichlet: uma vez que ele apresenta uma condição
+        necessária e suficiente para a existência de uma extensão holomorfa
+        no plano hiperbólico e contínua no fecho, e o plano hiperbólico é
+        conformalmente equivalente ao disco unitário.
+        %
+        \begin{teorema}
+            Suponha que $f$ e $\widehat{f}$ são funções com decaimento
+            moderado. Então, $\widehat{f}(\xi) = 0, \forall \xi < 0$ se,
+            e somente se, $f$ pode ser estendida a uma função holomorfa
+            em $\mathbb{H}$ que é contínua em $\overline{\mathbb{H}}$.
+        \end{teorema}
+        %
+        \begin{proof}
+            Assumamos $\widehat{f}(\xi) = 0$ para $\xi < 0$.
+            Pela fórmula de inversão, temos
+            %
+            \begin{equation*}
+                f(x) = \int_{-\infty}^{\infty} 
+                \widehat{f}(\xi)e^{2\pi ix\xi} \, d\xi =
+                \int_{0}^{\infty} 
+                \widehat{f}(\xi)e^{2\pi ix\xi} \, d\xi.
+            \end{equation*}
+            %
+            Portanto, podemos estender $f$ em $\mathbb{H}$ por
+            %
+            \begin{equation*}
+                f(z) \equiv \int_{0}^{\infty} 
+                \widehat{f}(\xi)e^{2\pi iz\xi} \, d\xi.
+            \end{equation*}
+            %
+            Para verificar que essa integral é bem definida, basta
+            notar que
+            %
+            \begin{equation*}
+                |f(z)| \leq \int_{0}^{\infty} 
+                \frac{A}{1+ \xi^2}e^{-2\pi y\xi} \, d\xi, 
+                \forall z\in\mathbb{H}.
+            \end{equation*}
+            %
+            Considerando a sequência $(f_n)_{n\in\N}$ dada por
+            %
+            \begin{equation*}
+                f_n(z) = \int_0^n \widehat{f}(\xi)e^{2\pi iz\xi} \, d\xi,
+            \end{equation*}
+            %
+            podemos verificar que $f$ é contínua em $\overline{H}$...
+            e, para todo $K\subseteq\overline{\mathbb{H}}$ compacto,
+            temos
+            %
+            \begin{equation*}
+                \sup_{z\in K} |f(z) - f_n(z)| \xrightarrow{n\to\infty} 0,
+            \end{equation*}
+            %
+            de modo que $f$ é holomorfa em $\mathbb{H}$.
+            
+            Para a recíproca, procedemos como na prova do teorema
+            de Paley-Wiener mas considerando, no lugar de $f_{\e}$,
+            a função
+            %
+            \begin{equation*}
+                f_{\e, \delta}(z) = \frac{f(z+i\delta)}{(1-i\e z)^2}.
+            \end{equation*}
+            %
         \end{proof}
         %
