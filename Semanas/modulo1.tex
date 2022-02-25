@@ -3224,7 +3224,8 @@
                 \widehat{f}(\xi)e^{2\pi ix\xi} \, d\xi.
             \end{equation*}
             %
-            Portanto, podemos estender $f$ em $\mathbb{H}$ por
+            Portanto, podemos estender $f$ em $\overline{\mathbb{H}}$ para 
+            $z = x+iy$ com $y\geq 0$ por
             %
             \begin{equation*}
                 f(z) \equiv \int_{0}^{\infty} 
@@ -3236,8 +3237,11 @@
             %
             \begin{equation*}
                 |f(z)| \leq \int_{0}^{\infty} 
-                \frac{A}{1+ \xi^2}e^{-2\pi y\xi} \, d\xi, 
-                \forall z\in\mathbb{H}.
+                \frac{A}{1+ \xi^2}e^{-2\pi y\xi} \, d\xi
+                \leq \int_{0}^{\infty} 
+                \frac{A}{1+ \xi^2} \, d\xi
+                = \frac{A\pi}{2}, 
+                \forall z\in\overline{\mathbb{H}}.
             \end{equation*}
             %
             Considerando a sequência $(f_n)_{n\in\N}$ dada por
@@ -3266,6 +3270,20 @@
             \end{align*}
             %
             de modo que $f_n$ é holomorfa em $\mathbb{H}$.
+            Como
+            %
+            \begin{align*}
+                |f(z) - f_n(z)| 
+                &= \left| \int_n^{\infty} 
+                \widehat{f}(\xi)e^{2\pi iz\xi} \, d\xi \right| \\
+                &\leq \int_n^{\infty} \frac{A}{1+\xi^2}e^{-2\pi y\xi}
+                \, d\xi \\
+                &\leq \int_n^{\infty} \frac{A}{1+\xi^2}\, d\xi \\
+                &= A\left( \frac{\pi}{2} - \arctan n \right)
+                \xrightarrow{n\to\infty} 0,
+            \end{align*}
+            %
+            segue que $f$ é contínua em $\overline{\mathbb{H}}$.
             
             Ademais, para todo $K\subseteq\mathbb{H}$ compacto,
             temos
@@ -3275,17 +3293,7 @@
                 \xrightarrow{n\to\infty} 0,
             \end{equation*}
             %
-            já que
-            %
-            \begin{align*}
-                |f(z) - f_n(z)| 
-                &= \left| \int_n^{\infty} 
-                \widehat{f}(\xi)e^{2\pi iz\xi} \, d\xi \right| \\
-                &\leq \int_n^{\infty} \frac{A}{1+\xi^2}e^{-2\pi y\xi}
-                \, d\xi \xrightarrow{n\to\infty} 0.
-            \end{align*}
-            %
-            Logo, $f$ é holomorfa em $\mathbb{H}$.
+            logo, $f$ é holomorfa em $\mathbb{H}$.
             
             Para a recíproca, procedemos como na prova do teorema
             de Paley-Wiener mas considerando, no lugar de $f_{\e}$,
