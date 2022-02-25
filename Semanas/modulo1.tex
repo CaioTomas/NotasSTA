@@ -3246,23 +3246,55 @@
                 f_n(z) = \int_0^n \widehat{f}(\xi)e^{2\pi iz\xi} \, d\xi,
             \end{equation*}
             %
-            podemos verificar que $f$ é contínua em $\overline{H}$...
-            e, para todo $K\subseteq\overline{\mathbb{H}}$ compacto,
+            podemos verificar que $f$ é contínua em 
+            $\overline{\mathbb{H}}$.
+            
+            De fato, dado qualquer curva de Jordan 
+            $\y\subset\C$ fechada
+            e suave por partes, temos pelo teorema de Fubini e pela
+            holomorficidade de $\widehat{f}(\xi)e^{2\pi iz\xi}$ que
+            %
+            \begin{align*}
+                \int_{\y} f_n(z) \, dz 
+                &= \int_{\y}\left(\int_0^n 
+                    \widehat{f}(\xi)e^{2\pi iz\xi} \, d\xi \right) 
+                    \, dz \\
+                &= \int_0^n \left(\int_{\y} 
+                    \widehat{f}(\xi)e^{2\pi iz\xi} \, dz \right)
+                    \, d\xi \\
+                &= 0,
+            \end{align*}
+            %
+            de modo que $f_n$ é holomorfa em $\mathbb{H}$.
+            
+            Ademais, para todo $K\subseteq\mathbb{H}$ compacto,
             temos
             %
             \begin{equation*}
-                \sup_{z\in K} |f(z) - f_n(z)| \xrightarrow{n\to\infty} 0,
+                \sup_{z\in K} |f(z) - f_n(z)| 
+                \xrightarrow{n\to\infty} 0,
             \end{equation*}
             %
-            de modo que $f$ é holomorfa em $\mathbb{H}$.
+            já que
+            %
+            \begin{align*}
+                |f(z) - f_n(z)| 
+                &= \left| \int_n^{\infty} 
+                \widehat{f}(\xi)e^{2\pi iz\xi} \, d\xi \right| \\
+                &\leq \int_n^{\infty} \frac{A}{1+\xi^2}e^{-2\pi y\xi}
+                \, d\xi \xrightarrow{n\to\infty} 0.
+            \end{align*}
+            %
+            Logo, $f$ é holomorfa em $\mathbb{H}$.
             
             Para a recíproca, procedemos como na prova do teorema
             de Paley-Wiener mas considerando, no lugar de $f_{\e}$,
             a função
             %
             \begin{equation*}
-                f_{\e, \delta}(z) = \frac{f(z+i\delta)}{(1-i\e z)^2}.
+                f_{\e, \delta}(z) = \frac{f(z+i\delta)}{(1-i\e z)^2}...
             \end{equation*}
             %
+            contas e contas!
         \end{proof}
         %
