@@ -2707,7 +2707,75 @@
         \end{lema}
         %
         \begin{proof}
-            a
+            Vamos denotar por $I$ e por $II$ os limites à esquerda e à direita, respectivamente, 
+            no enunciado. Começamos observando que cada parcela em $II$ é bem definida, e vamos mostrar 
+            que essa série converge absolutamente:
+            %
+            \begin{align*}
+                \sum_{n=0}^{\infty}\Big |\int_{-\infty}^{\infty} f(\xi + ib)
+                e^{2 \pi i n(\xi + i b)} \, d\xi\Big | 
+                &\leq \sum_{n=0}^{\infty}\int_{-\infty}^{\infty} |f(\xi + ib)|e^{-2 \pi nb} \, d\xi \\
+                &\leq \sum_{n=0}^{\infty}e^{-2 \pi nb}\int_{-\infty}^{\infty} \frac{A}{1 + \xi^2}\, d\xi \\
+                &= A\pi\sum_{n=0}^{\infty}e^{-2 \pi nb}
+                < \infty,
+            \end{align*}
+            %
+        onde usamos que a série geométrica
+        %
+        \begin{equation*}
+            \sum_{n=0}^{\infty}e^{-2 \pi nb}
+        \end{equation*}
+        %
+        converge pois $b > 0$.
+        
+        Para ver que $I$ converge, lembre-se que
+        %
+        \begin{equation*}
+            \sum_{n=0}^{\infty} e^{2\pi n i(\xi + ib)} = \frac{1}{1 - e^{2\pi i(\xi + ib)}},
+        \end{equation*}
+        %
+        uma vez que
+        %
+        \begin{equation*}
+            |e^{2\pi n i(\xi + ib)}| = e^{-2\pi nb} \leq 1
+        \end{equation*}
+        %
+        para $b,n > 0$. Assim, $I$ se escreve como
+        %
+        \begin{equation*}
+            \int_{-\infty}^{\infty} f(\xi + ib)\frac{1}{1 - e^{2\pi i(\xi + ib)}}\,d\xi.
+        \end{equation*}
+        %
+        Temos que $\exp(2\pi i (\xi + ib)) = \exp(-2\pi b + i2\pi \xi)$ e, conforme $\xi$ varia, esse número percorre um círculo de raio $e^{-2\pi b} < 1$ com centro na origem. Portanto, $|1 - e^{2\pi i(\xi + ib)}| \geq 1 - e^{-2\pi b}$, como mostrado no diagrama abaixo.
+        %
+        \begin{center}
+            {\bf diagrama do descrito acima}
+        \end{center}
+        %
+        Logo,
+        %
+        \begin{align*}
+            |I| &\leq \int_{-\infty}^{\infty}|f(\xi + ib)|\frac{1}{|1 - e^{2\pi i(\xi + ib)}|} \, d\xi \\
+            &\leq \frac{1}{1 - e^{-2\pi b}}\int_{-\infty}^{\infty} \frac{A}{1 + \xi^2} \, d\xi < \infty.
+        \end{align*}
+        %
+        Defina, para cada $N\in\R$,
+        %
+        \begin{equation*}
+            I_N = \int_{-N}^{N}f(\xi + ib)\frac{1}{1 - e^{2\pi i(\xi + ib)}} \, d\xi,
+        \end{equation*}
+        %
+        que é finita para cada $N$ (basta estimar $I_N$ como estimamos $I$).
+        Por definição, $I = \lim I_N$. Finalmente, vamos mostrar que $I = II$ 
+        analisando o módulo da diferença entre eles.
+        %
+        \begin{equation*}
+            |I - II|  = |I - I_N + I_N - II| \leq |I-I_N| + |I_N - II|.
+        \end{equation*}
+        %
+        Como $|I - I_N| \to 0$ conforme $N \to \infty$, basta mostrar que, também, $|I_N - II| \to 0$.
+        
+        
         \end{proof}
         %
     \subsection{O teorema de Paley-Wiener}
@@ -2992,7 +3060,7 @@
                 f_{\e}(z) = \frac{f(z)}{(1 + i\e z)^2}.
             \end{equation*}
             %
-            Note que, sendo $z=x+iy$, temos
+            Note que no semi-plano inferior, sendo $z=x+iy$, temos
             %
             \begin{align*}
                 \left| \frac{1}{(1+i\e z)^2} \right| &= \frac{1}{|1+i\e z|^2} \\
@@ -3001,7 +3069,7 @@
                                                      &\leq 1
             \end{align*}
             %
-            pois $1-\e y \geq 1$ já que $y\geq 0$ e $\e^2x^2 \geq 0$. Ademais, 
+            pois $1-\e y \geq 1$ já que $y\leq 0$ e $\e^2x^2 \geq 0$. Ademais, fixado $z$
             %
             \begin{equation*}
                 \frac{1}{(1+i\e z)^2} \xrightarrow{\e \to 0} 1.
@@ -3029,7 +3097,8 @@
                                                          &= 2\e\cdot\frac{1}{\sqrt{\e^2 + 1/x^2}}.
             \end{align*}
             %
-            yadayada (mostrar que segue daí que $\widehat{f_{\e}}(\xi) \xrightarrow{\e\to 0} \widehat{f}(\xi)$).
+            yadayada (mostrar que segue daí que 
+            $\widehat{f_{\e}}(\xi) \xrightarrow{\e\to 0} \widehat{f}(\xi)$).
             
             Agora, observamos que para $|x|\geq 1$
             %
