@@ -15,23 +15,24 @@
 \section{O logaritmo de uma função}
 
     Vamos investigar se é possível definir o logaritmo complexo para uma função holomorfa 
-    $f: G \to \C$, onde $G$ é um domínio contendo a origem. Caso tal construção fosse possível,
-    então $\log f(z)$ seria a primitiva de $f'(z)/f(z)$. O princípio do argumento nos mostra que
+    $f: G \to \C$, onde $G$ é um domínio contendo a origem. 
+    Caso tal construção fosse possível, então $\log f(z)$ seria a primitiva de $f'(z)/f(z)$ em $G$. 
+    O princípio do argumento nos mostra que
     %
     \begin{equation*}
-        \int_\y \frac{f'(z)}{f(z)} dz = 2\pi i K,
+        \int_\y \frac{f'(z)}{f(z)} dz = 2\pi i K ,
     \end{equation*}
     %
-    onde $\y$ é uma curva fechada e $K$ é um inteiro. Isto significa que $\log f(z)$ muda 
-    de um tanto $2\pi i K$ cada vez que a variável $z$ percorre $\y$; como consequência disso,
-    a parte imaginária do logaritmo (o argumento) muda de um tanto $2 \pi K$. No entanto, uma
-    função holomorfa que admite uma primitiva é tal que sua integral ao longo de uma curva fechada
-    é sempre nula. Isto mostra que deveríamos ter
+    onde $\y$ é uma curva fechada e $K$ é um inteiro. 
+    Isto significa que $\log f(z)$ muda de um tanto $2\pi i K$ cada vez que a variável $z$ 
+    percorre $\y$; como consequência disso, a parte imaginária do logaritmo (o argumento) muda de um tanto $2 \pi K$. 
+    No entanto, uma função holomorfa que admite uma primitiva é tal que sua integral ao longo de uma curva fechada é sempre nula. Isto mostra que deveríamos ter
     %
     \begin{equation*}
         \int_\y \frac{f'(z)}{f(z)} \, dz = 0,
     \end{equation*}
-    o que nos mostra que não podemos definir $\log f(z)$.
+    %
+    de forma que não podemos definir $\log f(z)$ de maneira holomorfa.
     
     De uma forma mais precisa, definir o logaritmo para a função $f$ significa escolher um ramo 
     do logaritmo em $G$, i.e., uma função $g: G \to \C$ tal que 
@@ -46,13 +47,14 @@
     
     Vamos tratar de um caso específico em que $G$ é um domínio contendo a origem e 
     $\y: [0,1] \to \C$ é uma circunferência com centro em $0$, $\y = r\exp{2 \pi i t}$, 
-    em que $r > 0$ é tal que os pontos de $\y$ estão em $G$. Vamos supor que $f$ tem apenas 
-    uma singularidade $z_0$ no interior da região delimitada por $\y$. Sendo $\y$ uma
-    aplicação contínua, temos que a curva que ela parametriza é um compacto de $\C$, pois é o
-    conjunto $\y([0,1])$ e $[0,1]$ é compacto em $\R$. Isso significa que podemos escolher um
-    número finito de bolas $B_i$ centradas nos pontos $\y(t_i)$, com $t_i \in [0,1]$ e 
-    $i \in \{1,\dots, n\}$. Vamos supor que $t_1 < t_2 < \cdots < t_n$ e que 
-    $\y(t_1) = \y(t_n)$.  Os raios das bolas $B_i$ podem ser escolhidos todos iguais a
+    em que $r > 0$ é tal que os pontos de $\y$ estão em $G$. 
+    Vamos supor que $f$ tem apenas uma singularidade $z_0$ no interior da região delimitada por $\y$. 
+    Sendo $\y$ uma aplicação contínua, temos que a curva que ela parametriza é um compacto de $\C$, 
+    pois é o conjunto $\y([0,1])$ e $[0,1]$ é compacto em $\R$. 
+    Isso significa que podemos escolher um número finito de bolas $B_i$ centradas nos pontos 
+    $\y(t_i)$, com $t_i \in [0,1]$ e $i \in \{1,\dots, n\}$. 
+    Vamos supor que $t_1 < t_2 < \cdots < t_n$ e que $\y(t_1) = \y(t_n)$.  
+    Os raios das bolas $B_i$ podem ser escolhidos todos iguais a
     algum $\e > 0$ tal que $z_0 \not \in B_i$ e $B_i \subseteq G$ para todo $i$.
     
     A ideia é escolher, para cada $i$, um ramo $\mathcal{L}_i$ do logaritmo em $\C$ tal que 
@@ -92,9 +94,10 @@
     \begin{equation*}
         \log f(z) =
         \begin{cases}
-            \log_{\phi_1} f(z), z \in B_1 \\
-            \log_{\phi_2} f(z), z \in B_2.
+            \log_{\phi_1} f(z), & z \in B_1 \\
+            \log_{\phi_2} f(z), & z \in B_2
         \end{cases}
+        .
     \end{equation*}
     %
     Continuamos dessa maneira e fazemos agora o mesmo para a escolha de $L_{\phi_3}$, 
@@ -105,24 +108,28 @@
     Devemos ter $l_{n-1}(z) = l_1(z)$ para todo $z$ em $B_{n-1} \cap B_1$. Vamos supor que isso
     tenha sido feito com sucesso.
     
-    Denote por $\y_j$ a função $\y$ restita ao intervalo $[t_{j-1},t_j]$, ou seja, ela
+    Denote por $\y_j$ a função $\y$ restrita ao intervalo $[t_{j-1},t_j]$, ou seja, ela
     parametriza o pedaço de $\y$ que vai de $a_{j-1}$ para $a_j$. Adicionamos daqui em diante 
-    a hipótese de que $a_i$ e $a_{i+1}$ são pontos de $B_i$ para todo $i$. Pelo teorema fundamental
-    do cálculo, temos
+    a hipótese de que $a_i$ e $a_{i+1}$ são pontos de $B_i$ para todo $i$. Pelo Teorema Fundamental
+    do Cálculo, temos
     %
     \begin{equation*}
-        \int_{\y_j} = \frac{f'(z)}{f(z)}\, dz = l_j(a_j) - l_j(a_{j-1}).  
+        \int_{\y_j} \frac{f'(z)}{f(z)}\, dz = 
+        l_j(a_j) - l_j(a_{j-1}).  
     \end{equation*}
     %
     Integrando em $\y$ e usando o princípio do argumento, obtemos
+    %
     \begin{align*}
-        2 \pi i K &= \int_{\y} = \frac{f'(z)}{f(z)}\, dz \\
-        &= \sum_{j=1}^{n-1}\int_{\y_j} = \frac{f'(z)}{f(z)}\, dz \\
-        &= [l_1(a_2) - l_1(a_1)] + [l_2(a_3) - l_2(a_2)] + \cdots \\
-        &+ [l_{n-2}(a_{n-1}) - l_{n-2}(a_{n-2})] + [l_{n-1}(a_{n}) - l_{n-1}(a_{n-1})] \\
-        &= l_{n-1}(a_n) - l_1(a_1)\\
-        &= 0,
+        2 \pi i K &= \int_\y \frac{f'(z)}{f(z)}\, dz \\
+                  &= \sum_{j=1}^{n-1}\int_{\y_j} \frac{f'(z)}{f(z)}\, dz \\
+                  &= [l_1(a_2) - l_1(a_1)] + [l_2(a_3) - l_2(a_2)] + \cdots \\
+                  &\quad+ [l_{n-2}(a_{n-1}) - l_{n-2}(a_{n-2})] + 
+                          [l_{n-1}(a_{n}) - l_{n-1}(a_{n-1})] \\
+                  &= l_{n-1}(a_n) - l_1(a_1)\\
+                  &= 0,
     \end{align*}
+    %
     onde $K$ é a multiplicidade do zero $z_0$ de $f$. Observe que as condições de compatibilidade,
     que são satisfeitas por construção ($l_i$ e $l_{i+1}$ são coincidentes na interseção 
     $B_i \cap B_{i+1}$), fazem com que a soma acima tenha vários cancelamentos, restando apenas o
@@ -166,10 +173,12 @@
     \begin{proposicao}
     \label{prop-unicidade-continuacao-analitica-caminho}
         Seja $\y: [0,1]\to\C$ um caminho de $a$ para $b$ e sejam
+        %
         \begin{align*}
-            \left\{ (f_t, D_t): 0\leq t\leq 1 \right\}, \\
-            \left\{ (g_t, B_t): 0\leq t\leq 1 \right\}
+            &\left\{ (f_t, D_t): 0\leq t\leq 1 \right\}, \\
+            &\left\{ (g_t, B_t): 0\leq t\leq 1 \right\}
         \end{align*}
+        %
         continuações analíticas ao longo de $\y$ tais que $[f_0]_a = [g_0]_a$.
         Então $[f_1]_b = [g_1]_b$.
     \end{proposicao}
@@ -2750,9 +2759,27 @@
         $|1 - e^{2\pi i(\xi + ib)}| \geq 1 - e^{-2\pi b}$, como mostrado no 
         diagrama abaixo.
         %
-        \begin{center}
-            {\bf diagrama do descrito acima}
-        \end{center}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \draw (0,0) circle (4);
+                \draw[-stealth] (-5,0) -- (5,0);
+                \node[right] at (5,0) {$\Re$};
+                \draw[-stealth] (0,-5) -- (0,5);
+                \node[above] at (0,5) {$\Im$};
+                \draw (0,0) circle (1.5);
+                \node[below right] at (1.5,0) {$e^{-2\pi b}$};
+                \node at (1.5,0) {$\bullet$};
+                \node[above right] at (4,0) {$1$};
+                \node[above right] at (1,1.118034) {$e^{2\pi i(\xi + ib)}$};
+                \node at (1,1.118034) {$\bullet$};
+                \draw[thick, red] (4,0)--(1.5,0);
+                \draw[blue] (4,0)--(1,1.118034);
+                \node[above left] at (-1,1.118034) {$e^{2\pi i(\xi + ib)}$};
+                \node at (-1,1.118034) {$\bullet$};
+                \draw[blue] (4,0)--(-1,1.118034);
+            \end{tikzpicture}
+        \end{figure}
         %
         Logo,
         %
@@ -3170,9 +3197,29 @@
             separando a integral na parte $\delta$-próxima da origem e na parte $\delta$-longe da origem.
             O diagrama abaixo ilustra o argumento.
             %
-            \begin{center}
-                {\bf diagrama delta-próximo}
-            \end{center}
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-stealth] (-2,0) -- (5,0);
+                    \draw[-stealth] (0,-3.5) -- (0,3.5);
+                    \node[left] at (0,1) {$\delta$};
+                    \node at (0,1) {$\circ$};
+                    \node[left] at (0,-1) {$-\delta$};
+                    \node at (0,-1) {$\circ$};
+                    \node[left] at (0,-2.5) {$-i\e x$};
+                    \node at (0,-2.5) {$\bullet$};
+                    \node[left] at (0,2.5) {$i\e x$};
+                    \node at (0,2.5) {$\bullet$};
+                    \node[above right] at (4,0) {$1$};
+                    \node at (4,0) {$\bullet$};
+                    \draw[thick, red] (4,0) -- (0,1);
+                    \draw[thick, red] (4,0) -- (0,-1);
+                    \draw[blue] (4,0) -- (0,2.5);
+                    \draw[blue] (4,0) -- (0,-2.5);
+                    \node[right] at (5,0) {$\Re$};
+                    \node[above] at (0,3.5) {$\Im$};
+                \end{tikzpicture}
+            \end{figure}
             %
             Para a parcela com a integral na $\delta$-vizinhança da origem, observamos que, quando $x = 0$,
             temos
