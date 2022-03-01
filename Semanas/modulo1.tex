@@ -3134,61 +3134,112 @@
             forte que a da hipótese do teorema.
             
             Para provar essa afirmação, suponhamos inicialmente $\xi>M$.
-            Sejam $\e>0$ e $f_{\e}:C\setminus\{i/\e\}\to\C$ dada por
+            Sejam $\e>0$ e $f_{\e}:C\setminus\{-i/\e\}\to\C$ dada por
             %
             \begin{equation*}
-                f_{\e}(z) = \frac{f(z)}{(1 + i\e z)^2}.
+                f_{\e}(z) = \frac{f(z)}{(1 - i\e z)^2}.
             \end{equation*}
             %
-            Note que no semi-plano inferior, sendo $z=x+iy$, temos
+            Note que no semi-plano superior, sendo $z=x+iy$, temos
             %
             \begin{align*}
-                \left| \frac{1}{(1+i\e z)^2} \right| &= \frac{1}{|1+i\e z|^2} \\
-                                                     &= \frac{1}{|1-\e y + i\e x|^2} \\
-                                                     &= \frac{1}{(1-\e y)^2 + \e^2x^2} \\
+                \left| \frac{1}{(1-i\e z)^2} \right| &= \frac{1}{|1-i\e z|^2} \\
+                                                     &= \frac{1}{|1+\e y - i\e x|^2} \\
+                                                     &= \frac{1}{(1+\e y)^2 + \e^2x^2} \\
                                                      &\leq 1
             \end{align*}
             %
-            pois $1-\e y \geq 1$ já que $y\leq 0$ e $\e^2x^2 \geq 0$. Ademais, fixado $z$
+            pois $1+\e y \geq 1$ já que $y\geq 0$ e $\e^2x^2 \geq 0$. Ademais, fixado $z$
             %
             \begin{equation*}
-                \frac{1}{(1+i\e z)^2} \xrightarrow{\e \to 0} 1.
+                \frac{1}{(1-i\e z)^2} \xrightarrow{\e \to 0} 1.
             \end{equation*}
             %
-            Em particular, isso mostra que $\widehat{f_{\e}}(\xi) \to \widehat{f}(\xi)$ quando
-            $\e\to 0$ pois
+            Agora, observe que
             %
             \begin{align*}
-                | \widehat{f_{\e}}(\xi) - \widehat{f}(\xi) | &= \left| \int_{-\infty}^{\infty} 
-                f(x)e^{-2\pi ix\xi}\cdot\left[\frac{1}{(1+i\e x)^2} - 1\right] \, dx \right| \\
-                &\leq \int_{-\infty}^{\infty} |f(x)|\cdot\left| \frac{1}{(1+i\e x)^2} - 1 \right| \, dx \\
-                &\leq \int_{-\infty}^{\infty} \frac{A'}{1+x^2}\cdot\left|\frac{1}{(1+i\e x)^2} - 1\right| \, dx \\
-                &\leq \int_{-\infty}^{\infty} \frac{A'}{1+x^2}\cdot 2\e\cdot\frac{1}{\sqrt{\e^2 + 1/x^2}} \, dx ...
+                \left| \widehat{f_{\e}}(\xi) - \widehat{f}(\xi) \right| 
+                &\leq \int_{-\infty}^{\infty} |f(x)|\cdot\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
+                &\leq \int_{-\infty}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
+                &= \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
+                &+ \int_{-\delta}^{\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
+                &+ \int_{\delta}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx,
             \end{align*}
             %
-            onde estimamos
+            sendo $\delta > 0$. Dito de outro modo, vamos estimar a diferença entre as transformadas
+            separando a integral na parte $\delta$-próxima da origem e na parte $\delta$-longe da origem.
+            O diagrama abaixo ilustra o argumento.
+            %
+            \begin{center}
+                {\bf diagrama delta-próximo}
+            \end{center}
+            %
+            Para a parcela com a integral na $\delta$-vizinhança da origem, observamos que, quando $x = 0$,
+            temos
+            %
+            \begin{equation*}
+                \frac{1}{(1-i\e x)^2} - 1 = 0.
+            \end{equation*}
+            %
+            Como essa função é contínua em $x\in\R$, sempre podemos tomar um $\delta$ suficientemente pequeno
+            de modo que a integral
+            %
+            \begin{equation*}
+                \int_{-\delta}^{\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx
+            \end{equation*}
+            %
+            seja arbitrariamente pequena. Vamos, então, estimar as demais parcelas. Para a terceira, o diagrama
+            acima nos mostra que, para $x\in\R\setminus (-\delta, \delta)$, temos
             %
             \begin{align*}
-                \left| \frac{1}{(1+i\e x)^2} - 1 \right| &= \frac{|\e^2x^2 - 2i\e x|}{|1+i\e x|^2} \\
-                                                         &= \frac{|\e^2x^2 - 2i\e x|}{1+\e^2x^2} \\
-                                                         &= \frac{\sqrt{\e^4x^4 + 4\e^2x^2}}{1+\e^2x^2} \\
-                                                         &= \e\cdot\frac{\sqrt{\e^2 + 4/x^2}}{\e^2 + 1/x^2} \\
-                                                         &\leq 2\e\cdot\frac{\sqrt{\e^2 + 1/x^2}}{\e^2 + 1/x^2} \\
-                                                         &= 2\e\cdot\frac{1}{\sqrt{\e^2 + 1/x^2}}.
+                \left| \frac{1}{(1-i\e x)^2} - 1 \right| \leq \left| \frac{1}{(1-i\e\delta)^2} - 1 \right|,
             \end{align*}
             %
-            yadayada (mostrar que segue daí que 
-            $\widehat{f_{\e}}(\xi) \xrightarrow{\e\to 0} \widehat{f}(\xi)$).
-            
-            Agora, observamos que para $|x|\geq 1$
+            de modo que
             %
             \begin{align*}
-                |f_{\e}(x+iy)| &\leq \frac{Ae^{2\pi M|y|}}{1 + \e x^2} \\
-                               &= \frac{Ae^{2\pi M|y|}}{1+x^2}\cdot\frac{1+x^2}{1 + \e x^2} \\
-                               &\leq \frac{A}{2\e}\cdot\frac{e^{2\pi M|y|}}{1+x^2}
+                \int_{\delta}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx
+                &\leq \int_{\delta}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e\delta)^2} - 1 \right| \, dx \\
+                &=  A\left( \frac{\pi}{2} - \arctan\delta \right) \left| \frac{1}{(1-i\e\delta)^2} - 1 \right| 
+                \xrightarrow{\e\to 0} 0
             \end{align*}
             %
-            yadayada (essa cota não vale para $|x| < 1$, algo de errado não está certo...)
+            e, analogamente,
+            %
+            \begin{align*}
+                \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx
+                &\leq \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e\delta)^2} - 1 \right| \, dx \\
+                &=  A\left( -\arctan\delta + \frac{\pi}{2} \right) \left| \frac{1}{(1-i\e\delta)^2} - 1 \right| 
+                \xrightarrow{\e\to 0} 0.
+            \end{align*}
+            %
+            Portanto,
+            %
+            \begin{equation*}
+                \left| \widehat{f_{\e}}(\xi) - \widehat{f}(\xi) \right| \xrightarrow{\e\to 0} 0 
+                \iff \widehat{f_{\e}}(\xi) \xrightarrow{\e\to 0} \widehat{f}(\xi).
+            \end{equation*}
+            %
+            Agora, usando a condição de crescimento de $f$, note que
+            %
+            \begin{align*}
+                \left| \widehat{f_{\e}}(x+iy) \right| &\leq \frac{Ae^{2\pi M|y|}}{|1 - i\e (x+iy)^2|^2} \\
+                &= \frac{Ae^{2\pi M|y|}}{(1+ \e y)^2 + \e^2x^2} \\
+                &\stackrel{y\geq 0}{\leq} \frac{Ae^{2\pi M|y|}}{1 + \e^2x^2} \\
+                &= A\cdot\frac{1+x^2}{1 + \e^2x^2}\cdot\frac{e^{2\pi M|y|}}{1 + x^2} \\
+                &\leq \frac{A}{\e^2}\cdot\frac{e^{2\pi M|y|}}{1 + x^2} \\
+                &= A''(\e)\cdot \frac{e^{2\pi M|y|}}{1 + x^2}.
+            \end{align*}
+            %
+            Portanto, pelo Passo 1, temos $\widehat{f_{\e}}(\xi) = 0$ e, tomando o limite quando
+            $\e\to 0$, obtemos $\widehat{f}(\xi) = 0$. Um argumento similar vale para o caso
+            $\xi < -M$, dessa vez tomando a perturbação multiplicativa
+            %
+            \begin{equation*}
+                \frac{1}{(1 + i\e z)^2}
+            \end{equation*}
+            %
+            e trabalhando no semi-plano inferior.
             %
             \paragraph{Passo 3.} Por fim, vamos mostrar que as hipóteses
             do teorema garantem que
