@@ -2166,9 +2166,6 @@
             %
             \begin{align*}
                 \left| \int_{-N}^N f(\xi + ib)e^{2\pi ik\xi} \, d\xi - I \right| 
-                &= \Bigg| \int_{-N}^N f(\xi + ib)e^{2\pi ik\xi} \, d\xi 
-                - \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi \\
-                &+ \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi - I \Bigg| \\
                 &\leq \left| \int_{-N}^N f(\xi + ib)e^{2\pi ik\xi} \, d\xi 
                 - \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi \right| \\
                 &+ \left| \int_{-n}^n f(\xi + ib)e^{2\pi ik\xi} \, d\xi - I \right| \\
@@ -2615,7 +2612,7 @@
             Denotaremos $R = N + 1/2$.
             %
             \begin{align*}
-                \Bigg |\int_{\y_N^d} \frac{f(z)}{e^{2 \pi i z} - 1}\,dz\Bigg| 
+                \left |\int_{\y_N^d} \frac{f(z)}{e^{2 \pi i z} - 1}\,dz\right| 
                 &\leq \int_{\y_N^d} \frac{|f(z)|}{|e^{2 \pi i z} - 1|}\,|dz| \\
                 &\leq \int_{\y_N^d} \frac{A}{1 + R^2}\cdot\frac{1}{|e^{2 \pi i z} - 1|}\,|dz| \\
                 &\leq \int_{\y_N^d} \frac{A}{1 + R^2}\cdot\frac{1}{e^{-2\pi b} + 1}\,|dz| \\
@@ -2712,9 +2709,10 @@
             que essa série converge absolutamente:
             %
             \begin{align*}
-                \sum_{n=0}^{\infty}\Big |\int_{-\infty}^{\infty} f(\xi + ib)
-                e^{2 \pi i n(\xi + i b)} \, d\xi\Big | 
-                &\leq \sum_{n=0}^{\infty}\int_{-\infty}^{\infty} |f(\xi + ib)|e^{-2 \pi nb} \, d\xi \\
+                \sum_{n=0}^{\infty}\left|\int_{-\infty}^{\infty} f(\xi + ib)
+                e^{2 \pi i n(\xi + i b)} \, d\xi\right| 
+                &\leq \sum_{n=0}^{\infty}\int_{-\infty}^{\infty} |f(\xi + ib)|
+                e^{-2 \pi nb} \, d\xi \\
                 &\leq \sum_{n=0}^{\infty}e^{-2 \pi nb}\int_{-\infty}^{\infty} \frac{A}{1 + \xi^2}\, d\xi \\
                 &= A\pi\sum_{n=0}^{\infty}e^{-2 \pi nb}
                 < \infty,
@@ -2737,7 +2735,7 @@
         uma vez que
         %
         \begin{equation*}
-            |e^{2\pi n i(\xi + ib)}| = e^{-2\pi nb} \leq 1
+            |e^{2\pi n i(\xi + ib)}| = e^{-2\pi nb} < 1
         \end{equation*}
         %
         para $b,n > 0$. Assim, $I$ se escreve como
@@ -2746,7 +2744,11 @@
             \int_{-\infty}^{\infty} f(\xi + ib)\frac{1}{1 - e^{2\pi i(\xi + ib)}}\,d\xi.
         \end{equation*}
         %
-        Temos que $\exp(2\pi i (\xi + ib)) = \exp(-2\pi b + i2\pi \xi)$ e, conforme $\xi$ varia, esse número percorre um círculo de raio $e^{-2\pi b} < 1$ com centro na origem. Portanto, $|1 - e^{2\pi i(\xi + ib)}| \geq 1 - e^{-2\pi b}$, como mostrado no diagrama abaixo.
+        Temos que $\exp(2\pi i (\xi + ib)) = \exp(-2\pi b + i2\pi \xi)$ e, 
+        conforme $\xi$ varia, esse número percorre uma circunferência de raio 
+        $e^{-2\pi b} < 1$ com centro na origem. Portanto, 
+        $|1 - e^{2\pi i(\xi + ib)}| \geq 1 - e^{-2\pi b}$, como mostrado no 
+        diagrama abaixo.
         %
         \begin{center}
             {\bf diagrama do descrito acima}
@@ -2759,23 +2761,101 @@
             &\leq \frac{1}{1 - e^{-2\pi b}}\int_{-\infty}^{\infty} \frac{A}{1 + \xi^2} \, d\xi < \infty.
         \end{align*}
         %
-        Defina, para cada $N\in\R$,
+        Defina, para cada $N\in \N$,
         %
         \begin{equation*}
             I_N = \int_{-N}^{N}f(\xi + ib)\frac{1}{1 - e^{2\pi i(\xi + ib)}} \, d\xi,
         \end{equation*}
         %
         que é finita para cada $N$ (basta estimar $I_N$ como estimamos $I$).
-        Por definição, $I = \lim I_N$. Finalmente, vamos mostrar que $I = II$ 
+        Por definição, $I = \displaystyle{\lim_{N\to\infty} I_N}$. 
+        Finalmente, vamos mostrar que $I = II$ 
         analisando o módulo da diferença entre eles.
         %
         \begin{equation*}
             |I - II|  = |I - I_N + I_N - II| \leq |I-I_N| + |I_N - II|.
         \end{equation*}
         %
-        Como $|I - I_N| \to 0$ conforme $N \to \infty$, basta mostrar que, também, $|I_N - II| \to 0$.
-        
-        
+        Como $|I - I_N| \to 0$ conforme $N \to \infty$, basta mostrar que, também, 
+        $|I_N - II| \to 0$. Vamos denotar por $F(\xi,b)$ a expressão 
+        $f(\xi + ib)/(1 - e^{2\pi i(\xi + ib)})$ e por $F_n(\xi,b)$ a expressão 
+        $f(\xi + ib)e^{2\pi in(\xi + ib)}$. Desse modo, temos
+        %
+        \begin{align*}
+            I_N - II &= \int_{-N}^{N} \frac{f(\xi + ib)}{(1 - e^{2\pi i(\xi + ib)})}
+            \, d\xi - \sum_{n=0}^{\infty}\int_{-\infty}^{\infty} f(\xi + ib)
+            e^{2\pi in(\xi + ib)} \, d\xi \\
+            %
+            &=\int_{-N}^{N} F(\xi,b) \, d\xi -
+            \sum_{n=0}^{\infty}\int_{-\infty}^{\infty}F_n(\xi,b) \, d\xi \\
+            %
+            &= \int_{-N}^{N} F(\xi,b) \, d\xi - 
+            \sum_{n=0}^{N}\int_{-\infty}^{\infty}F_n(\xi,b) \, d\xi - 
+            \sum_{n= N+1}^{\infty}\int_{-\infty}^{\infty}F_n(\xi,b) \, d\xi\\
+            %
+            &= \int_{-N}^{N} F(\xi,b) \, d\xi - \int_{-\infty}^{\infty} 
+            \sum_{n=0}^{N}F_n(\xi,b) \, d\xi - 
+            \sum_{n= N+1}^{\infty}\int_{-\infty}^{\infty}F_n(\xi,b) \, d\xi\\
+            %
+            &= \underbrace{\int_{-N}^{N} \left(F(\xi,b) - \sum_{n=0}^{N}F_n(\xi,b) 
+            \right)\, d\xi}_{(*)} - 
+            \underbrace{\int_{\R \setminus [-N,N]}\sum_{n=0}^{N}F_n(\xi,b) 
+            \, d\xi}_{(**)} \\ &- 
+            \underbrace{\sum_{n= N+1}^{\infty}\int_{-\infty}^{\infty}F_n(\xi,b) 
+            \, d\xi.}_{(***)}
+        \end{align*}
+        %
+        Vamos estimar cada parte separadamente. Para $(*)$, temos
+        %
+        \begin{align*}
+            &\left|\int_{-N}^{N} f(\xi + ib)\left(\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right) \, d\xi \right| \\
+            %
+            &\leq \int_{-N}^{N} |f(\xi + ib)|\cdot\left|\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right| \, d\xi \\
+            %
+            &\leq \int_{-N}^{N} \frac{A}{1 + \xi^2}\left|\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right| \, d\xi 
+        \end{align*}
+        %
+        Por conta da série geométrica, sabemos que, dado $\e>0$, existe 
+        $N$ suficientemente grande tal que
+        %
+        \begin{equation*}
+            \left|\frac{1}{1 - e^{2\pi i(\xi + ib)}} - 
+            \sum_{n=0}^{N}e^{2\pi i n(\xi + ib}\right| < \e. 
+        \end{equation*}
+        %
+        Concluímos então que a parte em $(*)$ vai a $0$ quando $N \to \infty$. 
+        %
+        A parte em $(***)$ é a cauda da série que definimos como $II$, 
+        que é convergente, então a expressão em $(***)$ deve ir a $0$. 
+        Por fim, a expressão em $(**)$ se parece com a cauda da integral $I$.
+        Estimando-a, temos
+        %
+        \begin{align*}
+            \left|\int_{\R \setminus [-N,N]}\sum_{n=0}^{N}F_n(\xi,b) \, d\xi\right| 
+            %
+            &= \left|\int_{\R \setminus [-N,N]}f(\xi + ib)\sum_{n=0}^{N}
+            e^{2\pi i n(\xi + ib)} \, d\xi\right| \\
+            %
+            &\leq \int_{\R \setminus [-N,N]}|f(\xi + ib)|\left|\sum_{n=0}^{N}
+            e^{2\pi i n(\xi + ib)} \right|\, d\xi \\
+            %
+            &\leq \int_{\R \setminus [-N,N]}\frac{A}{1 + \xi^2} 
+            \sum_{n=0}^{N}|e^{2\pi i n(\xi + ib)}| \, d\xi \\
+            %
+            &\leq \int_{\R \setminus [-N,N]}\frac{A}{1 + \xi^2}
+            \sum_{n=0}^{\infty}e^{-2\pi i nb} \, d\xi. 
+        \end{align*}
+        %
+        Como 
+        %
+        \begin{equation*}
+            \sum_{n=0}^{\infty}e^{-2\pi i nb}
+        \end{equation*}
+        %
+        é finito, concluímos que 
+        a última expressão vai a zero quando $N \to \infty$. Com isso, 
+        $(*), (**)$ e $(***)$ vão a zero, então temos que $|I - II|< \e$ para 
+        qualquer $\e>0$ dado, ou seja, $I = II$.
         \end{proof}
         %
     \subsection{O teorema de Paley-Wiener}
