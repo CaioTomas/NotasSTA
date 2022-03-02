@@ -1276,13 +1276,15 @@
             f(z) = \sum^{M}_{m=1}\frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\,dw.
         \end{equation*}
         %
-        Como $f$ é contínua em $K$, para $z_0 \in K \cap \partial Q_j$ para algum $j$, temos
+        Como $f$ é contínua em $K$, para algum $j$ e $z_0 \in K \cap \partial Q_j$ , temos
         %
         \begin{align*}
             f(z_0) &= \lim_{\substack{z \to z_0 \\ z\in K}} f(z) \\
                    &= \lim_{\substack{z \to z_0 \\ z\in K}} 
-                   \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\,dw \\
-                   &= \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z_0}\,dw,
+                      \frac{1}{2 \pi i}
+                      \int_{\partial Q_m}\frac{f(w)}{w-z}\,dw \\
+                   &= \frac{1}{2 \pi i}
+                      \int_{\partial Q_m}\frac{f(w)}{w-z_0}\,dw,
         \end{align*}
         %
         Portanto, está demonstrado o lema.
@@ -1344,13 +1346,19 @@
         \end{equation*}
         %
         Usando as considerações anteriores, temos que 
+        %
         \begin{align*}
             |g(z) - g_n(z)| 
             &\leq 
-            \sum_{k=1}^{n}\frac{1}{n}\left|\int_{\frac{k-1}{n}}^{\frac{k}{n}}F(z,k/n) - F(z,n) \, dt \right| \\
-            &\leq \sum_{k=1}^{n}\frac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}}|F(z,k/n) - F(z,n)| \, dt
+            \sum_{k=1}^n
+            \frac{1}{n} \left|
+              \int_{\frac{k-1}{n}}^{\frac{k}{n}} F(z,k/n) - F(z,n) \, dt 
+            \right| \\
+            &\leq \sum_{k=1}^{n} \frac{1}{n}
+                  \int_{\frac{k-1}{n}}^{\frac{k}{n}} |F(z,k/n) - F(z,n)| \, dt
             \to 0,
         \end{align*}
+        %
         onde aplicamos \eqref{ER2}. Observe que $g(z)$ é a expressão que queríamos aproximar
         (uniformemente) por funções racionais, então o Lema está demonstrado.
     \end{proof}
@@ -1359,8 +1367,8 @@
     
     Para ilustrar a necessidade da hipótese da conexidade de $K^c$, damos um exemplo. 
     Considere a função $f: \C^* \to \C$ dada pela regra $z \mapsto 1/z$ e o compacto 
-    $\partial \D$, o bordo do disco unitário  $\D$. Vamos mostrar que $f$ não
-    pode ser aproximada por polinômios em $\partial D$, mesmo esse conjunto sendo compacto.
+    $\partial \D$, o bordo do disco unitário  $\D=D(0,1)$. Vamos mostrar que $f$ não
+    pode ser aproximada por polinômios em $\partial\D$, mesmo esse conjunto sendo compacto.
     Observe ainda que o seu complementar é um conjunto desconexo.
     
     Pelo Teorema dos Resíduos, por exemplo, sabemos que
@@ -1417,7 +1425,7 @@
         Seja $\{w_0, w_1, \dots, w_l\}$ uma sequência finita de pontos em $\y$ com $w_0 = z_0$,
         $w_l = z_1$ e $|w_j - w_{j+1}| < \rho$ para $0 \leq j < l$. Sendo $w = w_j$ para algum $j$,
         temos que se $w'$ satisfaz $|w - w'| < \rho$, podemos aproximar $\frac{1}{z-w}$ 
-        por polinômios em $\frac{1}{z-w'}$. De fato, basta notar que
+        por polinômios em $\frac{1}{z-w'}$. De fato, 
         %
         \begin{align*}
             \frac{1}{z-w} &= \frac{1}{z - w' + w' - w}\\
@@ -1618,8 +1626,8 @@
             %
             \begin{equation*}
                 \lim_{a\to +\infty} \int_{-a}^a f(x) \, dx 
-                \equiv \text{VP}\left( \int_{-\infty}^{\infty} f(x) \, dx \right)
-                \equiv \int_{-\infty}^{\infty} f(x) \, dx
+                \equiv \text{VP}\left( \int_{-\infty}^\infty f(x) \, dx \right)
+                \equiv \int_{-\infty}^\infty f(x) \, dx
             \end{equation*}
             %
         \end{definicao}
@@ -1627,7 +1635,7 @@
         Fica evidente desta definição que se $f:\R\to\R$ é Riemann integrável, então
         %
         \begin{equation*}
-            \int_{\R} f(x) \, dx = \int_{-\infty}^{\infty} f(x) \, dx,
+            \int_{\R} f(x) \, dx = \int_{-\infty}^\infty f(x) \, dx,
         \end{equation*}
         %
         ou seja, a integral é dada pelo Valor Principal de Cauchy. Isto nos permite trabalhar de
@@ -1638,12 +1646,14 @@
         Observamos que nem toda função que tem um valor principal de Cauchy é Riemann integrável. Considere
         %
         \begin{equation*}
-            \lim_{\substack{b\to +\infty \\ a\to -\infty}} \int_a^b \sen{x} \, dx. 
+            \lim_{\substack{b\to +\infty \\ 
+                            a\to -\infty}
+                 } \int_a^b \sen{x} \, dx. 
         \end{equation*}
         %
-        Se escolhemos taxas particulares $b = (2n+1)\pi/2$ e $a = 2n\pi$ vemos que essa integral converge a $1$. 
-        Se $b = 2n\pi$ e $a = (2n+1)\pi/2$, então ela converge a $-1$. Portanto, este limite não existe e 
-        $\sen{x}$ não é Riemann integrável. No entanto, se $a = b = r$, i.e., se consideramos a mesma taxa, 
+        Se escolhemos taxas particulares $b = (2n+1)\pi/2$ e $a = 2n\pi$, essa integral converge a $1$. 
+        Se $b = 2n\pi$ e $a = (2n+1)\pi/2$, então ela converge a $-1$. Logo, este limite não existe e 
+        $\sen{x}$ não é Riemann integrável; não obstante, se $a = b = r$, i.e., se consideramos a mesma taxa, 
         a integral resulta em
         %
         \begin{equation*}
@@ -2749,10 +2759,10 @@
         uma vez que
         %
         \begin{equation*}
-            |e^{2\pi n i(\xi + ib)}| = e^{-2\pi nb} < 1
+            |e^{2\pi i(\xi + ib)}| = e^{-2\pi b} < 1
         \end{equation*}
         %
-        para $b,n > 0$. Assim, $I$ se escreve como
+        para $b > 0$. Assim, $I$ se escreve como
         %
         \begin{equation*}
             \int_{-\infty}^{\infty} f(\xi + ib)\frac{1}{1 - e^{2\pi i(\xi + ib)}}\,d\xi.
