@@ -224,7 +224,7 @@
         \begin{equation*}
             \begin{cases}
                 [f_s]_{\y(s)} = [f_t]_{\y(s)} \\
-                [g_s]_{\y(s)} = [g_t]_{\y(s)}.
+                [g_s]_{\y(s)} = [g_t]_{\y(s)}
             \end{cases}
         \end{equation*}
         %
@@ -239,10 +239,12 @@
             \begin{cases}
                 f_s(z) = f_t(z) \\
                 g_s(z) = g_t(z)
-            \end{cases}, \forall z\in G
+            \end{cases}, \quad\forall z\in G
         \end{equation*}
         %
-        donde segue que $f_t(z) = g_t(z), \forall z\in G$. Ora, já que $G$ é aberto 
+        donde segue que $f_t(z) = g_t(z), \forall z\in G$. 
+        
+        Ora, já que $G$ é aberto 
         (e portanto possui um ponto limite em $D_t\cap B_t$), segue que 
         $[f_t]_{\y(t)} = [g_t]_{\y(t)}$, ou seja, $t\in T$ e, consequentemente,
         $T$ contém todos os seus pontos limites, i.e., é fechado.
@@ -341,15 +343,16 @@
         e $G:U\cup W\to\C$ analíticas, com
         %
         \begin{align*}
-            F(z) &= 
+            F(z) = 
             \begin{cases}
-                f(z), z\in U; \\
-                g(z), z\in V.
-            \end{cases}, \\
-            G(z) &= 
+                f(z), & z\in U \\
+                g(z), & z\in V
+            \end{cases}, 
+            \quad
+            G(z) = 
             \begin{cases}
-                f(z), z\in U; \\
-                h(z), z\in W.
+                f(z), & z\in U \\
+                h(z), & z\in W
             \end{cases}
         \end{align*}
         %
@@ -367,15 +370,15 @@
     \begin{definicao}
     \label{def-funcao-analitica-completa}
         Se $(f,G)$ é um elemento de função, então a função analítica completa obtida
-        a partir de $(f,G)$ é a coleção $\mathfrak{F}$ de todos os germes $[g]_b$ 
+        a partir de $(f,G)$ é a coleção $\mathcal{F}$ de todos os germes $[g]_b$ 
         para os quais existem $a\in G$ e um caminho $\y$ de $a$ para $b$ 
         tais que $[g]_b$ é a continuação analítica de $[f]_a$ ao longo de $\y$.
     \end{definicao}
 
 
     \begin{definicao}
-        Uma coleção de germes $\mathfrak{F}$ é chamada função analítica completa se
-        existe um elemento de função $(f,G)$ tal que $\mathfrak{F}$ é a função analítica
+        Uma coleção de germes $\mathcal{F}$ é chamada função analítica completa se
+        existe um elemento de função $(f,G)$ tal que $\mathcal{F}$ é a função analítica
         completa obtida de $(f,G)$.
     \end{definicao}
 
@@ -386,18 +389,18 @@
     A pergunta natural a se fazer é: ``por que a terminologia de 
     \textbf{função analítica completa} é adequada quando nos referimos a uma
     coleção de germes?'', e a resposta é surpreendente. Vamos mostrar que
-    podemos construir uma função a partir da coleção $\mathfrak{F}$ de germes.
+    podemos construir uma função a partir da coleção $\mathcal{F}$ de germes.
 
     Inicialmente, consideremos a coleção
     %
     \begin{equation*}
-        \mathcal{R} = \left\{ (z, [g]_z) : [g]_z \in \mathfrak{F} \right\}.
+        \mathcal{R} = \left\{ (z, [g]_z) : [g]_z \in \mathcal{F} \right\}.
     \end{equation*}
     %
-    Definimos então $\widetilde{\mathfrak{F}}:\mathcal{R}\to\C$ por
+    Definimos então $\widetilde{\mathcal{F}}:\mathcal{R}\to\C$ por
     %
     \begin{equation*}
-        \widetilde{\mathfrak{F}}((z, [g]_z)) = g(z),
+        \widetilde{\mathcal{F}}((z, [g]_z)) = g(z),
     \end{equation*}
     %
     ou seja, escolhemos um ``representante'' do germe e calculamos sua imagem em $z$.
@@ -488,7 +491,7 @@
         $[f_t]_{\y(s)} = [f_s]_{\y(s)}$. Como $s_n\xrightarrow{n\to\infty} t$,
         existe $n_0\in\N$ tal que se $n\geq n_0$ então $|s_n - t|<\delta$.
         Logo, para um $n$ satisfazendo tal condição, temos
-        $[f_t]_{\y(s_n)} = [f_{s_n}]_{\y(s_n)}$. Temos então
+        $[f_t]_{\y(s_n)} = [f_{s_n}]_{\y(s_n)}$. Assim, obtemos 
         %
         \begin{align*}
             \sum_{j=0}^\infty \widetilde{a_j}(\y(t))(z-\y(t))^j
@@ -500,16 +503,16 @@
             \sum_{j=0}^\infty a_n(\y(t))(z-\y(t))^n.
         \end{align*}
         %
-        Ora, então $\widetilde{a_j}(\y(t)) = a_j(\y(t))$ e, por hipótese, temos
+        Ora, então $\widetilde{a_j}(\y(t)) = a_j(\y(t))$ e, por hipótese,
         %
         \begin{equation*}
-            R(t) := \frac{1}{\displaystyle{\limsup_{j\to\infty}} \sqrt{ |a_j(\y(t))| } } 
+            R(t) := \frac{1}{\dis\limsup_{j\to\infty} \sqrt{|a_j(\y(t))|} } 
             = \infty,
         \end{equation*}
         %
-        de modo que $R(t) = \infty$ e, portanto, $T$ é fechado.
+        de modo que $R(t) = \infty$ e portanto $T$ é fechado.
         
-        Segue então que se existe $t\in [0,1]$ tal que $R(t) = \infty$, então
+        Segue que se existe $t\in [0,1]$ tal que $R(t) = \infty$, então
         $R(t) \equiv\infty$ em $[0,1]$.
         
         Resta analisar o caso $R(t) < \infty, \forall t\in[0,1]$. Por analiticidade, podemos
@@ -636,9 +639,9 @@
         
         Para cada $t \in [0,1]$, temos $|\y(t) - \sigma(t)| < \e < R(t)$, então
         $\sigma(t) \in B_t \cap D_t$ para todo $t$. Queremos mostrar que $[f_1]_b = [g_1]_b$, 
-        o que pode ser feito mostrando que $f_1(z) = g_1(z)$ para todo $z \in B_1 \cap D_1$. 
-        Como é difícil mostrar isso para o valor particular $t=1$ diretamente, vamos passar 
-        a uma estratégia que já adotamos antes: mostrar que um determinado conjunto é aberto
+        o que pode ser feito demonstrando que $f_1(z) = g_1(z)$ para todo $z \in B_1 \cap D_1$. 
+        Como é difícil fazer isso para o valor particular $t=1$ diretamente, vamos passar 
+        a uma estratégia que já adotamos antes: deduzir que um determinado conjunto é aberto
         e fechado relativo a $[0,1]$.
         
         Defina
@@ -671,7 +674,7 @@
         \end{center}
         %
         Vamos mostrar que 
-        $\sigma(s) \in G$, de modo que $G \neq \emptyset$. Pela definição de continuação 
+        $\sigma(s) \in G$, de modo que $G \neq\varnothing$. Pela definição de continuação 
         ao longo de um caminho, temos $\sigma(s) \in B_t \cap B_s$. Da hipótese do Lema,
         %
         \begin{equation*}
@@ -700,7 +703,7 @@
         %
         sempre que $z \in G$. Segue que $f_s(z) = g_s(z)$ para todo $z \in G$. 
         Pelo princípio da identidade, podemos concluir que 
-        $f_s(z) = g_s(z) \forall z \in D_s \cap B_s$, ou seja, $s \in T$ sempre que 
+        $f_s(z) = g_s(z)$ $\forall z \in D_s \cap B_s$, ou seja, $s \in T$ sempre que 
         $|s-t|< \delta$, o que mostra que $T$ é aberto.
         
         Vamos mostrar agora que $T$ é também fechado. Lembre-se que um conjunto é fechado 
@@ -728,7 +731,7 @@
         sempre que $z \in G$. Agora, $s_n \in T$, então
         %
         \begin{equation*}
-            f_t(z) = f_{s_n}(z) = g_{s_n}(z) = g_t(z), \forall z\in G
+            f_t(z) = f_{s_n}(z) = g_{s_n}(z) = g_t(z), \forall z\in G .
         \end{equation*}
         %
         Aplicando o princípio da identidade, concluímos que $t \in T$. Logo, $T$ é fechado. 
@@ -767,7 +770,7 @@
         De fato, considere
         %
         \begin{equation*}
-            z\mapsto \int_{\y} \frac{f(w)}{w-z}dw,
+            z \mapsto \int_\y \frac{f(w)}{w-z} dw,
         \end{equation*}
         %
         sendo $\y$ uma circunferência, por exemplo. Ora, em todo ponto de $\y$
@@ -790,10 +793,12 @@
         homotópicas (FEP-homotópicas) se existe uma aplicação contínua 
         $\y:[0,1]\times [0,1] \to G\subseteq\C$ tal que
         %
-        \begin{align*}
-            \y(t,0) &= \y_0(t) \qquad \y(t,1) = \y_1(t) \\
-            \y(0,s) &= a \qquad \y(1,s) = b
-        \end{align*}
+        $$
+          \begin{array}{ll}
+            \y(t,0) = \y_0(t) & \y(t,1) = \y_1(t) \\
+            \y(0,s) = a       & \y(1,s) = b
+          \end{array}
+        $$
         %
         \begin{center}
             \textbf{diagrama slide 15 Aula 4}
@@ -845,10 +850,12 @@
         Já que $\y_0, \y_1$ são FEP-homotópicas em $G$, existe uma função contínua
         $\y: [0,1]\times[0,1]\to G\subseteq\C$ tal que
         %
-        \begin{align*}
-            \y(t,0) &= \y_0(t) \qquad \y(t,1) = \y_1(t) \\
-            \y(0,s) &= a \qquad \y(1,s) = b
-        \end{align*}
+        $$
+          \begin{array}{ll}
+            \y(t,0) = \y_0(t) & \y(t,1) = \y_1(t) \\
+            \y(0,s) = a       & \y(1,s) = b
+          \end{array}
+        $$
         %
         para todo $s\in [0,1]$. Fixe um tal $s$ e considere o caminho 
         $\y_2(t) := \y(t,s)$. Por hipótese, existe uma continuação analítica
@@ -861,7 +868,7 @@
             [h_{1,0}]_b &= [f_1]_b.
         \end{align*}
         %
-        Portanto, para atingir o nosso objetivo (que é mostrar que $[f_1]_b = [g_1]_b$),
+        Portanto, para atingir o nosso objetivo (concluir que $[f_1]_b = [g_1]_b$),
         basta mostrar que $[h_{1,0}]_b = [h_{1,1}]_b$. Para tanto, vamos usar a técnica
         de sempre: argumentar por conexidade.
         
@@ -928,7 +935,7 @@
     
 \section{O princípio da reflexão de Schwarz} %
 \label{sec:Schwarz} %
-    Neste capítulo, vamos tratar de continuações analíticas ao longo de caminhos.
+    Nesta seção, vamos tratar de continuações analíticas ao longo de caminhos.
     Para iniciar a discussão, começamos abordando um princípio simples que nos permite
     estender holomorficamente certas funções analíticas a domínios ``maiores'': 
     o princípio da reflexão de Schwarz.
@@ -946,9 +953,6 @@
     $\Omega^+$ a porção de $\Omega$ no semi-plano superior e por 
     $\Omega^-$ a porção de $\Omega$ no semi-plano inferior.
     %
-    % \begin{center}
-    %     \textbf{diagrama fig.11 Stein p.58}
-    % \end{center}
     \begin{figure}[H]\centering
         \includegraphics{%
             Figuras/conjunto simétrico.pdf
@@ -971,7 +975,7 @@
         \Omega^+ = D(z_0, r), \ \Omega^- = D(\overline{z_0},r),
     \end{equation*}
     %
-    com $\Im(z_0) > 0$ e $r > 0$, é claro que $\Omega = \Omega^+\cup\Omega^-$ é simétrico
+    com $\Im(z_0) > r > 0$, é claro que $\Omega = \Omega^+\cup\Omega^-$ é simétrico
     e $I = \varnothing$.
     
     Além disso, é importante observar que $I$ não precisa ser um intervalo. Uma
@@ -1071,13 +1075,13 @@
         que, pelo teorema da convergência dominada, pode ser escrito como
         %
         \begin{equation*}
-            \int_0^1 \lim_{\e}f(\y(t) + i\e)\y'(t)\, dt = 0,
+            \int_0^1 \lim_{\e\to 0} f(\y(t) + i\e)\y'(t)\, dt = 0,
         \end{equation*}
         %
         ou seja,
         %
         \begin{equation*}
-            \int_{\Delta} f(z)\, dz \equiv \int_0^1 f(\y(t))\y'(t)\, dt = 0
+            \int_\Delta f(z)\, dz \equiv \int_0^1 f(\y(t))\y'(t)\, dt = 0
         \end{equation*}
         %
         \paragraph{Parte II:} $\Delta$ tem duas arestas interceptando $I$. Nesse caso, o interior
@@ -1107,7 +1111,7 @@
     
     \begin{teorema}[Princípio da Reflexão de Schwarz]
     \label{teo-reflexao-schwarz}
-        Seja $\omega\subseteq\C$ um domínio simétrico e
+        Seja $\Omega\subseteq\C$ um domínio simétrico e
         suponha que $f$ é uma função holomorfa em $\Omega^+$ que se estende 
         continuamente para $I$ e tal que $f$ toma valores reais em $I$. 
         Então existe uma função $F$ holomorfa em todo o $\Omega$ tal que
@@ -1119,13 +1123,12 @@
         %
         \begin{equation*}
             F(z) =
-            %
             \begin{cases}
                 f(z), & z \in \Omega^+ \\
                 f(z), & z \in I \\
                 \overline{f(\overline{z})}, & z\in\Omega^-   
             \end{cases}
-            %
+            .
         \end{equation*}
         %
         Note que se tomarmos $f^+ \equiv f$ e $f^- \equiv \overline{f(\overline{z})}$, 
@@ -1143,8 +1146,8 @@
             \lim_{\substack{ z\to z_0 \\ \Im(z) < 0 }} f^-(z),
         \end{align*}
         %
-        ou seja, $f^+(z_0) = f^-(z_0)$ para todo $z_0\in I$. Portanto, mostrando que 
-        $F$ é holomorfa em $\Omega^-$ poderemos usar o princípio da simetria para 
+        ou seja, $f^+(z_0) = f^-(z_0)$ para todo $z_0\in I$. Assim, estabelecido que 
+        $F$ é holomorfa em $\Omega^-$, poderemos usar o princípio da simetria para 
         concluir a holomorficidade de $F$ em todo $\Omega$.
         
         Sejam $z, z_0\in\Omega^-$ então $\overline{z}, \overline{z_0}\in\Omega^+$. 
@@ -1224,7 +1227,7 @@
         \begin{equation*}
         f(z) 
         = 
-        \sum^{N}_{j=1}\frac{1}{2 \pi i}\int_{\y_j}\frac{f(w)}{w-z} \, dw  \, , \forall z \in K.
+        \sum^N_{j=1}\frac{1}{2 \pi i} \int_{\y_j}\frac{f(w)}{w-z} \, dw  \, , \forall z \in K.
         \end{equation*}
         %
     \end{lema}
@@ -1257,12 +1260,13 @@
         Se $z$ está em $K$ e $z \in Q_m - \partial Q_m$, então, pela fórmula integral de Cauchy,
         %
         \begin{equation*}
-            \frac{1}{2 \pi i}\int_{\partial Q_m}\frac{f(w)}{w-z}\, dw 
+            \frac{1}{2 \pi i}\int_{\partial Q_m} \frac{f(w)}{w-z}\, dw 
             = 
             \begin{cases}
-                f(z), &m = j \\
-                0, &m \neq j.
+                f(z), & m = j \\
+                0,    & m \neq j
             \end{cases}
+            .
         \end{equation*}
         %
         Portanto, para todo $z\in K$ que não está no bordo de nenhum quadrado de $\mathcal{Q}$, 
@@ -1335,7 +1339,8 @@
         onde cada $F(z,t_j)$ é uma função racional. Denote
         %
         \begin{equation*}
-            g(z) = \int_{0}^{1}F(z,t) \, dt \, ,  \ \ \ \ g_n(z) = \frac{1}{n}\sum_{j=1}^{n}F(z,t_j).
+            g(z) = \int_{0}^{1}F(z,t) \, dt \, ,  \ \ \ \ 
+            g_n(z) = \frac{1}{n} \sum_{j=1}^n F(z,t_j).
         \end{equation*}
         %
         Usando as considerações anteriores, temos que 
@@ -1346,7 +1351,7 @@
             &\leq \sum_{k=1}^{n}\frac{1}{n}\int_{\frac{k-1}{n}}^{\frac{k}{n}}|F(z,k/n) - F(z,n)| \, dt
             \to 0,
         \end{align*}
-        onde usamos \eqref{ER2}. Observe que $g(z)$ é a expressão que queríamos aproximar
+        onde aplicamos \eqref{ER2}. Observe que $g(z)$ é a expressão que queríamos aproximar
         (uniformemente) por funções racionais, então o Lema está demonstrado.
     \end{proof}
     %
@@ -1794,19 +1799,19 @@
         %
         Como veremos, todos esses resultados são consequências da Fórmula Integral de Cauchy.
         
-    \subsection{A classe \texorpdfstring{$\mathfrak{F}$}{F}}
+    \subsection{A classe \texorpdfstring{$\mathcal{F}$}{F}}
         %
         Vamos, aqui, considerar uma classe de funções que é adequada aos nossos estudos, mas
         que não é a mais geral possível para se desenvolver a teoria de Fourier. Dito de outro
-        modo, a nossa classe de funções com transformada de Fourier, $\mathfrak{F}$, pode ser
+        modo, a nossa classe de funções com transformada de Fourier, $\mathcal{F}$, pode ser
         ampliada.
         
-        A construção de $\mathfrak{F}$ será feita em duas etapas.
+        A construção de $\mathcal{F}$ será feita em duas etapas.
         
         \paragraph{1ª etapa.} Defina, para cada $a>0$,
         %
         \begin{equation*}
-            \mathfrak{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
+            \mathcal{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
             f \text{ é holomorfa, } S_a\subseteq U \text{ e } f(\R)\subseteq\R \right\},
         \end{equation*}
         %
@@ -1837,7 +1842,7 @@
         Vamos dar alguns exemplos de funções que satisfazem essas condições.
         %
         \begin{exemplo}
-            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathfrak{F}_a, \forall a>0$.
+            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathcal{F}_a, \forall a>0$.
             De fato, dado $a>0$, temos que
             %
             \begin{align*}
@@ -1866,7 +1871,7 @@
                 |f(x+iy)| \leq A\exp(-\pi x^2) \leq \frac{A}{1+x^2}
             \end{align*}
             %
-            e, portanto, $f\in\mathfrak{F}_a, \forall a>0$.
+            e, portanto, $f\in\mathcal{F}_a, \forall a>0$.
         \end{exemplo}
         %
         \begin{exemplo}
@@ -1876,7 +1881,7 @@
                 f(z) = \frac{1}{\pi}\cdot\frac{c}{c^2 + z^2}
             \end{equation*}
             %
-            pertence a $\mathfrak{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
+            pertence a $\mathcal{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
             mas ela está relacionada ao núcleo de Poisson, que, por sua vez, tem relação com
             as soluções estacionárias do problema de Dirichlet do calor no semi-plano superior.}.
             
@@ -2107,9 +2112,9 @@
         acerca das funções cujas transformadas de Fourier são elas próprias pode ser
         encontrada \href{https://math.stackexchange.com/questions/728670/functions-that-are-their-own-fourier-transform}{neste link}.
         %
-    \subsection{Existência da transformada de Fourier em \texorpdfstring{$\mathfrak{F}_a$}{Fa}}
+    \subsection{Existência da transformada de Fourier em \texorpdfstring{$\mathcal{F}_a$}{Fa}}
         %
-        Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
+        Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\mathcal{F}_a$.
         Para tanto, considere a sequência $(a_n)_{n\in\N}$ de números complexos dados por
         %
         \begin{equation*}
@@ -2126,7 +2131,7 @@
         \begin{proof}
             Para mostrar o enunciado, vamos mostrar que $(a_n)_{n\in\N}$ é de Cauchy.
             
-            Lembrando que $f\in\mathfrak{F}_a$, dado $\e>0$ podemos encontrar $n_0\in\N$ 
+            Lembrando que $f\in\mathcal{F}_a$, dado $\e>0$ podemos encontrar $n_0\in\N$ 
             tal que se $n \geq n_0$ então
             %
             \begin{align*}
@@ -2184,14 +2189,14 @@
             %
             Esse resultado nos diz, essencialmente, que os limites $n$ e $-n$ da integração podem
             ser tomados como números reais e não apenas inteiros. A rigor, é esse o resultado que mostra
-            que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
+            que a transformada de Fourier está bem definida em cada $\mathcal{F}_a$.
         \end{proof}
         %
-    \subsection{Ação da transformada de Fourier em \texorpdfstring{$\mathfrak{F}$}{F}}
+    \subsection{Ação da transformada de Fourier em \texorpdfstring{$\mathcal{F}$}{F}}
         %
         \begin{teorema}
         \label{teo-transf-fourier-decai-exp}
-            Se $f\in\mathfrak{F}_a$ para algum $a>0$, então
+            Se $f\in\mathcal{F}_a$ para algum $a>0$, então
             %
             \begin{equation*}
                 |\widehat{f}(\xi)| \leq Be^{-2\pi b|\xi|}, \forall 0\leq b < a.
@@ -2335,7 +2340,7 @@
         \begin{corolario}
         \label{transf-fourier-inv-por-shift}
             A demonstração do Teorema \ref{teo-transf-fourier-decai-exp} nos deu o seguinte fato,
-            para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\mathfrak{F}_a$:
+            para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\mathcal{F}_a$:
             %
             \begin{align*}
                 \int_{-\infty}^{\infty} f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
@@ -2360,15 +2365,15 @@
         %
         Separamos o fato acima como corolário pois ele será bastante usado e não é algo exclusivo da
         demonstração do Teorema \ref{teo-transf-fourier-decai-exp}. Podemos, agora, definir a classe
-        $\mathfrak{F}$.
+        $\mathcal{F}$.
         %
-        \begin{definicao}[Classe $\mathfrak{F}$]
+        \begin{definicao}[Classe $\mathcal{F}$]
         \label{def-classe-F}
-            A classe $\mathfrak{F}$ é o espaço de todas as funções que pertencem a $\mathfrak{F}_a$
+            A classe $\mathcal{F}$ é o espaço de todas as funções que pertencem a $\mathcal{F}_a$
             para algum $a>0$, isto é,
             %
             \begin{equation*}
-                \mathfrak{F} = \bigcup_{a>0} \mathfrak{F}_a.
+                \mathcal{F} = \bigcup_{a>0} \mathcal{F}_a.
             \end{equation*}
             %
         \end{definicao}
@@ -2377,7 +2382,7 @@
         %
         \begin{teorema}
         \label{teo-inv-transf-fourier}
-            Se $f\in\mathfrak{F}$, vale a igualdade
+            Se $f\in\mathcal{F}$, vale a igualdade
             %
             \begin{equation*}
                 f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi, \forall x\in\R.
@@ -2439,7 +2444,7 @@
             %
             Vamos começar analisando a segunda parcela.
             
-            Digamos que $f\in\mathfrak{F}_a$ para algum $a>0$. Escolha $b\in\R$ tal que $0 < b < a$.
+            Digamos que $f\in\mathcal{F}_a$ para algum $a>0$. Escolha $b\in\R$ tal que $0 < b < a$.
             Lembrando do Corolário \ref{transf-fourier-inv-por-shift} e usando o Teorema de Fubini, temos
             %
             \begin{align*}
@@ -2548,7 +2553,7 @@
         %
         \begin{teorema}[Fórmula da Soma de Poisson]
         \label{teo-form-soma-poisson}
-            Se $f\in\mathfrak{F}$, então
+            Se $f\in\mathcal{F}$, então
             %
             \begin{equation*}
                 \sum_{n\in\Z} f(n) = \sum_{n\in\Z} \widehat{f}(n).
@@ -2572,7 +2577,7 @@
         \end{align*}
         %
         \begin{proof}
-            Como $f\in\mathfrak{F}$, existe $a > 0$ tal que $f\in\mathfrak{F}_a$. Seja 
+            Como $f\in\mathcal{F}$, existe $a > 0$ tal que $f\in\mathcal{F}_a$. Seja 
             $b$ um número real que satisfaz $0<b<a$. A função $1/(e^{2\pi i z} - 1)$ 
             tem polos simples sobre os números inteiros, então
             %
@@ -2700,7 +2705,7 @@
         O que justifica essa troca é o lema a seguir.
         %
         \begin{lema}
-            Seja $f \in \mathfrak{F}_a$. Para qualquer $b$ real satisfazendo $0 < b < a$, 
+            Seja $f \in \mathcal{F}_a$. Para qualquer $b$ real satisfazendo $0 < b < a$, 
             temos que os seguintes limites
             %
             \begin{equation*}
@@ -3047,11 +3052,13 @@
         
         Além disso, é bom comentar acerca da estratégia de demonstração: a volta é relativamente direta;
         a ida, por outro lado, é mais envolvida. Ela é dividida em três passos: o primeiro mostra que
-        vale o enunciado para funções com um decaimento mais forte que o da hipótese do teorema; o
-        segundo mostra, usando o primeiro passo, que o enunciado também vale para funções com um 
-        decaimento intermediário (nem tão forte quanto no passo 1, nem tão fraco quanto no enunciado);
+        vale o enunciado para funções com uma taxa de crescimento adcional
+        além da hipótese do teorema; o
+        segundo mostra, usando o primeiro passo, que o enunciado também vale para funções sem o 
+        decaimento do passo 1;
         por fim, o terceiro passo mostra, usando o teorema de Phrágmen-Lindelöf, que as funções
-        que obedecem às hipóteses do enunciado satisfazem o decaimento intermediário do passo 2, 
+        que obedecem às hipóteses do enunciado satisfazem a cota 
+        do passo 2, 
         provando o teorema. Então, mãos à obra!
         
         %
@@ -3082,7 +3089,11 @@
                 F(z) = \int_{-M}^M \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi
             \end{equation*}
             %
-            define uma extensão inteira de $f$. Ademais, dado $z\in\C$, temos
+            define uma extensão inteira de $f$ (basta proceder como
+            nos argumentos anteriores: consideramos uma sequência
+            que aproxima $F$, usamos Fubinir e Morera para verificar
+            a holomorficidade e mostramos que a sequência de fato
+            converge para a função desejada). Ademais, dado $z\in\C$, temos
             %
             \begin{align*}
                 |F(z)| &= \left| \int_{-M}^M \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\
@@ -3139,13 +3150,13 @@
             %
             \begin{align*}
                 |\widehat{f}(\xi)| 
-                \leq A'\int_{-\infty}^{\infty} \frac{ e^{-2\pi My 
+                \leq A'\int_{-\infty}^{\infty} \frac{ e^{2\pi My 
                 + 2\pi y\xi}}{1+x^2} \, dx 
-                = \frac{A'}{\pi}e^{-2\pi y(M - \xi)}
-                = Ce^{-2\pi y(M -\xi)}.
+                = \frac{A'}{\pi}e^{2\pi y(M + \xi)}
+                = Ce^{2\pi y(M +\xi)}.
             \end{align*}
             %
-            Lembrando que $-\xi > M$ e tomando o limite para $y\to +\infty$,
+            Lembrando que $M + \xi < 0$ e tomando o limite para $y\to +\infty$,
             concluímos novamente que $\widehat{f}(\xi) = 0$ e fica mostrada
             a afirmação.
             %
@@ -3268,6 +3279,7 @@
             \end{equation*}
             %
             Agora, usando a condição de crescimento de $f$, note que
+            para $\e<1$ temos
             %
             \begin{align*}
                 \left| \widehat{f_{\e}}(x+iy) \right| &\leq \frac{Ae^{2\pi M|y|}}{|1 - i\e (x+iy)^2|^2} \\
@@ -3278,7 +3290,7 @@
                 &= A''(\e)\cdot \frac{e^{2\pi M|y|}}{1 + x^2}.
             \end{align*}
             %
-            Portanto, pelo Passo 1, temos $\widehat{f_{\e}}(\xi) = 0$ e, tomando o limite quando
+            Portanto, pelo Passo 1, temos $\widehat{f_{\e}}(\xi) = 0$ e, usando o limite da etapa anterior do argumento quando
             $\e\to 0$, obtemos $\widehat{f}(\xi) = 0$. Um argumento similar vale para o caso
             $\xi < -M$, dessa vez tomando a perturbação multiplicativa
             %
@@ -3297,8 +3309,9 @@
             %
             de sorte que $\widehat{f}(\xi) = 0$ se $|\xi| > M$. Dito
             de outro modo, vamos mostrar que as hipóteses do teorema
-            nos permitem concluir o decaimento mais forte dado acima
-            que, pelo Passo 2, nos permite concluir que $\widehat{f}$
+            nos permitem concluir que $f$ tem o decaimento mais forte 
+            dado acima.
+            Então, pelo Passo 2, concluiremos que $\widehat{f}$
             se anula fora de $[-M,M]$ e, portanto, seu suporte está
             contido nesse compacto.
             
