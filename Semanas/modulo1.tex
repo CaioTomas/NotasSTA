@@ -284,9 +284,11 @@
         \end{center}
         %
         Vamos definir na região do diagrama da esquerda uma continuação analítica
+        %
         \begin{equation*}
             \left\{ (f_t, D_t), t\in [0,1] \right\}
         \end{equation*}
+        %
         ao longo de $\y_1$, com $-1\in D_1$, $f_1(-1) = i\pi/2$,
         $D_0 = \left\{ z\in\C : \Re(z) > 0 \right\}$ e $f_0 = f$.
         
@@ -308,8 +310,7 @@
         a Proposição \ref{prop-unicidade-continuacao-analitica-caminho}. Mas isso também 
         não ocorre, porque $F$ e $G$ foram construídas por caminhos distintos!
     \end{observacao}
-
-
+    %
     \begin{definicao}
     \label{def-continuacao-analitica-germe}
         Se $\y: [0,1]\to\C$ é um caminho de $a$ para $b$ e 
@@ -326,9 +327,14 @@
         Sejam $U_1, U_2\subseteq\C$ domínios não-vazios tais que $U_1\cap U_2$
         também é um domínio não-vazio.
         %
-        \begin{center}
-            \textbf{diagrama slide 9 aula 3}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{%
+                Figuras/aula 3 slide 9.pdf
+            }
+            \caption{%
+                Ilustração de $U_1$ e $U_2$ com destaque para $U_1\cup U_2$.
+            }
+        \end{figure}
         %
         Sejam ainda $f:U_1\to\C$ e $g:U_2\to\C$ funções analíticas
         tais que $f(z) = g(z), \forall z\in U_1\cap U_2$. Nesse caso, dizemos que
@@ -385,8 +391,7 @@
         para os quais existem $a\in G$ e um caminho $\y$ de $a$ para $b$ 
         tais que $[g]_b$ é a continuação analítica de $[f]_a$ ao longo de $\y$.
     \end{definicao}
-
-
+    %
     \begin{definicao}
         Uma coleção de germes $\mathcal{F}$ é chamada função analítica completa se
         existe um elemento de função $(f,G)$ tal que $\mathcal{F}$ é a função analítica
