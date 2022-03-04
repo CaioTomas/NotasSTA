@@ -207,9 +207,14 @@
         %
         Seja $H\subseteq D_t\cap B_t$ tal que $\y(s), \y(t)\in H$. 
         %
-        \begin{center}
-            \textbf{diagrama slide 17 aula 2}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{%
+                Figuras/aula 2 slide 17.pdf
+            }
+            \caption{%
+                Possível representação no plano complexo dos domínios $B_t$, $D_t$ e $H$.
+            }
+        \end{figure}
         %
         Como $t\in T$,
         $f_t(z) = g_t(z), \forall z\in H$. Logo, $[f_t]_{\y(s)} = [g_t]_{\y(s)}$
@@ -260,9 +265,15 @@
         Defina $\arg_0: \left\{ z\in\C : \Re(z) > 0 \right\} \to (-\pi/2, \pi/2)$,
         que é uma restrição do ramo principal do argumento a um domínio mais ``restrito''.
         %
-        \begin{center}
-            \textbf{diagrama slide 4 aula 3}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{%
+                Figuras/aula 3 slide 4.pdf
+            }
+            \caption{%
+                Hachurado, exibe-se parte do conjunto 
+                $\{z\in\C: \Re(z)>0\}$.
+            }
+        \end{figure}
         %
         Considere também a função analítica 
         $f: \left\{ z\in\C : \Re(z) > 0 \right\} \to\C$
@@ -1015,7 +1026,7 @@
         seja $\Delta$ um triângulo em $D$. Se $\Delta$ não intercepta $I$, então
         %
         \begin{equation*}
-            \int_{\Delta} f(z) \, dz = 0
+            \int_\Delta f(z) \, dz = 0
         \end{equation*}
         %
         já que $f$ é holomorfa nos semi-discos superior e inferior.
@@ -1099,7 +1110,7 @@
         %
         \begin{figure}[H]\centering
             \includegraphics[width=0.8\textwidth]{
-                Figuras/slide 16 aula 6.pdf
+                Figuras/aula 6 slide 16.pdf
             }
             \caption{As duas possibilidades da Parte II da demonstração.}
         \end{figure}
@@ -1809,19 +1820,19 @@
         %
         Como veremos, todos esses resultados são consequências da Fórmula Integral de Cauchy.
         
-    \subsection{A classe \texorpdfstring{$\mathfrak{F}$}{F}}
+    \subsection{A classe \texorpdfstring{$\F$}{F}}
         %
         Vamos, aqui, considerar uma classe de funções que é adequada aos nossos estudos, mas
         que não é a mais geral possível para se desenvolver a teoria de Fourier. Dito de outro
-        modo, a nossa classe de funções com transformada de Fourier, $\mathfrak{F}$, pode ser
+        modo, a nossa classe de funções com transformada de Fourier, $\F$, pode ser
         ampliada.
         
-        A construção de $\mathfrak{F}$ será feita em duas etapas.
+        A construção de $\F$ será feita em duas etapas.
         
         \paragraph{1ª etapa.} Defina, para cada $a>0$,
         %
         \begin{equation*}
-            \mathfrak{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
+            \F_a = \left\{ f:U\subseteq\C\to\C \ | \ 
             f \text{ é holomorfa, } S_a\subseteq U \text{ e } f(\R)\subseteq\R \right\},
         \end{equation*}
         %
@@ -1852,7 +1863,7 @@
         Vamos dar alguns exemplos de funções que satisfazem essas condições.
         %
         \begin{exemplo}
-            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathfrak{F}_a, \forall a>0$.
+            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\F_a, \forall a>0$.
             De fato, dado $a>0$, temos que
             %
             \begin{align*}
@@ -1881,7 +1892,7 @@
                 |f(x+iy)| \leq A\exp(-\pi x^2) \leq \frac{A}{1+x^2}
             \end{align*}
             %
-            e, portanto, $f\in\mathfrak{F}_a, \forall a>0$.
+            e, portanto, $f\in\F_a, \forall a>0$.
         \end{exemplo}
         %
         \begin{exemplo}
@@ -1891,7 +1902,7 @@
                 f(z) = \frac{1}{\pi}\cdot\frac{c}{c^2 + z^2}
             \end{equation*}
             %
-            pertence a $\mathfrak{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
+            pertence a $\F_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
             mas ela está relacionada ao núcleo de Poisson, que, por sua vez, tem relação com
             as soluções estacionárias do problema de Dirichlet do calor no semi-plano superior.}.
             
@@ -2122,9 +2133,9 @@
         acerca das funções cujas transformadas de Fourier são elas próprias pode ser
         encontrada \href{https://math.stackexchange.com/questions/728670/functions-that-are-their-own-fourier-transform}{neste link}.
         %
-    \subsection{Existência da transformada de Fourier em \texorpdfstring{$\mathfrak{F}_a$}{Fa}}
+    \subsection{Existência da transformada de Fourier em \texorpdfstring{$\F_a$}{Fa}}
         %
-        Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
+        Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\F_a$.
         Para tanto, considere a sequência $(a_n)_{n\in\N}$ de números complexos dados por
         %
         \begin{equation*}
@@ -2141,7 +2152,7 @@
         \begin{proof}
             Para mostrar o enunciado, vamos mostrar que $(a_n)_{n\in\N}$ é de Cauchy.
             
-            Lembrando que $f\in\mathfrak{F}_a$, dado $\e>0$ podemos encontrar $n_0\in\N$ 
+            Lembrando que $f\in\F_a$, dado $\e>0$ podemos encontrar $n_0\in\N$ 
             tal que se $n \geq n_0$ então
             %
             \begin{align*}
@@ -2199,14 +2210,14 @@
             %
             Esse resultado nos diz, essencialmente, que os limites $n$ e $-n$ da integração podem
             ser tomados como números reais e não apenas inteiros. A rigor, é esse o resultado que mostra
-            que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
+            que a transformada de Fourier está bem definida em cada $\F_a$.
         \end{proof}
         %
-    \subsection{Ação da transformada de Fourier em \texorpdfstring{$\mathfrak{F}$}{F}}
+    \subsection{Ação da transformada de Fourier em \texorpdfstring{$\F$}{F}}
         %
         \begin{teorema}
         \label{teo-transf-fourier-decai-exp}
-            Se $f\in\mathfrak{F}_a$ para algum $a>0$, então
+            Se $f\in\F_a$ para algum $a>0$, então
             %
             \begin{equation*}
                 |\widehat{f}(\xi)| \leq Be^{-2\pi b|\xi|}, \forall 0\leq b < a.
@@ -2350,7 +2361,7 @@
         \begin{corolario}
         \label{transf-fourier-inv-por-shift}
             A demonstração do Teorema \ref{teo-transf-fourier-decai-exp} nos deu o seguinte fato,
-            para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\mathfrak{F}_a$:
+            para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\F_a$:
             %
             \begin{align*}
                 \int_{-\infty}^{\infty} f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
@@ -2375,15 +2386,15 @@
         %
         Separamos o fato acima como corolário pois ele será bastante usado e não é algo exclusivo da
         demonstração do Teorema \ref{teo-transf-fourier-decai-exp}. Podemos, agora, definir a classe
-        $\mathfrak{F}$.
+        $\F$.
         %
-        \begin{definicao}[Classe $\mathfrak{F}$]
+        \begin{definicao}[Classe $\F$]
         \label{def-classe-F}
-            A classe $\mathfrak{F}$ é o espaço de todas as funções que pertencem a $\mathfrak{F}_a$
+            A classe $\F$ é o espaço de todas as funções que pertencem a $\F_a$
             para algum $a>0$, isto é,
             %
             \begin{equation*}
-                \mathfrak{F} = \bigcup_{a>0} \mathcal{F}_a.
+                \F = \bigcup_{a>0} \mathcal{F}_a.
             \end{equation*}
             %
         \end{definicao}
@@ -2392,7 +2403,7 @@
         %
         \begin{teorema}
         \label{teo-inv-transf-fourier}
-            Se $f\in\mathfrak{F}$, vale a igualdade
+            Se $f\in\F$, vale a igualdade
             %
             \begin{equation*}
                 f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi, \forall x\in\R.
@@ -2456,7 +2467,7 @@
             %
             Vamos começar analisando a segunda parcela.
             
-            Digamos que $f\in\mathfrak{F}_a$ para algum $a>0$. Escolha $b\in\R$ tal que $0 < b < a$.
+            Digamos que $f\in\F_a$ para algum $a>0$. Escolha $b\in\R$ tal que $0 < b < a$.
             Lembrando do Corolário \ref{transf-fourier-inv-por-shift} e usando o Teorema de Fubini, temos
             %
             \begin{align*}
@@ -2565,7 +2576,7 @@
         %
         \begin{teorema}[Fórmula da Soma de Poisson]
         \label{teo-form-soma-poisson}
-            Se $f\in\mathfrak{F}$, então
+            Se $f\in\F$, então
             %
             \begin{equation*}
                 \sum_{n\in\Z} f(n) = \sum_{n\in\Z} \widehat{f}(n).
@@ -2589,7 +2600,7 @@
         \end{align*}
         %
         \begin{proof}
-            Como $f\in\mathfrak{F}$, existe $a > 0$ tal que $f\in\mathfrak{F}_a$. Seja 
+            Como $f\in\F$, existe $a > 0$ tal que $f\in\F_a$. Seja 
             $b$ um número real que satisfaz $0<b<a$. A função $1/(e^{2\pi i z} - 1)$ 
             tem polos simples sobre os números inteiros, então
             %
@@ -2718,7 +2729,7 @@
         O que justifica essa troca é o lema a seguir.
         %
         \begin{lema}
-            Seja $f \in \mathfrak{F}_a$. Para qualquer $b$ real satisfazendo $0 < b < a$, 
+            Seja $f \in \F_a$. Para qualquer $b$ real satisfazendo $0 < b < a$, 
             temos que os seguintes limites
             %
             \begin{equation*}
