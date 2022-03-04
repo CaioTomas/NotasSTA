@@ -330,8 +330,8 @@
         \begin{equation*}
             F(z) = 
             \begin{cases}
-                f(z), z\in U_1; \\
-                g(z), z\in U_2.
+                f(z), & z\in U_1 \\
+                g(z), & z\in U_2
             \end{cases}
         \end{equation*}
         %
@@ -1765,7 +1765,7 @@
                                      \int_a^b f(\y(t))\y'(t) \, dt,
         \end{align*}
         %
-        desde que o último limite existe em $\overline{\C} = \C\cup\{\infty\}$. Intuitivamente,
+        desde que o último limite exista em $\overline{\C} = \C\cup\{\infty\}$. Intuitivamente,
         $\y:\R\to\C$ seria um caminho ``infinito''; entretanto, vamos reservar o termo ``caminho''
         para $\y:[0,1]\to\C$.
         
@@ -1781,14 +1781,14 @@
         %
         Veremos ainda que, quando existir, a inversa dessa transformada será dada por
         %
-        \begin{equation*}
+        \begin{equation}
         \label{def-inv-trans-fourier}
             f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi.
-        \end{equation*}
+        \end{equation}
         %
         Vamos assumir que $f:\R\to\R$ admite uma extensão analítica a uma faixa horizontal contendo
-        o eixo real e tendo decaimento moderado no infinito (vamos precisar mais à frente o quão
-        moderado esse decaimento deve ser). Com isso, veremos mais à frente que essas hipóteses
+        o eixo real e tendo decaimento moderado no infinito (iremos precisar o quão
+        moderado esse decaimento deve ser). Eventualmente, essas hipóteses
         nos permitem concluir que
         %
         \begin{itemize}
@@ -1809,23 +1809,23 @@
         %
         Como veremos, todos esses resultados são consequências da Fórmula Integral de Cauchy.
         
-    \subsection{A classe \texorpdfstring{$\mathcal{F}$}{F}}
+    \subsection{A classe \texorpdfstring{$\mathfrak{F}$}{F}}
         %
         Vamos, aqui, considerar uma classe de funções que é adequada aos nossos estudos, mas
         que não é a mais geral possível para se desenvolver a teoria de Fourier. Dito de outro
-        modo, a nossa classe de funções com transformada de Fourier, $\mathcal{F}$, pode ser
+        modo, a nossa classe de funções com transformada de Fourier, $\mathfrak{F}$, pode ser
         ampliada.
         
-        A construção de $\mathcal{F}$ será feita em duas etapas.
+        A construção de $\mathfrak{F}$ será feita em duas etapas.
         
         \paragraph{1ª etapa.} Defina, para cada $a>0$,
         %
         \begin{equation*}
-            \mathcal{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
+            \mathfrak{F}_a = \left\{ f:U\subseteq\C\to\C \ | \ 
             f \text{ é holomorfa, } S_a\subseteq U \text{ e } f(\R)\subseteq\R \right\},
         \end{equation*}
         %
-        sendo $S_a$ a faixa horizontal contendo o eixo real com largura $2a$. Vamos supor, ainda,
+        sendo $S_a$ a faixa (\textit{strip}) horizontal contendo o eixo real com largura $2a$. Vamos supor, ainda,
         que existe uma constante $A>0$ tal que
         %
         \begin{equation*}
@@ -1852,7 +1852,7 @@
         Vamos dar alguns exemplos de funções que satisfazem essas condições.
         %
         \begin{exemplo}
-            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathcal{F}_a, \forall a>0$.
+            Seja $f:\C\to\C$ dada por $f(z) = e^{-\pi z^2}$. Temos $f\in\mathfrak{F}_a, \forall a>0$.
             De fato, dado $a>0$, temos que
             %
             \begin{align*}
@@ -1881,7 +1881,7 @@
                 |f(x+iy)| \leq A\exp(-\pi x^2) \leq \frac{A}{1+x^2}
             \end{align*}
             %
-            e, portanto, $f\in\mathcal{F}_a, \forall a>0$.
+            e, portanto, $f\in\mathfrak{F}_a, \forall a>0$.
         \end{exemplo}
         %
         \begin{exemplo}
@@ -1891,7 +1891,7 @@
                 f(z) = \frac{1}{\pi}\cdot\frac{c}{c^2 + z^2}
             \end{equation*}
             %
-            pertence a $\mathcal{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
+            pertence a $\mathfrak{F}_a$ para todo $0 < a < c$\footnote{Essa $f$ pode parecer artificial,
             mas ela está relacionada ao núcleo de Poisson, que, por sua vez, tem relação com
             as soluções estacionárias do problema de Dirichlet do calor no semi-plano superior.}.
             
@@ -1919,7 +1919,7 @@
                        &\leq\frac{1}{2\pi}\cdot\frac{c(1+d^2)}{|a+c|\cdot|a-c|}\cdot\frac{1}{1+x^2}.
             \end{align*}
             %
-            Agora, vaoms estimar $|f(z)|$ com $|z|\geq d = 2c$. Temos que
+            Agora, vamos estimar $|f(z)|$ com $|z|\geq d = 2c$. Temos que
             %
             \begin{equation*}
                 |z|\geq 2c \implies |z|^2 \geq 4c^2 \implies \frac{1}{4} \leq \frac{c^2}{|z|^2},
@@ -2091,7 +2091,7 @@
         \end{align*}
         %
         Podemos agora tomar o limite quando $R\to\infty$ em ambos
-        lados da igualdade acima em seguida usar a identidade
+        lados da igualdade acima e em seguida usar a identidade
         %
         \begin{equation*}
             \lim_{R\to\infty} \int_{-R}^R e^{-\pi x^2} \, dx = 1,
@@ -2110,8 +2110,8 @@
         %
         \begin{equation*}
             \int_{-\infty}^{\infty} e^{-\pi t^2} e^{-2\pi i t\xi }  e^{\pi\xi^2}\, dt = 1
-            \quad \Longrightarrow\quad 
-            \int_{-\infty}^{\infty} e^{-\pi t^2} e^{2\pi i t\xi } \, dt = e^{-\pi\xi^2},
+            \implies
+            \int_{-\infty}^{\infty} e^{-\pi t^2} e^{-2\pi i t\xi } \, dt = e^{-\pi\xi^2},
         \end{equation*}
         %
         o que mostra que a transformada de Fourier de $f$ é ela mesma, como afirmado.
@@ -2122,9 +2122,9 @@
         acerca das funções cujas transformadas de Fourier são elas próprias pode ser
         encontrada \href{https://math.stackexchange.com/questions/728670/functions-that-are-their-own-fourier-transform}{neste link}.
         %
-    \subsection{Existência da transformada de Fourier em \texorpdfstring{$\mathcal{F}_a$}{Fa}}
+    \subsection{Existência da transformada de Fourier em \texorpdfstring{$\mathfrak{F}_a$}{Fa}}
         %
-        Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\mathcal{F}_a$.
+        Nesta subseção, vamos mostrar que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
         Para tanto, considere a sequência $(a_n)_{n\in\N}$ de números complexos dados por
         %
         \begin{equation*}
@@ -2141,7 +2141,7 @@
         \begin{proof}
             Para mostrar o enunciado, vamos mostrar que $(a_n)_{n\in\N}$ é de Cauchy.
             
-            Lembrando que $f\in\mathcal{F}_a$, dado $\e>0$ podemos encontrar $n_0\in\N$ 
+            Lembrando que $f\in\mathfrak{F}_a$, dado $\e>0$ podemos encontrar $n_0\in\N$ 
             tal que se $n \geq n_0$ então
             %
             \begin{align*}
@@ -2199,14 +2199,14 @@
             %
             Esse resultado nos diz, essencialmente, que os limites $n$ e $-n$ da integração podem
             ser tomados como números reais e não apenas inteiros. A rigor, é esse o resultado que mostra
-            que a transformada de Fourier está bem definida em cada $\mathcal{F}_a$.
+            que a transformada de Fourier está bem definida em cada $\mathfrak{F}_a$.
         \end{proof}
         %
-    \subsection{Ação da transformada de Fourier em \texorpdfstring{$\mathcal{F}$}{F}}
+    \subsection{Ação da transformada de Fourier em \texorpdfstring{$\mathfrak{F}$}{F}}
         %
         \begin{teorema}
         \label{teo-transf-fourier-decai-exp}
-            Se $f\in\mathcal{F}_a$ para algum $a>0$, então
+            Se $f\in\mathfrak{F}_a$ para algum $a>0$, então
             %
             \begin{equation*}
                 |\widehat{f}(\xi)| \leq Be^{-2\pi b|\xi|}, \forall 0\leq b < a.
@@ -2320,7 +2320,7 @@
                                    &= Be^{-2\pi b|\xi|}.
             \end{align*}
             %
-            Isso prova o resultado para $\xi > 0$. Para $\xi < 0$, procedemos de maneira análoga considerando
+            Isso prova o resultado para $\xi > 0$. Para $\xi < 0$, procedemos de maneira equivalente considerando
             o contorno abaixo.
             %
             \begin{figure}[H]
@@ -2350,7 +2350,7 @@
         \begin{corolario}
         \label{transf-fourier-inv-por-shift}
             A demonstração do Teorema \ref{teo-transf-fourier-decai-exp} nos deu o seguinte fato,
-            para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\mathcal{F}_a$:
+            para todo $0\leq b < a$, sendo $a > 0$ tal que $f\in\mathfrak{F}_a$:
             %
             \begin{align*}
                 \int_{-\infty}^{\infty} f(x-ib)e^{-2\pi i(x-ib)\xi} \, dx
@@ -2375,15 +2375,15 @@
         %
         Separamos o fato acima como corolário pois ele será bastante usado e não é algo exclusivo da
         demonstração do Teorema \ref{teo-transf-fourier-decai-exp}. Podemos, agora, definir a classe
-        $\mathcal{F}$.
+        $\mathfrak{F}$.
         %
-        \begin{definicao}[Classe $\mathcal{F}$]
+        \begin{definicao}[Classe $\mathfrak{F}$]
         \label{def-classe-F}
-            A classe $\mathcal{F}$ é o espaço de todas as funções que pertencem a $\mathcal{F}_a$
+            A classe $\mathfrak{F}$ é o espaço de todas as funções que pertencem a $\mathfrak{F}_a$
             para algum $a>0$, isto é,
             %
             \begin{equation*}
-                \mathcal{F} = \bigcup_{a>0} \mathcal{F}_a.
+                \mathfrak{F} = \bigcup_{a>0} \mathcal{F}_a.
             \end{equation*}
             %
         \end{definicao}
@@ -2392,7 +2392,7 @@
         %
         \begin{teorema}
         \label{teo-inv-transf-fourier}
-            Se $f\in\mathcal{F}$, vale a igualdade
+            Se $f\in\mathfrak{F}$, vale a igualdade
             %
             \begin{equation*}
                 f(x) = \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi ix\xi} \, d\xi, \forall x\in\R.
@@ -2400,7 +2400,7 @@
             %
         \end{teorema}
         %
-        Para provar o lema, vamos precisar do seguinte lema.
+        Para provar o teorema, vamos precisar do seguinte lema.
         %
         \begin{lema}
         \label{lema-int-exp}
@@ -2419,7 +2419,9 @@
                 \mathcal{L}\{f\}(s) = \int_0^{\infty} f(\xi) e^{-s\xi} \, d\xi,
             \end{equation*}
             %
-            bastando tomar $f(\xi)\equiv 1$ e $s = (A+iB)$.
+            bastando tomar 
+            $f(\xi)\equiv 1$ e $s = (A+iB)$, ou 
+            $f(\xi) = e^{-iB\xi}$ e $s = A$.
             
             Uma outra maneira de provar isto é ``no braço'': já que $A > 0$, temos $|e^{-(A+iB)\xi}| = e^{-A\xi}$
             e, portanto, a integral do enunciado converge. Por definição,
@@ -2454,7 +2456,7 @@
             %
             Vamos começar analisando a segunda parcela.
             
-            Digamos que $f\in\mathcal{F}_a$ para algum $a>0$. Escolha $b\in\R$ tal que $0 < b < a$.
+            Digamos que $f\in\mathfrak{F}_a$ para algum $a>0$. Escolha $b\in\R$ tal que $0 < b < a$.
             Lembrando do Corolário \ref{transf-fourier-inv-por-shift} e usando o Teorema de Fubini, temos
             %
             \begin{align*}
@@ -2563,7 +2565,7 @@
         %
         \begin{teorema}[Fórmula da Soma de Poisson]
         \label{teo-form-soma-poisson}
-            Se $f\in\mathcal{F}$, então
+            Se $f\in\mathfrak{F}$, então
             %
             \begin{equation*}
                 \sum_{n\in\Z} f(n) = \sum_{n\in\Z} \widehat{f}(n).
@@ -2587,7 +2589,7 @@
         \end{align*}
         %
         \begin{proof}
-            Como $f\in\mathcal{F}$, existe $a > 0$ tal que $f\in\mathcal{F}_a$. Seja 
+            Como $f\in\mathfrak{F}$, existe $a > 0$ tal que $f\in\mathfrak{F}_a$. Seja 
             $b$ um número real que satisfaz $0<b<a$. A função $1/(e^{2\pi i z} - 1)$ 
             tem polos simples sobre os números inteiros, então
             %
@@ -2600,7 +2602,8 @@
             Observe ainda que, com $n \in \Z$,
             %
             \begin{align*}
-                \lim_{z \to n} (z-n)g(z) & = \lim_{z \to n} \frac{(z-n)f(z)}{e^{2\pi i z} - 1}\\
+                \lim_{z \to n} (z-n)g(z) & = 
+                \lim_{z \to n} \frac{(z-n)f(z)}{e^{2\pi i z} - 1}\\
                 &= \lim_{z \to n} \frac{f(z) + (z-n)f'(z)}{2\pi ie^{2\pi i z}} \\
                 &= \frac{f(n)}{2\pi i},
             \end{align*}
@@ -2627,7 +2630,7 @@
             Separe o contorno $\y_N$ em quatro curvas conforme o diagrama abaixo. 
             %
             \begin{center}
-                {\bf slide 11 Aula 11}
+                {\bf slide 11 Aula 10}
             \end{center}
             %
             As integrais sobre
@@ -2715,7 +2718,7 @@
         O que justifica essa troca é o lema a seguir.
         %
         \begin{lema}
-            Seja $f \in \mathcal{F}_a$. Para qualquer $b$ real satisfazendo $0 < b < a$, 
+            Seja $f \in \mathfrak{F}_a$. Para qualquer $b$ real satisfazendo $0 < b < a$, 
             temos que os seguintes limites
             %
             \begin{equation*}
@@ -2728,8 +2731,8 @@
         \end{lema}
         %
         \begin{proof}
-            Vamos denotar por $I$ e por $II$ os limites à esquerda e à direita, respectivamente, 
-            no enunciado. Começamos observando que cada parcela em $II$ é bem definida, e vamos mostrar 
+            Vamos denotar por $I$ e por $\mathit{II}$ os limites à esquerda e à direita, respectivamente, 
+            no enunciado. Começamos observando que cada parcela em $\mathit{II}$ é bem definida, e vamos mostrar 
             que essa série converge absolutamente:
             %
             \begin{align*}
@@ -2811,20 +2814,21 @@
         %
         que é finita para cada $N$ (basta estimar $I_N$ como estimamos $I$).
         Por definição, $I = \displaystyle{\lim_{N\to\infty} I_N}$. 
-        Finalmente, vamos mostrar que $I = II$ 
+        Finalmente, vamos mostrar que $I = \mathit{II}$ 
         analisando o módulo da diferença entre eles.
         %
         \begin{equation*}
-            |I - II|  = |I - I_N + I_N - II| \leq |I-I_N| + |I_N - II|.
+            |I - \mathit{II}|  = |I - I_N + I_N - \mathit{II}| 
+                               \leq |I-I_N| + |I_N - \mathit{II}|.
         \end{equation*}
         %
         Como $|I - I_N| \to 0$ conforme $N \to \infty$, basta mostrar que, também, 
-        $|I_N - II| \to 0$. Vamos denotar por $F(\xi,b)$ a expressão 
+        $|I_N - \mathit{II}| \to 0$. Vamos denotar por $F(\xi,b)$ a expressão 
         $f(\xi + ib)/(1 - e^{2\pi i(\xi + ib)})$ e por $F_n(\xi,b)$ a expressão 
         $f(\xi + ib)e^{2\pi in(\xi + ib)}$. Desse modo, temos
         %
         \begin{align*}
-            I_N - II &= \int_{-N}^{N} \frac{f(\xi + ib)}{(1 - e^{2\pi i(\xi + ib)})}
+            I_N - \mathit{II} &= \int_{-N}^{N} \frac{f(\xi + ib)}{(1 - e^{2\pi i(\xi + ib)})}
             \, d\xi - \sum_{n=0}^{\infty}\int_{-\infty}^{\infty} f(\xi + ib)
             e^{2\pi in(\xi + ib)} \, d\xi \\
             %
@@ -2867,7 +2871,7 @@
         %
         Concluímos então que a parte em $(*)$ vai a $0$ quando $N \to \infty$. 
         %
-        A parte em $(***)$ é a cauda da série que definimos como $II$, 
+        A parte em $(***)$ é a cauda da série que definimos como $\mathit{II}$, 
         que é convergente, então a expressão em $(***)$ deve ir a $0$. 
         Por fim, a expressão em $(**)$ se parece com a cauda da integral $I$.
         Estimando-a, temos
@@ -2891,13 +2895,13 @@
         Como 
         %
         \begin{equation*}
-            \sum_{n=0}^{\infty}e^{-2\pi i nb}
+            \sum_{n=0}^{\infty} e^{-2\pi i nb}
         \end{equation*}
         %
         é finito, concluímos que 
         a última expressão vai a zero quando $N \to \infty$. Com isso, 
-        $(*), (**)$ e $(***)$ vão a zero, então temos que $|I - II|< \e$ para 
-        qualquer $\e>0$ dado, ou seja, $I = II$.
+        $(*), (**)$ e $(***)$ vão a zero, então temos que $|I - \mathit{II}|< \e$ para 
+        qualquer $\e>0$ dado, ou seja, $I = \mathit{II}$.
         \end{proof}
         %
     \subsection{O teorema de Paley-Wiener}
@@ -2925,8 +2929,8 @@
         sobre $f$ e $\widehat{f}$:
         %
         \begin{align*}
-            \forall x\in\R, |f(x)| &\leq \frac{A}{1+x^2}; \\
-            \forall \xi\in\R, |\widehat{f}(\xi)| &\leq \frac{A'}{1+\xi^2},
+            \forall x\in\R, \ |f(x)| &\leq \frac{A}{1+x^2}; \\
+            \forall \xi\in\R, \ |\widehat{f}(\xi)| &\leq \frac{A'}{1+\xi^2},
         \end{align*}
         %
         com $A,A' > 0$ constantes.
@@ -2987,7 +2991,7 @@
                 \Re(2\pi iz\xi) = -2\pi\xi\Im(z) \leq 2\pi b|\xi|
             \end{equation*}
             %
-            na primeira desigualdade, o decaimento de $\widehat{f}$ na segunda desigualdade e
+            na primeira desigualdade, o decaimento de $\widehat{f}$ na segunda desigualdade, e
             o fato de que $0<b<a$ para calcular o limite quando $n\to\infty$.
             
             Por fim, basta considerarmos as restrições de $f_n$ a $S_b$ e observar que a sequência
@@ -3101,7 +3105,7 @@
             %
             define uma extensão inteira de $f$ (basta proceder como
             nos argumentos anteriores: consideramos uma sequência
-            que aproxima $F$, usamos Fubinir e Morera para verificar
+            que aproxima $F$, usamos Fubini e Morera para verificar
             a holomorficidade e mostramos que a sequência de fato
             converge para a função desejada). Ademais, dado $z\in\C$, temos
             %
@@ -3182,7 +3186,7 @@
             forte que a da hipótese do teorema.
             
             Para provar essa afirmação, suponhamos inicialmente $\xi>M$.
-            Sejam $\e>0$ e $f_{\e}:C\setminus\{-i/\e\}\to\C$ dada por
+            Sejam $\e>0$ e $f_{\e}:\C\setminus\{-i/\e\}\to\C$ dada por
             %
             \begin{equation*}
                 f_{\e}(z) = \frac{f(z)}{(1 - i\e z)^2}.
@@ -3223,9 +3227,9 @@
                 \begin{tikzpicture}
                     \draw[-stealth] (-2,0) -- (5,0);
                     \draw[-stealth] (0,-3.5) -- (0,3.5);
-                    \node[left] at (0,1) {$\delta$};
+                    \node[left] at (0,1) {$i\delta$};
                     \node at (0,1) {$\circ$};
-                    \node[left] at (0,-1) {$-\delta$};
+                    \node[left] at (0,-1) {$-i\delta$};
                     \node at (0,-1) {$\circ$};
                     \node[left] at (0,-2.5) {$-i\e x$};
                     \node at (0,-2.5) {$\bullet$};
@@ -3405,7 +3409,7 @@
                     M = \sup_{z\in\overline{S}} |F_{\e}(z)|.
                 \end{equation*}
                 %
-                Supondo $F\not\equiv 0$, seja $\{w_j\}$ uma sequência tal 
+                Supondo $F\not\equiv 0$, seja $(w_j)_{j\in\N}$ uma sequência tal 
                 que $|F_{\e}(w_j)|\to M$. Do decaimento de $F_{\e}$ e 
                 do fato que $M\neq 0$, a sequência não pode ir para o
                 infinito e, portanto, ela tende a um $w\in\overline{S}$.
@@ -3429,7 +3433,7 @@
             e note que $F$ é limitada por 1 para $z\in\R_+^*$ e para
             $z\in i\R_+^*$. Como também temos $|F(z)| \leq Ce^{c|z|}$
             em $\mathcal{Q}_1$, concluímos pelo teorema de Phragmén-Lindelöf
-            que que $|F(z)| \leq 1, \forall z\in\mathcal{Q}$, o que implica
+            que $|F(z)| \leq 1, \forall z\in\mathcal{Q}$, o que implica
             $|f(z)| \leq e^{2\pi M y} = e^{2\pi M|y|}$.
             
             Similarmente, para o segundo quadrante, $\mathcal{Q}_2$,
