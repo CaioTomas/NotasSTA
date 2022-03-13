@@ -783,6 +783,7 @@
        %
     \end{proof}
     %
+    
     O próximo passo é falar de produtos infinitos de funções holomorfas.
     %
     \begin{proposicao}
@@ -803,6 +804,282 @@
     \end{proposicao}
     %
     \begin{proof}
-       a
+       Vamos começar com (i). Note que para cada $z\in\Omega$ fixado podemos
+       escrever $F_n(z) = 1 + a_n(z)$. Ademais, segue da hipótese que
+       $|a_n(z)| = |F_n(z) - 1| \leq c_n$ e que
+       %
+       \begin{equation*}
+           \sum_{n\in\N} |a_n(z)| \leq \sum_{n\in\N} c_n < +\infty.
+       \end{equation*}
+       %
+       Logo, existe
+       %
+       \begin{equation*}
+           \lim_{n\to\infty} \prod_{j=1}^n F_j(z) 
+           = \lim_{n\to\infty} \prod_{j=1}^n [1 + a_j(z)].
+       \end{equation*}
+       %
+       Além disso, os produtos parciais de $F_j$ convergem uniformemente, uma vez
+       que
+       %
+       \begin{align*}
+           \left| \prod_{j=1}^{m+n} F_j(z) - \prod_{j=1}^{n} F_j(z) \right|
+           &=\left|\prod_{j=1}^{m+n} [1+a_j(z)] - \prod_{j=1}^{n} [1+a_j(z)] \right| \\
+           &= \left| e^{B_{m+n}(z)} - e^{B_n(z)} \right| \\
+           &= \left| \int_{B_n(z)}^{B_{m+n}(z)} e^w \, dw \right| \\
+           &\leq \sup_{w\in D\left( 0, 2\sum_{n\in\N} c_n \right)} 
+           |e^w|\cdot |B_{m+n}(z) - B_n(z)| \\
+           &= k|B_{m+n} - B_n(z)| \xrightarrow{m,n\to\infty} 0.
+       \end{align*}
+       %
+       Logo, a função
+       %
+       \begin{equation*}
+           z \mapsto \lim_{n\to\infty} \prod_{j=1}^n F_j(z) 
+                                       \equiv \prod_{j=1}^{\infty} F_j(z)
+                                       \equiv F(z)
+       \end{equation*}
+       %
+       é holomorfa em $\Omega$.
+       
+       Agora, para o item (ii), seja $K\subseteq\Omega$ um subconjunto compacto
+       e defina
+       %
+       \begin{equation*}
+           G_n(z) = \prod_{j=1}^n F_j(z), \forall z\in\Omega.
+       \end{equation*}
+       %
+       Já que $G_n \xrightarrow[\text{unif}]{n\to\infty} F$, temos que
+       $G_n' \xrightarrow[\text{unif em compactos}]{n\to\infty} F'$.
+       Para ver isto basta observar que
+       %
+       \begin{equation*}
+           G_n'(z) - F_n'(z) = 
+           \frac{1}{2\pi i} \int_{\y} (G_n(w) - F_n(w))\frac{1}{(w-z)^2} \, dw
+       \end{equation*}
+       %
+       sendo $\y$ como ilustrado abaixo.
+       %
+       \begin{center}
+           {\bf diagrama slide 7 Aula 15}
+       \end{center}
+       %
+       Por hipótese, $F_n(z) \neq 0$ para todo $n\in\N$ e $z\in\Omega$, de modo
+       que $F(z)\neq 0$ para todo $z\in\Omega$. Já que $F$ é holomorfa e, 
+       consequentemente, contínua, podemos dizer que
+       %
+       \begin{equation*}
+           \inf_{z\in K} |F(z)| = F(z_*) > 0.
+       \end{equation*}
+       %
+       Portanto, podemos garantir que $G_n(z)$ é uniformemente limitada por
+       baixo em $n$ e $z\in K$. De fato,
+       %
+       \begin{align*}
+           \inf_{z\in K} |G_n(z)| = \inf_{z\in K} |G_n(z) - F(z) + F(z)|
+           \geq \inf_{z\in K} | |G_n(z) - F(z)| - |F(z)| |.
+       \end{align*}
+       %
+       Como $G_n$ converge uniformemente para $F$, existe $n_0\in\N$ tal que
+       se $n\geq n_0$, então 
+       $|G_n(z) - F(z)| < \dis{\frac{1}{2}\inf_{z\in K} |F(z)| }$ para todo 
+       $z\in K$. Logo, para todo $n\geq n_0$ temos
+       %
+       \begin{equation*}
+           \inf_{z\in K} |G_n(z)| > \frac{1}{2}\inf_{z\in K} |F(z)| 
+                                  > \frac{1}{2}\inf_{z\in K} |F(z_*)| > 0.
+       \end{equation*}
+       %
+       Por outro lado, se $n\leq n_0$, então como $F_j(z)\neq 0$ para todo 
+       $z\in\Omega$, temos que
+       %
+       \begin{align*}
+           \inf_{z\in K} |G_n(z)| &= \inf_{z\in K} |F_1(z)|\cdots|F_n(z)| \\
+                                  &\geq \prod_{j=1}^n \inf_{z\in K} |F_j(z)| \\
+                                  &= |F_1(z^1_*)| \cdots |F_n(z^n_*)| \equiv I_K.
+       \end{align*}
+       %
+       Portanto, 
+       %
+       \begin{equation*}
+           \inf_{n\in\N} \inf_{z\in K} |G_n(z)| 
+           \geq \min\left\{ I_K, \frac{1}{2}|F(z_*)| \right\},
+       \end{equation*}
+       %
+       donde segue que 
+       %
+       \begin{equation*}
+           \frac{G_n'}{G_n} \xrightarrow[\text{unif. em } K]{n\to\infty} \frac{F'}{F}
+       \end{equation*}
+       %
+       para cada $z\in K$ e, como $K$ é compacto arbitrário, segue que
+       %
+       \begin{equation*}
+           \frac{G_n'(z)}{G_n(z)} \xrightarrow{n\to\infty} \frac{F'(z)}{F(z)}
+       \end{equation*}
+       %
+       para cada $z\in\Omega$. Observe que não podemos garantir que essa última
+       convergência é uniforme em $\Omega$.
+       
+       Ademais, para cada $n\in\N$ temos
+       %
+       \begin{align*}
+           \frac{G_n'(z)}{G_n(z)} 
+           &= \frac{ \frac{d}{dz}[F_1(z)\cdots F_n(z)] }{F_1(z)\cdots F_n(z)} \\
+           &= \sum_{j=1}^n F'_j(z)
+           \frac{F_1(z)\cdots F_{j-1}(z)F_{j+1}(z)\cdots F_n(z)}{F_1(z)\cdots F_n(z)} 
+           \\
+           &= \sum_{j=1}^n \frac{F'_j(z)}{F_j(z)},
+       \end{align*}
+       %
+       o que mostra que
+       %
+       \begin{equation*}
+           \frac{F'(z)}{F(z)} = \lim_{n\to\infty} \frac{G'_n(z)}{G_n(z)}
+                              = \lim_{n\to\infty} \sum_{j=1}^n \frac{F'_j(z)}{F_j(z)}
+                              \equiv \sum_{j=1}^{\infty} \frac{F'_j(z)}{F_j(z)}.
+       \end{equation*}
+       %
     \end{proof}
     %
+    Vamos usar este teorema para trabalhar com um exemplo interessante.
+    \begin{exemplo}[A fórmula do produto da função seno]
+        Vamos estabelecer a validade da seguinte fórmula:
+        %
+        \begin{equation*}
+            \frac{\sen(\pi z)}{\pi} = z\prod_{n=1}^{\infty} 
+            \left( 1 - \frac{z^2}{n} \right).
+        \end{equation*}
+        %
+        Para tanto, vamos estabelecer uma fórmula para $\cot(\pi z)$.
+        
+        Vamos mostrar que, para todo $z\in\C\setminus\mathbb{Z}$, temos
+        %
+        \begin{equation*}
+            \pi\cot(\pi z) = \sum_{n=-\infty}^{\infty} \frac{1}{z+n}
+                           \equiv \lim_{n\to\infty} \sum_{|j|\leq n} \frac{1}{z+j}
+                           = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2},
+        \end{equation*}
+        %
+        onde usamos que
+        %
+        \begin{equation*}
+            \frac{1}{z+n} + \frac{1}{z-n} = \frac{2z}{z^2 - n^2}.
+        \end{equation*}
+        %
+        A estratégia para mostrar essa identidade será mostrar que tanto
+        $F(z) = \pi\cot(\pi z)$ e $S(z) = \dis{\frac{1}{z} + 
+        \sum_{n=1}^{\infty} \frac{2z}{z^2- n^2}}$ satisfazem as seguintes propriedades:
+        %
+        \begin{enumerate}[(i)]
+            \item $H(z+1) = H(z)$;
+            \item $H(z) = \dis{ \frac{1}{z} + H_0(z) }$, sendo $H_0$ analítica próxima
+            do zero;
+            \item $H(z)$ tem polos simples em $\Z$ e nenhuma outra singularidade.
+        \end{enumerate}
+        %
+        De fato, para $F$,
+        %
+        \begin{enumerate}[(i)]
+            \item 
+            %
+            \begin{align*}
+                F(z+1)=\pi\cot(\pi(z+1)) &= \pi\frac{\cos(\pi(z+1))}{\sen(\pi(z+1))} \\
+                                         &= \pi\frac{-\cos(\pi z)}{-\sen(\pi z)} \\
+                                         &= \pi\cot(\pi z) \\
+                                         &= F(z).
+            \end{align*}
+            %
+            \item 
+            %
+            \begin{align*}
+                \lim_{z\to 0} zF(z) &= \lim_{z\to 0} \pi z 
+                \frac{\cos(\pi z)}{\sen(\pi z)} \\
+                &= \lim_{z\to 0} \cos(\pi z)\cdot\frac{\pi z}{\sen(\pi z)} \\
+                &= \lim_{z\to 0} \frac{\pi z}{\sen(\pi z)} \\
+                &= 1 = \res(F,0).
+            \end{align*}
+            %
+            Como $F$ tem apenas singularidades isoladas em $\Z$, segue do
+            teorema de Laurent que para todo $z\in A(0,0,1)$ temos
+            %
+            \begin{equation*}
+                F(z) = \frac{\res(F,0)}{z} + H_0(z) = \frac{1}{z} + H_0(z),
+            \end{equation*}
+            %
+            com $H_0$ holomorfa em $D(0,1).$
+            
+            \item $F$ é claramente holomorfa em $\C\setminus\Z$.
+        \end{enumerate}
+        %
+        Agora, para $S$, temos
+        %
+        \begin{enumerate}[(i)]
+            \item $\forall z\in\C\setminus\Z$:
+            %
+            \begin{align*}
+                S(z+1) &= \lim_{n\to\infty} \sum_{|j|\leq n} \frac{1}{z+1+j} \\
+                       &= \lim_{n\to\infty}\left( \sum_{|j|\leq n+1} \frac{1}{z+j}
+                       - \frac{1}{z-n-1} - \frac{1}{z-n} \right) \\
+                       &= \lim_{n\to\infty} \sum_{|j|\leq n} \frac{1}{z_j} \\
+                       &= S(z)
+            \end{align*}
+            %
+            \item $\forall z\in D(0,1/2)$, temos
+            %
+            \begin{equation*}
+                S(z) = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}.
+            \end{equation*}
+            %
+            Considere a sequência de funções $h_n:D(0,1/2)\to\C$ dada por
+            $h_n(z) = \dis{ \frac{2z}{z^2 - n^2} }$. Para cada $n\in\N$, temos
+            que $h_n$ é uma função holomorfa e, além disso,
+            %
+            \begin{align*}
+                \sup_{z\in D(0,1/2)} |h_n(z)| 
+                = \sup_{z\in D(0,1/2)} \left| \frac{2z}{n^2
+                \left( \frac{z^2}{n^2} - 1 \right)} \right|
+                = \frac{2}{n^2}\sup_{z\in D(0,1/2)} 
+                \frac{|z|}{\left| \frac{z^2}{n^2} - 1 \right|}
+                = \frac{2}{n^2}.
+            \end{align*}
+            %
+            Logo,
+            %
+            \begin{equation*}
+                \sum_{n=1}^{\infty} \sup_{z\in D(0,1/2)} |h_n(z)|
+                \leq 2\sum_{n=1}^{\infty} \frac{1}{n^2} < +\infty.
+            \end{equation*}
+            %
+            Pelo teste M de Weierstrass, segue que 
+            $\dis{ \sum_{n=1}^{\infty} h_n(z) \equiv S_0(z) }$ define uma função
+            $S_0: D(0,1/2) \to\C$ holomorfa. Assim, 
+            %
+            \begin{equation*}
+                S(z) = \frac{1}{z} + S_0(z),
+            \end{equation*}
+            %
+            com $S_0$ holomorfa em $D(0,1/2)$.
+            
+            \item Fixado $n\in\Z$, temos que
+            %
+            \begin{align*}
+                S(z) &= \frac{1}{z} + \sum_{j\in\N\setminus\{n\}} \frac{2z}{z^2 - j^2}
+                + \frac{2z}{z^2 - n^2} \\
+                &= S_1(z) + \frac{1}{z+n} + \frac{1}{z-n}.
+            \end{align*}
+            %
+            Pelo teste M de Weierstrass, segue que $S_1(z) + \dis{\frac{1}{z+n}}$
+            é holomorfa em $D(n, 1/2)$, de modo que $S$ tem apenas polos simples
+            em cada ponto de $\Z$.
+        \end{enumerate}
+        %
+        Sabendo que $F$ e $S$ satisfazem (i), (ii) e (iii), podemos afirmar que
+        $H:\C\setminus\Z\to\C$ dada por
+        %
+        \begin{equation*}
+            H(z) \equiv F(z) - S(z)
+        \end{equation*}
+        %
+        satisfaz $H(z+1) = H(z)$.
+    \end{exemplo}
