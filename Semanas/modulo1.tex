@@ -48,7 +48,7 @@
     Vamos tratar de um caso específico em que $G$ é um domínio contendo a origem e 
     $\y: [0,1] \to \C$ é uma circunferência com centro em $0$, $\y = r\exp{2 \pi i t}$, 
     em que $r > 0$ é tal que os pontos de $\y$ estão em $G$. 
-    Vamos supor que $f$ tem apenas uma singularidade $z_0$ no interior da região delimitada por $\y$. 
+    Vamos supor que $f$ tem apenas um zero $z_0$ no interior da região delimitada por $\y$. 
     Sendo $\y$ uma aplicação contínua, temos que a curva que ela parametriza é um compacto de $\C$, 
     pois é o conjunto $\y([0,1])$ e $[0,1]$ é compacto em $\R$. 
     Isso significa que podemos escolher um número finito de bolas $B_i$ centradas nos pontos 
@@ -138,8 +138,7 @@
     $B_{n-1} \cap B_1$). Lembre-se ainda que $a_1 = a_n$.
     
     Por esta contradição, concluímos que não podemos definir $\log f(z)$ desta forma que fizemos.
-    Este é apenas um caso particular, mas mostra um pouco do por quê não é possível fazer tal
-    construção.
+    Este é apenas um caso particular, mas mostra alguns dos cuidados que temos que ter ao tentar fazer uma construção desse tipo. Nas próximas seções, ficarão mais claras as hipóteses que devemos que assumir para que tudo funcione bem.
 
 \section{Continuação analítica ao longo de caminhos}
 
@@ -2687,9 +2686,14 @@
             
             Considere o contorno $\y_N$ na figura abaixo. 
             %
-            \begin{center}
-                {\bf diagrama slide 6 aula 10}
-            \end{center}
+            \begin{figure}[H]\centering
+                \includegraphics{%
+                    Figuras/contorno para Poisson.pdf
+                }
+                \caption{%
+                    Ilustração de $\y_N$.
+                }
+            \end{figure}
             %
             Pelo teorema dos resíduos, temos que 
             %
@@ -2703,9 +2707,14 @@
             
             Separe o contorno $\y_N$ em quatro curvas conforme o diagrama abaixo. 
             %
-            \begin{center}
-                {\bf slide 11 Aula 10}
-            \end{center}
+            \begin{figure}[H]\centering
+                \includegraphics{%
+                    Figuras/yne e ynd.pdf
+                }
+                \caption{%
+                    Ilustração de $\y_N^d$ e $\y_N^e$ em $\y_N$. Repare nos rótulos sugestivos dessas curvas.
+                }
+            \end{figure}
             %
             As integrais sobre
             $\y_N^e$ e $\y_N^d$ vão a zero quando $N \to \infty$. Para verificar isto, usamos o 
@@ -2851,26 +2860,10 @@
         $|1 - e^{2\pi i(\xi + ib)}| \geq 1 - e^{-2\pi b}$, como mostrado no 
         diagrama abaixo.
         %
-        \begin{figure}[H]
-            \centering
-            \begin{tikzpicture}
-                \draw (0,0) circle (4);
-                \draw[-stealth] (-5,0) -- (5,0);
-                \node[right] at (5,0) {$\Re$};
-                \draw[-stealth] (0,-5) -- (0,5);
-                \node[above] at (0,5) {$\Im$};
-                \draw (0,0) circle (1.5);
-                \node[below right] at (1.5,0) {$e^{-2\pi b}$};
-                \node at (1.5,0) {$\bullet$};
-                \node[above right] at (4,0) {$1$};
-                \node[above right] at (1,1.118034) {$e^{2\pi i(\xi + ib)}$};
-                \node at (1,1.118034) {$\bullet$};
-                \draw[thick, red] (4,0)--(1.5,0);
-                \draw[blue] (4,0)--(1,1.118034);
-                \node[above left] at (-1,1.118034) {$e^{2\pi i(\xi + ib)}$};
-                \node at (-1,1.118034) {$\bullet$};
-                \draw[blue] (4,0)--(-1,1.118034);
-            \end{tikzpicture}
+        \begin{figure}[H]\centering
+            \includegraphics{%
+                Figuras/majorando |exp-1|.pdf
+            }
         \end{figure}
         %
         Logo,
@@ -3296,28 +3289,10 @@
             separando a integral na parte $\delta$-próxima da origem e na parte $\delta$-longe da origem.
             O diagrama abaixo ilustra o argumento.
             %
-            \begin{figure}[H]
-                \centering
-                \begin{tikzpicture}
-                    \draw[-stealth] (-2,0) -- (5,0);
-                    \draw[-stealth] (0,-3.5) -- (0,3.5);
-                    \node[left] at (0,1) {$i\delta$};
-                    \node at (0,1) {$\circ$};
-                    \node[left] at (0,-1) {$-i\delta$};
-                    \node at (0,-1) {$\circ$};
-                    \node[left] at (0,-2.5) {$-i\e x$};
-                    \node at (0,-2.5) {$\bullet$};
-                    \node[left] at (0,2.5) {$i\e x$};
-                    \node at (0,2.5) {$\bullet$};
-                    \node[above right] at (4,0) {$1$};
-                    \node at (4,0) {$\bullet$};
-                    \draw[thick, red] (4,0) -- (0,1);
-                    \draw[thick, red] (4,0) -- (0,-1);
-                    \draw[blue] (4,0) -- (0,2.5);
-                    \draw[blue] (4,0) -- (0,-2.5);
-                    \node[right] at (5,0) {$\Re$};
-                    \node[above] at (0,3.5) {$\Im$};
-                \end{tikzpicture}
+            \begin{figure}[H]\centering
+                \includegraphics{%
+                    Figuras/diagrama para o passo 2.pdf
+                }
             \end{figure}
             %
             Para a parcela com a integral na $\delta$-vizinhança da origem, observamos que, quando $x = 0$,
@@ -3659,3 +3634,5 @@
             por fim, $\widehat{f}(\xi) = \widehat{f_{0,0}} (\xi) = 0$ para todo $\xi < 0$.
         \end{proof}
         %
+        
+    
