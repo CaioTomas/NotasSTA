@@ -1160,5 +1160,92 @@
             \leq \widetilde{k_1}.
         \end{align*}
         %
-        % terminar a estimativa...
+        Ainda para $y>1$, temos
+        %
+        \begin{align*}
+            \left| 
+            \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2} 
+            \right|
+            &= \left| 
+            \frac{1}{x+iy} + \sum_{n=1}^{\infty} \frac{2(x+iy)}{x^2 - y^2 - n^2 +2ixy} 
+            \right| \\
+            &\leq \frac{1}{\sqrt{x^2 + y^2}} 
+            + \sum_{n=1}^{\infty} \frac{|2x|}{\sqrt{(x^2 - y^2 - n^2)^2 + 4x^2y^2}} \\
+            &+ \sum_{n=1}^{\infty} \frac{|2y|}{\sqrt{(x^2 - y^2 - n^2)^2 + 4x^2y^2}} \\
+            &\leq 1 
+            + \sum_{n=1}^{\infty} \frac{1}{y^2 + n^2 - x^2}
+            + \sum_{n=1}^{\infty} \frac{|2y|}{y^2 + n^2 - x^2} \\
+            &= 1 + C + 2\sum_{n=1}^{\infty} \frac{y}{y^2 + n^2 - x^2} \\
+            &\leq 1 + C + 2\sum_{n=1}^{\infty} \frac{y}{y^2 + n^2 - 1} \\
+            &\leq C' + 2\int_0^{\infty} \frac{y}{y^2 + u^2 - 1} \, du,
+        \end{align*}
+        %
+        uma vez que a função $\dis{ \frac{y}{y^2 + u^2 - 1} }$ é decrescente em $u$.
+        Ademais, temos que
+        %
+        \begin{align*}
+            \int_0^{\infty} \frac{y}{y^2 + u^2 - 1} \, du
+            = \frac{\pi y}{2\sqrt{y^2 - 1}} % aqui eu usei o Wolfram
+            \leq \pi, % aqui eu usei o GeoGebra
+        \end{align*}
+        %
+        donde concluímos que
+        %
+        \begin{align*}
+            \left| 
+            \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2} 
+            \right|
+            \leq C' + 2\pi = \widetilde{k_2}.
+        \end{align*}
+        %
+        Portanto,
+        %
+        \begin{equation*}
+            |H(z)| \leq |F(z)| + |S(z)| 
+                   \leq \pi\widetilde{k_1} + \widetilde{k_2}
+                   < +\infty,
+        \end{equation*}
+        %
+        ou seja, $H$ é limitada para $y>1$. Um argumento similar nos mostra
+        que $H$ também é limitada para $y < -1$, de modo que $H$ é limitada
+        em toda a faixa $S_{\frac{1}{2}}$. Logo, da periodicidade de $H$,
+        segue que essa função é limitada em $\C$ e, pelo teorema de Liouville,
+        $H(z)$ é constante. Como $H(0) = 0$, segue que $H\equiv 0$, ou seja,
+        $F(z) \equiv S(z)$.
+        
+        Finalmente, para mostrar a fórmula de produto para o seno, sejam
+        %
+        \begin{align*}
+            G(z) &= \frac{\sen(\pi z)}{\pi} \\
+            P(z) = z\prod_{n=1}^{\infty} \left( 1 - \frac{z^2}{n^2} \right).
+        \end{align*}
+        %
+        Pela Proposição \ref{prop:prod-inf-func-holom} e do fato de que a série
+        de $1/n^2$ converge absolutamente temos que $P(z)$ converge e, longe
+        dos inteiros, temos
+        %
+        \begin{equation*}
+            \frac{P'(z)}{P(z)} = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}.
+        \end{equation*}
+        %
+        Como $G'(z)/G(z) = \pi\cot(\pi z)$, o resultado que acabamos de mostrar
+        nos dá
+        %
+        \begin{equation*}
+            \left( \frac{P(z)}{G(z)} \right)'
+            = \frac{ P'(z)G(z) - P(z)G'(z) }{ G^2(z) }
+            = \frac{P(z)}{G(z)}\left[ \frac{P'(z)}{P(z)} - \frac{G'(z)}{G(z)} \right]
+            \equiv 0,
+        \end{equation*}
+        %
+        de modo que $P(z) = cG(z)$ para alguma constante $c$. Ora, então
+        %
+        \begin{equation*}
+            1 
+            = \lim_{z\to 0} \frac{P(z)}{z} 
+            = c\lim_{z\to 0} \frac{G(z)}{z}
+            = c,
+        \end{equation*}
+        %
+        ou seja, $P(z) = G(z)$ e fica demonstrada a fórmula.
     \end{exemplo}
