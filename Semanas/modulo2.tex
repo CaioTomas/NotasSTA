@@ -942,6 +942,7 @@
        %
     \end{proof}
     %
+    
     Vamos usar este teorema para trabalhar com um exemplo interessante.
     \begin{exemplo}[A fórmula do produto da função seno]
         Vamos estabelecer a validade da seguinte fórmula:
@@ -1081,5 +1082,77 @@
             H(z) \equiv F(z) - S(z)
         \end{equation*}
         %
-        satisfaz $H(z+1) = H(z)$.
+        satisfaz $H(z+1) = H(z)$. Ademais, segue da propriedade (ii) que
+        $\res(H,0)$, de modo que $z=0$ é uma singularidade removível de $H$.
+        Esta informação, junto com a periodicidade de $H$ dada pelo item (i)
+        implica que, para todo $n\in\Z$,
+        %
+        \begin{equation*}
+            \lim_{z\to n} H(z) = \lim_{z\to n} H(z-n) = \lim_{z\to 0} H(z) = 0.
+        \end{equation*}
+        %
+        Logo, segue do teorema de Riemann que $H$ admite extensão inteira.
+        
+        Para estabelecer a fórmula da cotangente, é suficiente mostrar que
+        $H$ é limitada e usar o teorema de Liouville, uma vez que $H(0) = 0$.
+        
+        Para mostrar que $H$ é limitada, basta trabalhar na faixa
+        %
+        \begin{equation*}
+            S_{\frac{1}{2}} = \left\{ z\in\C : |\Re(z)| \leq \frac{1}{2} \right\},
+        \end{equation*}
+        %
+        uma vez que $H$ satisfaz a periodicidade (i).
+        %
+        \begin{center}
+            {\bf diagrama slide 27 Aula 15}
+        \end{center}
+        %
+        Já que $H:\C\to\C$ é inteira, então $H$ é limitada em
+        %
+        \begin{equation*}
+            S_1 = \{ z\in\C : |\Im(z)| \leq 1 \},
+        \end{equation*}
+        %
+        ou seja, 
+        %
+        \begin{equation}
+            \sup_{z\in S_1} |H(z)| = k_1 < +\infty.
+        \end{equation}
+        %
+        pois $S_1 \cap S_{\frac{1}{2}}$ é um compacto, como ilustrado abaixo.
+        %
+        \begin{center}
+            {\bf diagrama slide 28 Aula 15}
+        \end{center}
+        %
+        Para terminar a demonstração que $H$ é limitada em $S_{\frac{1}{2}}$,
+        resta analisar o que acontece com a função em
+        %
+        \begin{equation*}
+            S_{1^+} = \left\{ z\in\C : |\Im(z)| > 1 \right\}.
+        \end{equation*}
+        %
+        Ora, se $z = x+iy$ e $y>1$, então
+        %
+        \begin{align*}
+            \cot(\pi z) &= 
+            i\frac{ e^{i\pi z} + e^{-i\pi z} }{ e^{i\pi z} - e^{-i\pi z} } \\
+            &= i\frac{ e^{i\pi x}e^{-\pi y} + e^{-i\pi x}e^{\pi y} }
+            { e^{i\pi x}e^{-\pi y} - e^{-i\pi x}e^{\pi y} } \\
+            &= i\frac{ e^{-2\pi y} + e^{-2\pi ix} }{ e^{-2\pi y} - e^{-2\pi ix} }.
+        \end{align*}
+        %
+        Como estamos supondo $y>1$, segue que
+        %
+        \begin{align*}
+            |\cot(\pi z)| = 
+            \left| 
+            \frac{ e^{-2\pi y} + e^{-2\pi ix} }{ e^{-2\pi y} - e^{-2\pi ix} } 
+            \right|
+            \leq \frac{ 1 + e^{-2\pi y} }{ 1 - e^{-2\pi y} }
+            \leq \widetilde{k_1}.
+        \end{align*}
+        %
+        % terminar a estimativa...
     \end{exemplo}

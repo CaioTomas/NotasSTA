@@ -1900,19 +1900,15 @@
             |f(x+iy)| \leq \frac{A}{1 + x^2}, \, \forall x\in\R, |y|<a.
         \end{equation*}
         %
-        \begin{figure}[H]
-				\centering 
-				\begin{tikzpicture}
-				\draw (-5,2)--(5,2);
-				\draw (-5,-2)--(5,-2);
-				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
-				\draw[-latex] (0,-3)--(0,3) node [at end,above]{$\Im$};
-				\node [at={(0,2)}, above right]{$ia$};
-				\node [at={(0,-2)}, below right]{$-ia$};
-				\draw[red] (-5,1.2)--(5,1.2) node [at end,above]{$y=\Im(z)$};
-				\node [at={(0,1.2)}, above left]{$y$};
-				\end{tikzpicture}
-			\end{figure}
+        \begin{figure}[H]\centering 
+			\includegraphics{%
+			    Figuras/faixa Sa.pdf
+			}
+			\caption{%
+			    Ilustração de $S_a$ com destaque para o conjunto 
+			    $\{z\in\C: \Im(z)=y<a\}$
+			}
+		\end{figure}
         %
         Note que a constante $A$ é uniforme na reta $y = \Im(z)$, isto é, $A$ independe da 
         ``altura'' em que estamos na faixa.
@@ -2312,25 +2308,10 @@
             Considere então a função $g$ dada por $g(z) = f(z)\exp(-2\pi iz\xi)$. Observe que $\xi$
             está fixado. Consideramos então o contorno mostrado no diagrama abaixo.
             %
-            \begin{figure}[H]
-				\centering 
-				\begin{tikzpicture}
-				\draw (4,0)--(4,-3)--(-4,-3)--(-4,0)--cycle;
-				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
-				\draw[-latex] (0,-4)--(0,2) node [at end,above]{$\Im$};
-				\node[at={(4,0)}, above]{$R$};
-				\node [at= {(4,-3)}, below]{$R-ib$};
-				\node[at={(-4,-3)}, below]{$-R-ib$};
-				\node [at= {(-4,0)}, above]{$-R$};
-				\node [at={(2.7,0)}, above]{$\y_1$};
-				\node [at={(4,-2.2)}, right]{$\y_2$};
-				\node [at={(-2,-3)}, below]{$\y_3$};
-				\node [at={(-4,-1.2)}, left]{$\y_4$};
-				\draw[->] (2.5,0)--(2.9,0);
-				\draw[->] (4,-2)--(4,-2.2);
-				\draw[->] (-1.8,-3)--(-2,-3);
-				\draw[->] (-4,-1.3)--(-4,-1.2);
-				\end{tikzpicture}
+            \begin{figure}[H]\centering 
+				\includegraphics{%
+				    Figuras/contorno xi>0.pdf
+				}
 				\caption{Contorno no caso $\xi > 0$.}
 			\end{figure}
             %
@@ -2396,22 +2377,8 @@
             Isso prova o resultado para $\xi > 0$. Para $\xi < 0$, procedemos de maneira equivalente considerando
             o contorno abaixo.
             %
-            \begin{figure}[H]
-				\centering 
-				\begin{tikzpicture}
-				\draw (4,0)--(4,3)--(-4,3)--(-4,0)--cycle;
-				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
-				\draw[-latex] (0,-2)--(0,4) node [at end,above]{$\Im$};
-				\node[at={(4,0)}, below]{$R$};
-				\node [at= {(4,3)}, above]{$R+ib$};
-				\node[at={(-4,3)}, above]{$-R+ib$};
-				\node [at= {(-4,0)}, below]{$-R$};
-				%\node [at={(4,1.5)}, right]{$\y_R$};
-				\draw[->] (-2.3,3)--(-2.5,3);
-				\draw[->] (-4,1.7)--(-4,1.5);
-				\draw[->] (2.5,0)--(2.7,0);
-				\draw[->] (4,2.2)--(4,2.5);
-				\end{tikzpicture}
+            \begin{figure}[H]\centering 
+				\includegraphics{Figuras/contorno xi<0.pdf}
 				\caption{Contorno no caso $\xi < 0$.}
 			\end{figure}
             %
@@ -2555,49 +2522,17 @@
             %
             sendo $\y_2(u) = u+ib, b\in\R$. Ilustramos os ``caminhos'' abaixo.
             %
-            \begin{figure}[H]
-				\centering 
-				\begin{tikzpicture}
-				\draw (-5,2)--(5,2);
-				\draw (-5,-2)--(5,-2);
-				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
-				\draw[-latex] (0,-3)--(0,3) node [at end,above]{$\Im$};
-				\node [at={(0,2)}, above right]{$ia$};
-				\node [at={(0,-2)}, below right]{$-ia$};
-				\draw[-latex,teal] (-5,1.2)--(5,1.2) node [at end,above]{$\y_2$};
-				\node [at={(0,1.2)}, above left]{$ib$};
-				\draw[-latex,teal] (-5,-1.2)--(5,-1.2) node [at end,above]{$\y_1$};
-				\node [at={(0,-1.2)}, above left]{$-ib$};
-				\end{tikzpicture}
+            \begin{figure}[H]\centering 
+				\includegraphics{%
+				    Figuras/pseudo caminhos.pdf
+				}
 			\end{figure}
-        %
+            %
             A estratégia agora será truncar esses dois ``caminhos'', formando o retângulo abaixo, e mostrar que
             as integrais nos caminhos verticais vão para zero quando $R\to\infty$.
             %
-            \begin{figure}[H]
-				\centering 
-				\begin{tikzpicture}
-				\draw (4,2)--(-4,2)--(-4,-2)--(4,-2)--cycle;
-				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
-				\draw[-latex] (0,-4)--(0,4) node [at end,above]{$\Im$};
-				\node[at={(4,0)}, below right]{$R$};
-				%\node [at= {(4,-3)}, below]{$R-ib$};
-				%\node[at={(-4,-3)}, below]{$-R-ib$};
-				\node [at= {(-4,0)}, below left]{$-R$};
-				\node [at={(2,-2)}, below]{$\beta_R^1$};
-				\node [at={(4,1)}, right]{$\beta_R^2$};
-				\node [at={(2,2)}, above]{$\beta_R^3$};
-				\node [at={(-4,1)}, left]{$\beta_R^4$};
-				\draw[-latex] (4,0.9)--(4,1);
-				\draw[-latex] (4,-1.1)--(4,-1);
-				\draw[-latex] (2.1,2)--(2,2);
-				\draw[-latex] (-1.9,2)--(-2,2);
-				\draw[-latex] (-4,1.1)--(-4,1);
-				\draw[-latex] (-4,-0.9)--(-4,-1);
-				\draw[-latex] (-2.1,-2)--(-2,-2);
-				\draw[-latex] (1.9,-2)--(2,-2);
-				\end{tikzpicture}
-				\caption{Contorno no caso $\xi > 0$.}
+            \begin{figure}[H]\centering		            
+                \includegraphics{Figuras/beta r.pdf}
 			\end{figure}
             %
             Defina $\beta_R \equiv \beta_R^1*\beta_R^2*\beta_R^3*\beta_R^4$. Usando a Fórmula Integral de Cauchy
