@@ -318,19 +318,30 @@
     %
     \begin{equation*}
         \sum_{k=1}^{N}\ln{\left |\frac{R}{z_k}\right|} 
-        = \sum_{k=1}^{N}\int_{|z_K|}^{R} \, \frac{dr}{r}.
+        = \sum_{k=1}^{N}\int_{|z_k|}^{R} \, \frac{dr}{r}.
     \end{equation*}
     %
     Defina, para $k \in \{1, \dots, N\}$, as funções
-    %
-    \begin{align*}
-        \eta_k(r) = 
+    
+    \begin{tabular}{%
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    	}
+    	\centering
+    	$\dis
+    	\eta_k(r) = 
         \begin{cases}
-            1, \text{ se } r > |z_k| \\
-            0, \text{ se } r \leq |z_k|.
+            1, &\text{se } r > |z_k| \\
+            0, &\text{se } r \leq |z_k|
         \end{cases}
-    \end{align*}
-    %
+    	$
+    	&
+    	\includegraphics{Figuras/função salto.pdf} 
+    \end{tabular}
+    
     Então $n_f(r) = \dis{\sum_{k=1}^{N} \eta_k(r)}$. Segue que
     %
     \begin{align*}
@@ -386,8 +397,8 @@
             = \sum_{j=1}^n \int_{|z_j|}^R \frac{1}{r} \, dr.
         \end{equation*}
         %
-        Ademais, para cada $j=1, 2, \dots, n$, considere a função $\eta_k:\R\to\R$
-        dada por
+        Ademais, para cada $j=1, 2, \dots, n$, considere a função $\eta_j:\R\to\R$
+        definida anteriormente:
         %
         \begin{equation*}
             \eta_j(r) 
