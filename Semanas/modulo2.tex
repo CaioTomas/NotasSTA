@@ -959,8 +959,12 @@
         \end{equation*}
         %
         Para tanto, vamos estabelecer uma fórmula para $\cot(\pi z)$.
+        Apesar de parecer estranha, a escolha da função cotangente é tudo menos
+        coincidência. De fato, devido à Proposição \ref{prop:prod-inf-func-holom},
+        para encontrar uma fórmula do produto da função $\sen(\pi z)/\pi$ precisaremos 
+        considerar a sua derivada logarítmica, que nada mais é que $\pi\cot(\pi z)$.
         
-        Vamos mostrar que, para todo $z\in\C\setminus\mathbb{Z}$, temos
+        Vamos então mostrar que, para todo $z\in\C\setminus\mathbb{Z}$, temos
         %
         \begin{equation*}
             \pi\cot(\pi z) = \sum_{n=-\infty}^{\infty} \frac{1}{z+n}
@@ -1117,26 +1121,35 @@
         Já que $H:\C\to\C$ é inteira, então $H$ é limitada em
         %
         \begin{equation*}
+            \Omega_1 = S_1 \cap S_{\frac{1}{2}},
+        \end{equation*}
+        %
+        com
+        %
+        \begin{equation*}
             S_1 = \{ z\in\C : |\Im(z)| \leq 1 \},
         \end{equation*}
         %
         ou seja, 
         %
         \begin{equation}
-            \sup_{z\in S_1} |H(z)| = k_1 < +\infty.
+            \sup_{z\in \Omega_1} |H(z)| = k_1 < +\infty
         \end{equation}
         %
-        pois $S_1 \cap S_{\frac{1}{2}}$ é um compacto, como ilustrado abaixo.
+        pois $\Omega_1$ é um compacto, como ilustrado abaixo.
         %
-        \begin{center}
-            {\bf diagrama slide 28 Aula 15}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/S_meio cap S_1.pdf}
+            \caption{%
+                A região hachurada, $S_\frac{1}{2} \cap S_1$, é um compacto.
+            }
+        \end{figure}
         %
         Para terminar a demonstração que $H$ é limitada em $S_{\frac{1}{2}}$,
         resta analisar o que acontece com a função em
         %
         \begin{equation*}
-            S_{1^+} = \left\{ z\in\C : |\Im(z)| > 1 \right\}.
+            \Omega_2 = S_{\frac{1}{2}} \cap \left\{ z\in\C : |\Im(z)| > 1 \right\}.
         \end{equation*}
         %
         Ora, se $z = x+iy$ e $y>1$, então
@@ -1160,7 +1173,7 @@
             \leq \widetilde{k_1}.
         \end{align*}
         %
-        Ainda para $y>1$, temos
+        Ainda para $y>1$ e $x\leq 1/2$, temos
         %
         \begin{align*}
             \left| 
@@ -1173,63 +1186,115 @@
             + \sum_{n=1}^{\infty} \frac{|2x|}{\sqrt{(x^2 - y^2 - n^2)^2 + 4x^2y^2}} \\
             &+ \sum_{n=1}^{\infty} \frac{|2y|}{\sqrt{(x^2 - y^2 - n^2)^2 + 4x^2y^2}} \\
             &\leq 1 
-            + \sum_{n=1}^{\infty} \frac{1}{y^2 + n^2 - x^2}
-            + \sum_{n=1}^{\infty} \frac{|2y|}{y^2 + n^2 - x^2} \\
-            &= 1 + C + 2\sum_{n=1}^{\infty} \frac{y}{y^2 + n^2 - x^2} \\
-            &\leq 1 + C + 2\sum_{n=1}^{\infty} \frac{y}{y^2 + n^2 - 1} \\
-            &\leq C' + 2\int_0^{\infty} \frac{y}{y^2 + u^2 - 1} \, du,
+            + \sum_{n=1}^{\infty} \frac{1}{|y|^2 + n^2 - 1/4}
+            + \sum_{n=1}^{\infty} \frac{|2y|}{|y|^2 + n^2 - 1/4} \\
+            &= 1 + \sum_{n=1}^{\infty} \frac{1}{n^2} 
+            + 2\sum_{n=1}^{\infty} \frac{|y|}{|y|^2/4 + n^2 - n^2/4} \\
+            &\leq 1 + \frac{\pi^2}{6} + 
+            8\sum_{n=1}^{\infty} \frac{|y|}{\frac{1}{4}(|y|^2 + 3n^2)} \\
+            &\leq 1 + \frac{\pi^2}{6} +
+            8\sum_{n=1}^{\infty} \frac{|y|}{|y|^2 + n^2}.
         \end{align*}
         %
-        uma vez que a função $\dis{ \frac{y}{y^2 + u^2 - 1} }$ é decrescente em $u$.
-        Ademais, temos que
-        %
-        \begin{align*}
-            \int_0^{\infty} \frac{y}{y^2 + u^2 - 1} \, du
-            = \frac{\pi y}{2\sqrt{y^2 - 1}} % aqui eu usei o Wolfram
-            \leq \pi, % aqui eu usei o GeoGebra
-        \end{align*}
-        %
-        donde concluímos que
-        %
-        \begin{align*}
-            \left| 
-            \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2} 
-            \right|
-            \leq C' + 2\pi = \widetilde{k_2}.
-        \end{align*}
-        %
-        Portanto,
+        Agora, como $b:(0, +\infty)\to\R$ dada por $\dis{ b(x) = \frac{|y|}{|y|^2 + x^2} }$
+        é decrescente já que
         %
         \begin{equation*}
-            |H(z)| \leq |F(z)| + |S(z)| 
-                   \leq \pi\widetilde{k_1} + \widetilde{k_2}
-                   < +\infty,
+            b'(x) = |y|\frac{-2x}{(|y|^2 + x^2)^2} < 0 \, \forall x+iy \in\Omega_2,
         \end{equation*}
         %
-        ou seja, $H$ é limitada para $y>1$. Um argumento similar nos mostra
-        que $H$ também é limitada para $y < -1$, de modo que $H$ é limitada
-        em toda a faixa $S_{\frac{1}{2}}$. Logo, da periodicidade de $H$,
-        segue que essa função é limitada em $\C$ e, pelo teorema de Liouville,
-        $H(z)$ é constante. Como $H(0) = 0$, segue que $H\equiv 0$, ou seja,
-        $F(z) \equiv S(z)$.
-        
+        podemos assegurar que
+        %
+        \begin{equation*}
+            \sum_{n=1}^{\infty} \frac{|y|}{|y|^2 + n^2} 
+            \leq
+            \int_1^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx.
+        \end{equation*}
+        %
+        \begin{center}
+            {\bf diagrama slide 19 Aula 16}
+        \end{center}
+        %
+        Agora, considerando a mudança de variáveis $u = x/|y|$, temos
+        %
+        \begin{align*}
+            \int_1^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx = 
+            \int_{1/|y|}^{\infty} \frac{1}{1 + u^2} \, du =
+            \frac{\pi}{2} - \arctan\left( \frac{1}{|y|} \right) \leq
+            \frac{\pi}{2}.
+        \end{align*}
+        %
+        Até o momento, mostramos que
+        %
+        \begin{enumerate}
+            \item $|\cot(\pi z)| = \dis{ 
+            \left|\frac{ e^{-2\pi y} + e^{-2i\pi x} }{ e^{-2\pi y} - e^{-2i\pi x} } \right|
+            \leq \frac{ 1 + e^{-2\pi y} }{ 1 - e^{-2\pi y} }
+            \leq \widetilde{k_1}}$;
+            
+            \item $|S(z)| = \dis{ 
+            \left| \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2} \right| 
+            \leq 1 + \frac{\pi^2}{6} + 8\int_1^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx
+            \leq 1 + \frac{\pi^2}{6} + 4\pi =
+            \widetilde{k_2}}$,
+        \end{enumerate}
+        %
+        donde segue que
+        %
+        \begin{align*}
+            \sup_{z\in\Omega_2} |H(z)| \leq 
+            \sup_{z\in\Omega_2} |F(z) - S(z)| \leq
+            \pi\widetilde{k_1} + \widetilde{k_2} \equiv
+            k_2.
+        \end{align*}
+        %
+        Portanto, lembrando que $H$ é periódica, temos
+        %
+        \begin{equation*}
+            \sup_{z\in\C} |H(z)| =
+            \sup_{z\in\Omega_1\cup\Omega_2} |H(z)| \leq
+            k_2,
+        \end{equation*}
+        %
+        ou seja, $H$ é limitada em $\C$.
+        Pelo teorema de Liouville, como $H$ é inteira, temos
+        $H(z)$ constante. 
+        Agora, note que $H$ pode ser vista como extensão holomorfa de $F(z) - S(z)$,
+        que é uma função ímpar. Portanto, $H$ também é ímpar e $H(0) = 0$, donde segue 
+        que $H\equiv 0$, ou seja, $F(z) \equiv S(z)$ e temos
+        %
+        \begin{equation*}
+            \pi\cot(\pi z) = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2},
+            \, \forall z\in\C\setminus\Z.
+        \end{equation*}
+        %
         Finalmente, para mostrar a fórmula de produto para o seno, sejam
         %
         \begin{align*}
-            G(z) &= \frac{\sen(\pi z)}{\pi} \\
+            G(z) &= \frac{\sen(\pi z)}{\pi} , \\
             P(z) &= z\prod_{n=1}^{\infty} \left( 1 - \frac{z^2}{n^2} \right).
         \end{align*}
         %
-        Pela Proposição \ref{prop:prod-inf-func-holom} e do fato de que a série
-        de $1/n^2$ converge absolutamente temos que $P(z)$ converge e, longe
-        dos inteiros, temos
+        Para mostrar a convergência de $P(z)$, vamos usar a 
+        Proposição \ref{prop:prod-inf-func-holom} com $P(z) = zF(z)$, 
+        $\Omega = D(0,R)\setminus\Z$,
+        $F_n(z) = 1 - \dis{ \frac{z^2}{n^2} }$. Daí, temos
         %
         \begin{equation*}
-            \frac{P'(z)}{P(z)} = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}.
+            |F_n(z) - 1| \leq \sup_{z\in\Omega} \frac{|z|^2}{n^2} = \frac{R^2}{n^2}
+            \equiv c_n.
         \end{equation*}
         %
-        Como $G'(z)/G(z) = \pi\cot(\pi z)$, o resultado que acabamos de mostrar
-        nos dá
+        Portanto, para todo $z\in\Omega$,
+        %
+        \begin{align*}
+            \frac{P'(z)}{P(z)} =
+            \frac{1}{z} + \sum_{n=1}^{\infty} \frac{ -\frac{2z}{n^2} }{ 1 - \frac{z^2}{n^2} }
+            = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}.
+        \end{align*}
+        %
+        Agora, como $G'(z)/G(z) = \pi\cot(\pi z)$, o resultado que acabamos de mostrar
+        nos dá, para todo $z\in\Omega$,
         %
         \begin{equation*}
             \left( \frac{P(z)}{G(z)} \right)'
@@ -1238,14 +1303,20 @@
             \equiv 0,
         \end{equation*}
         %
-        de modo que $P(z) = cG(z)$ para alguma constante $c$. Ora, então
+        de modo que $P(z) = cG(z)$ para alguma constante $c, \, \forall z\in\Omega$. 
+        Ora, então
         %
         \begin{equation*}
             1 
+            = \lim_{z\to 0} \prod_{n=1}^{\infty} \left( 1 - \frac{z^2}{n^2} \right)
             = \lim_{z\to 0} \frac{P(z)}{z} 
             = c\lim_{z\to 0} \frac{G(z)}{z}
+            = c\lim_{z\to 0} \frac{\sen(\pi z)}{\pi z}
             = c,
         \end{equation*}
         %
-        ou seja, $P(z) = G(z)$ e fica demonstrada a fórmula.
+        onde usamos que o produtório é holomorfo.
+        Portanto, $P(z) = G(z)$ para todo $z\in\Omega$. Pelo Princípio da Identidade,
+        como $\Omega$ é aberto e conexo, segue que essa identidade vale para todo
+        $z\in\C$.
     \end{exemplo}
