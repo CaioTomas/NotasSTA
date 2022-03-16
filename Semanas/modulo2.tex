@@ -1104,9 +1104,9 @@
         Logo, segue do teorema de Riemann que $H$ admite extensão inteira.
         
         Para estabelecer a fórmula da cotangente, é suficiente mostrar que
-        $H$ é limitada e usar o teorema de Liouville, uma vez que $H(0) = 0$.
+        $H$ é limitada e usar o teorema de Liouville.
         
-        Para mostrar que $H$ é limitada, basta trabalhar na faixa
+        Ademais, para mostrar que $H$ é limitada, basta trabalhar na faixa
         %
         \begin{equation*}
             S_{\frac{1}{2}} = \left\{ z\in\C : |\Re(z)| \leq \frac{1}{2} \right\},
@@ -1141,7 +1141,7 @@
         \begin{figure}[H]\centering
             \includegraphics{Figuras/S_meio cap S_1.pdf}
             \caption{%
-                A região hachurada, $S_\frac{1}{2} \cap S_1$, é um compacto.
+                A região hachurada, $\Omega_1$, é um compacto.
             }
         \end{figure}
         %
@@ -1152,7 +1152,7 @@
             \Omega_2 = S_{\frac{1}{2}} \cap \left\{ z\in\C : |\Im(z)| > 1 \right\}.
         \end{equation*}
         %
-        Ora, se $z = x+iy$ e $y>1$, então
+        Ora, se $z = x+iy$, então
         %
         \begin{align*}
             \cot(\pi z) &= 
@@ -1188,7 +1188,7 @@
             &\leq 1 
             + \sum_{n=1}^{\infty} \frac{1}{|y|^2 + n^2 - 1/4}
             + \sum_{n=1}^{\infty} \frac{|2y|}{|y|^2 + n^2 - 1/4} \\
-            &= 1 + \sum_{n=1}^{\infty} \frac{1}{n^2} 
+            &\leq 1 + \sum_{n=1}^{\infty} \frac{1}{n^2} 
             + 2\sum_{n=1}^{\infty} \frac{|y|}{|y|^2/4 + n^2 - n^2/4} \\
             &\leq 1 + \frac{\pi^2}{6} + 
             8\sum_{n=1}^{\infty} \frac{|y|}{\frac{1}{4}(|y|^2 + 3n^2)} \\
