@@ -15,7 +15,7 @@
 \end{minipage}
 
 \section{Funções Inteiras}
-    \subsection{Fórmula de Jensen}
+    \subsection{Fórmula de Jensen e número de zeros}
     
     Nesta seção, mostraremos o Teorema da Fórmula de Jensen, que relaciona os zeros 
     de uma função em um disco com a média logarítmica do módulo desta função ao 
@@ -73,7 +73,7 @@
         \int_{\y * \beta^-} \frac{1}{z} \, dz = 0,
     \end{equation*}    
     %
-    pois $1/z$ é holomorfa na região interior à concatenação dessas curvas.
+    pois $1/z$ é holomorfa na região interior à concatenação dessas curvas. A hipótese de $G$ ser simplesmente conexo é importante, pois, num certo sentido, estamos fazendo continuações analíticas no sentido do Teorema de Monodromia.
     
     Observe que 
     %
@@ -291,12 +291,35 @@
     %
     Usando a expressão de $F$, obtemos o resultado desejado.
     
-    Vamos denotar por $n_f(r)$ o número zeros da função $f$ 
-    (contados com multiplicidade) no interior de um disco de raio $r$ e 
-    centro na origem. 
-    É fácil ver que $n_f$ é uma função não decrescente de $r$.
+    Agora, vamos usar a fórmula de Jensen para encontrar uma relação entre a
+    taxa de crescimento de uma função inteira no infinito e o comportamento
+    assintótico do número de zeros (contados com multiplicidade) desta
+    função dentro dos discos $D(0,R)$ quando $R\to +\infty$.
+    
+    Primeiro, note que podemos reescrever a fórmula de Jensen da seguinte forma:
+    %
+    \begin{align*}
+        \ln|f(0)| = \sum_{j=1}^n \ln\left|\frac{z_j}{R}\right| 
+        + \frac{1}{2\pi}\int_0^{2\pi} \ln|f(Re^{i\theta})| \, d\theta,
+    \end{align*}
+    %
+    usando as propriedades do logaritmo e do valor absoluto.
+    
+    Seja $f:U\subset\C\to\C$ é uma função holomorfa em $\overline{D(0,R)}$.
+    Para cada $r\in (0,R)$ denotamos por $n_f(r) \equiv n(r)$ o número de zeros 
+    de $f$, contados com multiplicidade, dentro do disco aberto $D(0,r)$.
+    Note que segue diretamente da definição que se $0 < r_1 \leq r_2 < R$, então
+    $n_f(r_1) \leq n_f(r_2)$, ou seja, $n_f$ é uma função não-decrescente. Usaremos
+    esse fato no seguinte lema que, por sua vez, será o primeiro de dois resultados
+    que nos permitirão extrair a relação entre zeros e a ordem de uma função.
+    
+    % Vamos denotar por $n_f(r)$ o número zeros da função $f$ 
+    % (contados com multiplicidade) no interior de um disco de raio $r$ e 
+    % centro na origem. 
+    % É fácil ver que $n_f$ é uma função não decrescente de $r$.
     %
     \begin{corolario}
+    \label{corol:num-zeros}
         Se $z_1, \dots, z_N$ são os zeros de $f$ no interior de $D_R$, então
         %
         \begin{equation*}
@@ -353,83 +376,84 @@
     %
     \end{proof}
     %
-\subsection{Ordem de crescimento e o número de zeros de uma função}
-    Agora, vamos usar a fórmula de Jensen para encontrar uma relação entre a
-    taxa de crescimento de uma função inteira no infinito e o comportamento
-    assintótico do número de zeros (contados com multiplicidade) desta
-    função dentro dos discos $D(0,R)$ quando $R\to +\infty$.
+%\subsection{Ordem de crescimento e o número de zeros de uma função}
+    % Agora, vamos usar a fórmula de Jensen para encontrar uma relação entre a
+    % taxa de crescimento de uma função inteira no infinito e o comportamento
+    % assintótico do número de zeros (contados com multiplicidade) desta
+    % função dentro dos discos $D(0,R)$ quando $R\to +\infty$.
     
-    Primeiro, note que podemos reescrever a fórmula de Jensen da seguinte forma:
-    %
-    \begin{align*}
-        \ln|f(0)| = \sum_{j=1}^n \ln\left|\frac{z_j}{R}\right| 
-        + \frac{1}{2\pi}\int_0^{2\pi} \ln|f(Re^{i\theta})| \, d\theta,
-    \end{align*}
-    %
-    usando as propriedades do logaritmo e do valor absoluto.
+    % Primeiro, note que podemos reescrever a fórmula de Jensen da seguinte forma:
+    % %
+    % \begin{align*}
+    %     \ln|f(0)| = \sum_{j=1}^n \ln\left|\frac{z_j}{R}\right| 
+    %     + \frac{1}{2\pi}\int_0^{2\pi} \ln|f(Re^{i\theta})| \, d\theta,
+    % \end{align*}
+    % %
+    % usando as propriedades do logaritmo e do valor absoluto.
     
-    Seja $f:U\subset\C\to\C$ é uma função holomorfa em $\overline{D(0,R)}$.
-    Para cada $r\in (0,R)$ denotamos por $n_f(r) \equiv n(r)$ o número de zeros 
-    de $f$, contados com multiplicidade, dentro do disco aberto $D(0,r)$.
-    Note que segue diretamente da definição que se $0 < r_1 \leq r_2 < R$, então
-    $n_f(r_1) \leq n_f(r_2)$, ou seja, $n_f$ é uma função não-decrescente. Usaremos
-    esse fato no seguinte lema que, por sua vez, será o primeiro de dois resultados
-    que nos permitirão extrair a relação entre zeros e a ordem de uma função.
+    % Seja $f:U\subset\C\to\C$ é uma função holomorfa em $\overline{D(0,R)}$.
+    % Para cada $r\in (0,R)$ denotamos por $n_f(r) \equiv n(r)$ o número de zeros 
+    % de $f$, contados com multiplicidade, dentro do disco aberto $D(0,r)$.
+    % Note que segue diretamente da definição que se $0 < r_1 \leq r_2 < R$, então
+    % $n_f(r_1) \leq n_f(r_2)$, ou seja, $n_f$ é uma função não-decrescente. Usaremos
+    % esse fato no seguinte lema que, por sua vez, será o primeiro de dois resultados
+    % que nos permitirão extrair a relação entre zeros e a ordem de uma função.
     %
-    \begin{lema}
-    \label{lema:int-num-zeros}
-        Sejam $R > 0$, $U\subseteq\C$ tal que $\overline{D(0,R)} \subseteq U$
-        e $f:U\to\C$ uma função holomorfa. Se $z_1, z_2, \dots, z_n$ são zeros
-        de $f$ em $D(0,R)$, então
-        %
-        \begin{equation*}
-            \int_0^R n_f(r) \, \frac{dr}{r} 
-            = \sum_{j=1}^n \ln\left|\frac{R}{z_j}\right|.
-        \end{equation*}
-        %
-    \end{lema}
-    %
-    \begin{proof}
-        Note, primeiramente, que
-        %
-        \begin{equation*}
-            \sum_{j=1}^n \ln\left|\frac{R}{z_j}\right| 
-            = \sum_{j=1}^n \int_{|z_j|}^R \frac{1}{r} \, dr.
-        \end{equation*}
-        %
-        Ademais, para cada $j=1, 2, \dots, n$, considere a função $\eta_j:\R\to\R$
-        definida anteriormente:
-        %
-        \begin{equation*}
-            \eta_j(r) 
-            = \begin{cases}
-            1, & |z_j| < r \\
-            0, & |z_j| \geq r
-            \end{cases}.
-        \end{equation*}
-        Daí, para cada $r$ fixado, temos
-        %
-        \begin{equation*}
-            \sum_{j=1}^n \eta_j(r) = n_f(r),
-        \end{equation*}
-        %
-        donde segue que
-        %
-        \begin{align*}
-            \sum_{j=1}^n \int_{|z_j|}^R 1 \, \frac{dr}{r}
-            = \sum_{j=1}^n \int_{0}^R \eta_j(r) \, \frac{dr}{r}
-            = \int_{0}^R \left( \sum_{j=1}^n \eta_j(r) \right) \, \frac{dr}{r}
-            = \int_{0}^R n_f(r) \, \frac{dr}{r},
-        \end{align*}
-        %
-        como desejado.
-    \end{proof}
+    % \begin{lema}
+    % \label{lema:int-num-zeros}
+    %     Sejam $R > 0$, $U\subseteq\C$ tal que $\overline{D(0,R)} \subseteq U$
+    %     e $f:U\to\C$ uma função holomorfa. Se $z_1, z_2, \dots, z_n$ são zeros
+    %     de $f$ em $D(0,R)$, então
+    %     %
+    %     \begin{equation*}
+    %         \int_0^R n_f(r) \, \frac{dr}{r} 
+    %         = \sum_{j=1}^n \ln\left|\frac{R}{z_j}\right|.
+    %     \end{equation*}
+    %     %
+    % \end{lema}
+    % %
+    % \begin{proof}
+    %     Note, primeiramente, que
+    %     %
+    %     \begin{equation*}
+    %         \sum_{j=1}^n \ln\left|\frac{R}{z_j}\right| 
+    %         = \sum_{j=1}^n \int_{|z_j|}^R \frac{1}{r} \, dr.
+    %     \end{equation*}
+    %     %
+    %     Ademais, para cada $j=1, 2, \dots, n$, considere a função $\eta_j:\R\to\R$
+    %     definida anteriormente:
+    %     %
+    %     \begin{equation*}
+    %         \eta_j(r) 
+    %         = \begin{cases}
+    %         1, & |z_j| < r \\
+    %         0, & |z_j| \geq r
+    %         \end{cases}.
+    %     \end{equation*}
+    %     Daí, para cada $r$ fixado, temos
+    %     %
+    %     \begin{equation*}
+    %         \sum_{j=1}^n \eta_j(r) = n_f(r),
+    %     \end{equation*}
+    %     %
+    %     donde segue que
+    %     %
+    %     \begin{align*}
+    %         \sum_{j=1}^n \int_{|z_j|}^R 1 \, \frac{dr}{r}
+    %         = \sum_{j=1}^n \int_{0}^R \eta_j(r) \, \frac{dr}{r}
+    %         = \int_{0}^R \left( \sum_{j=1}^n \eta_j(r) \right) \, \frac{dr}{r}
+    %         = \int_{0}^R n_f(r) \, \frac{dr}{r},
+    %     \end{align*}
+    %     %
+    %     como desejado.
+    % \end{proof}
     %
     
-    O segundo lema que precisaremos é consequência imediata do primeiro.
+    O segundo resultado que precisaremos é consequência imediata do 
+    Corolário \ref{corol:num-zeros}.
     %
-    \begin{lema}
-    \label{lema:jensen-com-zeros}
+    \begin{corolario}
+    \label{corol:jensen-com-zeros}
         Sejam $f:\C\to\C$ uma função inteira e $R>0$. Suponha que $f(0)\neq 0$
         e que $f(z)\neq 0$ para todo $z\in\partial D(0,R)$. Então
         %
@@ -439,10 +463,10 @@
             - \ln|f(0)|.
         \end{equation*}
         %
-    \end{lema}
+    \end{corolario}
     %
     \begin{proof}
-       Pelo Lema \ref{lema:int-num-zeros}, temos
+       Pelo Corolário \ref{corol:num-zeros}, temos
        %
        \begin{equation*}
            \int_0^R n_f(r) \, \frac{dr}{r} 
@@ -523,7 +547,7 @@
        apenas mudamos o fator constante em $r^{\rho}$.
        
        Já que estamos assumindo que $f(0) \neq 0$, podemos aplicar o 
-       Lema \ref{lema:jensen-com-zeros}, que diz que
+       Corolário \ref{corol:jensen-com-zeros}, que diz que
        %
        \begin{equation*}
            \int_0^R n_f(x) \, \frac{dx}{x} 
@@ -584,7 +608,7 @@
        \begin{align*}
            \sum_{\substack{k\in\N \\ |z_k|\geq 1}} \frac{1}{|z_k|^s}
            &= \sum_{j=0}^{\infty} 
-           \sum_{\substack{k\in\N \\ 2^j \leq |z_k| \leq 2^{j+1}}} \frac{1}{|z_k|^s} \\
+           \sum_{\substack{k\in\N \\ 2^j \leq |z_k| < 2^{j+1}}} \frac{1}{|z_k|^s} \\
            &\leq \sum_{j=0}^{\infty} \frac{1}{2^{sj}}n_f(2^{j+1}) \\
            &\leq \sum_{j=0}^{\infty} \frac{C}{2^{sj}}(2^{j+1})^{\rho} \\
            &\leq C2^{\rho} \sum_{j=0}^{\infty} 2^{(\rho - s)j} \\
@@ -605,7 +629,7 @@
         zeros de ordem 1 nos inteiros. Ora, já que
         %
         \begin{align*}
-            f(z) = \frac{e^{i\pi z} - e^{-\pi z}}{2i},
+            f(z) = \frac{e^{i\pi z} - e^{-i\pi z}}{2i},
         \end{align*}
         %
         temos que
@@ -684,13 +708,8 @@
     %
     Uma outra pergunta interessante é: existe alguma função inteira cujos zeros são
     dados exatamente pela lista $z_1, z_2, \dots$, contados com multiplicidade? Dito
-    de outro modo: dada uma lista de zeros, conseguimos encontrar uma função inteira
-    com aqueles zeros?
-    
-    Note que é necessário que $|z_k| \xrightarrow{k\to\infty} +\infty$, pois do
-    contrário teríamos alguma subsequência $(z_{n_k})_k$ de $(z_n)$ seria convergente
-    e, pelo princípio da identidade, $f\equiv 0$, absurdo pois estamos assumindo que
-    $f$ se anula apenas em $z_1, z_2, \dots$.
+    de outro modo: dada uma lista de números complexos, conseguimos encontrar uma 
+    função inteira cujos zeros são exatamente aqueles números?
     
     O ``candidato natural'', pensando em polinômios, seria
     %
@@ -732,10 +751,10 @@
        argumento, vamos supor que esta desigualdade é válida para todo $n\in\N$.
        
        Considere o ramo principal do logaritmo e a sequência $\log(1+a_n)$.
-       É claro que se $|z| < 1$, então
+       É claro que se $|z| < 1/2$, então
        %
        \begin{equation*}
-           1 + z e^{\log(1+z)}.
+           1 + z = e^{\log(1+z)}.
        \end{equation*}
        %
        Portanto, os produtos parciais podem ser escritos como
@@ -753,10 +772,10 @@
        Usando expansão em série de potências, temos que
        %
        \begin{align*}
-           |\log(1+w)|&=\left| \sum_{n=0}^{\infty} (-1)^n \frac{w^{n+1}}{n} \right| \\
+           |\log(1+w)|&=\left| \sum_{n=0}^{\infty} (-1)^n \frac{w^{n+1}}{n+1} \right| \\
                       &\leq |w|\cdot\left| 1 - \frac{w}{2} + \frac{w^2}{3} 
                       - \cdots \right| \\
-                      &= |w|\cdot\frac{1}{1 - |w|} \\
+                      &\leq |w|\cdot\frac{1}{1 - |w|} \\
                       &\leq 2|w|,
        \end{align*}
        %
@@ -826,14 +845,14 @@
        \end{equation*}
        %
        Além disso, os produtos parciais de $F_j$ convergem uniformemente, uma vez
-       que
+       que sendo $D' = \dis{ D\left( 0, 2\sum_{n\in\N} c_n \right) }$, temos
        %
        \begin{align*}
            \left| \prod_{j=1}^{m+n} F_j(z) - \prod_{j=1}^{n} F_j(z) \right|
            &=\left|\prod_{j=1}^{m+n} [1+a_j(z)] - \prod_{j=1}^{n} [1+a_j(z)] \right| \\
            &= \left| e^{B_{m+n}(z)} - e^{B_n(z)} \right| \\
            &= \left| \int_{B_n(z)}^{B_{m+n}(z)} e^w \, dw \right| \\
-           &\leq \sup_{w\in D\left( 0, 2\sum_{n\in\N} c_n \right)} 
+           &\leq \sup_{w\in D'} 
            |e^w|\cdot |B_{m+n}(z) - B_n(z)| \\
            &= k|B_{m+n} - B_n(z)| \xrightarrow{m,n\to\infty} 0.
        \end{align*}
@@ -860,8 +879,8 @@
        Para ver isto basta observar que
        %
        \begin{equation*}
-           G_n'(z) - F_n'(z) = 
-           \frac{1}{2\pi i} \int_{\y} (G_n(w) - F_n(w))\frac{1}{(w-z)^2} \, dw
+           G_n'(z) - F'(z) = 
+           \frac{1}{2\pi i} \int_{\y} (G_n(w) - F(w))\frac{1}{(w-z)^2} \, dw
        \end{equation*}
        %
        sendo $\y$ como ilustrado abaixo.
@@ -870,7 +889,7 @@
            \includegraphics{Figuras/y para Gn'-Fn'.pdf}
        \end{figure}
        %
-       Por hipótese, $F_n(z) \neq 0$ para todo $n\in\N$ e $z\in\Omega$, de modo
+       Por hipótese, $F_n(z) \neq 0$ para todos $n\in\N$ e $z\in\Omega$, de modo
        que $F(z)\neq 0$ para todo $z\in\Omega$. Já que $F$ é holomorfa e, 
        consequentemente, contínua, podemos dizer que
        %
@@ -878,8 +897,8 @@
            \inf_{z\in K} |F(z)| = F(z_*) > 0.
        \end{equation*}
        %
-       Portanto, podemos garantir que $G_n(z)$ é uniformemente limitada por
-       baixo em $n$ e $z\in K$. De fato,
+       Portanto, podemos garantir que $G_n(z)$ é uniformemente limitada inferiormente
+       em $n$ e $z\in K$. De fato,
        %
        \begin{align*}
            \inf_{z\in K} |G_n(z)| = \inf_{z\in K} |G_n(z) - F(z) + F(z)|
@@ -888,12 +907,12 @@
        %
        Como $G_n$ converge uniformemente para $F$, existe $n_0\in\N$ tal que
        se $n\geq n_0$, então 
-       $|G_n(z) - F(z)| < \dis{\frac{1}{2}\inf_{z\in K} |F(z)| }$ para todo 
+       $|G_n(z) - F(z)| < \dis{\frac{1}{2} F(z_*) }$ para todo 
        $z\in K$. Logo, para todo $n\geq n_0$ temos
        %
        \begin{equation*}
            \inf_{z\in K} |G_n(z)| > \frac{1}{2}\inf_{z\in K} |F(z)| 
-                                  > \frac{1}{2}\inf_{z\in K} |F(z_*)| > 0.
+                                  = \frac{1}{2} F(z_*) > 0.
        \end{equation*}
        %
        Por outro lado, se $n\leq n_0$, então como $F_j(z)\neq 0$ para todo 
@@ -909,7 +928,7 @@
        %
        \begin{equation*}
            \inf_{n\in\N} \inf_{z\in K} |G_n(z)| 
-           \geq \min\left\{ I_K, \frac{1}{2}|F(z_*)| \right\},
+           \geq \min\left\{ I_K, \frac{1}{2}|F(z_*)| \right\} > 0,
        \end{equation*}
        %
        donde segue que 
@@ -1093,7 +1112,7 @@
         \end{equation*}
         %
         satisfaz $H(z+1) = H(z)$. Ademais, segue da propriedade (ii) que
-        $\res(H,0)$, de modo que $z=0$ é uma singularidade removível de $H$.
+        $\res(H,0) = 0$, de modo que $z=0$ é uma singularidade removível de $H$.
         Esta informação, junto com a periodicidade de $H$ dada pelo item (i)
         implica que, para todo $n\in\Z$,
         %
@@ -1162,7 +1181,7 @@
             &= i\frac{ e^{-2\pi y} + e^{-2\pi ix} }{ e^{-2\pi y} - e^{-2\pi ix} }.
         \end{align*}
         %
-        Como estamos supondo $y>1$, segue que
+        Como estamos supondo $|y|>1$, segue que
         %
         \begin{align*}
             |\cot(\pi z)| = 
@@ -1173,7 +1192,7 @@
             \leq \widetilde{k_1}.
         \end{align*}
         %
-        Ainda para $y>1$ e $x\leq 1/2$, temos
+        Ainda para $|y|>1$ e $|x|\leq 1/2$, temos
         %
         \begin{align*}
             \left| 
@@ -1208,19 +1227,20 @@
         \begin{equation*}
             \sum_{n=1}^{\infty} \frac{|y|}{|y|^2 + n^2} 
             \leq
-            \int_1^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx.
+            \int_0^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx.
         \end{equation*}
         %
-        \begin{center}
-            {\bf diagrama slide 19 Aula 16}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{%
+                Figuras/majoração por integral.pdf
+            }
+        \end{figure}
         %
         Agora, considerando a mudança de variáveis $u = x/|y|$, temos
         %
         \begin{align*}
-            \int_1^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx = 
-            \int_{1/|y|}^{\infty} \frac{1}{1 + u^2} \, du =
-            \frac{\pi}{2} - \arctan\left( \frac{1}{|y|} \right) \leq
+            \int_0^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx = 
+            \int_0^{\infty} \frac{1}{1 + u^2} \, du =
             \frac{\pi}{2}.
         \end{align*}
         %
@@ -1234,8 +1254,8 @@
             
             \item $|S(z)| = \dis{ 
             \left| \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2} \right| 
-            \leq 1 + \frac{\pi^2}{6} + 8\int_1^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx
-            \leq 1 + \frac{\pi^2}{6} + 4\pi =
+            \leq 1 + \frac{\pi^2}{6} + 8\int_0^{\infty} \frac{|y|}{|y|^2 + x^2} \, dx
+            = 1 + \frac{\pi^2}{6} + 4\pi =
             \widetilde{k_2}}$,
         \end{enumerate}
         %
@@ -1245,7 +1265,7 @@
             \sup_{z\in\Omega_2} |H(z)| \leq 
             \sup_{z\in\Omega_2} |F(z) - S(z)| \leq
             \pi\widetilde{k_1} + \widetilde{k_2} \equiv
-            k_2.
+            k.
         \end{align*}
         %
         Portanto, lembrando que $H$ é periódica, temos
@@ -1253,7 +1273,7 @@
         \begin{equation*}
             \sup_{z\in\C} |H(z)| =
             \sup_{z\in\Omega_1\cup\Omega_2} |H(z)| \leq
-            k_2,
+            k,
         \end{equation*}
         %
         ou seja, $H$ é limitada em $\C$.
@@ -1303,7 +1323,8 @@
             \equiv 0,
         \end{equation*}
         %
-        de modo que $P(z) = cG(z)$ para alguma constante $c, \, \forall z\in\Omega$. 
+        de modo que $P(z) = cG(z)$ para alguma constante $c, \, \forall z\in\Omega$,
+        pois $\Omega$ é conexo. 
         Ora, então
         %
         \begin{equation*}
@@ -1320,3 +1341,53 @@
         como $\Omega$ é aberto e conexo, segue que essa identidade vale para todo
         $z\in\C$.
     \end{exemplo}
+    
+    \section{O Teorema de Weierstrass}
+    
+    Anteriormente, vimos que, para construir uma função com zeros prescritos na forma de uma lista ou sequência $\{a_n\}$, uma tentativa ingênua era escrever
+    %
+    $$ f(z) = \lim_{n \to \infty} (z-a_1) \cdots (z-a_n).$$
+    %
+    Produtos como esse (em geral) não convergem para qualquer sequência escolhida $\{a_n\}$, então essa não é a melhor escolha para construir $f$. 
+    
+    Mostramos, também, que vale a igualdade 
+    %
+    $$\frac{\sin{\pi z}}{\pi} = z \prod_{n = 1}^{\infty} \left(1 - \frac{z^2}{n^2}\right)$$
+    %
+    e a função $\sin{\pi z}$ se anula exatamente em $\mathbb{Z}$. Analizando o produto com mais cuidado, vamos que cada parcela é da forma $(n^2 - z^2)/n^2 = (n - z)(n + z)/n^2$ que se anula exatamente em $\pm n \in \Z$. A escolha do termo $z^2$ nas parcelas foi, então, boa. 
+    
+    além disso, o fato de termos escolhido fatores 
+    %
+    $$\left(1 - \frac{z^2}{n^2}\right)$$
+    %
+    em vez de $(n^2 - z^2)$ nos permitiu usar a Proposição \ref{prop:prod-inf-func-holom} de forma simples. 
+    
+    Se queremos definir uma função que se anula precisamente em uma sequência qualquer $\{a_n\}$ de uma forma análoga à vista acima, ter $z^2$ nos fatores pode não ser vantajoso, pois $-a_n$ pode não estar na sequência e mesmo assim anula a função. Portanto, pode ser um bom caminho considerar fatores da forma
+    %
+    $$ \left(1 - \frac{z}{a_n}\right)g_n(z), $$
+    %
+    onde $g_n(z)$ são funções que facilitariam a convergência. O grande problema está em como escolher tais funções e é neste ponto que reside a maior contribuição de Weierstrass, ele encontrou funções que garantem a convergência dada qualquer sequência $\{a_n\}$. 
+    
+    Vamos enunciar o grande resultado desta seção agora e demonstrá-lo no decorrer do texto.
+    
+    \begin{teorema}[Weierstrass]
+        Dada uma sequência $\{a_n\}$ de números complexos tal que $|a_n| \to \infty$ conforme $n \to \infty$, existe uma função inteira $f: \C \to \C$ que se anula em todo $a_k$ e em nenhum outro ponto.
+    \end{teorema}
+    
+    Note que é necessário que $|a_n| \xrightarrow{n\to\infty} \infty$, pois, do
+    contrário, teríamos alguma subsequência $\{a_{n_k}\}$ de $\{a_n\}$ seria convergente
+    e, pelo princípio da identidade, $f\equiv 0$, o que é absurdo, pois estamos assumindo que
+    $f$ se anula apenas em $a_1, a_2, \dots$.
+    
+    %Fatores de weierstrass
+    %estimativas
+    %serie do log(1-z)...
+    
+    
+    
+    
+    
+    
+    
+    
+    

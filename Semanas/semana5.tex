@@ -2142,9 +2142,15 @@ Analogamente, temos
 \begin{align}\label{eq-aux2-limite-duplo}
 \sum_{m=0}^{\infty}\sum_{n=0}^{\infty}a_{n,m}
 =
-\lim_{q\to\infty}\sum_{n=0}^{q}\lim_{p\to\infty} \sum_{m=0}^{p}a_{n,m} 
+\lim_{q\to\infty}\sum_{m=0}^{q}
+\lim_{p\to\infty} \sum_{n=0}^{p}
+a_{n,m} 
 =
-\lim_{p\to\infty} \lim_{q\to\infty} \sum_{n=0}^{q} \sum_{m=0}^{p}a_{n,m}. 
+\lim_{q\to\infty} 
+\lim_{p\to\infty} 
+\sum_{n=0}^{q} 
+\sum_{m=0}^{p}
+a_{n,m}. 
 \end{align}
 
 Já que para cada $p,q\in\mathbb{N}$ (finitos) obviamente temos:
@@ -2173,7 +2179,7 @@ a expressão acima para
 \lim_{q\to\infty}\lim_{p\to\infty} S(p,q).
 \]
 
-A igualdade acima aparentemente poderia soar como uma resultado muito natural. 
+A igualdade acima poderia, aparentemente, soar como uma resultado muito natural. 
 Porém o seguinte contra-exemplo ilustra como a conclusão do Teorema
 \ref{teo-fubini-discreto} é altamente não-trivial.
 
