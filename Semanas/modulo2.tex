@@ -1354,15 +1354,13 @@
     %
     $$\frac{\sin{\pi z}}{\pi} = z \prod_{n = 1}^{\infty} \left(1 - \frac{z^2}{n^2}\right)$$
     %
-    e a função $\sin{\pi z}$ se anula exatamente em $\mathbb{Z}$. Analizando o produto com mais cuidado, vamos que cada parcela é da forma $(n^2 - z^2)/n^2 = (n - z)(n + z)/n^2$ que se anula exatamente em $\pm n \in \Z$. A escolha do termo $z^2$ nas parcelas foi, então, boa. 
-    
-    além disso, o fato de termos escolhido fatores 
+    e a função $\sin{\pi z}$ se anula exatamente em $\mathbb{Z}$. Analizando o produto com mais cuidado, vamos que cada fator é da forma $(n^2 - z^2)/n^2 = (n - z)(n + z)/n^2$ que se anula exatamente em $\pm n \in \Z$. Além disso, o fato de termos escolhido fatores 
     %
     $$\left(1 - \frac{z^2}{n^2}\right)$$
     %
-    em vez de $(n^2 - z^2)$ nos permitiu usar a Proposição \ref{prop:prod-inf-func-holom} de forma simples. 
+    em vez de $(n^2 - z^2)$ nos permitiu usar a Proposição \ref{prop:prod-inf-func-holom}. 
     
-    Se queremos definir uma função que se anula precisamente em uma sequência qualquer $\{a_n\}$ de uma forma análoga à vista acima, ter $z^2$ nos fatores pode não ser vantajoso, pois $-a_n$ pode não estar na sequência e mesmo assim anula a função. Portanto, pode ser um bom caminho considerar fatores da forma
+    Se queremos definir uma função que se anula precisamente em uma sequência qualquer $\{a_n\}$ de uma forma análoga à vista acima, ter $z^2$ nos fatores pode não ser vantajoso, pois $-a_n$ pode não estar na sequência e mesmo assim anular a função se $a_n$ anulá-la. Ademais, o fator $z^2$ não teve nenhuma importância particular em termos de estimativas a nosso favor. Portanto, um bom caminho é considerar fatores da forma
     %
     $$ \left(1 - \frac{z}{a_n}\right)g_n(z), $$
     %
@@ -1377,17 +1375,137 @@
     Note que é necessário que $|a_n| \xrightarrow{n\to\infty} \infty$, pois, do
     contrário, teríamos alguma subsequência $\{a_{n_k}\}$ de $\{a_n\}$ seria convergente
     e, pelo princípio da identidade, $f\equiv 0$, o que é absurdo, pois estamos assumindo que
-    $f$ se anula apenas em $a_1, a_2, \dots$.
+    $f$ se anula apenas em $a_1, a_2, \dots$. 
     
-    %Fatores de weierstrass
-    %estimativas
-    %serie do log(1-z)...
+    Para cada $k \in \N$, definimos o fator canônico de grau $k$
+    %
+    $$E_k(z) = (1-z)\exp{(z + \frac{z^2}{2} + \cdots + \frac{z^k}{k})}.$$
+    %
+    Para $k=0$, definimos $E_0(z) = 1-z$ Observe que a função $E_k(z/w)$ se anula apenas em $z = w$ (se $w \neq 0$). 
+    
+    \begin{lema}
+    \label{lema-wstr-est-factor}
+    Se $|z| \leq 1/2$, etnaõ, para algum $c>0$, temos $|1-E_k(z)| \leq c|z|^{k+1}$ qualquer que seja $k$ inteiro não negativo.
+    \end{lema}
+    \begin{proof}
+    Podemos escolher um ramo do logaritmo adequado de modo que vale a equação $1-z = \exp{\log(1-z)}$. Além disso, da série geométrica, sabemos que 
+    %
+    $$ \frac{1}{1-z} = \sum_{n=0}^{\infty}z^n $$
+    %
+    já que $|z| \leq 1/2 < 1$. Integrando esta equação, obtemos que
+    %
+    $$ \log(1-z) = - \sum_{n=0}^{\infty}\frac{z^n}{n}. $$
+    %
+    
+    Observe que 
+    %
+    \begin{align*}
+        E_k(z) &= \exp{\left(\log(1-z) + z + \cdots + \frac{z^k}{k}\right)} \\
+        &= \exp(-\sum_{n=k+1}^{\infty}\frac{z^n}{n}) \\
+        &= \exp{w}.
+    \end{align*}
+    %
+    Agora, estimamos $|w|$:
+    %
+    \begin{align*}
+        |w| &= \left | -\sum_{n=k+1}^{\infty}\frac{z^n}{n} \right | \\
+        &\leq |z|^{k+1}\sum_{n=k+1}^{\infty}\frac{|z|^{n - (k+1)}}{n} \\
+        &\leq |z|^{k+1}\sum_{n=0}^{\infty}|z|^n \\
+        &\leq |z|^{k+1}\sum_{n=0}^{\infty} 2^{-n} \\
+        &= 2|z|^{k+1} \leq 2 \frac{1}{2^{k+1}} \leq 1.
+    \end{align*}
+    
+    Portanto,
+    %
+    \begin{align*}
+        |1 - E_k(z)| &= |1 - \exp{w}| \\
+        &= \left | \sum_{n=0}^{\infty}\frac{w^n}{n!} \right | \\
+        &\leq |w|\sum_{n=0}^{\infty}\frac{|w|^{n-1}}{n\cdot (n-1)!} \\
+        &\leq |w|\sum_{n=0}^{\infty}\frac{|w|^n}{n!} \\
+        &\leq |w|\sum_{n=0}^{\infty}\frac{1}{n!} \\
+        &=|w|e \leq 2e|z|^{k+1}.
+    \end{align*}
+    
+    Basta esscolher $c = 2e$.
+    \end{proof}
     
     
+    Observe que, neste lema, a escolha $|z| \leq 1/2$ é feita por motivos de simplicidade. Em termos práticos poderíamos esolher $|z| \leq \alpha$ para $\alpha \in (0,1)$.
     
+    Dada uma função inteira $f$, se $a$ é um zero de ordem $m$ de $f$, então existe uma função inteira $g$ tal que
+    %
+    $$ f(z) = (z-a)^mg(z) $$
+    %
+    e $g(a) \neq 0$. Portanto, para os nossos propósitos, podemos supor que a sequência de zeros no Teorema de Weierstrass não contém o zero. Vamos mostrar que função 
+    %
+    $$ f(z) = z^m \prod_{n=1}^{\infty}E_n(z/a_n) $$
+    %
+    tem um zero de ordem $m$ na  origem e se anula em $a_n$ para todo $n$ e em nenhum outro ponto.
     
+    Seja $R>1$ e denote $D_R = D(0,R)$. Existe $n_0 \in \N$ tal que 
+    %
+    \begin{align*}
+        \begin{cases}
+            |a_n| < 2R, \text{ se } n \leq n_0 \\
+            |a_n| \geq 2R, \text{ se } n > n_0
+        \end{cases}
+    \end{align*}
+    %
+    pois supomos que $|a_n| \to \infty$. Note que a função 
+    %
+    $$z^m\prod_{n=1}^{n_0}E_n(z/a_n)$$
+    %
+    é inteira e se anula precisamente em $z = 0$ e $z = a_n$ com $n \leq n_0$. Para $n > n_0$, temos $|a_n| \geq 2R$ e segue que
+    %
+    $$ \left | \frac{z}{a_n} \right | \leq \frac{|z|}{2R} < \frac{R}{2R} = \frac{1}{2} $$
+    %
+    sempre que $|z| < R$. Do Lema \ref{lema-wstr-est-factor} concluímos que $|1 - E_n(z/a_n)| \leq c|z/a_n|^{n+1} \leq c2^{-(n+1)}$ para $z \in D_R$ e $n > n_0$. Pela Proposição \ref{prop:prod-inf-func-holom}, concluímos que 
+    %
+    $$\prod_{n=n_0 + 1}^{\infty}E_n(z/a_n)$$
+    %
+    converge uniformemente em $D_R$ para uma função holomorfa e que não se anula em $D_R$.
     
+    Para cada $R$, concluímos que a função 
+    %
+    $$f_R (z) = z^m\left(\prod_{n=1}^{n_0}E_n(z/a_n)\right)\left(\prod_{n=n_0 + 1}^{\infty}E_n(z/a_n)\right)$$
+    %
+    é holomorfa em $D_R$ e se anula precisamente em $z = 0$ e nos pontos da sequência $\{a_n\}$ no interior de $D_R$. Podemos reescrever a expressão acima numa forma mais conveniente:
+    %
+    \begin{align*}
+        f_R (z) &= z^m \cdot \prod_{n=1}^{n_0}E_n(z/a_n) \cdot \lim_{N \to \infty}\prod_{n=n_0 + 1}^{N}E_n(z/a_n) \\
+        &= \lim_{N \to \infty} \left( z^m \cdot \prod_{n=1}^{n_0}E_n(z/a_n) \right) \cdot \prod_{n=n_0 + 1}^{N}E_n(z/a_n) \\
+        &= \lim_{N \to \infty}  z^m \cdot \prod_{n=1}^{N}E_n(z/a_n) \\
+        &= z^m \prod_{n=1}^{\infty}E_n(z/a_n) 
+    \end{align*}
     
+    Por construção, é simples ver que, se $R'>R$, então $f_{R'}|_{D_R} = f_R$, ou seja, $f_{R'}$ é uma extensão analítica de $f_R$. Isto mostra que a aplicação
+    %
+    $$ z \mapsto z^m \prod_{n=1}^{\infty}E_n(z/a_n) $$
+    %
+    está bem definida para todo $z \in \C$, pois $R$ é arbitrário e define uma função que satisfaz as conclusões do Teorema de Weierstrass.
     
+    A força deste teorema pode ser vista por uma consideração simples. Como saber se um produtório da forma
+    %
+    $$\prod_{n=1}^{\infty} \left( 1 - \frac{z}{a_n} \right)$$
+    %
+    converge? Pela Proposição \ref{prop:prod-inf-func-holom}, um caminho seria analizar a soma 
+    %
+    $$\sum_{n=1}^{\infty} \left | \frac{z}{a_n} \right |$$
+    converge ou não. Isto naturalmente impõe condições sobre a sequência em questão. Utilizando o que foi construído no Teorema de Weierstrass, podemos considerar sequências arbitrárias. Uma consequência disso, é que, além dos zeros, podemo escolher suas multiplicidades, já que um mesmo valor pode se repetir na sequência.
+    
+    \begin{corolario}
+    Se duas funções $f_1$ e $f_2$ satisfazem as condições do Teorema de Weierstrass, então $f_1(z) = f_2(z)\exp{g(z)}$ para alguma função inteira $g(z)$. 
+    \end{corolario}
+    \begin{proof}
+    Seja $h(z) = f_1(z)/f_2(z)$. Se $f_1$ e $f_2$ se anulam em um ponto $a$, então este é um zero de mesma multiplicidade para ambas, ou seja, $f_i(z) = (z-a)^mg_i(z)$ com $g_i$ holomorfa e $g_i(a) \neq 0$ para  $i = 1,2$ e $m$ natural. 
+    
+    Tomando o limite de $h(z)$ quando $z \to a$, vemos que o limite existe e é não nulo, logo, $a$ é uma singularidade removível de $h$, então podemos estender $h$ para todo o plano complexo fazendo $h(a) = \lim_{z \to a} h(z)$ para cada singularidade $a$.
+    
+    Usando a mesma notação para $h$ e sua extensão, temos que ela é inteira. Como $\C$ é simplesmente conexo, segue do Lema \ref{lema-ramo-log}, que $h(z) = \exp{g(z)}$ para alguma função $g$ inteira.
+    \end{proof}
+    
+
+    
+
     
     

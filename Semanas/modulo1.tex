@@ -1529,390 +1529,826 @@
     que utilizam a medida de Lebesgue.
     
     \subsection{A medida de Lebesgue em \texorpdfstring{$\R$}{R}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Nesta seção vamos mostrar como é construída a medida de Lebesgue na reta real. 
-Este conceito será pouco usado neste texto. Para ser mais preciso, vamos precisar dele apenas para caracterizar a coleção de todas as funções $f:I\subset \R\to \R$, para as quais a integral (própria e imprópria) de Riemann de $f$ está bem definida. 
-
-Intuitivamente, a medida de Lebesgue pode ser entendida como uma função que associa à cada subconjunto $A\subset \R$ um ponto em $[0,+\infty]$, denotado por $\textrm{Leb}(A)$, que faz o papel da ideia de comprimento de $A$. 
-Por exemplo, dados dois números reais $a$ e $b$, com $a<b$, considere o intervalo fechado $A\equiv[a,b]$. A medida de Lebesgue deste intervalo fechado é definida como sendo o número real $\textrm{Leb}(A)=b-a$. Neste caso, a medida de Lebesgue
-de $A$ representa exatamente a ideia de comprimento deste conjunto.
-Caso $A=[a,+\infty]$, um intervalo ilimitado da reta, então a medida de Lebesgue de $A$ é dada por $\textrm{Leb}(A)=+\infty$. 
-
-Já que $\textrm{Leb}(A)$ se propõe a ser uma generalização da ideia de comprimento, então, à primeira vista, parece ser bastante conveniente poder ter $\textrm{Leb}(A)$ bem-definida para qualquer subconjunto $A\subset\R$.
-Ou seja, parece ser bastante conveniente poder construir uma função $\textrm{Leb}:\mathscr{P}(\R)\to [0,+\infty]$, onde $\mathscr{P}(\R)$ denota a coleção de todos os subconjuntos de $\R$,
-isto é, 
-$
-\mathscr{P}(\R)
-\equiv 
-\{A\subset\mathbb{R}:\ A\ \text{é um subconjunto qualquer de}\ \R \}
-$. 
-Às vezes, $\mathscr{P}(\R)$ é chamado de conjunto das partes de $\R$.
-O ponto é que podemos mostrar que não existe nenhuma função definida 
-no conjunto das partes de $\R$ que possua todas propriedades que seriam 
-naturais (esta propriedades são relacionadas mais à frente,
-nesta seção) para uma generalização da noção de comprimento de um subconjunto da reta. 
-Por causa deste resultado  de impossibilidade, somos naturalmente motivados a nos perguntar se existiria 
-alguma coleção de subconjuntos de $\R$ (suficientemente grande para podermos dar sentido à medida de uma gama enorme de conjuntos) tal que a noção de comprimento estivesse 
-bem definida para todos os membros desta coleção e além do mais que as outras 
-propriedades naturais da noção de comprimento também fossem satisfeitas. 
-O segredo para encontrar a resposta para esta pergunta está no conceito de sigma-álgebra (ou $\sigma$-álgebra) de conjuntos que é apresentado logo abaixo. 
-
-
-
-
-Uma coleção $\mathcal{A}$ de subconjuntos de $\R$ é chamada de
-\index{Sigma-Álgebra! de conjuntos}{\it $\sigma$-álgebra} se satisfaz as seguintes condições:
-\begin{itemize}
-	\item[1)] $\emptyset\in\mathcal{A}$ e $\R\in\mathcal{A}$;
-	\item[2)] $A\in \mathcal{A} \Rightarrow A^c\in\mathcal{A}$;
-	\item[3)] $A_n\in\mathcal{A}\ \, (n=1,2,\ldots) 
-				\Rightarrow 
-				\displaystyle\bigcup_{n=1}^{\infty} A_n \in \mathcal{A}$.
-\end{itemize}
-
-Às vezes, nos referimos a propriedade 3) dizendo que $\mathcal{A}$ é fechada 
-para uniões enumeráveis. Note que tomando $A_n=\emptyset$, para todo 
-$n\geqslant n_0$, podemos verificar, usando 3), que $\mathcal{A}$ também é fechada 
-para uniões finitas. Observamos também que das propriedades 2) e 3) segue 
-que $\mathcal{A}$ é fechada para interseções finitas e enumeráveis.
-
-No que segue apresentamos dois exemplos de $\sigma$-álgebras de $\R$.
-
-
-\begin{exemplo}\label{exemplo-sigma-algebra1}
-    A coleção 
-    $\mathcal{A}\equiv \{\emptyset, [0,1], (-\infty,0)\cup(1,+\infty),\R  \}$
-    é uma $\sigma$-álgebra de conjuntos de $\R$.
-    Neste exemplo, a $\sigma$-álgebra possui apenas 4 subconjuntos da reta. 
-\end{exemplo}
-
-\begin{exemplo}
-    A coleção 
-    $\mathcal{A}\equiv \{\emptyset, \R  \}$
-    é uma $\sigma$-álgebra de conjuntos de $\R$.
-    Neste exemplo, a $\sigma$-álgebra possui apenas 2 subconjuntos da reta. 
-    A coleção $\mathcal{B}\equiv \mathscr{P}(\R)$ também é uma $\sigma$-álgebra
-    de conjuntos de $\R$. Já neste é um exemplo a $\sigma$-álgebra possui uma quantidade infinita de elementos.
-    
-    As duas $\sigma$-álgebras deste exemplo, são chamadas de $\sigma$-álgebras triviais de $\R$.
-\end{exemplo}
-
-
-Os exemplos apresentados acima, mostram que podemos exibir
-várias $\sigma$-álgebras de subconjuntos de $\R$. 
-Na verdade, existe uma técnica para construir uma $\sigma$-álgebra 
-à partir de uma coleção arbitrária dada. 
-Por exemplo, dada uma coleção finita de subconjuntos 
-distintos de $\R$, digamos, $I_1,I_2,\ldots, I_n$, 
-podemos usar esta técnica para construir à partir 
-desta coleção uma nova coleção $\mathcal{A}$, 
-contendo todos $I_j$'s, e que é uma $\sigma$-álgebra
-de subconjuntos de $\R$. 
-
-Para apresentar esta técnica vamos precisar introduzir algumas novo conceitos
-e resultados.
-
-
-Uma convenção importante quando falamos de medidas é que se 
-$\mathcal{A}$ denota uma $\sigma$-álgebra de conjuntos de 
-$\R$ e $I\subset \R$ é um subconjunto desta coleção, 
-então indicamos este fato escrevendo $I\in \mathcal{A}$. 
-Isto é, a relação entre um conjunto que faz parte da $\sigma$-álgebra
-e a $\sigma$-álgebra é uma relação de pertinência e não de continência. 
-Ou seja, do ponto de vista de uma $\sigma$-álgebra 
-cada conjunto $I$ que compõem esta coleção, 
-mesmo não sendo um conjunto unitário, 
-é pensado como um elemento da $\sigma$-álgebra. 
-Para facilitar mais ainda a linguagem e notação vamos introduzir a 
-definição de espaço mensurável.
-
-\begin{definicao}
-Um par ordenado da forma $(\R,\mathcal{A})$, onde $\mathcal{A}$ uma $\sigma$-álgebra de conjuntos de $\mathbb{R}$ é chamado de 
-um espaço mensurável. 
-Cada conjunto $I$ da coleção $\mathcal{A}$
-é chamado de um conjunto mensurável, segundo $\mathcal{A}$. 
-Alternativamente, dizemos que $I$ é um conjunto $\mathcal{A}$-mensurável ou mesmo, quando não houver perigo de confusão sobre qual $\sigma$-álgebra estamos trabalhando, podemos dizer apenas que $I$ é um conjunto mensurável.
-\end{definicao}
-
-Uma observação importante sobre a definição acima é que um 
-subconjunto $I$ da reta pode ser ser mensurável segundo uma $\sigma$-álgebra $\mathcal{A}$, mas não ser mensurável segundo 
-uma outra $\sigma$-álgebra $\mathcal{B}$. Por exemplo, 
-o intervalo fecahdo $[0,2]$ não é mensurável segundo a $\sigma$-álgebra do Exemplo \ref{exemplo-sigma-algebra1}.
-Mas o intervalo fecahdo $[0,2]$ é um conjunto mensurável 
-segundo a $\sigma$-álgebra $\mathscr{P}(\R)$. Na verdade,
-qualquer subconjunto de $\mathbb{R}$ é mensurável segundo 
-a $\sigma$-álgebra $\mathscr{P}(\R)$. 
-
-
-\medskip 
-
-Sejam $\mathcal{A}$ e $\mathcal{B}$ $\sigma$-álgebras de conjuntos de $\R$.
-Dizemos que $\mathcal{A}$ é uma sub-$\sigma$-álgebra de $\mathcal{B}$
-se $I\in\mathcal{A}$ implica $I\in\mathcal{B}$.
-
-Note que, segundo a definição acima, qualquer $\sigma$-álgebra $\mathcal{A}$ de subconjuntos de $\R$ 
-sempre pode ser vista como uma sub-$\sigma$-álgebra de $\mathscr{P}(\R)$.
-
-
-
-
-
-\begin{proposicao}
-\label{prop-intersecao-sigma-algebras}
-    Sejam $\mathcal{A}$ e $\mathcal{B}$  
-    $\sigma$-álgebras de subconjuntos de $\R$. 
-    Então a coleção, de subconjuntos de $\R$, definida por
-    \[
-    \mathcal{A}\cap \mathcal{B} 
-    \equiv 
-    \{I\cap J \subset \R : I\in \mathcal{A}\ \textrm{e}\ J\in\mathcal{B} \}
-    \]
-    é também uma $\sigma$-álgebra de conjuntos de $\R$.
-    Além do mais, $\mathcal{A}\cap \mathcal{B}$ é uma 
-    sub-$\sigma$-álgebra de ambas $\mathcal{A}$ e $\mathcal{B}$.
-\end{proposicao}
-
-
-
-Na verdade, a proposição acima é válida não apenas para a interseção de
-duas $\sigma$-álgebras mas sim para uma interseção arbitrária de $\sigma$-álgebras de subcojuntos de $\R$. Mais precisamente, dados um 
-conjunto arbitrário de índices $J$ (que pode ser enumerável ou não-enumerável)
-e uma coleção de $\sigma$-álgebras de conjuntos de $\R$, indexada em $J$, isto é, $\{\mathcal{A}_{j}: j\in J\}$, definimos
-\[
-\bigcap_{j\in J} \mathcal{A}_j
-\equiv
-\left\{ 
-\bigcap_{j\in I} I_j \subset\R : 
-I_j\in \mathcal{A}_j,\ \text{para cada}\ j\in J  
-\right\}.
-\]
-
-\begin{lema}
-\label{lema-intersecao-arbitraria-sigma-algebras}
-Seja $J$ um conjunto de índices arbitrário e $\mathcal{A}_j$, para cada $j\in J$, uma $\sigma$-álgebra de conjuntos de $\R$. Então
-a coleção $\bigcap_{j\in J}\mathcal{A}_j$ é uma $\sigma$-álgebra
-de conjuntos de $\R$.
-\end{lema}
-
-
-O lema acima permite introduzir um dos conceitos mais importantes
-na construção de $\sigma$-álgebras de conjuntos de $\R$,
-que é o conceito de $\sigma$-álgebra gerada 
-por uma coleção arbitrária de subconjuntos de $\R$.
-
-\begin{definicao}
-\label{def-sigma-algebra-gerada}
-Sejam $\Lambda$ um conjunto arbitrário de índices e $I_{\lambda}$,
-para cada $\lambda\in \Lambda$, um subconjunto arbitrário de $\R$.
-Considere a coleção 
-$\mathcal{M} \equiv \{I_{\lambda} : \lambda\in\Lambda\}$. 
-Seja $\{\mathcal{A}_j: j\in J\}$ a coleção todas
-as $\sigma$-álgebras de conjuntos de $\R$ tal que 
-$\mathcal{A}_j$ contém toda a coleção $\mathcal{M}$, 
-para cada $j\in J$.
-Pelo Lema \ref{lema-intersecao-arbitraria-sigma-algebras} a
-coleção  
-\[
-\sigma(\mathcal{M})\equiv \bigcap_{j\in J} \mathcal{A}_j
-\]
-é uma $\sigma$-álgebra. Esta $\sigma$-álgebra é chamada da 
-$\sigma$-álgebra gerada pela coleção $\mathcal{M}$.
-\end{definicao}
-
-Observe que cada $I_{\lambda}\in \mathcal{M}$ é também um conjunto 
-da $\sigma$-álgebra $\sigma(\mathcal{M})$. Intuitivamente, a 
-$\sigma$-álgebra gerada pela coleção $\mathcal{M}$
-pode ser pensada como a ``menor'' $\sigma$-álgebra contendo toda a coleção $\mathcal{M}$. Em várias aplicações a coleção $\mathcal{M}$ é escolhida como sendo uma coleção apropriada de intervalos da reta. 
-
-
-Antes de voltarmos a discussão sobre a medida de Lebesgue, vamos apresentar a definição geral de uma medida sobre $\R$. 
-
-\begin{definicao}[Medida]
-Seja $\mathcal{A}$ uma $\sigma$-álgebra de subconjuntos de $\R$.
-Uma função $\mu:\mathcal{A}\to [0,\infty]$ é chamada de uma {\it medida} sobre $\R$ se 
-\begin{itemize}
-	\item[1)] $\mu(\emptyset)=0$;
-	\item[2)] para toda sequência de conjuntos $A_n \ (n=1,2,\ldots)$ dois-a-dois disjunta temos
-			 \[
-			 \mu\left( \bigcup_{n=1}^{\infty} A_n \right) 
-			 =
-			 \sum_{i=1}^{\infty}\mu(A_n).
-			 \]
-\end{itemize}
-\end{definicao}
-
-
-Nos referimos a propriedade do item {\it 2)} 
-da definição acima, dizendo que a medida $\mu$ 
-é $\sigma$-aditiva ou contavelmente aditiva. 
-Note que esta propriedade implica, 
-na chamada aditividade finita de $\mu$, 
-isto é, se $A_1,\ldots, A_n$ são elementos
-da $\sigma$-álgebra $\mathcal{A}$, dois-a-dois disjuntos, então 
-$\mu(A_1\cup\ldots\cup A_n) = \mu(A_1)+\ldots+\mu(A_n)$
-(basta considerar uma sequência de conjuntos como no item {\it 2)} 
-e tomar $A_m=\emptyset$ para $m\geq n$).
-
-
-\medskip 
-
-Como o leitor já deve estar suspeitando, a definição acima é ampla o bastante para permitir a construção de diversas medidas distintas sobre $\R$. A medida de Lebesgue é, deste ponto de vista, 
-apenas um exemplo de medida sobre $\R$. 
-Entretanto, ela é em diversos sentidos um dos exemplos 
-de medida mais importantes que podemos definir na reta. 
-Porém, antes de apresentar sua construção 
-(que é bastante elaborada, pois precisamos escolher apropriadamente a 
-$\sigma$-álgebra e em seguida, definir a medida para cada elemento desta $\sigma$-álgebra de forma a serem satisfeitas uma série de exigências) 
-vamos mostrar como construir algumas medidas mais simples.
-
-
-
-\begin{exemplo}
- Seja $\mathcal{A} \equiv \mathscr{P}(\R)$ a $\sigma$-álgebra formada pelo conjunto das partes de $\R$. A função $\mu:\mathcal{A}\to [0,+\infty]$ cuja a imagem de um subconjunto 
- $E\subset\R$ é dada por 
- \[
-     \mu(E)=\sharp E \ \ (\textrm{a cardinalidade de}\ E)
- \]
- é uma medida sobre $\R$. Esta medida é chamada de medida da contagem em $\mathbb{R}$.
-\end{exemplo}
-
-\begin{exemplo}
-	Seja $\mathcal{A} \equiv \mathscr{P}(\R)$ a $\sigma$-álgebra formada pelo conjunto das partes de $\R$. Seja $x\in\mathbb{R}$ um ponto arbitrário fixado. A função $\delta_x:\mathcal{A}\to [0,+\infty]$ definida para cada $E\in \mathcal{A}$ por
-	\[
-	\delta_{x}(E) = 
-	\begin{cases}
-	    1,&\ \textrm{se}\ x\in E;
-	    \\
-	    0,&\ \textrm{caso contrário}.
-	\end{cases}
-	\]
-	define uma medida sobre $\R$. Esta medida é conhecida como 
-	medida Delta de Dirac, concentrada em $x$.
-\end{exemplo}
-
-Uma observação importante sobre o exemplo acima é que a função definida nele, restrita a qualquer $\sigma$-álgebra $\mathcal{B}$ de conjuntos $\R$ também define uma medida. Por simplicidade, 
-todas estas restrições também são chamadas 
-de medidas Delta de Dirac concentrada em $x$. 
-Esta aparente ambiguidade acaba não gerando nenhuma 
-confusão já que, em geral, é claro sobre qual $\sigma$-álgebra estamos trabalhando. 
-
-
-\begin{exemplo}
-	Seja $\mathcal{A}$ uma $\sigma$-álgebra qualquer de subconjuntops de $\R$. Sejam
-	$K_1$, $K_2$ constantes reais não-negativas, $\mu_1:\mathcal{A} \to [0,+\infty]$ e $\mu_2:\mathcal{A} \to [0,+\infty]$ medidas sobre $\R$. 
-	Então função $\mu:\mathcal{A}\to [0,+\infty]$ definida para cada $E\in \mathcal{A}$ por
-	\[
-	\mu(E) = K_1\mu_1(E)+K_2\mu_2(E),
-	\]
-	é também uma medida sobre $\R$. 
-\end{exemplo}
-
-A partir dos exemplos anteriores, podemos construir uma infinidade de exemplos
-de novas medidas. O exemplo seguinte irá inspirar algumas construções que vamos
-apresentar adiante.
-
-
-\begin{exemplo}
-	Seja $\mathcal{A}$ uma $\sigma$-álgebra qualquer de subconjuntops de $\R$. Sejam $x_1,x_2,\ldots,x_n\in\mathbb{R}$ uma coleção finita de números reais fixada e $f:\mathbb{R}\to\mathbb{R}$ uma função não-negativa. Então função $\mu:\mathcal{A}\to [0,+\infty]$ definida para cada $E\in \mathcal{A}$ por
-	\[
-	\mu(E) = \sum_{j=1}^n f(x_j)\delta_{x_j}(E),
-	\]
-	onde $\delta_{x_j}$ denota a medida Delta de Dirac concentrada em $x_j$, define uma medida sobre $\R$. 
-\end{exemplo}
-
-
-Uma das propriedades mais importantes de uma medida é a chamada propriedade
-de monotonicidade da medida. Ela é precisamente enunciada no lema seguinte.
-
-
-\begin{lema}[Monotonicidade da Medida]
-\label{exercicio-monotonicidade-medida}
-	Sejam $\mathcal{A}$ uma $\sigma$-álgebra de conjuntos de $\R$ 
-	e $\mu:\mathcal{A}\to [0,+\infty]$ uma medida sobre $\R$.
-	Se $A$ e $B$ são quaiquer conjuntos $\mathcal{A}$-mensuráveis, 
-	tais que $A\subset B$, então
-	\[
-		\mu(A)\leq \mu(B).
-	\] 
-\end{lema}
-
-Uma das propriedades mais úteis e incríveis que podem ser obtidas à partir da
-monotonicidade da medida e da $\sigma$-aditividade é a chamada continuidade da
-medida. Apesar da terminologia, este conceito não é exatamente formulado como
-no caso de funções ou de sequências. Seu significado preciso é apresentado 
-na proposição abaixo.
-
-
-
-\begin{proposicao}[Continuidade da Medida]
-Seja $\mathcal{A}$ uma $\sigma$-álgebra de subconjuntos de $\R$ e 
-$\mu:\mathcal{A}\to [0,\infty]$ uma medida sobre $\R$. 
-\begin{itemize}
-\item Para qualquer sequência crescente $A_n$
-($n=1,2,\ldots$) em $\mathcal{A}$, isto é,  
-$A_1\subset A_2\subset\ldots$ temos que 
-$$
-\mu\left( \bigcup_{i=1}^{\infty} A_n \right) = \lim_{n\to\infty} \mu(A_n).
-$$ 
-\item Se $A_n$ é uma sequência decrescente, isto é, 
-$A_1\supset A_2\supset\ldots$ e $\mu(A_1)<\infty$, então 
-$$
-\mu\left( \bigcap_{i=1}^{\infty} A_n \right) = \lim_{n\to\infty} \mu(A_n).
-$$ 
-\end{itemize}
-\end{proposicao}
-
-\begin{center}
-    {\red INICIO *****  Em edição}
-\end{center}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        Nesta seção vamos mostrar como é construída a medida de Lebesgue na reta real. 
+        Este conceito será pouco usado neste texto. Para ser mais preciso, 
+        vamos usá-lo apenas para caracterizar a coleção de todas as 
+        funções $f:I\subset \R\to \R$ para as quais a integral 
+        (própria e imprópria) de Riemann está bem definida. 
+        
+        Intuitivamente, a medida de Lebesgue pode ser entendida como uma 
+        função que associa a cada subconjunto $A\subset \R$ um ponto 
+        em $[0,+\infty]$, denotado por $\Leb(A)$, que faz o 
+        papel da ideia de comprimento de $A$. 
+        Por exemplo, dados dois números reais $a$ e $b$, com $a<b$, 
+        considere o intervalo fechado $A\equiv[a,b]$. A medida de Lebesgue 
+        deste intervalo fechado é definida como sendo o número real 
+        $\Leb(A)=b-a$. Neste caso, a medida de Lebesgue
+        de $A$ representa exatamente a ideia de comprimento deste conjunto.
+        Caso $A=[a,+\infty]$, um intervalo ilimitado da reta, então 
+        a medida de Lebesgue de $A$ é dada por $\Leb(A)=+\infty$. 
+        
+        Já que $\Leb(A)$ se propõe a ser uma generalização 
+        da ideia de comprimento, à primeira vista parece ser bastante conveniente 
+        poder ter $\Leb(A)$ bem definida para qualquer subconjunto $A\subset\R$.
+        Dito de outro modo, parece ser bastante conveniente poder construir 
+        uma função $\Leb:\mathscr{P}(\R)\to [0,+\infty]$, 
+        onde $\mathscr{P}(\R)$ denota a coleção de todos os subconjuntos de $\R$,
+        isto é, 
+        \[
+            \mathscr{P}(\R)
+            \equiv 
+            \{A\subset\mathbb{R}:\ A\ \text{é um subconjunto qualquer de}\ \R \}.
+        \]
+        Às vezes, $\mathscr{P}(\R)$ é chamado de conjunto das partes de $\R$.
+        O ponto é que podemos mostrar que não existe nenhuma função definida 
+        no conjunto das partes de $\R$ que possua todas propriedades que seriam 
+        naturais (esta propriedades são relacionadas mais à frente,
+        nesta seção) para uma generalização da noção de comprimento de um subconjunto da reta. 
+        Por causa deste resultado  de impossibilidade, 
+        somos naturalmente motivados a nos perguntar se existiria 
+        alguma coleção de subconjuntos de $\R$ 
+        (suficientemente grande para podermos dar sentido à medida de uma gama 
+        enorme de conjuntos) 
+        tal que a noção de comprimento estivesse 
+        bem definida para todos os membros desta coleção e além do mais que as outras 
+        propriedades naturais da noção de comprimento também fossem satisfeitas. 
+        O segredo para encontrar a resposta para esta 
+        pergunta está no conceito de sigma-álgebra 
+        (ou $\sigma$-álgebra) de conjuntos, que é apresentado logo abaixo. 
         %
-        \begin{definicao}
-        \label{def-medida-lebesgue}
-            A medida de Lebesgue é a correspondência
-            %
-            \begin{equation*}
-                \Leb: \mathcal{A}\subset\mathcal{P}(\R) \to [0, +\infty] \subseteq\overline{\R} 
-                = \R\cup\{-\infty, +\infty\},
-            \end{equation*}
-            %
-            sendo $\mathcal{A}$ uma $\sigma$-álgebra adequada\footnote{Não vamos falar da
-            estrutura exata dessa $\sigma$-álgebra; basta saber que ela é maior que os borelianos
-            mas menor que o conjunto das partes.} e $\overline{\R}$ a reta real estendida, tal que
-            %
-            \begin{equation*}
-                \Leb(A) = \inf_{\mathcal{C}} \sum_{n\in\N} (b_n - a_n), \, \forall A\in\mathcal{A},
-            \end{equation*}
-            %
-            onde $\mathcal{C}$ é a família de coberturas abertas $\mathscr{C}$ de $A$ por intervalos
-            disjuntos, i.e.,
-            %
-            \begin{equation*}
-                \mathscr{C} = \bigcup_{n\in\N} I_n, \text{ com } I_n = (a_n, b_n)\subseteq\R
-                \text{ e } I_j\cap I_k = \varnothing, j\neq k.
-            \end{equation*}
-            %
+        \begin{definicao}[$\sigma$-Álgebra]
+        \label{def-sigma-algebra}
+            Uma coleção $\mathcal{A}$ de subconjuntos de $\R$ é chamada de
+            \index{Sigma-Álgebra! de conjuntos}{\it $\sigma$-álgebra} se satisfaz as seguintes condições:
+            \begin{itemize}
+            	\item[1)] $\emptyset\in\mathcal{A}$ e $\R\in\mathcal{A}$;
+            	\item[2)] $A\in \mathcal{A} \implies A^c\in\mathcal{A}$;
+            	\item[3)] $A_n\in\mathcal{A}\ \, (n=1,2,\ldots) 
+            				\implies 
+            				\dis\bigcup_{n=1}^{\infty} A_n \in \mathcal{A}$.
+            \end{itemize}
         \end{definicao}
         %
-        Com essa definição, temos, por exemplo, que
+        Às vezes, nos referimos à propriedade 3) dizendo que $\mathcal{A}$ é fechada 
+        para uniões enumeráveis. Note que tomando $A_n=\emptyset$, para todo 
+        $n\geqslant n_0$, podemos verificar, usando 3), que $\mathcal{A}$ também é fechada 
+        para uniões finitas. Observamos também que das propriedades 2) e 3) segue 
+        que $\mathcal{A}$ é fechada para interseções finitas e enumeráveis.
+    
+        No que segue apresentamos dois exemplos de $\sigma$-álgebras de $\R$.
+        %
+        \begin{exemplo}\label{exemplo-sigma-algebra1}
+            A coleção 
+            $\mathcal{A}\equiv \{\emptyset, [0,1], (-\infty,0)\cup(1,+\infty),\R  \}$
+            é uma $\sigma$-álgebra de conjuntos de $\R$.
+            Neste exemplo, a $\sigma$-álgebra possui apenas 4 subconjuntos da reta. 
+        \end{exemplo}
+        %
+        \begin{exemplo}
+            A coleção 
+            $\mathcal{A}\equiv \{\emptyset, \R  \}$
+            é uma $\sigma$-álgebra de conjuntos de $\R$.
+            Neste exemplo, a $\sigma$-álgebra possui apenas 2 subconjuntos da reta. 
+            A coleção $\mathcal{B}\equiv \mathscr{P}(\R)$ também é uma $\sigma$-álgebra
+            de conjuntos de $\R$, e portanto um exemplo de
+            $\sigma$-álgebra que possui uma quantidade infinita de elementos.
+            
+            As duas $\sigma$-álgebras deste exemplo são chamadas de $\sigma$-álgebras triviais de $\R$.
+        \end{exemplo}
+        %
+        Os exemplos apresentados acima mostram que podemos exibir
+        várias $\sigma$-álgebras de subconjuntos de $\R$. 
+        Na verdade, existe uma técnica para construir uma $\sigma$-álgebra 
+        à partir de uma coleção arbitrária dada. 
+        Por exemplo, dada uma coleção finita de subconjuntos 
+        distintos de $\R$, digamos, $I_1$, $I_2$, $\ldots$, $I_n$, 
+        podemos usar esta técnica para construir à partir 
+        desta coleção uma nova coleção $\mathcal{A}$, 
+        contendo todos $I_j$'s, e que é uma $\sigma$-álgebra
+        de subconjuntos de $\R$. 
+    
+        Para apresentar esta técnica vamos precisar introduzir algumas novo conceitos
+        e resultados.
+    
+        Uma convenção importante quando falamos de medidas é que se 
+        $\mathcal{A}$ denota uma $\sigma$-álgebra de conjuntos de 
+        $\R$ e $I\subset \R$ é um subconjunto desta coleção, 
+        então indicamos este fato escrevendo $I\in \mathcal{A}$. 
+        Isto é, a relação entre um conjunto que faz parte da $\sigma$-álgebra
+        e a $\sigma$-álgebra é uma relação de pertinência e não de continência. 
+        Ou seja, do ponto de vista de uma $\sigma$-álgebra, 
+        cada conjunto $I$ que compõem esta coleção, 
+        mesmo não sendo um conjunto unitário, 
+        é pensado como um elemento da $\sigma$-álgebra. 
+        Para facilitar mais ainda a linguagem e notação, vamos introduzir a 
+        definição de espaço mensurável.
+        %
+        \begin{definicao}
+            Um par ordenado da forma $(\R,\mathcal{A})$, onde 
+            $\mathcal{A}$ é uma $\sigma$-álgebra de conjuntos de $\R$ é chamado de 
+            um espaço mensurável. 
+            Cada conjunto $I$ da coleção $\mathcal{A}$
+            é chamado de um conjunto mensurável, segundo $\mathcal{A}$. 
+            Alternativamente, dizemos que $I$ é um conjunto 
+            $\mathcal{A}$-mensurável ou mesmo, quando não houver 
+            perigo de confusão sobre qual $\sigma$-álgebra estamos 
+            trabalhando, podemos dizer apenas que $I$ é um conjunto mensurável.
+        \end{definicao}
+        %
+        Uma observação importante sobre a definição acima é que um 
+        subconjunto $I$ da reta pode ser ser mensurável 
+        segundo uma $\sigma$-álgebra $\mathcal{A}$, mas não ser mensurável segundo 
+        uma outra $\sigma$-álgebra $\mathcal{B}$. Por exemplo, 
+        o intervalo fechado $[0,2]$ não é mensurável 
+        segundo a $\sigma$-álgebra do Exemplo \ref{exemplo-sigma-algebra1}.
+        Mas o intervalo fechado $[0,2]$ é um conjunto mensurável 
+        segundo a $\sigma$-álgebra $\mathscr{P}(\R)$. Na verdade,
+        qualquer subconjunto de $\R$ é mensurável segundo 
+        a $\sigma$-álgebra $\mathscr{P}(\R)$. 
+        
+        \medskip 
+        
+        Sejam $\mathcal{A}$ e $\mathcal{B}$ $\sigma$-álgebras de conjuntos de $\R$.
+        Dizemos que $\mathcal{A}$ é uma sub-$\sigma$-álgebra de $\mathcal{B}$
+        se $I\in\mathcal{A}$ implica $I\in\mathcal{B}$.
+        
+        Note que, segundo a definição acima, 
+        qualquer $\sigma$-álgebra $\mathcal{A}$ de subconjuntos de $\R$ 
+        sempre pode ser vista como uma sub-$\sigma$-álgebra de $\mathscr{P}(\R)$.
+        %
+        \begin{proposicao}
+        \label{prop-intersecao-sigma-algebras}
+            Sejam $\mathcal{A}$ e $\mathcal{B}$  
+            $\sigma$-álgebras de subconjuntos de $\R$. 
+            Então a coleção de subconjuntos de $\R$, definida por
+            %
+            \[
+                \mathcal{A}\cap \mathcal{B} 
+                \equiv 
+                \{
+                    I\cap J \subset \R : I\in \mathcal{A}\ \textrm{e}\ J\in\mathcal{B} 
+                \}
+            \]
+            %
+            é também uma $\sigma$-álgebra de conjuntos de $\R$.
+            Além do mais, $\mathcal{A}\cap \mathcal{B}$ é uma 
+            sub-$\sigma$-álgebra de ambas $\mathcal{A}$ e $\mathcal{B}$.
+        \end{proposicao}
+        %
+        Na verdade, a proposição acima é válida não apenas para a interseção de
+        duas $\sigma$-álgebras mas sim para uma interseção arbitrária 
+        de $\sigma$-álgebras de subconjuntos de $\R$. 
+        Mais precisamente, dados um 
+        conjunto arbitrário de índices $J$ 
+        (que pode ser enumerável ou não-enumerável)
+        e uma coleção de $\sigma$-álgebras de conjuntos de $\R$, 
+        indexada em $J$, isto é, $\{\mathcal{A}_{j}: j\in J\}$, definimos
+        %
+        \[
+            \bigcap_{j\in J} \mathcal{A}_j
+            \equiv
+            \left\{ 
+                \bigcap_{j\in I} I_j \subset\R : 
+                I_j\in \mathcal{A}_j,\ \text{para cada}\ j\in J  
+            \right\}.
+        \]
+        %
+        \begin{lema}
+        \label{lema-intersecao-arbitraria-sigma-algebras}
+            Seja $J$ um conjunto de índices arbitrário e 
+            $\mathcal{A}_j$, para cada $j\in J$, uma $\sigma$-álgebra 
+            de conjuntos de $\R$. Então
+            a coleção $\bigcap_{j\in J}\mathcal{A}_j$, 
+            definida logo acima, é uma $\sigma$-álgebra
+            de conjuntos de $\R$.
+        \end{lema}
+        %
+        O lema acima permite introduzir um dos conceitos mais importantes
+        na construção de $\sigma$-álgebras de conjuntos de $\R$,
+        o de $\sigma$-álgebra gerada 
+        por uma coleção arbitrária de subconjuntos de $\R$.
+        %
+        \begin{definicao}
+        \label{def-sigma-algebra-gerada}
+            Sejam $\Lambda$ um conjunto arbitrário de índices e $I_{\lambda}$,
+            para cada $\lambda\in \Lambda$, um subconjunto arbitrário de $\R$.
+            Considere a coleção 
+            $\mathcal{M} \equiv \{I_{\lambda} : \lambda\in\Lambda\}$. 
+            Seja $\{\mathcal{A}_j: j\in J\}$ a coleção todas
+            as $\sigma$-álgebras de conjuntos de $\R$ tal que 
+            $\mathcal{A}_j$ contém toda a coleção $\mathcal{M}$, 
+            para cada $j\in J$.
+            Observe que esta coleção é não-vazia, uma vez que $\mathscr{P}(\R)$
+            é uma $\sigma$-álgebra contendo todos os conjuntos da coleção 
+            $\mathcal{M}$. 
+            Pelo Lema \ref{lema-intersecao-arbitraria-sigma-algebras} a
+            coleção  
+            %
+            \[
+                \sigma(\mathcal{M})\equiv \bigcap_{j\in J} \mathcal{A}_j
+            \]
+            %
+            é uma $\sigma$-álgebra. Esta $\sigma$-álgebra é chamada da 
+            $\sigma$-álgebra gerada pela coleção $\mathcal{M}$.
+        \end{definicao}
+        %
+        É importante destacar que cada $I_{\lambda}\in \mathcal{M}$ é também um conjunto 
+        da $\sigma$-álgebra $\sigma(\mathcal{M})$. Intuitivamente, a 
+        $\sigma$-álgebra gerada pela coleção $\mathcal{M}$
+        pode ser pensada como a ``menor'' $\sigma$-álgebra 
+        contendo toda a coleção $\mathcal{M}$. 
+        Em várias aplicações a coleção $\mathcal{M}$ 
+        é escolhida como sendo uma coleção apropriada de intervalos da reta. 
+    
+        Antes de voltarmos a discussão sobre a medida de Lebesgue, 
+        vamos apresentar a definição geral de uma medida sobre $\R$. 
+        %
+        \begin{definicao}[Medida]
+        \label{def-medida}
+            Seja $\mathcal{A}$ uma $\sigma$-álgebra de subconjuntos de $\R$.
+            Uma função $\mu:\mathcal{A}\to [0,\infty]$ é chamada de uma {\it medida} sobre $\R$ se 
+            %
+            \begin{itemize}
+            	\item[1)] $\mu(\emptyset)=0$;
+            	\item[2)] para toda sequência de conjuntos $A_n \ (n=1,2,\ldots)$ dois-a-dois disjunta temos
+    			 \[
+    			    \mu\left( \bigcup_{n=1}^{\infty} A_n \right) 
+    			    =
+    			    \sum_{i=1}^{\infty}\mu(A_n).
+    			 \]
+            \end{itemize}
+        \end{definicao}
+        %
+        Nos referimos a propriedade do item {\it 2)} 
+        da definição acima, dizendo que a medida $\mu$ 
+        é $\sigma$-aditiva ou contavelmente aditiva. 
+        Note que esta propriedade implica 
+        na chamada aditividade finita de $\mu$, 
+        isto é, se $A_1,\ldots, A_n$ são elementos
+        da $\sigma$-álgebra $\mathcal{A}$, dois-a-dois disjuntos, então 
+        $\mu(A_1\cup\ldots\cup A_n) = \mu(A_1)+\ldots+\mu(A_n)$
+        (basta considerar uma sequência de conjuntos como no item {\it 2)} 
+        e tomar $A_m=\emptyset$ para $m\geq n$).
+    
+        \medskip 
+        
+        Como o leitor já deve estar suspeitando, a definição acima é 
+        ampla o bastante para permitir a construção de diversas 
+        medidas distintas sobre $\R$. A medida de Lebesgue é, deste ponto de vista, 
+        apenas um exemplo de medida sobre $\R$. 
+        Entretanto, ela é em diversos sentidos um dos exemplos 
+        de medida mais importantes que podemos definir na reta. 
+        Porém, antes de apresentar sua construção 
+        (que é bastante elaborada, pois precisamos escolher apropriadamente a 
+        $\sigma$-álgebra e em seguida, definir a medida para cada 
+        elemento desta $\sigma$-álgebra de forma a serem satisfeitas uma série de exigências) 
+        vamos mostrar como construir algumas medidas mais simples.
+        %
+        \begin{exemplo}
+            Seja $\mathcal{A} \equiv \mathscr{P}(\R)$ a $\sigma$-álgebra 
+            formada pelo conjunto das partes de $\R$. 
+            A função $\mu:\mathcal{A}\to [0,+\infty]$ cuja a imagem de um subconjunto 
+            $E\subset\R$ é dada por 
+            \[
+                \mu(E)=\sharp E \ \ (\textrm{a cardinalidade de}\ E)
+            \]
+            é uma medida sobre $\R$. Esta medida é chamada de medida da contagem em $\R$.
+        \end{exemplo}
+        %
+        \begin{exemplo}
+        	Seja $\mathcal{A} \equiv \mathscr{P}(\R)$ a $\sigma$-álgebra 
+        	formada pelo conjunto das partes de $\R$. Seja $x\in\R$ 
+        	um ponto arbitrário fixado. 
+        	A função $\delta_x:\mathcal{A}\to [0,+\infty]$ 
+        	definida para cada $E\in \mathcal{A}$ por
+        	%
+        	\[
+            	\delta_{x}(E) = 
+            	\begin{cases}
+            	    1, & \textrm{se}\ x\in E;
+            	    \\
+            	    0, & \textrm{caso contrário}.
+            	\end{cases}
+        	\]
+        	%
+        	define uma medida sobre $\R$. Esta medida é conhecida como 
+        	medida Delta de Dirac, concentrada em $x$.
+        \end{exemplo}
+        %
+        Uma observação importante sobre o exemplo acima é que a 
+        função definida nele, restrita a qualquer $\sigma$-álgebra $\mathcal{B}$ 
+        de conjuntos $\R$, também define uma medida. Por simplicidade, 
+        todas estas restrições também são chamadas 
+        de medidas Delta de Dirac concentrada em $x$. 
+        Esta aparente ambiguidade acaba não gerando nenhuma 
+        confusão já que, em geral, é claro sobre qual $\sigma$-álgebra estamos trabalhando. 
+        %
+        \begin{exemplo}
+        	Seja $\mathcal{A}$ uma $\sigma$-álgebra qualquer de subconjuntos de $\R$. Sejam
+        	$K_1$, $K_2$ constantes reais não-negativas, 
+        	$\mu_1:\mathcal{A} \to [0,+\infty]$ e $\mu_2:\mathcal{A} \to [0,+\infty]$ medidas sobre $\R$. 
+        	Então função $\mu:\mathcal{A}\to [0,+\infty]$ definida para cada $E\in \mathcal{A}$ por
+        	%
+        	\[
+        	    \mu(E) = K_1\mu_1(E)+K_2\mu_2(E),
+        	\]
+        	%
+        	é também uma medida sobre $\R$. 
+        \end{exemplo}
+        %
+        A partir dos exemplos anteriores, podemos construir uma infinidade de exemplos
+        de novas medidas. O exemplo seguinte irá inspirar algumas construções que vamos
+        apresentar adiante.
+        %
+        \begin{exemplo}
+        	Seja $\mathcal{A}$ uma $\sigma$-álgebra qualquer de subconjuntops de $\R$. 
+        	Sejam $x_1,x_2,\ldots,x_n\in\R$ uma coleção 
+        	finita de números reais fixada e $f:\R\to\R$ 
+        	uma função não-negativa. Então a função 
+        	$\mu:\mathcal{A}\to [0,+\infty]$ definida para cada $E\in \mathcal{A}$ por
+        	\[
+        	\mu(E) = \sum_{j=1}^n f(x_j)\delta_{x_j}(E),
+        	\]
+        	onde $\delta_{x_j}$ denota a medida Delta de 
+        	Dirac concentrada em $x_j$, define uma medida sobre $\R$. 
+        \end{exemplo}
+        %
+        Uma das propriedades mais importantes de uma medida é a chamada propriedade
+        de monotonicidade da medida. Ela é precisamente enunciada no lema seguinte.
+        %
+        \begin{lema}[Monotonicidade da Medida]
+        \label{exercicio-monotonicidade-medida}
+        	Sejam $\mathcal{A}$ uma $\sigma$-álgebra de conjuntos de $\R$ 
+        	e $\mu:\mathcal{A}\to [0,+\infty]$ uma medida sobre $\R$.
+        	Se $A$ e $B$ são quaisquer conjuntos $\mathcal{A}$-mensuráveis, 
+        	tais que $A\subset B$, então
+        	\[\mu(A)\leq \mu(B).\] 
+        \end{lema}
+        %
+        Uma das propriedades mais úteis e incríveis que podem ser obtidas à partir da
+        monotonicidade da medida e da $\sigma$-aditividade é a chamada continuidade da
+        medida. Apesar da terminologia, este conceito não é exatamente formulado como
+        no caso de funções ou de sequências. Seu significado preciso é apresentado 
+        na proposição abaixo.
+        %
+        \begin{proposicao}[Continuidade da Medida]
+        \label{prop-cont-medida}
+            Seja $\mathcal{A}$ uma $\sigma$-álgebra de subconjuntos de $\R$ e 
+            $\mu:\mathcal{A}\to [0,\infty]$ uma medida sobre $\R$. 
+            \begin{itemize}
+                \item[1)] Para qualquer sequência crescente $A_n$
+                ($n=1,2,\ldots$) em $\mathcal{A}$, isto é,  
+                $A_1\subset A_2\subset\ldots$, temos que 
+                %
+                $$
+                  \mu\left(\bigcup_{i=1}^{\infty} A_n \right) = 
+                  \lim_{n\to\infty} \mu(A_n).
+                $$
+                %
+                
+                \item[2)] Se $A_n$ é uma sequência decrescente, isto é, 
+                $A_1\supset A_2\supset\ldots$ e $\mu(A_1)<\infty$, então 
+                %
+                $$
+                    \mu\left(\bigcap_{i=1}^{\infty} A_n \right) = 
+                    \lim_{n\to\infty} \mu(A_n).
+                $$ 
+                %
+            \end{itemize}
+        \end{proposicao}
+        %
+        \bigskip 
+        %
+        Vamos finalmente mostrar como é construída a medida 
+        de Lebesgue. 
+        
+        Para auxiliar esta construção considere a coleção
+        $\mathcal{I}$ de todos os intervalos abertos e limitados de $\R$, isto é,
+        %
+        \[
+            \mathcal{I}
+            \equiv
+            \{(a,b)\subset \R\ :\  -\infty< a<b<+\infty\}.
+        \]
+        %
+        Dado um subconjunto $A\subset \R$ 
+        arbitrário, vamos dizer que $A$ admite uma cobertura por
+        intervalos abertos limitados se existe algum conjunto 
+        de índices $\Lambda$ (que pode ser enumerável ou não-enumerável) 
+        e uma coleção 
+        $\mathscr{C}\equiv \{ I_{\lambda} \in \mathcal{I}: \lambda\in \Lambda\}$ 
+        tal que
+        %
+        \[
+            A\subset \bigcup_{\lambda\in \Lambda} I_{\lambda}.
+        \]
+        %
+        É fácil ver que qualquer subconjunto $A\subset\R$ 
+        admite uma cobertura por abertos limitados. Para isto, basta tomar
+        o conjunto de índices, da definição de cobertura, como sendo $\Lambda = A$ e considerar os 
+        seguintes intervalos. Para cada 
+        $\lambda\in A$ defina $I_{\lambda}\equiv (\lambda-1,\lambda+1)$. 
+        Então claramente temos $A\subset \cup_{\lambda\in\Lambda} I_{\lambda}$.
+        Entretanto, do ponto de vista da teoria da Medida tal tipo de 
+        cobertura pode ser bastante inconveniente, pois
+        ela, em princípio, poderia ser formada por uma quantidade 
+        não-enumerável de membros de $\mathcal{I}$. 
+        A busca por coberturas mais ``econômicas'' ou mais 
+        convenientes nos motiva a introduzir o conceito de subcobertura.
+        
+        Seja 
+        $
+        \mathscr{C}
+        \equiv
+        \{ I_{\lambda} \in \mathcal{I}: \lambda\in \Lambda\}
+        $
+        uma cobertura, por abertos limitados, de 
+        um subconjunto $A\subset\R$ arbitrário. 
+        Dizemos que uma coleção 
+        $
+        \mathscr{B}
+        \equiv
+        \{ I_{\lambda} \in \mathcal{I}: \lambda\in \Gamma\}
+        $,
+        onde $\Gamma\subset \Lambda$, é uma subcobertura de $\mathscr{C}$
+        se a coleção $\mathscr{B}$ também é uma cobertura do conjunto $A$. 
+    
+        Agora temos tudo pronto para enunciar o Teorema de Lindel\"of. 
+        Em suma, ele garante que qualquer cobertura, por abertos limitados, 
+        de um subconjunto arbitrário da reta, possui pelo menos uma subcobertura enumerável. 
+        %
+        \begin{teorema}[Teorema de Lindel\"of]
+        \label{teo-lindelof}
+            Sejam $A\subset\R$ um subconjunto arbitrário e 
+            $\mathscr{C}\equiv \{I_{\lambda}\in \mathcal{I}: \lambda\in \Lambda\}$
+            uma cobertura de $A$ por intervalos abertos limitados. 
+            Então existe algum subconjunto enumerável 
+            $\Gamma\equiv\{\lambda_1,\lambda_2,\ldots\}\subset \Lambda$
+            tal que 
+            %
+            \[
+                A \subset \bigcup_{n=1}^{\infty} I_{\lambda_n}.
+            \]
+            %
+            Ou seja, qualquer cobertura $\mathscr{C}$ de $A$ admite pelo menos uma 
+            subcobertura formada por uma quantidade enumerável de intervalos abertos limitados.
+        \end{teorema}
+        %
+        Seguindo o espírito deste texto, 
+        que é trabalhar sempre que possível com extensões de funções, 
+        vamos apresentar, nas próximas páginas, 
+        a medida de Lebesgue como uma extensão para uma $\sigma$-álgebra apropriada 
+        da seguinte função $\lambda:\mathcal{I}\to [0,+\infty]$
+        definida para cada $(a,b)\equiv A\in \mathcal{I}$ por
+        %
+        \begin{equation}
+        \label{def-func-lambda}
+            \lambda\big((a,b)\big) = b-a.
+        \end{equation}
+        %
+        Para construir a extensão da função $\lambda$ que será a medida de Lebesgue,
+        vamos precisar antes considerar uma função auxiliar $\lambda^*$
+        que estará definida no conjunto das partes de $\R$. Depois
+        vamos enunciar um resultado que garante que a função $\lambda^*$ é uma extensão de $\lambda$.
+        Isto vai nos permitir calcular o valor de $\lambda^{*}$ para uma quantidade
+        enorme de subconjuntos da reta, uma vez que $\lambda$ tem um expressão bem simples nos intervalos. 
+        Em seguida, vamos usar $\lambda^{*}$ para definir uma coleção 
+        de subconjuntos da reta. Vamos enunciar outro resultado, 
+        devido a Carathéodory, que garante que coleção em questão é uma $\sigma$-álgebra
+        e além do mais que a função $\lambda^{*}$, 
+        restrita a esta $\sigma$-álgebra, é uma medida no sentido da Definição 
+        \ref{def-medida}. 
+        Seguindo, vamos enunciar outro teorema 
+        que conhecido como Teorema de Lebesgue-Carathéodory 
+        que garante que a restrição de $\lambda^*$ a $\sigma$-álgebra, 
+        mencionada acima, define de fato uma medida. 
+        Vamos chamar esta restrição de $\Leb$. 
+        Esta é finalmente a tão desejada medida de Lebesgue! 
+        
+        \bigskip
+        
+        Seguindo então nosso roteiro, vamos prosseguir introduzindo a função auxiliar
+        $\lambda^*:\mathscr{P}(\R)\to\ [0,+\infty]$ que é definida
+        para cada conjunto $A\in \mathscr{P}(\R)$ pela expressão
+        %
+        \begin{equation}
+        \label{def-func-lambda-star}
+            \lambda^{*}(A)
+            \equiv
+            \inf
+            \left\{
+                \sum_{n=1}^{\infty} 
+                \lambda(I_n) \ : \ 
+                I_n\in \mathcal{I} 
+                \ \textrm{e} \ 
+                A\subset \bigcup_{n=1}^{\infty} I_n
+            \right\},
+        \end{equation}
+        %
+        onde $\lambda(I_n)$ é definido como em \eqref{def-func-lambda}. 
+        
+        Observamos que é necessário usar o Teorema de Lindel\"of (Teorema \ref{teo-lindelof})
+        para garantir a existência de pelo menos uma cobertura enumerável 
+        para $A$, por abertos limitados, e consequentemente que a função 
+        $\lambda^*$ está bem definida para qualquer subconjunto $A\in\mathscr{P}(\R)$.
+        %
+        \begin{teorema}
+            A função $\lambda^{*}:\mathscr{P}(\R)\to [0,+\infty]$, 
+            definida em \eqref{def-func-lambda-star} 
+            é uma extensão da função $\lambda:\mathcal{I}\to [0,+\infty]$.
+            Em outras palavras, para qualquer intervalo $(a,b)\in \mathcal{I}$
+            temos
+            \[\lambda^*\big((a,b)\big) = b-a = \lambda\big((a,b)\big).\]
+        \end{teorema}
+        %
+        \begin{teorema}[Lebesgue-Carathéodory]
+        \label{teo-leb-carath}
+            A coleção 
+            %
+            \[
+                \mathscr{L}
+                \equiv 
+                \{ 
+                    A\subset \R \ : \   
+                    \lambda^{*}(A\cap T)+\lambda^{*}(A^c\cap T) = \lambda^{*}(A)
+                    ,\  \forall T\in\mathscr{P}(\R) \ 
+                \}
+            \]
+            %
+            é uma $\sigma$-álgebra de subconjuntos de $\R$. 
+            Além do mais, para todo $A\in\mathcal{I}$ temos que $A\in \mathscr{L}$.
+            Em particular, a $\sigma$-álgebra $\mathscr{L}$ 
+            contém todos os intervalos abertos limitados e também os abertos ilimitados. 
+            A $\sigma$-álgebra $\mathscr{L}$ é chamada da $\sigma$-álgebra
+            de Lebesgue-Carathéodory da reta.
+        \end{teorema}
+        %
+        A condição que aparece na definição da coleção $\mathscr{L}$ é
+        conhecida na literatura de Teoria da Medida como {\it Condição de 
+        Carathéodory}. 
+        Pelo fato de $\mathscr{L}$ ser uma $\sigma$-álgebra e conter todos intervalos abertos limitados, 
+        ela então necessariamente contém, entre outros, 
+        todos os intervalos abertos, fechados e semi-abertos, 
+        limitados e ilimitados e uma imensidão de outros subconjuntos da reta. 
+        Esta é basicamente a $\sigma$-álgebra de subconjuntos
+        de $\R$ mais rica possível onde podemos desenvolver uma 
+        teoria de medida e integração aplicável a diversos problemas de Matemática. 
+        %
+        \begin{teorema}[Medida de Lebesgue]
+        \label{teo-def-medida-lebesgue}
+            A restrição da função $\lambda^{*}$, definida em \eqref{def-func-lambda-star}
+            à $\sigma$-álgebra de Lebesgue $\mathscr{L}$, define uma medida sobre $\R$, 
+            no sentido da Definição \ref{def-medida}, 
+            denotada por $\Leb:\mathscr{L}\to[0,+\infty]$  satisfazendo:
+            %
+            \begin{itemize}
+                \item[1)] para todo $(a,b)\equiv A\in\mathcal{I}$, temos $\Leb\big((a,b)\big)=b-a$;
+                
+                \item[2)] dados quaisquer $\alpha\in\mathbb{R}$,  $A\in\mathscr{L}$
+                defina $\alpha\oplus A\equiv \{\alpha+a: a\in A\}$,
+                então temos
+                \[\Leb(A)=\Leb(\alpha\oplus A);\]
+                
+                \item[3)] se $\mu:\mathscr{L}\to [0,+\infty]$ é 
+                uma medida satisfazendo as conclusões dos itens 1) e 2) então 
+                $\mu=\Leb$. 
+            \end{itemize}
+        \end{teorema}
+        %
+        Algumas observações são importantes no momento. 
+        Primeiro, como mencionamos no inicio desta seção, a medida de
+        Lebesgue é de fato uma generalização da ideia de comprimento 
+        por causa do item {\it 1)} do teorema acima. 
+        A propriedade do item {\it 2)} é chamada de invariância translacional
+        da medida de Lebesgue. Ela garante que um conjunto de um dado comprimento 
+        não irá sofrer alteração de seu comprimento após ser transladado na reta,
+        o que certamente é uma propriedade bastante importante 
+        de ser satisfeita para qualquer noção razoável de 
+        generalização da ideia de comprimento de um intervalo da reta real.  
+        Por último, e não menos importante, o item {\it 3)} afirma que a medida de Lebesgue 
+        é a única medida (definida na $\sigma$-álgebra de Lebesgue-Carathéodory) 
+        que pode ser construída com estas propriedades. 
+        
+        Vamos ver, a seguir, uma técnica que vai nos ajudar a entender 
+        como calcular $\Leb$ de intervalos fechados, 
+        semi-abertos e outros, facilmente usando a propriedade
+        de continuidade de uma medida (Proposição \ref{prop-cont-medida}).
+        
+        \medskip 
+    
+        No que segue vamos mostrar que $\Leb([a,b])=b-a$,
+        para quaisquer $-\infty<a<b<+\infty$. 
+        Primeiro observamos que para quaisquer 
+        par de números reais $a$, $b$ satisfazendo $a<b$ temos 
+        %
+        \[
+            [a,b] = \bigcap_{n=1}^{\infty} \left(a-\frac{1}{n}, b+\frac{1}{n}\right).
+        \]
+        %
+        Definindo a sequência $A_n$ ($n=1,2,\ldots$) de conjuntos, 
+        para cada $n\in\mathbb{N}$, por 
+        %
+        \[
+            A_n\equiv  \left(a-\frac{1}{n},b+\frac{1}{n}\right),
+        \]
+        %
+        podemos verificamos imediatamente que $A_n\subset A_{n+m}$, 
+        para quaisquer $n,m\in\N$. Portanto a sequência $A_n$ ($n=1,2,\ldots$) 
+        é uma sequência decrescente de conjuntos. 
+        Já que a medida de Lebesgue de $A_1$ é finita, isto é, 
+        $\Leb(A_1) = \Leb(a-1,b+1) = (b+1)-(a-1) = b-a+2<+\infty$, 
+        podemos aplicar
+        o item {\it 2)} da Proposição \ref{prop-cont-medida} 
+        e o item {\it 1)} do Teorema \ref{teo-def-medida-lebesgue}  
+        para concluir que
         %
         \begin{align*}
-            \Leb([a,b]) = b-a = \Leb((a,b))
+           \Leb([a,b]) 
+           &= 
+           \Leb\left( \bigcap_{n=1}^{\infty} A_n  \right)
+           \\
+           &= \lim_{n\to \infty} \Leb(A_n)
+           \\
+           &=
+           \lim_{n\to \infty} 
+           \Leb\left( \left(a-\frac{1}{n},b+\frac{1}{n}\right)\right)
+           =
+           \lim_{n\to \infty} \left( b-a+\frac{2}{n} \right) 
+           =
+           b-a.
         \end{align*}
         %
-        e também que a medida de Lebesgue de uma união disjunta é a soma das medidas, ou seja,
+        Certamente, como $\Leb$ é uma medida, segue que a medida de 
+        Lebesgue de uma união enumerável disjunta de conjuntos 
+        $\mathscr{L}$-mensuráveis (ou simplesmente Lebesgue mensuráveis) 
+        é o somatório das medidas de cada conjunto desta união, ou seja,
         %
-        \begin{equation*}
-            \Leb\left( \bigsqcup_k I_k \right) = \sum_k \Leb(I_k).
-        \end{equation*}
+        $$
+          \Leb\left( \bigsqcup_k I_k \right) = \sum_k \Leb(I_k).
+        $$
         %
-        Um tratamento mais aprofundado e no contexto de Teoria da Probabilidade pode ser
-        encontrado \href{https://github.com/leandro-mat/Notas-PTM/blob/master/notas.pdf}{aqui}.
-        Antes de rumar para a integração, vamos apenas mostrar uma propriedade interessante
-        da medida de Lebesgue: todo conjunto enumerável tem medida nula.
+        Obviamente uma questão importante que se coloca após 
+        a observação acima é a seguinte. 
+        \begin{center}
+            Quais são todos os conjuntos Lebesgue-mensuráveis?
+        \end{center}
+        
+        Esta pergunta é de difícil resposta, mas para acalmar o leitor 
+        informamos que virtualmente qualquer conjunto que você possa imaginar
+        que aparecem nas aplicações mais rotineiras desta teoria 
+        serão Lebesgue mensuráveis. 
+        Na verdade, é extremamente difícil produzir ou encontrar um conjunto que não seja mensurável à Lebesgue. 
+        Isto poderia fazer o leitor suspeitar até que a $\sigma$-álgebra
+        de Lebesgue é igual a $\sigma$-álgebra das partes de $\R$.
+        Hoje em dia, sabemos que isto não é verdade, ou seja, 
+        $\mathscr{L}\subset \mathscr{P}(\R)$ e esta continência é estrita. 
+        Mas porém, podemos dizer que praticamente só conhecemos um único
+        conjunto (e variações triviais do mesmo) que não é Lebesgue mensurável. 
+        Este importante conjunto é chamado, na literatura, de conjunto 
+        de Vitali. 
+        Infelizmente, a construção deste conjunto é 
+        absurdamente complicada e abstrata e por isto 
+        decidimos não apresentá-la neste texto.
+        
+        Uma observação importante que ajuda, quando for necessário, provar
+        que estamos trabalhando com conjuntos Lebesgue-mensuráveis 
+        é que todo conjunto aberto de $\R$ é Lebesgue-mensurável. 
+        Esta afirmação
+        é consequência do Teorema de Lindel\"of. De fato, 
+        qualquer conjunto $A$ aberto de $\mathbb{R}$ pode
+        ser coberto por intervalos abertos, limitados, 
+        totalmente contidos em $A$ e centrados em cada ponto de $A$. 
+        Mas isto nada mais é que uma cobertura de $A$
+        por abertos limitados. Logo pelo Teorema de Lindelöf esta 
+        cobertura admite uma subcobertura enumerável. 
+        Portanto qualquer aberto $A$ pode ser escrito como uma
+        união enumerável de intevalos abertos e limitados, isto é, 
+        $A = \cup_{i=1}^{\infty} I_n$, onde $I_n\in\mathcal{I}$
+        para cada $n\in\N$.
+        Mas como cada intervalo aberto é um conjunto Lebesgue-mensurável 
+        e uniões enumeráveis de conjuntos de uma determinada $\sigma$-álgebra
+        é também um elemento desta $\sigma$-álgebra, segue que $A$ é um 
+        conjunto Lebesgue mensurável!
+        
+        Já que acabamos de aprender que todo subconjunto aberto da reta é
+        Lebesgue mensurável e como sabemos que uma $\sigma$-álgebra é 
+        fechada por complementação (item {\it 2)} Definição \ref{def-sigma-algebra})
+        podemos concluir que todo conjunto fechado também é 
+        Lebesgue-mensurável! Em particular, qualquer conjunto unitário
+        da reta (que é fechado) é Lebesgue mensurável. Logo qualquer 
+        subconjunto enumerável de $\mathbb{R}$ é também um conjunto Lebesgue-mensurável. 
+ 
+        Antes de rumar para a integração, 
+        vamos apenas mostrar uma propriedade interessante e muito impressionante
+        sobre a medida de Lebesgue: 
+        todo conjunto enumerável tem medida de Lebesgue nula.
+       
+        A prova da afirmação acima pode ser feita de várias maneiras.
+        Uma alternativa consiste em, primeiro, mostrar 
+        que $\Leb(\{x\})=0$ para qualquer $x\in\R$ fixado.
+        O que pode ser feito usando o item {\it 2)} da 
+        Proposição \ref{prop-cont-medida} para uma sequência apropriada de conjuntos
+        decrescentes, você saberia dizer qual? Em seguida, note que 
+        basta usar a $\sigma$-aditividade da medida de Lebesgue 
+        para concluir que a medida de Lebesgue de qualquer conjunto 
+        enumerável é nula. 
+        Apesar deste argumento ser curto e elegante para provar
+        este fato, vamos apresentar uma outra prova alternativa
+        cuja a técnica é valiosa por ser também utilizável em outras 
+        situações um pouco mais gerais. 
+       
+        Antes de prosseguir precisamos mostrar mais um resultado
+        importante sobre a medida de Lebesgue conhecido
+        como a $\sigma$-subaditividade da medida de Lebesgue.
+        Seu enunciado preciso é dado logo abaixo.
+        %
+        \begin{proposicao}
+        \label{prop-sub-sigma-aditividade-medida}
+            Para qualquer sequência de conjuntos Lebesgue mensuráveis $A_n$ ($n=1,2,\ldots$)
+            (não necessariamente disjunta) temos que
+            \[
+                \Leb\left( \bigcup_{n=1}^{\infty} A_n\right)
+                \leqslant
+                \sum_{n=1}^{\infty} \Leb(A_n).
+            \]
+        \end{proposicao}
+        %
+        \begin{proof}
+            Esta prova é baseada em dois fatos mencionados anteriormente no texto:
+            %
+            \begin{itemize}
+                \item[1)] ($\sigma$-aditividade de uma medida) 
+                Se $B_n$ ($n=1,2,\ldots$) é uma sequência de conjuntos 
+                Lebesgue-mensuráveis dois-a-dois disjuntos então 
+                %
+                \[
+                    \Leb\left( \bigcup_{n=1}^{\infty} B_n\right)
+                    =
+                    \sum_{n=1}^{\infty} \Leb(B_n);
+                \]
+                %
+                
+                \item[2)] (monotonicidade de uma medida) para qualquer 
+                par de conjuntos Lebesgue-mensuráveis $A$ e $B$ 
+                tais que $A\subset B$ temos $\Leb(A)\leq \Leb(B)$. 
+            \end{itemize}
+            %
+            A ideia é construir uma sequência de conjuntos $B_n$ ($n=1,2,\ldots$) 
+            Lebesgue-mensuráveis tais que $B_n\subset A_n$, para cada $n\in\N$
+            e que a união dos $B_n$'s coincida com a união dos $A_n$'s, ou seja,
+            %
+            \[
+                \bigcup_{i=1}^{\infty} A_n = \bigcup_{i=1}^{\infty} B_n.
+            \]
+            %
+            Em seguida aplicamos a $\sigma$-aditividade de uma medida de Lebesgue
+            e depois a monotonicidade para provar a proposição. 
+        
+            Vamos iniciar pela construção dos conjuntos $B_n$'s. 
+            Eles serão definidos indutivamente. Vamos explicar os três 
+            primeiros passos desta construção para que o leitor entenda facilmente
+            como proceder na sequência. 
+        
+            Primeiro definimos $B_1\equiv A_1$.
+            Em seguida, definimos $B_2$ como sendo todos os pontos que estão em $A_2$
+            mas não estão em $B_1$, ou seja, $B_2=A_2\setminus B_1$. 
+            Desta forma garantimos que $B_1$ e $B_2$ são disjuntos, 
+            $B_1\subset A_1$, $B_2\subset A_2$ e também que $A_1\cup A_2 = B_1\cup B_2$.
+        
+            Já o conjunto $B_3$ é definido como sendo formado por todos os 
+            pontos que estão em $A_3$ mas não estão em $B_1$ nem $B_2$, 
+            ou seja, $B_3= A_3\setminus(B_1\cup B_2)$. Observe novamente que 
+            $B_1$, $B_2$ e $B_3$ são conjuntos dois-a-dois disjuntos e além do mais temos
+            $B_3\subset A_3$ e $A_1\cup A_2\cup A_3 = B_1\cup B_2\cup B_3$.
+            
+            Analogamente, para todo $n\geqslant 2$ definimos 
+            %
+            \[
+                B_n \equiv A_n\setminus \left( \bigcup_{j=1}^{n-1} B_j \right)
+            \]
+            %
+            Por construção $B_n$ ($n=1,2,\ldots$) é uma sequência de conjuntos 
+            Lebesgue-mensuráveis que são dois-a-dois disjuntos e para cada 
+            $n\in\N$ temos que $B_n\subset A_n$. Também é imediato verificar
+            pela construção que 
+            %
+            \[
+                \bigcup_{i=1}^{\infty} A_n = \bigcup_{i=1}^{\infty} B_n.
+            \]
+            %
+            Portanto
+            segue da $\sigma$-aditividade da medida de Lebesgue 
+            e da monotonicidade da medida de Lebesgue que
+            \begin{align*}
+                \Leb\left( \bigcup_{n=1}^{\infty} A_n\right) 
+                =
+                \Leb\left( \bigcup_{n=1}^{\infty} B_n\right)
+                =
+                \sum_{n=1}^{\infty}\Leb(B_n)
+                \leqslant 
+                \sum_{n=1}^{\infty}\Leb(A_n).
+            \end{align*}
+        \end{proof}
         %
         \begin{proposicao}
         \label{enumeravel-medida-nula}
@@ -1920,14 +2356,16 @@ $$
         \end{proposicao}
         %
         \begin{proof}
-            Seja $\{ p_1, p_2, \dots, p_n, \dots \}$ uma enumeração de $\mathcal{Q}$ e considere
-            a cobertura de $\mathcal{Q}$ pelos intervalos
+            Seja $\{ p_1, p_2, \dots, p_n, \dots \}$ uma 
+            enumeração de $\mathcal{Q}$ e considere
+            a cobertura de $\mathcal{Q}$ por intervalos da forma
             %
             \begin{equation*}
                 I_n = \left(p_n - \frac{\e}{2^n}, p_n + \frac{\e}{2^n} \right),
             \end{equation*}
             %
-            sendo $\e>0$ qualquer. Daí, temos
+            sendo $\e>0$ qualquer. 
+            Da Proposição \ref{prop-sub-sigma-aditividade-medida} segue que
             %
             \begin{align*}
                 \Leb(\mathcal{Q}) &\leq \sum_{n\in\N} \Leb(I_n) \\
@@ -1936,16 +2374,108 @@ $$
                                   &= 2\e.
             \end{align*}
             %
-            Como $\e$ é qualquer, segue que $\Leb(\mathcal{Q}) = 0$.
+            Como $\e$ é arbitrário, concluímos que $\Leb(\mathcal{Q}) = 0$.
         \end{proof}
         %
         \begin{corolario}
+            Se $\Q$ denota o conjunto dos números racionais então temos que 
             $\Leb(\Q) = 0$.
         \end{corolario}
         %
-        Mostramos que todo conjunto enumerável tem medida de Lebesgue nula, mas a volta
-        não vale! Dito de outro modo, existem conjuntos não-enumeráveis com medida nula.
-        Um exemplo clássico é o conjunto de Cantor, $\mathbf{C}$.
+        Mostramos que todo conjunto enumerável tem medida de Lebesgue nula, 
+        mas alertamos o leitor que a recíproca deste fato não é verdadeira! 
+        Dito de outro modo, existem conjuntos não-enumeráveis com medida nula.
+        Um exemplo clássico é dado pelo conjunto ternário de Cantor, $\mathbf{C}$.
+        
+        Este conjunto é definido indutivamente. Primeiro,
+        definimos um conjunto $C_0 \equiv [0,1]$. Em seguida,
+        definimos 
+        $C_1\equiv[0,1]\setminus \big(\frac{1}{3},\frac{2}{3}\big)$.
+        Isto é, $C_1$ é obtido a partir de $C_0$ 
+        removendo-se o seu terço médio. 
+        Observe que $C_1$ é um conjunto fechado, mais precisamente, 
+        $C_1 = \big[0,\frac{1}{3}\big] \cup \big[\frac{2}{3},1\big]$.  
+        Em cada passo subsequente da construção, um conjunto $C_n$ é definido, 
+        de forma que removemos o terço médio de cada um dos intervalos 
+        remanescentes do passo anterior. Isto é,
+        %
+        \begin{equation}
+        \label{def-construcao-cn-cantor}
+            C_n
+            \equiv
+            [0,1]\setminus
+            \left( 
+                \left( \frac{1}{3^n},\frac{2}{3^n} \right) \cup
+                \left( \frac{4}{3^n},\frac{5}{3^n} \right) \cup\ldots\cup
+                \left( \frac{3^n-2}{3^n},\frac{3^n-1}{3^n} \right)
+            \right)
+        \end{equation}
+        %
+        Finalmente, o conjunto de Cantor
+        é definido como a interseção infinita dos conjuntos obtidos em cada
+        passo da construção, ou seja,
+        %
+        \[
+            \mathbf{C} \equiv \bigcap_{n=1}^{\infty} C_n.
+        \]
+        %
+        \begin{center}
+            \textbf{FIGURA DO CONJUNTO DE CANTOR AQUI}
+        \end{center}
+        %
+        Observamos que o conjunto de Cantor é um subconjunto compacto da reta, 
+        pois é a interseção enumerável de conjuntos compactos.
+        Pelas observações feitas acima, segue que o conjunto de Cantor é um 
+        conjunto Lebesgue mensurável. Então faz sentido perguntar qual é a 
+        medida de Lebesgue deste conjunto. Antes de responder esta pergunta,
+        vamos apresentar mais uma propriedade simples da medida de Lebesgue,
+        que é consequência direta da sua propriedade de $\sigma$-aditividade.
+        %
+        \begin{proposicao}
+        \label{prop-Leb-diferenca}
+            Seja $A_n$ ($n=1,2,\ldots$) uma sequência de subconjuntos de 
+            $\R$ dois-a-dois disjuntos e Lebesgue mensuráveis. 
+            Seja $B\subset \R$ um conjunto Lebesgue mensurável. Suponha
+            $A_n\subset B$, para todo $n\in\N$ e $\Leb(B)<+\infty$. Então 
+            %
+            \[
+                \Leb\left(B\setminus \cup_{n=1}^{\infty} A_n \right) 
+                = 
+                \Leb(B) - \sum_{n=1}^{\infty}\Leb(A_n).
+            \]
+        \end{proposicao}
+        %
+        \begin{proof}
+            Já que $A_n\subset B$, para cada $n\in\N$ segue que 
+            $\cup_{n=1}^{\infty}A_n\subset B$. Portanto $B$ pode ser escrito como a seguinte união disjunta
+            %
+            \[
+                B 
+                = 
+                \left( B\setminus \cup_{n=1}^{\infty} A_n\right)
+                \cup
+                \left(\cup_{n=1}^{\infty} A_n\right).
+            \]
+            %
+            Tomando $\Leb$ em ambos lados da igualdade
+            acima e usando a propriedade de $\sigma$-aditividade
+            da Medida de Lebesgue ficamos com 
+            %
+            \begin{align*}
+                \Leb(B) 
+                &= 
+                \Leb\left( B\setminus \cup_{n=1}^{\infty} A_n\right)
+                +
+                \Leb\left(\cup_{n=1}^{\infty} A_n\right)
+                \\
+                &=
+                \Leb\left( B\setminus \cup_{n=1}^{\infty} A_n\right)
+                +
+                \sum_{n=1}^{\infty}\Leb (A_n).
+            \end{align*}
+            %
+            O que prova a proposição.
+        \end{proof}
         %
         \begin{proposicao}
         \label{cantor-medida-nula}
@@ -1954,37 +2484,70 @@ $$
         %
         \begin{proof}
             Para mostrar essa fato, vamos olhar para os ``pedaços'' removidos do conjunto de
-            Cantor e usar o fato de que $\Leb([0,1]) = 1$. No passo $N$ da construção de 
-            $\mathbf{C}$, removemos um comprimento de
+            Cantor até a $n$-ésima etapa de sua construção. Depois vamos usar que $\Leb([0,1]) = 1$ e a propriedade de
+            continuidade da Medida de Lebesgue.
+            
+            Como descrito acima, na $n$-ésima etapa da 
+            construção de 
+            $\mathbf{C}$, removemos $2^{n-1}$ 
+            subintervalos disjuntos de $[0,1]$ 
+            cada um com comprimento $3^{-n}$. Portanto
+            segue da igualdade \eqref{def-construcao-cn-cantor} 
+            e da Proposição \ref{prop-Leb-diferenca} que
             %
-            \begin{equation*}
-                \sum_{n=1}^N \frac{2^{n-1}}{3^n}=\frac{1}{2}\sum_{n=1}^N \left(\frac{2}{3}\right)^n
-                \xrightarrow{N\to +\infty} \frac{1}{2}\cdot\frac{2/3}{1/3} = 1.
-            \end{equation*}
+            \begin{align*}
+                \Leb(C_n)
+                &=
+                \Leb([0,1])
+                -
+                \Leb
+                \left( 
+                    \left( \frac{1}{3^n}, \frac{2}{3^n} \right) \cup
+                    \left( \frac{4}{3^n}, \frac{5}{3^n} \right) \cup\ldots\cup
+                    \left( \frac{3^n-2}{3^n},\frac{3^n-1}{3^n} \right)
+                \right)
+                \\
+                &=
+                1
+                -
+                \Leb
+                \left( 
+                    \left( \frac{1}{3^n},\frac{2}{3^n} \right) \cup
+                    \left( \frac{4}{3^n},\frac{5}{3^n} \right) \cup\ldots\cup
+                    \left( \frac{3^n-2}{3^n},\frac{3^n-1}{3^n} \right)
+                \right)
+                \\
+                &=
+                1-\sum_{j=1}^n \frac{2^{j-1}}{3^j}
+                =
+                1-\frac{1}{2}\sum_{j=1}^n \left(\frac{2}{3}\right)^j.
+            \end{align*}
             %
-            Dado $\e>0$, existe $N_0\in N$ tal que
+            Por construção, para cada $n\in\N$ 
+            temos que $C_{n+1}\subset C_n$, ou seja, 
+            a sequência $C_n$ ($n=1,2,\ldots)$ é uma 
+            sequência decrescente de conjuntos. Além do mais 
+            $\Leb(C_1) = 1-1/3 = 2/3 < +\infty$. Portanto 
+            podemos aplicar a propriedade de continuidade 
+            da medida de Lebesgue 
+            (Proposição \ref{prop-cont-medida})
+            para assegurar que 
             %
-            \begin{equation*}
-                \frac{1}{2}\sum_{n=1}^{N_0} \left(\frac{2}{3}\right)^n > 1 - \e.
-            \end{equation*}
+            \[
+                \Leb(\mathbf{C} )
+                =
+                \Leb\left(\bigcap_{n=1}^{\infty} C_n \right)
+                =
+                \lim_{n\to\infty} \Leb(C_n)
+                =
+                \lim_{n\to\infty} 1-\frac{1}{2}\sum_{j=1}^n \left(\frac{2}{3}\right)^j
+                =
+                1- \frac{1}{2}\cdot\frac{2/3}{1/3} = 0.
+            \]
             %
-            Seja $\{I_k\}$ a família de intervalos que corresponde a essa soma. Ora, então
-            $\left( \bigcup_k I_k \right)^c$ é uma cobertura de $\mathbf{C}$ com soma
-            dos comprimentos menor que $\e$. Da arbitrariedade de $\e$, segue que
-            $\Leb(\mathbf{C}) = 0$.
         \end{proof}
         %
-
-\begin{center}
-    {\red FIM ****  Em edição}
-\end{center}
-
-
-
-
-
-
-     
+    %
     \subsection{Integrais Impróprias e o Valor Principal de Cauchy} %colocar o Lema Técnico aqui?
         %
         Se $f:[a,b]\to\R$ é uma função limitada tal que o seu conjunto de pontos de descontinuidade
