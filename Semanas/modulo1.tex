@@ -1589,10 +1589,10 @@
             \end{itemize}
         \end{definicao}
         %
-        Às vezes, nos referimos à propriedade 3) dizendo que $\mathcal{A}$ é fechada 
+        Às vezes, nos referimos à propriedade \textit{3)} dizendo que $\mathcal{A}$ é fechada 
         para uniões enumeráveis. Note que tomando $A_n=\emptyset$, para todo 
-        $n\geqslant n_0$, podemos verificar, usando 3), que $\mathcal{A}$ também é fechada 
-        para uniões finitas. Observamos também que das propriedades 2) e 3) segue 
+        $n\geqslant n_0$, podemos verificar, usando \textit{3)}, que $\mathcal{A}$ também é fechada 
+        para uniões finitas. Observamos também que das propriedades \textit{2)} e \textit{3)} segue 
         que $\mathcal{A}$ é fechada para interseções finitas e enumeráveis.
     
         No que segue apresentamos dois exemplos de $\sigma$-álgebras de $\R$.
@@ -1766,7 +1766,7 @@
         \begin{definicao}[Medida]
         \label{def-medida}
             Seja $\mathcal{A}$ uma $\sigma$-álgebra de subconjuntos de $\R$.
-            Uma função $\mu:\mathcal{A}\to [0,\infty]$ é chamada de uma {\it medida} sobre $\R$ se 
+            Uma função $\mu:\mathcal{A}\to [0,+\infty]$ é chamada de uma {\it medida} sobre $\R$ se 
             %
             \begin{itemize}
             	\item[1)] $\mu(\emptyset)=0$;
@@ -1779,8 +1779,8 @@
             \end{itemize}
         \end{definicao}
         %
-        Nos referimos a propriedade do item {\it 2)} 
-        da definição acima, dizendo que a medida $\mu$ 
+        Nos referimos à propriedade do item {\it 2)} 
+        da definição acima dizendo que a medida $\mu$ 
         é $\sigma$-aditiva ou contavelmente aditiva. 
         Note que esta propriedade implica 
         na chamada aditividade finita de $\mu$, 
@@ -1800,7 +1800,7 @@
         de medida mais importantes que podemos definir na reta. 
         Porém, antes de apresentar sua construção 
         (que é bastante elaborada, pois precisamos escolher apropriadamente a 
-        $\sigma$-álgebra e em seguida, definir a medida para cada 
+        $\sigma$-álgebra e, em seguida, definir a medida para cada 
         elemento desta $\sigma$-álgebra de forma a serem satisfeitas uma série de exigências) 
         vamos mostrar como construir algumas medidas mais simples.
         %
@@ -1836,7 +1836,7 @@
         \end{exemplo}
         %
         Uma observação importante sobre o exemplo acima é que a 
-        função definida nele, restrita a qualquer $\sigma$-álgebra $\mathcal{B}$ 
+        função nele definida, restrita a qualquer $\sigma$-álgebra $\mathcal{B}$ 
         de conjuntos $\R$, também define uma medida. Por simplicidade, 
         todas estas restrições também são chamadas 
         de medidas Delta de Dirac concentrada em $x$. 
@@ -1847,7 +1847,7 @@
         	Seja $\mathcal{A}$ uma $\sigma$-álgebra qualquer de subconjuntos de $\R$. Sejam
         	$K_1$, $K_2$ constantes reais não-negativas, 
         	$\mu_1:\mathcal{A} \to [0,+\infty]$ e $\mu_2:\mathcal{A} \to [0,+\infty]$ medidas sobre $\R$. 
-        	Então função $\mu:\mathcal{A}\to [0,+\infty]$ definida para cada $E\in \mathcal{A}$ por
+        	Então a função $\mu:\mathcal{A}\to [0,+\infty]$ definida para cada $E\in \mathcal{A}$ por
         	%
         	\[
         	    \mu(E) = K_1\mu_1(E)+K_2\mu_2(E),
@@ -1861,7 +1861,7 @@
         apresentar adiante.
         %
         \begin{exemplo}
-        	Seja $\mathcal{A}$ uma $\sigma$-álgebra qualquer de subconjuntops de $\R$. 
+        	Seja $\mathcal{A}$ uma $\sigma$-álgebra qualquer de subconjuntos de $\R$. 
         	Sejam $x_1,x_2,\ldots,x_n\in\R$ uma coleção 
         	finita de números reais fixada e $f:\R\to\R$ 
         	uma função não-negativa. Então a função 
@@ -1880,12 +1880,12 @@
         \label{exercicio-monotonicidade-medida}
         	Sejam $\mathcal{A}$ uma $\sigma$-álgebra de conjuntos de $\R$ 
         	e $\mu:\mathcal{A}\to [0,+\infty]$ uma medida sobre $\R$.
-        	Se $A$ e $B$ são quaisquer conjuntos $\mathcal{A}$-mensuráveis, 
+        	Se $A$ e $B$ são quaisquer conjuntos $\mathcal{A}$-mensuráveis 
         	tais que $A\subset B$, então
         	\[\mu(A)\leq \mu(B).\] 
         \end{lema}
         %
-        Uma das propriedades mais úteis e incríveis que podem ser obtidas à partir da
+        Uma das propriedades mais úteis e incríveis que podem ser obtidas a partir da
         monotonicidade da medida e da $\sigma$-aditividade é a chamada continuidade da
         medida. Apesar da terminologia, este conceito não é exatamente formulado como
         no caso de funções ou de sequências. Seu significado preciso é apresentado 
@@ -1894,25 +1894,25 @@
         \begin{proposicao}[Continuidade da Medida]
         \label{prop-cont-medida}
             Seja $\mathcal{A}$ uma $\sigma$-álgebra de subconjuntos de $\R$ e 
-            $\mu:\mathcal{A}\to [0,\infty]$ uma medida sobre $\R$. 
+            $\mu:\mathcal{A}\to [0,+\infty]$ uma medida sobre $\R$. 
             \begin{itemize}
                 \item[1)] Para qualquer sequência crescente $A_n$
                 ($n=1,2,\ldots$) em $\mathcal{A}$, isto é,  
                 $A_1\subset A_2\subset\ldots$, temos que 
                 %
-                $$
+                \[
                   \mu\left(\bigcup_{i=1}^{\infty} A_n \right) = 
                   \lim_{n\to\infty} \mu(A_n).
-                $$
+                \]
                 %
                 
                 \item[2)] Se $A_n$ é uma sequência decrescente, isto é, 
                 $A_1\supset A_2\supset\ldots$ e $\mu(A_1)<\infty$, então 
                 %
-                $$
+                \[
                     \mu\left(\bigcap_{i=1}^{\infty} A_n \right) = 
                     \lim_{n\to\infty} \mu(A_n).
-                $$ 
+                \] 
                 %
             \end{itemize}
         \end{proposicao}
@@ -1922,7 +1922,7 @@
         Vamos finalmente mostrar como é construída a medida 
         de Lebesgue. 
         
-        Para auxiliar esta construção considere a coleção
+        Para auxiliar esta construção, considere a coleção
         $\mathcal{I}$ de todos os intervalos abertos e limitados de $\R$, isto é,
         %
         \[
@@ -1997,8 +1997,8 @@
         Seguindo o espírito deste texto, 
         que é trabalhar sempre que possível com extensões de funções, 
         vamos apresentar, nas próximas páginas, 
-        a medida de Lebesgue como uma extensão para uma $\sigma$-álgebra apropriada 
-        da seguinte função $\lambda:\mathcal{I}\to [0,+\infty]$
+        a medida de Lebesgue como uma extensão, para uma $\sigma$-álgebra apropriada,
+        da função $\lambda:\mathcal{I}\to [0,+\infty]$
         definida para cada $(a,b)\equiv A\in \mathcal{I}$ por
         %
         \begin{equation}
@@ -2014,14 +2014,14 @@
         enorme de subconjuntos da reta, uma vez que $\lambda$ tem um expressão bem simples nos intervalos. 
         Em seguida, vamos usar $\lambda^{*}$ para definir uma coleção 
         de subconjuntos da reta. Vamos enunciar outro resultado, 
-        devido a Carathéodory, que garante que coleção em questão é uma $\sigma$-álgebra
-        e além do mais que a função $\lambda^{*}$, 
+        devido a Carathéodory, que garante que a coleção em questão é uma $\sigma$-álgebra
+        e, além do mais, que a função $\lambda^{*}$, 
         restrita a esta $\sigma$-álgebra, é uma medida no sentido da Definição 
         \ref{def-medida}. 
         Seguindo, vamos enunciar outro teorema 
-        que conhecido como Teorema de Lebesgue-Carathéodory 
-        que garante que a restrição de $\lambda^*$ a $\sigma$-álgebra, 
-        mencionada acima, define de fato uma medida. 
+        conhecido como Teorema de Lebesgue-Carathéodory,
+        que garante que a restrição de $\lambda^*$ à $\sigma$-álgebra 
+        mencionada acima define de fato uma medida. 
         Vamos chamar esta restrição de $\Leb$. 
         Esta é finalmente a tão desejada medida de Lebesgue! 
         
@@ -2202,7 +2202,7 @@
         de Lebesgue é igual a $\sigma$-álgebra das partes de $\R$.
         Hoje em dia, sabemos que isto não é verdade, ou seja, 
         $\mathscr{L}\subset \mathscr{P}(\R)$ e esta continência é estrita. 
-        Mas porém, podemos dizer que praticamente só conhecemos um único
+        Porém, podemos dizer que praticamente só conhecemos um único
         conjunto (e variações triviais do mesmo) que não é Lebesgue mensurável. 
         Este importante conjunto é chamado, na literatura, de conjunto 
         de Vitali. 
@@ -2210,7 +2210,7 @@
         absurdamente complicada e abstrata e por isto 
         decidimos não apresentá-la neste texto.
         
-        Uma observação importante que ajuda, quando for necessário, provar
+        Uma observação importante que ajuda, quando for necessário, a provar
         que estamos trabalhando com conjuntos Lebesgue-mensuráveis 
         é que todo conjunto aberto de $\R$ é Lebesgue-mensurável. 
         Esta afirmação
@@ -2245,19 +2245,19 @@
        
         A prova da afirmação acima pode ser feita de várias maneiras.
         Uma alternativa consiste em, primeiro, mostrar 
-        que $\Leb(\{x\})=0$ para qualquer $x\in\R$ fixado.
-        O que pode ser feito usando o item {\it 2)} da 
+        que $\Leb(\{x\})=0$ para qualquer $x\in\R$ fixado
+        (o que pode ser feito usando o item {\it 2)} da 
         Proposição \ref{prop-cont-medida} para uma sequência apropriada de conjuntos
-        decrescentes, você saberia dizer qual? Em seguida, note que 
+        decrescentes, você saberia dizer qual?). Em seguida, note que 
         basta usar a $\sigma$-aditividade da medida de Lebesgue 
         para concluir que a medida de Lebesgue de qualquer conjunto 
         enumerável é nula. 
         Apesar deste argumento ser curto e elegante para provar
         este fato, vamos apresentar uma outra prova alternativa
-        cuja a técnica é valiosa por ser também utilizável em outras 
+        cuja técnica é valiosa por ser também utilizável em outras 
         situações um pouco mais gerais. 
        
-        Antes de prosseguir precisamos mostrar mais um resultado
+        Antes de prosseguir, precisamos mostrar mais um resultado
         importante sobre a medida de Lebesgue conhecido
         como a $\sigma$-subaditividade da medida de Lebesgue.
         Seu enunciado preciso é dado logo abaixo.
@@ -2279,7 +2279,7 @@
             \begin{itemize}
                 \item[1)] ($\sigma$-aditividade de uma medida) 
                 Se $B_n$ ($n=1,2,\ldots$) é uma sequência de conjuntos 
-                Lebesgue-mensuráveis dois-a-dois disjuntos então 
+                Lebesgue-mensuráveis dois a dois disjuntos então 
                 %
                 \[
                     \Leb\left( \bigcup_{n=1}^{\infty} B_n\right)
@@ -2318,7 +2318,7 @@
             Já o conjunto $B_3$ é definido como sendo formado por todos os 
             pontos que estão em $A_3$ mas não estão em $B_1$ nem $B_2$, 
             ou seja, $B_3= A_3\setminus(B_1\cup B_2)$. Observe novamente que 
-            $B_1$, $B_2$ e $B_3$ são conjuntos dois-a-dois disjuntos e além do mais temos
+            $B_1$, $B_2$ e $B_3$ são conjuntos dois a dois disjuntos e além do mais temos
             $B_3\subset A_3$ e $A_1\cup A_2\cup A_3 = B_1\cup B_2\cup B_3$.
             
             Analogamente, para todo $n\geqslant 2$ definimos 
@@ -2327,8 +2327,8 @@
                 B_n \equiv A_n\setminus \left( \bigcup_{j=1}^{n-1} B_j \right)
             \]
             %
-            Por construção $B_n$ ($n=1,2,\ldots$) é uma sequência de conjuntos 
-            Lebesgue-mensuráveis que são dois-a-dois disjuntos e para cada 
+            Por construção, $B_n$ ($n=1,2,\ldots$) é uma sequência de conjuntos 
+            Lebesgue-mensuráveis que são dois a dois disjuntos e para cada 
             $n\in\N$ temos que $B_n\subset A_n$. Também é imediato verificar
             pela construção que 
             %
@@ -2388,7 +2388,7 @@
         Um exemplo clássico é dado pelo conjunto ternário de Cantor, $\mathbf{C}$.
         
         Este conjunto é definido indutivamente. Primeiro,
-        definimos um conjunto $C_0 \equiv [0,1]$. Em seguida,
+        definimos $C_0 \equiv [0,1]$. Em seguida,
         definimos 
         $C_1\equiv[0,1]\setminus \big(\frac{1}{3},\frac{2}{3}\big)$.
         Isto é, $C_1$ é obtido a partir de $C_0$ 
@@ -2397,7 +2397,7 @@
         $C_1 = \big[0,\frac{1}{3}\big] \cup \big[\frac{2}{3},1\big]$.  
         Em cada passo subsequente da construção, um conjunto $C_n$ é definido, 
         de forma que removemos o terço médio de cada um dos intervalos 
-        remanescentes do passo anterior. Isto é,
+        remanescentes do passo anterior, isto é,
         %
         \begin{equation}
         \label{def-construcao-cn-cantor}
@@ -2434,7 +2434,7 @@
         \begin{proposicao}
         \label{prop-Leb-diferenca}
             Seja $A_n$ ($n=1,2,\ldots$) uma sequência de subconjuntos de 
-            $\R$ dois-a-dois disjuntos e Lebesgue mensuráveis. 
+            $\R$ dois a dois disjuntos e Lebesgue mensuráveis. 
             Seja $B\subset \R$ um conjunto Lebesgue mensurável. Suponha
             $A_n\subset B$, para todo $n\in\N$ e $\Leb(B)<+\infty$. Então 
             %
@@ -2471,10 +2471,10 @@
                 &=
                 \Leb\left( B\setminus \cup_{n=1}^{\infty} A_n\right)
                 +
-                \sum_{n=1}^{\infty}\Leb (A_n).
+                \sum_{n=1}^{\infty}\Leb (A_n),
             \end{align*}
             %
-            O que prova a proposição.
+            o que prova a proposição.
         \end{proof}
         %
         \begin{proposicao}
@@ -2483,7 +2483,7 @@
         \end{proposicao}
         %
         \begin{proof}
-            Para mostrar essa fato, vamos olhar para os ``pedaços'' removidos do conjunto de
+            Para mostrar esse fato, vamos olhar para os ``pedaços'' removidos do conjunto de
             Cantor até a $n$-ésima etapa de sua construção. Depois vamos usar que $\Leb([0,1]) = 1$ e a propriedade de
             continuidade da Medida de Lebesgue.
             
@@ -2491,7 +2491,7 @@
             construção de 
             $\mathbf{C}$, removemos $2^{n-1}$ 
             subintervalos disjuntos de $[0,1]$ 
-            cada um com comprimento $3^{-n}$. Portanto
+            cada um com comprimento $3^{-n}$. Portanto,
             segue da igualdade \eqref{def-construcao-cn-cantor} 
             e da Proposição \ref{prop-Leb-diferenca} que
             %
