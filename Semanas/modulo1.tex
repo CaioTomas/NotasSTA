@@ -2397,7 +2397,7 @@
         $C_1 = \big[0,\frac{1}{3}\big] \cup \big[\frac{2}{3},1\big]$.  
         Em cada passo subsequente da construção, um conjunto $C_n$ é definido, 
         de forma que removemos o terço médio de cada um dos intervalos 
-        remanescentes do passo anterior, isto é,
+        remanescentes do passo anterior, ou seja, para cada $n\geqslant 1$ 
         %
         \begin{equation}
         \label{def-construcao-cn-cantor}
@@ -2408,21 +2408,32 @@
                 \left( \frac{1}{3^n},\frac{2}{3^n} \right) \cup
                 \left( \frac{4}{3^n},\frac{5}{3^n} \right) \cup\ldots\cup
                 \left( \frac{3^n-2}{3^n},\frac{3^n-1}{3^n} \right)
-            \right)
+            \right).
         \end{equation}
         %
+        Observe que a cada etapa da desta construção são removidos exatamente
+        $3^n-2^n$ subintervalos de comprimento $3^{-n}$.
         Finalmente, o conjunto de Cantor
         é definido como a interseção infinita dos conjuntos obtidos em cada
         passo da construção, ou seja,
-        %
-        \[
-            \mathbf{C} \equiv \bigcap_{n=1}^{\infty} C_n.
-        \]
-        %
-        \begin{center}
-            \textbf{FIGURA DO CONJUNTO DE CANTOR AQUI}
-        \end{center}
-        %
+        
+        \medskip
+        \begin{tabular}{%
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    	}
+        	\centering
+            $$
+              \mathbf{C} \equiv \bigcap_{n=0}^{\infty} C_n.
+            $$
+        	&
+        	\includegraphics{Figuras/conjunto de Cantor.pdf} 
+        \end{tabular}
+        \medskip
+        
         Observamos que o conjunto de Cantor é um subconjunto compacto da reta, 
         pois é a interseção enumerável de conjuntos compactos.
         Pelas observações feitas acima, segue que o conjunto de Cantor é um 
@@ -2489,8 +2500,8 @@
             
             Como descrito acima, na $n$-ésima etapa da 
             construção de 
-            $\mathbf{C}$, removemos $2^{n-1}$ 
-            subintervalos disjuntos de $[0,1]$ 
+            $\mathbf{C}$, removemos $3^{n}-2^{n}$ 
+            subintervalos disjuntos de $[0,1]$, 
             cada um com comprimento $3^{-n}$. Portanto,
             segue da igualdade \eqref{def-construcao-cn-cantor} 
             e da Proposição \ref{prop-Leb-diferenca} que
@@ -2518,9 +2529,7 @@
                 \right)
                 \\
                 &=
-                1-\sum_{j=1}^n \frac{2^{j-1}}{3^j}
-                =
-                1-\frac{1}{2}\sum_{j=1}^n \left(\frac{2}{3}\right)^j.
+                1-\frac{3^{n}-2^n}{3^n}.
             \end{align*}
             %
             Por construção, para cada $n\in\N$ 
@@ -2536,13 +2545,13 @@
             \[
                 \Leb(\mathbf{C} )
                 =
-                \Leb\left(\bigcap_{n=1}^{\infty} C_n \right)
+                \Leb\left(\bigcap_{n=0}^{\infty} C_n \right)
                 =
                 \lim_{n\to\infty} \Leb(C_n)
                 =
-                \lim_{n\to\infty} 1-\frac{1}{2}\sum_{j=1}^n \left(\frac{2}{3}\right)^j
+                \lim_{n\to\infty} 1-\frac{3^{n}-2^n}{3^n}
                 =
-                1- \frac{1}{2}\cdot\frac{2/3}{1/3} = 0.
+                1- 1 = 0.
             \]
             %
         \end{proof}
