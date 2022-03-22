@@ -1552,8 +1552,8 @@
     $f(w)=f(\lim_{k\to\infty} a_{n_k})=\lim_{k\to\infty} f(a_{n_k}) =0$.  
     Logo $w$ é um zero de $f$ que é um ponto aderente à uma 
     sequência de zeros de $f$. Portanto segue do Princípio da Identidade 
-    que $f\equiv 0$. Mas isto é um absurdo, pois estamos assumindo que
-    $f$ se anula apenas em $a_1, a_2, \dots$. 
+    que $f\equiv 0$. Mas isto é um absurdo, pois estamos assumindo 
+    que $a_1, a_2, \dots$ são os únicos zeros de $f$.
  
  
  \bigskip 
@@ -1750,5 +1750,126 @@
     Como $\C$ é simplesmente conexo, 
     segue do Lema \ref{lema-ramo-log} que $h(z) = \exp{g(z)}$ 
     para alguma função $g$ inteira.
+    \end{proof}
+    %
+    \section{O Teorema de Hadamard}
+    Nesta seção vamos discutir um refinamento do teorema da fatoração de Weierstrass,
+    enunciado como teorema de Hadamard. Esse teorema combina os resultados que discutimos
+    sobre o crescimento de uma função e sua quantidade de zeros com o teorema de
+    Weierstrass. Recorde que o teorema de Weierstrass afirma que uma função inteira
+    que se anula em $0, a_1, a_2, \dots$ e em nenhum outro ponto tem a forma
+    %
+    \[
+        e^{g(z)}z^m\prod_{n=1}^{\infty} E_n(z/a_n),
+    \]
+    %
+    para alguma função $g$ inteira.
+    Hadamard refinou este resultando mostrando que, no caso de funções de ordem finita,
+    o grau dos fatores canônicos pode ser tomado constante e $g$ é um polinômio.
+    
+    A título de lembrete, dizemos que uma função inteira tem ordem de crescimento no máximo
+    $\rho > 0$ se $|f(z)| \leq A\exp(B|z|^{\rho}), \, \forall z\in\C$. A ordem de 
+    crescimento de $f$ é, então, o ínfimo de todos os $\rho$ que satisfazem essa
+    condição. Recorde também que mostramos que se $f$ tem ordem de crescimento no
+    máximo $\rho$ então
+    %
+    \[
+        n_f(r) \leq Cr^{\rho}, \, r \gg 1,
+    \]
+    %
+    onde $n_f(r)$ denota os zeros de $f$ em $D(0, r)$. Antes de seguir para o teorema, 
+    recorde por último que se $a_1, a_2, \dots \in\C^*$ são zeros de $f$ e $\rho < s$
+    então
+    %
+    \[
+        \sum_{n=1}^{\infty} \frac{1}{|a_n|^s} < +\infty.
+    \]
+    %
+    Vamos ao enunciado do teorema.
+    %
+    \begin{teorema}
+    \label{teo:fatoracao-hadamard}
+        Suponha que $f:\C\to\C$ é uma função inteira com ordem de crescimento $\rho_0$.
+        Seja $\Z\ni k = \lfloor \rho_0 \rfloor$. Se $a_1, a_2, \dots \in\C^*$ são os 
+        zeros não nulos de $f$, então
+        %
+        \[
+            f(z) = \exp(P(z))z^m\prod_{n=1}^{\infty} E_k(z/a_n),
+        \]
+        %
+        onde $P$ é um polinômio de grau menor ou igual a $k$ e $m$ é a multiplicidade
+        de $0$ como zero de $f$.
+    \end{teorema}
+    %
+    Vamos precisar de alguns lemas auxiliares para demonstrar esse resultado.
+    %
+    \begin{lema}
+    \label{lema:5.2-Stein}
+        Os produtos canônicos satisfazem as seguintes desigualdades:
+        %
+        \begin{enumerate}[i)]
+            \item $\exp( -2|z|^{k+1} ) \leq |E_k(z)|, \, |z| \leq 1/2$;
+            \item $|1 - z|\exp( -c(k)|z|^k ) \leq |E_k(z)|, \, |z| \geq 1/2$,
+        \end{enumerate}
+        %
+        sendo $c(k)$ uma constante positiva e finita que depende de $k$.
+    \end{lema}
+    %
+    \begin{proof}
+        \begin{enumerate}[i)]
+            \item Para $z\in\C$ tal que $|z| \leq 1/2$, temos que 
+            $1-z\in\C\setminus L_{\pi}$ e podemos escrever
+            %
+            \[
+                \log(1-z) = -\sum_{n=0}^{\infty} \frac{z^n}{n},
+            \]
+            %
+            onde $\log$ denota o ramo principal do logaritmo. Logo,
+            %
+            \begin{align*}
+                E_k(z) = \exp\left( \log(1-z) + \sum_{n=1}^k \frac{z^n}{n} \right)
+                       = \exp\left( -\sum_{n=k+1}^{\infty} \frac{z^n}{n} \right)
+                       \equiv \exp(w).
+            \end{align*}
+            %
+            Já que $\exp(-w) \leq |\exp(w)|$ e $|w| \leq 2|z|^{k+1}$ (demonstração
+            do Lema \ref{lema-wstr-est-factor}), temos que
+            %
+            \[
+                \exp(-2|z|^{k+1}) \leq \exp(-|w|) \leq |\exp(w)| = |E_k(z)|,
+            \]
+            %
+            e está verificada a validade de i).
+            
+            \item Por definição, para todo $k\geq 1$ temos que
+            %
+            \begin{align*}
+                |E_k(z)| &= |1-z| \cdot \left| 
+                \exp \left( z + z^2/2 + \cdots + z^k/k \right) 
+                \right| \\
+                &\geq |1 - z| \cdot \exp 
+                \left( -\left| z + z^2/2 + \cdots + z^k/k \right| \right),
+            \end{align*}
+            %
+            onde usamos que $|e^z| \geq e^{-|z|}$. Agora, se $|z| \geq 1/2$ então
+            segue da desigualdade triangular que
+            %
+            \begin{align*}
+                -\left| z + z^2/2 + \cdots + z^k/k \right| 
+                &\geq -|z| - |z^2|/2 - \cdots - |z^k|/k \\
+                &= -|z|^k\left( 
+                \frac{1}{|z|^{k-1}} + \frac{1}{2|z|^{k-2}} + \cdots + \frac{1}{k} \right) \\
+                &\geq -|z|^k\left( 2^{k-1} + \frac{2^{k-2}}{2} + \cdots + \frac{1}{k} \right)\\
+                &\equiv -|z|^k c(k).
+            \end{align*}
+            %
+            Logo, para $|z| \geq 1/2$ temos
+            %
+            \[
+                |1 - z|\exp(-c(k)|z|^k) \leq |E_k(z)|,
+            \]
+            %
+            encerrando a prova do item ii) e do lema.
+        \end{enumerate}
     \end{proof}
     %
