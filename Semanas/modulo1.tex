@@ -1524,9 +1524,15 @@
 
     Neste seção, começamos a tratar da transformada de Fourier. Para tanto, é necessário
     primeiro definir de maneira mais rigorosa a integral complexa e a integral imprópria e,
-    para este objetivo, tratamos brevemente da medida de Lebesgue. Buscamos fazer o máximo da
-    teoria no âmbito da integração de Riemann, mas em alguns enunciados são necessárias hipóteses
-    que utilizam a medida de Lebesgue.
+    para este objetivo, tratamos brevemente da medida de Lebesgue. Para o leitor interessado neste assunto 
+    recomendamos as referências
+    \cite{MR1681462,MR1312157,MR1013117}.
+    
+    Embora dedicamos esta seção a uma breve introdução à 
+    Medida de Lebesgue, toda teoria de integração desenvolvida
+    aqui é no sentido de Riemann. E a medida de Lebesgue
+    é usada para fornecer uma caracterização, bem geral, 
+    de quais funções reais são Riemann integráveis.
     
     \subsection{A medida de Lebesgue em \texorpdfstring{$\R$}{R}}
         Nesta seção vamos mostrar como é construída a medida de Lebesgue na reta real. 
@@ -3830,7 +3836,7 @@
         qualquer $\e>0$ dado, ou seja, $I = \mathit{II}$.
         \end{proof}
         %
-    \subsection{O teorema de Paley-Wiener}
+    \subsection{O Teorema de Paley-Wiener}
         Nesta seção vamos adotar um ponto de vista um pouco diferente acerca da nossa $f:\R\to\R$: 
         ao invés de assumir qualquer analiticidade em $f$, vamos assumir a validade da fórmula de 
         inversão de Fourier, isto é,
@@ -3848,7 +3854,7 @@
         %
         Dito de outro modo, vamos trabalhar com funções para as quais existe a transformada de Fourier
         e vale a fórmula de inversão dada no Teorema \ref{teo-inv-transf-fourier}. A esta segunda
-        hipótese, chamaremos {\bf Hipótese da Fourier Inversa}, H.F.I.
+        hipótese, chamaremos {\bf Hipótese da Fórmula de Inversão}, H.F.I.
         
         É possível mostrar, ainda, que a existência da transformada de Fourier e o 
         Teorema \ref{teo-inv-transf-fourier} podem ser obtidos fazendo-se as seguintes hipóteses
@@ -3977,11 +3983,12 @@
             Em termos informais, o suporte é o conjunto (fechado) dos pontos onde $f$ não se anula.
         \end{definicao}
         %
-        \begin{teorema}
+        \begin{teorema}[Teorema de Paley-Wiener]
         \label{teo-paley-wiener}
+        \index{Teorema!de Paley-Wiener}
             Seja $f:\R\to\R$ uma função contínua tal que $\displaystyle{ |f(x)| \leq \frac{A'}{1+x^2} }$
-            para todo $x\in R$, com $A'>0$. A função $f$ admite uma extensão inteira com
-            $|f(z)| \leq Ae^{2\pi M|z|}$ para algum par de constantes positivas $A,M$ se, e somente se,
+            para todo $x\in R$, com $A'>0$. A função $f$ admite uma extensão inteira satisfazendo
+            $|f(z)| \leq Ae^{2\pi M|z|}$, para algum par de constantes positivas $A,M$ se, e somente se,
             o suporte de $\widehat{f}$ está contido no fechado $[-M,M]$.
         \end{teorema}
         %
@@ -4246,6 +4253,8 @@
             vamos utilizar o teorema de Phragmén-Lindelöf:
             %
             \begin{teorema}[Phragmén-Lindelöf]
+            \label{teo-phragmen-Lindelof}
+            \index{Teorema!de Phragmén-Lindelöf}
                 Suponha $F$ uma função holomorfa no setor
                 %
                 \begin{equation*}

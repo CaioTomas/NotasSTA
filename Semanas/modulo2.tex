@@ -150,6 +150,8 @@
     %
     \begin{teorema}[Fórmula de Jensen]
     \label{teo:form-jensen}
+    \index{Fórmula!de Jensen}
+    \index{Teorema!de Jensen}
         Sejam $G$ um aberto que contém o fecho do disco $D_R$ e $f$ uma função
         holomorfa em $G$ tal que $f(0) \neq 0$ e $f(z) \neq 0$ para 
         $z \in \partial D_R$. Denote por $z_1, \dots, z_N$ os zeros de $f$ no 
@@ -517,6 +519,7 @@
     %
     \begin{definicao}
     \label{def:ordem-func}
+    \index{Ordem de Crescimento}
         Seja $f:\C\to\C$ uma função inteira. Se existem um número positivo $\rho$
         e constantes $A,B>0$ tais que
         %
@@ -793,7 +796,7 @@
     Mas refletindo um pouco sobre este limite, 
     rapidamente nos convenceríamos que esse produto 
     é complicado de se controlar, pois a cada novo valor de $n$ não
-    só temos o dobro do número de parcelas que tínhamos anteriormente, como também  todas estas parcelas se modificam a cada etapa.
+    só temos o dobro do número de parcelas que tínhamos anteriormente, como também todas estas parcelas se modificam a cada etapa.
     
     Weierstrass teve uma grande ideia para modificar 
     adequadamente a expressão acima de modo a
@@ -803,11 +806,12 @@
     Trataremos disto na seção a seguir.
     
 \section{Produtos Infinitos}
-
+    \index{Produtos!infinitos}
     Dada uma sequência $\{ a_n \}_{n\in\N}$ de números complexos, dizemos que o
     produto $\dis{ \prod_{n=1}^{\infty} (1+a_n) }$ converge se existe o seguinte limite
     %
     \begin{equation}
+    \index{Convergência!de produtos infinitos}
     \label{def-prod-infinito}
         \lim_{n\to\infty} \prod_{j=1}^n (1+a_j).
     \end{equation}
@@ -1472,10 +1476,10 @@
         Use a série de Taylor de $\sin z$ e a identidade 
         % 
         \[
-          \sin \pi z = \pi z\prod_{n=1}^\infty \left(1 - \frac{z^2}{n^2}\right)
+          \sin \pi z = \pi z\prod_{n=1}^\infty \left(1 - \frac{z^2}{n^2}\right),
         \]
         %
-        deduzida acima para demonstrar que 
+        deduzida acima, para demonstrar que 
         %
         \[
           \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}.
@@ -1523,7 +1527,9 @@
     Vamos enunciar o grande resultado desta seção agora 
     e demonstrá-lo no decorrer do texto.
     
-    \begin{teorema}[Weierstrass]
+    \begin{teorema}[Teorema da Fatoração de Weierstrass]
+    \label{teo-Weierstrass-fatoracao}
+    \index{Teorema!da Fatoração de Weierstrass}
         Dada uma sequência $\{a_n\}$ de números complexos tal que 
         $|a_n| \to \infty$, quando $n \to \infty$, 
         existe uma função inteira $f: \C \to \C$ que 
@@ -1561,7 +1567,9 @@
     
     Vamos introduzir agora um dos ingredientes mais importantes da prova
     do Teorema de Weierstrass, que são os chamados fatores canônicos. 
-    Para cada $k \in \N$, definimos o fator canônico de grau $k$ por
+    Para cada $k \in \N$, definimos 
+    o fator canônico de grau $k$ por
+    \index{Fatores Canônicos}
     %
     \[
     E_k(z) = (1-z)\exp{\left(z + \frac{z^2}{2} + \cdots + \frac{z^k}{k}\right)}.
@@ -1774,7 +1782,7 @@
     máximo $\rho$ então
     %
     \[
-        n_f(r) \leq Cr^{\rho}, \, r \gg 1,
+        n_f(r) \leq Cr^{\rho}, \quad r \gg 1,
     \]
     %
     onde $n_f(r)$ denota os zeros de $f$ em $D(0, r)$. Antes de seguir para o teorema, 
@@ -1787,18 +1795,20 @@
     %
     Vamos ao enunciado do teorema.
     %
-    \begin{teorema}
+    \begin{teorema}[Teorema de Hadamard]
+    \index{Teorema!de Hadamard}
     \label{teo:fatoracao-hadamard}
         Suponha que $f:\C\to\C$ é uma função inteira com ordem de crescimento $\rho_0$.
-        Seja $\Z\ni k = \lfloor \rho_0 \rfloor$. Se $a_1, a_2, \dots \in\C^*$ são os 
-        zeros não nulos de $f$, então
+        Seja $k\equiv \lfloor \rho_0 \rfloor \in \Z$. 
+        Se $a_1, a_2, \ldots \in\C^*$ são os 
+        zeros não-nulos de $f$, então
         %
         \[
             f(z) = \exp(P(z))z^m\prod_{n=1}^{\infty} E_k(z/a_n),
         \]
         %
         onde $P$ é um polinômio de grau menor ou igual a $k$ e $m$ é a multiplicidade
-        de $0$ como zero de $f$.
+        de $z=0$ como zero de $f$.
     \end{teorema}
     %
     Vamos precisar de alguns lemas auxiliares para demonstrar esse resultado.
@@ -1816,8 +1826,8 @@
     \end{lema}
     %
     \begin{proof}
-        \begin{enumerate}[i)]
-            \item Para $z\in\C$ tal que $|z| \leq 1/2$, temos que 
+        \begin{enumerate}
+            \item[{\it i)}] Para $z\in\C$ tal que $|z| \leq 1/2$, temos que 
             $1-z\in\C\setminus L_{\pi}$ e podemos escrever
             %
             \[
@@ -1839,9 +1849,9 @@
                 \exp(-2|z|^{k+1}) \leq \exp(-|w|) \leq |\exp(w)| = |E_k(z)|,
             \]
             %
-            e está verificada a validade de i).
+            e está verificada a validade de {\it i)}.
             
-            \item Por definição, para todo $k\geq 1$ temos que
+            \item[{\it ii)}] Por definição, para todo $k\geq 1$ temos que
             %
             \begin{align*}
                 |E_k(z)| &= |1-z| \cdot \left| 
@@ -1869,10 +1879,17 @@
                 |1 - z|\exp(-c(k)|z|^k) \leq |E_k(z)|,
             \]
             %
-            encerrando a prova do item ii) e do lema.
+            encerrando a prova do item {\it ii)} e do lema.
         \end{enumerate}
     \end{proof}
     %
+    
+    
+    
+    \bigskip 
+    
+    
+    
     A prova do teorema de Hadamard se baseia em cotas inferiores para o produto
     dos fatores canônicos quando $z$ está longe das raízes $a_1, a_2, \dots$.
     Nesse teorema, o ``grau'' dos produtos canônicos é constante e igual a $k$
@@ -1897,6 +1914,130 @@
     \end{lema}
     %
     \begin{proof}
-        a   
+        A prova deste lema é delicada. Recorde que como os $a_n$ são
+        zeros de $f$, temos que $|a_n| \xrightarrow{n\to\infty} +\infty$.
+        Para começar, vamos mostrar que o produtório de $E_k(z/a_n)$ converge.
+        
+        Pelo Lema \ref{lema-wstr-est-factor}, existe $n_0\in\N$ tal que se $n\geq n_0$
+        então
+        %
+        \begin{equation*}
+            \left| E_k(z/a_n) - 1 \right| 
+            \leq 2e\left| \frac{z}{a_n} \right|^{k+1}
+            = 2e|z|^{k+1}\cdot\frac{1}{|a_n|^{k+1}}.
+        \end{equation*}
+        %
+        Uma vez que $1 \leq |a_n|$ e $\rho_0 < s < k+1$, temos 
+        $|a_n|^s \leq |a_n|^{k+1}$. Utilizando essa desigualdade na estimativa acima,
+        segue que
+        %
+        \begin{equation*}
+            \left| E_k(z/a_n) - 1 \right|
+            \leq 2e|z|^{k+1}\cdot\frac{1}{|a_n|^{k+1}}
+            \leq 2e|z|^{k+1}\cdot\frac{1}{|a_n|^s}.
+        \end{equation*}
+        %
+        Portanto,
+        %
+        \begin{equation*}
+            \sum_{n=n_0}^{\infty} \left| E_k(z/a_n) - 1 \right|
+            \leq 2e|z|^{k+1} \sum_{n=n_0}^{\infty} \frac{1}{|a_n|^s} < +\infty
+        \end{equation*}
+        %
+        e obtemos
+        %
+        \begin{equation*}
+            \prod_{n=1}^{\infty} E_k(z/a_n) < \infty.
+        \end{equation*}
+        %
+        Logo, podemos reescrever o produtório como
+        %
+        \begin{equation*}
+            \prod_{n=1}^{\infty} E_k(z/a_n)
+            = \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}}^{\infty} E_k(z/a_n) \cdot 
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} E_k(z/a_n).
+        \end{equation*}
+        %
+        Observe que o primeiro dos produtos no lado direito tem uma quantidade finita
+        de fatores, enquanto que o segundo tem uma quantidade infinita. Vamos obter
+        cotas inferiores semelhantes à do enunciado do lema para cada um deles,
+        começando pelo segundo.
+        
+        Temos, usando o fato de que $|z/a_n| < 1/2$ e o Lema \ref{lema:5.2-Stein},
+        que
+        %
+        \begin{align*}
+            \left|
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} E_k(z/a_n)
+            \right|
+            =
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} \left|E_k(z/a_n)\right|
+            \geq
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} \exp\left( 
+            -2\left| \frac{z}{a_n} \right|^{n+1}.
+            \right)
+        \end{align*}
+        %
+        Agora, o último produtório pode ser reescrito como
+        %
+        \begin{equation*}
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} \exp\left( 
+            -2\left| \frac{z}{a_n} \right|^{n+1}.
+            \right)
+            =
+            \exp\left( 
+            -2|z|^{k+1} \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^{k+1}}
+            \right).
+        \end{equation*}
+        %
+        Agora, vamos estimar o somatório. Note que, como $|a_n| > 2|z|$, temos
+        %
+        \begin{equation*}
+            \frac{1}{|a_n|^{k+1}} 
+            = \frac{1}{|a_n|^s|a_n|^{k+1-s}}
+            \leq \frac{2^{k+1-s}}{|a_n|^s|z|^{k+1-s}}.
+        \end{equation*}
+        %
+        Daí,
+        %
+        \begin{equation*}
+            \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^{k+1}}
+            \leq
+            \frac{2^{k+1}}{|z|^{k+1-s}}
+            \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s} 
+            < +\infty,
+        \end{equation*}
+        %
+        de maneira que
+        %
+        \begin{align*}
+            \left|
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} E_k(z/a_n)
+            \right|
+            \geq 
+            \exp\left(
+            -2|z|^{k+1} \cdot \frac{2^{k+1}}{|z|^{k+1-s}}
+            \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s}
+            \right)
+            \equiv \exp\left(
+            -C_1(k,s) |z|^s
+            \right),
+        \end{align*}
+        %
+        sendo
+        %
+        \begin{equation*}
+            C_1(k,s) = 2^{k+2}
+            \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s}.
+        \end{equation*}
+        %
+        Agora, para obter cotas inferiores para o primeiro produto, a saber
+        %
+        \begin{equation*}
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}}^{\infty} E_k(z/a_n),
+        \end{equation*}
+        %
+        vamos usar o item ii) do Lema \ref{lema:5.2-Stein}.
+        % reler o Stein e deixar mais explícitas as contas, 
     \end{proof}
     %
