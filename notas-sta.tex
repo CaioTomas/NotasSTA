@@ -32,7 +32,7 @@
 
 \usepackage[a4paper,bottom=2cm]{geometry} % geometry/margins of page
 \savegeometry{origin}
-\geometry{rmargin=2cm,lmargin=2cm}% for the title page
+\geometry{rmargin=2cm, lmargin=2cm}% for the title page
 \usepackage{multicol}		% multicolumn environments
 \usepackage{tikz}			% used for the 'logo' (remove if unwanted)
 \usepackage{subfig}			% Usada para alinhar o logo da capa
@@ -60,7 +60,7 @@
             bookmarksopen, %
             linktocpage, %
             urlcolor=blue, %
-            linkcolor=cyan]{hyperref}
+            linkcolor=red!70!black]{hyperref}
 \usepackage[font={scriptsize}]{caption}
 
 
@@ -102,20 +102,19 @@
 \newcommand{\dis}{\displaystyle}
 \newcommand{\F}{\mathfrak{F}}
 %
-\newtheorem{teorema}{Teorema}[chapter]
-\newtheorem{proposicao}[teorema]{Proposição}
-\newtheorem{lema}[teorema]{Lema}
-\newtheorem{corolario}[teorema]{Corolário}
-\newtheorem{definicao}[teorema]{Definição}
-\newtheorem{observacao}[teorema]{Observação}
-\newtheorem{exemplo}[teorema]{Exemplo}
+% \newtheorem{teorema}{Teorema}[chapter]
+% \newtheorem{proposicao}[teorema]{Proposição}
+% \newtheorem{lema}[teorema]{Lema}
+% \newtheorem{corolario}[teorema]{Corolário}
+% \newtheorem{definicao}[teorema]{Definição}
+% \newtheorem{observacao}[teorema]{Observação}
+% \newtheorem{exemplo}[teorema]{Exemplo}
 % \newtheorem{exercicio}[teorema]{Exercício}
-%
-\renewenvironment{proof}[1][Demonstração]
-{\noindent\textbf{#1. \ }}{\hspace{\stretch{1}}\rule{1ex}{1ex}}
-%
+% \renewenvironment{proof}[1][Demonstração]
+% {\noindent\textbf{#1. \ }}{\hspace{\stretch{1}}\rule{1ex}{1ex}}
+%   
 
-\input{ambientes.tex} % wip
+\input{ambientes.tex} % 
 
 
 % operadores matemáticos

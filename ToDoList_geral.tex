@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{booktabs}
+\usepackage{xfrac}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,linkcolor=cyan]{hyperref}
+\usepackage{pdfpages}
+\usepackage{enumitem}
+\usepackage{pifont}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+\title{A fazer -- observações gerais}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{todolist}
+    % pra marcar o item como feito é só colocar \item[\done]
+    \item introduzir o livro como um texto sobre continuações/extensões analíticas (?)
+    \item juntar as partes que tratam do logaritmo em um mesmo lugar ou deixar ``on-demand'',
+    ao longo do texto (?)
+    \item ir acrescentando os termos ao índice remissivo
+    \item colocar enunciados mais auto-contidos (?)
+
+\end{todolist}
+
+\end{document}

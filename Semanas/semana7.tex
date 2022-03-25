@@ -28,27 +28,27 @@
 \section{A Integral Complexa}
 
 \begin{lema}
-Sejam $U \subset \mathbb{C}$ um domínio e $f:U \to \mathbb{C}$ uma função holomorfa. Se $f'(z) = 0$ para
+Sejam $U \subset \C$ um domínio e $f:U \to \C$ uma função holomorfa. Se $f'(z) = 0$ para
 todo ponto $z\in U$, então $f$ é uma função constante.
 \end{lema}
 
 \begin{definicao}
 \label{def:integral-complexa}
-A integral da função $f$ ao longo do caminho $\gamma$ é
+A integral da função $f$ ao longo do caminho $\y$ é
 o número complexo
 \begin{equation*}
-    \int_{\gamma} f(z) dz = \int_a^b f(\gamma(t))\gamma'(t) dt,
+    \int_{\y} f(z) dz = \int_a^b f(\y(t))\y'(t) dt,
 \end{equation*}
-sendo $\gamma:[a,b]\to\mathbb{C}$ um caminho suave e
-$f:U \to \mathbb{C}$ função contínua com $U$ domínio.
+sendo $\y:[a,b]\to\C$ um caminho suave e
+$f:U \to \C$ função contínua com $U$ domínio.
 \end{definicao}
 
 \begin{definicao}
 Sejam $f$ e $U$ como na Definição \ref{def:integral-complexa} e
-$\gamma = \gamma_1*\gamma_2*\cdots*\gamma_n$ um caminho suave por partes em $U$.
-A integral de $f(z)$ ao longo de $\gamma$ é o número complexo
+$\y = \y_1*\y_2*\cdots*\y_n$ um caminho suave por partes em $U$.
+A integral de $f(z)$ ao longo de $\y$ é o número complexo
 \begin{equation*}
-    \int_{\gamma} f(z)dz = \sum_{i=1}^n\int_{\gamma_i} f(z)dz.
+    \int_{\y} f(z)dz = \sum_{i=1}^n\int_{\y_i} f(z)dz.
 \end{equation*}
 \end{definicao}
 
@@ -59,19 +59,20 @@ A integral de $f(z)$ ao longo de $\gamma$ é o número complexo
 
 \begin{definicao}
 \label{def:primitiva-complexa}
-Seja $f:U \to \mathbb{C}$ uma função contínua com $U\subset\mathbb{C}$ domínio. Uma função $F:U\to\mathbb{C}$
+Seja $f:U \to \C$ uma função contínua com $U\subset\C$ domínio. Uma função $F:U\to\C$
 é chamada primitiva de $f$ se $F$ é holomorfa em $U$ e $F'(z) = f(z), \forall z\in U$.
 \end{definicao}
 
 \begin{teorema}
-Sejam $U\subset\mathbb{C}$ domínio, $f:U\to\mathbb{C}$ função contínua,
-$F$ uma primitiva de $f$ em $U$ e $\gamma$ um caminho suave por partes em $U$ unindo $z_0$ a $z_1$. Então
+
+Sejam $U\subset\C$ domínio, $f:U\to\C$ função contínua,
+$F$ uma primitiva de $f$ em $U$ e $\y$ um caminho suave por partes em $U$ unindo $z_0$ a $z_1$. Então
 \begin{equation*}
-    \int_{\gamma} f(z)dz = F(z_1) - F(z_0).
+    \int_{\y} f(z)dz = F(z_1) - F(z_0).
 \end{equation*}
 Em particular, se o caminho é fechado então
 \begin{equation*}
-    \int_{\gamma} f(z)dz = 0.
+    \int_{\y} f(z)dz = 0.
 \end{equation*}
 \end{teorema}
 
@@ -87,19 +88,19 @@ Então a função
 
 \begin{lema}[Lema Técnico]
 \label{lema-tecnico}
-Sejam $U\subset\mathbb{C}$ um domínio, $f:U\to\mathbb{C}$ uma função contínua e
-$\gamma(t), a\leq t\leq b$ um caminho suave por partes em $U$, de comprimento $l(\gamma)$.
-Seja $K\geq 0$ um número real tal que $|f(\gamma(t))| \leq K$ para todo $a\leq t\leq b$. Então
+Sejam $U\subset\C$ um domínio, $f:U\to\C$ uma função contínua e
+$\y(t), a\leq t\leq b$ um caminho suave por partes em $U$, de comprimento $l(\y)$.
+Seja $K\geq 0$ um número real tal que $|f(\y(t))| \leq K$ para todo $a\leq t\leq b$. Então
 \begin{equation*}
-    \left| \int_{\gamma}f(z)dz \right| \leq Kl(\gamma).
+    \left| \int_{\y}f(z)dz \right| \leq Kl(\y).
 \end{equation*}
 \end{lema}
 
 \begin{teorema}
-Seja $f:U\to \mathbb{C}$ uma função contínua definida no domínio $U\subset\mathbb{C}$. As seguintes afirmações são equivalentes:
+Seja $f:U\to \C$ uma função contínua definida no domínio $U\subset\C$. As seguintes afirmações são equivalentes:
 \begin{enumerate}[(i)]
     \item $f$ tem uma primitiva em $U$
-    \item $\int_{\gamma} f(z) dz = 0$ para qualquer caminho $\gamma$ fechado e suave por partes em $U$.
+    \item $\int_{\y} f(z) dz = 0$ para qualquer caminho $\y$ fechado e suave por partes em $U$.
     \item $\int_{\lambda} f(z) dz$ só depende dos pontos inicial e final de qualquer caminho $\lambda$ suave por partes em $U$.
 \end{enumerate}
 \end{teorema}
@@ -109,7 +110,7 @@ Seja $f:U\to \mathbb{C}$ uma função contínua definida no domínio $U\subset\m
 
 \begin{teorema}
 \label{teo:cauchy-goursat}
-Sejam $U$ um domínio em $\mathbb{C}$ e $f: U \to \mathbb{C}$ uma função holomorfa. Suponha que $\Delta \subset U$ é uma triângulo que limita
+Sejam $U$ um domínio em $\C$ e $f: U \to \C$ uma função holomorfa. Suponha que $\Delta \subset U$ é uma triângulo que limita
 uma região inteiramente contida em $U$. Então
 \begin{equation*}
     \int_{\Delta} f(z) dz = 0.
@@ -118,44 +119,44 @@ uma região inteiramente contida em $U$. Então
 
 
 \begin{definicao}
-Seja $U\subset\mathbb{C}$ um domínio. Dizemos que $U$ é estrelado se existe um ponto $z_0\in U$
+Seja $U\subset\C$ um domínio. Dizemos que $U$ é estrelado se existe um ponto $z_0\in U$
 tal que dado qualquer ponto $z\in U$, o segmento de reta $\overline{z_0z}$ está inteiramente contido em $U$. 
 O ponto $z_0$ é chamado um centro do domínio $U$.
 \end{definicao}
 
 
 \begin{corolario}
-Sejam $U\subset\mathbb{C}$ um domínio estrelado e $f:U\to\mathbb{C}$ uma
+Sejam $U\subset\C$ um domínio estrelado e $f:U\to\C$ uma
 função holomorfa. Então $f$ admite uma primitiva em $U$.
 \end{corolario}
 
 
-\begin{corolario}[Teorema de Cauchy-Goursat bis.]
-Sejam $U\subset\mathbb{C}$ um domínio estrelado e $f:U\to\mathbb{C}$ uma função holomorfa.
-Se $\gamma$ é um caminho fechado suave por partes em $U$, então
+\begin{corolario}[Teorema de Cauchy-Goursat bis]
+Sejam $U\subset\C$ um domínio estrelado e $f:U\to\C$ uma função holomorfa.
+Se $\y$ é um caminho fechado suave por partes em $U$, então
 \begin{equation*}
-    \int_{\gamma} f(z) dz = 0.
+    \int_{\y} f(z) dz = 0.
 \end{equation*}
 \end{corolario}
 
 
 \begin{teorema}[Fórmula Integral de Cauchy]
 \label{teo:form-integral-cauchy}
-Seja $f:U \to \mathbb{C}$ uma função holomorfa definida no domínio $U\subset\mathbb{C}$.
-Sejam $\overline{D}(z_0, r_0)$ um disco fechado inteiramente contido em $U$ e $\Gamma$ sua fronteira, orientada compativelmente. 
+Seja $f:U \to \C$ uma função holomorfa definida no domínio $U\subset\C$.
+Sejam $\overline{D}(z_0, r_0)$ um disco fechado inteiramente contido em $U$ e $\y$ sua fronteira, orientada compativelmente. 
 Se $z$ é um ponto qualquer no interior de $\overline{D}(z_0, r_0)$ então
 \begin{equation*}
-    f(z) = \frac{1}{2\pi i}\int_{\Gamma} \frac{f(w)}{w-z}dw.
+    f(z) = \frac{1}{2\pi i}\int_{\y} \frac{f(w)}{w-z}dw.
 \end{equation*}
 \end{teorema}
 
 
 \begin{corolario}
-Seja $f:U\to\mathbb{C}$ holomorfa com $U$ domínio. Então $f$ tem derivadas de todas as ordens em todos os pontos de $U$ e
+Seja $f:U\to\C$ holomorfa com $U$ domínio. Então $f$ tem derivadas de todas as ordens em todos os pontos de $U$ e
 \begin{equation*}
-    f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\gamma} \frac{f(w)}{(w-z)^{n+1}}dw, \forall z\in U,
+    f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\y} \frac{f(w)}{(w-z)^{n+1}}dw, \forall z\in U,
 \end{equation*}
-onde $\gamma$ é qualquer circunferência centrada em $z$, percorrida no sentido anti-horário e limitando um disco fechado contido em $U$.
+onde $\y$ é qualquer circunferência centrada em $z$, percorrida no sentido anti-horário e limitando um disco fechado contido em $U$.
 \end{corolario}
 
 
@@ -174,19 +175,19 @@ Seja $f$ função inteira. Se existe $K\geq 0$ tal que $|f(z)|\leq K$ então $f$
 
 
 \begin{lema}
-Seja $D(a,r), r>0$, um disco e $f: D(a,r)\to\mathbb{C}$ uma função holomorfa. 
+Seja $D(a,r), r>0$, um disco e $f: D(a,r)\to\C$ uma função holomorfa. 
 Se a imagem de $f$ está contida no interior de uma circunferência $|w| - \alpha$, então $f$ é uma função constante.
 \end{lema}
 
 
 \begin{corolario}[Princípio do Módulo Máximo]
-Sejam $U$ um domínio em $\mathbb{C}$ e $f:U\to\mathbb{C}$ uma função holomorfa.
+Sejam $U$ um domínio em $\C$ e $f:U\to\C$ uma função holomorfa.
 Suponha que existe um ponto $a\in U$ tal que $|f(a)| \geq |f(z)|, \forall z\in U$. Então $f$ é uma função constante.
 \end{corolario}
 
 
 \begin{teorema}
-Sejam $f:U\to\mathbb{C}$ uma função holomorfa com $U$ domínio e $z_0\in U$ qualquer.
+Sejam $f:U\to\C$ uma função holomorfa com $U$ domínio e $z_0\in U$ qualquer.
 Então
 \begin{equation*}
     f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n,
@@ -198,8 +199,8 @@ Ademais, essa série converge em qualquer disco (aberto) $D(z_0, r) \subset U$, 
 
 \begin{teorema}[Teorema de Cauchy]
 \label{teo-cauchy}
-Sejam $U\subset\mathbb{C}$ um domínio e $f:U\to\mathbb{C}$ uma função holomorfa. Seja $V\subset U$ um subconjunto fechado e limitado, cuja fronteira $\partial V$ consiste de um número finito de curvas de Jordan
-suaves por partes, $\partial V = \gamma_1\cup\cdots\gamma_n$, e tal que
+Sejam $U\subset\C$ um domínio e $f:U\to\C$ uma função holomorfa. Seja $V\subset U$ um subconjunto fechado e limitado, cuja fronteira $\partial V$ consiste de um número finito de curvas de Jordan
+suaves por partes, $\partial V = \y_1\cup\cdots\y_n$, e tal que
 $V\setminus\partial V$ é domínio. Então
 \begin{equation*}
     \int_{\partial V} f(z) dz = 0.
@@ -207,7 +208,7 @@ $V\setminus\partial V$ é domínio. Então
 \end{teorema}
 
 \begin{teorema}[Fórmula Integral de Cauchy bis.]
-Seja $f:U\to\mathbb{C}$ uma função holomorfa definida no domínio $U$. Seja $V$ uma região fechada e limitada inteiramente contida em $U$, 
+Seja $f:U\to\C$ uma função holomorfa definida no domínio $U$. Seja $V$ uma região fechada e limitada inteiramente contida em $U$, 
 cuja fronteira $\partial V$ é uma curva de Jordan suave por partes, orientada no sentido anti-horário, sendo $V\setminus\partial V$ um domínio.
 Se $z_0$ é um ponto qualquer no interior de $V$, então
 \begin{equation*}
@@ -218,7 +219,7 @@ Se $z_0$ é um ponto qualquer no interior de $V$, então
 
 \begin{teorema}[Teorema de Morera]
 \label{teo-morera}
-Sejam $U\subset\mathbb{C}$ domínio e $f:U\to\mathbb{C}$ uma função contínua.
+Sejam $U\subset\C$ domínio e $f:U\to\C$ uma função contínua.
 Se $\int_{\Delta} f(z) dz = 0$ para todo caminho triangular $\Delta\subset U$, então $f$ é holomorfa em $U$.
 \end{teorema}
 
@@ -235,10 +236,10 @@ sendo que a primeira série converge absolutamente fora do disco fechado $\overl
 e a segunda série converge absolutamente no disco (aberto) $D(a, \rho_2)$. 
 Ademais, essa expansão é única e os coeficientes $b_m$ e $a_n$ são dados por
 \begin{align*}
-    b_m &= \frac{1}{2\pi i}\int_{\gamma} f(z)(z-a)^{m-1} dz, m\geq 1 \\
-    a_n &= \frac{1}{2\pi i}\int_{\gamma} \frac{f(w)}{(w-a)^{n+1}} dw, n\geq 0,
+    b_m &= \frac{1}{2\pi i}\int_{\y} f(z)(z-a)^{m-1} dz, m\geq 1 \\
+    a_n &= \frac{1}{2\pi i}\int_{\y} \frac{f(w)}{(w-a)^{n+1}} dw, n\geq 0,
 \end{align*}
-sendo $\gamma$ uma circunferência de centro $a$ orientada no sentido anti-horário 
+sendo $\y$ uma circunferência de centro $a$ orientada no sentido anti-horário 
 e contida no anel $A(a, \rho_1, \rho_2)$.
 \end{teorema}
 
@@ -273,7 +274,7 @@ Se $f$ é função holomorfa no anel $A(a, 0, \rho)$, então $a$ é um polo de o
 se, e somente se, $\displaystyle{ \lim_{z\to a} (z-a)^k f(z) }$ existe e é um número complexo não nulo.
 \end{proposicao}
 
-
+\clearpage
 \begin{corolario}
 Se $f$ é holomorfa no anel $A(a, 0, \rho)$ e $a$ é polo de ordem $k$ de $f$ então
 $\displaystyle{ \lim_{z\to a} |f(z)| = \infty }$.
@@ -283,7 +284,7 @@ $\displaystyle{ \lim_{z\to a} |f(z)| = \infty }$.
 \begin{teorema}[Teorema de Casorati-Weierstrass]
 \label{teo-casorati-weierstrass}
 Seja $f$ uma função holomorfa no anel $A(a,0,\rho)$ e suponha que $a$ é singularidade essencial de $f$.
-Então, dados $0<r\leq\rho, \varepsilon > 0$ e $\alpha\in\mathbb{C}$, existe um número complexo $\beta$
+Então, dados $0<r\leq\rho, \varepsilon > 0$ e $\alpha\in\C$, existe um número complexo $\beta$
 no anel $A(a,0,r)$ tal que $|f(\beta) - \alpha| < \varepsilon$.
 \end{teorema}
 
@@ -297,11 +298,11 @@ do termo $(z-a)^{-1}$ de sua série de Laurent com centro em $a$, denotado por $
 \begin{teorema}[Teorema dos Resíduos]
 \label{teo-residuos}
 Seja $f$ uma função holomorfa num domínio $U\setminus\{ a_1, a_2, \dots, a_m \}$. Suponha que 
-$\gamma \subset U\setminus\{ a_1, a_2, \dots, a_m \}$ é uma curva de Jordan suave por partes,
+$\y \subset U\setminus\{ a_1, a_2, \dots, a_m \}$ é uma curva de Jordan suave por partes,
 orientada no sentido anti-horário, tal que a região fechada e limitada por ela determinada está
 contida em $U$ e contém todos os pontos $ a_1, a_2, \dots, a_m$. Então
 \begin{equation*}
-    \frac{1}{2\pi i}\int_{\gamma} f(z) dz = \sum_{i=1}^m \res(f, a_i).
+    \frac{1}{2\pi i}\int_{\y} f(z) dz = \sum_{i=1}^m \res(f, a_i).
 \end{equation*}
 \end{teorema}
 
@@ -324,15 +325,15 @@ Considere a função $g(z) = (z-a)^k f(z)$. Então
 \begin{teorema}
 \label{teo-contador-zeros}
 Seja $f$ uma função holomorfa num domínio $U\setminus\{ a_1, a_2, \dots, a_m \}$. Suponha que 
-$\gamma \subset U\setminus\{ a_1, a_2, \dots, a_m \}$ é uma curva de Jordan suave por partes,
+$\y \subset U\setminus\{ a_1, a_2, \dots, a_m \}$ é uma curva de Jordan suave por partes,
 orientada no sentido anti-horário, tal que a região fechada e limitada por ela determinada está
 contida em $U$ e contém todos os pontos $ a_1, a_2, \dots, a_m$. Ademais, suponha que todos esses
-pontos sejam polos de $f$ e que $f$ não tem zeros ao longo de $\gamma$. Então
+pontos sejam polos de $f$ e que $f$ não tem zeros ao longo de $\y$. Então
 \begin{equation*}
-    \frac{1}{2\pi i}\int_{\gamma} \frac{f'(z)}{f(z)} dz = \mathcal{Z} - \mathcal{P},
+    \frac{1}{2\pi i}\int_{\y} \frac{f'(z)}{f(z)} dz = \mathcal{Z} - \mathcal{P},
 \end{equation*}
-sendo $\mathcal{Z}$ o número de zeros de $f$ na região interior a $\gamma$ (contados com multiplicidade)
-e $\mathcal{P}$ o número de polos de $f$ na região interior a $\gamma$ (contados com multiplicidade).
+sendo $\mathcal{Z}$ o número de zeros de $f$ na região interior a $\y$ (contados com multiplicidade)
+e $\mathcal{P}$ o número de polos de $f$ na região interior a $\y$ (contados com multiplicidade).
 \end{teorema}
 
 
@@ -340,16 +341,16 @@ e $\mathcal{P}$ o número de polos de $f$ na região interior a $\gamma$ (contad
 Nas mesmas hipóteses do Teorema \ref{teo-contador-zeros}, se $f$ e $h$ são funções holomorfas em $U$,
 então
 \begin{equation*}
-    \frac{1}{2\pi i}\int_{\gamma} h(z)\frac{f'(z)}{f(z)} dz = \sum_{\xi_j} h(\xi_j)m_{\xi_j}(f),
+    \frac{1}{2\pi i}\int_{\y} h(z)\frac{f'(z)}{f(z)} dz = \sum_{\xi_j} h(\xi_j)m_{\xi_j}(f),
 \end{equation*}
-sendo $\xi_1, \xi_2, \dots, \xi_l$ os zeros de $f$ na região interior a $\gamma$ e $m_{\xi_j}(f)$
+sendo $\xi_1, \xi_2, \dots, \xi_l$ os zeros de $f$ na região interior a $\y$ e $m_{\xi_j}(f)$
 a multiplicidade de $\xi_j$ como zero de $f$.
 \end{corolario}
 
 
 \begin{teorema}[Teorema de Rouché]
 \label{teo-rouche}
-Sejam $f$ e $g$ duas funções holomorfas definidas num domínio $U\subset\mathbb{C}$. Seja $V\subset U$
+Sejam $f$ e $g$ duas funções holomorfas definidas num domínio $U\subset\C$. Seja $V\subset U$
 uma região fechada e limitada cuja fronteira $\partial V$ é uma curva de Jordan suave por partes, com
 $V\setminus\partial V$ um domínio. Se
 \begin{equation*}
