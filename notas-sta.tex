@@ -60,7 +60,8 @@
             bookmarksopen, %
             linktocpage, %
             urlcolor=blue, %
-            linkcolor=red!70!black]{hyperref}
+            linkcolor=red!70!black, %
+            citecolor=red!70!black]{hyperref}
 \usepackage[font={scriptsize}]{caption}
 
 
@@ -112,9 +113,8 @@
 % \newtheorem{exercicio}[teorema]{Exercício}
 % \renewenvironment{proof}[1][Demonstração]
 % {\noindent\textbf{#1. \ }}{\hspace{\stretch{1}}\rule{1ex}{1ex}}
-%   
-
-\input{ambientes.tex} % 
+%  
+\input{ambientes.tex} % os ambientes acima foram redefinidos aqui
 
 
 % operadores matemáticos
@@ -125,6 +125,7 @@
 % \DeclareMathOperator{\Graf}{Graf}
 % \DeclareMathOperator{\intt}{int}
 \DeclareMathOperator{\sen}{sen}
+\renewcommand{\sin}{\sen}
 \DeclareMathOperator{\senh}{senh} % não foi usado, mas deve ser útil
 \DeclareMathOperator{\arcsen}{arcsen}
 % \renewcommand{\ker}{Nuc}

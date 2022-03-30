@@ -1796,7 +1796,7 @@
         na chamada aditividade finita de $\mu$, 
         isto é, se $A_1,\ldots, A_n$ são elementos
         da $\sigma$-álgebra $\mathcal{A}$, dois-a-dois disjuntos, então 
-        $\mu(A_1\cup\ldots\cup A_n) = \mu(A_1)+\ldots+\mu(A_n)$
+        $\mu(A_1\cup\cdots\cup A_n) = \mu(A_1)+\cdots+\mu(A_n)$
         (basta considerar uma sequência de conjuntos como no item {\it 2)} 
         e tomar $A_m=\emptyset$ para $m\geq n$).
     
@@ -1929,7 +1929,7 @@
         %
         \bigskip 
         %
-        Vamos finalmente mostrar como é construída a medida 
+        Vamos, finalmente, mostrar como é construída a medida 
         de Lebesgue. 
         
         Para auxiliar esta construção, considere a coleção
@@ -1983,7 +1983,7 @@
         onde $\Gamma\subset \Lambda$, é uma subcobertura de $\mathscr{C}$
         se a coleção $\mathscr{B}$ também é uma cobertura do conjunto $A$. 
     
-        Agora temos tudo pronto para enunciar o Teorema de Lindel\"of. 
+        Agora temos tudo pronto para enunciar o Teorem de Lindel\"of.
         Em suma, ele garante que qualquer cobertura, por abertos limitados, 
         de um subconjunto arbitrário da reta, possui pelo menos uma subcobertura enumerável. 
         %
@@ -2080,7 +2080,7 @@
                 \equiv 
                 \{ 
                     A\subset \R \ : \   
-                    \lambda^{*}(A\cap T)+\lambda^{*}(A^c\cap T) = \lambda^{*}(A)
+                    \lambda^{*}(A\cap T)+\lambda^{*}(A^c\cap T) = \lambda^{*}(T)
                     ,\  \forall T\in\mathscr{P}(\R) \ 
                 \}
             \]
@@ -2106,7 +2106,7 @@
         %
         \begin{teorema}[Medida de Lebesgue]
         \label{teo-def-medida-lebesgue}
-            A restrição da função $\lambda^{*}$, definida em \eqref{def-func-lambda-star}
+            A restrição da função $\lambda^{*}$, definida em \eqref{def-func-lambda-star},
             à $\sigma$-álgebra de Lebesgue $\mathscr{L}$, define uma medida sobre $\R$, 
             no sentido da Definição \ref{def-medida}, 
             denotada por $\Leb:\mathscr{L}\to[0,+\infty]$  satisfazendo:
@@ -2115,12 +2115,13 @@
                 \item[1)] para todo $(a,b)\equiv A\in\mathcal{I}$, temos $\Leb\big((a,b)\big)=b-a$;
                 
                 \item[2)] dados quaisquer $\alpha\in\mathbb{R}$,  $A\in\mathscr{L}$
-                defina $\alpha\oplus A\equiv \{\alpha+a: a\in A\}$,
-                então temos
+                definido $\alpha\oplus A\equiv \{\alpha+a: a\in A\}$,
+                temos
                 \[\Leb(A)=\Leb(\alpha\oplus A);\]
                 
                 \item[3)] se $\mu:\mathscr{L}\to [0,+\infty]$ é 
-                uma medida satisfazendo as conclusões dos itens 1) e 2) então 
+                uma medida satisfazendo as conclusões dos itens 1) 
+                e 2), então 
                 $\mu=\Leb$. 
             \end{itemize}
         \end{teorema}
@@ -2275,7 +2276,7 @@
         \begin{proposicao}
         \label{prop-sub-sigma-aditividade-medida}
             Para qualquer sequência de conjuntos Lebesgue mensuráveis $A_n$ ($n=1,2,\ldots$)
-            (não necessariamente disjunta) temos que
+            (não necessariamente disjunta), temos que
             \[
                 \Leb\left( \bigcup_{n=1}^{\infty} A_n\right)
                 \leqslant
@@ -2388,14 +2389,13 @@
         \end{proof}
         %
         \begin{corolario}
-            Se $\Q$ denota o conjunto dos números racionais então temos que 
-            $\Leb(\Q) = 0$.
+            $\Leb(\Q) = 0$, onde $\Q$ denota o conjunto dos números racionais.
         \end{corolario}
         %
         Mostramos que todo conjunto enumerável tem medida de Lebesgue nula, 
         mas alertamos o leitor que a recíproca deste fato não é verdadeira! 
         Dito de outro modo, existem conjuntos não-enumeráveis com medida nula.
-        Um exemplo clássico é dado pelo conjunto ternário de Cantor, $\mathbf{C}$.
+        Um exemplo clássico é dado pelo conjunto ternário de Cantor, $\mathbf{C}$\index{conjunto de Cantor}.
         
         Este conjunto é definido indutivamente. Primeiro,
         definimos $C_0 \equiv [0,1]$. Em seguida,
@@ -2416,12 +2416,12 @@
             [0,1]\setminus
             \left( 
                 \left( \frac{1}{3^n},\frac{2}{3^n} \right) \cup
-                \left( \frac{4}{3^n},\frac{5}{3^n} \right) \cup\ldots\cup
+                \left( \frac{4}{3^n},\frac{5}{3^n} \right) \cup\cdots\cup
                 \left( \frac{3^n-2}{3^n},\frac{3^n-1}{3^n} \right)
             \right).
         \end{equation}
         %
-        Observe que a cada etapa da desta construção são removidos exatamente
+        Assim a cada etapa desta construção são removidos exatamente
         $3^n-2^n$ subintervalos de comprimento $3^{-n}$.
         Finalmente, o conjunto de Cantor
         é definido como a interseção infinita dos conjuntos obtidos em cada
@@ -2460,7 +2460,7 @@
             $A_n\subset B$, para todo $n\in\N$ e $\Leb(B)<+\infty$. Então 
             %
             \[
-                \Leb\left(B\setminus \cup_{n=1}^{\infty} A_n \right) 
+                \Leb\left(B\setminus \bigcup_{n=1}^{\infty} A_n \right) 
                 = 
                 \Leb(B) - \sum_{n=1}^{\infty}\Leb(A_n).
             \]
@@ -2473,9 +2473,9 @@
             \[
                 B 
                 = 
-                \left( B\setminus \cup_{n=1}^{\infty} A_n\right)
+                \left( B\setminus \bigcup_{n=1}^{\infty} A_n\right)
                 \cup
-                \left(\cup_{n=1}^{\infty} A_n\right).
+                \left(\bigcup_{n=1}^{\infty} A_n\right).
             \]
             %
             Tomando $\Leb$ em ambos lados da igualdade
@@ -2485,12 +2485,12 @@
             \begin{align*}
                 \Leb(B) 
                 &= 
-                \Leb\left( B\setminus \cup_{n=1}^{\infty} A_n\right)
+                \Leb\left( B\setminus \bigcup_{n=1}^{\infty} A_n\right)
                 +
-                \Leb\left(\cup_{n=1}^{\infty} A_n\right)
+                \Leb\left(\bigcup_{n=1}^{\infty} A_n\right)
                 \\
                 &=
-                \Leb\left( B\setminus \cup_{n=1}^{\infty} A_n\right)
+                \Leb\left( B\setminus \bigcup_{n=1}^{\infty} A_n\right)
                 +
                 \sum_{n=1}^{\infty}\Leb (A_n),
             \end{align*}
@@ -2499,8 +2499,8 @@
         \end{proof}
         %
         \begin{proposicao}
-        \label{cantor-medida-nula}
-            O conjunto de Cantor, $\mathbf{C}$, tem medida de Lebesgue nula.
+        \label{cantor-medida-nula}     
+            $\Leb(\mathbf{C})=0$.
         \end{proposicao}
         %
         \begin{proof}
@@ -2688,7 +2688,7 @@
             \end{equation*}
             %
             com $t_j^*$ o ponto médio do intervalo 
-            $\displaystyle{ \left[ a + \frac{b-a}{n}(j-1), a + \frac{b-a}{n}j \right] }$.
+            $\dis \left[ a + \frac{b-a}{n}(j-1), a + \frac{b-a}{n}j \right] $.
         \end{definicao}
         %
         Já que estamos assumindo $f_1, f_2$ Riemann integráveis em $[a,b]$, temos que
@@ -2727,12 +2727,12 @@
             real e imaginária, $f_1\equiv\Re(f)$ e $f_2\equiv\Im(f)$, são funções Riemann 
             integráveis em $\R$ é
             %
-            \begin{equation*}
+            \begin{align*}
                 \lim_{a\to +\infty} \int_{-a}^a f(t) \, dt
                 \equiv \text{VP}\left( \int_{-\infty}^{\infty} f(t) \, dt \right)
-                \equiv \int_{-\infty}^{\infty} f(t) \, dt
-                = \int_{-\infty}^{\infty} f_1(t) \, dt + i\int_{-\infty}^{\infty} f_2(t) \, dt
-            \end{equation*}
+                &\equiv \int_{-\infty}^{\infty} f(t) \, dt \\
+                &= \int_{-\infty}^{\infty} f_1(t) \, dt + i\int_{-\infty}^{\infty} f_2(t) \, dt
+            \end{align*}
             %
         \end{definicao}
         %
@@ -3556,7 +3556,7 @@
             Considere o contorno $\y_N$ na figura abaixo. 
             %
             \begin{figure}[H]\centering
-                \includegraphics{%
+                \includegraphics[width=0.9\textwidth]{%
                     Figuras/contorno para Poisson.pdf
                 }
                 \caption{%
@@ -3577,7 +3577,7 @@
             Separe o contorno $\y_N$ em quatro curvas conforme o diagrama abaixo. 
             %
             \begin{figure}[H]\centering
-                \includegraphics{%
+                \includegraphics[width=0.9\textwidth]{%
                     Figuras/yne e ynd.pdf
                 }
                 \caption{%
@@ -3645,18 +3645,20 @@
             Portanto
             %
             \begin{align*}
-                \sum_{n \in \Z}f(n) &= \int_{\y^1} f(z) e^{-2\pi i z} 
+                \sum_{n \in \Z}&f(n)
+                \\[0.3cm]
+                &= \int_{\y^1} f(z) e^{-2\pi i z} 
                 \sum_{n=0}^{\infty} e^{-2\pi i nz}\,dz 
-                + \int_{\y^2} f(z)(-1) \sum_{n=0}^{\infty} e^{2\pi i nz}\,dz\\
+                + \int_{\y^2} f(z)(-1) \sum_{n=0}^{\infty} e^{2\pi i nz}\,dz\\[0.3cm]
                 &= \int_{-\infty}^{\infty}f(\xi - ib)e^{-2\pi i (\xi - ib)}
                 \sum_{n=0}^{\infty}e^{-2\pi i n(\xi - ib)}\,d\xi 
                 + \int_{-\infty}^{\infty}f(\xi - ib)
-                \sum_{n=0}^{\infty}e^{2\pi i n(\xi - ib)}\,d\xi \\
+                \sum_{n=0}^{\infty}e^{2\pi i n(\xi - ib)}\,d\xi \\[0.3cm]
                 &= \sum_{n=0}^{\infty} \int_{-\infty}^{\infty}f(\xi - ib)
                 e^{-2\pi i (n+1)(\xi - ib)}\,d\xi 
                 + \sum_{n=0}^{\infty} \int_{-\infty}^{\infty}f(\xi - ib)(-1)
-                e^{2\pi i n(\xi - ib)}\,d\xi \\
-                &= \sum_{n=0}^{\infty} \hat{f}(n+1) + \sum_{n=0}^{\infty} \hat{f}(-n) \\
+                e^{2\pi i n(\xi - ib)}\,d\xi \\[0.3cm]
+                &= \sum_{n=0}^{\infty} \hat{f}(n+1) + \sum_{n=0}^{\infty} \hat{f}(-n) \\[0.3cm]
                 &= \sum_{n \in \Z} \hat{f}(n).
             \end{align*}
             %
@@ -3730,7 +3732,7 @@
         diagrama abaixo.
         %
         \begin{figure}[H]\centering
-            \includegraphics{%
+            \includegraphics[scale=1.2]{%
                 Figuras/majorando |exp-1|.pdf
             }
         \end{figure}
@@ -3738,7 +3740,8 @@
         Logo,
         %
         \begin{align*}
-            |I| &\leq \int_{-\infty}^{\infty}|f(\xi + ib)|\frac{1}{|1 - e^{2\pi i(\xi + ib)}|} \, d\xi \\
+            |I| &\leq \int_{-\infty}^{\infty}|f(\xi + ib)|\frac{1}{|1 - e^{2\pi i(\xi + ib)}|} \, d\xi 
+            \\[0.3cm]
             &\leq \frac{1}{1 - e^{-2\pi b}}\int_{-\infty}^{\infty} \frac{A}{1 + \xi^2} \, d\xi < \infty.
         \end{align*}
         %
@@ -3789,13 +3792,15 @@
         %
         Vamos estimar cada parte separadamente. Para $(*)$, temos
         %
-        \begin{align*}
-            &\left|\int_{-N}^{N} f(\xi + ib)\left(\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right) \, d\xi \right| \\
+        \begin{multline*}
+            \left|\int_{-N}^{N} f(\xi + ib)\left(\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right) \, d\xi \right| 
+            \\[0.3cm]
             %
-            &\leq \int_{-N}^{N} |f(\xi + ib)|\cdot\left|\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right| \, d\xi \\
+            \leq \int_{-N}^{N} |f(\xi + ib)|\cdot\left|\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right| \, d\xi 
+            \\[0.3cm]
             %
-            &\leq \int_{-N}^{N} \frac{A}{1 + \xi^2}\left|\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right| \, d\xi 
-        \end{align*}
+            \leq \int_{-N}^{N} \frac{A}{1 + \xi^2}\left|\frac{1}{1 - e^{2\pi i(\xi + ib)}} - \sum_{n=0}^{N}e^{2\pi i n(\xi + ib)}\right| \, d\xi 
+        \end{multline*}
         %
         Por conta da série geométrica, sabemos que, dado $\e>0$, existe 
         $N$ suficientemente grande tal que
@@ -3816,13 +3821,13 @@
             \left|\int_{\R \setminus [-N,N]}\sum_{n=0}^{N}F_n(\xi,b) \, d\xi\right| 
             %
             &= \left|\int_{\R \setminus [-N,N]}f(\xi + ib)\sum_{n=0}^{N}
-            e^{2\pi i n(\xi + ib)} \, d\xi\right| \\
+            e^{2\pi i n(\xi + ib)} \, d\xi\right| \\[0.3cm]
             %
             &\leq \int_{\R \setminus [-N,N]}|f(\xi + ib)|\left|\sum_{n=0}^{N}
-            e^{2\pi i n(\xi + ib)} \right|\, d\xi \\
+            e^{2\pi i n(\xi + ib)} \right|\, d\xi \\[0.3cm]
             %
             &\leq \int_{\R \setminus [-N,N]}\frac{A}{1 + \xi^2} 
-            \sum_{n=0}^{N}|e^{2\pi i n(\xi + ib)}| \, d\xi \\
+            \sum_{n=0}^{N}|e^{2\pi i n(\xi + ib)}| \, d\xi \\[0.3cm]
             %
             &\leq \int_{\R \setminus [-N,N]}\frac{A}{1 + \xi^2}
             \sum_{n=0}^{\infty}e^{-2\pi i nb} \, d\xi. 
@@ -3865,7 +3870,8 @@
         sobre $f$ e $\widehat{f}$:
         %
         \begin{align*}
-            \forall x\in\R, \ |f(x)| &\leq \frac{A}{1+x^2}; \\
+            \forall x\in\R, \ |f(x)| &\leq \frac{A}{1+x^2}; 
+            \\[0.4cm]
             \forall \xi\in\R, \ |\widehat{f}(\xi)| &\leq \frac{A'}{1+\xi^2},
         \end{align*}
         %
@@ -3897,11 +3903,15 @@
             Já que para qualquer curva de Jordan suave por partes em $\C$ temos
             %
             \begin{align*}
-                \int_{\y} f_n(z) \, dz &= \int_{\y} \int_{-n}^n \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \, dz \\
-                                       &= \int_{-n}^n \left[ \int_{\y} \widehat{f}(\xi)e^{2\pi iz\xi} \, dz 
-                                        \right] \, d\xi \\
-                                       &= \int_{-n}^n \widehat{f}(\xi) \left[ \int_{\y} e^{2\pi iz\xi} \, dz
-                                       \right] \, d\xi = 0,
+               \int_{\y} f_n(z) \, dz 
+               &= \int_{\y} \int_{-n}^n \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \, dz 
+               \\[0.3cm]
+               &= \int_{-n}^n \left[ \int_{\y} \widehat{f}(\xi)e^{2\pi iz\xi} \, dz 
+                \right] \, d\xi 
+               \\[0.3cm]
+               &= \int_{-n}^n \widehat{f}(\xi) \left[ \int_{\y} e^{2\pi iz\xi} \, dz
+               \right] \, d\xi 
+               = 0,
             \end{align*}
             %
             segue do Teorema de Morera que $f_n:\C\to\C$ é uma função inteira.
@@ -3917,7 +3927,8 @@
             %
             \begin{align*}
                 \left| \int_{\R\setminus [-n,n]} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right|
-                &\leq \int_{\R\setminus [-n,n]} |\widehat{f}(\xi)|e^{2\pi b|\xi|} \, d\xi \\
+                &\leq \int_{\R\setminus [-n,n]} |\widehat{f}(\xi)|e^{2\pi b|\xi|} \, d\xi 
+                \\[0.3cm]
                 &\leq \int_{\R\setminus [-n,n]} Ae^{-2\pi (a-b)|\xi|} \, d\xi \xrightarrow{n\to\infty} 0,
             \end{align*}
             %
@@ -3937,9 +3948,9 @@
             %
             \begin{align*}
                 |F(z) - f_n(z)| &= \left| \int_{-\infty}^{\infty} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi -
-                \int_{-n}^{n} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\
-                &= \left| \int_{\R\setminus [-n,n]} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\
-                &\leq \int_{\R\setminus [-n,n]} A e^{-2\pi (a-b)|\xi|} \, d\xi \\ 
+                \int_{-n}^{n} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\[0.3cm]
+                &= \left| \int_{\R\setminus [-n,n]} \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\[0.3cm]
+                &\leq \int_{\R\setminus [-n,n]} A e^{-2\pi (a-b)|\xi|} \, d\xi \\[0.3cm] 
                 &< \e.
             \end{align*}
             %
@@ -3958,7 +3969,6 @@
             define uma extensão analítica de $f:\R\to\R$ em $S_b$.
         \end{proof}
         %
-        
         Este teorema tem um corolário interessante e inusitado:
         %
         \begin{corolario}
@@ -4046,12 +4056,12 @@
             converge para a função desejada). Ademais, dado $z\in\C$, temos
             %
             \begin{align*}
-                |F(z)| &= \left| \int_{-M}^M \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\
-                       &\leq \int_{-M}^M |\widehat{f}(\xi)|\cdot|e^{2\pi iz\xi}| \, d\xi \\
-                       &\leq K \int_{-M}^M e^{\Re(2\pi iz\xi)} \, d\xi \\
-                       &= K \int_{-M}^M e^{-2\pi\Im(z)\xi} \, d\xi \\
-                       &\leq 2MK \sup_{\xi\in[-M,M]} e^{-2\pi\Im(z)\xi} \\
-                       &\leq 2MKe^{2\pi M|z|} \\
+                |F(z)| &= \left| \int_{-M}^M \widehat{f}(\xi) e^{2\pi iz\xi} \, d\xi \right| \\[0.3cm]
+                       &\leq \int_{-M}^M |\widehat{f}(\xi)|\cdot|e^{2\pi iz\xi}| \, d\xi \\[0.3cm]
+                       &\leq K \int_{-M}^M e^{\Re(2\pi iz\xi)} \, d\xi \\[0.3cm]
+                       &= K \int_{-M}^M e^{-2\pi\Im(z)\xi} \, d\xi \\[0.3cm]
+                       &\leq 2MK \sup_{\xi\in[-M,M]} e^{-2\pi\Im(z)\xi} \\[0.3cm]
+                       &\leq 2MKe^{2\pi M|z|} \\[0.3cm]
                        &= Ae^{2\pi M|z|},
             \end{align*}
             %
@@ -4131,9 +4141,9 @@
             Note que no semi-plano superior, sendo $z=x+iy$, temos
             %
             \begin{align*}
-                \left| \frac{1}{(1-i\e z)^2} \right| &= \frac{1}{|1-i\e z|^2} \\
-                                                     &= \frac{1}{|1+\e y - i\e x|^2} \\
-                                                     &= \frac{1}{(1+\e y)^2 + \e^2x^2} \\
+                \left| \frac{1}{(1-i\e z)^2} \right| &= \frac{1}{|1-i\e z|^2} \\[0.3cm]
+                                                     &= \frac{1}{|1+\e y - i\e x|^2} \\[0.3cm]
+                                                     &= \frac{1}{(1+\e y)^2 + \e^2x^2} \\[0.3cm]
                                                      &\leq 1
             \end{align*}
             %
@@ -4147,10 +4157,10 @@
             %
             \begin{align*}
                 \left| \widehat{f_{\e}}(\xi) - \widehat{f}(\xi) \right| 
-                &\leq \int_{-\infty}^{\infty} |f(x)|\cdot\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
-                &\leq \int_{-\infty}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
-                &= \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
-                &+ \int_{-\delta}^{\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\
+                &\leq \int_{-\infty}^{\infty} |f(x)|\cdot\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\[0.3cm]
+                &\leq \int_{-\infty}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\[0.3cm]
+                &= \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\[0.3cm]
+                &+ \int_{-\delta}^{\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx \\[0.3cm]
                 &+ \int_{\delta}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx,
             \end{align*}
             %
@@ -4189,7 +4199,7 @@
             %
             \begin{align*}
                 \int_{\delta}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx
-                &\leq \int_{\delta}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e\delta)^2} - 1 \right| \, dx \\
+                &\leq \int_{\delta}^{\infty} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e\delta)^2} - 1 \right| \, dx \\[0.3cm]
                 &=  A\left( \frac{\pi}{2} - \arctan\delta \right) \left| \frac{1}{(1-i\e\delta)^2} - 1 \right| 
                 \xrightarrow{\e\to 0} 0
             \end{align*}
@@ -4198,7 +4208,7 @@
             %
             \begin{align*}
                 \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e x)^2} - 1 \right| \, dx
-                &\leq \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e\delta)^2} - 1 \right| \, dx \\
+                &\leq \int_{-\infty}^{-\delta} \frac{A}{1+ x^2}\left| \frac{1}{(1-i\e\delta)^2} - 1 \right| \, dx \\[0.3cm]
                 &=  A\left( -\arctan\delta + \frac{\pi}{2} \right) \left| \frac{1}{(1-i\e\delta)^2} - 1 \right| 
                 \xrightarrow{\e\to 0} 0.
             \end{align*}
@@ -4207,18 +4217,19 @@
             %
             \begin{equation*}
                 \left| \widehat{f_{\e}}(\xi) - \widehat{f}(\xi) \right| \xrightarrow{\e\to 0} 0 
-                \iff \widehat{f_{\e}}(\xi) \xrightarrow{\e\to 0} \widehat{f}(\xi).
+                \quad\iff\quad 
+                \widehat{f_{\e}}(\xi) \xrightarrow{\e\to 0} \widehat{f}(\xi).
             \end{equation*}
             %
             Agora, usando a condição de crescimento de $f$, note que
             para $\e<1$ temos
             %
             \begin{align*}
-                \left| \widehat{f_{\e}}(x+iy) \right| &\leq \frac{Ae^{2\pi M|y|}}{|1 - i\e (x+iy)^2|^2} \\
-                &= \frac{Ae^{2\pi M|y|}}{(1+ \e y)^2 + \e^2x^2} \\
-                &\stackrel{y\geq 0}{\leq} \frac{Ae^{2\pi M|y|}}{1 + \e^2x^2} \\
-                &= A\cdot\frac{1+x^2}{1 + \e^2x^2}\cdot\frac{e^{2\pi M|y|}}{1 + x^2} \\
-                &\leq \frac{A}{\e^2}\cdot\frac{e^{2\pi M|y|}}{1 + x^2} \\
+                \left| \widehat{f_{\e}}(x+iy) \right| &\leq \frac{Ae^{2\pi M|y|}}{|1 - i\e (x+iy)^2|^2} \\[0.3cm]
+                &= \frac{Ae^{2\pi M|y|}}{(1+ \e y)^2 + \e^2x^2} \\[0.3cm]
+                &\stackrel{{\scriptsize(y\geq 0)}}{\leq} \frac{Ae^{2\pi M|y|}}{1 + \e^2x^2} \\[0.3cm]
+                &= A\cdot\frac{1+x^2}{1 + \e^2x^2}\cdot\frac{e^{2\pi M|y|}}{1 + x^2} \\[0.3cm]
+                &\leq \frac{A}{\e^2}\cdot\frac{e^{2\pi M|y|}}{1 + x^2} \\[0.3cm]
                 &= A''(\e)\cdot \frac{e^{2\pi M|y|}}{1 + x^2}.
             \end{align*}
             %

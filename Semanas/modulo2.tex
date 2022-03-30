@@ -1621,7 +1621,7 @@
     Portanto,
     %
     \begin{align*}
-        |1 - E_k(z)| &= |1 - \exp{w}| \\
+        |1 - E_k(z)| = |1 - \exp{w}| 
         &= \left | \sum_{n=1}^{\infty}\frac{w^n}{n!} \right | \\
         &\leq |w|\sum_{n=1}^{\infty}\frac{|w|^{n-1}}{n\cdot (n-1)!} \\
         &\leq |w|\sum_{n=0}^{\infty}\frac{|w|^n}{n!} \\
@@ -1742,6 +1742,14 @@
     para alguma função inteira $g(z)$. 
     \end{corolario}
     %
+    \begin{observacao}
+        O corolário acima é essencialmente a solução ao seguinte problema:
+        dada $f_2$ inteira, como posso obter $f_1$ inteira e com os mesmos zeros de $f_2$?
+        Um raciocínio heurístico que nos ajuda a esclarecer a resposta é o seguinte:
+        atendendo à preservação dos zeros, é claro que não se pode fazer sobre $f_2$ operações como translação e inversão, e intuitivamente ficamos mesmo só com operações de rotação e expansão (ou contração), que podem ser executadas simultaneamente pela exponencial complexa.
+        Finalmente, $f_1$ ser inteira pede que o argumento da exponencial também seja inteiro, e portanto $f_1=f_2 \exp g(z)$ para alguma $g$ inteira.
+    \end{observacao}
+    %
     \begin{proof}
     Seja $h(z) = f_1(z)/f_2(z)$. Se $f_1$ e $f_2$ 
     ambas se anulam em um ponto $a$, então este é um zero de mesma multiplicidade para ambas, 
@@ -1814,6 +1822,16 @@
     Vamos precisar de alguns lemas auxiliares para demonstrar esse resultado.
     %
     \begin{lema}
+    \label{lema:majoracao}
+        $x+1 > x^\alpha \ \forall x>0$, 
+        $0 < \alpha < 1$
+    \end{lema}
+    %
+    \begin{proof}
+        Pq eu disse
+    \end{proof}
+    %
+    \begin{lema}
     \label{lema:5.2-Stein}
         Os produtos canônicos satisfazem as seguintes desigualdades:
         %
@@ -1883,12 +1901,7 @@
         \end{enumerate}
     \end{proof}
     %
-    
-    
-    
     \bigskip 
-    
-    
     
     A prova do teorema de Hadamard se baseia em cotas inferiores para o produto
     dos fatores canônicos quando $z$ está longe das raízes $a_1, a_2, \dots$.
@@ -1915,7 +1928,8 @@
     %
     \begin{proof}
         A prova deste lema é delicada. Recorde que como os $a_n$ são
-        zeros de $f$, temos que $|a_n| \xrightarrow{n\to\infty} +\infty$.
+        zeros de $f$, temos que $|a_n| \xrightarrow{n\to\infty} +\infty$,
+        de modo que podemos supor, sem perda de generalidade, que $|a_n| \geq 1$.
         Para começar, vamos mostrar que o produtório de $E_k(z/a_n)$ converge.
         
         Pelo Lema \ref{lema-wstr-est-factor}, existe $n_0\in\N$ tal que se $n\geq n_0$
@@ -2014,12 +2028,13 @@
             \left|
             \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} E_k(z/a_n)
             \right|
-            \geq 
+            &\geq 
             \exp\left(
             -2|z|^{k+1} \cdot \frac{1}{2^{k+1-s}|z|^{k+1-s}}
             \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s}
-            \right)
-            \equiv \exp\left(
+            \right) \\
+            &\equiv 
+            \exp\left(
             -C_1(k,s) |z|^s
             \right),
         \end{align*}
@@ -2027,7 +2042,7 @@
         sendo
         %
         \begin{equation*}
-            C_1(k,s) = \frac{1}{2^{k-s}}
+            C_1(k,s) = 2^{s-k}
             \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s}.
         \end{equation*}
         %
@@ -2058,11 +2073,367 @@
             \right).
         \end{equation*}
         %
-        Daí, como
+        Daí, como $s-k > 0$ por hipótese, temos
         %
         \begin{equation*}
-            \frac{1}{|a_n|^k} = \frac{1}{|a_n|^s|a_n|^{k-s}}
+            |a_n|^{-k} = |a_n|^{-s}|a_n|^{s-k} \leq |a_n|^{-s} 2^{s-k} |z|^{s-k}.
         \end{equation*}
         %
+        Assim, obtemos a seguinte cota inferior
+        %
+        \begin{align*}
+            \exp
+            \left( 
+            -c(k)|z|^k \sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^k}
+            \right)
+            &\geq
+            \exp
+            \left( 
+            -c(k)|z|^k|z|^{s-k}2^{s-k} \sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^s}
+            \right) \\
+            &=
+            \exp
+            \left( 
+            -C_2(k,s)|z|^s
+            \right),
+        \end{align*}
+        %
+        sendo
+        %
+        \begin{equation*}
+            C_2(k, s) = -c(k) 2^{s-k} \sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^s}.
+        \end{equation*}
+        %
+        Agora, para estimar
+        %
+        \begin{equation*}
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \left| 1 - \frac{z}{a_n} \right|,
+        \end{equation*}
+        %
+        vamos usar o fato de que $z$ está longe dos discos de centro $a_n$ e raio $1/|a_n|^{k+1}$,
+        ou seja, que $|a_n - z| \geq 1/|a_n|^{k+1}$ para todo $n\in\N$. Daí, segue que
+        %
+        \begin{align*}
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \left| 1 - \frac{z}{a_n} \right|
+            &=
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \left| \frac{a_n - z}{a_n} \right| \\
+            &\geq
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^{k+1}}\cdot\frac{1}{|a_n|} \\
+            &=
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^{k+2}}.
+        \end{align*}
+        %
+        Precisamos agora estimar o último produtório acima. Lembrando que ele
+        é finito, vamos tomar o logaritmo natural 
+        e utilizar a estimativa de Jensen para o número de zeros de $f$ para obter
+        %
+        \begin{align*}
+            \ln\left( \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^{k+2}} \right)
+            &=
+            \sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} -\ln\left( |a_n|^{k+2} \right) \\
+            &= 
+            -(k+2)\sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \ln|a_n| \\
+            &\geq 
+            -(k+2)\sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \ln(2|z|) \\
+            &\geq 
+            -(k+2) n_f(2|z|) \ln(2|z|) \\
+            &\geq
+            -(k+2) C_3(k, s) |z|^s \ln(2|z|) \\
+            &\geq
+            -(k+2) C_4(k, s) |z|^{s + \e}, \\
+            &=
+            -C_5(k,s) |z|^{s + \e} \, \forall \e > 0.
+        \end{align*}
+        %
+        Portanto, obtemos
+        %
+        \begin{equation*}
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^{k+2}}
+            \geq
+            \exp
+            \left(
+            -C_5(k, s) |z|^{s + \e}
+            \right), \, \forall \e > 0.
+        \end{equation*}
+        %
+        Para juntar esta estimativa com a estimativa para o produtório de $\exp(-c(k)|z/a_n|^k)$,
+        primeiro observamos que
+        %
+        \begin{align*}
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \exp\left( -c(k)|z/a_n|^k \right)
+            \geq
+            \exp
+            \left( 
+            -C_2(k,s)|z|^s
+            \right)
+            \geq
+            \exp
+            \left( 
+            -C_6(k,s)|z|^{s + \e}
+            \right), \, \forall \e > 0.
+        \end{align*}
+        %
+        Daí, temos finalmente que
+        %
+        \begin{equation*}
+            \left|
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} E_k(z/a_n)
+            \right| 
+            \geq
+            \exp
+            \left(
+            -C_7(k, s) |z|^{s + \e}
+            \right),
+        \end{equation*}
+        %
+        sendo $C_7 \equiv C_5 + C_6$. Para verificar que esta desigualdade encerra
+        a prova do lema, observamos que
+        %
+        \begin{equation*}
+            \left|
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} E_k(z/a_n)
+            \right|
+            \geq
+            \exp
+            \left(
+            -C_1(k, s) |z|^s
+            \right)
+            \geq
+            \exp
+            \left(
+            -C_8(k, s) |z|^{s + \e}
+            \right), \, \forall \e > 0.
+        \end{equation*}
+        %
+        Por fim, basta notar que o argumento inteiro vale para qualquer 
+        $s \in (\rho_0, k+1)$, de modo que escolhendo $\e > 0$ tal que
+        $s + \e \in (\rho_0 , k+1)$ temos
+        %
+        \begin{align*}
+            \left|
+            \prod_{n=1}^{\infty} E_k(z/a_n)
+            \right|
+            = 
+            \left|
+            \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}}^{\infty} E_k(z/a_n) 
+            \right|
+            \cdot
+            \left|
+            \prod_{\substack{n\in\N \\ |a_n| > 2|z|}}^{\infty} E_k(z/a_n)
+            \right|
+            \geq
+            \exp
+            \left(
+            -C_9(k, s) |z|^{s + \e},
+            \right)
+        \end{align*}
+        %
+        sendo $C_9 \equiv C_7 + C_8$. Já que qualquer número real em $(\rho_0, k+1)$
+        pode ser escrito como $s + \e$ para algum $s \in (\rho_0, k+1)$ e $\e > 0$,
+        finalizamos a prova do lema.
     \end{proof}
     %
+    \begin{corolario}
+    \label{cor-seq-raios-inf}
+        Existe uma sequência $r_1, r_2, \dots, r_m, \dots,$ com $r_m \to \infty$ tal que
+        %
+        \begin{equation*}
+            \left|
+            \prod_{n=1}^{\infty} E_k(z/a_n)
+            \right|
+            \geq
+            \exp(-C|z|^s),
+        \end{equation*}
+        %
+        para
+        %
+        \begin{equation*}
+            z \in \bigcup_{n=1}^{\infty} \partial D(0, r_n).
+        \end{equation*}
+        %
+    \end{corolario}
+    %
+    \begin{proof}
+        Já que $\rho_0 < s < k+1$, temos
+        %
+        \begin{equation*}
+            \sum_{n=1}^{\infty} \frac{1}{|a_n|^{k+1}} < +\infty.
+        \end{equation*}
+        %
+        Portanto, existe $n_0\in\N$ tal que se $n\geq n_0$ então
+        %
+        \begin{equation*}
+            \sum_{n = n_0 + 1}^{\infty} \frac{1}{|a_n|^{k+1}} < \frac{1}{10}.
+        \end{equation*}
+        %
+        Sendo assim, dados inteiros consecutivos $L$ e $L+1 \gg 1$, podemos
+        encontrar $r\in [L, L+1]$ tal que
+        %
+        \begin{equation*}
+            \partial D(0, r) 
+            \cap 
+            \bigcup_{n=1}^{\infty} D\left( a_n, \frac{1}{|a_n|^{k+1}} \right)
+            =
+            \varnothing.
+        \end{equation*}
+        %
+        De fato, se não existisse tal $r$ então a união dos fechados
+        %
+        \begin{equation*}
+            I_n = 
+            \left[
+            |a_n| - \frac{1}{|a_n|^{k+1}}, |a_n| + \frac{1}{|a_n|^{k+1}}
+            \right],
+        \end{equation*}
+        %
+        que têm comprimento $2/|a_n|^{k+1}$, formaria uma cobertura de $[L, L+1]$
+        %
+        \begin{center}
+            {\bf ILUSTRAÇÃO DOS $I_n$}
+        \end{center}
+        %
+        Ora, mas a união dos $I_n$ não pode cobrir $[L, L+1]$ já que
+        %
+        \begin{align*}
+            \Leb\left(
+            \bigcup_{n=n_0}^{\infty} I_n
+            \right) 
+            \leq
+            \sum_{n=n_0}^{\infty} \Leb(I_n)
+            =
+            \sum_{n=n_0}^{\infty} \frac{2}{|a_n|^{k+1}}
+            <
+            \frac{2}{10},
+        \end{align*}
+        %
+        enquanto que $\Leb([L, L+1]) = 1$. Portanto, podemos encontrar 
+        a sequência desejada $(r_n)_{n\in\N}$ com $r_n \xrightarrow{n\to\infty} \infty$
+        aplicando o Lema \ref{lema:5.3-Stein}.
+    \end{proof}
+    %
+    
+    \medskip
+    
+    Antes de rumar para a demonstração do teorema de Hadamard, vamos precisar de um último
+    lema.
+    %
+    \begin{lema}
+    \label{lema:5.5-Stein}
+        Suponha que $g:\C\to\C$ é inteira e tal que
+        %
+        \begin{equation*}
+            \Re(g(z)) \leq C r^s, \, |z| = r, \, s > 0
+        \end{equation*}
+        %
+        para uma sequência de números reais positivos $r$ que tende para o infinito.
+        Então $g$ é um polinômio de grau menor ou igual a $s$.
+    \end{lema}
+    %
+    \begin{proof}
+        Expandindo $g$ em série de potências ao redor da origem, temos
+        %
+        \begin{equation*}
+            g(z) = \sum_{n=0}^{\infty} a_n z^n.
+        \end{equation*}
+        %
+        Usando a fórmula integral de Cauchy, temos que
+        %
+        \begin{equation*}
+            \frac{1}{2\pi} \int_0^{2\pi} g(re^{i\theta}) e^{-in\theta} \, d\theta
+            =
+            \begin{cases}
+                a_n r^n, n \geq 0 \\
+                0, n < 0
+            \end{cases}.
+        \end{equation*}
+        %
+        Tomando conjugados complexos, obtemos
+        %
+        \begin{equation*}
+            \frac{1}{2\pi} \int_0^{2\pi} \overline{ g(re^{i\theta}) } e^{-in\theta} \, d\theta = 0
+        \end{equation*}
+        %
+        sempre que $n > 0$. Como $2\Re(g) = g + \overline{g}$, adicionamos as duas equações
+        acima para obter
+        %
+        \begin{equation*}
+            a_n r^n = \frac{1}{\pi} \int_0^{\pi} \Re(g(re^{i\theta}))e^{-in\theta} \, d\theta,
+            \, n > 0.
+        \end{equation*}
+        %
+        Para $n = 0$, tomamos a parte real em ambos os lados da primeira integral para encontrar
+        %
+        \begin{equation*}
+            2\Re(a_0) = \frac{1}{\pi}\int_0^{2\pi} \Re(g(re^{i\theta})) \, d\theta.
+        \end{equation*}
+        %
+        Agora, notamos o fato de que para todo $n\neq 0$ a integral de $e^{-in\theta}$
+        em qualquer circunferência de centro na origem é nula. Portanto,
+        %
+        \begin{equation*}
+            a_n 
+            = 
+            \frac{1}{\pi r^n} \int_0^{2\pi} \left[ \Re(g(re^{i\theta})) - Cr^s \right]e^{-in\theta}
+            \, d\theta, \, n > 0,
+        \end{equation*}
+        %
+        e segue que
+        %
+        \begin{equation*}
+            |a_n| 
+            \leq
+            \frac{1}{\pi r^n} 
+            \int_0^{2\pi} \left[ Cr^s - \Re(g(re^{i\theta})) \right] \, d\theta
+            \leq
+            2CR^{s-n} - 2\Re(a_0)r^{-n}.
+        \end{equation*}
+        %
+        Fazendo $r\to\infty$, obtemos que $a_n = 0$ para $n > s$, de modo que $g$
+        é um polinômio de grau no máximo $s$, como desejado.
+    \end{proof}
+    %
+    Agora, para provar o teorema de Hadamard, seja
+    %
+    \begin{equation*}
+        E(z) = z^m \prod_{n=1}^{\infty} E_k(z/a_n).
+    \end{equation*}
+    %
+    Para mostrar que $E$ é inteira, notamos que
+    %
+    \begin{equation*}
+        |1 - E_k(z/a_n)| \leq c\left| \frac{z}{a_n} \right|^{k+1}
+    \end{equation*}
+    %
+    para todo $n$ suficientemente grande também que
+    %
+    \begin{equation*}
+        \sum_{n=0}^{\infty} \frac{1}{|a_n|^{k+1}}
+    \end{equation*}
+    %
+    converge, pois $\rho_0 < s < k+1$. Além disso, $E$ tem os mesmos zeros 
+    que $f$, de modo que $f/E$ é holomorfa e não se anula em lugar nenhum,
+    ou seja,
+    %
+    \begin{equation*}
+        \frac{f(z)}{E(z)} = e^{g(z)}
+    \end{equation*}
+    %
+    para alguma função inteira $g$. Como $f$ tem ordem de crescimento
+    $\rho_0$ e pela estimativa para $E$ obtida no Corolário \ref{cor-seq-raios-inf},
+    temos
+    %
+    \begin{align*}
+        \exp(\Re(g(z))) &= \left| \frac{f(z)}{E(z)} \right| \\
+                        &\leq \frac{A_1 \exp( B_1|z|^{\rho_0} )}{A_2 \exp( -B_2|z|^{s} )} \\
+                        &= A_1 \exp(B_1 |z|^{\rho_0} + B_2 |z|^s) \\
+                        &\leq A_1 \exp(B_3 |z|^s).
+    \end{align*}
+    %
+    para $|z| = r_m$. Isso mostra que
+    %
+    \begin{equation*}
+        \Re(g(z)) \leq A_2|z|^s, \, |z| = r_m
+    \end{equation*}
+    %
+    e segue do Lema \ref{lema:5.5-Stein} que $g$ é um polinômio de grau menor
+    ou igual a $s$, terminando a demonstração.
