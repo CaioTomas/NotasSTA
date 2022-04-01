@@ -100,7 +100,7 @@
         F(x) = \int_{1}^{x} \frac{1}{t} \, dt = \ln{x}.
     \end{equation*}    
     %
-    O próximo Lema é, essencialmente, uma repetição dos argumentos acima, mas 
+    O próximo lema é, essencialmente, uma repetição dos argumentos acima, mas 
     num contexto mais geral.
     %
     \begin{lema}%Teorema 6.2 cap 3 Stein
@@ -1100,6 +1100,7 @@
     
     Vamos usar este teorema para trabalhar com um exemplo interessante.
     \begin{exemplo}[A fórmula do produto da função seno]
+    \index{Fórmula! do produto da função seno}
         Vamos estabelecer a validade da seguinte fórmula:
         %
         \begin{equation*}
@@ -1768,6 +1769,93 @@
     para alguma função $g$ inteira.
     \end{proof}
     %
+    
+    \subsection{Aplicações do Teorema de Weierstrass}
+    
+    
+    Nesta seção vamos apresentar duas aplicações muito 
+    interessantes do Teorema de Weierstrass. 
+    A primeira delas é baseada também em outro importante teorema, 
+    conhecido como Teorema de Mittag-Leffer, e 
+    afirma que dado uma sequência de números complexos
+    $(w_n)_{n\in\N}$, podemos construir uma
+    função inteira $f:\C\to\C$ e uma sequência 
+    $(z_n)_{n\in\N}$, com $|z_n|\to +\infty$, 
+    quando $n\to\infty$, tais que $f(z_n)=w_n$, para todo $n\in\mathbb{N}$.
+    Esta aplicação pode ser vista como um resultado de interpolação e que, na verdade, 
+    generaliza o esquema de interpolação baseado nos polinômios de Lagrange
+    para o caso de uma interpolação em que a função deve se ajustar a um 
+    conjunto infinito enumerável de valores. 
+    
+    
+    
+    
+    
+    Na segunda aplicação, vamos mostrar um resultado fascinante devido a Picard
+    que afirma, entre outras coisas, 
+    que a imagem de uma função inteira, de ordem de crescimento finita, 
+    pode omitir no máximo um ponto do plano complexo! 
+    Isto é, se $f:\C\to\C$ é uma função inteira com ordem de 
+    crescimento $0\leqslant \rho<+\infty$, então a o conjunto imagem $f(\C)$ 
+    é todo plano complexo, exceto possivelmente um ponto.
+    Este resultado é conhecido como o {\it Pequeno Teorema de Picard}. 
+    
+    
+    
+    \bigskip 
+    
+    Como mencionado acima, para a primeira aplicação, vamos
+    precisar do Teorema de Mittag-Leffer. Este é um resultado
+    de natureza análoga à do Teorema de Weierstrass, 
+    mas que ao invés de considerar do problema de zeros prescritos
+    considera o problema de existência de uma 
+    função meromorfa em $\C$ cujas singularidades são 
+    polos de ordem e localização prescritos por 
+    alguma sequência de números complexos 
+    $(z_n)$ satisfazendo $|z_n|\to\infty$,
+    quando $n\to\infty$.
+    
+    
+    \begin{teorema}[Teorema de Mittag-Leffer]
+    \label{teo-mittag-leffer}
+    \index{Teorema!de Mittag-Leffer}
+    Seja $(z_n)_{n\in\mathbb{N}}$ uma sequência de número complexos distintos com 
+    $|z_n|\to\infty$, quando $n\to\infty$. Dada uma sequência qualquer de polinômios não-nulos $(P_n)_{n\in\N}$. Então existe uma função $f$ meromorfa em $\C$ cujas singularidades são apenas os pontos da sequência $(z_n)_{n\in\N}$ e a parte
+    principal da série de Laurent de $f$, em torno $z=z_n$, é dada exatamente $P_n(1/(z-z_n)$. Isto é, para cada $n\in\N$, existe um raio positivo $r_n$ dado por
+    $r_n \equiv \inf\{|z_n-z_j|: j\in \N\setminus\{n\} \}$ tal que para todo ponto $z$ do anel aberto $A(z_n,0,r_n)$ temos:
+    \[
+    f(z) = P_n\left(\frac{1}{z-z_n}\right)+h_n(z),
+    \]
+    onde $h_n:D(z_n,r_n)\to\C$ é uma função holomorfa.
+    \end{teorema}
+    
+    
+    A maneira mais natural de pensar em como este teorema poderia ser provado  seria
+    considerando a seguinte série de funções: 
+    \[
+     f(z) = \sum_{n=1}^{\infty} P_n\left( \frac{1}{z-z_n}  \right).
+    \]
+    Mas como o leitor já deve estar imaginando, esta tentativa esbarraria no problema
+    da convergência desta série, já que no enunciado do teorema é permitido escolher 
+    a sequência  $(z_n)_{n\in\N}$ de forma muito geral. 
+    Entretanto, veremos que a prova é baseada nesta ideia. 
+    Porém ao invés de considerarmos exatamente esta série, 
+    vamos construir uma outra série de funções que 
+    é basicamente uma modificação da série acima, onde cada parcela desta nova série é obtida à partir das parcelas da série acima, mas subtraindo de cada uma delas 
+    uma função holomorfa apropriada. 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     \section{O Teorema de Hadamard}
     Nesta seção vamos discutir um refinamento do teorema da fatoração de Weierstrass,
     enunciado como teorema de Hadamard. Esse teorema combina os resultados que discutimos
