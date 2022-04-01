@@ -1823,12 +1823,22 @@
     %
     \begin{lema}
     \label{lema:majoracao}
-        $x+1 > x^\alpha \ \forall x>0$, 
-        $0 < \alpha < 1$
+        $x+1 > x^\alpha, \, \forall x>0$, 
+        $0 < \alpha < 1$.
     \end{lema}
     %
+    Este lema nos será muito útil em algumas majorações, e o usaremos sem cerimônia.
+    %
     \begin{proof}
-        Pq eu disse
+        Para $x>0$ e $0<\alpha<1$,
+        $\alpha \mapsto (x+1)^{1/\alpha}$ 
+        é estritamente decrescente. 
+        Nessas condições,
+        $(x+1)^{1/\alpha} > (x+1) > x$,
+        e portanto 
+        $(x+1)^{1/\alpha} > x$ 
+        o que implica em
+        $x+1 > x^\alpha$. 
     \end{proof}
     %
     \begin{lema}
@@ -1901,7 +1911,6 @@
         \end{enumerate}
     \end{proof}
     %
-    \bigskip 
     
     A prova do teorema de Hadamard se baseia em cotas inferiores para o produto
     dos fatores canônicos quando $z$ está longe das raízes $a_1, a_2, \dots$.
@@ -2288,9 +2297,11 @@
         %
         que têm comprimento $2/|a_n|^{k+1}$, formaria uma cobertura de $[L, L+1]$
         %
-        \begin{center}
-            {\bf ILUSTRAÇÃO DOS $I_n$}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{%
+                Figuras/In Hadamard.pdf
+            }
+        \end{figure}
         %
         Ora, mas a união dos $I_n$ não pode cobrir $[L, L+1]$ já que
         %
@@ -2392,6 +2403,9 @@
         é um polinômio de grau no máximo $s$, como desejado.
     \end{proof}
     %
+    
+    \medskip
+    
     Agora, para provar o teorema de Hadamard, seja
     %
     \begin{equation*}
@@ -2437,3 +2451,77 @@
     %
     e segue do Lema \ref{lema:5.5-Stein} que $g$ é um polinômio de grau menor
     ou igual a $s$, terminando a demonstração.
+    %
+    % falar do teo de Mittag-Leffler e da aplicação para funções com imagens prescritas (?)
+    \subsection{O Pequeno Teorema de Picard}
+        Nesta seção, mostramos uma bela aplicação do teorema de Hadamard, a saber, na
+        demonstração do Pequeno Teorema de Picard.
+        %
+        \begin{teorema}[Pequeno Teorema de Picard]
+        \label{teo:pequeno-picard}
+        \index{Pequeno Teorema de Picard}
+            Se $f:\C\to\C$ é uma função inteira não constante e com ordem de crescimento $\rho < +\infty$, então
+            %
+            \[
+              \sharp (f(\C))^c \leq 1.
+            \]
+            %
+        \end{teorema}
+        %
+        Dito de outro modo, o Pequeno Teorema de Picard nos diz que a imagem de uma 
+        função inteira com ordem de crescimento finita\footnote{O Pequeno Teorema
+        de Picard continua válido para funções com crescimento infinito, mas
+        não o trouxemos com toda essa generalidade pois a discussão ficaria demasiado
+        técnica.} 
+        é todo $\C$ com exceção de,
+        no máximo, um ponto. Antes da prova, vamos enunciar um pequeno lema preliminar.
+        %
+        \begin{lema}
+        \label{lema-pol-sobrejetor}
+            Todo polinômio não constante $P:\C\to\C$ é sobrejetor.
+        \end{lema}
+        %
+        \begin{proof}[Demonstração do lema]
+            Dado $w\in\C$, o polinômio $P(z) - w$ é não constante e, pelo
+            Teorema Fundamental da Álgebra, tem uma raiz $z_0$. Ora, então
+            $P(z_0) = w$ e, portanto, $P$ é sobrejetor.
+        \end{proof}
+        
+        \medskip
+        %
+        Vamos, então à demonstração do Pequeno Teorema de Picard.
+        %
+        \begin{proof}[Demonstração do teorema]
+            Suponha que exista $a\in\C$ tal que
+            %
+            \[
+            f(z) - a \neq 0, \, \forall z\in\C.
+            \]
+            %
+            Do Teorema \ref{teo:fatoracao-hadamard}, segue que
+            %
+            \[
+            f(z) - a = e^{P(z)},
+            \]
+            %
+            sendo $P(z)$ um polinômio de grau no máximo $\rho$. Daí, tomando
+            $b \neq a$ qualquer, existe $\varphi \in [0, 2\pi)$ tal que
+            %
+            \[
+            b - a = |b - a| e^{i\varphi}.
+            \]
+            %
+            Do Lema \ref{lema-pol-sobrejetor}, existe $z_b\in\C$ tal que
+            %
+            \begin{align*}
+                P(z_b) = \ln|b-a| + i\varphi
+                \iff
+                f(z_b) - a = b - a
+                \iff 
+                f(z_b) = b.
+            \end{align*}
+            %
+            Portanto, a imagem do $f$ pode excluir no máximo um ponto de $\C$
+            e terminamos a prova.
+        \end{proof}
+        %

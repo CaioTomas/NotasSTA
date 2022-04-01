@@ -216,12 +216,14 @@
 %
 \newenvironment{proposicao}
     {\begin{proposicaoT}}
-    {
-        \hfill{\color{violetaclaro}\tiny\ensuremath{\blacksquare}}\end{proposicaoT}
+    {%
+        \hfill{%
+            \color{violetaclaro}\tiny\ensuremath{\blacksquare}
+        }\end{proposicaoT}
     }
 %
 \renewenvironment{proof}[1][Demonstração]
-    {\medskip\noindent\textbf{{#1.\ }}}
+    {\paragraph{{#1.\ }}}
     {\hfill\ensuremath{\blacksquare}\\}
 %
 
