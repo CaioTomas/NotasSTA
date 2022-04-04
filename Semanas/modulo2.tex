@@ -1411,7 +1411,8 @@
         Pelo teorema de Liouville, como $H$ é inteira, temos
         $H(z)$ constante. 
         Agora, note que $H$ pode ser vista como extensão holomorfa de $F(z) - S(z)$,
-        que é uma função ímpar. Portanto, $H$ também é ímpar e $H(0) = 0$, donde segue 
+        que é uma função ímpar. Portanto, $H$ 
+        também é ímpar e $H(0) = 0$, donde segue 
         que $H\equiv 0$, ou seja, $F(z) \equiv S(z)$ e temos
         %
         \begin{equation*}
@@ -1444,7 +1445,8 @@
             = \frac{1}{z} + \sum_{n=1}^{\infty} \frac{2z}{z^2 - n^2}.
         \end{align*}
         %
-        Agora, como $G'(z)/G(z) = \pi\cot(\pi z)$, o resultado que acabamos de mostrar
+        Agora, como $G'(z)/G(z) = \pi\cot(\pi z)$, 
+        o resultado que acabamos de mostrar
         nos dá, para todo $z\in\Omega$,
         %
         \begin{equation*}
@@ -1468,7 +1470,8 @@
         \end{equation*}
         %
         onde usamos que o produtório é holomorfo.
-        Portanto, $P(z) = G(z)$ para todo $z\in\Omega$. Pelo Princípio da Identidade,
+        Portanto, $P(z) = G(z)$ para todo $z\in\Omega$. 
+        Pelo Princípio da Identidade,
         como $\Omega$ é aberto e conexo, segue que essa identidade vale para todo
         $z\in\C$.
     \end{exemplo}
@@ -1491,7 +1494,8 @@
 \section{O Teorema de Weierstrass}
     
     Anteriormente, vimos que, para construir uma função com zeros prescritos 
-    na forma de uma lista ou sequência $\{a_n\}$, uma tentativa ingênua era escrever
+    na forma de uma lista ou sequência $\{a_n\}$, 
+    uma tentativa ingênua era escrever
     %
     $$ f(z) = \lim_{n \to \infty} (z-a_1) \cdots (z-a_n).$$
     %
@@ -1504,12 +1508,14 @@
     %
     e a função $\sin{\pi z}$ se anula exatamente em $\mathbb{Z}$. 
     Analisando o produto com mais cuidado, vemos que cada fator é da forma 
-    $(n^2 - z^2)/n^2 = (n - z)(n + z)/n^2$ que se anula exatamente em $\pm n \in \Z$. 
+    $(n^2 - z^2)/n^2 = (n - z)(n + z)/n^2$ 
+    que se anula exatamente em $\pm n \in \Z$. 
     Além disso, o fato de termos escolhido fatores 
     %
     $$\left(1 - \frac{z^2}{n^2}\right)$$
     %
-    em vez de $(n^2 - z^2)$ nos permitiu usar a Proposição \ref{prop:prod-inf-func-holom}. 
+    em vez de $(n^2 - z^2)$ 
+    nos permitiu usar a Proposição \ref{prop:prod-inf-func-holom}. 
     
     Se queremos definir uma função que se anula precisamente em uma sequência 
     qualquer $\{a_n\}$ de uma forma análoga à vista acima, ter $z^2$ nos 
@@ -1528,20 +1534,26 @@
     Vamos enunciar o grande resultado desta seção agora 
     e demonstrá-lo no decorrer do texto.
     
-    \begin{teorema}[Teorema da Fatoração de Weierstrass]
+    \begin{teorema}[Teorema do Produto de Weierstrass]
     \label{teo-Weierstrass-fatoracao}
-    \index{Teorema!da Fatoração de Weierstrass}
+    \index{Teorema!do Produto de Weierstrass}
         Dada uma sequência $\{a_n\}$ de números complexos tal que 
         $|a_n| \to \infty$, quando $n \to \infty$, 
         existe uma função inteira $f: \C \to \C$ que 
         se anula em $z=a_n$, para cada $n\in\mathbb{N}$, 
         e não se anula em quaisquer outros pontos do plano complexo.
+        
+        Além do mais, se $a_m\neq a_n$ 
+        para todo $m\neq n$, então, para 
+        cada $n\in\N$ temos que $z=a_n$ 
+        é um zero simples de $f$ (multiplicidade um). 
     \end{teorema}
  
  \bigskip 
     
     Note que não é possível existir uma função como no enunciado do Teorema
-    de Weierstrass, quando a sequência $\{a_n\}$ assume infinitos valores distintos e
+    de Weierstrass, quando a sequência $\{a_n\}$ 
+    assume infinitos valores distintos e
     a condição $|a_n| \xrightarrow{n\to\infty} \infty$ não é satisfeita.
     De fato, suponha por absurdo que exista tal função. 
     Já que $\{a_n\}$ toma infinitos valores distintos e 
@@ -1745,15 +1757,25 @@
     %
     \begin{observacao}
         O corolário acima é essencialmente a solução ao seguinte problema:
-        dada $f_2$ inteira, como posso obter $f_1$ inteira e com os mesmos zeros de $f_2$?
-        Um raciocínio heurístico que nos ajuda a esclarecer a resposta é o seguinte:
-        atendendo à preservação dos zeros, é claro que não se pode fazer sobre $f_2$ operações como translação e inversão, e intuitivamente ficamos mesmo só com operações de rotação e expansão (ou contração), que podem ser executadas simultaneamente pela exponencial complexa.
-        Finalmente, $f_1$ ser inteira pede que o argumento da exponencial também seja inteiro, e portanto $f_1=f_2 \exp g(z)$ para alguma $g$ inteira.
+        dada $f_2$ inteira, como obter $f_1$ 
+        inteira e com os mesmos zeros de $f_2$?
+        Um raciocínio heurístico que nos ajuda a 
+        esclarecer a resposta é o seguinte:
+        atendendo à preservação dos zeros, 
+        é claro que não se pode fazer sobre $f_2$ 
+        operações como translação e inversão, e intuitivamente 
+        ficamos mesmo só com operações de rotação e 
+        expansão (ou contração), que podem ser executadas 
+        simultaneamente pela exponencial complexa.
+        Finalmente, $f_1$ ser inteira pede que o 
+        argumento da exponencial também seja inteiro, 
+        e portanto $f_1=f_2 \exp g(z)$ para alguma $g$ inteira.
     \end{observacao}
     %
     \begin{proof}
     Seja $h(z) = f_1(z)/f_2(z)$. Se $f_1$ e $f_2$ 
-    ambas se anulam em um ponto $a$, então este é um zero de mesma multiplicidade para ambas, 
+    ambas se anulam em um ponto $a$, 
+    então este é um zero de mesma multiplicidade para ambas, 
     ou seja, $f_i(z) = (z-a)^mg_i(z)$ com $g_i$ holomorfa e 
     $g_i(a) \neq 0$ para  $i = 1,2$ e $m$ natural. 
     
@@ -1770,93 +1792,467 @@
     \end{proof}
     %
     
-    \subsection{Aplicações do Teorema de Weierstrass}
+    \subsection{Interpolações e o Teorema de Weierstrass}
     
     
-    Nesta seção vamos apresentar duas aplicações muito 
-    interessantes do Teorema de Weierstrass. 
-    A primeira delas é baseada também em outro importante teorema, 
-    conhecido como Teorema de Mittag-Leffer, e 
-    afirma que dado uma sequência de números complexos
-    $(w_n)_{n\in\N}$, podemos construir uma
-    função inteira $f:\C\to\C$ e uma sequência 
-    $(z_n)_{n\in\N}$, com $|z_n|\to +\infty$, 
-    quando $n\to\infty$, tais que $f(z_n)=w_n$, para todo $n\in\mathbb{N}$.
-    Esta aplicação pode ser vista como um resultado de interpolação e que, na verdade, 
-    generaliza o esquema de interpolação baseado nos polinômios de Lagrange
-    para o caso de uma interpolação em que a função deve se ajustar a um 
+    Nesta seção vamos apresentar uma aplicação muito 
+    interessante do Teorema de Weierstrass. 
+    Ela é baseada também em outro importante teorema, 
+    conhecido como Teorema de Mittag-Leffler 
+    (veja abaixo, Teorema \ref{teo-mittag-leffler}). 
+    
+    
+    Um dos problemas mais clássicos de 
+    interpolação polinomial consiste em: 
+    fornecido um conjunto finito de pares 
+    de números complexos (ou reais) da forma
+    %
+    \[
+    (z_1,w_1), (z_2,w_2), \ldots, (z_n,w_n);
+    \]
+    %
+    encontrar um polinômio $P$ de menor grau possível 
+    cujo gráfico contém todos estes pares de pontos, 
+    ou seja, $P(z_j)=w_j$ para cada $j=1,\ldots,n$. 
+    Às vezes, nos referimos a um polinômio 
+    satisfazendo esta propriedade como um 
+    polinômio interpolador e os pares de
+    números complexos $(z_i,w_i)$, com $i=1,\ldots,n$ como dados.
+    
+    Caso o conjunto de dados acima não possua nenhuma propriedade especial, em geral, um 
+    polinômio interpolador para estes dados 
+    terá grau no mínimo $n-1$. 
+    Na verdade, Lagrange mostrou
+    que este problema sempre 
+    admite uma solução com um polinômio de grau exatamente $n-1$. 
+    Tais polinômios são chamados, hoje em dia, 
+    de polinômios interpoladores de Lagrange
+    \index{polinômios interpoladores}. 
+    Para o conjunto de dados fornecidos acima, 
+    o polinômio interpolador de Lagrange tem a forma 
+    %
+    \[
+    P(z)
+    =
+    \sum_{j=1}^n 
+    w_j  
+    \frac
+    {(z-z_1)(z-z_2)\cdots (z-z_{j-1})(z-z_{j+1})\cdots (z-z_n)}
+    {(z_j-z_1)(z_j-z_2)\cdots (z_j-z_{j-1})(z_j-z_{j+1})\cdots (z_j-z_n)}
+    \]
+    %
+    
+    No que segue, usamos os Teoremas 
+    de Weierstrass e Mittag-Leffler para mostrar que dada
+    uma sequência infinita de números complexos 
+    distintos $(z_n)_{n\in\N}$ e uma sequência arbitrária
+    $(w_n)_{n\in\N}$, se $|z_n|\xrightarrow{n\to\infty}\infty$, 
+    então podemos construir uma
+    função inteira $f:\C\to\C$ tal que 
+    $f(z_n)=w_n$, para todo $n\in\mathbb{N}$.
+    Note que esta aplicação pode ser vista 
+    como um resultado de interpolação e que, na verdade, 
+    generaliza o esquema de interpolação baseado nos 
+    polinômios de Lagrange, mas
+    para o caso de uma interpolação 
+    em que a função deve se ajustar a um 
     conjunto infinito enumerável de valores. 
-    
-    
-    
-    
-    
-    Na segunda aplicação, vamos mostrar um resultado fascinante devido a Picard
-    que afirma, entre outras coisas, 
-    que a imagem de uma função inteira, de ordem de crescimento finita, 
-    pode omitir no máximo um ponto do plano complexo! 
-    Isto é, se $f:\C\to\C$ é uma função inteira com ordem de 
-    crescimento $0\leqslant \rho<+\infty$, então a o conjunto imagem $f(\C)$ 
-    é todo plano complexo, exceto possivelmente um ponto.
-    Este resultado é conhecido como o {\it Pequeno Teorema de Picard}. 
     
     
     
     \bigskip 
     
-    Como mencionado acima, para a primeira aplicação, vamos
-    precisar do Teorema de Mittag-Leffer. Este é um resultado
+    Como mencionado acima, para resolver o problema 
+    de interpolação, por uma função inteira, 
+    de um conjunto infinito de dados, vamos
+    precisar do Teorema de Mittag-Leffler. Este é um resultado
     de natureza análoga à do Teorema de Weierstrass, 
-    mas que ao invés de considerar do problema de zeros prescritos
+    mas que ao invés de considerar o problema de zeros prescritos,
     considera o problema de existência de uma 
-    função meromorfa em $\C$ cujas singularidades são 
+    função meromorfa
+    em $\C$ cujas singularidades são 
     polos de ordem e localização prescritos por 
     alguma sequência de números complexos 
-    $(z_n)$ satisfazendo $|z_n|\to\infty$,
-    quando $n\to\infty$.
+    $(z_n)$ satisfazendo $|z_n|\xrightarrow{n\to\infty}\infty$.
     
     
-    \begin{teorema}[Teorema de Mittag-Leffer]
-    \label{teo-mittag-leffer}
-    \index{Teorema!de Mittag-Leffer}
-    Seja $(z_n)_{n\in\mathbb{N}}$ uma sequência de número complexos distintos com 
-    $|z_n|\to\infty$, quando $n\to\infty$. Dada uma sequência qualquer de polinômios não-nulos $(P_n)_{n\in\N}$. Então existe uma função $f$ meromorfa em $\C$ cujas singularidades são apenas os pontos da sequência $(z_n)_{n\in\N}$ e a parte
-    principal da série de Laurent de $f$, em torno $z=z_n$, é dada exatamente $P_n(1/(z-z_n)$. Isto é, para cada $n\in\N$, existe um raio positivo $r_n$ dado por
-    $r_n \equiv \inf\{|z_n-z_j|: j\in \N\setminus\{n\} \}$ tal que para todo ponto $z$ do anel aberto $A(z_n,0,r_n)$ temos:
+    \begin{teorema}[Teorema de Mittag-Leffler]
+    \label{teo-mittag-leffler}
+    \index{Teorema!de Mittag-Leffler}
+    Seja $(z_n)_{n\in\mathbb{N}}$ uma 
+    sequência de número complexos distintos com 
+    $|z_n|\xrightarrow{n\to\infty}\infty$. 
+    Seja $(P_n)_{n\in\N}$ uma sequência qualquer de polinômios 
+    não-nulos tais que $P_n(0)=0$, 
+    para todo $n\in\N$. 
+    Então existe uma função $f$ meromorfa em 
+    $\C$ cujas singularidades são apenas os pontos da sequência $(z_n)_{n\in\N}$ e a parte
+    principal da série de Laurent de $f$ em torno de
+    $z_n$ é dada exatamente por $P_n\big(1/(z-z_n)\big)$,
+    isto é, para cada $n\in\N$, 
+    existe um raio positivo $r_n$ dado por
+    $r_n \equiv \inf\{|z_n-z_j|: j\in \N\setminus\{n\} \}$ 
+    tal que para todo ponto $z$ 
+    do anel aberto $A(z_n,0,r_n)$ temos
+    %
     \[
     f(z) = P_n\left(\frac{1}{z-z_n}\right)+h_n(z),
     \]
+    %
     onde $h_n:D(z_n,r_n)\to\C$ é uma função holomorfa.
     \end{teorema}
     
     
-    A maneira mais natural de pensar em como este teorema poderia ser provado  seria
+    A maneira mais natural de pensar em como este teorema 
+    poderia ser provado  seria
     considerando a seguinte série de funções: 
     \[
      f(z) = \sum_{n=1}^{\infty} P_n\left( \frac{1}{z-z_n}  \right).
     \]
-    Mas como o leitor já deve estar imaginando, esta tentativa esbarraria no problema
-    da convergência desta série, já que no enunciado do teorema é permitido escolher 
+    Entretanto, como o leitor já deve estar imaginando, 
+    esta tentativa esbarraria no problema
+    da convergência desta série, 
+    já que no enunciado do teorema é permitido escolher 
     a sequência  $(z_n)_{n\in\N}$ de forma muito geral. 
-    Entretanto, veremos que a prova é baseada nesta ideia. 
-    Porém ao invés de considerarmos exatamente esta série, 
+    Não obstante, veremos que a prova é baseada nesta ideia:
+    ao invés de considerarmos exatamente esta série, 
     vamos construir uma outra série de funções que 
-    é basicamente uma modificação da série acima, onde cada parcela desta nova série é obtida à partir das parcelas da série acima, mas subtraindo de cada uma delas 
-    uma função holomorfa apropriada. 
+    é basicamente uma modificação da série acima, onde 
+    cada parcela desta nova série é obtida
+    subtraindo-se uma função holomorfa apropriada 
+    de cada uma das parcelas da série acima. 
+    
+    
+    
+    
+    \begin{proof}[Prova do Teorema de Mittag-Leffer]
+    Primeiro vamos assumir que $z_n\neq 0$, para todo $n\in\N$.
+    Desta forma 
+    $U\equiv \C\setminus\{z_1,z_2,\ldots\}$ 
+    é um domínio contendo a origem do plano complexo.
+    
+    
+    Para cada $n\in\N$, temos que a função $g_n:U\to\mathbb{C}$
+    dada por
+    %
+    \[
+    g_n(z) = P_n\left(\frac{1}{z-z_n}\right),
+    \]
+    %
+    define uma função analítica em $U$. 
+    Observe que a única singularidade de 
+    $g_n$ é o ponto $z=z_n$. 
+    Portanto, podemos garantir para todo $z\in D(0,|z_n|)$ que
+    %
+    \[
+    g_n(z) = \sum_{k=0}^{\infty} \frac{g_{n}^{(k)}(0)}{k!}z^k. 
+    \]
+    %
+    Além do mais, para cada $n\in\N$, existe $k_n\in\mathbb{N}$ tal que
+    %
+    \begin{equation}
+    \label{eq-aux1-teo-mittag-leffer}
+    \left| 
+    g_n(z) - \sum_{k=0}^{k_n} \frac{g_{n}^{(k)}(0)}{k!}z^k
+    \right|
+    =
+    \left| 
+    \sum_{k=k_n+1}^{\infty} \frac{g_{n}^{(k)}(0)}{k!}z^k
+    \right|
+    \leq 
+    \frac{1}{2^n},\quad \forall z\in \overline{D(0,|z_n|/2)}.
+    \end{equation}    
+    %
+    Para cada $n\in\N$, considere a função $f_n:U\to\C$ dada por
+    %
+    \[
+    f_n(z) = P_n\left(\frac{1}{z-z_n}\right)- \sum_{k=0}^{k_n} \frac{g_{n}^{(k)}(0)}{k!}z^k.
+    \]
+    %
+    Claramente $f_n$ é uma função holomorfa em $U$. 
+    
+    O próximo passo é mostrar que a função $f$ dada
+    pela seguinte série de funções 
+    %
+    \[
+    f\equiv \sum_{n=1}^{\infty} f_n,
+    \]
+    %
+    está bem definida em $U$ e, além disso, define uma
+    função holomorfa neste domínio. 
+    Para provar estas afirmações a ideia é 
+    usar o Teste M de Weierstrass. 
+    
+    Seja $K\subset U$ um subconjunto compacto arbitrário. 
+    Como $|z_n|\xrightarrow{n\to\infty}\infty$, podemos 
+    garantir que existe algum 
+    $n_0\in\N$ tal que $K\subset \overline{D(0,|z_n|/2)}$ 
+    para todo $n\geqslant n_0$. 
+    
+    Usando a desigualdade \eqref{eq-aux1-teo-mittag-leffer}
+    e as observações acima, podemos garantir que
+    %
+    \[
+    \sum_{n=n_0}^{\infty} \sup_{z\in K}|f_n(z)|
+    \leqslant 
+    \sum_{n=n_0}^{\infty} \sup_{z\in \overline{D(0,|z_n|/2)}} |f_n(z)|
+    \leqslant 
+    \sum_{n=n_0}^{\infty} \frac{1}{2^n}
+    \leqslant
+    2.
+    \]
+    %
+    Logo, segue da continuidade das $f_j$'s em $K$ 
+    e da desigualdade acima que
+    %
+    \[
+    \sum_{n=1}^{\infty} \sup_{z\in K} |f_n(z)|
+    \leqslant
+    \sum_{n=1}^{n_0} \sup_{z\in K} |f_n(z)|
+    +2
+    <+\infty.
+    \]
+    %
+    Como $K$ é um subconjunto arbitrário de $U$, segue do teste
+    M de Weierstrass que a série de funções 
+    $\sum_{n=1}^{\infty}f_n$ define uma função holomorfa em $U$,
+    que denotaremos por $f$. 
+    
+    Para finalizar a prova do Teorema,
+    precisamos obter a série de Laurent de $f$ 
+    em torno de cada uma de suas singularidades.
+    
+    Para cada $n\in\mathbb{N}$, seja 
+    $r_n \equiv \inf\{ |z_n-z_j|: j\in\N\setminus\{n\}\}$. 
+    Considere a função $q_n:A(z_n,0,r_n)\to\C$ dada por
+    %
+    \[
+    q_n(z) = f(z)-f_n(z) \equiv 
+    f(z)- P_n\left(\frac{1}{z-z_n}\right) +
+    \sum_{k=0}^{k_n} \frac{g_{n}^{(k)}(0)}{k!}z^k.
+    \]
+    %
+    Para finalizar a prova, basta mostrar 
+    que $z_n$ é a única singularidade
+    da função $q_n$ em $D(z_n,r_n)$ 
+    e que esta singularidade 
+    é removível, pois já
+    que $P_j(0)=0$, para todo $j\in\N$,
+    podemos obter, imediatamente, da identidade abaixo
+    %
+    \[
+    f(z) = P_n\left(\frac{1}{z-z_n}\right) + q_n(z)+
+    \sum_{k=0}^{k_n} \frac{g_{n}^{(k)}(0)}{k!}z^k
+    \]
+    %
+    que $P_n(1/(z-z_n))$ é a parte principal da 
+    série de Laurent de $f$ no anel $A(z_n,0,r_n)$.
+    
+    
+    Para mostrar a validade da afirmação feita acima, 
+    note que pela definição de $f$ e $f_n$, temos para todo
+    $z\in A(z_n,0,r_n)$ que
+    %
+    \begin{align*}
+    q_n(z) 
+    &= 
+    f(z)- P_n\left(\frac{1}{z-z_n}\right) +
+    \sum_{k=0}^{k_n} \frac{g_{n}^{(k)}(0)}{k!}z^k  
+    \\[0.4cm]
+    &=
+    \sum_{k=1}^{\infty} f_k(z)
+    - P_n\left(\frac{1}{z-z_n}\right) +
+    \sum_{k=0}^{k_n} \frac{g_{n}^{(k)}(0)}{k!}z^k
+    \\[0.4cm]
+    &=
+    \sum_{k=1}^{\infty} f_k(z) - f_n(z)
+    \\[0.4cm]
+    &=
+    \sum_{k\in \N\setminus\{n\}} f_k(z).
+    \end{align*}
+    %
+    Para finalizar a prova só precisamos mostrar que o 
+    limite abaixo existe
+    %
+    \begin{equation}
+    \label{eq-aux2-teo-mittag-leffer}
+    \lim_{z\to z_n} q_n(z) 
+    = 
+    \lim_{z\to z_n} \sum_{k\in \N\setminus\{n\}} f_k(z)
+    = 
+    \sum_{k\in \N\setminus\{n\}} \lim_{z\to z_n} f_k(z)
+    =
+    \sum_{k\in \N\setminus\{n\}} f_k(z_n).
+    \end{equation}    
+    %
+    Para mostrar que a afirmação acima é verdadeira,
+    vamos apelar mais uma vez para o Teste M de Weierstrass.
+    Primeiro, observe que para todo $k\in\N$ com $k\neq n$, temos
+    da definição de $r_n$ que a função 
+    $f_k$ é holomorfa em $D(z_n,r_n)$, 
+    para cada $k\in\N\setminus\{n\}$. 
+    Usando novamente que $|z_n|\xrightarrow{n\to\infty}\infty$,
+    podemos afirmar que existe algum $n_1\in\N$
+    tal que $n_1\geqslant n$  e além do mais, 
+    para todo $k\geqslant n_1$, 
+    temos que $D(z_n,r_n)\subset \overline{D(0,|z_k|/2)}$.
+    Seja $K$ um subconjunto compacto arbitrário do disco aberto $D(z_n,r_n)$. 
+    Então segue da estimativa 
+    \eqref{eq-aux1-teo-mittag-leffer} e da continuidade de $f_k$ em
+    $D(z_n,r_n)$ que 
+    %
+    \begin{align*}
+    \sum_{k\in \N\setminus\{n\}} \sup_{z\in K}|f_k(z)|
+    &=
+    \sum_{k=1}^{n-1}\sup_{z\in K}|f_k(z)|
+    +
+    \sum_{k=n+1}^{n_1}\sup_{z\in K}|f_k(z)|
+    +
+    \sum_{n=n_1+1}^{\infty}\sup_{z\in K}|f_k(z)|
+    \\[0.4cm]
+    &\leqslant
+    \sum_{k=1}^{n-1}\sup_{z\in K}|f_k(z)|
+    +
+    \sum_{k=n+1}^{n_1}\sup_{z\in K}|f_k(z)|
+    +
+    \sum_{k=n_1+1}^{\infty}\sup_{z\in \overline{D(0,|z_k|/2)}}|f_k(z)|
+    \\[0.4cm]
+    &\leqslant
+   \sum_{k=1}^{n-1}\sup_{z\in K}|f_k(z)|
+    +
+    \sum_{k=n+1}^{n_1}\sup_{z\in K}|f_k(z)|
+    +    
+    \sum_{k=n_1+1}^{\infty}\frac{1}{2^k}
+    <+\infty.
+    \end{align*}
+    %
+    Já que $K\subset D(z_n,r_n)$ é um compacto abritário, segue da 
+    estimativa acima e do teste M de Weierstrass
+    que a série de funções
+    %
+    \[
+    \sum_{k\in \N\setminus\{n\}} f_k
+    \]
+    %
+    define uma função holomorfa em $D(z_n,r_n)$.
+    Em particular, esta série de funções é uma função contínua 
+    em $D(z_n,r_n)$ e, portanto, existe o 
+    limite em \eqref{eq-aux2-teo-mittag-leffer}
+    e isto encerra a prova do teorema para o caso em que
+    todos os termos da sequência $(z_n)_{n\in\N}$
+    são não-nulos. 
+    
+    
+    \medskip 
+    
+    Para o caso em que um elemento da sequência $(z_n)_{n\in\N}$ 
+    se anula, digamos $z_1=0$,
+    consideramos a sequência $z_2,z_3,\ldots$ e 
+    construímos as funções $f_2,f_3,\ldots$ como
+    no caso anterior. Em seguida, definimos para 
+    cada $z\in\C\setminus \{0,z_2,\ldots\}$
+    \[
+    f(z) = P_1\left(\frac{1}{z}\right) +\sum_{n=2}^{\infty}f_n(z).
+    \]
+    Então podemos argumentar como no caso anterior 
+    e mostrar que todas as singularidades de $f$ ocorrem
+    nos pontos $\{z_1=0,z_2,z_3,\ldots\}$ e que a série de Laurent de $f$ é determinada como no enunciado do teorema. 
+    Esta última observação finalmente encerra a prova do Teorema de Mittag-Leffler.
+    \end{proof}
     
     
     
     
     
+    \begin{teorema}[Teorema de Interpolação]
+    Dada uma sequência de números complexos distintos
+    $(z_n)_{n\in\N}$ e uma sequência arbitrária $(w_n)_{n\in\N}$, 
+    se $|z_n|\xrightarrow{n\to\infty}\infty$
+    então é possível 
+    encontrar uma função inteira $f:\C\to\C$ tal 
+    que $f(z_n)=w_n$, para todo $n\in\N$.
+    \end{teorema}
     
     
+    \begin{proof}
+    Já que $(z_n)_{n\in\N}$ é uma sequência de números
+    complexos distintos segue, do Teorema do Produto de 
+    Weiertrass que existe uma função inteira $g:\C\to\C$
+    tal que $z=z_n$ é um zero simples de $g$, para cada $n\in\N$. 
+    Além do mais, a função $g$ não se anula em nenhum
+    outro ponto do plano complexo. 
+    Da analiticidade de $g$ segue que, para cada $n\in\N$, existe uma função 
+    inteira $g_n$ que não se anula no 
+    disco aberto $D(z_n,r_n)$, para algum $r_n>0$,
+    e satisfaz 
+    %
+    \[
+    g(z) = (z-z_n)g_n(z), \quad\forall z\in\C.
+    \]
+    %
+    Já que $g_n(z_n)\neq 0$, podemos observar que está bem definido, 
+    para cada $n\in\N$, o seguinte polinômio de grau um  
+    %
+    \[
+    P_n(z) = \frac{w_n}{g_n(z_n)}\cdot z.
+    \]
+    %
+    Como para todo $n\in\N$ temos $P_n(0)=0$, 
+    podemos aplicar o 
+    Teorema de Mittag-Leffler para garantir a existência 
+    de uma função $h$, meromorfa em $\C$,
+    cujas singularidades são dadas pelos pontos da
+    sequência $(z_n)_{n\in\N}$ e tal que a série de Laurent 
+    de $h$ em torno $z=z_n$ é dada por 
+    %
+    \[
+    h(z) 
+    = 
+    P_n\left( \frac{1}{z-z_n}\right)+h_n(z)
+    =
+    \frac{w_n}{g_n(z_n)}\cdot \frac{1}{z-z_n} +h_n(z),
+    \]
+    %
+    para todo $z\in A(z_n,0,\rho_n)$, para algum $\rho_n>0$
+    e para alguma função holomorfa $h_n:D(z_n,\rho_n)\to\C$.
     
+    Como, para cada $n\in\N$ temos que $z=z_n$ é um zero 
+    simples de $g$ e também um polo simples de $h$, segue que
+    $z=z_n$ é uma singularidade removível da função 
+    $f:\C\setminus\{z_1,z_2,\ldots\}\to\C$ dada por
+    $f(z)=g(z)h(z)$. 
     
+    Para finalizar a prova do teorema basta observar
+    que temos, para cada $n\in\N$,
+    %
+    \begin{align*}
+    f(z_n)
+    =
+    \lim_{z\to z_n}f(z)
+    &=
+    \lim_{z\to z_n}
+    g(z)h(z)
+    \\
+    &=
+    \lim_{z\to z_n}
+    (z-z_n)g_n(z)
+    \left( \frac{w_n}{g_n(z_n)} \cdot\frac{1}{z-z_n}+h_n(z) \right)
+    \\
+    &=
+    \lim_{z\to z_n}
+    \left( 
+    w_n\frac{g_n(z)}{g_n(z_n)}
+    +
+    (z-z_n)g_n(z)h_n(z) 
+    \right)
+    =
+    w_n.
+    \end{align*}
+    %
+    \end{proof}
+    %
     
-    
-    
-    
-    \section{O Teorema de Hadamard}
+    \section{O Teorema da Fatoração de Hadamard}
     Nesta seção vamos discutir um refinamento do teorema da fatoração de Weierstrass,
     enunciado como teorema de Hadamard. Esse teorema combina os resultados que discutimos
     sobre o crescimento de uma função e sua quantidade de zeros com o teorema de
@@ -1891,8 +2287,8 @@
     %
     Vamos ao enunciado do teorema.
     %
-    \begin{teorema}[Teorema de Hadamard]
-    \index{Teorema!de Hadamard}
+    \begin{teorema}[Teorema da Fatoração de Hadamard]
+    \index{Teorema!da Fatoração de Hadamard}
     \label{teo:fatoracao-hadamard}
         Suponha que $f:\C\to\C$ é uma função inteira com ordem de crescimento $\rho_0$.
         Seja $k\equiv \lfloor \rho_0 \rfloor \in \Z$. 
@@ -1972,7 +2368,7 @@
             \begin{align*}
                 |E_k(z)| &= |1-z| \cdot \left| 
                 \exp \left( z + z^2/2 + \cdots + z^k/k \right) 
-                \right| \\
+                \right| \\[0.3cm]
                 &\geq |1 - z| \cdot \exp 
                 \left( -\left| z + z^2/2 + \cdots + z^k/k \right| \right),
             \end{align*}
@@ -1982,10 +2378,10 @@
             %
             \begin{align*}
                 -\left| z + z^2/2 + \cdots + z^k/k \right| 
-                &\geq -|z| - |z^2|/2 - \cdots - |z^k|/k \\
+                &\geq -|z| - |z^2|/2 - \cdots - |z^k|/k \\[0.3cm]
                 &= -|z|^k\left( 
-                \frac{1}{|z|^{k-1}} + \frac{1}{2|z|^{k-2}} + \cdots + \frac{1}{k} \right) \\
-                &\geq -|z|^k\left( 2^{k-1} + \frac{2^{k-2}}{2} + \cdots + \frac{1}{k} \right)\\
+                \frac{1}{|z|^{k-1}} + \frac{1}{2|z|^{k-2}} + \cdots + \frac{1}{k} \right) \\[0.3cm]
+                &\geq -|z|^k\left( 2^{k-1} + \frac{2^{k-2}}{2} + \cdots + \frac{1}{k} \right)\\[0.3cm]
                 &\equiv -|z|^k c(k).
             \end{align*}
             %
@@ -2227,17 +2623,17 @@
         \begin{align*}
             \ln\left( \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^{k+2}} \right)
             &=
-            \sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} -\ln\left( |a_n|^{k+2} \right) \\
+            \sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} -\ln\left( |a_n|^{k+2} \right) \\[0.4cm]
             &= 
-            -(k+2)\sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \ln|a_n| \\
+            -(k+2)\sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \ln|a_n| \\[0.4cm]
             &\geq 
-            -(k+2)\sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \ln(2|z|) \\
+            -(k+2)\sum_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \ln(2|z|) \\[0.4cm]
             &\geq 
-            -(k+2) n_f(2|z|) \ln(2|z|) \\
+            -(k+2) n_f(2|z|) \ln(2|z|) \\[0.4cm]
             &\geq
-            -(k+2) C_3(k, s) |z|^s \ln(2|z|) \\
+            -(k+2) C_3(k, s) |z|^s \ln(2|z|) \\[0.4cm]
             &\geq
-            -(k+2) C_4(k, s) |z|^{s + \e}, \\
+            -(k+2) C_4(k, s) |z|^{s + \e}, \\[0.4cm]
             &=
             -C_5(k,s) |z|^{s + \e} \, \forall \e > 0.
         \end{align*}
@@ -2541,28 +2937,47 @@
     ou igual a $s$, terminando a demonstração.
     %
     % falar do teo de Mittag-Leffler e da aplicação para funções com imagens prescritas (?)
+ 
+ 
+ 
+ 
+ 
     \subsection{O Pequeno Teorema de Picard}
-        Nesta seção, mostramos uma bela aplicação do teorema de Hadamard, a saber, na
-        demonstração do Pequeno Teorema de Picard.
+    
+    Nesta seção vamos mostrar, como consequência do Teorema de Hadamard, um resultado fascinante devido a Picard. Ele afirma, entre outras coisas, 
+    que a imagem de uma função inteira, de ordem de crescimento finita, pode omitir no máximo um ponto do plano complexo! 
+    Isto é, se $f:\C\to\C$ é uma função inteira com ordem de 
+    crescimento $0\leqslant \rho<+\infty$, então a o conjunto imagem $f(\C)$ 
+    é todo o plano complexo, exceto possivelmente um ponto.
+    Este resultado é conhecido como o {\it Pequeno Teorema de Picard}. Seu enunciado mais preciso é apresentado logo abaixo.
+ 
+    
         %
         \begin{teorema}[Pequeno Teorema de Picard]
         \label{teo:pequeno-picard}
         \index{Pequeno Teorema de Picard}
-            Se $f:\C\to\C$ é uma função inteira não constante e com ordem de crescimento $\rho < +\infty$, então
+            Se $f:\C\to\C$ é uma função inteira não constante e com ordem de crescimento 
+            $\rho \in [0,+\infty)$, então
             %
             \[
               \sharp (f(\C))^c \leq 1.
             \]
             %
+            Além do mais,
+            \begin{itemize}
+                \item se $0\leqslant \rho<1$, então $f(\C)=\C$; 
+                
+                \item se $1\leqslant \rho<+\infty$, então 
+                a imagem de $f$ omite no máximo um ponto do plano complexo 
+                e todo ponto da imagem de $f$ possui infinitas pré-imagens.
+            \end{itemize}
         \end{teorema}
+
+        \medskip 
         %
-        Dito de outro modo, o Pequeno Teorema de Picard nos diz que a imagem de uma 
-        função inteira com ordem de crescimento finita\footnote{O Pequeno Teorema
-        de Picard continua válido para funções com crescimento infinito, mas
-        não o trouxemos com toda essa generalidade pois a discussão ficaria demasiado
-        técnica.} 
-        é todo $\C$ com exceção de,
-        no máximo, um ponto. Antes da prova, vamos enunciar um pequeno lema preliminar.
+        Antes de apresentar a prova do Teorema de Picard vamos enunciar um pequeno lema preliminar.
+        
+        \medskip 
         %
         \begin{lema}
         \label{lema-pol-sobrejetor}
@@ -2571,45 +2986,108 @@
         %
         \begin{proof}[Demonstração do lema]
             Dado $w\in\C$, o polinômio $P(z) - w$ é não constante e, pelo
-            Teorema Fundamental da Álgebra, tem uma raiz $z_0$. Ora, então
-            $P(z_0) = w$ e, portanto, $P$ é sobrejetor.
+            Teorema Fundamental da Álgebra, tem uma raiz $z_w$. Ora, então
+            $P(z_w) = w$ e, portanto, $P$ é sobrejetor.
         \end{proof}
         
         \medskip
         %
-        Vamos, então à demonstração do Pequeno Teorema de Picard.
+        Vamos, então, à demonstração do Pequeno Teorema de Picard.
         %
-        \begin{proof}[Demonstração do teorema]
-            Suponha que exista $a\in\C$ tal que
+        \begin{proof}[Demonstração do Pequeno Teorema de Picard]
+            Suponha que existe algum $a\in\C$ tal que
             %
             \[
-            f(z) - a \neq 0, \, \forall z\in\C.
+            f(z) - a \neq 0, \quad \forall z\in\C.
             \]
             %
-            Do Teorema \ref{teo:fatoracao-hadamard}, segue que
+            Em outras palavras, estamos supondo que a função inteira $g:\C\to\C$ 
+            dada por $g(z)= f(z)-a$ não possui raízes. 
+            Observe que $g$ é uma função inteira de ordem de crescimento 
+            finito $\rho$. Portanto, podemos aplicar o Teorema da 
+            Fatoração de Hadamard (Teorema \ref{teo:fatoracao-hadamard}) 
+            para garantir que 
             %
-            \[
-            f(z) - a = e^{P(z)},
-            \]
+            \begin{align}
+            \label{eq-aux1-litle-picard}
+                f(z) - a = e^{P(z)},
+            \end{align}
             %
-            sendo $P(z)$ um polinômio de grau no máximo $\rho$. Daí, tomando
-            $b \neq a$ qualquer, existe $\varphi \in [0, 2\pi)$ tal que
+            onde $P(z)$ é um polinômio de grau no máximo $\rho$.
+            
+            \medskip 
+            Vamos separar o restante do argumento em dois casos.
+            \begin{itemize}
+                \item Caso 1. $0\leqslant \rho<1$;
+                \item Caso 2. $1<\rho<+\infty$.
+            \end{itemize}
+            \medskip 
+            
+            
+            Caso 1. Neste caso, como $0\leqslant \rho<1$, então  
+            segue do Teorema da Fatoração de Hadamard que
+            o polinômio que aparece no lado direito de
+            \eqref{eq-aux1-litle-picard} é tal que
+            $\textrm{grau}(P)=\lfloor \rho \rfloor =0$, ou seja, 
+            $P$ é constante. Mas então existe 
+            alguma constante $K\in \C$ tal que 
+            $f(z)-a=e^K$ para todo $z\in\C$ o que 
+            é um absurdo, pois por hipótese estamos assumindo que 
+            $f$ é não-constante. 
+            
+            O absurdo vem de termos assumido que existe um número complexo $a$ tal que a função $g=f-a$ não possui raízes. Desta forma, para todo $a\in\C$ fixado, existe algum $z\in \C$ 
+            tal que $f(z)=a$ e, portanto, $f(\C)=\C$.
+            
+            
+            
+            
+            \bigskip 
+            Caso 2. 
+            Já que todo ponto não-nulo do plano complexo
+            pode ser representado em coordenadas polares, podemos afirmar que dado um ponto arbitrário 
+            $b\in \C\setminus\{a\}$,
+            existe algum $\varphi \in [0, 2\pi)$ tal que
             %
             \[
             b - a = |b - a| e^{i\varphi}.
             \]
             %
-            Do Lema \ref{lema-pol-sobrejetor}, existe $z_b\in\C$ tal que
+            Usando o Lema \ref{lema-pol-sobrejetor},
+            podemos garantir que existe um número complexo $z_b\in\C$ tal que
             %
             \begin{align*}
-                P(z_b) = \ln|b-a| + i\varphi
-                \iff
-                f(z_b) - a = b - a
-                \iff 
-                f(z_b) = b.
+                P(z_b) = \ln|b-a| + i\varphi.
             \end{align*}
             %
-            Portanto, a imagem do $f$ pode excluir no máximo um ponto de $\C$
-            e terminamos a prova.
+            Substituindo $z$ por $z_b$ em
+            \eqref{eq-aux1-litle-picard} e usando a igualdade acima ficamos com
+            %
+            \[
+            f(z_b) - a = b - a \iff f(z_b) = b.
+            \] 
+            %
+            Consequentemente, a  
+            imagem do $f$ pode omitir 
+            no máximo um ponto de $\C$.
+            
+            Para mostrar que a imagem inversa de qualquer ponto 
+            $b\in \C\setminus\{a\}$ possui infinitos pontos, basta 
+            observar que para cada $k\in\Z$, podemos usar 
+            novamente o Lema \ref{lema-pol-sobrejetor}
+            para garantir que existe um ponto 
+            $z_{b,k}\in \C$
+            tal que 
+            \begin{align*}
+                P(z_{b,k}) = \ln|b-a| + i(\varphi+2k\pi).
+            \end{align*}
+            Argumentando de maneira análoga, 
+            concluímos que 
+            $f(z_{b,k})=b$. 
+            Já que para qualquer par de inteiros distintos $k$ e $k'$
+            temos $z_{b,k}\neq z_{b,k'}$, pois 
+            $\Im(P(z_{b,k}))\neq \Im(P(z_{b,k'}))$, 
+            segue que $b$ tem infinitas pré-imagens. 
+            Como $b\in \C\setminus\{a\}$,
+            é arbitrário finalizamos a prova do teorema.
         \end{proof}
         %
