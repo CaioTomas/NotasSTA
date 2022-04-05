@@ -2315,12 +2315,12 @@
     %
     \begin{proof}
         Para $x>0$ e $0<\alpha<1$,
-        $\alpha \mapsto (x+1)^{1/\alpha}$ 
-        é estritamente decrescente. 
-        Nessas condições,
+        $x \mapsto (x+1)^{1/\alpha}$ 
+        é estritamente crescente. 
+        Como $x + 1 > 1$ e $1/\alpha > 1$ ,
         $(x+1)^{1/\alpha} > (x+1) > x$,
-        e portanto 
-        $(x+1)^{1/\alpha} > x$ 
+        e, portanto, 
+        $(x+1)^{1/\alpha} > x$, 
         o que implica em
         $x+1 > x^\alpha$. 
     \end{proof}
@@ -2454,7 +2454,7 @@
         e obtemos
         %
         \begin{equation*}
-            \prod_{n=1}^{\infty} E_k(z/a_n) < \infty.
+            \Big |\prod_{n=1}^{\infty} E_k(z/a_n) \Big | < \infty.
         \end{equation*}
         %
         Logo, podemos reescrever o produtório como
@@ -2493,7 +2493,7 @@
             \right)
             =
             \exp\left( 
-            -2|z|^{k+1} \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^{k+1}}
+            -2|z|^{k+1} \sum_{\substack{n\in\N \\ |a_n| > 2|z|}} \frac{1}{|a_n|^{k+1}}
             \right).
         \end{equation*}
         %
@@ -2511,7 +2511,7 @@
             \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^{k+1}}
             \leq
             \frac{1}{2^{k+1-s}|z|^{k+1-s}}
-            \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s} 
+            \sum_{\substack{n\in\N \\ |a_n| > 2|z|}} \frac{1}{|a_n|^s} 
             < +\infty,
         \end{equation*}
         %
@@ -2524,7 +2524,7 @@
             &\geq 
             \exp\left(
             -2|z|^{k+1} \cdot \frac{1}{2^{k+1-s}|z|^{k+1-s}}
-            \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s}
+            \sum_{\substack{n\in\N \\ |a_n| > 2|z|}} \frac{1}{|a_n|^s}
             \right) \\
             &\equiv 
             \exp\left(
@@ -2536,7 +2536,7 @@
         %
         \begin{equation*}
             C_1(k,s) = 2^{s-k}
-            \sum_{\substack{n\in\N \\ |a_n| > 2z}} \frac{1}{|a_n|^s}.
+            \sum_{\substack{n\in\N \\ |a_n| > 2|z|}} \frac{1}{|a_n|^s}.
         \end{equation*}
         %
         Agora, para obter cotas inferiores para o primeiro produto, a saber
@@ -2635,10 +2635,10 @@
             &\geq
             -(k+2) C_4(k, s) |z|^{s + \e}, \\[0.4cm]
             &=
-            -C_5(k,s) |z|^{s + \e} \, \forall \e > 0.
+            -C_5(k,s) |z|^{s + \e} \, \ \ \ \ \forall \e > 0.
         \end{align*}
         %
-        Portanto, obtemos
+        Na quinta desigualdade, usamos $n_f(2|z|) \leq C|z|^{\rho_0}$ pela estimativa do número de zeros. A constante $C_3(k,s)$ é escolhida de modo que $C|z|^{\rho_0} < C_3(k,s)|z|^s$ levando em conta os casos em que $|z|< 1$ ou $|z| \geq 1$. Na sexta desigualdade, escolhemos $C_4(k,s)$ de tal forma que $\ln(2|z|) \leq C_4(k,s)|z|^\e$. Portanto, obtemos
         %
         \begin{equation*}
             \prod_{\substack{n\in\N \\ |a_n| \leq 2|z|}} \frac{1}{|a_n|^{k+2}}
@@ -2699,7 +2699,7 @@
         \end{equation*}
         %
         Por fim, basta notar que o argumento inteiro vale para qualquer 
-        $s \in (\rho_0, k+1)$, de modo que escolhendo $\e > 0$ tal que
+        $s \in (\rho_0, k+1)$, basta escolher $\e > 0$ tal que
         $s + \e \in (\rho_0 , k+1)$ temos
         %
         \begin{align*}
@@ -3087,7 +3087,7 @@
             temos $z_{b,k}\neq z_{b,k'}$, pois 
             $\Im(P(z_{b,k}))\neq \Im(P(z_{b,k'}))$, 
             segue que $b$ tem infinitas pré-imagens. 
-            Como $b\in \C\setminus\{a\}$,
-            é arbitrário finalizamos a prova do teorema.
+            Como $b\in \C\setminus\{a\}$
+            é arbitrário, finalizamos a prova do teorema.
         \end{proof}
         %
