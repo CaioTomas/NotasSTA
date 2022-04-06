@@ -487,7 +487,7 @@
     %     como desejado.
     % \end{proof}
     %
-    
+    \noindent
     O segundo resultado que precisaremos é consequência imediata do 
     Corolário \ref{corol:num-zeros}.
     %
@@ -517,7 +517,7 @@
     %
     \subsection{Funções de Ordem Finita de Crescimento}
     %
-    \begin{definicao}
+    \begin{definicao}[Ordem de Crescimento]
     \label{def:ordem-func}
     \index{Ordem de Crescimento}
         Seja $f:\C\to\C$ uma função inteira. Se existem um número positivo $\rho$
@@ -1302,7 +1302,7 @@
             \Omega_2 = S_{\frac{1}{2}} \cap \left\{ z\in\C : |\Im(z)| > 1 \right\}.
         \end{equation*}
         %
-        Ora, se $z = x+iy$, então
+        Ora, se $z = x + iy$, então
         %
         \begin{align*}
             \cot(\pi z) &= 
@@ -1925,7 +1925,7 @@
     
     
     
-    \begin{proof}[Prova do Teorema de Mittag-Leffer]
+    \begin{proof}[Prova do Teorema de Mittag-Leffler]
     Primeiro vamos assumir que $z_n\neq 0$, para todo $n\in\N$.
     Desta forma 
     $U\equiv \C\setminus\{z_1,z_2,\ldots\}$ 
@@ -2165,6 +2165,8 @@
     
     
     \begin{teorema}[Teorema de Interpolação]
+    \label{teo-interpolacao}
+    \index{Teorema!de Interpolação}
     Dada uma sequência de números complexos distintos
     $(z_n)_{n\in\N}$ e uma sequência arbitrária $(w_n)_{n\in\N}$, 
     se $|z_n|\xrightarrow{n\to\infty}\infty$
@@ -2314,15 +2316,16 @@
     Este lema nos será muito útil em algumas majorações, e o usaremos sem cerimônia.
     %
     \begin{proof}
-        Para $x>0$ e $0<\alpha<1$,
-        $x \mapsto (x+1)^{1/\alpha}$ 
-        é estritamente crescente. 
-        Como $x + 1 > 1$ e $1/\alpha > 1$ ,
-        $(x+1)^{1/\alpha} > (x+1) > x$,
+        Para $x_0>0$ fixo e $0<\alpha<1$,
+        $\alpha \mapsto (x_0+1)^{1/\alpha}$ 
+        é estritamente decrescente. 
+        Como $x_0 + 1 > 1$ e $1/\alpha > 1$ ,
+        $(x_0+1)^{1/\alpha} > (x_0+1) > x_0$,
         e, portanto, 
-        $(x+1)^{1/\alpha} > x$, 
+        $(x_0+1)^{1/\alpha} > x_0$, 
         o que implica em
-        $x+1 > x^\alpha$. 
+        $x_0+1 > x_0^\alpha$. 
+        Sendo $x_0$ arbitrário, o lema está demonstrado. 
     \end{proof}
     %
     \begin{lema}
@@ -2753,7 +2756,7 @@
             \sum_{n=1}^{\infty} \frac{1}{|a_n|^{k+1}} < +\infty.
         \end{equation*}
         %
-        Portanto, existe $n_0\in\N$ tal que se $n\geq n_0$ então
+        Portanto, existe $n_0\in\N$ tal que
         %
         \begin{equation*}
             \sum_{n = n_0 + 1}^{\infty} \frac{1}{|a_n|^{k+1}} < \frac{1}{10}.
@@ -2814,13 +2817,13 @@
     %
     \begin{lema}
     \label{lema:5.5-Stein}
-        Suponha que $g:\C\to\C$ é inteira e tal que
+        Seja $g:\C\to\C$ uma função inteira tal que, para algum $s>0$,
         %
         \begin{equation*}
-            \Re(g(z)) \leq C r^s, \, |z| = r, \, s > 0
+            \Re(g(z)) \leq C r^s
         \end{equation*}
         %
-        para uma sequência de números reais positivos $r$ que tende para o infinito.
+        sempre que $|z| = r$ para uma sequência de números reais positivos $r$ que tende para o infinito.
         Então $g$ é um polinômio de grau menor ou igual a $s$.
     \end{lema}
     %
@@ -2831,8 +2834,14 @@
             g(z) = \sum_{n=0}^{\infty} a_n z^n.
         \end{equation*}
         %
-        Usando a fórmula integral de Cauchy, temos que
+        Observe que $a_k = g^{(k)}(0)/k!$. Usando a fórmula integral de Cauchy e lembrando como as derivadas de $g$ se expressam por meio desta fórmula, temos que, para $n \geq 0$,
         %
+        \begin{align*}
+            a_n = \frac{g^{(n)}(0)}{n!} &= \frac{1}{2\pi i} \int_{\partial D_r} \frac{g(w)}{(w - 0)^{n+1}} \, dw \\
+            &= \frac{1}{2\pi r^n} \int_{0}^{2\pi} g(re^{i\theta})e^{-in\theta} \, d\theta.
+        \end{align*}
+        %
+        A mesma identidade vale para $n < 0$, mas, nesse caso a integral se anula, pois $g(w)/w^{n+1} = g(w)w^{-n-1}$ é holomorfa. Concluímos, então, que
         \begin{equation*}
             \frac{1}{2\pi} \int_0^{2\pi} g(re^{i\theta}) e^{-in\theta} \, d\theta
             =
@@ -2880,7 +2889,7 @@
             \frac{1}{\pi r^n} 
             \int_0^{2\pi} \left[ Cr^s - \Re(g(re^{i\theta})) \right] \, d\theta
             \leq
-            2CR^{s-n} - 2\Re(a_0)r^{-n}.
+            2Cr^{s-n} - 2\Re(a_0)r^{-n}.
         \end{equation*}
         %
         Fazendo $r\to\infty$, obtemos que $a_n = 0$ para $n > s$, de modo que $g$
@@ -2896,19 +2905,19 @@
         E(z) = z^m \prod_{n=1}^{\infty} E_k(z/a_n).
     \end{equation*}
     %
-    Para mostrar que $E$ é inteira, notamos que
+    Para mostrar que $E$ é inteira, aplicamos a Proposição \ref{prop:prod-inf-func-holom} notando que
     %
     \begin{equation*}
         |1 - E_k(z/a_n)| \leq c\left| \frac{z}{a_n} \right|^{k+1}
     \end{equation*}
     %
-    para todo $n$ suficientemente grande também que
+    para todo $n$ suficientemente grande (como no Lema \ref{lema-wstr-est-factor}) e também que
     %
     \begin{equation*}
         \sum_{n=0}^{\infty} \frac{1}{|a_n|^{k+1}}
     \end{equation*}
     %
-    converge, pois $\rho_0 < s < k+1$. Além disso, $E$ tem os mesmos zeros 
+    converge, pois $\rho_0 < s < k+1$, . Além disso, $E$ tem os mesmos zeros 
     que $f$, de modo que $f/E$ é holomorfa e não se anula em lugar nenhum,
     ou seja,
     %
@@ -2948,7 +2957,7 @@
     que a imagem de uma função inteira, de ordem de crescimento finita, pode omitir no máximo um ponto do plano complexo! 
     Isto é, se $f:\C\to\C$ é uma função inteira com ordem de 
     crescimento $0\leqslant \rho<+\infty$, então a o conjunto imagem $f(\C)$ 
-    é todo o plano complexo, exceto possivelmente um ponto.
+    é todo o plano complexo, exceto por, possivelmente, um ponto.
     Este resultado é conhecido como o {\it Pequeno Teorema de Picard}. Seu enunciado mais preciso é apresentado logo abaixo.
  
     
@@ -2975,7 +2984,7 @@
 
         \medskip 
         %
-        Antes de apresentar a prova do Teorema de Picard vamos enunciar um pequeno lema preliminar.
+        Antes de apresentar a prova do Teorema de Picard vamos enunciar um pequeno lema preliminar, um corolário do Teorema Fundamental da Álgebra.
         
         \medskip 
         %
@@ -3019,7 +3028,7 @@
             Vamos separar o restante do argumento em dois casos.
             \begin{itemize}
                 \item Caso 1. $0\leqslant \rho<1$;
-                \item Caso 2. $1<\rho<+\infty$.
+                \item Caso 2. $1\leq\rho<+\infty$.
             \end{itemize}
             \medskip 
             
@@ -3031,18 +3040,21 @@
             $\textrm{grau}(P)=\lfloor \rho \rfloor =0$, ou seja, 
             $P$ é constante. Mas então existe 
             alguma constante $K\in \C$ tal que 
-            $f(z)-a=e^K$ para todo $z\in\C$ o que 
-            é um absurdo, pois por hipótese estamos assumindo que 
+            $f(z)-a=e^K$ para todo $z\in\C$, o que 
+            é um absurdo, pois por hipótese 
             $f$ é não-constante. 
             
             O absurdo vem de termos assumido que existe um número complexo $a$ tal que a função $g=f-a$ não possui raízes. Desta forma, para todo $a\in\C$ fixado, existe algum $z\in \C$ 
             tal que $f(z)=a$ e, portanto, $f(\C)=\C$.
             
             
+            \bigskip
+            Caso 2.
+            Neste segundo caso, sabemos que $P$ tem grau no máximo
+            $\rho \geq 1$. Se, por ventura, $P$ for constante,
+            então voltamos ao caso anterior.
             
-            
-            \bigskip 
-            Caso 2. 
+            Assumamos então $P$ não constante.
             Já que todo ponto não-nulo do plano complexo
             pode ser representado em coordenadas polares, podemos afirmar que dado um ponto arbitrário 
             $b\in \C\setminus\{a\}$,

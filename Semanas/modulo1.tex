@@ -781,7 +781,7 @@
         \end{equation*}
         %
         Aplicando o princípio da identidade, concluímos que $t \in T$. Logo, $T$ é fechado. 
-        Isto demonstra o Lema.
+        Isto demonstra o lema.
     \end{proof}
 
     \begin{definicao}
@@ -891,8 +891,8 @@
                 Figuras/domínio não conexo.pdf
             }
             \caption{%
-                $G = \mathbb{C}^*
-			       = \mathbb{C}\setminus\{0\}$ 
+                $G = \C^*
+			       = \C\setminus\{0\}$ 
 			    não é simplesmente conexo.
 			}
         \end{figure}
@@ -1103,7 +1103,7 @@
         %
         \begin{figure}[H]\centering
             \includegraphics[width=0.8\textwidth]{%
-                Figuras/casos 1 e 2 schwarz.pdf
+                Figuras/Schwarz parte 1.pdf
             }
             \caption{Caso 1 (em cima) e 2 (abaixo) da Parte I da demonstração.}
         \end{figure}
@@ -1167,12 +1167,12 @@
         %
         \begin{figure}[H]\centering
             \includegraphics[width=0.8\textwidth]{
-                Figuras/aula 6 slide 16.pdf
+                Figuras/Schwarz parte 2.pdf
             }
             \caption{As duas possibilidades da Parte II da demonstração.}
         \end{figure}
         %
-        Portanto, pelo Teorema de Morera segue que $f$ é holomorfa em $D$, como desejado.
+        Portanto, pelo Teorema de Morera, segue que $f$ é holomorfa em $D$, como desejado.
     \end{proof}
     
     Podemos agora enunciar o princípio da reflexão, usando a mesma notação acima.
@@ -1314,7 +1314,7 @@
         %
         \begin{figure}[H]\centering
             \includegraphics{
-                Figuras/reticulado-para-Runge.pdf
+                Figuras/reticulado para Runge.pdf
             }
         	\caption{A união dos caminhos $\y_j$ está negritada.}
         	\label{fig:reticulado runge}
@@ -1535,7 +1535,7 @@
     de quais funções reais são Riemann integráveis.
     
     \subsection{A medida de Lebesgue em \texorpdfstring{$\R$}{R}}
-        Nesta seção vamos mostrar como é construída a medida de Lebesgue\index{Medida de Lebesgue} na reta real, conceito que será pouco usado neste texto. Para ser mais preciso, 
+        Nesta seção vamos mostrar como é construída a medida de Lebesgue na reta real, conceito que será pouco usado neste texto. Para ser mais preciso, 
         vamos usá-lo apenas para caracterizar a coleção de todas as 
         funções $f:I\subset \R\to \R$ para as quais a integral 
         (própria e imprópria) de Riemann está bem definida. 
@@ -1567,7 +1567,7 @@
         Às vezes, $\P(\R)$ é chamado de conjunto das partes de $\R$\index{Conjunto!das partes de $\R$}.
         O ponto é que podemos mostrar que não existe nenhuma função definida 
         no conjunto das partes de $\R$ que possua todas propriedades que seriam 
-        naturais (esta propriedades são relacionadas mais à frente,
+        naturais (estas propriedades são relacionadas mais à frente,
         nesta seção) para uma generalização da noção de comprimento de um subconjunto da reta. 
         
         Por causa deste resultado  de impossibilidade, 
@@ -1662,7 +1662,7 @@
             $\A$ é uma $\sigma$-álgebra de conjuntos de $\R$ é chamado de 
             um espaço mensurável\index{Espaço! mensurável}. 
             Cada conjunto $I$ da coleção $\A$
-            é chamado de um conjunto mensurável\index{Conjunto! mensurável}, segundo $\A$. 
+            é chamado de um conjunto mensurável\index{Conjunto! mensurável} segundo $\A$. 
             Alternativamente, dizemos que $I$ é um conjunto 
             $\A$-mensurável\index{Conjunto! $\A$-mensurável} ou mesmo, quando não houver 
             perigo de confusão sobre qual $\sigma$-álgebra estamos 
@@ -1670,12 +1670,12 @@
         \end{definicao}
         %
         Uma observação importante sobre a definição acima é que um 
-        subconjunto $I$ da reta pode ser ser mensurável 
+        subconjunto $I$ da reta pode ser mensurável 
         segundo uma $\sigma$-álgebra $\A$, mas não ser mensurável segundo 
         uma outra $\sigma$-álgebra $\B$. Por exemplo, 
         o intervalo fechado $[0,2]$ não é mensurável 
-        segundo a $\sigma$-álgebra do Exemplo \ref{exemplo-sigma-algebra1}.
-        Mas o intervalo fechado $[0,2]$ é um conjunto mensurável 
+        segundo a $\sigma$-álgebra do Exemplo \ref{exemplo-sigma-algebra1}, 
+        mas é um conjunto mensurável 
         segundo a $\sigma$-álgebra $\P(\R)$.
         Na verdade,
         qualquer subconjunto de $\R$ é mensurável segundo 
@@ -1806,7 +1806,7 @@
         isto é, se $A_1,\ldots, A_n$ são elementos
         da $\sigma$-álgebra $\A$, dois-a-dois disjuntos, então 
         $\mu(A_1\cup\cdots\cup A_n) = \mu(A_1)+\cdots+\mu(A_n)$
-        (basta considerar uma sequência de conjuntos como no item 2)) 
+        (basta considerar uma sequência de conjuntos como no item 2) 
         e tomar $A_m=\emptyset$ para $m\geq n$).
     
         \medskip 
@@ -1836,8 +1836,8 @@
         \end{exemplo}
         %
         \begin{exemplo}
-        	Seja $\A \equiv \P(\R)$ a $\sigma$-álgebra 
-        	formada pelo conjunto das partes de $\R$. Seja $x\in\R$ 
+        	Sejam $\A \equiv \P(\R)$ a $\sigma$-álgebra 
+        	formada pelo conjunto das partes de $\R$, e $x\in\R$ 
         	um ponto arbitrário fixado. 
         	A função $\delta_x:\A\to [0,+\infty]$ 
         	definida para cada $E\in \A$ por
@@ -1965,9 +1965,8 @@
         %
         É fácil ver que qualquer subconjunto $A\subset\R$ 
         admite uma cobertura por abertos limitados. Para isto, basta tomar
-        o conjunto de índices, da definição de cobertura, como sendo $\Lambda = A$ e considerar os 
-        seguintes intervalos. Para cada 
-        $\lambda\in A$ defina $I_{\lambda}\equiv (\lambda-1,\lambda+1)$. 
+        o conjunto de índices, da definição de cobertura, como sendo $\Lambda = A$ e para cada 
+        $\lambda\in A$ definir $I_{\lambda}\equiv (\lambda-1,\lambda+1)$. 
         Então claramente temos $A\subset \cup_{\lambda\in\Lambda} I_{\lambda}$.
         Entretanto, do ponto de vista da teoria da Medida tal tipo de 
         cobertura pode ser bastante inconveniente, pois
@@ -1999,6 +1998,7 @@
         %
         \begin{teorema}[Teorema de Lindel\"of]
         \label{teo-lindelof}
+        \index{Teorema! de Lindelöf}
             Sejam $A\subset\R$ um subconjunto arbitrário e 
             $\mathscr{C}\equiv \{I_{\lambda}\in \mathcal{I}: \lambda\in \Lambda\}$
             uma cobertura de $A$ por intervalos abertos limitados. 
@@ -2032,6 +2032,7 @@
         vamos enunciar um resultado que garante que a função $\lambda^*$ é uma extensão de $\lambda$.
         Isto vai nos permitir calcular o valor de $\lambda^{*}$ para uma quantidade
         enorme de subconjuntos da reta, uma vez que $\lambda$ tem um expressão bem simples nos intervalos. 
+        
         Em seguida, vamos usar $\lambda^{*}$ para definir uma coleção 
         de subconjuntos da reta. 
         Vamos enunciar outro resultado, 
@@ -2039,12 +2040,13 @@
         e, além do mais, que a função $\lambda^{*}$, 
         restrita a esta $\sigma$-álgebra, é uma medida no sentido da Definição 
         \ref{def-medida}. 
+        
         Seguindo, vamos enunciar outro teorema 
         conhecido como Teorema de Lebesgue-Carathéodory,
         que garante que a restrição de $\lambda^*$ à $\sigma$-álgebra 
         mencionada acima define de fato uma medida. 
         Vamos chamar esta restrição de $\Leb$. 
-        Esta é finalmente a tão desejada medida de Lebesgue! 
+        Esta é \textit{finalmente} a tão desejada medida de Lebesgue! 
         
         \bigskip
         
@@ -2069,8 +2071,8 @@
         onde $\lambda(I_n)$ é definido como em \eqref{def-func-lambda}. 
         
         Observamos que é necessário usar o Teorema de Lindel\"of (Teorema \ref{teo-lindelof})
-        para garantir a existência de pelo menos uma cobertura enumerável 
-        para $A$, por abertos limitados, e consequentemente que a função 
+        para garantir a existência de pelo menos uma cobertura enumerável de abertos limitados
+        para $A$, e consequentemente que a função 
         $\lambda^*$ está bem definida para qualquer subconjunto $A\in\P(\R)$.
         %
         \begin{teorema}
@@ -2084,6 +2086,7 @@
         %
         \begin{teorema}[Lebesgue-Carathéodory]
         \label{teo-leb-carath}
+        \index{Teorema! de Lebesgue-Carathéodory}
             A coleção 
             %
             \[
@@ -2152,8 +2155,8 @@
         que pode ser construída com estas propriedades. 
         
         Vamos ver, a seguir, uma técnica que vai nos ajudar a entender 
-        como calcular $\Leb$ de intervalos fechados, 
-        semi-abertos e outros, facilmente usando a propriedade
+        como calcular facilmente o $\Leb$ de intervalos fechados, 
+        semi-abertos e outros, usando a propriedade
         de continuidade de uma medida (Proposição \ref{prop-cont-medida}).
         
         \medskip 
@@ -2162,6 +2165,10 @@
         para quaisquer $-\infty<a<b<+\infty$. 
         Primeiro observamos que para quaisquer 
         par de números reais $a$, $b$ satisfazendo $a<b$ temos 
+        %
+        \begin{center}
+         \bf ILUSTRAÇÃO DA INTERSEÇÃO
+        \end{center}
         %
         \[
             [a,b] = \bigcap_{n=1}^{\infty} \left(a-\frac{1}{n}, b+\frac{1}{n}\right).
@@ -2226,8 +2233,8 @@
         Hoje em dia, sabemos que isto não é verdade, ou seja, 
         $\mathscr{L}\subset \P(\R)$ e esta continência é estrita. 
         Porém, podemos dizer que praticamente só conhecemos um único
-        conjunto (e variações triviais do mesmo) que não é Lebesgue mensurável. 
-        Este importante conjunto é chamado, na literatura, de conjunto 
+        conjunto (e variações triviais do mesmo) que não é Lebesgue mensurável:
+        o importante conjunto 
         de Vitali\index{Conjunto! de Vitali}. 
         Infelizmente, a construção deste conjunto é 
         absurdamente complicada e abstrata e por isto 
@@ -2235,7 +2242,9 @@
         
         Uma observação importante que ajuda, quando for necessário, a provar
         que estamos trabalhando com conjuntos Lebesgue-mensuráveis 
-        é que todo conjunto aberto de $\R$ é Lebesgue-mensurável, consequência do Teorema de Lindel\"of. De fato, 
+        é que todo conjunto aberto de $\R$ é Lebesgue-mensurável, consequência do Teorema de Lindel\"of. 
+        
+        De fato, 
         qualquer conjunto $A$ aberto de $\R$ pode
         ser coberto por intervalos abertos, limitados, 
         totalmente contidos em $A$ e centrados em cada ponto de $A$. 
@@ -2257,7 +2266,7 @@
         %
         Já que acabamos de aprender que todo subconjunto aberto da reta é
         Lebesgue mensurável e como sabemos que uma $\sigma$-álgebra é 
-        fechada por complementação (item 2) Definição \ref{def-sigma-algebra})
+        fechada por complementação (item 2) da Definição \ref{def-sigma-algebra})
         podemos concluir que todo conjunto fechado também é 
         Lebesgue-mensurável! Em particular, qualquer conjunto unitário
         da reta (que é fechado) é Lebesgue mensurável. Logo qualquer 
@@ -2480,7 +2489,7 @@
         \end{proposicao}
         %
         \begin{proof}
-            Já que $A_n\subset B$, para cada $n\in\N$ segue que 
+            Já que $A_n\subset B$ para todo $n\in\N$, segue que 
             $\cup_{n=1}^{\infty}A_n\subset B$. Portanto $B$ pode ser escrito como a seguinte união disjunta
             %
             \[
@@ -2597,8 +2606,9 @@
         de que as descontinuidades de $f$ tenha medida nula não é, de modo algum, restritiva demais:
         funções com os mais diferentes tipos de conjuntos de descontinuidade estão nessa classe.
         %
-        \begin{definicao}
+        \begin{definicao}[Riemann integrável]
         \label{def-riemann-integravel}
+        \index{Função! Riemann integrável}
             Seja $f:\R\to\R$ uma função com conjunto de descontinuidades de medida nula. Suponha
             que $f$ é limitada em cada compacto $[a,b]\subseteq\R$, isto é, tal que
             %
@@ -2633,8 +2643,9 @@
         para a integral acima, em que os limites superior e inferior da integral definida
         convergem para infinito a qualquer taxa.
         %
-        \begin{definicao}
+        \begin{definicao}[Valor Principal de Cauchy]
         \label{def-valor-principal}
+        \index{Valor Principal de Cauchy}
             O Valor Principal de Cauchy de uma função $f:\R\to\R$, quando existe, é dado pelo limite
             %
             \begin{equation*}
@@ -3523,6 +3534,7 @@
         %
         \begin{teorema}[Fórmula da Soma de Poisson]
         \label{teo-form-soma-poisson}
+        \index{Fórmula! da soma de Poisson}
             Se $f\in\F$, então
             %
             \begin{equation*}
@@ -3661,8 +3673,8 @@
             Portanto
             %
             \begin{align*}
-                \sum_{n \in \Z}&f(n)
-                \\[0.3cm]
+                \sum_{n \in \Z}f(n)
+                %\\[0.3cm]
                 &= \int_{\y^1} f(z) e^{-2\pi i z} 
                 \sum_{n=0}^{\infty} e^{-2\pi i nz}\,dz 
                 + \int_{\y^2} f(z)(-1) \sum_{n=0}^{\infty} e^{2\pi i nz}\,dz\\[0.3cm]
@@ -4001,8 +4013,9 @@
         %
         Para enunciar o teorema de Paley-Wiener, precisamos da definição de suporte de uma função.
         %
-        \begin{definicao}
+        \begin{definicao}[Suporte]
         \label{def-suporte}
+        \index{Suporte de uma função}
             Seja $f:\R\to\R$ uma função contínua. Definimos o suporte de $f$, denotado $\supp(f)$, por
             %
             \begin{equation*}
