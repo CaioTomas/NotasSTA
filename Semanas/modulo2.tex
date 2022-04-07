@@ -1816,7 +1816,7 @@
     ou seja, $P(z_j)=w_j$ para cada $j=1,\ldots,n$. 
     Às vezes, nos referimos a um polinômio 
     satisfazendo esta propriedade como um 
-    polinômio interpolador e os pares de
+    polinômio interpolador\index{Polinômio! interpolador} e os pares de
     números complexos $(z_i,w_i)$, com $i=1,\ldots,n$ como dados.
     
     Caso o conjunto de dados acima não possua nenhuma propriedade especial, em geral, um 
@@ -1826,19 +1826,20 @@
     que este problema sempre 
     admite uma solução com um polinômio de grau exatamente $n-1$. 
     Tais polinômios são chamados, hoje em dia, 
-    de polinômios interpoladores de Lagrange
-    \index{polinômios interpoladores}. 
+    de polinômios interpoladores de Lagrange\index{Polinômio! interpolador de Lagrange}. 
     Para o conjunto de dados fornecidos acima, 
     o polinômio interpolador de Lagrange tem a forma 
     %
     \[
-    P(z)
-    =
-    \sum_{j=1}^n 
-    w_j  
-    \frac
-    {(z-z_1)(z-z_2)\cdots (z-z_{j-1})(z-z_{j+1})\cdots (z-z_n)}
-    {(z_j-z_1)(z_j-z_2)\cdots (z_j-z_{j-1})(z_j-z_{j+1})\cdots (z_j-z_n)}
+      P(z)
+      =
+      \sum_{k=1}^n 
+      w_k
+      \prod_{\substack{j=1 \\ j\neq k}}^n
+      \frac{z-z_j}{z_k-z_j}
+    %   \frac
+    %   {(z-z_1)(z-z_2)\cdots (z-z_{j-1})(z-z_{j+1})\cdots (z-z_n)}
+    %   {(z_j-z_1)(z_j-z_2)\cdots (z_j-z_{j-1})(z_j-z_{j+1})\cdots (z_j-z_n)}
     \]
     %
     
@@ -1857,10 +1858,6 @@
     para o caso de uma interpolação 
     em que a função deve se ajustar a um 
     conjunto infinito enumerável de valores. 
-    
-    
-    
-    \bigskip 
     
     Como mencionado acima, para resolver o problema 
     de interpolação, por uma função inteira, 
@@ -1975,7 +1972,7 @@
     pela seguinte série de funções 
     %
     \[
-    f\equiv \sum_{n=1}^{\infty} f_n,
+    f\equiv \sum_{n=1}^{\infty} f_n
     \]
     %
     está bem definida em $U$ e, além disso, define uma
@@ -2087,7 +2084,7 @@
     %
     Para mostrar que a afirmação acima é verdadeira,
     vamos apelar mais uma vez para o Teste M de Weierstrass.
-    Primeiro, observe que para todo $k\in\N$ com $k\neq n$, temos
+    Primeiro, observe que, para todo $k\in\N$ com $k\neq n$, temos
     da definição de $r_n$ que a função 
     $f_k$ é holomorfa em $D(z_n,r_n)$, 
     para cada $k\in\N\setminus\{n\}$. 
@@ -2108,7 +2105,7 @@
     +
     \sum_{k=n+1}^{n_1}\sup_{z\in K}|f_k(z)|
     +
-    \sum_{n=n_1+1}^{\infty}\sup_{z\in K}|f_k(z)|
+    \sum_{k=n_1+1}^{\infty}\sup_{z\in K}|f_k(z)|
     \\[0.4cm]
     &\leqslant
     \sum_{k=1}^{n-1}\sup_{z\in K}|f_k(z)|
@@ -2178,7 +2175,7 @@
     
     \begin{proof}
     Já que $(z_n)_{n\in\N}$ é uma sequência de números
-    complexos distintos segue, do Teorema do Produto de 
+    complexos distintos, segue do Teorema do Produto de 
     Weiertrass que existe uma função inteira $g:\C\to\C$
     tal que $z=z_n$ é um zero simples de $g$, para cada $n\in\N$. 
     Além do mais, a função $g$ não se anula em nenhum
@@ -2218,7 +2215,7 @@
     para todo $z\in A(z_n,0,\rho_n)$, para algum $\rho_n>0$
     e para alguma função holomorfa $h_n:D(z_n,\rho_n)\to\C$.
     
-    Como, para cada $n\in\N$ temos que $z=z_n$ é um zero 
+    Como, para cada $n\in\N$, temos que $z=z_n$ é um zero 
     simples de $g$ e também um polo simples de $h$, segue que
     $z=z_n$ é uma singularidade removível da função 
     $f:\C\setminus\{z_1,z_2,\ldots\}\to\C$ dada por

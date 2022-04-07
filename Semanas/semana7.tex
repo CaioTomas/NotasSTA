@@ -32,8 +32,9 @@ Sejam $U \subset \C$ um domínio e $f:U \to \C$ uma função holomorfa. Se $f'(z
 todo ponto $z\in U$, então $f$ é uma função constante.
 \end{lema}
 
-\begin{definicao}
+\begin{definicao}[Integral complexa]
 \label{def:integral-complexa}
+\index{Integral complexa}
 A integral da função $f$ ao longo do caminho $\y$ é
 o número complexo
 \begin{equation*}
@@ -108,8 +109,9 @@ Seja $f:U\to \C$ uma função contínua definida no domínio $U\subset\C$. As se
 
 \section[Os teoremas de Cauchy]{Os teoremas de Cauchy}
 
-\begin{teorema}
+\begin{teorema}[Teorema de Cauchy-Goursat]
 \label{teo:cauchy-goursat}
+\index{Teorema!de Cauchy-Goursat}
 Sejam $U$ um domínio em $\C$ e $f: U \to \C$ uma função holomorfa. Suponha que $\Delta \subset U$ é uma triângulo que limita
 uma região inteiramente contida em $U$. Então
 \begin{equation*}
@@ -118,7 +120,8 @@ uma região inteiramente contida em $U$. Então
 \end{teorema}
 
 
-\begin{definicao}
+\begin{definicao}[Domínio estrelado]
+\index{Domínio estrelado}
 Seja $U\subset\C$ um domínio. Dizemos que $U$ é estrelado se existe um ponto $z_0\in U$
 tal que dado qualquer ponto $z\in U$, o segmento de reta $\overline{z_0z}$ está inteiramente contido em $U$. 
 O ponto $z_0$ é chamado um centro do domínio $U$.
@@ -142,6 +145,7 @@ Se $\y$ é um caminho fechado suave por partes em $U$, então
 
 \begin{teorema}[Fórmula Integral de Cauchy]
 \label{teo:form-integral-cauchy}
+\index{Fórmula Integral de Cauchy}
 Seja $f:U \to \C$ uma função holomorfa definida no domínio $U\subset\C$.
 Sejam $\overline{D}(z_0, r_0)$ um disco fechado inteiramente contido em $U$ e $\y$ sua fronteira, orientada compativelmente. 
 Se $z$ é um ponto qualquer no interior de $\overline{D}(z_0, r_0)$ então
@@ -161,6 +165,8 @@ onde $\y$ é qualquer circunferência centrada em $z$, percorrida no sentido ant
 
 
 \begin{corolario}[Estimativas de Cauchy]
+\label{cor-estimativas-cauchy}
+\index{Estimativas de Cauchy}
 Seja $f$ uma função holomorfa definida no disco $D(z_0, R)$ e suponha que
 $|f|\leq K$ em $D(z_0, R)$. Então
 \begin{equation*}
@@ -170,6 +176,8 @@ $|f|\leq K$ em $D(z_0, R)$. Então
 
 
 \begin{corolario}[Teorema de Liouville]
+\label{teo-liouville}
+\index{Teorema!de Liouville}
 Seja $f$ função inteira. Se existe $K\geq 0$ tal que $|f(z)|\leq K$ então $f$ é uma função constante.
 \end{corolario}
 
@@ -181,6 +189,9 @@ Se a imagem de $f$ está contida no interior de uma circunferência $|w| - \alph
 
 
 \begin{corolario}[Princípio do Módulo Máximo]
+\label{principio-modulo-maximo}
+\index{Princípio do Módulo Máximo}
+\index{Teorema!do Módulo Máximo}
 Sejam $U$ um domínio em $\C$ e $f:U\to\C$ uma função holomorfa.
 Suponha que existe um ponto $a\in U$ tal que $|f(a)| \geq |f(z)|, \forall z\in U$. Então $f$ é uma função constante.
 \end{corolario}
@@ -199,6 +210,7 @@ Ademais, essa série converge em qualquer disco (aberto) $D(z_0, r) \subset U$, 
 
 \begin{teorema}[Teorema de Cauchy]
 \label{teo-cauchy}
+\index{Teorema!de Cauchy}
 Sejam $U\subset\C$ um domínio e $f:U\to\C$ uma função holomorfa. Seja $V\subset U$ um subconjunto fechado e limitado, cuja fronteira $\partial V$ consiste de um número finito de curvas de Jordan
 suaves por partes, $\partial V = \y_1\cup\cdots\y_n$, e tal que
 $V\setminus\partial V$ é domínio. Então
@@ -208,6 +220,7 @@ $V\setminus\partial V$ é domínio. Então
 \end{teorema}
 
 \begin{teorema}[Fórmula Integral de Cauchy bis.]
+\label{form-integral-cauchy-bis}
 Seja $f:U\to\C$ uma função holomorfa definida no domínio $U$. Seja $V$ uma região fechada e limitada inteiramente contida em $U$, 
 cuja fronteira $\partial V$ é uma curva de Jordan suave por partes, orientada no sentido anti-horário, sendo $V\setminus\partial V$ um domínio.
 Se $z_0$ é um ponto qualquer no interior de $V$, então
@@ -219,6 +232,7 @@ Se $z_0$ é um ponto qualquer no interior de $V$, então
 
 \begin{teorema}[Teorema de Morera]
 \label{teo-morera}
+\index{Teorema!de Morera}
 Sejam $U\subset\C$ domínio e $f:U\to\C$ uma função contínua.
 Se $\int_{\Delta} f(z) dz = 0$ para todo caminho triangular $\Delta\subset U$, então $f$ é holomorfa em $U$.
 \end{teorema}
@@ -228,6 +242,7 @@ Se $\int_{\Delta} f(z) dz = 0$ para todo caminho triangular $\Delta\subset U$, e
 
 \begin{teorema}[Teorema de Laurent]
 \label{teo-laurent}
+\index{Teorema!de Laurent}
 Seja $f$ uma função holomorfa no anel $A(a, \rho_1, \rho_2)$. Então
 \begin{equation*}
     f(z) = \sum_{m=1}^{\infty} b_m\frac{1}{(z-a)^m} + \sum_{n=0}^{\infty} a_n(z-a)^n,
@@ -244,7 +259,10 @@ e contida no anel $A(a, \rho_1, \rho_2)$.
 \end{teorema}
 
 
-\begin{definicao}
+\begin{definicao}[Singularidades e polos]
+\index{Singularidade Removível}
+\index{Polos}
+\index{Singularidade Essencial}
 Dizemos que 
 \begin{itemize}
     \item $a$ é singularidade removível de $f$ se $b_m = 0$ para $m\geq 1$;
@@ -283,13 +301,16 @@ $\displaystyle{ \lim_{z\to a} |f(z)| = \infty }$.
 
 \begin{teorema}[Teorema de Casorati-Weierstrass]
 \label{teo-casorati-weierstrass}
+\index{Teorema!de Casorati-Weierstrass}
 Seja $f$ uma função holomorfa no anel $A(a,0,\rho)$ e suponha que $a$ é singularidade essencial de $f$.
 Então, dados $0<r\leq\rho, \varepsilon > 0$ e $\alpha\in\C$, existe um número complexo $\beta$
 no anel $A(a,0,r)$ tal que $|f(\beta) - \alpha| < \varepsilon$.
 \end{teorema}
 
 
-\begin{definicao}
+\begin{definicao}[Resíduo]
+\label{def-residuo}
+\index{Resíduo}
 Se $f$ é uma função holomorfa no anel $A(a, 0, \rho)$, o resíduo de $f$ em $a$ é o coeficiente $b_1$
 do termo $(z-a)^{-1}$ de sua série de Laurent com centro em $a$, denotado por $\res(f, a)$.
 \end{definicao}
@@ -297,6 +318,7 @@ do termo $(z-a)^{-1}$ de sua série de Laurent com centro em $a$, denotado por $
 
 \begin{teorema}[Teorema dos Resíduos]
 \label{teo-residuos}
+\index{Teorema!dos Resíduos}
 Seja $f$ uma função holomorfa num domínio $U\setminus\{ a_1, a_2, \dots, a_m \}$. Suponha que 
 $\y \subset U\setminus\{ a_1, a_2, \dots, a_m \}$ é uma curva de Jordan suave por partes,
 orientada no sentido anti-horário, tal que a região fechada e limitada por ela determinada está
@@ -350,6 +372,7 @@ a multiplicidade de $\xi_j$ como zero de $f$.
 
 \begin{teorema}[Teorema de Rouché]
 \label{teo-rouche}
+\index{Teorema!de Rouché}
 Sejam $f$ e $g$ duas funções holomorfas definidas num domínio $U\subset\C$. Seja $V\subset U$
 uma região fechada e limitada cuja fronteira $\partial V$ é uma curva de Jordan suave por partes, com
 $V\setminus\partial V$ um domínio. Se
@@ -361,3 +384,224 @@ então $f$ e $g$ têm o mesmo número de zeros no interior de $V$, cada um deles
 
 Interpretação dinâmica do resíduo?
 Cálculo de integrais usando resíduos?
+%
+\begin{lema}
+\label{lema-zeros-vezes-polos}
+Se $f:U\subseteq\C\to\C$ é uma função holomorfa tendo $z_0$ como um zero de multiplicidade
+$m$ e $g:U\subseteq\C\to\C$ é uma função meromorfa tendo $z_0$ como um polo de ordem $m$, então
+$h(z) \equiv f(z)g(z)$ é holomorfa.
+\end{lema}
+%
+\begin{proof}
+Podemos escrever $f$ como
+%
+\[
+f(z) = (z - z_0)^m \widetilde{f}(z),
+\]
+%
+com $\widetilde{f}(z_0) \neq 0$, e podemos expandir $g$ em série de Laurent da seguinte
+forma
+%
+\[
+g(z) = \sum_{j=1}^m \frac{b_j}{(z - z_0)^j} + \sum_{n=1}^{\infty} a_n (z - z_0)^n.
+\]
+%
+Daí, temos
+%
+\begin{align*}
+    f(z)g(z) = \widetilde{f}(z)
+    \left[ \sum_{j=1}^m b_j (z - z_0)^{m-j} + \sum_{n=1}^{\infty} a_n (z - z_0)^{m+n} \right].
+\end{align*}
+%
+Como $\widetilde{f}$ e ambos os somatórios são holomorfos, segue que $h(z) \equiv f(z) \cdot g(z)$ é 
+holomorfa.
+\end{proof}
+%
+\begin{teorema}
+Seja $\Omega\subseteq\C$ um domínio e $I = \dis{\bigcup_{n\in\N} I_n} \subseteq\R$ onde,
+para cada $n\in\N$, $I_n$ é um intervalo fechado em $\R$ e $\sharp I_n \cap I_m = 0, 1$ se
+$n\neq m$. Suponha, ainda, que
+%
+\begin{itemize}
+    \item para cada $x\in I\subseteq\R$ a aplicação $z\mapsto f(z,x)$ é holomorfa;
+    \item $(z,x) \to f(z,x)$ é contínua;
+    \item para qualquer compacto $K\subseteq U$ temos
+    %
+    \[
+    \int_I \sup_{z\in K} |f(z,x)| \, dx < +\infty.
+    \]
+    %
+    Então
+    %
+    \[
+    z \mapsto \int_I f(z,x) \, dx \equiv g(z)
+    \]
+    %
+    é holomorfa em $\Omega$.
+\end{itemize}
+%
+\end{teorema}
+%
+Aqui fazemos uma observação acerca da notação. Se temos
+%
+\[
+I = \bigcup_{n=1}^{\infty} I_n, \qquad I_n = [a_n, b_n],
+\]
+%
+então para qualquer função integrável $g:\R\to\R$ escrevemos
+%
+\[
+\int_I g(x) \, dx 
+\equiv \sum_{n=1}^{\infty} \int_{I_n} g(x) \, dx 
+\equiv \sum_{n=1}^{\infty} \int_{a_n}^{b_n} g(x) \, dx.
+\]
+%
+\begin{definicao}[Continuidade uniforme]
+\label{def-cont-unif}
+\index{Função!uniformemente contínua}
+Uma função $f:U\subseteq\C\to\C$ é uniformemente contínua em $U$ se dado $\e > 0$
+existe $\delta > 0$ tal que para quaisquer $z,w$ tais que $|z-w| < \delta$ então
+$|f(z) - f(w)| < \e$.
+\end{definicao}
+%
+\begin{center}
+    {\bf DIAGRAMA SLIDE 4 AULA 19}
+\end{center}
+%
+\begin{teorema}
+Seja $f:U\subseteq\R^n\to\C$ uma função contínua. Se $K\subseteq U$ é um compacto,
+então $f\big|_K$ é uniformemente contínua.
+\end{teorema}
+%
+\begin{center}
+    {\bf DIAGRAMA SLIDE 5 AULA 19}
+\end{center}
+%
+\begin{proof}
+Suponha que $f\big|_K$ não é uniformemente contínua. Então, dado $\e>0$, para
+cada $n\in\N$ e $\delta_n = 1/n$ podemos encontrar $z_n, w_n\in K$ tais que
+$\|z_n - w_n\| < \delta_n$ mas $\e\leq |f(z_n) - f(w_n)|$.
+%
+\begin{center}
+    {\bf DIAGRAMA SLIDE 6 AULA 19}
+\end{center}
+%
+Como $K$ é compacto, existe uma subsequência $(z_{n_k})\subset (z_n)$ tal que
+$z_{n_k} \to z\in K$. Considere a sequência $(w_{n_k})$. Pelo mesmo argumento, existe
+uma subsequência $(w_{n_{k_p}})\subset (w_{n_k})$ tal que
+$w_{n_{k_p}} \to w\in K$. É claro que $z_{n_{k_p}} \to z$.
+
+Daí, como
+%
+\[
+\| z_{n_{k_p}} - w_{n_{k_p}} \| < \frac{1}{n_{k_p}}
+\]
+%
+e $n_{k_p} \xrightarrow{p\to\infty} \infty$, temos
+%
+\begin{align*}
+    \| w - z \| &= \| w - w_{n_{k_p}} + w_{n_{k_p}} + z_{n_{k_p}} - z_{n_{k_p}} - z \| \\
+                &\leq \| w - w_{n_{k_p}} \| + \| w_{n_{k_p}} - z_{n_{k_p}} \| + \| z - z_{n_{k_p}} \|\\
+                &= \| w - w_{n_{k_p}} \| + \frac{1}{n_{k_p}} + \| z - z_{n_{k_p}} \|
+                \xrightarrow{p\to\infty} 0,
+\end{align*}
+%
+ou seja, $w = z$. Por outro lado, temos
+%
+\[
+\e \leq |f(z_{n_{k_p}}) - f(w_{n_{k_p}})|, \forall p\in\N.
+\]
+%
+Como $f$ é contínua, $z_{n_{k_p}}, w_{n_{k_p}} \xrightarrow{p\to\infty} z$, donde segue que
+%
+\[
+0 < \e \leq \lim_{p\to\infty} |f(z_{n_{k_p}}) - f(w_{n_{k_p}})| = |f(z) - f(z)| = 0,
+\]
+%
+o que é absurdo.
+\end{proof}
+%
+\begin{teorema}
+Seja $U\subseteq\C$ aberto e $f:U\times[a,b]\to\C$ uma função satisfazendo
+%
+\begin{enumerate}[1)]
+    \item para cada $x\in[a,b]$ a função $z\mapsto f(z,x)$ é holomorfa;
+    \item $f:U\times[a,b]\to\C$ é uma função contínua.
+\end{enumerate}
+%
+Então a função $g:U\to\C$ dada por
+%
+\[
+g(z) = \int_a^b f(z,x) \, dx
+\]
+%
+é holomorfa.
+\end{teorema}
+%
+\begin{proof}
+Para cada $n\in\N$, considere a partição de $[a,b]$ ilustrada abaixo.
+%
+\begin{center}
+    {\bf DIAGRAMA SLIDE 10 AULA 19}
+\end{center}
+%
+Defina $\Delta x_j = x_{j+1} - x_j = (b-a)/n$ para cada $j = 0, 1, \dots, n-1$.
+Defina também
+%
+\[
+g_n(z) = \sum_{j=0}^{n-1} f(z, x_j)\Delta x_j = \frac{b-a}{n}\sum_{j=0}^{n-1} f(z, x_j).
+\]
+%
+Observe que, por hipótese, cada uma das $f(z, x_j)$ é holomorfa. Suponha que 
+$\overline{D(z_0,r)} \subseteq U$ para um $r$ suficientemente pequeno. Afirmamos que
+$g_n\big|_{D(z_0, r)}$ converge uniformemente para $g\big|_{D(z_0, r)}$.
+%
+\begin{center}
+    {\bf DIAGRAMA SLIDE 11 AULA 19}
+\end{center}
+%
+De fato, por hipótese temos $f:U\times[a,b]\to\C$ contínua de modo que, pelo teorema anterior,
+$f\big|_{\overline{D(z_0, r)} \times [a,b]}$ é uniformemente contínua. Portanto, dado $\e>0$
+existe $\delta > 0$ tal que se $|x - y| < \delta$ então
+%
+\[
+\sup_{z\in\overline{D(z_0,r)}} |f(z,x) - f(z,y)| < \frac{\e}{b-a}.
+\]
+%
+seja
+%
+\[
+M = \sup\left\{ |f(z,x)| : z\in\overline{D(z_0,r)}, x\in[a,b] \right\} < +\infty
+\]
+%
+e tome $n\in\N$ tal que
+%
+\[
+\frac{1}{n} < \min\left\{ \delta, \frac{\e}{M(b-a)} \right\}.
+\]
+%
+\begin{center}
+    {\bf DIAGRAMA SLIDE 12 AULA 19}
+\end{center}
+%
+Sendo assim, para todo $z\in D(z_0, r)$ vale
+%
+\begin{align*}
+    |g_n(z) - g(z)| &= \left| \frac{b-a}{n}\sum_{j=0}^{n-1} f(z,x_j) 
+                    - \int_a^b f(z,x) \, dx \right| \\[0.3cm]
+                    &= \left| \frac{b-a}{n}\sum_{j=0}^{n-1} f(z,x_j) 
+                    - \sum_{j=0}^{n-1}\int_{x_j}^{x_{j+1}} f(z,x) \, dx \right| \\[0.3cm]
+                    &= \left| \sum_{j=0}^{n-1}\int_{x_j}^{x_{j+1}} f(z,x_j) \, dx
+                    - \sum_{j=0}^{n-1}\int_{x_j}^{x_{j+1}} f(z,x) \, dx \right| \\[0.3cm]
+                    &= \left| \sum_{j=0}^{n-1}\int_{x_j}^{x_{j+1}} f(z,x_j) - f(z,x) \, dx 
+                    \right| \\[0.3cm]
+                    &\leq \sum_{j=0}^{n-1}\int_{x_j}^{x_{j+1}} |f(z,x_j) - f(z,x)| \, dx \\[0.3cm]
+                    &\leq \sum_{j=0}^{n-1} \frac{\e}{b-a}\cdot\frac{b-a}{n} \\[0.3cm]
+                    &= \e,
+\end{align*}
+%
+ou seja, $g_n\to g$ uniformemente em $D(z_0,r)$. Como $g_n$ é holomorfa para todo $n\in\N$
+e a convergência é uniforme em $D(z_0,r)$, podemos garantir que $g$ é holomorfa em $D(z_0,r)$.
+Daí, como $z_0$ é arbitrário, segue que $g$ é holomorfa em todo $U$.
+\end{proof}
+%

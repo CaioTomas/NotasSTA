@@ -2165,15 +2165,23 @@
         para quaisquer $-\infty<a<b<+\infty$. 
         Primeiro observamos que para quaisquer 
         par de números reais $a$, $b$ satisfazendo $a<b$ temos 
-        %
-        \begin{center}
-         \bf ILUSTRAÇÃO DA INTERSEÇÃO
-        \end{center}
-        %
-        \[
-            [a,b] = \bigcap_{n=1}^{\infty} \left(a-\frac{1}{n}, b+\frac{1}{n}\right).
-        \]
-        %
+        
+        \begin{tabular}{%
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    	}
+        	\centering
+            \[
+                [a,b] = \bigcap_{n=1}^{\infty} 
+                        \left(a-\frac{1}{n}, b+\frac{1}{n}\right).
+            \]
+        	&
+        	\includegraphics{Figuras/An.pdf} 
+        \end{tabular}
+        
         Definindo a sequência $A_n$ ($n=1,2,\ldots$) de conjuntos, 
         para cada $n\in\N$, por 
         %
@@ -2260,9 +2268,14 @@
         é também um elemento desta $\sigma$-álgebra, segue que $A$ é um 
         conjunto Lebesgue mensurável!
         %
-        \begin{center}
-            \bf ILUSTRAÇÃO DAS COBERTURAS
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{%
+                Figuras/cobertura por abertos.pdf
+            }
+            \caption{%
+                Exemplo de aberto $A$ e uma possível cobertura enumerável por abertos limitados.
+            }
+        \end{figure}
         %
         Já que acabamos de aprender que todo subconjunto aberto da reta é
         Lebesgue mensurável e como sabemos que uma $\sigma$-álgebra é 
