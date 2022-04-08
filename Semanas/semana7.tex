@@ -605,3 +605,247 @@ e a convergência é uniforme em $D(z_0,r)$, podemos garantir que $g$ é holomor
 Daí, como $z_0$ é arbitrário, segue que $g$ é holomorfa em todo $U$.
 \end{proof}
 %
+\begin{teorema}[Teorema de Fubini]
+\label{teo-fubini-integrais-complexas}
+\index{Teorema!de Fubini}
+Seja $f:I\times U \subseteq \R\times\C \to\C$ uma função tal que
+%
+\begin{itemize}
+    \item $f\big|_{[a,b]\times K}$ é limitada para todos $[a,b]\subseteq I$ e $K\subseteq U$
+    compactos;
+    \item $s\mapsto f(s, z_0)$ é uma função contínua por partes para cada $z_0\in U$ fixado;
+    \item $s\mapsto f(s, z_0)$ e $s\mapsto f(s, z_1)$ são descontínuas nos mesmos pontos
+    para todos $z_0, z_1\in U$;
+    \item $z\mapsto f(s_0, z)$ é uma função contínua para cada $s_0\in I$ fixado.
+\end{itemize}
+%
+Então, podemos afirmar que
+%
+\[
+\int_{\y} \left( \int_a^b f(s,z) \, ds \right) \, dz 
+= \int_a^b \left( \int_{\y} f(s,z) \, dz \right) \, ds,
+\]
+%
+sendo $[a,b]\subseteq I$ e $\y\subseteq U$ um caminho suave por partes.
+\end{teorema}
+%
+\begin{proof}
+Seja $f(s, z) = u(s, z) + iv(s, z) = u(s, x, y) + iv(s, x, y)$, com $z = x+iy$. Temos que
+%
+\begin{align*}
+    \int_{\y} \left( \int_a^b f(s,z) \, ds \right) \, dz 
+    &= \int_{\y} \left( \int_a^b u(s,z) + iv(s,z) \, ds \right) \, dz \\
+    &= \int_{\y} \left( \int_a^b u(s,z) \, ds + i\int_a^b v(s,z) \, ds \right) \, dz \\
+    &= \int_0^1 \left( \int_a^b u(s,\y(t)) \, ds + i\int_a^b v(s,\y(t)) \, ds \right) \y'(t) \, dt \\
+    &= \int_0^1 \left[ 
+    \left( \int_a^b u(s,\y(t)) \, ds \right) x'(t) 
+    - \left( \int_a^b v(s,\y(t)) \, ds \right) y'(t) 
+    \right] \, dt \\
+    &+
+    i\int_0^1 \left[ 
+    \left( \int_a^b u(s,\y(t)) \, ds \right) y'(t) 
+    + \left( \int_a^b v(s,\y(t)) \, ds \right) x'(t) 
+    \right] \, dt \\
+    &= \int_0^1\int_a^b u(s,\y(t)) x'(t) \, ds \, dt 
+    - \int_0^1\int_a^b v(s,\y(t)) y'(t) \, ds \, dt \\
+    &+ i\left[
+    \int_0^1\int_a^b u(s,\y(t)) y'(t) \, ds \, dt
+    + \int_0^1\int_a^b v(s,\y(t)) x'(t) \, ds \, dt
+    \right] \\
+    &= \int_a^b\int_0^1 u(s,\y(t)) x'(t) \, ds \, dt 
+    - \int_a^b\int_0^1 v(s,\y(t)) y'(t) \, ds \, dt \\
+    &+ i\left[
+    \int_a^b\int_0^1 u(s,\y(t)) y'(t) \, ds \, dt
+    + \int_a^b\int_0^1 v(s,\y(t)) x'(t) \, ds \, dt
+    \right] \\
+    &= \int_a^b\left[
+    \int_0^1 u(s,\y(t)) x'(t) \, dt - \int_0^1 v(s,\y(t)) y'(t) \, dt
+    \right] \, ds \\
+    &+ i\int_a^b\left[
+    \int_0^1 u(s,\y(t)) y'(t) \, dt + \int_0^1 v(s,\y(t)) x'(t) \, dt
+    \right] \, ds \\
+    &= \int_a^b\left[
+    \int_0^1 \left( u(s,\y(t)) x'(t) - v(s,\y(t)) y'(t) \right) \, dt 
+    \right] \, ds \\
+    &+ i\int_a^b\left[
+    \int_0^1 u(s,\y(t)) y'(t) \, dt + \int_0^1 v(s,\y(t)) x'(t) \, dt
+    \right] \, ds \\
+    &= \int_a^b
+    \int_0^1 \left( u(s,\y(t)) x'(t) - v(s,\y(t)) y'(t) \right) \, dt \\
+    &+ i\left[
+    \int_0^1 \left( u(s,\y(t)) y'(t) + u(s,\y(t)) x'(t) \right) \, dt
+    \right] \, ds \\
+    &= \int_a^b \Bigg[ \int_0^1 \big[
+    \left( u(s,\y(t)) x'(t) - v(s,\y(t)) y'(t) \right) \\
+    &+ i\left( u(s,\y(t)) y'(t) + v(s,\y(t)) x'(t) \right) \big] \, dt \Bigg] \, ds.
+\end{align*}
+%
+Dessa última igualdade, concluímos finalmente que
+%
+\[
+\int_{\y} \left( \int_a^b f(s,z) \, ds \right) \, dz 
+= \int_a^b \left( \int_{\y} f(s,z) \, dz \right) \, ds.
+\]
+%
+\end{proof}
+%
+\begin{corolario}
+Se $f: I \times U \subseteq \R \times \C \to \C$ é uma função contínua, então
+dados $-\infty < a < b < +\infty$ com $[a,b] \subseteq I$ e $\y\subseteq U$ um
+caminho suave por partes, temos
+%
+\[
+\int_{\y} \left( \int_a^b f(s,z) \, ds \right) \, dz 
+= \int_a^b \left( \int_{\y} f(s,z) \, dz \right) \, ds.
+\]
+%
+\end{corolario}
+%
+Apresentamos a seguir dois exemplos que nos serão úteis quando falarmos da
+função gama e da função zeta de Riemann, respectivamente.
+\begin{exemplo}
+Sejam $0 < \delta < M < +\infty$ e
+%
+\[
+S_{\delta, M} = \left\{ z\in\C : \delta < \Re(z) < M \right\}.
+\]
+%
+Para cada $n\in\N$, considere $f:[1/n,n] \times S_{\delta, M} \to \C$ dada por
+$f(s,t) = e^{-t} e^{(s-1)\ln t}$. Observe que $f$ é contínua, de modo que
+podemos aplicar o teorema anterior para dizer que
+$g_n:S_{\delta, M} \to \C$ dada por
+%
+\begin{align*}
+    g_n(s) &= \int_{1/n}^n e^{-t}t^{s-1} \, dt \\
+           &= \int_{1/n}^n e^{-t}e^{(s-1)\ln t} \, dt
+\end{align*}
+%
+é holomorfa em $S_{\delta, M}$.
+\end{exemplo}
+%
+\begin{exemplo}
+Para cada $n\in\N$, considere $g_n:\{ \Re(s) > 0 \} \to \C$ dada por
+%
+\[
+g_n(s) = \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx.
+\]
+%
+Nesse caso, $f: [n, n+1]\times \{ \Re(s) > 0 \} \to \C$ 
+dada por
+%
+\[
+f(s,x) = \frac{x - \lfloor x \rfloor}{x^{s+1}}
+\]
+%
+não define uma função contínua.
+%
+\begin{center}
+    {\bf DIAGRAMA SLIDE 23 AULA 19}
+\end{center}
+%
+De fato,
+%
+\[
+\lim_{x\to (n+1)^-} f(s,x)
+%= \lim_{x\to (n+1)^-} \frac{x - \lfloor x \rfloor}{x^{s+1}}
+= \frac{1}{(n+1)^{s+1}}
+\neq 0 
+= \frac{n+1 - \lfloor n+1 \rfloor}{(n+1)^{s+1}}
+= f(s,n+1).
+\]
+%
+Não obstante, note que
+%
+\begin{align*}
+    |x^{s+1}| &= \left|\exp((s+1)\ln x)\right| \\
+              &= \left|\exp\left( \Re(s) + 1 + i\Im(s) \right) \ln x\right| \\
+              &= \exp\left( (\Re(s) + 1)\ln x \right) \\
+              &\geq \exp\left( (\Re(s) + 1)\ln n \right) > 0, \, \forall x\in [n,n+1].
+\end{align*}
+%
+Também temos, para todo $x\in[n,n+1]$, que $|x - \lfloor x \rfloor| \leq 1$. Portanto,
+%
+\[
+|f(s,x)| \leq \frac{1}{\exp\left( (\Re(s) + 1)\ln n \right)}, \, 
+\forall (s,x) \in \left\{ \Re(s) > 0 \right\}\times[n,n+1].
+\]
+%
+Como as descontinuidades de $f$ ocorrem apenas nos pontos da forma $(s,1)$, podemos
+usar o Teorema de Fubini para deduzir que, dado qualquer caminho triangular
+$\Delta \subseteq \left\{ \Re(s) > 0 \right\}$, temos
+%
+\begin{align*}
+    \int_{\Delta} g_n(s) \, ds 
+    &= \int_{\Delta} \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx \, ds \\
+    &= \int_n^{n+1} \int_{\Delta} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, ds \, dx \\
+    &= \int_n^{n+1} (x - \lfloor x \rfloor) \left( e^{-(s+1)\ln x} \, ds \right) \, dx \\
+    &= 0,
+\end{align*}
+%
+ou seja, $g_n$ é holomorfa em $\left\{ \Re(s) > 0 \right\}$.
+
+Agora, note que para todos $n\in\N$ e $s\in\left\{ \Re(s) > 0 \right\}$ temos
+%
+\begin{align*}
+    |g_n(s)| &= \left| \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx \right| \\
+             &\leq \int_n^{n+1} \frac{1}{x^{\Re(s) + 1}} \, dx \\
+             &= -\frac{x^{-\Re(s)}}{\Re(s)}\Bigg|_n^{n+1} \\
+             &= \frac{1}{\Re(s)}\left( \frac{1}{n^{\Re(s)}} - \frac{1}{(n+1)^{\Re(s)}} \right).
+\end{align*}
+%
+Sendo assim,
+%
+\begin{align*}
+    \sum_{n=1}^k |g_n(s)| 
+    &\leq \frac{1}{\Re(s)}\sum_{n=1}^k\left( \frac{1}{n^{\Re(s)}} - \frac{1}{(n+1)^{\Re(s)}} \right) \\
+    &= \frac{1}{\Re(s)} 
+    \left( 1 - \frac{1}{2^{\Re(s)}} 
+    + \frac{1}{2^{\Re(s)}} - \frac{1}{3^{\Re(s)}} 
+    + \cdots +
+    \frac{1}{k^{\Re(s)}} - \frac{1}{(k+1)^{\Re(s)}} \right) \\
+    &= \frac{1}{\Re(s)} \left( 1 - \frac{1}{(k+1)^{\Re(s)}} \right) 
+    \xrightarrow{k\to\infty} \frac{1}{\Re(s)} < +\infty.
+\end{align*}
+%
+Portanto,
+%
+\[
+\sum_{n=1}^{\infty} |g_n(s)| \leq \frac{1}{\Re(s)}, \, 
+\forall s\in\left\{ z\in\C : \Re(z) > 0 \right\}.
+\]
+%
+Restringindo nossa análise para $s\in\left\{ z\in\C : \Re(z) > \delta \right\}$, $\delta > 0$,
+temos
+%
+\[
+\sum_{n=1}^{\infty} |g_n(s)| \leq \frac{1}{\delta}.
+\]
+%
+Pelo Teste M de Weierstrass, segue que a sequência de funções
+%
+\[
+S_k \equiv \sum_{n=1}^{k} |g_n(s)|
+\]
+%
+converge uniformemente em $\left\{ z\in\C : \Re(z) > \delta \right\}$ para alguma função
+holomorfa $S_b: \left\{ z\in\C : \Re(z) > \delta \right\} \to \C$.
+
+Por outro lado, sabemos que a função $S$ dada por
+%
+\[
+s \mapsto \sum_{n=1}^{\infty} g_n(s)
+\]
+%
+está bem definida em $\left\{\Re(s) > 0 \right\}$. Como 
+$S\big|_{\left\{ z\in\C : \Re(z) > \delta \right\}}$ é holomorfa, segue que $S$ é holomorfa em
+$\left\{\Re(s) > 0 \right\}$. Equivalentemente,
+%
+\begin{align*}
+    S(s) &= \sum_{n=1}^{\infty} g_n(s) \\
+         &= \sum_{n=1}^{\infty} \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx \\
+         &= \int_1^{\infty} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx
+\end{align*}
+%
+é holomorfa em $\left\{ z\in\C : \Re(z) > \delta \right\}$.
+\end{exemplo}
+%
