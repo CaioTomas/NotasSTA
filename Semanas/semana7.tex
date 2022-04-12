@@ -219,7 +219,7 @@ $V\setminus\partial V$ é domínio. Então
 \end{equation*}
 \end{teorema}
 
-\begin{teorema}[Fórmula Integral de Cauchy bis.]
+\begin{teorema}[Fórmula Integral de Cauchy bis]
 \label{form-integral-cauchy-bis}
 Seja $f:U\to\C$ uma função holomorfa definida no domínio $U$. Seja $V$ uma região fechada e limitada inteiramente contida em $U$, 
 cuja fronteira $\partial V$ é uma curva de Jordan suave por partes, orientada no sentido anti-horário, sendo $V\setminus\partial V$ um domínio.
@@ -423,18 +423,19 @@ para cada $n\in\N$, $I_n$ é um intervalo fechado em $\R$ e $\sharp I_n \cap I_m
 $n\neq m$. Suponha, ainda, que
 %
 \begin{itemize}
-    \item para cada $x\in I\subseteq\R$ a aplicação $z\mapsto f(z,x)$ é holomorfa;
-    \item $(z,x) \to f(z,x)$ é contínua;
+    \item para cada $x\in I\subseteq\R$ a aplicação 
+    $z\longmapsto f(z,x)$ é holomorfa;
+    \item $(z,x) \longmapsto f(z,x)$ é contínua;
     \item para qualquer compacto $K\subseteq U$ temos
     %
     \[
-    \int_I \sup_{z\in K} |f(z,x)| \, dx < +\infty.
+    \int_I\, \sup_{z\in K} |f(z,x)| \, dx < +\infty.
     \]
     %
     Então
     %
     \[
-    z \mapsto \int_I f(z,x) \, dx \equiv g(z)
+    z \longmapsto \int_I f(z,x) \, dx \equiv g(z)
     \]
     %
     é holomorfa em $\Omega$.
@@ -730,20 +731,21 @@ Para cada $n\in\N$, considere $g_n:\{ \Re(s) > 0 \} \to \C$ dada por
 g_n(s) = \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx.
 \]
 %
-Nesse caso, $f: [n, n+1]\times \{ \Re(s) > 0 \} \to \C$ 
+Considere também a função auxiliar 
+$f: [n, n+1]\times \{ \Re(s) > 0 \} \to \C$ 
 dada por
 %
 \[
-f(s,x) = \frac{x - \lfloor x \rfloor}{x^{s+1}}
+f(s,x) = \frac{x - \lfloor x \rfloor}{x^{s+1}}.
 \]
 %
-não define uma função contínua.
+Observe que esta função auxiliar não é uma função contínua.
 %
 \begin{center}
     {\bf DIAGRAMA SLIDE 23 AULA 19}
 \end{center}
 %
-De fato,
+De fato, para qualquer $s\in \{ \Re(s) > 0 \}$ fixado temos
 %
 \[
 \lim_{x\to (n+1)^-} f(s,x)
@@ -770,19 +772,124 @@ Também temos, para todo $x\in[n,n+1]$, que $|x - \lfloor x \rfloor| \leq 1$. Po
 \forall (s,x) \in \left\{ \Re(s) > 0 \right\}\times[n,n+1].
 \]
 %
-Como as descontinuidades de $f$ ocorrem apenas nos pontos da forma $(s,1)$, podemos
+Como as descontinuidades de $f$ ocorrem apenas nos pontos da forma $(s,n+1)$, podemos
 usar o Teorema de Fubini para deduzir que, dado qualquer caminho triangular
 $\Delta \subseteq \left\{ \Re(s) > 0 \right\}$, temos
 %
 \begin{align*}
     \int_{\Delta} g_n(s) \, ds 
-    &= \int_{\Delta} \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx \, ds \\
-    &= \int_n^{n+1} \int_{\Delta} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, ds \, dx \\
-    &= \int_n^{n+1} (x - \lfloor x \rfloor) \left( e^{-(s+1)\ln x} \, ds \right) \, dx \\
-    &= 0,
+    &= \int_{\Delta} \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx \, ds 
+    \\[0.3cm]
+    &= \int_n^{n+1} \int_{\Delta} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, ds \, dx 
+    \\[0.3cm]
+    &= \int_n^{n+1} (x - \lfloor x \rfloor) 
+    \left(\int_{\Delta} \frac{1}{x^{s+1}} \, ds \right) \, dx
+    \\[0.3cm]
+    &= \int_n^{n+1} (x - \lfloor x \rfloor) 
+    \left(\int_{\Delta} e^{-(s+1)\ln x} \, ds \right) \, dx 
+    \\[0.3cm]
+    &= 0.
 \end{align*}
 %
-ou seja, $g_n$ é holomorfa em $\left\{ \Re(s) > 0 \right\}$.
+Vamos verificar agora que o mapa $s\longmapsto g_n(s)$ define uma função contínua em 
+$\left\{ \Re(s) > 0 \right\}$. 
+
+De fato, para qualquer $s_0\in \left\{ \Re(s) > 0 \right\}$ fixado, temos:
+\begin{align*}
+    |g_n(s_0)-g_n(s)|
+    &=
+    \left|  
+    \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s_0+1}} \, dx
+    -
+    \int_n^{n+1} \frac{x - \lfloor x \rfloor}{x^{s+1}} \, dx
+    \right|
+    \\[0.3cm]
+    &=
+    \left| 
+        \int_n^{n+1} 
+        \frac{x - \lfloor x \rfloor}{x^{s_0+1}} 
+        - 
+        \frac{x - \lfloor x \rfloor}{x^{s+1}}
+        \, dx
+    \right|
+   \\[0.3cm]
+    &= 
+    \left| 
+        \int_n^{n+1}
+        \left(\frac{x - \lfloor x \rfloor}{x}\right)
+        \left(\frac{1}{x^{s_0}} - \frac{1}{x^{s}}\right)
+        \, dx
+    \right|
+   \\[0.3cm]
+    &= 
+    \left| 
+        \int_n^{n+1}
+        \left(\frac{x - \lfloor x \rfloor}{x}\right)
+        \left(e^{-s_0\ln x} - e^{-s\ln x}\right)
+        \, dx
+    \right|
+   \\[0.3cm]
+    &\leqslant  
+    \int_n^{n+1}
+    \left|\frac{x - \lfloor x \rfloor}{x}\right|
+    \left|e^{-s_0\ln x} - e^{-s\ln x}\right|
+    \, dx
+   \\[0.3cm]
+    &\leqslant 
+    \frac{1}{n}
+    \int_n^{n+1}
+    |e^{-s_0\ln x} - e^{-s\ln x}|
+    \, dx
+   \\[0.3cm]
+    &\leqslant 
+    \frac{1}{n}
+    \int_n^{n+1}
+    \left| \int_{s_0\ln x}^{s\ln x}e^{-z} \, dz\right|
+    \, dx
+   \\[0.3cm]
+    &\leqslant 
+    \frac{1}{n}
+    \int_n^{n+1}
+    \left[\int_{s_0\ln x}^{s\ln x}|e^{-z}| \, |dz|\right]
+    \, dx
+   \\[0.3cm]
+    &\leqslant 
+    \frac{1}{n}
+    \int_n^{n+1}
+    \left[
+    e^{(|s|+|s_0|)\ln x}
+    \cdot (\ln x)|s-s_0|
+    \right]
+    \, dx
+   \\[0.3cm]
+    &\leqslant 
+    \left[
+    e^{(|s|+|s_0|)\ln(n+1)}
+    \ln(n+1)
+    \right]
+    |s-s_0|,
+\end{align*}
+Tomando limite, quando $s\to s_0$, em ambos lados da desigualdade acima verificamos que
+\[
+\lim_{s\to s_0}
+|g_n(s_0)-g_n(s)|
+\leqslant 
+\lim_{s\to s_0}
+\left[e^{(|s|+|s_0|)\ln(n+1)}\ln(n+1)\right]|s-s_0|
+=
+0.
+\]
+O que prova a afimarção que $g_n$ é uma função contínua em 
+$\left\{ \Re(s) > 0 \right\}$. 
+Usando este fato e lembrando que $\int_{\Delta} g_n(s) \, ds=0$,
+para todo triângulo $\Delta$ contido em $\left\{ \Re(s) > 0 \right\}$,
+temos garantidas todas as hipóteses do Teorema de Morera e assim podemos finalmente concluir que $g_n$ é holomorfa em $\left\{ \Re(s) > 0 \right\}$.
+
+
+
+\bigskip 
+
+
 
 Agora, note que para todos $n\in\N$ e $s\in\left\{ \Re(s) > 0 \right\}$ temos
 %
@@ -793,7 +900,7 @@ Agora, note que para todos $n\in\N$ e $s\in\left\{ \Re(s) > 0 \right\}$ temos
              &= \frac{1}{\Re(s)}\left( \frac{1}{n^{\Re(s)}} - \frac{1}{(n+1)^{\Re(s)}} \right).
 \end{align*}
 %
-Sendo assim,
+Sendo assim, temos para todo $k\in\N$
 %
 \begin{align*}
     \sum_{n=1}^k |g_n(s)| 
@@ -815,7 +922,7 @@ Portanto,
 \]
 %
 Restringindo nossa análise para $s\in\left\{ z\in\C : \Re(z) > \delta \right\}$, $\delta > 0$,
-temos
+obtemos a seguinte cota, que é uniforme em $s$
 %
 \[
 \sum_{n=1}^{\infty} |g_n(s)| \leq \frac{1}{\delta}.
