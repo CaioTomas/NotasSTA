@@ -3261,4 +3261,105 @@
         \]
         %
     \end{observacao}
+    
+    Seja $s \in \C$ e denote $\sigma = \Re{s}$, temos, para $t>0$,
+    %
+    \begin{align*}
+        |t^{s-1}| &= |\exp((s-1)\ln t)| \\
+        %
+        &= \exp(-\ln{t})|\exp(s\ln t)| \\
+        %
+        &= \exp(-\ln{t})|\exp(\sigma\ln t)| \\
+        %
+        &= t^{\sigma - 1}.
+    \end{align*}
+    %
+    Com isso, 
+    %
+    \begin{align*}
+        \int_{0}^{\infty}|e^{-t}t^{s-1}| \, dt &= \int_{0}^{\infty}e^{-t}|t^{s-1}| \, dt
+        %
+        &= \int_{0}^{\infty}e^{-t}t^{\sigma-1} \, dt = \Gamma(\sigma)
+    \end{align*}
+    %
+    sempre que $\sigma > 0$. O Lema anterior mostra que, neste caso, existe 
+    %
+    $$\int_{0}^{\infty}e^{-t}t^{s-1} \, dt.$$
+    %
+    \begin{teorema}
+        A função $\Gamma$ admite uma extensão analítica para o semiplano 
+        $U = \{s \in \C : \Re{s} >0 \}$.
+    \end{teorema}
+    %
+    \begin{proof}
+        Naturalmente, a função que é candidata a ser a extensão de $\Gamma(s)$ 
+        é aquela que tem a mesma expressão, mas em que admitimos que a variável $s$ seja complexa.
+        Aqui, por abuso de linguagem, denotaremos esta candidata por $\Gamma(s)$ também. Seja 
+        $0 < \delta < M$ e $S = S_{\delta, M} = \{ s \in \C : \delta < \Re{s} < M\}$. 
+        Vamos mostrar que, em toda faixa deste tipo, $\Gamma(s)$ é o limite da sequência 
+        de funções holomorfas 
+        %
+        \[
+        g_n(s) = \int_{1/n}^{n}e^{-t}t^{s-1} \, dt.
+        \]
+        %
+        Sendo $\Delta$ um triângulo contido em $S$, podemos aplicar os Teoremas de 
+        Morera e Fubini em cada $g_n$ e obter
+        %
+        \begin{align*}
+            \int_{\Delta}g_n(s)\, ds &= \int_{\Delta}\int_{1/n}^{n}e^{-t}t^{s-1} \, dt \, ds \\
+            &= \int_{1/n}^{n} \int_{\Delta} e^{-t}t^{s-1} \, ds \, dt  \\
+            &= \int_{1/n}^{n} 0 \, dt = 0.
+        \end{align*}
+        %
+        Isto mostra que cada $g_n$ é de fato holomorfa.
+        %
+        \begin{align*}
+            |\Gamma(s) - g_n(s)| &= \Big | \int_{0}^{\infty}e^{-t}t^{s-1} \, dt -  \int_{1/n}^{n}e^{-t}t^{s-1} \, dt \Big | \\
+            %
+            & = \Big | \int_{0}^{1/n}e^{-t}t^{s-1} \, dt +  \int_{n}^{\infty}e^{-t}t^{s-1} \, dt \Big | \\
+            %
+            &\leq \Big | \int_{0}^{1/n}e^{-t}t^{s-1} \, dt \Big | +  \Big | \int_{n}^{\infty}e^{-t}t^{s-1} \, dt \Big | \\
+            %
+            &\leq \int_{0}^{1/n}e^{-t}|t^{s-1}| \, dt  + \int_{n}^{\infty}e^{-t}|t^{s-1}| \, dt \\
+            %
+            &\leq \int_{0}^{1/n}t^{\sigma-1} \, dt + \int_{n}^{\infty}e^{-t}t^{\sigma-1} \, dt \\
+            %
+            &\leq \int_{0}^{1/n}t^{\delta-1} \, dt + \int_{n}^{\infty}e^{-t}t^{M-1} \, dt \\
+            %
+            &\leq \frac{1}{\delta}\frac{1}{n^\delta} + K_M\int_{n}^{\infty}e^{-t/2} \, dt \to 0
+        \end{align*}
+        %
+        conforme $n \to \infty$. Além disso, esta convergência é uniforme, isto mostra que $\Gamma(s)$ é holomorfa em cada faixa $S$ \textcolor{red}{(citar teorema)}. Como $M$ e $\delta$ são arbitrários, segue que $\Gamma(s)$ é holomorfa em $U$.
+    \end{proof}
+    %
+    Usando a regra da derivada do produto, temos que
+    %
+    $$\frac{d}{dt}(e^{-t}t^{s}) = se^{-t}t^{s-1} - e^{-t}t^{s}.$$
+    %
+    Se $\Re \ s >0$, podemos integral ambos os lados e obter
+    %
+    \begin{align*}
+        0 &= \lim_{\e \to 0^+} e^{-t}t^s \big |_{\e}^{1/\e} \\
+        %
+        &= \lim_{\e \to 0^+} s\int_{\e}^{1/\e} e^{-t}t^{s-1} \, dt - \int_{\e}^{1/\e} e^{-t}t^{s} \, dt \\
+        %
+        &= s\Gamma(s) - \Gamma(s+1).
+    \end{align*}
+    %
+    Portanto, fica demonstrado a seguinte proposição.
+    
+    \begin{proposicao}
+    Se $\Re \ s>0$, então $\Gamma(s+1) = s\Gamma(s)$.
+    \end{proposicao}
+    
+    É fácil, usando esta proposição, verificar a afirmação feita no início desta seção, isto é, $\Gamma(n) = (n-1)!$ para todo $n > 0$ inteiro. 
+    
+    \begin{teorema}
+    A função $\Gamma$, definida para $\Re \ s > 0$, admite uma continuação analítica para uma função meromorfa em $\C$ com polos simples nos inteiros negativos.
+    \end{teorema}
+    \begin{proof}
+    
+    \end{proof}
+    
     % a continuar
