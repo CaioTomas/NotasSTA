@@ -3072,7 +3072,8 @@
             \eqref{eq-aux1-litle-picard} e usando a igualdade acima ficamos com
             %
             \[
-            f(z_b) - a = b - a \iff f(z_b) = b.
+            f(z_b) - a = b - a 
+            \qquad \iff \qquad f(z_b) = b.
             \] 
             %
             Consequentemente, a  
@@ -3106,19 +3107,21 @@
 \section{A função Gama}
 
     O fatorial é uma aplicação conhecida de todos que, para cada inteiro não negativo $n$ 
-    associa $n! = n \cdot (n-1) \cdots 3 \cdot 2 \cdot 1$ e convenciona-se $0! = 1$. 
+    associa $n! \equiv n \cdot (n-1) \cdots 3 \cdot 2 \cdot 1$ e convenciona-se $0! = 1$. 
     Podemos expressar os fatoriais como integrais reais por meio da identidade
     %
     \[ 
     (n-1)! = \int_0^{\infty}e^{-t} t^{n-1} \, dt.
     \]
     %
-    Nesta seção, vamos estudar a função Gama, $\Gamma$, uma função de grande importância na análise 
-    matemática e que pode ser vista como uma extensão do conceito de fatorial. 
-    Para todo $s>0$, definimos
+    Nesta seção, vamos estudar a função Gama, $\Gamma$, uma função de grande importância na Análise 
+    Matemática e na Teoria Analítica dos Números. 
+    Esta função pode ser vista como uma extensão 
+    do conceito de fatorial de um número natural. 
+    Para cada $s>0$, definimos
     %
     \[
-    \Gamma(s) = \int_0^{\infty}e^{-t} t^{s-1} \, dt.
+    \Gamma(s) \equiv \int_0^{\infty}e^{-t} t^{s-1} \, dt.
     \]
     %
     Primeiro, vamos mostrar que $\Gamma$ está bem definida. Problemas de convergência 
@@ -3129,9 +3132,9 @@
     %
     \begin{align*}
         \left| \int_{\e}^{1}e^{-t}t^{s-1} \, dt \right| 
-        &\leq \int_{\e}^{1}t^{s-1} \, dt \\
-        &= \frac{t^s}{s}\Big |_{\e}^{1} \\
-        &= \frac{1}{s} - \frac{\e^s}{s} \xrightarrow{\e\to 0} \frac{1}{s}.
+        &\leq \int_{\e}^{1}t^{s-1} \, dt \\[0.3cm]
+        &= \frac{t^s}{s}\Big |_{\e}^{1} \\[0.3cm]
+        &= \frac{1}{s} - \frac{\e^s}{s} \xrightarrow{\ \e\to 0\ } \frac{1}{s}.
     \end{align*}
     %
     Esta simples estimativa mostra a razão de escolhermos $s > 0$. 
@@ -3139,37 +3142,51 @@
     O segundo motivo é que, se $s = -\delta < 0$, então
     %
     \begin{align*}
-        \int_{\e}^{1}e^{-t}t^{s-1} \, dt &= \int_{\e}^{1}e^{-t}t^{-1-\delta} \, dt \\
-        &\geq \int_{\e}^{1}t^{-1-\delta} \, dt \\
-        &= \frac{t^{-\delta}}{\delta}\Big |_{t = \e}^{1} \\
-        &= \frac{\e^{-\delta}}{\delta} - \frac{1}{\delta} \xrightarrow{\e\to 0} \infty.
+        \int_{\e}^{1}e^{-t}t^{s-1} \, dt &= \int_{\e}^{1}e^{-t}t^{-1-\delta} \, dt \\[0.3cm]
+        &\geq \int_{\e}^{1}t^{-1-\delta} \, dt \\[0.3cm]
+        &= \frac{t^{-\delta}}{\delta}\Big |_{t = \e}^{1} \\[0.3cm]
+        &= \frac{\e^{-\delta}}{\delta} - \frac{1}{\delta} \xrightarrow{\ \e\to 0\ } \infty.
     \end{align*}
     %
+    
+   
+    
     Analisamos agora a outra porção da integral. Primeiro, observe que $e^{-t/2}t^{s-1}$ 
     vai a 0 conforme $t$ cresce. Isto mostra que esta expressão é limitada. Então
     %
     \begin{align*}
-        \int_{1}^{1/\e}e^{-t}t^{s-1} \, dt &\leq M\int_{\e}^{1}e^{-t/2} \, dt \\
+        \int_{1}^{1/\e}e^{-t}t^{s-1} \, dt &\leq M\int_{\e}^{1}e^{-t/2} \, dt \\[0.3cm]
         &= 2M(e^{-1/2} - e^{-1/2\e}) < \infty
     \end{align*}
     %
-    para todo $\e > 0$. Estas considerações mostram que a função $\Gamma$ está bem 
+    para todo $\e > 0$. 
+    Estas considerações mostram que a função $\Gamma$ está bem 
     definida para todo $s > 0$.
     
     O nosso objetivo é estender $\Gamma$ para todo o plano complexo. 
     Tentaremos realizar tal extensão admitindo que $s$ seja um número complexo. 
     Inicialmente, consideraremos o semiplano $\Re{s} > 0$.
-    %
+    %%
+    \begin{center}
+    {\red 
+        O lema abaixo precisa ser revisto.\\ 
+        Acredito que ele pode ser reescrito de modo a ser aplicável à Gama.
+    }
+    \end{center}
+    %%
     \begin{lema}
-        Sejam $\Omega \subseteq \C$ um domínio e $f: U \times \R_{\geq 0}$. 
-        Suponha que, para cada $z \in U$, a aplicação $t \mapsto f(z,t)$ seja 
-        Riemann integrável e que existe 
+        Sejam $\Omega \subseteq \C$ um domínio e $f: \Omega \times \R_{\geq 0}\to \C$. 
+        Suponha que, para cada $z \in \Omega$, a aplicação $t \mapsto f(z,t)$ tenha um conjunto descontinuidades com medida de Lebesgue nula. Além disso, para cada $a>0$, temos 
+        %
+        $$\sup_{t \in [0,a]} |f(z,t)| < \infty.$$
+        %
+        Se existe 
         %
         \[
-        \lim_{a \to \infty} \int_{0}^{a}|f(z,t)| \, dt.
+        \lim_{a \to \infty} \int_{0}^{a}|f(z,t)| \, dt,
         \]
         %
-        Então existe 
+        então existe 
         %
         \[
         g(z) \equiv \lim_{a \to \infty} \int_{0}^{a}f(z,t) \, dt.
@@ -3178,7 +3195,13 @@
     \end{lema}
     %
     \begin{proof}
-        Por hipótese, existe o limite 
+        Com as hipóteses que temos, está bem definida, para todo $a>0$, a integral
+        %
+        \[
+        \int_{0}^{a}|f(z,t)| \, dt.
+        \]
+        %
+        Além disso, existe o limite 
         %
         \[
         I = \lim_{a \to \infty} \int_{0}^{a}|f(z,t)| \, dt.
@@ -3245,10 +3268,8 @@
     \end{proof}
     %
     \begin{observacao}
-        No lema anterior, assumimos que a função $f$ com $z$ fixado é Riemann integrável 
-        em relação à variável $t$ real. Esta hipótese é equivalente a assumir que o 
-        conjunto de descontinuidades da aplicação $t \mapsto f(z,t)$ tem medida de Lebegue nula. 
-        Além disso, vale um resultado análogo ao anterior: Se assumimos que existe 
+        No lema anterior, assumimos que a função $f$ com $z$ fixado tem um conjunto de descontinuidades com medida de Lesbegue nula, isto é equivalente a dizer que ela é Riemann integrável 
+        em relação à variável $t$ real. Além disso, vale um resultado análogo ao anterior: Se assumimos que existe 
         %
         \[
         \lim_{a \to \infty} \int_{-a}^{a}|f(z,t)| \, dt,
@@ -3262,7 +3283,7 @@
         %
     \end{observacao}
     
-    Seja $s \in \C$ e denote $\sigma = \Re{s}$, temos, para $t>0$,
+    Seja $s \in \C$ e denote $\sigma = \Re \ s$, temos, para $t>0$,
     %
     \begin{align*}
         |t^{s-1}| &= |\exp((s-1)\ln t)| \\
@@ -3276,35 +3297,80 @@
     %
     Com isso, 
     %
-    \begin{align*}
-        \int_{0}^{\infty}|e^{-t}t^{s-1}| \, dt &= \int_{0}^{\infty}e^{-t}|t^{s-1}| \, dt
-        %
-        &= \int_{0}^{\infty}e^{-t}t^{\sigma-1} \, dt = \Gamma(\sigma)
-    \end{align*}
+    \begin{equation*}
+        \int_{0}^{\infty}|e^{-t}t^{s-1}| \, dt = \int_{0}^{\infty}e^{-t}|t^{s-1}| \, dt = \int_{0}^{\infty}e^{-t}t^{\sigma-1} \, dt = \Gamma(\sigma)
+    \end{equation*}
     %
-    sempre que $\sigma > 0$. O Lema anterior mostra que, neste caso, existe 
+    sempre que $\sigma > 0$. O Lema anterior mostra que, neste caso, existe
+    para todo $s\in\C$ tal que $\Re(s)>0$ 
     %
-    $$\int_{0}^{\infty}e^{-t}t^{s-1} \, dt.$$
+    $$\Gamma(s)\equiv \int_{0}^{\infty}e^{-t}t^{s-1} \, dt.$$
     %
     \begin{teorema}
         A função $\Gamma$ admite uma extensão analítica para o semiplano 
-        $U = \{s \in \C : \Re{s} >0 \}$.
+        $U = \{s \in \C : \Re(s) >0 \}$.
     \end{teorema}
     %
     \begin{proof}
         Naturalmente, a função que é candidata a ser a extensão de $\Gamma(s)$ 
         é aquela que tem a mesma expressão, mas em que admitimos que a variável $s$ seja complexa.
-        Aqui, por abuso de linguagem, denotaremos esta candidata por $\Gamma(s)$ também. Seja 
-        $0 < \delta < M$ e $S = S_{\delta, M} = \{ s \in \C : \delta < \Re{s} < M\}$. 
-        Vamos mostrar que, em toda faixa deste tipo, $\Gamma(s)$ é o limite da sequência 
-        de funções holomorfas 
+        Aqui, por abuso de linguagem, denotaremos esta candidata por $\Gamma(s)$ também. Sejam 
+        $
+        0 < \delta < M$ e $S = S_{\delta, M} 
+        = 
+        \{ s \in \C : \delta < \Re(s) < M\}$. 
+        Vamos mostrar, para quaisquer escolhas das constantes $\delta$ e $M$, que a função $s\longmapsto\Gamma(s)$ definida na faixa $S$ é o limite uniforme da sequência de funções $(g_n)_{n\in \N}$, onde
         %
         \[
         g_n(s) = \int_{1/n}^{n}e^{-t}t^{s-1} \, dt.
         \]
         %
-        Sendo $\Delta$ um triângulo contido em $S$, podemos aplicar os Teoremas de 
-        Morera e Fubini em cada $g_n$ e obter
+        Vamos mostrar também que $g_n$ é uma função holomorfa,
+        para cada $n\in \N$ e concluir então que $\Gamma$ é holomorfa em na faixa $S$. 
+        
+        Para provar as afirmações feitas acima, vamos começar mostrando que para cada $n\in \N$ fixado que $g_n:S\to C$ é uma função contínua. De fato, dados quaisquer $s,\widetilde{s}\in S$ temos  
+        \begin{align*}
+            |g_n(s)-g_n(\widetilde{s})|
+            &=
+            \left|
+            \int_{1/n}^{n}e^{-t}t^{s-1} \, dt
+            -
+            \int_{1/n}^{n}e^{-t}t^{\widetilde{s}-1} \, dt
+            \right|
+            \\[0.3cm]
+            &\leqslant
+            \int_{1/n}^{n}
+            e^{-t} |t^{s-1}-t^{\widetilde{s}-1}|            
+            \, dt
+            \\[0.3cm]
+            &\leqslant
+            \int_{1/n}^{n}
+            \frac{e^{-t}}{t} |t^{s}-t^{\widetilde{s}}|            
+            \, dt
+            \\[0.3cm]
+            &\leqslant
+            n
+            \int_{1/n}^{n}
+            |e^{s\ln t}-e^{\widetilde{s}\ln t}|            
+            \, dt
+            \\[0.3cm]
+            &\leqslant
+            n
+            \int_{1/n}^{n}
+            |s-\widetilde{s}| (\ln n)  e^{M\ln n}            
+            \, dt
+            \\[0.3cm]
+            &\leqslant
+            n^2(\ln n)  e^{M\ln n}|s-\widetilde{s}|.
+        \end{align*}
+    O que mostra que a função $g_n$ é Lipschitz e portanto contínua.
+        
+        
+    Próximo passo é mostra que a integral de $g_n$ ao longo de qualquer
+    triângulo contido em $S$ é nula. 
+    Para isto, seja $\Delta$ um triângulo arbitrário, contido em $S$. 
+    Como a função no integrando que define $g_n$ é contínua, 
+    segue do Teorema de Fubini que
         %
         \begin{align*}
             \int_{\Delta}g_n(s)\, ds &= \int_{\Delta}\int_{1/n}^{n}e^{-t}t^{s-1} \, dt \, ds \\
@@ -3312,7 +3378,15 @@
             &= \int_{1/n}^{n} 0 \, dt = 0.
         \end{align*}
         %
-        Isto mostra que cada $g_n$ é de fato holomorfa.
+        Já que $\Delta$ é um triângulo qualquer em $S$ e $g_n$ é contínua segue finalmente do Teorema de Morera que $g_n$ é holomorfa.
+        
+        
+        
+    \bigskip 
+    
+    Vamos mostrar agora que $g_n$ converge uniformemente,
+    quando $n\to\infty$, para $\Gamma$. De fato, dado qualquer
+    $s\in S$ temos 
         %
         \begin{align*}
             |\Gamma(s) - g_n(s)| &= \Big | \int_{0}^{\infty}e^{-t}t^{s-1} \, dt -  \int_{1/n}^{n}e^{-t}t^{s-1} \, dt \Big | \\
@@ -3327,39 +3401,508 @@
             %
             &\leq \int_{0}^{1/n}t^{\delta-1} \, dt + \int_{n}^{\infty}e^{-t}t^{M-1} \, dt \\
             %
-            &\leq \frac{1}{\delta}\frac{1}{n^\delta} + K_M\int_{n}^{\infty}e^{-t/2} \, dt \to 0
+            &\leq \frac{1}{\delta}\frac{1}{n^\delta} + K_M\int_{n}^{\infty}e^{-t/2} \, dt.
         \end{align*}
         %
-        conforme $n \to \infty$. Além disso, esta convergência é uniforme, isto mostra que $\Gamma(s)$ é holomorfa em cada faixa $S$ \textcolor{red}{(citar teorema)}. Como $M$ e $\delta$ são arbitrários, segue que $\Gamma(s)$ é holomorfa em $U$.
+        Já que o lado direito da estimativa acima vai a zero,
+        quando $n\to\infty$, independentemente da escolha de $s\in S$, segue que $\Gamma(s)$ é holomorfa na faixa 
+        $S$ \textcolor{red}{(citar teorema)}. 
+        Lembrando que as constantes $M$ e $\delta$ são arbitrárias, 
+        podemos concluir que $\Gamma(s)$ é holomorfa em todo $U$.
     \end{proof}
+    
+    
+    \bigskip 
+    
+    A seguir, mostramos que a função Gama satisfaz uma equação funcional.
+    Esta equação funcional será usada para revelar diversas propriedades 
+    da função Gama, que não são simples de serem obtidas à partir 
+    de sua definição.
+    Vamos usá-la para dar uma prova de que função Gama pode ser estendida à 
+    função meromorfa em $\C$ bem como para determinar os resíduos 
+    de Gama em cada uma de suas singularidades.  
     %
-    Usando a regra da derivada do produto, temos que
+    
+    
+    Apesar de toda sua aplicabilidade e incríveis consequências a equação funcional pode ser obtida por uma simples aplicação do método de integração por partes, como mostramos a seguir. 
+    
+    Pela regra do produto, temos que
     %
     $$\frac{d}{dt}(e^{-t}t^{s}) = se^{-t}t^{s-1} - e^{-t}t^{s}.$$
     %
-    Se $\Re \ s >0$, podemos integral ambos os lados e obter
+    Considerando que $s$ satisfaz $\Re(s)>0$, integrando ambos os lados da igualdade acima e usando o Teorema Fundamental do Cálculo obtemos
     %
     \begin{align*}
-        0 &= \lim_{\e \to 0^+} e^{-t}t^s \big |_{\e}^{1/\e} \\
+        0 
+        &= 
+        \lim_{\e \to 0^+} e^{-t}t^s \big |_{\e}^{1/\e} 
+        \\[0.3cm]
         %
-        &= \lim_{\e \to 0^+} s\int_{\e}^{1/\e} e^{-t}t^{s-1} \, dt - \int_{\e}^{1/\e} e^{-t}t^{s} \, dt \\
+        &= 
+        \lim_{\e \to 0^+} s\int_{\e}^{1/\e} e^{-t}t^{s-1} \, dt - \int_{\e}^{1/\e} e^{-t}t^{s} \, dt 
+        \\[0.3cm]
         %
-        &= s\Gamma(s) - \Gamma(s+1).
+        &= 
+        s\Gamma(s) - \Gamma(s+1).
     \end{align*}
     %
-    Portanto, fica demonstrado a seguinte proposição.
+    Portanto, fica demonstrado o seguinte teorema.
     
-    \begin{proposicao}
-    Se $\Re \ s>0$, então $\Gamma(s+1) = s\Gamma(s)$.
-    \end{proposicao}
-    
-    É fácil, usando esta proposição, verificar a afirmação feita no início desta seção, isto é, $\Gamma(n) = (n-1)!$ para todo $n > 0$ inteiro. 
+    \begin{teorema}\label{teo-eq-func-Gama}
+    Se $\Re(s)>0$, então $\Gamma(s+1) = s\Gamma(s)$.
+    \end{teorema}
+
+    Note que podemos concluir do teorema 
+    acima a validade da afirmação feita 
+    no início desta seção, isto é, 
+    $\Gamma(n) = (n-1)!$, 
+    para todo $n > 0$ inteiro. 
     
     \begin{teorema}
-    A função $\Gamma$, definida para $\Re \ s > 0$, admite uma continuação analítica para uma função meromorfa em $\C$ com polos simples nos inteiros negativos.
+        A função $\Gamma$, definida para $\Re(s) > 0$, admite uma continuação analítica para uma função meromorfa em $\C$ com polos simples nos inteiros negativos. Além disso, o resíduo em $-n$ é $(-1)^{n}/n!$ para todo $n \in \N \cup \{0\}$.
     \end{teorema}
     \begin{proof}
+    Para cada $m \in \N$, defina 
+    \[
+    U_m = \{s \in \C \setminus \{0,-1, \dots, -(m-1)\}: \Re(s) > -m \}.
+    \]
+    Vamos definir a continuação de $\Gamma$ por etapas, primeiro a estendemos para $U_1$, depois para $U_2$ e assim sucessivamente. Seja $F_1 : U_1 \to \C$ dada por
+    %
+    $$F_1(s) = \frac{\Gamma(s+1)}{s}.$$
+    %
+    Quando $\Re \ s > 0$, podemos concluir da equação funcional de $\Gamma$ que 
+    %
+    $$F_1(s) = \frac{s\Gamma(s)}{s} = \Gamma(s),$$
+    %
+    logo, $F_1$ e $\Gamma$ coincidem neste semiplano. Em particular, $F_1$ é holomorfa porque é definida a partir de $\Gamma$ e, quando $\Re \ s > -1$, temos $\Re(s+1) > 0$. Observe ainda que
+    %
+    $$ \lim_{s \to 0} sF_1(s) = \Gamma(1) = 1 \neq 0,$$
+    %
+    então $0$ é um polo simples de $F_1$ com resíduo 1.
     
+    Definimos agora a função holomorfa $F_2 : U_2 \to \C$ dada por
+    %
+    $$F_2(s) = \frac{\Gamma(s+2)}{s(s+1)}.$$
+    %
+    Quando $\Re \ s > -1$, podemos usar a equação funcional e observar que $F_2(s) = F_1(s)$ neste semiplano. Além disso, 
+    %
+    $$ \lim_{s \to -1} (s+1)F_2(s) = \lim_{s \to -1} \frac{\Gamma(s+2)}{s} = \frac{\Gamma(1)}{-1} = -1 \neq 0$$
+    %
+    e temos $\res(F_2,-1) = -1$. 
+    
+    Continuamos deste modo definindo $F_{n+1} : U_{n+1} \to \C$ por
+    %
+    $$F_{n+1}(s) = \frac{\Gamma(s+n+1)}{(s+n)(s+n-1) \cdots (s+1)s}.$$
+    %
+    Como anteriormente, esta função também é holomorfa e temos
+    %
+    \begin{align*}
+        \lim_{s \to -n} (s+n)F_{n+1}(s) &= \lim_{s \to -n} (s+n)\frac{\Gamma(s+n+1)}{(s+n)(s+n-1) \cdots (s+1)s} \\
+        &= \frac{\Gamma(1)}{(-1)(-2) \cdots [-(n-1)](-n)} = \frac{(-1)^n}{n!}
+    \end{align*}
+    %
+    o resíduo de $F_{n+1}$ em $-n$. 
+    
+    Podemos definir $\Gamma(s)$ por $F_n(s)$ em qualquer semiplano $U_n$ com polos simples nos inteiros negativos maiores que $-n$, ou seja, estendemos $\Gamma$ para uma função meromorfa em $\C$. Esta construção está bem definida pela unicidade das extensões analíticas.
     \end{proof}
     
+    A equação funcional $s\Gamma(s) = \Gamma(s+1)$ é válida para para todo $s \in \C$ que não é polo de $\Gamma$. Para ver isso, basta notar que a função $f(s) = \Gamma(s+1) - s\Gamma(s)$ definida em $\C \setminus \{0, -1, -2, \dots\}$ é nula para $\Re \ s > 0$, logo, é identicamente nula pelo princípio da identidade. 
+    
+    Esta equação funcional é bem conhecida para a função $\Gamma$ real, então poderíamos usar este fato e ter procedido como fizemos aqui para mostrar que ela vale para $\Re \ s > 0$. Bastaria definir $f(s)$ para $\Re \ s > 0$ e usar que ela é nula sobre os reais positivos.
+    
+    
     % a continuar
+    
+    \subsection{A Função Zeta de Riemann}
+    %
+    \begin{center}
+        \red{Introduzir a história da função zeta...}
+    \end{center}
+    %
+    Inicialmente, definimos a função zeta no semi-plano $\Re(s) > 1$
+    por\index{Função!zeta de Riemann}
+    %
+    \[
+    \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} 
+             = \sum_{n=1}^{\infty} \frac{1}{e^{s\ln n}}.
+    \]
+    %
+    Para verificar que $\zeta$ é holomorfa no semi-plano mencionado,
+    vamos usar o Teste-M de Weierstrass.
+    %
+    \begin{center}
+        {\bf DIAGRAMA SLIDE 50 AULA 21}
+    \end{center}
+    %
+    Seja $\delta>1$ e $S_{\delta, +\infty}$  
+    o semi-plano dado por
+    %
+    \[
+    S_{\delta, +\infty} 
+    \equiv 
+    \left\{ s\in\C :\ \Re(s) > \delta \right\}.
+    \]
+    %
+    Para cada $n\in\N$ seja  
+    $f_n: S_{\delta, +\infty}\to\C$
+    a função holomorfa definida por
+    %
+    \[
+    f_n(s) = \frac{1}{n^s} = \exp(-s\ln n).
+    \]
+    %
+    Note que segue diretamente das definições 
+    de $f_n$, $S_{\delta, +\infty}$ e de supremo que
+    %
+    \[
+    \sup_{s\in S_{\delta,+\infty}} |f_n(s)| 
+    = 
+    \sup_{s\in S_{\delta,+\infty}}
+    \exp(-\Re(s)\ln n) 
+    \leq 
+    \exp(-\delta\ln n).
+    \]
+    %
+    Desta estimativa segue que 
+    %
+    \[
+    \sum_{n=1}^{\infty} 
+    \sup_{s\in S_{\delta,+\infty}}|f_n(s)|
+    \leq 
+    \sum_{n=1}^{\infty} \exp(-\delta\ln n)
+    = 
+    \sum_{n=1}^{\infty} \frac{1}{n^\delta}
+    \]
+    %
+    e como $\delta > 1$, podemos garantir que 
+    a série do lado direito da igualdade acima é convergente.
+    Já que cada $f_n$ é holomorfa em $S_{\delta, +\infty}$, segue
+    diretamente do Teste-M de Weierstrass que $\zeta$ define de fato uma holomorfa em
+    $S_{\delta,+\infty}$. 
+    Por fim,
+    como $\delta > 1$ foi tomado arbitrariamente, segue que
+    $\zeta$ é holomorfa em todo semi-plano $\Re(s) > 1$.
+    
+    Agora, vamos mostrar que $\zeta$ admite uma extensão meromorfa a $\C$, com apenas
+    um polo simples em $s=1$ com resíduo 1. Como veremos, o argumento da extensão de
+    $\zeta$ é bem mais delicado que o da extensão da função $\Gamma$. De fato,
+    para realizarmos a extensão vamos precisar considerar, além da função $\Gamma$, 
+    outra função especial:
+    a função teta de Jacobi $\vartheta: \R\to\C$
+    dada por
+    %
+    \begin{equation}
+    \index{Função! Teta de Jacobi}
+    \label{def-funcao-teta-jacobi}
+        \vartheta(t) = \sum_{n=-\infty}^{\infty} e^{-\pi n^2t}.
+    \end{equation}
+    %
+    Assim como $\Gamma$, a função $\vartheta$ também satisfaz uma equação funcional,
+    a saber
+    %
+    \begin{equation}
+    \label{eq-funcional-teta}
+        \vartheta(t) = t^{-1/2}\vartheta\left( \frac{1}{t} \right), \, \forall t\neq 0.
+    \end{equation}
+    %
+    Também vamos precisar das seguintes estimativas:
+    %
+    \begin{itemize}
+        \item $\vartheta(t) \leq Ct^{-1/2}$, $0 < t \leq 1$;
+        \item $|\vartheta(t) - 1| \leq \widetilde{C}e^{-\pi t}$, $t\geq 1$.
+    \end{itemize}
+    %
+    Por comodidade, reunimos estes resultados nos dois lemas a seguir.
+    %
+    \begin{lema}
+    \label{lema-eq-funcional}
+        A função $\vartheta$ satisfaz a equação funcional
+        %
+        \[
+        \vartheta(t) = t^{-1/2}\vartheta\left( \frac{1}{t} \right), \, \forall t\neq 0.
+        \]
+        %
+    \end{lema}
+    %
+    \begin{proof}
+        Para mostrar a validade da equação, vamos utilizar a transformada
+        de Fourier de $f(x) = e^{-\pi x^2}$ e a Fórmula da Soma de Poisson 
+        (Teorema \ref{teo-form-soma-poisson}). Como vimos em
+        \eqref{eq-trans-fourier-gaussiana},
+        %
+        \[
+        \widehat{f}(\xi) = \int_{-\infty}^{\infty} e^{-\pi x^2}e^{-2\pi ix\xi} \, d\xi 
+                         = e^{-\pi \xi^2}.
+        \]
+        %
+        Portanto, a transformada de Fourier de $g(x) = e^{-\pi tx^2}, t > 0$, é dada por
+        %
+        \begin{align*}
+            \widehat{g}(\xi) &= \int_{-\infty}^{\infty} e^{-\pi tx^2}e^{-2\pi ix\xi} \, d\xi \\
+                             &= \int_{-\infty}^{\infty} 
+                             e^{-\pi u^2}e^{-2\pi i\frac{u}{\sqrt{t}}\xi} \frac{1}{\sqrt{t}} \, du \\
+                             &= \frac{1}{\sqrt{t}}
+                             \int_{-\infty}^{\infty} e^{-\pi u^2}e^{-2\pi iu\frac{\xi}{\sqrt{t}}} \, du \\
+                             &= \frac{1}{\sqrt{t}}\exp\left( -\pi \frac{\xi^2}{t} \right),
+        \end{align*}
+        %
+        onde introduzimos a substituição $u = \sqrt{t}x$. Portanto, segue da Fórmula da Soma
+        de Poisson que
+        %
+        \begin{align*}
+            \vartheta(t) = \sum_{n\in\Z} e^{-\pi tn^2}
+                         = \sum_{n\in\Z} g(n) 
+                         = \sum_{n\in\Z} \widehat{g}(n) 
+                         = \frac{1}{\sqrt{t}}\sum_{n\in\Z} e^{-\pi n^2/t}
+                         = \frac{1}{\sqrt{t}}\vartheta\left( \frac{1}{t} \right).
+        \end{align*}
+        %
+    \end{proof}
+    %
+    \begin{lema}
+    \label{lema-estimativas}
+        A função $\vartheta$ satisfaz as estimativas
+        %
+        \begin{itemize}
+            \item $\vartheta(t) \leq Ct^{-1/2}$, $0 < t \leq 1$;
+            \item $|\vartheta(t) - 1| \leq \widetilde{C}e^{-\pi t}$, $t\geq 1$.
+        \end{itemize}
+        %
+    \end{lema}
+    %
+    \begin{proof}
+        Começamos com a primeira estimativa. Pela equação funcional \eqref{eq-funcional-teta},
+        temos
+        %
+        \begin{align*}
+            |\vartheta(t)| &= \frac{1}{\sqrt{t}}\left| \vartheta\left( \frac{1}{t} \right) \right| \\
+                           &= \frac{1}{\sqrt{t}}\left| \sum_{n\in\Z} e^{-\pi n^2/t} \right| \\
+                           &= \frac{1}{\sqrt{t}}\left| 1 + 2\sum_{n=1}^{\infty} e^{-\pi n^2/t} \right| \\
+                           &\leq \frac{1}{\sqrt{t}}\left( 1 + 2\sum_{n=1}^{\infty} e^{-\pi n^2} \right) \\
+                           &= Ct^{-1/2},
+        \end{align*}
+        %
+        onde usamos que $e^{-\pi n^2/t} \leq e^{-\pi n^2}$ para $0 < t \leq 1$ e tomamos
+        $C = 1 + 2\sum_{n=1}^{\infty} e^{-\pi n^2}$.
+        
+        Para o segundo item, basta notarmos que
+        %
+        \begin{align*}
+            |\vartheta(t) - 1| &= \left| \sum_{n\in\Z} e^{-\pi n^2t} - 1 \right| \\
+                               &= \left| 1 + 2\sum_{n=1}^{\infty} e^{-\pi n^2t} - 1 \right| \\
+                               &= 2\sum_{n=1}^{\infty} e^{-\pi n^2t} \\
+                               &\leq 2\sum_{n=1}^{\infty} e^{-\pi nt} \\
+                               &= 2\cdot\frac{e^{-\pi t}}{1 - e^{-\pi t}} \\
+                               &\leq \left( \frac{2}{1 - e^{-\pi}} \right)e^{-\pi t} \\
+                               &= \widetilde{C}e^{-\pi t}.
+        \end{align*}
+        %
+    \end{proof}
+    %
+    Tendo estabelecido esses lemas, podemos começar a analisar as relações entre as funções
+    $\Gamma$, $\zeta$ e $\vartheta$. Um primeiro resultado nesse sentido é o seguinte.
+    %
+    \begin{teorema}
+    \label{teo-zeta-gamma-teta}
+        Para todo $s\in\C$ com $\Re(s) > 1$, vale
+        %
+        \[
+        \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s) 
+        = \frac{1}{2}\int_0^{\infty} u^{s/2 - 1}[\vartheta(u) - 1] \, du.
+        \]
+        %
+    \end{teorema}
+    %
+    \begin{proof}
+        {\red justificar o Fubini}
+        
+        Para provar a identidade desejada, vamos precisar da seguinte equação auxiliar:
+        %
+        \begin{equation}
+        \label{eq-aux-zeta-gamma-teta}
+            \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
+            = \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
+        \end{equation}
+        %
+        Para prová-la, basta considerar a mudança de variáveis $\pi n^2 u = t$ para obter
+        %
+        \begin{align*}
+            \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du 
+            &= \int_0^{\infty} e^{-t}t^{s/2 - 1} \left( \frac{1}{\pi n^2} \right)^{s/2} \, dt \\
+            &= \pi^{-s/2}\frac{1}{n^s}\int_0^{\infty} e^{-t}t^{s/2 - 1} \, dt \\
+            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
+        \end{align*}
+        %
+        Daí, somando a identidade sobre $n\in\N$ e usando o Teorema de Fubini, segue finalmente que
+        %
+        \begin{align*}
+            \sum_{n\in\N} \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
+            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\sum_{n\in\N}\frac{1}{n^s} \\
+            \int_0^{\infty} \left(\sum_{n\in\N} e^{-\pi n^2u}\right) u^{s/2 - 1} \, du 
+            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s) \\
+            \int_0^{\infty} \frac{1}{2}[\vartheta(u) - 1] u^{s/2 - 1} \, du
+            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s).
+        \end{align*}
+        %
+    \end{proof}
+    %
+    Esse último teorema merece alguns comentários. Observe, primeiramente, que o lado esquerdo
+    da identidade contém uma função inteira, $\pi^{s/2}$, uma função meromorfa em $\C$ com
+    polos simples nos inteiros pares não positivos, $\Gamma(s/2)$, e uma função holomorfa em
+    $\Re(s) > 1$. Portanto, se definirmos $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ por
+    %
+    \[
+    \xi(s) = \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s),
+    \]
+    %
+    segue que ela é uma função holomorfa no semi-plano $\Re(s) > 1$.
+    %
+    \begin{teorema}
+    \label{teo-form-reflexao-xi}
+        A função $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ admite uma continuação analítica a todo
+        $\C$ como uma função meromorfa com polos simples em $s=0$ e $s=1$. Ademais, ela satisfaz
+        a seguinte equação funcional
+        %
+        \[
+        \xi(s) = \xi(1-s), \, \forall s\in\C\setminus\{0,1\}.
+        \]
+        %
+    \end{teorema}
+    %
+    \begin{proof}
+        Por comodidade, consideramos a função auxiliar $\psi:\R_+\to\C$ dada por
+        %
+        \[
+        \psi(u) = \frac{1}{2}[\vartheta(u) - 1].
+        \]
+        %
+        A partir da equação funcional de $\vartheta$, deduzimos a seguinte equação funcional
+        para $\psi$:
+        %
+        \begin{align*}
+            \psi(u) &= \frac{1}{2}\left[\frac{1}{\sqrt{u}}\vartheta\left( \frac{1}{u} \right) - 1\right] \\
+                    &= \frac{1}{2}\left[\frac{1}{\sqrt{u}}
+                    \left( \vartheta\left( \frac{1}{u} \right) - 1 + 1 \right) - 1\right] \\
+                    &= \frac{1}{2}\left[\frac{1}{\sqrt{u}}
+                    \left( 2\psi\left( \frac{1}{u} \right) + 1 \right) - 1\right] \\
+                    &= \frac{1}{\sqrt{u}}\psi\left( \frac{1}{u} \right) + \frac{1}{2\sqrt{u}} - \frac{1}{2}.
+        \end{align*}
+        %
+        Agora, do Teorema \ref{teo-zeta-gamma-teta}, sabemos que
+        %
+        \begin{align*}
+            \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s) 
+            = \int_0^{\infty} u^{s/2 - 1}\frac{1}{2}[\vartheta(u) - 1] \, du
+            = \int_0^{\infty} u^{s/2 - 1}\psi(u) \, du.
+        \end{align*}
+        %
+        Para calcular esta última integral, vamos dividi-la em duas parcelas e controlar
+        cada uma delas:
+        %
+        \[
+        \int_0^{\infty} u^{s/2 - 1}\psi(u) \, du
+        = \int_0^1 u^{s/2 - 1}\psi(u) \, du + \int_1^{\infty} u^{s/2 - 1}\psi(u) \, du.
+        \]
+        %
+        Para calcular a parcela do lado esquerdo, usamos a equação funcional de $\psi$:
+        %
+        \begin{align*}
+            \int_0^1 u^{s/2 - 1}\psi(u) \, du 
+            &= \int_0^1 u^{s/2 - 1}\left[
+            \frac{1}{\sqrt{u}}\psi\left(\frac{1}{u}\right) + \frac{1}{2\sqrt{u}} - \frac{1}{2}
+            \right] \, du \\
+            &= \int_0^1\left[
+            u^{s/2 - 1}u^{-1/2}\psi\left(\frac{1}{u}\right) + \frac{u^{s/2 - 3/2}}{2} - \frac{u^{s/2 - 1}}{2}
+            \right] \, du \\
+            &= \frac{u^{s/2 - 1/2}}{s-1}\Bigg|_0^1 - \frac{u^{s/2}}{s}\Bigg|_0^1 
+            + \int_0^1 u^{s/2 - 1}u^{-1/2}\psi\left(\frac{1}{u}\right) \, du \\
+            &= \frac{1}{s-1} - \frac{1}{s} + \int_0^1 u^{s/2 - 3/2}\psi\left(\frac{1}{u}\right) \, du \\
+            &= \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} v^{-s/2 - 1/2}\psi(v) \, dv.
+        \end{align*}
+        %
+        Daí, segue que
+        %
+        \begin{align*}
+            \int_0^{\infty} u^{s/2 - 1}\psi(u) \, du
+            = \frac{1}{s-1} + \frac{1}{s} + 
+            \int_1^{\infty} \left[u^{-s/2 - 1/2} + u^{s/2 - 1}\right]\psi(u) \, du.
+        \end{align*}
+        %
+        Agora, vamos mostrar que a integral no lado direito define uma função holomorfa de $s$.
+        Para tanto, defina
+        %
+        \[
+        g_n(s) = \int_1^n \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du.
+        \]
+        %
+        Daí, dada uma curva de Jordan suave por partes $\y\subseteq\C$, temos
+        %
+        \begin{align*}
+            \int_{\y} g_n(s) \, ds 
+            &=\int_{\y} \left( 
+            \int_1^n \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du \right) \, ds \\
+            &= \int_1^n \psi(u) \int_{\y} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \, ds \, du \\
+            &= 0.
+        \end{align*}
+        %
+        Vamos considerar agora a restrição de $g_n$ à faixa
+        %
+        \[
+        S_{-M, M} = \{ s\in\C : -M \leq \Re(s)\leq M \}
+        \]
+        %
+        e mostrar que as restrições convergem uniformemente para $g:S_{-M, M}\to\C$ dada por
+        %
+        \[
+        g(s) = \int_1^{\infty} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du.
+        \]
+        %
+        Já sabemos que $g$ está bem definida em $\Re(s) > 1$. Para mostrar que $g$ está bem
+        definida em toda a faixa $S_{-M, M}$, basta mostrarmos que
+        %
+        \[
+        \int_1^{\infty} \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| \, du < +\infty,
+        \, \forall s\in S_{-M, M}.
+        \]
+        %
+        De fato, para $u\geq 1$ temos que
+        %
+        \[
+        |u^{s/2 - 1} + u^{-s/2 - 1/2}| \leq 2u^{|\Re(s)|/2 - 1/2} \leq 2u^{M/2 - 1/2} \leq 2u^K,
+        \]
+        %
+        sendo $K = M/2 - 1/2$. Daí, notando que
+        %
+        \[
+        |\vartheta(u) - 1| \leq \widetilde{C}e^{-\pi u} \iff |\psi(u)| \leq \widetilde{C'}e^{-\pi u},
+        \]
+        %
+        segue que
+        %
+        \begin{align*}
+        \int_1^{\infty} \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| \, du
+        &\leq \int_1^{\infty} \left( 2u^K\widetilde{C'}e^{-\pi u/2} \right)e^{-\pi u/2}\, du \\
+        &\leq \widetilde{K}\int_1^{\infty} e^{-\pi u/2} \, du \\
+        &< +\infty.
+        \end{align*}
+        %
+        Usando estimativas idênticas às acima, podemos ver que
+        %
+        \begin{align*}
+            |g_n(s) - g(s)| 
+            &\leq \int_n^{\infty} \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| \, du \\
+            &\leq \widetilde{K}\int_n^{\infty} e^{-\pi u/2} \, du \\
+            &= \widetilde{\widetilde{K}} e^{-\pi n/2} \xrightarrow{n\to\infty} 0.
+        \end{align*}
+        %
+        Como $g_n$ é analítica e converge uniformemente para $g$ na faixa $S_{-M, M}$, segue que
+        $g$ é analítica em $S_{-M, M}$. Por fim, como $M$ foi tomado arbitrariamente, segue que a
+        aplicação
+        %
+        \[
+        s \mapsto \int_1^{\infty} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du
+        \]
+        %
+        define uma função inteira.
+    \end{proof}
+    %
