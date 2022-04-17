@@ -3824,7 +3824,7 @@
         %
         \begin{align*}
             \int_0^{\infty} u^{s/2 - 1}\psi(u) \, du
-            = \frac{1}{s-1} + \frac{1}{s} + 
+            = \frac{1}{s-1} - \frac{1}{s} + 
             \int_1^{\infty} \left[u^{-s/2 - 1/2} + u^{s/2 - 1}\right]\psi(u) \, du.
         \end{align*}
         %
@@ -3904,5 +3904,73 @@
         \]
         %
         define uma função inteira.
+        
+        Considere então a extensão meromorfa de $\xi$ dada pelo lado direito da igualdade
+        %
+        \[
+        \xi(s) = \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} [u^{s/2 - 1} + u^{-s/2 - 1/2}]\psi(u) \, du.
+        \]
+        %
+        É imediato verificar que $\xi(s) = \xi(1-s)$:
+        %
+        \begin{align*}
+            \xi(1-s) &= \frac{1}{1-s-1} - \frac{1}{1-s} 
+            + \int_1^{\infty} [u^{1/2 - s/2 - 1} + u^{-1/2 + s/2 - 1/2}]\psi(u) \, du \\
+            &= \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} [u^{s/2 - 1} + u^{-s/2 - 1/2}]\psi(u) \, du \\
+            &= \xi(s).
+        \end{align*}
+        %
+    \end{proof}
+    %
+    Com esse teorema, podemos olhar agora para a função $\zeta$.
+    %
+    \begin{teorema}
+    \label{teo-cont-zeta}
+        A função $\zeta:\{ s\in\C : \Re(s) > 1 \} \to \C$ admite uma continuação meromorfa a todo $\C$,
+        com apenas um polo simples em $s=1$ com resíduo $1$.
+    \end{teorema}
+    %
+    \begin{proof}
+        Já sabemos que para todo $s\in\C$ tal que $\Re(s) > 1$ vale
+        %
+        \[
+        \xi(s) = \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s).
+        \]
+        %
+        Também sabemos que, nessa região, $\Gamma(s/2)\neq 0$. Portanto, é lícito escrever
+        %
+        \[
+        \zeta(s) = \pi^{s/2}\frac{1}{\Gamma(s/2)}\xi(s), \, \forall s\in\C, \, \Re(s) > 1.
+        \]
+        %
+        Como $1/\Gamma$ é uma função inteira com zeros de multiplicidade 1 nos inteiros não positivos,
+        segue que existe $g:\C\to\C$ holomorfa com $g(0)\neq 0$ tal que
+        %
+        \[
+        \frac{1}{\Gamma(s)} = sg(s) \implies \frac{1}{\Gamma(s/2)} = \frac{s}{2}\cdot g(s/2).
+        \]
+        %
+        Portanto,
+        %
+        \begin{align*}
+            \zeta(s) &= \pi^{s/2}\frac{s}{2}g(s/2)\left( \frac{1}{s-1} - \frac{1}{s} + h(s) \right) \\
+                     &= \frac{\pi^{s/2}}{2}\left( \frac{s}{s-1} - 1 + sh(s) \right)g(s/2),
+        \end{align*}
+        %
+        sendo $h(s)$ a função holomorfa dada no teorema anterior. O lado direito da identidade acima
+        é a extensão procurada, haja vista que define uma função holomorfa em $\C\setminus\{1\}$.
+        Resta, portanto, mostrar que $s=1$ é polo simples e calcular seu resíduo. Para tanto,
+        basta calcular
+        %
+        \begin{align*}
+            \lim_{s\to 1} (s-1)\zeta(s) 
+            &= \lim_{s\to 1} \frac{\pi^{s/2}}{2}\left( s - (s-1) + (s-1)sh(s) \right)g(s/2) \\
+            &= \frac{\pi^{1/2}}{2}\lim_{s\to 1} sg(s/2) \\
+            &= \frac{\pi^{1/2}}{2}\lim_{s\to 1} \frac{2}{\Gamma(s/2)} \\
+            &= \frac{\pi^{1/2}}{2}\cdot\frac{2}{\Gamma(1/2)} \\
+            &= \frac{\pi^{1/2}}{2}\cdot\frac{2}{\pi^{1/2}} \\
+            &= 1.
+        \end{align*}
+        %
     \end{proof}
     %
