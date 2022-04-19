@@ -3530,9 +3530,9 @@
     Para verificar que $\zeta$ é holomorfa no semi-plano mencionado,
     vamos usar o Teste-M de Weierstrass.
     %
-    \begin{center}
-        {\bf DIAGRAMA SLIDE 50 AULA 21}
-    \end{center}
+    \begin{figure}[H]\centering
+        \includegraphics{Figuras/S delta infinito.pdf}
+    \end{figure}
     %
     Seja $\delta>1$ e $S_{\delta, +\infty}$  
     o semi-plano dado por
@@ -3635,19 +3635,24 @@
                          = e^{-\pi \xi^2}.
         \]
         %
-        Portanto, a transformada de Fourier de $g(x) = e^{-\pi tx^2}, t > 0$, é dada por
+        Portanto, para cada $t>0$ fixado, podemos 
+        obter a transformada de Fourier de $g(x) = e^{-\pi tx^2}$, 
+        como segue
         %
         \begin{align*}
-            \widehat{g}(\xi) &= \int_{-\infty}^{\infty} e^{-\pi tx^2}e^{-2\pi ix\xi} \, d\xi \\
-                             &= \int_{-\infty}^{\infty} 
-                             e^{-\pi u^2}e^{-2\pi i\frac{u}{\sqrt{t}}\xi} \frac{1}{\sqrt{t}} \, du \\
-                             &= \frac{1}{\sqrt{t}}
-                             \int_{-\infty}^{\infty} e^{-\pi u^2}e^{-2\pi iu\frac{\xi}{\sqrt{t}}} \, du \\
-                             &= \frac{1}{\sqrt{t}}\exp\left( -\pi \frac{\xi^2}{t} \right),
+            \widehat{g}(\xi) &= 
+            \int_{-\infty}^{\infty} e^{-\pi tx^2}e^{-2\pi ix\xi} \, dx 
+            \\[0.3cm]
+             &= \int_{-\infty}^{\infty} 
+             e^{-\pi u^2}e^{-2\pi i\frac{u}{\sqrt{t}}\xi} \frac{1}{\sqrt{t}} \, du \\[0.3cm]
+             &= \frac{1}{\sqrt{t}}
+             \int_{-\infty}^{\infty} e^{-\pi u^2}e^{-2\pi iu\frac{\xi}{\sqrt{t}}} \, du \\[0.3cm]
+             &= \frac{1}{\sqrt{t}}\exp\left( -\pi \frac{\xi^2}{t} \right),
         \end{align*}
         %
-        onde introduzimos a substituição $u = \sqrt{t}x$. Portanto, segue da Fórmula da Soma
-        de Poisson que
+        onde na segunda igualdade acima usamos a mudança de variáveis
+        $u = \sqrt{t}x$. 
+        Agora, aplicando a Fórmula da Soma de Poisson obtemos
         %
         \begin{align*}
             \vartheta(t) = \sum_{n\in\Z} e^{-\pi tn^2}
@@ -3683,9 +3688,9 @@
         \end{align*}
         %
         onde usamos que $e^{-\pi n^2/t} \leq e^{-\pi n^2}$ para $0 < t \leq 1$ e tomamos
-        $C = 1 + 2\sum_{n=1}^{\infty} e^{-\pi n^2}$.
+        $C \equiv 1 + 2\sum_{n=1}^{\infty} e^{-\pi n^2}$.
         
-        Para o segundo item, basta notarmos que
+        Para o segundo item, basta observar que
         %
         \begin{align*}
             |\vartheta(t) - 1| &= \left| \sum_{n\in\Z} e^{-\pi n^2t} - 1 \right| \\
@@ -3700,7 +3705,75 @@
     \end{proof}
     %
     Tendo estabelecido esses lemas, podemos começar a analisar as relações entre as funções
-    $\Gamma$, $\zeta$ e $\vartheta$. Um primeiro resultado nesse sentido é o seguinte.
+    $\Gamma$, $\zeta$ e $\vartheta$. 
+    Um dos resultados mais importantes envolvendo a relação entre estas
+    três funções é o Teorema \ref{teo-zeta-gamma-teta} abaixo. Antes de
+    apresentar a prova deste teorema vamos precisar um lema auxiliar. 
+    
+    \begin{lema}
+    \label{lema-aux-teo-zeta-gamma-teta}
+    Para todo $s\in \C$ tal que $\Re(s)>1$, vale a identidade mostrada abaixo. 
+    Além do mais, as séries e integrais que aparecem nesta expressão são todas convergentes.
+    \begin{equation}
+        \label{eq-aux1-lema-int-sum-teta}
+        \sum_{n=1}^{\infty}\int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
+        =
+        \int_0^{\infty}\sum_{n=1}^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
+    \end{equation}
+    \end{lema}
+    \begin{proof}
+        Vamos começar mostrando que a série que aparece no lado 
+        esquerdo de \eqref{eq-aux1-lema-int-sum-teta} é absolutamente convergente para todo $s\in \C$ tal que $\Re(s)>1$. 
+        
+        Para provar esta convergência é necessário 
+        obter uma expressão mais simples que 
+        permita entender o comportamento assintótico da $n$-ésima parcela 
+        desta soma quando, $n\to\infty$. 
+        Isto pode ser feito usando o Teorema da Mudança de Variáveis,
+        fazendo $\pi n^2 u = t$, e a definição da função Gama
+        como segue:
+       \begin{align}
+       \label{eq-aux2-lema-int-sum-teta}
+            \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du 
+            &= \int_0^{\infty} e^{-t}t^{s/2 - 1} \left( \frac{1}{\pi n^2} \right)^{s/2} \, dt 
+            \nonumber\\[0.3cm]
+            &= \pi^{-s/2}\frac{1}{n^s}\int_0^{\infty} e^{-t}t^{s/2 - 1} \, dt 
+            \nonumber\\[0.3cm]
+            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
+        \end{align}
+        Já que o lado direito da expressão acima é absolutamente somável, 
+        quando $\Re(s)>1$, podemos concluir que a série que 
+        aparece no lado esquerdo 
+        de \eqref{eq-aux1-lema-int-sum-teta} é convergente.
+        
+        
+        Sobre o lado direito da igualdade \eqref{eq-aux1-lema-int-sum-teta}
+        primeiro observamos que a série que aparece nesta expressão,
+        isto é, 
+        \[
+        \sum_{n=1}^{\infty} e^{-\pi n^2u}
+        \]
+        é convergente, para todo $u>0$, 
+        por uma aplicação direta do teste da raíz $n$-ésima. 
+        Além do mais, segue do teste M de Weierstrass que para cada $s$ fixado que a aplicação 
+        \[
+        u\longmapsto \sum_{n=1}^{\infty} e^{-\pi n^2u} u^{s/2-1}  
+        \]
+        é holomorfa no semiplano $\{u\in \C: \Re(u)>\delta\}$ para 
+        todo $\delta>0$. Consequentemente, como $\delta>0$ é arbitrário segue que a aplicação acima define uma função complexa contínua em $(0,+\infty)$ e portanto Riemann integrável em cada um dos intervalos limitados e fechados desta semi-reta.
+        
+        Próximo passo na prova do lema é mostrar que para cada $s\in \C$, com $\Re(s)>1$ fixado, o limite abaixo existe
+        \[
+        \lim_{N\to\infty}
+        \int_0^{\infty}\sum_{n=N}^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
+        =
+        0.
+        \]
+        
+        
+        
+        
+    \end{proof}
     %
     \begin{teorema}
     \label{teo-zeta-gamma-teta}
@@ -3724,43 +3797,64 @@
             = \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
         \end{equation}
         %
-        Para prová-la, basta considerar a mudança de variáveis $\pi n^2 u = t$ para obter
+        Para prová-la, basta considerar a mudança 
+        de variáveis $\pi n^2 u = t$ e observar que
         %
-        \begin{align*}
-            \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du 
-            &= \int_0^{\infty} e^{-t}t^{s/2 - 1} \left( \frac{1}{\pi n^2} \right)^{s/2} \, dt \\
-            &= \pi^{-s/2}\frac{1}{n^s}\int_0^{\infty} e^{-t}t^{s/2 - 1} \, dt \\
-            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
-        \end{align*}
+        Somando a identidade acima sobre $n\in\N$ e 
+        mudando a ordem da soma e de integração, segue finalmente que
         %
-        Daí, somando a identidade sobre $n\in\N$ e usando o Teorema de Fubini, segue finalmente que
-        %
-        \begin{align*}
+        \[
+        \begin{array}{c}
+            \displaystyle
             \sum_{n\in\N} \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
-            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\sum_{n\in\N}\frac{1}{n^s} \\
+            = 
+            \displaystyle\pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\sum_{n\in\N}\frac{1}{n^s} 
+            \\[0.5cm]
+            \big\Downarrow
+            \\[0.5cm]
+            \displaystyle
             \int_0^{\infty} \left(\sum_{n\in\N} e^{-\pi n^2u}\right) u^{s/2 - 1} \, du 
-            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s) \\
+            = 
+            \displaystyle\pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s) 
+            \\[0.5cm]
+            \big\Downarrow
+            \\[0.5cm]
+            \displaystyle
             \int_0^{\infty} \frac{1}{2}[\vartheta(u) - 1] u^{s/2 - 1} \, du
-            &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s).
-        \end{align*}
+            = 
+            \displaystyle
+            \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s).
+        \end{array}
+        \]
         %
     \end{proof}
+    
+    \bigskip 
+    
+    
     %
-    Esse último teorema merece alguns comentários. Observe, primeiramente, que o lado esquerdo
-    da identidade contém uma função inteira, $\pi^{s/2}$, uma função meromorfa em $\C$ com
-    polos simples nos inteiros pares não positivos, $\Gamma(s/2)$, e uma função holomorfa em
-    $\Re(s) > 1$. Portanto, se definirmos $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ por
+    Esse último teorema merece alguns comentários. 
+    Observe, primeiramente, que o lado esquerdo
+    da identidade contém: 
+    uma função inteira, $\pi^{s/2}$; 
+    uma função meromorfa em $\C$ com
+    polos simples nos inteiros pares não positivos, $\Gamma(s/2)$; 
+    e uma função holomorfa em $\Re(s) > 1$. 
+    
+    Portanto a função $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ dada por
     %
     \[
     \xi(s) = \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s),
     \]
     %
-    segue que ela é uma função holomorfa no semi-plano $\Re(s) > 1$.
+    define uma função holomorfa no semi-plano $\Re(s) > 1$.
     %
     \begin{teorema}
     \label{teo-form-reflexao-xi}
-        A função $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ admite uma continuação analítica a todo
-        $\C$ como uma função meromorfa com polos simples em $s=0$ e $s=1$. Ademais, ela satisfaz
+        A função $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ 
+        admite uma continuação meromorfa em $\C$, 
+        com polos simples em $s=0$ e $s=1$. 
+        Ademais, ela satisfaz
         a seguinte equação funcional
         %
         \[
@@ -3828,7 +3922,7 @@
             \int_1^{\infty} \left[u^{-s/2 - 1/2} + u^{s/2 - 1}\right]\psi(u) \, du.
         \end{align*}
         %
-        Agora, vamos mostrar que a integral no lado direito define uma função holomorfa de $s$.
+        Agora, vamos mostrar que a integral no lado direito define uma função holomorfa da variável complexa $s$.
         Para tanto, defina
         %
         \[
@@ -3899,9 +3993,12 @@
         $g$ é analítica em $S_{-M, M}$. Por fim, como $M$ foi tomado arbitrariamente, segue que a
         aplicação
         %
-        \[
-        s \mapsto \int_1^{\infty} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du
-        \]
+        \begin{equation}
+        \label{eq-aux1-cont-analitica-xi}
+        s 
+        \longmapsto 
+        \int_1^{\infty} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du
+        \end{equation}
         %
         define uma função inteira.
         
@@ -3940,37 +4037,211 @@
         Também sabemos que, nessa região, $\Gamma(s/2)\neq 0$. Portanto, é lícito escrever
         %
         \[
-        \zeta(s) = \pi^{s/2}\frac{1}{\Gamma(s/2)}\xi(s), \, \forall s\in\C, \, \Re(s) > 1.
+        \zeta(s) 
+        = 
+        \pi^{s/2}\frac{1}{\Gamma(s/2)}\xi(s), 
+        \qquad \forall s\in\C, \, \Re(s) > 1.
         \]
         %
-        Como $1/\Gamma$ é uma função inteira com zeros de multiplicidade 1 nos inteiros não positivos,
-        segue que existe $g:\C\to\C$ holomorfa com $g(0)\neq 0$ tal que
+        Como $1/\Gamma$ é uma função inteira com zeros 
+        de multiplicidade 1 nos inteiros pares não positivos,
+        podemos afirmar 
+        que existe uma função 
+        $g:\C\to\C$ holomorfa com $g(0)\neq 0$ tal que
         %
         \[
-        \frac{1}{\Gamma(s)} = sg(s) \implies \frac{1}{\Gamma(s/2)} = \frac{s}{2}\cdot g(s/2).
+        \frac{1}{\Gamma(s)} = s\, g(s) 
+        \qquad\implies\qquad
+        \frac{1}{\Gamma(s/2)} = \frac{s}{2}\cdot g\Big(\frac{s}{2}\Big).
         \]
         %
         Portanto,
         %
         \begin{align*}
-            \zeta(s) &= \pi^{s/2}\frac{s}{2}g(s/2)\left( \frac{1}{s-1} - \frac{1}{s} + h(s) \right) \\
-                     &= \frac{\pi^{s/2}}{2}\left( \frac{s}{s-1} - 1 + sh(s) \right)g(s/2),
+            \zeta(s) &= 
+            \pi^{s/2}\frac{1}{\Gamma(s/2)}\xi(s)
+            \\[0.3cm]
+            &=
+            \pi^{s/2}\ \frac{s}{2}\ g\Big(\frac{s}{2}\Big)
+            \left( \frac{1}{s-1} - \frac{1}{s} + h(s) \right) 
+            \\[0.3cm]
+            &= \frac{\pi^{s/2}}{2}\left( \frac{s}{s-1} - 1 + s\, h(s) \right)g\Big(\frac{s}{2}\Big),
         \end{align*}
         %
-        sendo $h(s)$ a função holomorfa dada no teorema anterior. O lado direito da identidade acima
-        é a extensão procurada, haja vista que define uma função holomorfa em $\C\setminus\{1\}$.
-        Resta, portanto, mostrar que $s=1$ é polo simples e calcular seu resíduo. Para tanto,
+        sendo $h$ a função inteira que aparece em \eqref{eq-aux1-cont-analitica-xi} 
+        ao longo 
+        da prova do teorema anterior. 
+        O lado direito da identidade acima
+        é a extensão procurada, 
+        haja vista que define uma função holomorfa em $\C\setminus\{1\}$.
+        Resta, portanto, mostrar que $s=1$ é 
+        polo simples e calcular seu resíduo. Para tanto,
         basta calcular
         %
         \begin{align*}
             \lim_{s\to 1} (s-1)\zeta(s) 
-            &= \lim_{s\to 1} \frac{\pi^{s/2}}{2}\left( s - (s-1) + (s-1)sh(s) \right)g(s/2) \\
-            &= \frac{\pi^{1/2}}{2}\lim_{s\to 1} sg(s/2) \\
-            &= \frac{\pi^{1/2}}{2}\lim_{s\to 1} \frac{2}{\Gamma(s/2)} \\
-            &= \frac{\pi^{1/2}}{2}\cdot\frac{2}{\Gamma(1/2)} \\
-            &= \frac{\pi^{1/2}}{2}\cdot\frac{2}{\pi^{1/2}} \\
+            &= \lim_{s\to 1} \frac{\pi^{s/2}}{2}\Big( s - (s-1) + (s-1)\,s\,h(s) \Big)g\Big(\frac{s}{2}\Big)\\[0.3cm]
+            &= \frac{\pi^{1/2}}{2}\lim_{s\to 1} \left[ s\, g\Big(\frac{s}{2}\Big)\right] \\[0.3cm]
+            &= \frac{\pi^{1/2}}{2}\lim_{s\to 1} \frac{2}{\Gamma(s/2)} \\[0.3cm]
+            &= \frac{\pi^{1/2}}{2}\cdot\frac{2}{\Gamma(1/2)} \\[0.3cm]
+            &= \frac{\pi^{1/2}}{2}\cdot\frac{2}{\pi^{1/2}} \\[0.3cm]
             &= 1.
         \end{align*}
+        %
+    \end{proof}
+    %
+    A seguir, vamos mostrar uma representação da função $\zeta$
+    em termos de um produtório.
+    %
+    \begin{teorema}
+    \label{teo-form-prod-euler}
+    \index{Fórmula!do Produto de Euler}
+        Para todo $s\in\C$ tal que $\Re(s) > 1$, vale
+        %
+        \[
+        \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}
+                 = \prod_{p\in\mathbb{P}} \left(
+                 1 - \frac{1}{p^s} \right)^{-1}
+        \]
+        %
+        e, além disso, $\zeta(s)\neq 0, \, \forall s\in\C$ tal que 
+        $\Re(s) > 1$.
+    \end{teorema}
+    %
+    \begin{proof}
+        Nesta prova, é de importância fundamental o fato de que a
+        série de Dirichlet
+        %
+        \[
+        \sum_{n=1}^{\infty} \frac{1}{n^s}
+        \]
+        %
+        converge {\bf absolutamente} no semi-plano $\Re(s) > 1$.
+        
+        Com isso em mente, note que
+        %
+        \begin{equation}
+        \label{eq:tirando-pares-form-prod}
+        \tag{$\star$}
+            \frac{1}{2^s}\zeta(s) 
+            = \frac{1}{2^s}\left(
+            1 + \frac{1}{2^s} + \frac{1}{2^s} 
+            + \frac{1}{3^s} + \frac{1}{4^s}
+            + \frac{1}{5^s} + \cdots
+            \right)
+            = \frac{1}{2^s} + \frac{1}{4^s} + \frac{1}{6^s}
+            + \frac{1}{8^s} + \frac{1}{10^s} + \cdots.
+        \end{equation}
+        %
+        Daí, subtraindo \eqref{eq:tirando-pares-form-prod} da expressão
+        em série de Dirichlet de $\zeta$, temos
+        %
+        \begin{equation}
+        \label{eq:zeta-sem-pares}
+        \tag{$\star\star$}
+            \left( 1 - \frac{1}{2^s} \right)\zeta(s) 
+            = 1 + \frac{1}{3^s} + \frac{1}{5^s} 
+            + \frac{1}{7^s} + \frac{1}{9^s} + \cdots.
+        \end{equation}
+        %
+        Antes de seguir para o próximo passo, é importante frisar um
+        ponto: a priori, se $A$ é um conjunto infinito enumerável qualquer,
+        então o símbolo
+        %
+        \[
+        \sum_{n\in A} a_n
+        \]
+        %
+        não está bem definido. De fato, se essa série for condicionalmente
+        convergente, então o símbolo acima poderia tomar qualquer valor
+        real, bastando apenas somar os termos em uma ordem adequada.
+        Por outro lado, se a série convergir absolutamente, então a ordem
+        em que somarmos não será relevante e, nesse caso, o símbolo acima
+        está bem definido.
+        No nosso caso, todas as séries são absolutamente convergentes e,
+        portanto, usaremos essa notação.
+        
+        A ideia da demonstração é continuar esse processo, por
+        indução, para os demais primos. Para tanto, vamos denotar
+        %
+        \[
+        p\N = \{ p, 2p, 3p, \dots \}
+        \]
+        %
+        e
+        %
+        \[
+        \N(2, 3, \dots, p_n) 
+        = \{ 2, 3, 4, \dots \} 
+        \setminus \bigcup_{p\in\{2, 3, \dots, p_n\}} p\N,
+        \]
+        %
+        sendo $p_n$ o $n$-ésimo primo.
+        Daí, podemos reescrever \eqref{eq:zeta-sem-pares} como
+        %
+        \[
+        \sum_{n\in\N(2)} \frac{1}{n^s}.
+        \]
+        %
+        Procedendo analogamente, temos que
+        %
+        \[
+        \frac{1}{3^s}\left( 1 - \frac{1}{2^s} \right)\zeta(s)
+        = \frac{1}{3^s} + \frac{1}{9^s} + \frac{1}{15^s} + \cdots
+        \]
+        %
+        e, portanto,
+        %
+        \[
+        \left(1 - \frac{1}{3^s}\right)\left(1 - \frac{1}{2^s}\right)\zeta(s)
+        = 1 + \frac{1}{5^s} + \frac{1}{7^s} + \frac{1}{11^s} + \cdots
+        = 1 + \sum_{n\in\N(2,3)} \frac{1}{n^s}.
+        \]
+        %
+        Segue então por indução que
+        %
+        \begin{align*}
+            \left(1 - \frac{1}{p_n^s}\right)
+            \cdots
+            \left(1 - \frac{1}{3^s}\right)
+            \left(1 - \frac{1}{2^s}\right)\zeta(s)
+            &= 1 + \sum_{n\in\N(2,3, \dots, p_n)} \frac{1}{n^s} 
+            \\[0.5cm]
+            \big\Downarrow
+            \\[0.5cm]
+            \left|
+            \prod_{j=1}^n \left(1 - \frac{1}{p_j^s}\right) - 1
+            \right|
+            = \left|
+            \sum_{n\in\N(2,3, \dots, p_n)} \frac{1}{n^s}
+            \right|
+            &\leq \sum_{j=p_n}^{\infty} \left|\frac{1}{j^s}\right|,
+            \, \forall n\geq 1.
+        \end{align*}
+        %
+        Como a cauda da série de Dirichlet de $\zeta$ converge para $0$,
+        segue que
+        %
+        \[
+        \left[
+        \lim_{n\to\infty} \prod_{j=1}^n \left(1 - \frac{1}{p_j^s}\right)
+        \right]
+        = 1
+        \iff
+        \prod_{p\in\mathbb{P}} \left(1 - \frac{1}{p^s}\right)\zeta(s)
+        = 1.
+        \]
+        %
+        Segue dessa igualdade que $\zeta(s)\neq 0$ no semi-plano
+        $\Re(s) > 1$. Por fim, lembrando que se uma sequência
+        $(b_n)_{n\in\N}\subseteq\C$ é tal que $b_n\to b\neq 0$
+        então $1/b_n \to 1/b$, podemos reescrever a identidade
+        acima como
+        %
+        \[
+        \zeta(s) 
+        = \prod_{p\in\mathbb{P}} \left(1 - \frac{1}{p^s}\right)^{-1}.
+        \]
         %
     \end{proof}
     %
