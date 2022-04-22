@@ -2807,7 +2807,8 @@
         %
         desde que o último limite exista em $\overline{\C} = \C\cup\{\infty\}$. Intuitivamente,
         $\y:\R\to\C$ seria um caminho ``infinito''; entretanto, vamos reservar o termo ``caminho''
-        para $\y:[0,1]\to\C$.
+        para aplicações da forma $\y:[a,b]\to\C$, 
+        onde $[a,b]$ é um intervalo limitado e fechado da reta.
         
     \subsection{A Transformada de Fourier}
         %
@@ -2871,7 +2872,8 @@
         que existe uma constante $A>0$ tal que
         %
         \begin{equation*}
-            |f(x+iy)| \leq \frac{A}{1 + x^2}, \, \forall x\in\R, |y|<a.
+            |f(x+iy)| \leq \frac{A}{1 + x^2}, 
+            \qquad \forall x\in\R, |y|<a.
         \end{equation*}
         %
         \begin{figure}[H]\centering 
@@ -3047,7 +3049,7 @@
             \label{fig:cont-transf-fourier-gaussiana}
         \end{figure}
         %
-        Os caminhos suaves $\y_1,\y_2,\y_3$ e $\y_4$ podem ser parametrizadas da seguinte forma:
+        Os caminhos suaves $\y_1,\y_2,\y_3$ e $\y_4$ podem ser parametrizados da seguinte forma:
         %
         \begin{equation*}
             \begin{array}{ll}
@@ -3090,10 +3092,10 @@
             \int_{0}^{\xi} \exp(-\pi R^2) |\exp(-2\pi iRt)| \exp(\pi t^2) \, dt
             \\[0.3cm]
             &\leqslant
-            \int_{0}^{\xi} \exp(-\pi R^2)\, dt
+            \int_{0}^{\xi} \exp(-\pi R^2)\exp(\pi t^2) \, dt
             \\[0.3cm]
             &=
-            \xi \exp(-\pi R^2).
+            \xi\exp(\pi \xi^2) \exp(-\pi R^2).
         \end{align*}
         %
         De maneira completamente análoga podemos estimar a integral de $g$ ao longo de $\y_4$.
@@ -3253,7 +3255,8 @@
             Se $f\in\F_a$ para algum $a>0$, então
             %
             \begin{equation*}
-                |\widehat{f}(\xi)| \leq Be^{-2\pi b|\xi|}, \forall 0\leq b < a.
+                |\widehat{f}(\xi)| \leq Be^{-2\pi b|\xi|}, 
+                \qquad\forall 0\leq b < a.
             \end{equation*}
             %
         \end{teorema}
@@ -3691,14 +3694,27 @@
                 %\\[0.3cm]
                 &= \int_{\y^1} f(z) e^{-2\pi i z} 
                 \sum_{n=0}^{\infty} e^{-2\pi i nz}\,dz 
-                + \int_{\y^2} f(z)(-1) \sum_{n=0}^{\infty} e^{2\pi i nz}\,dz\\[0.3cm]
-                &= \int_{-\infty}^{\infty}f(\xi - ib)e^{-2\pi i (\xi - ib)}
+                + \int_{\y^2} f(z)(-1) \sum_{n=0}^{\infty} e^{2\pi i nz}\,dz
+                \\[0.3cm]
+                &= 
+                \int_{-\infty}^{\infty}\!\!
+                f(\xi - ib)e^{-2\pi i (\xi - ib)}\!
                 \sum_{n=0}^{\infty}e^{-2\pi i n(\xi - ib)}\,d\xi 
-                + \int_{-\infty}^{\infty}f(\xi - ib)
-                \sum_{n=0}^{\infty}e^{2\pi i n(\xi - ib)}\,d\xi \\[0.3cm]
-                &= \sum_{n=0}^{\infty} \int_{-\infty}^{\infty}f(\xi - ib)
+                \!+\!
+                \int_{-\infty}^{\infty}\!\!
+                f(\xi - ib)\!
+                \sum_{n=0}^{\infty}\!
+                e^{2\pi i n(\xi - ib)}\,d\xi 
+                \\[0.3cm]
+                &= 
+                \sum_{n=0}^{\infty}\! 
+                \int_{-\infty}^{\infty}\!\!
+                f(\xi - ib)
                 e^{-2\pi i (n+1)(\xi - ib)}\,d\xi 
-                + \sum_{n=0}^{\infty} \int_{-\infty}^{\infty}f(\xi - ib)(-1)
+                \!+\! 
+                \sum_{n=0}^{\infty}\! 
+                \int_{-\infty}^{\infty}\!\!
+                f(\xi - ib)(-1)
                 e^{2\pi i n(\xi - ib)}\,d\xi \\[0.3cm]
                 &= \sum_{n=0}^{\infty} \hat{f}(n+1) + \sum_{n=0}^{\infty} \hat{f}(-n) \\[0.3cm]
                 &= \sum_{n \in \Z} \hat{f}(n).

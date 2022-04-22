@@ -465,27 +465,27 @@ existe $\delta > 0$ tal que para quaisquer $z,w$ tais que $|z-w| < \delta$ entã
 $|f(z) - f(w)| < \e$.
 \end{definicao}
 %
-\begin{center}
-    {\bf DIAGRAMA SLIDE 4 AULA 19}
-\end{center}
+\begin{figure}[H]\centering
+    \includegraphics{Figuras/continuidade uniforme.pdf}
+\end{figure}
 %
 \begin{teorema}
 Seja $f:U\subseteq\R^n\to\C$ uma função contínua. Se $K\subseteq U$ é um compacto,
 então $f\big|_K$ é uniformemente contínua.
 \end{teorema}
 %
-\begin{center}
-    {\bf DIAGRAMA SLIDE 5 AULA 19}
-\end{center}
+\begin{figure}[H]\centering
+    \includegraphics{Figuras/K em U.pdf}
+\end{figure}
 %
 \begin{proof}
 Suponha que $f\big|_K$ não é uniformemente contínua. Então, dado $\e>0$, para
 cada $n\in\N$ e $\delta_n = 1/n$ podemos encontrar $z_n, w_n\in K$ tais que
 $\|z_n - w_n\| < \delta_n$ mas $\e\leq |f(z_n) - f(w_n)|$.
 %
-\begin{center}
-    {\bf DIAGRAMA SLIDE 6 AULA 19}
-\end{center}
+\begin{figure}[H]\centering
+    \includegraphics{Figuras/f|K não uniforme.pdf}
+\end{figure}
 %
 Como $K$ é compacto, existe uma subsequência $(z_{n_k})\subset (z_n)$ tal que
 $z_{n_k} \to z\in K$. Considere a sequência $(w_{n_k})$. Pelo mesmo argumento, existe
@@ -542,9 +542,9 @@ g(z) = \int_a^b f(z,x) \, dx
 \begin{proof}
 Para cada $n\in\N$, considere a partição de $[a,b]$ ilustrada abaixo.
 %
-\begin{center}
-    {\bf DIAGRAMA SLIDE 10 AULA 19}
-\end{center}
+\begin{figure}[H]\centering
+    \includegraphics{Figuras/partição integral.pdf}
+\end{figure}
 %
 Defina $\Delta x_j = x_{j+1} - x_j = (b-a)/n$ para cada $j = 0, 1, \dots, n-1$.
 Defina também
@@ -557,9 +557,9 @@ Observe que, por hipótese, cada uma das $f(z, x_j)$ é holomorfa. Suponha que
 $\overline{D(z_0,r)} \subseteq U$ para um $r$ suficientemente pequeno. Afirmamos que
 $g_n\big|_{D(z_0, r)}$ converge uniformemente para $g\big|_{D(z_0, r)}$.
 %
-\begin{center}
-    {\bf DIAGRAMA SLIDE 11 AULA 19}
-\end{center}
+\begin{figure}[H]\centering
+    \includegraphics{Figuras/bola em U.pdf}
+\end{figure}
 %
 De fato, por hipótese temos $f:U\times[a,b]\to\C$ contínua de modo que, pelo teorema anterior,
 $f\big|_{\overline{D(z_0, r)} \times [a,b]}$ é uniformemente contínua. Portanto, dado $\e>0$
@@ -581,9 +581,9 @@ e tome $n\in\N$ tal que
 \frac{1}{n} < \min\left\{ \delta, \frac{\e}{M(b-a)} \right\}.
 \]
 %
-\begin{center}
-    {\bf DIAGRAMA SLIDE 12 AULA 19}
-\end{center}
+\begin{figure}[H]\centering
+    \includegraphics{Figuras/partição delta.pdf}
+\end{figure}
 %
 Sendo assim, para todo $z\in D(z_0, r)$ vale
 %

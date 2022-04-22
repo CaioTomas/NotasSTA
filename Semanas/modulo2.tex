@@ -1769,7 +1769,7 @@
         simultaneamente pela exponencial complexa.
         Finalmente, $f_1$ ser inteira pede que o 
         argumento da exponencial também seja inteiro, 
-        e portanto $f_1=f_2 \exp g(z)$ para alguma $g$ inteira.
+        e portanto $f_1=f_2\cdot\exp\circ g$ para alguma $g$ inteira.
     \end{observacao}
     %
     \begin{proof}
@@ -3114,15 +3114,16 @@
     (n-1)! = \int_0^{\infty}e^{-t} t^{n-1} \, dt.
     \]
     %
-    Nesta seção, vamos estudar a função Gama, $\Gamma$, uma função de grande importância na Análise 
+    Nesta seção, vamos estudar a função Gama, que será denotada por $\Gamma$. Ela é uma função de grande importância na Análise 
     Matemática e na Teoria Analítica dos Números. 
     Esta função pode ser vista como uma extensão 
     do conceito de fatorial de um número natural. 
     Para cada $s>0$, definimos
     %
-    \[
+    \begin{align}
+        \label{def-func-gamma-real}
     \Gamma(s) \equiv \int_0^{\infty}e^{-t} t^{s-1} \, dt.
-    \]
+    \end{align}
     %
     Primeiro, vamos mostrar que $\Gamma$ está bem definida. Problemas de convergência 
     podem ocorrer quando $t = 0$ e $s - 1 < 0$ e também conforme $t$ toma valores muito grandes.
@@ -3165,106 +3166,190 @@
     
     O nosso objetivo é estender $\Gamma$ para todo o plano complexo. 
     Tentaremos realizar tal extensão admitindo que $s$ seja um número complexo. 
-    Inicialmente, consideraremos o semiplano $\Re{s} > 0$.
-    %%
-    \begin{center}
-    {\red 
-        O lema abaixo precisa ser revisto.\\ 
-        Acredito que ele pode ser reescrito de modo a ser aplicável à Gama.
-    }
-    \end{center}
-    %%
+    Inicialmente, consideraremos o semiplano $\Re(s) > 0$.
+    
+    
     \begin{lema}
-        Sejam $\Omega \subseteq \C$ um domínio e $f: \Omega \times \R_{\geq 0}\to \C$. 
-        Suponha que, para cada $z \in \Omega$, a aplicação $t \mapsto f(z,t)$ tenha um conjunto descontinuidades com medida de Lebesgue nula. Além disso, para cada $a>0$, temos 
-        %
-        $$\sup_{t \in [0,a]} |f(z,t)| < \infty.$$
-        %
-        Se existe 
+    \label{lema-conv-abs-cond-int-imp}
+        Sejam $\Omega \subseteq \C$ um domínio e 
+        $f: \Omega \times (0,\infty)\to \C$ uma função. 
+        Assuma que para cada $z \in \Omega$ fixado, 
+        que o conjunto de descontinuidades da função 
+        $t \mapsto f(z,t)$ tenha medida de Lebesgue nula. 
+        Além disso, assuma que para $z\in \Omega$ fixado e cada $\delta>0$ dado que 
         %
         \[
-        \lim_{a \to \infty} \int_{0}^{a}|f(z,t)| \, dt,
+        \sup_{t \in [\delta,1/\delta]} |f(z,t)| < \infty.
         \]
         %
-        então existe 
+        Se $z\in \Omega$ fixado é tal que o seguinte limite existe
         %
         \[
-        g(z) \equiv \lim_{a \to \infty} \int_{0}^{a}f(z,t) \, dt.
+        \lim_{\delta \to 0} 
+        \int_{\delta}^{ \frac{1}{\delta} }
+        |f(z,t)| \, dt
+        \equiv 
+        \int_{0}^{\infty} |f(z,t)|\, dt ,
+        \]
+        %
+        então para cada $z\in\Omega$, existe o limite 
+        %
+        \[
+        g(z) \equiv \lim_{\delta \to \infty} 
+        \int_{\delta}^{ \frac{1}{\delta} }f(z,t) \, dt
+        \equiv
+        \int_{0}^{\infty }f(z,t) \, dt.
         \]
         %
     \end{lema}
     %
     \begin{proof}
-        Com as hipóteses que temos, está bem definida, para todo $a>0$, a integral
+        Fixado $z\in \Omega$ e dado $\delta>0$ temos diretamente
+        das hipóteses do lema que a integral abaixo existe e é finita
         %
         \[
-        \int_{0}^{a}|f(z,t)| \, dt.
+        \int_{\delta}^{ \frac{1}{\delta}  }|f(z,t)| \, dt.
         \]
         %
-        Além disso, existe o limite 
+        Além disso, por hipótese temos garantia da existência do seguinte
+        limite:
         %
         \[
-        I = \lim_{a \to \infty} \int_{0}^{a}|f(z,t)| \, dt.
+        I \equiv \lim_{\delta \to \infty} 
+        \int_{\delta}^{ \frac{1}{\delta} }|f(z,t)| \, dt.
         \]
         % 
-        Isto significa que, dado $\e > 0$ qualquer, existe $M > 0$ tal que, se $b > M$, temos
+        Isto significa que, dado $\e > 0$ qualquer, existe 
+        $\delta_0\equiv \delta_0(\varepsilon,z) > 0$ tal que, para todo
+        $0<\delta < \delta_0$  temos
         %
         \[
-        \Big | I - \int_{0}^{b}|f(z,t)| \, dt \Big | < \e.
+        \Big | I - \int_{\delta}^{ \frac{1}{\delta} }|f(z,t)| \, dt \Big | < \e.
         \]
         %
-        Usando a segunda desigualdade triangular com $c > b > M$, temos
+        Usando a desigualdade triangular 
+        podemos verificar que para quaisquer par de
+        números reais $\rho$ e $\delta$ satisfazendo
+        $0<\rho,\, \delta <\delta_0$, temos
         %
-        \begin{align*}
-            \left| I - \int_{0}^{b}|f(z,t)| \, dt \right| 
-            &= \left| I - \int_{0}^{c}|f(z,t)| \, dt + \int_{0}^{c}|f(z,t)| \, dt 
-            - \int_{0}^{b}|f(z,t)| \, dt \right| \\
-            &\geq \left| \int_{0}^{c}|f(z,t)| \, dt - \int_{0}^{b}|f(z,t)| \, dt \right| 
-            - \left| I - \int_{0}^{c}|f(z,t)| \, dt \right| \\
-            %
-            &= \left| \int_{b}^{c}|f(z,t)| \, dt \right| 
-            - \left| I - \int_{0}^{c}|f(z,t)| \, dt \right|.
-        \end{align*}
+        \begin{align}
+        \label{eq-aux1-lema-conv-abs-cond-int-imp}
+        \left| 
+            \int_{\rho}^{ \frac{1}{\rho} }|f(z,t)| \, dt
+            -
+            \int_{\delta}^{ \frac{1}{\delta} }|f(z,t)| \, dt
+        \right| 
+        &= 
+        \left| 
+            \int_{\rho}^{ \frac{1}{\rho} }|f(z,t)| \, dt - I
+            +
+            I -\int_{\delta}^{ \frac{1}{\delta} }|f(z,t)| \, dt
+        \right|
+        \nonumber\\[0.3cm]
+        &\leqslant
+        \left| 
+            I- \int_{\rho}^{ \frac{1}{\rho} }|f(z,t)| \, dt 
+        \right|
+        +
+        \left| 
+            I -\int_{\delta}^{ \frac{1}{\delta} }|f(z,t)| \, dt
+        \right|
+        \nonumber\\[0.3cm]
+        &<
+        2\e.
+        \end{align}
         %
-        Logo, 
+        Seja $(a_n)_{n\in\N}$ uma sequência arbitraria de números reais estritamente positivos tal que 
+        $a_n\to 0$, quando $n\to\infty$ e defina para cada $n\in\N$
         %
         \[
-        \left| \int_{b}^{c}|f(z,t)| \, dt \right| < 2\e.
+        I_n  
+        \equiv 
+        I_n(z) 
+        \equiv
+        \int_{ a_n }^{ \frac{1}{a_n} }f(z,t) \, dt.
         \]
         %
-        Seja $\{a_n: n \in \N \}$ uma sequência de números reais positivos tal que 
-        $a_n \xrightarrow{n\to\infty} \infty$ e defina
-        %
-        \[
-        I_n  \equiv I_n(z) = \lim_{a \to \infty} \int_{0}^{a}f(z,t) \, dt.
-        \]
-        %
-        Os $I_n$ definem uma sequência de números complexos. Para mostrar que esta 
-        sequência converge, mostramos que ela é de Cauchy.
-        %
+        Como $(a_n)_{n\in \N}$ é uma sequência arbitrária
+        tudo que precisamos para finalizar a prova do lema é mostrar que a sequência $(I_n)_{n\in\N}$ é uma sequência de Cauchy e, em seguida,
+        mostrar que o limite desta sequência é independente da escolha
+        particular de $(a_n)_{n\in \N}$. 
+        
+        Já que $a_n\to 0$, quando $n\to\infty$, sabemos que dado 
+        $\e>0$, existe $n_0\in\N$ tal que para todo $n,m\geqslant n_0$
+        temos $0< a_n,\, a_m <\delta_0$. Portanto segue diretamente da desigualdade \eqref{eq-aux1-lema-conv-abs-cond-int-imp}
+        que 
         \begin{align*}
             |I_n - I_m| 
-            &= \left| \int_{0}^{a_n}f(z,t) \, dt - \int_{0}^{a_n}f(z,t) \, dt \right|\\
-            &= \left| \int_{c_{n,m}}^{d_{n,m}}f(z,t) \, dt \right| \\
-            &\leq \int_{c_{n,m}}^{d_{n,m}}|f(z,t)| \, dt \xrightarrow{n,m \to \infty} 0
+            = 
+            \left| 
+            \int_{a_n}^{ \frac{1}{a_n} }f(z,t) \, dt 
+            - \int_{ a_{m} }^{ \frac{1}{a_m} }f(z,t) \, dt 
+            \right|
+            <2\e.
         \end{align*}
         %
-        pelo que vimos no inicio da demonstração. Aqui, denotamos 
-        $c_{n,m} = \min\{a_n,a_m\}$  e $d_{n,m} = \max\{a_n,a_m\}$. 
-        Então esta sequência é de Cauchy e deve convergir para um limite $J$ que 
-        pode depender da sequência $a_n$. Vamos mostrar que este limite é o 
-        mesmo para qualquer sequência. Sejam $J_1, J_2$ os limites obtidos usando 
-        sequências $a_n$ e $b_n$ respectivamente. Observe que
+        O que mostra que $(I_n)_{n\in\N}$ é uma sequência de Cauchy
+        e consequentemente uma sequência convergente. 
+        Denote por $J$ o limite desta sequência. 
+        A rigor, observamos que o valor deste limite poderia depender 
+        da particular escolha da sequência $(a_n)_{n\in\N}$. 
+        Mas aqui este não é o caso e para suportar esta afirmação  
+        vamos mostrar que este limite é o 
+        mesmo para qualquer sequência de número reais positivos 
+        que converge para zero. 
+        
+        Suponha que $J_1, J_2$ são limites obtidos usando 
+        duas sequências distintas de números reais positivos que convergem para zero, digamos $(a_n)_{n\in\N}$ e $(b_n)_{n\in\N}$,
+        respectivamente. 
+        
+        Nestas condições, dado $\e>0$ podemos encontrar $n_0\in\N$ tal 
+        que para todo $n\geqslant n_0$ temos
+        $0<a_n,\ b_n <\delta_0$ e também
+        \[
+        \left|J_1-\int_{a_n}^{ \frac{1}{a_n} }f(z,t) \, dt \right|<\e
+        \qquad\text{e}\qquad
+        \left|J_2-\int_{b_n}^{ \frac{1}{b_n} }f(z,t) \, dt \right|<\e.
+        \]
+        
+        Usando a desigualdade triangular, 
+        as três últimas desigualdades acima e em seguida a desigualdade \eqref{eq-aux1-lema-conv-abs-cond-int-imp}
+        podemos concluir que 
         %
         \begin{align*}
-            |J_1 - J_2| 
-            &= \lim_{n \to \infty} \left| \int_{0}^{a_n}f(z,t) \, dt 
-            - \int_{0}^{b_n}f(z,t) \, dt \right| \\
-            &= \lim_{n \to \infty} \left| \int_{c_n}^{d_n}f(z,t) \, dt \right| \to 0
+            |J_1& - J_2| 
+            \\[0.3cm]
+            &= 
+            \left| 
+            J_1-\int_{a_n}^{ \frac{1}{a_n} }f(z,t) \, dt 
+            +\int_{a_n}^{ \frac{1}{a_n} }f(z,t) \, dt 
+            - \int_{ b_{n} }^{ \frac{1}{b_n} }f(z,t) \, dt
+            +
+             \int_{ b_{n} }^{ \frac{1}{b_n} }f(z,t) \, dt
+             -J_2
+            \right| 
+            \\[0.3cm]
+            &\leqslant
+            \left| 
+            J_1-\int_{a_n}^{ \frac{1}{a_n} }\!\! f(z,t) \, dt 
+            \right|
+            +
+            \left|
+            \int_{a_n}^{ \frac{1}{a_n} }\!\! f(z,t) \, dt 
+            - \int_{ b_{n} }^{ \frac{1}{b_n} }\!\! f(z,t) \, dt
+            \right|
+            +
+            \left|
+             \int_{ b_{n} }^{ \frac{1}{b_n} }\!\!\! f(z,t) \, dt
+             -J_2
+            \right|
+            \\[0.3cm]
+            &<4\e.
         \end{align*}
         %
-        conforme o que já mostramos. Aqui, $c_n = \min\{a_n,b_n\}$ e $d_n = \max\{a_n,b_n\}$. 
-        Isto implica que $J_1 = J_2$.
+       Como $\e>0$ na desigualdade acima é arbitrário, 
+       temos obrigatoriamente $J_1=J_2$. 
+       Com isto encerramos a prova do lema.
     \end{proof}
     %
     \begin{observacao}
@@ -3283,7 +3368,12 @@
         %
     \end{observacao}
     
-    Seja $s \in \C$ e denote $\sigma = \Re \ s$, temos, para $t>0$,
+    
+    \bigskip 
+    
+    
+    Seja $s \in \C$ e denote $\sigma = \Re(s)$. Então 
+    para todo $t>0$ temos que 
     %
     \begin{align*}
         |t^{s-1}| &= |\exp((s-1)\ln t)| \\
@@ -3295,20 +3385,42 @@
         &= t^{\sigma - 1}.
     \end{align*}
     %
-    Com isso, 
+    Além do mais, para qualquer $\delta>0$ dado,
+    temos as seguinte estimativa
+    \[
+    \sup_{t\in [\delta,1/\delta]} |e^{-t}t^{s-1}|
+    =
+    \sup_{t\in [\delta,1/\delta]} e^{-t}t^{\sigma-1}
+    <+\infty.
+    \]
     %
+    Tomando $\sigma=\Re(s)>0$ temos também que 
     \begin{equation*}
-        \int_{0}^{\infty}|e^{-t}t^{s-1}| \, dt = \int_{0}^{\infty}e^{-t}|t^{s-1}| \, dt = \int_{0}^{\infty}e^{-t}t^{\sigma-1} \, dt = \Gamma(\sigma)
+        \int_{0}^{\infty}|e^{-t}t^{s-1}| \, dt = \int_{0}^{\infty}e^{-t}|t^{s-1}| \, dt = \int_{0}^{\infty}e^{-t}t^{\sigma-1} \, dt 
+        = 
+        \Gamma(\sigma)<+\infty,
     \end{equation*}
     %
-    sempre que $\sigma > 0$. O Lema anterior mostra que, neste caso, existe
-    para todo $s\in\C$ tal que $\Re(s)>0$ 
+    Seja $\Omega\equiv \{s\in\C: \Re(s)>0\}$. 
+    Já que a aplicação $f:\Omega\times (0,\infty)\to\C$ dada por 
+    $f(s,t)= e^{-t}t^{s-1}$ é contínua, segue 
+    das observações acima que podemos aplicar o lema anterior para 
+    provar que existe
     %
-    $$\Gamma(s)\equiv \int_{0}^{\infty}e^{-t}t^{s-1} \, dt.$$
+    \[
+    \Gamma(s)\equiv \int_{0}^{\infty}e^{-t}t^{s-1} \, dt,
+    \]
+    para todo $s\in\C$ tal que $\Re(s)>0$. 
     %
     \begin{teorema}
-        A função $\Gamma$ admite uma extensão analítica para o semiplano 
-        $U = \{s \in \C : \Re(s) >0 \}$.
+        A função $\Gamma:(0,\infty)\to\R$ definida em \eqref{def-func-gamma-real}
+        admite uma extensão analítica para o semiplano 
+        $\{s \in \C : \Re(s) >0 \}$ e além do mais para qualquer ponto
+        $s$ neste semi-plano esta extensão analítica é representada pela
+        seguinte integral 
+        \[
+        \Gamma(s)\equiv \int_{0}^{\infty}e^{-t}t^{s-1} \, dt
+        \]
     \end{teorema}
     %
     \begin{proof}
@@ -3316,8 +3428,9 @@
         é aquela que tem a mesma expressão, mas em que admitimos que a variável $s$ seja complexa.
         Aqui, por abuso de linguagem, denotaremos esta candidata por $\Gamma(s)$ também. Sejam 
         $
-        0 < \delta < M$ e $S = S_{\delta, M} 
-        = 
+        0 < \delta < M$ quaiquer números reais positivos fixados e 
+        considere a faixa $S\equiv  S_{\delta, M} 
+        \equiv 
         \{ s \in \C : \delta < \Re(s) < M\}$. 
         Vamos mostrar, para quaisquer escolhas das constantes $\delta$ e $M$, que a função $s\longmapsto\Gamma(s)$ definida na faixa $S$ é o limite uniforme da sequência de funções $(g_n)_{n\in \N}$, onde
         %
@@ -3459,7 +3572,8 @@
     para todo $n > 0$ inteiro. 
     
     \begin{teorema}
-        A função $\Gamma$, definida para $\Re(s) > 0$, admite uma continuação analítica para uma função meromorfa em $\C$ com polos simples nos inteiros negativos. Além disso, o resíduo em $-n$ é $(-1)^{n}/n!$ para todo $n \in \N \cup \{0\}$.
+    \label{teo-cont-meromorfa-gamma}
+        A função $\Gamma$, inicialmente definida para $\Re(s) > 0$, admite uma continuação analítica à uma função meromorfa em $\C$ com polos simples nos inteiros negativos. Além disso, o resíduo em $-n$ é $(-1)^{n}/n!$ para todo $n \in \N \cup \{0\}$.
     \end{teorema}
     \begin{proof}
     Para cada $m \in \N$, defina 
@@ -3470,21 +3584,22 @@
     %
     $$F_1(s) = \frac{\Gamma(s+1)}{s}.$$
     %
-    Quando $\Re \ s > 0$, podemos concluir da equação funcional de $\Gamma$ que 
+    Quando $\Re(s) > 0$, podemos concluir da equação funcional de $\Gamma$ que 
     %
     $$F_1(s) = \frac{s\Gamma(s)}{s} = \Gamma(s),$$
     %
-    logo, $F_1$ e $\Gamma$ coincidem neste semiplano. Em particular, $F_1$ é holomorfa porque é definida a partir de $\Gamma$ e, quando $\Re \ s > -1$, temos $\Re(s+1) > 0$. Observe ainda que
+    logo, $F_1$ e $\Gamma$ coincidem neste semiplano. Em particular, $F_1$ é holomorfa porque é definida a partir de $\Gamma$ e, quando $\Re(s)> -1$, temos $\Re(s+1) > 0$. Observe ainda que
     %
     $$ \lim_{s \to 0} sF_1(s) = \Gamma(1) = 1 \neq 0,$$
     %
-    então $0$ é um polo simples de $F_1$ com resíduo 1.
+    então $s=0$ é um polo simples de $F_1$ com resíduo neste ponto sendo igual à $1$.
     
-    Definimos agora a função holomorfa $F_2 : U_2 \to \C$ dada por
+    Definimos agora a função holomorfa $F_2 : U_2 \to \C$ 
+    pela seguinte expressão
     %
     $$F_2(s) = \frac{\Gamma(s+2)}{s(s+1)}.$$
     %
-    Quando $\Re \ s > -1$, podemos usar a equação funcional e observar que $F_2(s) = F_1(s)$ neste semiplano. Além disso, 
+    Quando $\Re(s) > -1$, podemos usar a equação funcional e observar que $F_2(s) = F_1(s)$ neste semiplano. Além disso, 
     %
     $$ \lim_{s \to -1} (s+1)F_2(s) = \lim_{s \to -1} \frac{\Gamma(s+2)}{s} = \frac{\Gamma(1)}{-1} = -1 \neq 0$$
     %
@@ -3501,14 +3616,41 @@
         &= \frac{\Gamma(1)}{(-1)(-2) \cdots [-(n-1)](-n)} = \frac{(-1)^n}{n!}
     \end{align*}
     %
-    o resíduo de $F_{n+1}$ em $-n$. 
+    mostrando que $F_{n+1}$ tem um polo simples em $s=-n$ e que o resíduo desta função neste polo é exatamente $(-1)^n/n!$. 
     
-    Podemos definir $\Gamma(s)$ por $F_n(s)$ em qualquer semiplano $U_n$ com polos simples nos inteiros negativos maiores que $-n$, ou seja, estendemos $\Gamma$ para uma função meromorfa em $\C$. Esta construção está bem definida pela unicidade das extensões analíticas.
+    Usando os fatos demonstrados acima podemos definir a função $\Gamma$ em todo conjunto $\C\setminus \{0,-1,-2,-3,\ldots\}$
+    da seguinte forma. 
+    Dado $s\in \C\setminus \{0,-1,-2,-3,\ldots\}$ seja $n\in \N$
+    o menor natural tal que $s\in U_n$ e defina $\Gamma(s) \equiv F_n(s)$. Observe que Gama definida assim é uma função bem definida e além do mais todas suas singularidades, 
+    isto é, os pontos do conjunto $\{0,-1,-2,-3,\ldots$ são pontos isolados e todos são também polos simples de $\Gamma$ com resíduos dados por 
+    \[
+    \mathrm{res}(\Gamma,-n) = \frac{(-1)^n}{n!}.
+    \]
     \end{proof}
     
-    A equação funcional $s\Gamma(s) = \Gamma(s+1)$ é válida para para todo $s \in \C$ que não é polo de $\Gamma$. Para ver isso, basta notar que a função $f(s) = \Gamma(s+1) - s\Gamma(s)$ definida em $\C \setminus \{0, -1, -2, \dots\}$ é nula para $\Re \ s > 0$, logo, é identicamente nula pelo princípio da identidade. 
     
-    Esta equação funcional é bem conhecida para a função $\Gamma$ real, então poderíamos usar este fato e ter procedido como fizemos aqui para mostrar que ela vale para $\Re \ s > 0$. Bastaria definir $f(s)$ para $\Re \ s > 0$ e usar que ela é nula sobre os reais positivos.
+    
+    \begin{corolario}
+    \label{cor-eq-func-Gamma}
+    Para todo $s\in \C\setminus\{0,-1,-2,-3,\ldots\}$ temos 
+    \[
+    \Gamma(s+1) = s\Gamma(s).
+    \]
+    \end{corolario}
+    \begin{proof}
+    Observe que pelo Teorema \ref{teo-cont-meromorfa-gamma} 
+    podemos assegurar que a aplicação 
+    \[
+    s\longmapsto f(s) = \Gamma(s+1) - s\Gamma(s)
+    \] 
+    define uma função holomorfa em $\C \setminus \{0, -1, -2, \dots\}$. Pelo Teorema \ref{teo-eq-func-Gama} 
+    segue que $f$ é identicamente nula em $\Re(s)> 0$. 
+    Já que $\C \setminus \{0, -1, -2, \dots\}$ é um domínio segue do principio da identicamente que $f$ é identicamente nula.
+    \end{proof}
+    
+    \medskip 
+    Esta equação funcional é bem conhecida para a função $\Gamma$ real. Então poderíamos usar este fato e ter procedido como fizemos acima para mostrar que ela vale se estende 
+    $\Re(s)> 0$. Bastaria definir $f(s)$ para $\Re(s)> 0$ e usar que ela é nula sobre os reais positivos.
     
     
     % a continuar
@@ -3728,12 +3870,13 @@
         Para provar esta convergência é necessário 
         obter uma expressão mais simples que 
         permita entender o comportamento assintótico da $n$-ésima parcela 
-        desta soma quando, $n\to\infty$. 
+        desta soma quando $n\to\infty$. 
         Isto pode ser feito usando o Teorema da Mudança de Variáveis,
         fazendo $\pi n^2 u = t$, e a definição da função Gama
         como segue:
-       \begin{align}
-       \label{eq-aux2-lema-int-sum-teta}
+        %
+        \begin{align}
+        \label{eq-aux2-lema-int-sum-teta}
             \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du 
             &= \int_0^{\infty} e^{-t}t^{s/2 - 1} \left( \frac{1}{\pi n^2} \right)^{s/2} \, dt 
             \nonumber\\[0.3cm]
@@ -3741,28 +3884,36 @@
             \nonumber\\[0.3cm]
             &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
         \end{align}
+        %
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/mudança de variável.pdf}
+        \end{figure}
+        %
         Já que o lado direito da expressão acima é absolutamente somável, 
         quando $\Re(s)>1$, podemos concluir que a série que 
         aparece no lado esquerdo 
         de \eqref{eq-aux1-lema-int-sum-teta} é convergente.
         
         
-        Sobre o lado direito da igualdade \eqref{eq-aux1-lema-int-sum-teta}
+        Sobre o lado direito da igualdade \eqref{eq-aux1-lema-int-sum-teta},
         primeiro observamos que a série que aparece nesta expressão,
         isto é, 
         \[
         \sum_{n=1}^{\infty} e^{-\pi n^2u}
         \]
-        é convergente, para todo $u>0$, 
-        por uma aplicação direta do teste da raíz $n$-ésima. 
-        Além do mais, segue do teste M de Weierstrass que para cada $s$ fixado que a aplicação 
+        é convergente para todo $u>0$, 
+        por uma aplicação direta do teste da raiz $n$-ésima. 
+        Note que esta série não converge para $u=0$.
+        
+        Além do mais, segue do teste M de Weierstrass que para cada $s$ fixado a aplicação 
         \[
         u\longmapsto \sum_{n=1}^{\infty} e^{-\pi n^2u} u^{s/2-1}  
         \]
         é holomorfa no semiplano $\{u\in \C: \Re(u)>\delta\}$ para 
         todo $\delta>0$. Consequentemente, como $\delta>0$ é arbitrário segue que a aplicação acima define uma função complexa contínua em $(0,+\infty)$ e portanto Riemann integrável em cada um dos intervalos limitados e fechados desta semi-reta.
         
-        Próximo passo na prova do lema é mostrar que para cada $s\in \C$, com $\Re(s)>1$ fixado, o limite abaixo existe
+        O próximo passo na prova do lema é mostrar que para cada $s\in \C$ com $\Re(s)>1$ fixado,
+        temos
         \[
         \lim_{N\to\infty}
         \int_0^{\infty}\sum_{n=N}^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
@@ -3770,9 +3921,134 @@
         0.
         \]
         
+        Para isto é suficiente mostrar que 
+        \[
+        \lim_{N\to\infty}
+        \int_0^{\infty}\sum_{n=N}^{\infty} |e^{-\pi n^2u}u^{s/2 - 1}| \, du
+        =
+        0.
+        \]
+        Note que usando as mesmas cotas da prova do Teste da Integral (veja \eqref{eq-aux1-teste-integral}) temos para todo $u>0$ e $N>1$ a seguinte desigualdade:
+        \begin{align}
+        \label{eq-aux1-lema-int-soma-theta}
+            \sum_{n=N}^{\infty} 
+            |e^{-\pi n^2u}u^{s/2 - 1}|
+            &=
+            u^{\Re(s)/2 - 1} 
+            \sum_{n=N}^{\infty} e^{-\pi n^2u}
+            \nonumber\\[0.3cm]
+            &\leqslant
+            u^{\Re(s)/2 - 1}\
+            \int_{N}^{\infty} 
+            e^{-\pi u x^2}\, dx.
+        \end{align}
         
+        Usando coordenadas polares e o Teorema de Fubini (como no cálculo clássico da integral Gaussiana) podemos estimar a integral que aparece no lado direito da desigualdade acima. De fato, 
+        \begin{align}
+        \label{eq-aux2-lema-int-soma-theta}
+        \left(
+        \int_{N}^{\infty} e^{-\pi u x^2}\, dx
+        \right)^2
+        &=
+        \int_{N}^{\infty}\int_{N}^{\infty}
+        e^{-\pi u (x^2+y^2)}\, dx\,dy
+        \nonumber\\[0.3cm]
+        &=
+        \iint_{[N,\infty)\times [N,\infty)}
+        e^{-\pi u (x^2+y^2)}\, dx\,dy
+        \nonumber\\[0.3cm]
+        &\leqslant 
+        \int_{0}^{\frac{\pi}{2}}
+        \int_{N}^{\infty}
+        e^{-\pi u r^2}\, r\,dr\,d\theta
+        \nonumber\\[0.3cm]
+        &=
+        \frac{\pi}{2}\cdot\frac{1}{2\pi u} 
+        e^{-\pi u N}
+        \leqslant
+        \frac{1}{u}e^{-\pi u N}.
+        \end{align}
         
-        
+    Tomando a raiz quadrada nos dois lados da desigualdade acima e, em seguida, substituindo a cota obtida em \eqref{eq-aux1-lema-int-soma-theta} 
+    ficamos com 
+    \begin{align}
+    \label{eq-aux3-lema-int-soma-theta}
+    \sum_{n=N}^{\infty} 
+    |e^{-\pi n^2u}u^{s/2 - 1}|
+    \leqslant
+    u^{\Re(s)/2 - 1}
+    \, u^{-1/2}\, 
+    e^{-\frac{\pi u N}{2}}
+    =
+    u^{\frac{1}{2}(\Re(s)-3)}
+    e^{-\frac{\pi u N}{2}}.
+    \end{align}
+
+    Portanto, temos 
+    \begin{align}
+    \int_0^{\infty}\!\sum_{n=N}^{\infty} |e^{-\pi n^2u}u^{s/2 - 1}| \, du
+    &\leqslant
+    \int_0^{\infty}
+    u^{\frac{1}{2}(\Re(s)-3)}
+    e^{-\frac{\pi u N}{2}}
+    \, du.
+    \end{align}
+    Usando a mudança de variáveis $t=\pi u N/2$ na integral que aparece no lado direito da desigualdade acima e também que $\Re(s)>1$, obtemos
+    \begin{align*}
+    \int_0^{\infty}\!\sum_{n=N}^{\infty} |e^{-\pi n^2u}u^{s/2 - 1}| \, du
+    &\leqslant
+    \frac{2}{\pi N}
+    \left(\frac{2}{\pi N}\right)^{\frac{1}{2}(\Re(s)-3)}
+    \int_0^{\infty}
+    t^{\frac{1}{2}(\Re(s)-3)}
+    e^{-t}
+    \, dt
+    \\[0.3cm]
+    &=
+    \left(\frac{2}{\pi N}\right)^{\frac{1}{2}(\Re(s)-1)}
+    \int_0^{\infty}
+    t^{\frac{1}{2}(\Re(s)-1)-1}
+    e^{-t}
+    \, dt
+    \\[0.3cm]
+    &=
+    \left(\frac{2}{\pi N}\right)^{\frac{1}{2}(\Re(s)-1)}
+    \Gamma\left(\frac{1}{2}\left(\Re(s)-1\right)\right).
+    \end{align*}
+    Como $\Re(s) > 1$, a desigualdade acima permite concluir que 
+    \begin{align}
+    \label{eq-aux4-lema-int-soma-theta}
+    \lim_{N\to\infty}
+    \int_0^{\infty}\sum_{n=N}^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
+    =
+    0.
+    \end{align}
+    
+    Para finalizar, observe que temos das propriedades elementares
+    de séries convergentes e da integral de Riemann 
+    a seguinte igualdade
+    \begin{align*}
+    \int_0^{\infty}\sum_{n=1}^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du  
+    &=
+    \int_0^{\infty}
+    \left[ 
+    \sum_{n=1}^{N-1} e^{-\pi n^2u}u^{s/2 - 1}
+    +
+    \sum_{n=N}^{\infty} e^{-\pi n^2u}u^{s/2 - 1} 
+    \right]
+    du
+    \\[0.3cm]
+    &=
+    \sum_{n=1}^{N-1}
+    \int_0^{\infty}
+    e^{-\pi n^2u}u^{s/2 - 1}\, du
+    +
+    \int_{0}^{\infty}
+    \sum_{n=N}^{\infty} e^{-\pi n^2u}u^{s/2 - 1}\, du.
+    \end{align*}
+    Tomando o limite quando $N\to\infty$ 
+    em ambos lados da igualdade acima e 
+    usando \eqref{eq-aux4-lema-int-soma-theta} finalizamos a prova do lema.
     \end{proof}
     %
     \begin{teorema}
@@ -3787,46 +4063,43 @@
     \end{teorema}
     %
     \begin{proof}
-        {\red justificar o Fubini}
-        
-        Para provar a identidade desejada, vamos precisar da seguinte equação auxiliar:
-        %
-        \begin{equation}
-        \label{eq-aux-zeta-gamma-teta}
+    A parte mais complicada da prova deste teorema já foi discutida no lema anterior e assim vamos precisar apenas juntar as peças.    
+    
+    De acordo com \eqref{eq-aux2-lema-int-sum-teta} 
+    sabemos que para todo $\Re(s)>1$, 
+    vale a seguinte igualdade %
+        \[
             \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
             = \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
-        \end{equation}
+        \]
         %
-        Para prová-la, basta considerar a mudança 
-        de variáveis $\pi n^2 u = t$ e observar que
-        %
-        Somando a identidade acima sobre $n\in\N$ e 
-        mudando a ordem da soma e de integração, segue finalmente que
+        Somando, sobre $n\in\N$, ambos lados da identidade acima temos
         %
         \[
-        \begin{array}{c}
-            \displaystyle
             \sum_{n\in\N} \int_0^{\infty} e^{-\pi n^2u}u^{s/2 - 1} \, du
             = 
             \displaystyle\pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\sum_{n\in\N}\frac{1}{n^s} 
-            \\[0.5cm]
-            \big\Downarrow
-            \\[0.5cm]
-            \displaystyle
-            \int_0^{\infty} \left(\sum_{n\in\N} e^{-\pi n^2u}\right) u^{s/2 - 1} \, du 
-            = 
-            \displaystyle\pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s) 
-            \\[0.5cm]
-            \big\Downarrow
-            \\[0.5cm]
-            \displaystyle
-            \int_0^{\infty} \frac{1}{2}[\vartheta(u) - 1] u^{s/2 - 1} \, du
-            = 
-            \displaystyle
-            \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s).
-        \end{array}
         \]
-        %
+        Como estamos assumindo que $\Re(s)>1$ 
+        podemos aplicar o Lema \ref{lema-aux-teo-zeta-gamma-teta}
+        para permutar a ordem das soma e da integral
+        que aparecem na igualdade acima, ficando com 
+        \[
+            \int_0^{\infty}
+            \sum_{n\in\N} 
+            e^{-\pi n^2u}u^{s/2 - 1} \, du
+            = 
+            \displaystyle\pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\sum_{n\in\N}\frac{1}{n^s} 
+        \]
+Usando a definição da função $\vartheta$, segue da igualdade acima que 
+%
+        \[
+        \int_0^{\infty} \frac{1}{2}[\vartheta(u) - 1] u^{s/2 - 1} \, du
+        = 
+        \displaystyle
+        \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s)
+        \]
+o que encerra a prova do teorema.
     \end{proof}
     
     \bigskip 
@@ -3836,24 +4109,34 @@
     Esse último teorema merece alguns comentários. 
     Observe, primeiramente, que o lado esquerdo
     da identidade contém: 
-    uma função inteira, $\pi^{s/2}$; 
-    uma função meromorfa em $\C$ com
-    polos simples nos inteiros pares não positivos, $\Gamma(s/2)$; 
-    e uma função holomorfa em $\Re(s) > 1$. 
+    \begin{itemize}
+        \item uma função inteira, $\pi^{s/2}$;
+        
+    \item uma função meromorfa em $\C$ com
+    polos simples nos inteiros pares não positivos, $\Gamma(s/2)$;
     
-    Portanto a função $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ dada por
+    \item e uma função holomorfa em $\Re(s) > 1$.
+    
+    \end{itemize}
+    
+    Portanto a aplicação que leva 
+    $s\longmapsto \xi(s)$ dada por
     %
-    \[
+    \begin{align}
+    \label{def-fun-xi}
     \xi(s) = \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\zeta(s),
-    \]
+    \end{align}
     %
     define uma função holomorfa no semi-plano $\Re(s) > 1$.
     %
     \begin{teorema}
     \label{teo-form-reflexao-xi}
-        A função $\xi:\{ s\in\C : \Re(s) > 1 \}\to\C$ 
-        admite uma continuação meromorfa em $\C$, 
-        com polos simples em $s=0$ e $s=1$. 
+        A função $\xi$ definida em \eqref{def-fun-xi}
+        admite uma continuação analítica à todo domínio $\C\setminus\{0,1\}$,
+        que abuso de notação será também denotada por, 
+        \[\xi:\C\setminus\{0,1\}\to\C.\]
+        As suas singularidades em $s=0$ e $s=1$
+        são polos simples e seus resíduos são dados por $\mathrm{res}(\xi,0)=-1$ e $\mathrm{res}(\xi,1)=1$.
         Ademais, ela satisfaz
         a seguinte equação funcional
         %
@@ -3893,28 +4176,42 @@
         Para calcular esta última integral, vamos dividi-la em duas parcelas e controlar
         cada uma delas:
         %
-        \[
+        \begin{align}
+        \label{eq-aux1-teo-eq-func-zeta-completa}
         \int_0^{\infty} u^{s/2 - 1}\psi(u) \, du
         = \int_0^1 u^{s/2 - 1}\psi(u) \, du + \int_1^{\infty} u^{s/2 - 1}\psi(u) \, du.
-        \]
+        \end{align}
+        
         %
-        Para calcular a parcela do lado esquerdo, usamos a equação funcional de $\psi$:
+        Para avaliar a primeira parcela do lado direito, usamos a equação funcional de $\psi$, o Teorema Fundamental do Cálculo e por último uma mudança de variáveis como segue:
         %
         \begin{align*}
             \int_0^1 u^{s/2 - 1}\psi(u) \, du 
-            &= \int_0^1 u^{s/2 - 1}\left[
-            \frac{1}{\sqrt{u}}\psi\left(\frac{1}{u}\right) + \frac{1}{2\sqrt{u}} - \frac{1}{2}
-            \right] \, du \\
-            &= \int_0^1\left[
-            u^{s/2 - 1}u^{-1/2}\psi\left(\frac{1}{u}\right) + \frac{u^{s/2 - 3/2}}{2} - \frac{u^{s/2 - 1}}{2}
-            \right] \, du \\
-            &= \frac{u^{s/2 - 1/2}}{s-1}\Bigg|_0^1 - \frac{u^{s/2}}{s}\Bigg|_0^1 
-            + \int_0^1 u^{s/2 - 1}u^{-1/2}\psi\left(\frac{1}{u}\right) \, du \\
-            &= \frac{1}{s-1} - \frac{1}{s} + \int_0^1 u^{s/2 - 3/2}\psi\left(\frac{1}{u}\right) \, du \\
+            &= 
+            \int_0^1 u^{s/2 - 1}
+            \left[
+                \frac{1}{\sqrt{u}}\psi\left(\frac{1}{u}\right) 
+                + \frac{1}{2\sqrt{u}} - \frac{1}{2}
+            \right] \, du 
+            \\[0.3cm]
+            &= 
+            \int_0^1
+            \left[
+                u^{s/2 - 1}u^{-1/2}\psi\left(\frac{1}{u}\right) 
+                + \frac{u^{s/2 - 3/2}}{2} - \frac{u^{s/2 - 1}}{2}
+            \right] \, du
+            \\[0.3cm]
+            &= 
+            \frac{u^{s/2 - 1/2}}{s-1}\Bigg|_0^1 - \frac{u^{s/2}}{s}\Bigg|_0^1 
+            + \int_0^1 u^{s/2 - 1}u^{-1/2}\psi\left(\frac{1}{u}\right) \, du 
+            \\[0.3cm]
+            &= \frac{1}{s-1} - \frac{1}{s} + \int_0^1 u^{s/2 - 3/2}\psi\left(\frac{1}{u}\right) \, du 
+            \\[0.3cm]
             &= \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} v^{-s/2 - 1/2}\psi(v) \, dv.
         \end{align*}
         %
-        Daí, segue que
+        Agora usamos esta expressão em 
+        \eqref{eq-aux1-teo-eq-func-zeta-completa} e somamos as duas integrais de forma a obter a seguinte igualdade
         %
         \begin{align*}
             \int_0^{\infty} u^{s/2 - 1}\psi(u) \, du
@@ -3929,13 +4226,17 @@
         g_n(s) = \int_1^n \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du.
         \]
         %
-        Daí, dada uma curva de Jordan suave por partes $\y\subseteq\C$, temos
+        Já que o integrando acima define uma função contínua em $\C\times [1,n]$ podemos usar o Teorema de Fubini para integrar $g_n$ ao longo de  
+        qualquer curva de Jordan suave por partes  
+        $\y$ contida no plano complexo e desta forma concluir que
         %
         \begin{align*}
             \int_{\y} g_n(s) \, ds 
             &=\int_{\y} \left( 
-            \int_1^n \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du \right) \, ds \\
-            &= \int_1^n \psi(u) \int_{\y} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \, ds \, du \\
+            \int_1^n \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du \right) \, ds 
+            \\[0.3cm]
+            &= \int_1^n \psi(u) \int_{\y} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \, ds \, du 
+            \\[0.3cm]
             &= 0.
         \end{align*}
         %
@@ -3945,18 +4246,29 @@
         S_{-M, M} = \{ s\in\C : -M \leq \Re(s)\leq M \}
         \]
         %
-        e mostrar que as restrições convergem uniformemente para $g:S_{-M, M}\to\C$ dada por
+        e mostrar que estas restrições 
+        convergem uniformemente para $
+        g:S_{-M, M}\to\C$ dada por
         %
         \[
-        g(s) = \int_1^{\infty} \left[ u^{s/2 - 1} + u^{-s/2 - 1/2} \right] \psi(u) \, du.
+        g(s) 
+        = 
+        \int_1^{\infty} 
+        \left[ 
+        u^{s/2 - 1} + u^{-s/2 - 1/2} 
+        \right] 
+        \psi(u) \, du.
         \]
+        
+        
         %
-        Já sabemos que $g$ está bem definida em $\Re(s) > 1$. Para mostrar que $g$ está bem
-        definida em toda a faixa $S_{-M, M}$, basta mostrarmos que
+        Já sabemos que $g$ está bem definida em $\Re(s) > 1$. Usando o Lema \ref{lema-conv-abs-cond-int-imp}
+        sabemos que para mostrar que $g$ está bem
+        definida em toda a faixa $S_{-M, M}$, basta mostrar que
         %
         \[
         \int_1^{\infty} \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| \, du < +\infty,
-        \, \forall s\in S_{-M, M}.
+        \qquad \forall s\in S_{-M, M}.
         \]
         %
         De fato, para $u\geq 1$ temos que
@@ -3965,33 +4277,64 @@
         |u^{s/2 - 1} + u^{-s/2 - 1/2}| \leq 2u^{|\Re(s)|/2 - 1/2} \leq 2u^{M/2 - 1/2} \leq 2u^K,
         \]
         %
-        sendo $K = M/2 - 1/2$. Daí, notando que
+        sendo $K = M/2 - 1/2$. 
+        Do Lema \ref{lema-estimativas}
+        e da definição de $\psi$ temos a seguinte 
+        equivalência para algumas constantes positivas
+        $C_1$ e $C_2$
         %
         \[
-        |\vartheta(u) - 1| \leq \widetilde{C}e^{-\pi u} \iff |\psi(u)| \leq \widetilde{C'}e^{-\pi u},
+        |\vartheta(u) - 1| 
+        \leq 
+        C_1\, e^{-\pi u} 
+        \qquad\iff\qquad 
+        |\psi(u)| 
+        \leq 
+        C_2\, e^{-\pi u},
+        \qquad \forall u\geqslant 1.
         \]
         %
-        segue que
+        Usando estas três últimas desigualdades e uma comparação básica entre exponenciais e polinômios 
+        concluímos que
         %
         \begin{align*}
-        \int_1^{\infty} \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| \, du
-        &\leq \int_1^{\infty} \left( 2u^K\widetilde{C'}e^{-\pi u/2} \right)e^{-\pi u/2}\, du \\
-        &\leq \widetilde{K}\int_1^{\infty} e^{-\pi u/2} \, du \\
+        \int_1^{\infty} 
+        \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| 
+        \, du
+        &\leqslant
+        \int_1^{\infty} 2u^{K}\cdot C_2\, e^{\pi u} \, du
+        \\
+        &\leq 
+        \int_1^{\infty} \left( 2u^K\ C_2\ 
+        e^{-\pi u/2} \right)e^{-\pi u/2}\, du 
+        \\
+        &\leq 
+        C_3\int_1^{\infty} e^{-\pi u/2} \, du \\
         &< +\infty.
         \end{align*}
         %
-        Usando estimativas idênticas às acima, podemos ver que
+        Usando estimativas idênticas às acima, 
+        podemos verificar que 
         %
         \begin{align*}
-            |g_n(s) - g(s)| 
-            &\leq \int_n^{\infty} \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| \, du \\
-            &\leq \widetilde{K}\int_n^{\infty} e^{-\pi u/2} \, du \\
-            &= \widetilde{\widetilde{K}} e^{-\pi n/2} \xrightarrow{n\to\infty} 0.
+            \sup_{s\in S_{-M,M}} |g_n(s) - g(s)| 
+            &\leq 
+            \sup_{s\in S_{-M,M}}
+            \int_n^{\infty} \left| u^{s/2 - 1} + u^{-s/2 - 1/2} \right|\cdot|\psi(u)| \, du 
+            \\[0.3cm]
+            &\leq 
+            K_1\int_n^{\infty} e^{-\pi u/2} \, du 
+            \\
+            &= 
+            K_2\, e^{-\pi n/2} 
+            \xrightarrow{\ n\to\infty\ } 0.
         \end{align*}
         %
-        Como $g_n$ é analítica e converge uniformemente para $g$ na faixa $S_{-M, M}$, segue que
-        $g$ é analítica em $S_{-M, M}$. Por fim, como $M$ foi tomado arbitrariamente, segue que a
-        aplicação
+        Como para cada $n\in\N$ a função $g_n$ é analítica e que $g_n$ converge uniformemente para $g$,
+        quando $n\to\infty$, na faixa $S_{-M, M}$, segue que
+        $g$ é analítica em $S_{-M, M}$. 
+        
+        Por fim, como o parâmetro $M$ que determina a largura da faixa $S_{-M,M}$ é arbitrário, segue que a aplicação
         %
         \begin{equation}
         \label{eq-aux1-cont-analitica-xi}
@@ -4008,7 +4351,7 @@
         \xi(s) = \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} [u^{s/2 - 1} + u^{-s/2 - 1/2}]\psi(u) \, du.
         \]
         %
-        É imediato verificar que $\xi(s) = \xi(1-s)$:
+        Notando que a soma das duas primeiras parcelas e o integrando na igualdade acima são invariantes pela aplicação $s\longmapsto 1-s$ podemos verificar  imediatamente que $\xi(s) = \xi(1-s)$. De fato, 
         %
         \begin{align*}
             \xi(1-s) &= \frac{1}{1-s-1} - \frac{1}{1-s} 
@@ -4093,24 +4436,34 @@
     A seguir, vamos mostrar uma representação da função $\zeta$
     em termos de um produtório.
     %
-    \begin{teorema}
+    \begin{teorema}[A Fórmula de Produto de Euler]
     \label{teo-form-prod-euler}
     \index{Fórmula!do Produto de Euler}
-        Para todo $s\in\C$ tal que $\Re(s) > 1$, vale
+        Para todo $s\in\C$ tal que $\Re(s) > 1$, temos
         %
         \[
-        \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}
-                 = \prod_{p\in\mathbb{P}} \left(
-                 1 - \frac{1}{p^s} \right)^{-1}
+        \prod_{p\in\mathbb{P}} 
+        \left(1 - \frac{1}{p^s} \right)
+        \zeta(s) 
+        =
+        1,
         \]
         %
-        e, além disso, $\zeta(s)\neq 0, \, \forall s\in\C$ tal que 
-        $\Re(s) > 1$.
+        onde o produtório que aparece acima converge uniformemente nas
+        partes compactas do semi-plano $\{Re(s)>1\}$ e é realizado sobre o conjunto de todos os números primos. Consequentemente, 
+        se $\Re(s)>1$ temos $\zeta(s)\neq 0$ e 
+        também vale a famosa fórmula de produto de Euler 
+        \[
+        \zeta(s) 
+        =
+        \prod_{p\in\mathbb{P}} 
+        \left(1 - \frac{1}{p^s} \right)^{-1}.
+        \]
     \end{teorema}
     %
     \begin{proof}
         Nesta prova, é de importância fundamental o fato de que a
-        série de Dirichlet
+        série de Dirichlet da função zeta de Riemann, ou seja,
         %
         \[
         \sum_{n=1}^{\infty} \frac{1}{n^s}
@@ -4118,57 +4471,71 @@
         %
         converge {\bf absolutamente} no semi-plano $\Re(s) > 1$.
         
-        Com isso em mente, note que
+        Para provar o teorema primeiro vamos mostrar, por indução em $n$, uma identidade auxiliar, que envolve certos produtos parciais. Em seguida, argumentamos que é possível 
+        tomar o limite destes produtos parciais, quando $n$ tende a infinito e obter a fórmula desejada. 
+        
+        O primeiro passo da indução, mencionada acima, consiste em observar que para todo $s\in\C$ tal que $\Re(s)>1$ temos
+        da propriedades elementares de séries absolutamente convergentes que
         %
-        \begin{equation}
+        \begin{align}
         \label{eq:tirando-pares-form-prod}
-        \tag{$\star$}
             \frac{1}{2^s}\zeta(s) 
-            = \frac{1}{2^s}\left(
+            &= \frac{1}{2^s}\left(
             1 + \frac{1}{2^s} + \frac{1}{2^s} 
             + \frac{1}{3^s} + \frac{1}{4^s}
             + \frac{1}{5^s} + \cdots
             \right)
-            = \frac{1}{2^s} + \frac{1}{4^s} + \frac{1}{6^s}
+            \nonumber\\
+            &= \frac{1}{2^s} + \frac{1}{4^s} + \frac{1}{6^s}
             + \frac{1}{8^s} + \frac{1}{10^s} + \cdots.
-        \end{equation}
+        \end{align}
         %
         Daí, subtraindo \eqref{eq:tirando-pares-form-prod} da expressão
-        em série de Dirichlet de $\zeta$, temos
+        em série de Dirichlet de $\zeta$, ficamos com
         %
         \begin{equation}
         \label{eq:zeta-sem-pares}
-        \tag{$\star\star$}
             \left( 1 - \frac{1}{2^s} \right)\zeta(s) 
             = 1 + \frac{1}{3^s} + \frac{1}{5^s} 
             + \frac{1}{7^s} + \frac{1}{9^s} + \cdots.
         \end{equation}
         %
-        Antes de seguir para o próximo passo, é importante frisar um
-        ponto: a priori, se $A$ é um conjunto infinito enumerável qualquer,
-        então o símbolo
+        Antes de prosseguir com o argumento, é importante frisar um
+        ponto: a priori, se $A$ é um conjunto infinito enumerável qualquer e $(a_n)_{n\in A}$ é uma coleção arbitrária de números complexos, indexada em $A$, então a soma dos $a_n$'s sobre $A$, isto é,
         %
         \[
-        \sum_{n\in A} a_n
+        \sum_{n\in A} a_n,
         \]
         %
-        não está bem definido. De fato, se essa série for condicionalmente
-        convergente, então o símbolo acima poderia tomar qualquer valor
-        real, bastando apenas somar os termos em uma ordem adequada.
-        Por outro lado, se a série convergir absolutamente, então a ordem
-        em que somarmos não será relevante e, nesse caso, o símbolo acima
-        está bem definido.
-        No nosso caso, todas as séries são absolutamente convergentes e,
-        portanto, usaremos essa notação.
+        pode não estar bem definida. 
+        Isto ocorre, por exemplo, quando a família das 
+        somas sobre os subconjuntos finitos de $A$, 
+        forma um conjunto de números complexos 
+        com mais de um ponto de acumulação. 
+        Em outras palavras, dependendo da ordem em que realizamos a
+        soma podemos construir somas parciais que convergem para 
+        distintos limites ou mesmo que nem sequer convergem.
+        Este fenômeno é comum quando lidamos, por exemplo, 
+        com séries condicionalmente convergentes.
         
-        A ideia da demonstração é continuar esse processo, por
-        indução, para os demais primos. Para tanto, vamos denotar
+    
+        Por outro lado, quando lidamos com uma família de números complexos absolutamente somável, então a ordem
+        em que realizamos a soma não é relevante e, 
+        nesse caso, o símbolo acima está bem definido.
+        
+        
+        Feita esta ressalva, observamos que todas as somas (finitas e infinitas) que aparecem nos argumentos abaixo 
+        são somas absolutamente convergentes. 
+        O que permite usar, sem ambiguidade, a notação acima.
+        
+        Antes de voltar ao argumento de indução vamos introduzir mais algumas notações. Dado um número primo $p$ denotamos o conjunto 
+        dos múltiplos de $p$ por 
         %
         \[
-        p\N = \{ p, 2p, 3p, \dots \}
+        p\N \equiv  \{ p, 2p, 3p, \dots \}.
         \]
         %
-        e
+        E usaremos a notação 
         %
         \[
         \N(2, 3, \dots, p_n) 
@@ -4176,8 +4543,11 @@
         \setminus \bigcup_{p\in\{2, 3, \dots, p_n\}} p\N,
         \]
         %
-        sendo $p_n$ o $n$-ésimo primo.
-        Daí, podemos reescrever \eqref{eq:zeta-sem-pares} como
+        onde $p_n$ o $n$-ésimo primo, para denotar o 
+        conjunto de todos os números naturais maiores ou iguais a dois
+        que não são múltiplos de $2,3,5,7,11,\ldots p_n$. 
+        
+        Utilizando esta notação observe que podemos reescrever \eqref{eq:zeta-sem-pares} como 
         %
         \[
         \sum_{n\in\N(2)} \frac{1}{n^s}.
@@ -4198,7 +4568,7 @@
         = 1 + \sum_{n\in\N(2,3)} \frac{1}{n^s}.
         \]
         %
-        Segue então por indução que
+        Segue então por indução em $n$ que
         %
         \begin{align*}
             \left(1 - \frac{1}{p_n^s}\right)
@@ -4210,33 +4580,39 @@
             \big\Downarrow
             \\[0.5cm]
             \left|
-            \prod_{j=1}^n \left(1 - \frac{1}{p_j^s}\right) - 1
+            \prod_{j=1}^n \left(1 - \frac{1}{p_j^s}\right)\zeta(s) - 1
             \right|
             = \left|
-            \sum_{n\in\N(2,3, \dots, p_n)} \frac{1}{n^s}
+            \sum_{j\in\N(2,3, \dots, p_n)} \frac{1}{j^s}
             \right|
             &\leq \sum_{j=p_n}^{\infty} \left|\frac{1}{j^s}\right|,
-            \, \forall n\geq 1.
+            \,\quad \forall n\geq 1.
         \end{align*}
         %
-        Como a cauda da série de Dirichlet de $\zeta$ converge para $0$,
+        Como a cauda da série de Dirichlet 
+        de $\zeta$ converge para $0$,
         segue que
         %
         \[
         \left[
         \lim_{n\to\infty} \prod_{j=1}^n \left(1 - \frac{1}{p_j^s}\right)
-        \right]
+        \right]\zeta(s)
         = 1
-        \iff
+        \qquad \iff \qquad
         \prod_{p\in\mathbb{P}} \left(1 - \frac{1}{p^s}\right)\zeta(s)
         = 1.
         \]
         %
-        Segue dessa igualdade que $\zeta(s)\neq 0$ no semi-plano
-        $\Re(s) > 1$. Por fim, lembrando que se uma sequência
-        $(b_n)_{n\in\N}\subseteq\C$ é tal que $b_n\to b\neq 0$
-        então $1/b_n \to 1/b$, podemos reescrever a identidade
-        acima como
+        
+        Como consequência da igualdade acima podemos afirmar que $\zeta(s)\neq 0$ no semi-plano
+        $\Re(s) > 1$. 
+        
+        
+        Por fim, lembrando que se uma sequência
+        de números complexos $(b_n)_{n\in\N}$ 
+        é tal que $b_n\to b\neq 0$,
+        então temos que $1/b_n \to 1/b$. 
+        Desta propriedade elementar de sequências convergentes e da identidade acima podemos concluir finalmente que 
         %
         \[
         \zeta(s) 
@@ -4245,3 +4621,6 @@
         %
     \end{proof}
     %
+    
+    \subsection{Regiões Livres de Zeros da Função Zeta de Riemann}
+    
