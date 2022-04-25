@@ -3705,7 +3705,7 @@
         &= \int_{n}^{\infty}e^{-t}t^{\Re(s)-1} \, dt.
     \end{align*}
     %
-    Esta é a calda da integral que define $\Gamma(\Re(s))$, logo, deve ir a zero conforme $n \to \infty$. Portanto,
+    Esta é a cauda da integral que define $\Gamma(\Re(s))$, logo, deve ir a zero conforme $n \to \infty$. Portanto,
     %
     \[
     \int_{1}^{\infty}e^{-t}t^{s-1} \, dt
@@ -4711,4 +4711,46 @@ o que encerra a prova do teorema.
     %
     
     \subsection{Regiões Livres de Zeros da Função Zeta de Riemann}
+    
+    Agora, vamos analisar as regiões nas quais a função zeta não se anula.
+    O último teorema nos garante que no semi-plano $\Re(s)>1$, $\zeta(s) \neq 0$.
+    Da equação funcional para $\zeta$, sabemos que os inteiros pares não positivos,
+    $\{0, -2, -4, -6, \dots\}$ são todos zeros dessa função, geralmente chamados
+    \textbf{zeros triviais} de $\zeta$.
+    %
+    \begin{center}
+        {\bf DIAGRAMA ZEROS TRIVIAIS SLIDE 33 AULA 22}
+    \end{center}
+    %
+    Usando a simetria de $\zeta$ em torno da reta $\Re(s) = 1/2$, vamos argumentar que,
+    a menos dos zeros triviais, $\zeta(s)\neq 0$ para todo $s\in\C$ com $\Re(s)<0$.
+    
+    De fato, como
+    %
+    \[
+    \xi(s) = \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
+    \]
+    %
+    para todo $s\in\C$ com $\Re(s)>1$, temos que $\xi$ não se anula nesse semi-plano,
+    pois nenhum dos fatores se anula. Daí, segue da equação funcional
+    %
+    \[
+    \xi(s) = \xi(1-s)
+    \]
+    %
+    que $\xi$ também não se anula no semi-plano $\Re(s) < 0$, ou seja, que $\xi(1-s)\neq 0$
+    para todo $s\in\C$ com $\Re(s)>1$. Ora, mas
+    %
+    \[
+    \xi(1-s) = \pi^{-(1-s)/2}\Gamma\left(\frac{1-s}{2}\right)\zeta(1-s).
+    \]
+    %
+    Note que $\pi^{-(1-s)/2}\neq 0$ e $\Gamma((1-s)/2)\neq 0$. Portanto, devemos
+    necessariamente ter $\zeta(1-s)\neq 0$, ou seja, $\zeta$ não se anula no
+    semi-plano $\Re(s) < 0$.
+    %
+    \begin{center}
+        {\bf DIAGRAMA DO ESPELHO DE $s$ SLIDE 33 AULA 22}
+    \end{center}
+    %
     
