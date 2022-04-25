@@ -3428,7 +3428,7 @@
         é aquela que tem a mesma expressão, mas em que admitimos que a variável $s$ seja complexa.
         Aqui, por abuso de linguagem, denotaremos esta candidata por $\Gamma(s)$ também. Sejam 
         $
-        0 < \delta < M$ quaiquer números reais positivos fixados e 
+        0 < \delta < M$ quaisquer números reais positivos fixados e 
         considere a faixa $S\equiv  S_{\delta, M} 
         \equiv 
         \{ s \in \C : \delta < \Re(s) < M\}$. 
@@ -3439,7 +3439,7 @@
         \]
         %
         Vamos mostrar também que $g_n$ é uma função holomorfa,
-        para cada $n\in \N$ e concluir então que $\Gamma$ é holomorfa em na faixa $S$. 
+        para cada $n\in \N$ e concluir então que $\Gamma$ é holomorfa na faixa $S$. 
         
         Para provar as afirmações feitas acima, vamos começar mostrando que para cada $n\in \N$ fixado que $g_n:S\to C$ é uma função contínua. De fato, dados quaisquer $s,\widetilde{s}\in S$ temos  
         \begin{align*}
@@ -3652,8 +3652,96 @@
     Esta equação funcional é bem conhecida para a função $\Gamma$ real. Então poderíamos usar este fato e ter procedido como fizemos acima para mostrar que ela vale se estende 
     $\Re(s)> 0$. Bastaria definir $f(s)$ para $\Re(s)> 0$ e usar que ela é nula sobre os reais positivos.
     
+    Podemos obter a continuação da função $\Gamma$ de uma forma alternativa analisando as integrais parciais
+    %
+    \begin{equation}
+    \label{eq-Gamma1}
+    \int_{0}^{1}e^{-t}t^{s-1} \, dt + \int_{1}^{\infty}e^{-t}t^{s-1} \, dt.
+    \end{equation}
+    %
+    Vamos mostrar que a integral à direita define uma função inteira. Seja $M > 0$ e defina $S_M = \{s \in \C : |\Re(s)| < M\}$. Defina também, para cada $n \in \N$,
+    %
+    \[
+    g_n(s) = \int_{1}^{n}e^{-t}t^{s-1} \, dt
+    \]
+    %
+    para $s \in S_M$. Vamos usar o Teorema de Morera para mostrar que cada $g_n$ é holomorfa e vamos verificar que a sequência definida por estas funções converge uniformemente para a integral à direita em (\ref{eq-Gamma1}). 
+    
+    Sejam $s,z \in S_M$, então
+    %
+    \begin{align*}
+        |g_n(s) - g_n(z)| &= \Big | \int_{1}^{n}e^{-t}(t^{s-1}-t^{z-1}) \, dt\Big | \\
+        %
+        &\leq \int_{1}^{n}\frac{e^{-t}}{t}|t^{s}-t^{z}| \, dt \\
+        %
+        &\leq \int_{1}^{n}|t^{s}-t^{z}| \, dt 
+    \end{align*}
+    %
+    Observe que a função $s \mapsto t^s = \exp(s\ln t)$ é inteira, então, dado $\e > 0$, podemos encontrar $\delta > 0$ tal que $|t^{s}-t^z| < \e$ se $|s-z| < \delta$. Segue que 
+    %
+    \begin{align*}
+    |g_n(s) - g_n(z)| &\leq \int_{1}^{n}|t^{s}-t^{z}| \, dt \\
+    %
+    &\leq \e \int_{1}^{n} \, dt = (n-1)\e \xrightarrow{\e \to 0} 0.
+    \end{align*}
+    %
+    Isto mostra que as funções $g_n$ são contínuas em cada faixa $S_M$. Como $M$ é arbitrário, segue que são contínuas em $\C$. Se $\Delta$ é um triângulo totalmente contido em $S_M$, temos
+    %
+    \begin{align*}
+        \int_\Delta g_n(s) \, ds &= \int_\Delta\int_{1}^{n}e^{-t}t^{s-1} \, dt \, ds \\
+        %
+        &= \int_{1}^{n}\int_\Delta e^{-t}t^{s-1} \, ds \, dt = 0.
+    \end{align*}
+    %
+    Pelo Teorema de Morera, as $g_n$ são holomorfas e, se estendermos sua faixa de definição indefinidamente, vemos que definem funções inteiras.
+    
+    Observe agora que 
+    %
+    \begin{align*}
+        \Big | \int_{1}^{\infty}e^{-t}t^{s-1} \, dt - \int_{1}^{n}e^{-t}t^{s-1} \, dt \Big | &= \Big | \int_{n}^{\infty}e^{-t}t^{s-1} \, dt \Big | \\
+        %
+        &\leq \int_{n}^{\infty}e^{-t}|t^{s-1}| \, dt \\
+        %
+        &= \int_{n}^{\infty}e^{-t}t^{\Re(s)-1} \, dt.
+    \end{align*}
+    %
+    Esta é a calda da integral que define $\Gamma(\Re(s))$, logo, deve ir a zero conforme $n \to \infty$. Portanto,
+    %
+    \[
+    \int_{1}^{\infty}e^{-t}t^{s-1} \, dt
+    \]
+    %
+    define uma função inteira, pois é limite uniforme de uma sequência de funções inteiras.
+    
+    Vamos analisar agora 
+    %
+    \[
+    \int_{0}^{1}e^{-t}t^{s-1} \, dt.
+    \]
+    %
+    Para tanto, vamos considerar a expansão de $e^{-t}$ em série de Taylor. 
+    %
+    \begin{align*}
+        \int_{0}^{1}e^{-t}t^{s-1} \, dt &=  \int_{0}^{1}\sum_{n=0}^{\infty}\frac{(-t)^n}{n!} t^{s-1} \, dt \\
+        %
+        &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n!}\int_{0}^{1}t^{n + s-1} \, dt \\
+        %
+        &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n!}\frac{t^{n + s}}{s+n} \Big |_{0}^{1} \\
+        %
+        &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(s+n)}.
+    \end{align*}
+    %
     
     % a continuar
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     \subsection{A Função Zeta de Riemann}
     %
@@ -3885,10 +3973,6 @@
             &= \pi^{-s/2}\Gamma\left( \frac{s}{2} \right)\frac{1}{n^s}.
         \end{align}
         %
-        \begin{figure}[H]\centering
-            \includegraphics{Figuras/mudança de variável.pdf}
-        \end{figure}
-        %
         Já que o lado direito da expressão acima é absolutamente somável, 
         quando $\Re(s)>1$, podemos concluir que a série que 
         aparece no lado esquerdo 
@@ -3968,7 +4052,11 @@
         \leqslant
         \frac{1}{u}e^{-\pi u N}.
         \end{align}
-        
+    %
+    \begin{figure}[H]\centering
+        \includegraphics{Figuras/mudança de variável.pdf}
+    \end{figure}
+    %    
     Tomando a raiz quadrada nos dois lados da desigualdade acima e, em seguida, substituindo a cota obtida em \eqref{eq-aux1-lema-int-soma-theta} 
     ficamos com 
     \begin{align}
