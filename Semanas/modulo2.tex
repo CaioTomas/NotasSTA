@@ -3441,45 +3441,51 @@
         Vamos mostrar também que $g_n$ é uma função holomorfa,
         para cada $n\in \N$ e concluir então que $\Gamma$ é holomorfa na faixa $S$. 
         
-        Para provar as afirmações feitas acima, vamos começar mostrando que para cada $n\in \N$ fixado que $g_n:S\to C$ é uma função contínua. De fato, dados quaisquer $s,\widetilde{s}\in S$ temos  
+        Para provar as afirmações feitas acima, vamos começar mostrando que para cada $n\in \N$ fixado que $g_n:S\to C$ é uma função contínua. De fato, seja $s_0 \in S$ temos  
+        %
         \begin{align*}
-            |g_n(s)-g_n(\widetilde{s})|
+            |g_n(s)-g_n(s_0)|
             &=
             \left|
             \int_{1/n}^{n}e^{-t}t^{s-1} \, dt
             -
-            \int_{1/n}^{n}e^{-t}t^{\widetilde{s}-1} \, dt
+            \int_{1/n}^{n}e^{-t}t^{s_0-1} \, dt
             \right|
             \\[0.3cm]
             &\leqslant
-            \int_{1/n}^{n}
-            e^{-t} |t^{s-1}-t^{\widetilde{s}-1}|            
-            \, dt
+            \int_{1/n}^{n} |t^{s-1}-t^{s_0-1}| \, dt
             \\[0.3cm]
             &\leqslant
             \int_{1/n}^{n}
-            \frac{e^{-t}}{t} |t^{s}-t^{\widetilde{s}}|            
-            \, dt
-            \\[0.3cm]
-            &\leqslant
-            n
-            \int_{1/n}^{n}
-            |e^{s\ln t}-e^{\widetilde{s}\ln t}|            
+            \frac{1}{t} |t^{s}-t^{s_0}|            
             \, dt
             \\[0.3cm]
             &\leqslant
             n
             \int_{1/n}^{n}
-            |s-\widetilde{s}| (\ln n)  e^{M\ln n}            
-            \, dt
-            \\[0.3cm]
-            &\leqslant
-            n^2(\ln n)  e^{M\ln n}|s-\widetilde{s}|.
+            |t^s-t^{s_0}| \, dt.
         \end{align*}
-    O que mostra que a função $g_n$ é Lipschitz e portanto contínua.
+        %
+    
+    Observe agora que a aplicação $s \mapsto t^s = \exp(s\ln t)$ é contínua e $ I_n = [1/n, n]$ é compacto, então podemos encontrar $\delta > 0$ tal que $\sup_{t \in I_n} |t^s-t^{s_0}| < \e/n^2$ quando $|s - s_0| < \delta$. Para verificar isto note que, fixado $t \in I_n$ e dado $\e/n^2 > 0$, encontramos $\delta_t > 0$ tal que $|t^s - t^{s_0}| < \e/n^2$ sempre que $|s - s_0| < \delta_t$. Como $t \mapsto t^s$ também é contínua, há uma vizinhança $B_t = (t-\xi_t, t+ \xi_t)$ de $t$ em que ainda vale a mesma estimativa. As bolas $B_t$ formam uma cobertura de $I_n$ por abertos, então, por compacidade, há uma subcobertura finita com centros $t_1, t_2, \dots, t_r$. Seja $\delta = \min\{\delta_{t_1}, \dots, \delta_{t_r}\}$, então $|s - s_0| < \delta$ implica que $|t^s-t^{s_0}| < \e/n^2$ para todo $t \in I_n$, ou seja, $\sup_{t \in I_n} |t^s-t^{s_0}| < \e/n^2$. 
+    
+    Com esta estimativa, temos 
+    %
+    \begin{align*}
+        |g_n(s)-g_n(s_0)| &\leq n
+            \int_{1/n}^{n}
+            |t^s-t^{s_0}| \, dt\\
+            %
+            &\leq n \frac{\e}{n^2}\int_{1/n}^{n} \, dt \\
+            %
+            &= n\left(n-\frac{1}{n}\right)\frac{\e}{n^2} \\
+            %
+            &\leq \e.
+    \end{align*}
+    %
+    Isto mostra que as $g_n$ são funções contínuas.
         
-        
-    Próximo passo é mostra que a integral de $g_n$ ao longo de qualquer
+    Próximo passo é mostrar que a integral de $g_n$ ao longo de qualquer
     triângulo contido em $S$ é nula. 
     Para isto, seja $\Delta$ um triângulo arbitrário, contido em $S$. 
     Como a função no integrando que define $g_n$ é contínua, 
@@ -3548,7 +3554,7 @@
     \begin{align*}
         0 
         &= 
-        \lim_{\e \to 0^+} e^{-t}t^s \big |_{\e}^{1/\e} 
+        \lim_{\e \to 0^+} e^{-t}t^s \Big|_{\e}^{1/\e} 
         \\[0.3cm]
         %
         &= 
@@ -3659,33 +3665,35 @@
     \int_{0}^{1}e^{-t}t^{s-1} \, dt + \int_{1}^{\infty}e^{-t}t^{s-1} \, dt.
     \end{equation}
     %
-    Vamos mostrar que a integral à direita define uma função inteira. Seja $M > 0$ e defina $S_M = \{s \in \C : |\Re(s)| < M\}$. Defina também, para cada $n \in \N$,
+    Vamos mostrar que a integral à direita define uma função inteira. Defina, para cada $n \in \N$,
     %
     \[
     g_n(s) = \int_{1}^{n}e^{-t}t^{s-1} \, dt
     \]
     %
-    para $s \in S_M$. Vamos usar o Teorema de Morera para mostrar que cada $g_n$ é holomorfa e vamos verificar que a sequência definida por estas funções converge uniformemente para a integral à direita em (\ref{eq-Gamma1}). 
+    para $s \in \C$. Vamos usar o Teorema de Morera para mostrar que cada $g_n$ é holomorfa e vamos verificar que a sequência definida por estas funções converge uniformemente para a integral à direita em (\ref{eq-Gamma1}). Observe que esta integral existe, pois seu módulo é limitado por 
+    %
+    $$\int_{1}^{\infty}e^{-t}t^{\Re(s) - 1} \, dt < \infty. $$
     
-    Sejam $s,z \in S_M$, então
+    Sejam $s_0$ um número fixado, então
     %
     \begin{align*}
-        |g_n(s) - g_n(z)| &= \Big | \int_{1}^{n}e^{-t}(t^{s-1}-t^{z-1}) \, dt\Big | \\
+        |g_n(s) - g_n(s_0)| &= \Big | \int_{1}^{n}e^{-t}(t^{s-1}-t^{s_0-1}) \, dt\Big | \\
         %
-        &\leq \int_{1}^{n}\frac{e^{-t}}{t}|t^{s}-t^{z}| \, dt \\
+        &\leq \int_{1}^{n}\frac{e^{-t}}{t}|t^{s}-t^{s_0}| \, dt \\
         %
-        &\leq \int_{1}^{n}|t^{s}-t^{z}| \, dt 
+        &\leq \int_{1}^{n}|t^{s}-t^{s_0}| \, dt 
     \end{align*}
     %
-    Observe que a função $s \mapsto t^s = \exp(s\ln t)$ é inteira, então, dado $\e > 0$, podemos encontrar $\delta > 0$ tal que $|t^{s}-t^z| < \e$ se $|s-z| < \delta$. Segue que 
+    Observe que a função $s \mapsto t^s = \exp(s\ln t)$ é inteira e $J_n = [1,n]$ é compacto, então, dado $\e > 0$, podemos encontrar $\delta > 0$ tal que $\sup_{t \in J_n}|t^{s}-t^{s_0}| < \e$ se $|s-s_0| < \delta$. Analogamente ao que fizemos antes, temos 
     %
     \begin{align*}
-    |g_n(s) - g_n(z)| &\leq \int_{1}^{n}|t^{s}-t^{z}| \, dt \\
+    |g_n(s) - g_n(s_0)| &\leq \int_{1}^{n}|t^{s}-t^{s_0}| \, dt \\
     %
     &\leq \e \int_{1}^{n} \, dt = (n-1)\e \xrightarrow{\e \to 0} 0.
     \end{align*}
     %
-    Isto mostra que as funções $g_n$ são contínuas em cada faixa $S_M$. Como $M$ é arbitrário, segue que são contínuas em $\C$. Se $\Delta$ é um triângulo totalmente contido em $S_M$, temos
+    Isto mostra que as funções $g_n$ são contínuas em $\C$. Se $\Delta$ é um triângulo qualquer
     %
     \begin{align*}
         \int_\Delta g_n(s) \, ds &= \int_\Delta\int_{1}^{n}e^{-t}t^{s-1} \, dt \, ds \\
@@ -3693,19 +3701,33 @@
         &= \int_{1}^{n}\int_\Delta e^{-t}t^{s-1} \, ds \, dt = 0.
     \end{align*}
     %
-    Pelo Teorema de Morera, as $g_n$ são holomorfas e, se estendermos sua faixa de definição indefinidamente, vemos que definem funções inteiras.
+    Pelo Teorema de Morera, as $g_n$ são holomorfas. Na verdade, não é difícil ver que definem funções inteiras. 
     
-    Observe agora que 
+    Seja $\sigma = \Re(s)$. Observe que 
     %
     \begin{align*}
-        \Big | \int_{1}^{\infty}e^{-t}t^{s-1} \, dt - \int_{1}^{n}e^{-t}t^{s-1} \, dt \Big | &= \Big | \int_{n}^{\infty}e^{-t}t^{s-1} \, dt \Big | \\
+        \Big | \int_{1}^{\infty}e^{-t}t^{s-1} \, dt - g_n(s) \Big | &= \Big | \int_{1}^{\infty}e^{-t}t^{s-1} \, dt - \int_{1}^{n}e^{-t}t^{s-1} \, dt \Big | \\
+        %
+        &= \Big | \int_{n}^{\infty}e^{-t}t^{s-1} \, dt \Big | \\
         %
         &\leq \int_{n}^{\infty}e^{-t}|t^{s-1}| \, dt \\
         %
-        &= \int_{n}^{\infty}e^{-t}t^{\Re(s)-1} \, dt.
+        &= \int_{n}^{\infty}e^{-t}t^{\sigma-1} \, dt.\\
+        %
+        &= \int_{n}^{\infty}e^{-t/2}(e^{-t/2}t^{\sigma-1}) \, dt
     \end{align*}
     %
-    Esta é a cauda da integral que define $\Gamma(\Re(s))$, logo, deve ir a zero conforme $n \to \infty$. Portanto,
+    Devemos mostrar que esta expressão vai a zero quando $n \to \infty$. Para ver isto, analisamos a integral a partir da expressão na ultima desigualdade acima. A função $u(t) = e^{-t/2}t^{\sigma-1}$ definida para $t > 0$ é contínua e tal que $\lim_{t \to \infty} u(t) = 0$, então é limitada superiormente por alguma constante positiva. Usando cálculo em uma variável real, determinamos o máximo desta função, que é $M = e^{-(\sigma -1)}(2(\sigma -1))^{\sigma-1}$ atingido em $t = 2(\sigma-1)$ se $\sigma > 1$. Caso $\sigma < 1$ a função assume valores menores, ainda, pois $0 < t^{\sigma-1} \leq 1$ neste caso. Segue que
+    
+    \begin{align*}
+        \Big | \int_{1}^{\infty}e^{-t}t^{s-1} \, dt - \int_{1}^{n}e^{-t}t^{s-1} \, dt \Big | &\leq M \int_{n}^{\infty}e^{-t/2} \, dt.\\
+        %
+        &= -2M e^{-t/2} \Big |_{n}^{\infty} \\
+        %
+        &= 2M e^{-n/2} \xrightarrow{n \to \infty} 0
+    \end{align*}
+    
+    Portanto,
     %
     \[
     \int_{1}^{\infty}e^{-t}t^{s-1} \, dt
@@ -4753,4 +4775,398 @@ o que encerra a prova do teorema.
         {\bf DIAGRAMA DO ESPELHO DE $s$ SLIDE 33 AULA 22}
     \end{center}
     %
+    \begin{center}
+        \red{Falar das quádruplas de zeros}
+        
+        \red{Falar de $\overline{\zeta(\overline{s})}$}
+    \end{center}
+    %
     
+    
+    \subsubsection*{Algumas propriedades adicionais da função Gama}
+    %
+    Vamos tratar de mais algumas propriedades da função $\Gamma$ que nos
+    serão úteis mais à frente, a saber: a ordem de crescimento de $1/\Gamma$
+    e sua expressão em termos de uma fórmula de produto.
+    %
+    \begin{teorema}
+    \label{teo-ordem-cresc-inv-gama}
+        A função $1/\Gamma$ é tal que
+        %
+        \[
+        \left| \frac{1}{\Gamma(s)} \right| \leq C_1e^{C_2|s|\ln|s|} \, \forall s\in \C
+        \]
+        %
+        para um par de constantes $C_1,C_2\in\R$,
+        ou seja, a ordem de crescimento de $1/\Gamma$ é 1 no sentido de que
+        para todo $\e>0$ existe $C(\e)>0$ tal que
+        %
+        \[
+        \left| \frac{1}{\Gamma(s)} \right| \leq C(\e)e^{C_2|s|^{1+\e}} \, \forall s\in C.
+        \]
+        %
+    \end{teorema}
+    %
+    \begin{proof}
+        Nesta demonstração, vamos precisar usar dois fatos importantes obtidos previamente,
+        a saber, a equação funcional de $\Gamma$:
+        %
+        \[
+        \Gamma(s)\Gamma(1-s) = \frac{\pi}{\sen(\pi s)}, \, \forall s\in\C\setminus\Z
+        \]
+        %
+        e a extensão de $\Gamma$:
+        %
+        \[
+        \Gamma(s) = \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+s)} 
+                    + \int_0^{\infty} e^{-t}t^{s-1} \, dt, \, 
+                    \forall s\in\C\setminus\{0, -1, -2, \dots\}.
+        \]
+        %
+        Com essas duas identidades, podemos escrever
+        %
+        \begin{align}
+        \label{eq-expressao-inv-gama}
+            \frac{1}{\Gamma(s)} &= \Gamma(1-s)\frac{\sen(\pi s)}{\pi} \nonumber \\ 
+                                &= \left( \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)} \right)
+                                \frac{\sen(\pi s)}{\pi}
+                                + \left( \int_0^{\infty} e^{-t}t^{-s} \, dt \right)
+                                \frac{\sen(\pi s)}{\pi}, \, \forall s\in\C\setminus\Z.
+        \end{align}
+        %
+        Com isso, dividiremos a prova em duas etapas. Primeiro, vamos estimar a parcela integral
+        da identidade acima e, após isso, vamos estimar a parcela em série.
+        
+        Para a primeira etapa, começamos mostrando que
+        %
+        \begin{equation}
+        \label{eq-cota-int-parte-real}
+            \int_1^{\infty} e^{-t} t^{\sigma - 1} \, dt \leq e^{(\sigma + 1)\ln(\sigma + 1)},
+        \end{equation}
+        %
+        sendo $\Re(s) = \sigma \geq 0$. De fato, escolha $n\in\N$ tal que 
+        $\sigma \leq n\leq \sigma+1$. Então, usando o fato de que $0< 1/t \leq 1$ e também
+        a monotonicidade do logaritmo e da exponencial, temos
+        %
+        \begin{align*}
+            \int_1^{\infty} e^{-t}t^{\sigma - 1} \, dt 
+            &\leq \int_1^{\infty} e^{-t}t^{\sigma} \, dt \\
+            &\leq \int_1^{\infty} e^{-t} t^n \, dt \\
+            &= \Gamma(n+1) \\
+            &= n! \\
+            &\leq n^n \\
+            &= e^{n\ln n} \\
+            &\leq e^{(\sigma + 1)\ln(\sigma + 1)}.
+        \end{align*}
+        %
+        Essa desigualdade nos permite concluir que
+        %
+        \[
+        \left| \int_1^{\infty} e^{-t} t^s \, dt \right| \leq e^{(|\sigma|+1)\ln(|\sigma|+1)}, \, 
+        \forall s\in\C.
+        \]
+        %
+        Para majorar a segunda parcela de \eqref{eq-expressao-inv-gama}, vamos majorar
+        $e^{(|\sigma|+1)\ln(|\sigma|+1)}$. Essa majoração será dividida em duas partes.
+        
+        Para $0 < |s| < 1$, podemos escrever
+        %
+        \begin{align*}
+            e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq e^{(|s|+1)\ln(|s|+1)} \\
+                                            &= e^{|s|\ln(|s|+1)}e^{\ln(|s|+1)} \\
+                                            &\leq 2\exp\left[ |s|\ln\left( |s|(1 + 1/|s|) \right) \right] \\
+                                            &\leq 2e^{|s|\ln|s|}e^{|s|\ln(1 + 1/|s|)}.
+        \end{align*}
+        %
+        Observe que, pela Regra de L'Hôpital,
+        %
+        \begin{align*}
+            \lim_{s\to 0} \left[ |s|\ln\left( 1 + \frac{1}{|s|} \right) \right]
+            &= \lim_{s\to 0} \frac{\ln(1 + 1/|s|)}{1/|s|} \\
+            &= \lim_{x\to 0^+} \frac{\ln(1 + 1/x)}{1/x} \\
+            &= \lim_{x\to 0^+} (1 + 1/x)^{-1}(-1/x^2)/(-1/x^2) \\
+            &= 0.
+        \end{align*}
+        %
+        Portanto, dado $\e=1$ existe $0<\delta<1$ tal que se $|s|<\delta$ então
+        %
+        \[
+        \left| \frac{\ln(1 + 1/|s|)}{1/|s|} \right| < 1 \implies |\ln(1 + 1/|s|)| \leq 2/|s| 
+                                                        \implies |s|\ln(1+1/|s|) \leq 2.
+        \]
+        %
+        Voltando à estimativa, temos que para $0<|s|<1$ vale que
+        %
+        \begin{align*}
+            e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq 2e^2e^{|s|\ln|s|}.
+        \end{align*}
+        %
+        Agora, para $1\leq|s|$, temos
+        %
+        \begin{align*}
+            e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq e^{(|s|+1)\ln(|s|+1)} \\
+                                            &\leq e^{2|s|\ln(2|s|)} \\
+                                            &= e^{2|s|(\ln|s| + \ln 2)} \\
+                                            &\leq e^{2|s|\ln|s|}e^{2|s|}.
+        \end{align*}
+        %
+        %
+        \begin{center}
+            \red{aqui eu não consegui uma cota uniforme em $s$...}
+        \end{center}
+        %
+        Ademais, sabemos que $|\sen(\pi s)| \leq e^{\pi |s|}$ pela Fórmula de Euler. Portanto,
+        a segunda parcela de \eqref{eq-expressao-inv-gama} é majorada por
+        %
+        \begin{equation}
+            \left| \left( \int_0^{\infty} e^{-t}t^{-s} \, dt \right)\frac{\sen(\pi s)}{\pi} \right|
+            \leq
+            C_1(s)e^{C_2|s|\ln|s|},
+        \end{equation}
+        %
+        sendo
+        %
+        \[
+        \begin{cases}
+            C_1(s) = \frac{2}{\pi}e^{\pi + 2}, \, 0 < |s| < 1 \\
+            C_1(s) = \frac{1}{\pi}e^{(\pi + 2)|s|}, \, 1\leq |s|
+        \end{cases} \qquad \text{ e } \qquad
+        \begin{cases}
+            C_2 = 1, \, 0 < |s| < 1 \\
+            C_2 = 2, \, 1\leq |s|
+        \end{cases}.
+        \]
+        %
+        
+        Agora, precisamos majorar a parcela que envolve a série em \eqref{eq-expressao-inv-gama}.
+        Para tanto, vamos dividir nossa análise em dois casos: $|\Im(s)| > 1$ e $|\Im(s)|\leq 1$.
+        
+        Se $|\Im(s)| > 1$, então $|n+1-s| \geq 1$, como ilustra o diagrama abaixo.
+        %
+        \begin{center}
+            {\bf DIAGRAMA SLIDE 15 AULA 25}
+        \end{center}
+        %
+        Daí, segue pela desigualdade triangular que
+        %
+        \[
+        \left| \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)} \right| 
+        \leq \sum_{n=0}^{\infty} \frac{1}{n!|n+1-s|} 
+        \leq \sum_{n=0}^{\infty} \frac{1}{n!}
+        = e.
+        \]
+        %
+        Portanto, como $|\sen(\pi s)| \leq e^{\pi |s|}$ temos que para todo $s\in\C$ com $|\Im(s)|>1$
+        vale
+        %
+        \[
+        \left| \left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi} \right|
+        \leq \frac{e}{\pi} e^{\pi |s|}
+        \red{\leq C_4e^{C_5|s|\ln|s|}},
+        \]
+        %
+        sendo $C_4 = $ e $C_5 = $ ...
+        
+        Agora, se $|\Im(s)| \leq 1$, escolhemos $k\in\Z$ tal que
+        %
+        \[
+        k - \frac{1}{2} \leq \Re(s) < k + \frac{1}{2}.
+        \]
+        %
+        Isso reduz nossa análise a retângulos, como o ilustrado abaixo.
+        %
+        \begin{center}
+            {\bf DIAGRAMA SLIDE 17 AULA 25}
+        \end{center}
+        %
+        Para terminar, dividimos a análise novamente em dois sub-casos: $k\geq 1$ e $k\leq 0$.
+        
+        \paragraph{Caso i): $k\geq 1$.} Nesse caso, podemos escrever
+        %
+        \begin{align*}
+            \left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}
+            = \frac{(-1)^{k-1}\sen(\pi s)}{(k-1)!(k-s)\pi} +
+            \left(\sum_{\substack{n\in\N \\ n\neq k}}^{\infty} 
+            \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}.
+        \end{align*}
+        %
+        Temos que
+        %
+        \[
+        \left|\lim_{s\to k} \frac{\sen(\pi s)}{(k-s)\pi}\right| 
+        = \left|\lim_{s\to k} \frac{\pi\cos(\pi s)}{-\pi}\right|
+        = 1.
+        \]
+        %
+        Ademais, se $n\neq k$ então $|n+1-s| \geq 1/2$ e, portanto,
+        %
+        \begin{align*}
+            \left|\left(\sum_{\substack{n\in\N \\ n\neq k}}^{\infty} 
+            \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right|
+            \leq 2\sum_{\substack{n\in\N \\ n\neq k}} \frac{1}{n!}e^{\pi |s|}
+            \leq C_3e^{\pi |s|},
+        \end{align*}
+        %
+        sendo $C_3 = 2e$.
+        %
+        \paragraph{Caso ii): $k\leq 0$.} Nesse caso, temos $\Re(s) < 1/2$ já que estamos
+        supondo que 
+        %
+        \[
+        k - \frac{1}{2} \leq \Re(s) < k + \frac{1}{2}.
+        \]
+        %
+        Portanto,
+        %
+        \[
+        |n+1-s| \geq |n+1 - i\Im(s) - \Re(s)| \geq |n+1 - \Re(s)| \geq \frac{1}{2},
+        \]
+        %
+        conforme ilustra o diagrama abaixo. 
+        %
+        \begin{center}
+            {\bf DIAGRAMA SLIDE 20 AULA 25}
+        \end{center}
+        %
+        Logo, temos a estimativa
+        %
+        \[
+        \left|\left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right|
+        \leq C_3e^{\pi |s|},
+        \]
+        %
+        sendo $C_3 = 2e$ novamente.
+        
+        Juntando todas as estimativas obtidas, obtemos finalmente
+        %
+        \begin{align*}
+            \left| \frac{1}{\Gamma(s)} \right| 
+            &\leq \left|\left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right|
+            + \left| \left( \int_1^{\infty} e^{-t} t^{-s} \, dt \right)\frac{\sen(\pi s)}{\pi} \right| \\[0.3cm]
+            &\leq C_3e^{\pi |s|} + C_1(s)e^{C_1|s|\ln|s|} \\[0.3cm]
+            &\leq 4C_3(e^{-1/e})e^{\pi |s|} + C_1(s)e^{C_1|s|\ln|s|} \\[0.3cm]
+            &\leq 4C_3e^{|s|\ln|s|} + C_1(s)e^{C_1|s|\ln|s|} \\[0.3cm]
+            &\leq K_1(s)e^{K_2|s|\ln|s|},
+        \end{align*}
+        %
+        onde a constante $e^{-1/e}$ aparece por ser o valor mínimo da função $e^{x\ln x}, x>0$. De fato,
+        derivando essa expressão e igualando a derivada a zero, temos
+        %
+        \[
+        (e^{x\ln x})' = e^{x\ln x}(1 + \ln x) = 0 \iff x = 1/e.
+        \]
+        %
+        Derivando novamente, temos que
+        %
+        \[
+        (e^{x\ln x})'' = e^{x\ln x}(1 + \ln x)^2 + e^{x\ln x}\frac{1}{x}
+        \]
+        %
+        e, em $x = 1/e$, a segunda derivada vale $e^{1 - 1/e} > 0$, de modo que $x = -1/e$
+        é, de fato, ponto de mínimo.
+    \end{proof}
+    %
+    Agora, vamos demonstrar uma belíssima fórmula de produto para $1/\Gamma$.
+    %
+    \begin{teorema}
+    \label{teo-form-prod-inv-gama}
+        Para todo $s\in\C$ temos
+        %
+        \[
+        \frac{1}{\Gamma(s)} = e^{\y s}s\prod_{n=1}^{\infty} \left( 1 + \frac{s}{n} \right)e^{-s/n},
+        \]
+        %
+        sendo
+        %
+        \[
+        \y \equiv \lim_{N\to\infty} \sum_{j=1}^N \frac{1}{j} - \ln N
+        \]
+        %
+        a constante de Euler-Mascheroni.
+    \end{teorema}
+    %
+    \begin{proof}
+        A demonstração é uma aplicação quase direta do Teorema de Hadamard, uma vez que provamos
+        no teorema anterior que $1/\Gamma$ tem ordem de crescimento $1$.
+        
+        Antes, entretanto, vamos mostrar a existência do limite que define $\y$. Para tanto,
+        observe que
+        %
+        \begin{align*}
+            \sum_{j=1}^N \frac{1}{j} - \ln N 
+            = \sum_{j=1}^N \frac{1}{j} - \int_1^N \frac{1}{x} \, dx
+            = \frac{1}{N} + \sum_{j=1}^{N-1} \int_j^{j+1} \left(\frac{1}{j} - \frac{1}{x}\right) \, dx.
+        \end{align*}
+        %
+        Pelo Teorema do Valor Médio aplicado à função $f(y) = 1/y$, sabemos que
+        %
+        \[
+        \left| \frac{1}{j} - \frac{1}{x} \right| \leq \frac{1}{j^2}, \, \forall n\leq x\leq n+1.
+        \]
+        %
+        Portanto,
+        %
+        \[
+        \sum_{j=1}^N \frac{1}{j} - \ln N = \frac{1}{N} + \sum_{j=1}^{N-1} a_j,
+        \]
+        %
+        sendo
+        %
+        \[
+        |a_j| = \left| \int_j^{j+1} \left(\frac{1}{j} - \frac{1}{x}\right) \, dx \right| \leq \frac{1}{j^2}.
+        \]
+        %
+        Logo, sabemos que
+        %
+        \[
+        \sum_{j=1}^{\infty} a_j \leq \sum_{j=1}^{\infty} \frac{1}{j^2} = \frac{\pi^2}{6},
+        \]
+        %
+        de modo que existe
+        %
+        \[
+        \lim_{N\to\infty} \sum_{j=1}^N \frac{1}{j} - \ln N = \sum_{j=1}^{\infty} a_j.
+        \]
+        %
+        
+        Feito isto, basta aplicarmos o Teorema de Hadamard a $1/\Gamma$ para obter constantes
+        $A,B\in\C$ tais que
+        %
+        \[
+        \frac{1}{\Gamma(s)} = e^{As + B}s\prod_{n=1}^{\infty} \left(1 + \frac{s}{n}\right)e^{-s/n}, \,
+        \forall s\in\C.
+        \]
+        %
+        Podemos reescrever essa identidade como
+        %
+        \[
+        1 = e^{As + B}s\Gamma(s)\prod_{n=1}^{\infty} \left(1 + \frac{s}{n}\right)e^{-s/n}.
+        \]
+        %
+        Tomando o limite quando $s\to 0$ e lembrando que $\lim_{s\to 0}s\Gamma(s) = 1$, segue que
+        %
+        \[
+        e^B = 1 \iff B = 0.
+        \]
+        %
+        Por outro lado, tomando $s=1$ na identidade temos
+        %
+        \begin{align*}
+            1 = \frac{1}{\Gamma(1)} &= e^A \prod_{n=1}^{\infty} \left(1 + \frac{1}{n}\right)e^{-1/n} \\
+                                &= e^A \lim_{N\to\infty}\prod_{n=1}^{N} \left(1 + \frac{1}{n}\right)e^{-1/n} \\
+                                &= e^A \lim_{N\to\infty}\prod_{n=1}^{N} \exp(\ln(1+1/n) - 1/n) \\
+                                &= e^A \lim_{N\to\infty} \exp\left[ -\sum_{n=1}^N \frac{1}{n} +
+                                                \sum_{n=1}^N \ln(1 + 1/n) \right] \\
+                                &= e^A \lim_{N\to\infty} \exp\left[ -\sum_{n=1}^N \frac{1}{n} +
+                                                \ln\left( \prod_{n=1}^N (1 + 1/n) \right) \right] \\
+                                &= e^A \lim_{N\to\infty} \exp\left[ -\sum_{n=1}^N \frac{1}{n} +
+                                                \ln\left( \prod_{n=1}^N \frac{n+1}{n} \right) \right] \\
+                                &= e^A \lim_{N\to\infty} \exp\left[ -\sum_{n=1}^N \frac{1}{n} +
+                                                \ln(N+1) \right] \\
+                                &= e^Ae^{-\y},
+        \end{align*}
+        %
+        donde segue que $A = \y + 2\pi ik, k\in\Z$. Ora, mas como $\Gamma(s)\in\R, \, \forall s\in\R$,
+        segue que $k = 0$ e $A = \y$, completando a demonstração.
+    \end{proof}
+    %
