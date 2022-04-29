@@ -5099,39 +5099,63 @@ o que encerra a prova do teorema.
             e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq 2e^2e^{|s|\ln|s|}.
         \end{align*}
         %
-        Agora, para $1\leq|s|$, temos
+        Agora, para obter a majoração no caso $1\leq|s|$, vamos primeiro mostrar que, se $k$
+        é uma constante real positiva fixada qualquer, vale
+        %
+        \begin{equation}
+        \label{eq-aux-cota-exp}    
+            e^{k|s|} \leq e^k e^{k|s|\ln|s|},
+        \end{equation}
+        %
+        para todo $1\leq|s|$. De fato, observe que mostrar essa desigualdade é equivalente a 
+        mostrar que
+        %
+        \[
+        e^{k|s|(1 - \ln|s|)} \leq e^k
+        \]
+        %
+        e que mostrar essa última desigualdade, por sua vez, é equivalente a mostrar que
+        a função $f$ definida por $f(x) = x(1-\ln x)$ para $x\geq 1$ tem máximo igual a 1.
+        Para verificar esse fato, basta observar que
+        %
+        \[
+        f'(x) = 1 - \ln x - x(1/x) = -\ln x \leq 0
+        \]
+        %
+        para todo $x\geq 1$. Portanto, $f$ admite um máximo em $x=1$, que é igual a $1$,
+        e fica mostrada a validade de \eqref{eq-aux-cota-exp}.
+        
+        Usando \eqref{eq-aux-cota-exp}, podemos majorar a exponencial desejada como segue no caso $1\leq|s|$:
         %
         \begin{align*}
             e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq e^{(|s|+1)\ln(|s|+1)} \\
                                             &\leq e^{2|s|\ln(2|s|)} \\
                                             &= e^{2|s|(\ln|s| + \ln 2)} \\
-                                            &\leq e^{2|s|\ln|s|}e^{2|s|}.
+                                            &\leq e^{2|s|\ln|s|}e^{2|s|} \\
+                                            &\leq e^{2|s|\ln|s|}e^2e^{2|s|\ln|s|} \\
+                                            &\leq e^2e^{4|s|\ln|s|}.
         \end{align*}
         %
-        %
-        \begin{center}
-            \red{aqui eu não consegui uma cota uniforme em $s$...}
-        \end{center}
-        %
         Ademais, sabemos que $|\sen(\pi s)| \leq e^{\pi |s|}$ pela Fórmula de Euler. Portanto,
+        usando novamente a desigualdade \eqref{eq-aux-cota-exp},
         a segunda parcela de \eqref{eq-expressao-inv-gama} é majorada por
         %
         \begin{equation}
             \left| \left( \int_0^{\infty} e^{-t}t^{-s} \, dt \right)\frac{\sen(\pi s)}{\pi} \right|
             \leq
-            C_1(s)e^{C_2|s|\ln|s|},
+            C_1e^{C_2|s|\ln|s|},
         \end{equation}
         %
         sendo
         %
         \[
         \begin{cases}
-            C_1(s) = \frac{2}{\pi}e^{\pi + 2}, \, 0 < |s| < 1 \\
-            C_1(s) = \frac{1}{\pi}e^{(\pi + 2)|s|}, \, 1\leq |s|
+            C_1 = 2e^{\pi + 2}/\pi, \, 0 < |s| < 1 \\
+            C_1 = e^{\pi + 2}/\pi, \, 1\leq |s|
         \end{cases} \qquad \text{ e } \qquad
         \begin{cases}
             C_2 = 1, \, 0 < |s| < 1 \\
-            C_2 = 2, \, 1\leq |s|
+            C_2 = 4, \, 1\leq |s|
         \end{cases}.
         \]
         %
