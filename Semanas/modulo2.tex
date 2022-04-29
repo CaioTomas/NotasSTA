@@ -3790,7 +3790,7 @@
     Uma equação funcional é uma maneira muito boa de se obter informações sobre uma função. Por exemplo, a função $\sen(s)$ definida para $s \in \C$ satisfaz a equação $\sen(s) = \sen(s + 2\pi)$ e isso mostra que, para conhecer a imagem desta função no plano todo, basta saber a imagem de uma faixa vertical da forma $\{s : \Re(s_0) < \Re(s) < \Re(s_0) + 2\pi\}$ para algum $s_0$ arbitrário. A função $\Gamma$ satisfaz outra equação funcional que nos permite perceber uma certa simetria em relação ao ponto $(1/2,0)$. 
     
     \begin{teorema}
-    Para todo $s \in \C \setminus \{0,-1,-2, \dots\}$, temos 
+    Para todo $s \in \C \setminus \Z$, temos 
     %
     $$\Gamma(s)\Gamma(1-s) = \frac{\pi}{\sen \pi s}$$
     %
@@ -3887,6 +3887,70 @@
         \end{align*}
         o que conclui a demonstração do Lema.
     \end{proof}
+    
+    Com este Lema, fica simples demonstrar o teorema. Com a mudança de variáveis, $x = tu$ para algum $t>0$, podemos escrever
+    %
+    \begin{align*}
+        \Gamma(1-s) &= \int_{0}^{\infty}e^{-x}x^{-s}\, dx \\
+        %
+        &= \int_{0}^{\infty}e^{-tu}u^{-s}t^{1-s}\, du.
+    \end{align*}
+    %
+    De modo que podemos interpretar o produto $\Gamma(1-s)\Gamma(s)$ como uma integral dupla e calcular esta integral.
+    %
+    \begin{align*}
+        \Gamma(1-s)\Gamma(s) &= \Gamma(1-s)\int_{0}^{\infty}e^{-t}t^{s-1}\, dt \\
+        %
+        &= \int_{0}^{\infty}e^{-t}t^{s-1}\Gamma(1-s)\, dt
+        %
+        &= \int_{0}^{\infty}e^{-t}t^{s-1}\int_{0}^{\infty}e^{-tu}u^{-s}t^{1-s}\, du \, dt \\
+        %
+        &= \int_{0}^{\infty}\int_{0}^{\infty}e^{-t(1+u)}u^{-s}\, du \, dt \\
+        %
+        &= \int_{0}^{\infty} u^{-s}\int_{0}^{\infty}e^{-t(1+u)}\, dt \, du \\
+        %
+        &= \int_{0}^{\infty} u^{-s} \left [-\frac{e^{-t(1+u)}}{1+u} \right]_{t=0}^{\infty} \, du \\
+        %
+        &= \int_{0}^{\infty} \frac{u^{-s}}{1+u}  \, du \\
+        %
+        &= \frac{\pi}{\sen(\pi(1-s))} = \frac{\pi}{\sen(\pi s)}.
+    \end{align*}
+    %
+    Onde aplicamos o Lema na última igualdade com $a - 1 = -s$. Isto conclui a demonstração do Teorema.
+    
+    Observe que $\Gamma(s)$ tem polos $0,-1,-2, \dots $ e $\Gamma(1-s)$ tem polos $1, 2, 3, \dots$, por isso foi importante a hipótese $s \not \in \Z$. O Teorema que acabamos de provar deixa ainda mais explícita esta relação, uma vez que $\sen \pi s$ se anula exatamente em $\Z$. 
+    
+    Observe agora, que a aplicação $s \mapsto 1-s$ pode ser vista como a reflexão em torno do ponto $1/2$. Para todo $s \in \C$ temos $\frac{s + (1-s)}{2} = \frac{1}{2}$ e isto mostra que $1/2$ é o ponto médio entre estes dois pontos. A função $\sen \pi s$ é bem conhecida e sabemos calcular os seus valores facilmente. Juntando isto ao teorema que acabamos de mostrar, concluímos que, se sabemos calcular $\Gamma(s)$ no semiplano $\Re(s) > 1/2$, então sabemos calculá-la também no semiplano $\Re(s) < 1/2$.
+    
+    Outra consequência deste teorema é sobre a função recíproca da função $\Gamma(s)$, ou seja, $1/\Gamma(s)$. Podemos escrever
+    %
+    $$\frac{1}{\Gamma(s)} = \Gamma(1-s) \frac{\sen \pi s}{\pi},$$
+    %
+    onde $\Gamma(1-s)$ tem polos simples nos inteiros positivos e $\sen \pi s$ tem zeros de ordem 1 nestes pontos. Seja $n>0$ inteiro, podemos escrever 
+    %
+    $$\Gamma(1-s) = \frac{1}{(s-n)}g(s),$$
+    %
+    em que $g(s)$ é holomorfa. Analogamente, $\sen \pi s = (s-n)h(s)$ em que $h(s)$ é holomorfa e não se anula em $n$. Portanto,
+    %
+    $$ \Gamma(1-s) \frac{\sen \pi s}{\pi} = \frac{g(s)h(s)}{\pi} $$
+    %
+    e existe o limite quando $s \to n$, logo, $1/\Gamma(s)$ tem singularidades removíveis nos inteiros positivos.
+    
+    Além disso, se $n \geq 0$ é inteiro, temos
+    %
+    \begin{align*}
+        \lim_{s \to -n} \frac{1}{\Gamma(s)} &=  \lim_{s \to -n} \Gamma(1-s) \frac{\sen \pi s}{\pi} \\
+        %
+        &= \Gamma(1+n) \lim_{s \to -n} \frac{\sen \pi s}{\pi} \\
+        %
+        &= n! \lim_{s \to -n} \frac{\sen \pi s}{\pi}  = 0.
+    \end{align*}
+    %
+    Portanto, demonstramos o teorema.
+    %
+    \begin{teorema}
+    A função $1/\Gamma(s)$ é inteira e tem zeros simples em $0,-1,-2, \dots$.
+    \end{teorema}
     
     % a continuar
     
@@ -5200,6 +5264,9 @@ o que encerra a prova do teorema.
         é, de fato, ponto de mínimo.
     \end{proof}
     %
+    
+    \medskip
+    
     Agora, vamos demonstrar uma belíssima fórmula de produto para $1/\Gamma$.
     %
     \begin{teorema}
@@ -5305,6 +5372,9 @@ o que encerra a prova do teorema.
         segue que $k = 0$ e $A = \y$, completando a demonstração.
     \end{proof}
     %
+    
+    \medskip
+    
     Agora, vamos voltar a tratar da função $\zeta$. Mostramos
     anteriormente que essa função não se anula fora da faixa
     $0 \leq \Re(s) \leq 1$. Vamos, agora, mostrar que
