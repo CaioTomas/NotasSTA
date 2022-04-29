@@ -5332,7 +5332,52 @@ o que encerra a prova do teorema.
     \end{lema}
     %
     \begin{proof}
-        a
+        Frisamos, novamente, que a notação $\log\zeta(s)$ \textbf{não} denota uma composta
+        entre o ramo principal do logaritmo e a função $\zeta$, mas sim uma nova função, que
+        é chamada de logaritmo da $\zeta$ no sentido do Lema \ref{lema-ramo-log}. 
+        Para demonstrar o resultado, vamos primeiramente assumir que $s\in\R$ e $s>1$ e provar
+        a identidade para esse caso. Em seguida, usaremos extensão analítica para verificar que a
+        identidade vale em todo o semi-plano $\Re(s)>1$.
+        
+        Então, supondo $s>1$, podemos representar o logaritmo natural através da seguinte série 
+        de potências
+        %
+        \[
+        \ln\left( \frac{1}{1-x} \right) = \sum_{m=1}^{\infty} \frac{x^m}{m},
+        \]
+        %
+        que é válida para $0\leq x < 1$ e converge absolutamente nesse intervalo. 
+        Daí, recordando que $\zeta(s)\in\R_+$ para $s\in\R$
+        e usando a representação em produto para $\zeta$, segue que
+        %
+        \[
+        \ln(\zeta(s)) = \ln\left( \prod_{p\in\mathbb{P}} \frac{1}{1 - p^{-s}} \right)
+                      = \sum_{p\in\mathbb{P}} \ln\left( \frac{1}{1 - p^{-s}} \right)
+                      = \sum_{p,m} \frac{p^{-ms}}{m}.
+        \]
+        %
+        Agora, tomando $c_n = 1/m$ se $n = p^m$ e $c_n = 0$ caso contrário, podemos reescrever
+        %
+        \[
+        \ln(\zeta(s)) = \sum_{n=1}^{\infty} c_n n^{-s}.
+        \]
+        %
+        Até o momento, mostramos que essa expressão é válida para $s\in(1, +\infty)$.
+        Ora, mas o lado direito é analítico no semi-plano $\Re(s)>1$, pelo mesmo argumento que 
+        usamos para mostrar que $\zeta$ admitia uma representação em série de Dirichlet nesse
+        semi-plano. Além disso, sabemos que a função zeta não se anula em $\Re(s)>1$, de modo que
+        existe $\log\zeta(s)$ pelo Lema \ref{lema-ramo-log}.
+        
+        Sabemos que esse ramo do logaritmo para $\zeta$ coincide com o somatório acima no intervalo
+        $(1, +\infty)$, que contém ponto de acumulação. Portanto, pelo 
+        Corolário \ref{cor-unicidade-ext-analiticas}, podemos representar $\log\zeta(s)$
+        por
+        %
+        \[
+        \log\zeta(s) = \sum_{n=1}^{\infty} c_n n^{-s},
+        \]
+        %
+        para todo $s\in\C$ com $\Re(s)>1$.
     \end{proof}
     %
     \begin{lema}
@@ -5432,7 +5477,13 @@ o que encerra a prova do teorema.
         \]
         %
         onde $g(s)$ é uma função holomorfa e que não se anula em $1 + it_0$
-        na vizinhança. Daí, para $2 > \sigma > 1$ temos
+        na vizinhança. 
+        %
+        \begin{center}
+            {\bf DIAGRAMA DA VIZINHANÇA}
+        \end{center}
+        %
+        Daí, para $2 > \sigma > 1$ temos
         %
         \[
         |\zeta(\sigma + it_0)|^4 = |\sigma-1|^{4n}|g(1 + it_0)|^4
