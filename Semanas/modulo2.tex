@@ -3579,7 +3579,7 @@
     
     \begin{teorema}
     \label{teo-cont-meromorfa-gamma}
-        A função $\Gamma$, inicialmente definida para $\Re(s) > 0$, admite uma continuação analítica à uma função meromorfa em $\C$ com polos simples nos inteiros negativos. Além disso, o resíduo em $-n$ é $(-1)^{n}/n!$ para todo $n \in \N \cup \{0\}$.
+        A função $\Gamma$, inicialmente definida para $\Re(s) > 0$, admite uma continuação analítica à uma função meromorfa em $\C$ com polos simples nos inteiros não positivos. Além disso, o resíduo em $-n$ é $(-1)^{n}/n!$ para todo $n \in \N \cup \{0\}$.
     \end{teorema}
     \begin{proof}
     Para cada $m \in \N$, defina 
@@ -3743,7 +3743,8 @@
     %
     Para tanto, vamos considerar a expansão de $e^{-t}$ em série de Taylor. 
     %
-    \begin{align*}
+    \begin{align}
+    \label{Gamma-ext-2}
         \int_{0}^{1}e^{-t}t^{s-1} \, dt &=  \int_{0}^{1}\sum_{n=0}^{\infty}\frac{(-t)^n}{n!} t^{s-1} \, dt \\
         %
         &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n!}\int_{0}^{1}t^{n + s-1} \, dt \\
@@ -3751,8 +3752,141 @@
         &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n!}\frac{t^{n + s}}{s+n} \Big |_{0}^{1} \\
         %
         &= \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(s+n)}.
-    \end{align*}
+    \end{align}
     %
+    A troca da soma com a integral na segunda igualdade é justificada pelo Lema abaixo.
+    %
+    \begin{lema}
+    \textcolor{red}{Lema para troca integral com soma}
+    \end{lema}
+    %
+    Vamos mostrar que a função em (\ref{Gamma-ext-2}) define uma função meromorfa em $\C$ com polos $0,-1,-2,\dots$. Seja $R>0$ fixado e $N$ um inteiro positivo satisfazendo $N>R>-N+1$. Podemos escrever
+    %
+    $$ \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(s+n)} = \sum_{n=0}^{N} \frac{(-1)^n}{n!(s+n)} + \sum_{n=N+1}^{\infty} \frac{(-1)^n}{n!(s+n)} = f_N(s) + g(s).$$
+    %
+    A função $f_N(s)$ é meromorfa no disco $D(0,R)$ e tem polos $0,-1,-2,\dots,-N+1$. De fato, seja $k$ inteiro com $0 \geq k \geq -N+1$, então
+    %
+    $$\lim_{s \to k} (s+k)f_N(s) = \lim_{s \to k} (s+k)\sum_{n=0}^{N} \frac{(-1)^n}{n!(s+n)} = \lim_{s \to k} (s+k)\frac{(-1)^k}{k!(s+k)} = \frac{(-1)^k}{k!}.$$
+    %
+    Agora a função $g(s)$ é holomorfa no disco $D(0,R)$. Note que, com $n > N$ e $s \in D(0,R)$, temos $|s+n| \geq N-R+1 > 1$, então
+    $1/|s+n| \leq 1/(N-R+1)$. Portanto, cada parcela da soma que define $g(s)$ satisfaz
+    %
+    $$\frac{(-1)^n}{n!(s+n)} \leq \frac{1}{(N-R+1)n!} = M_n.$$
+    %
+    Observe que $M_n$ define uma sequência somável. Segue do teste $M$ de Weierstrass, que $g(s)$ é holomorfa em $D(0,R)$. Agora, $R$ é arbitrário, então
+    %
+    $$\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(s+n)}$$
+    %
+    define uma função meromorfa em $\C$ com polos $0,-1,-2, \dots$. Por fim podemos enunciar o que provamos.
+    
+    \begin{teorema}
+    \label{teo-cont-meromorfa-gamma2}
+        A função $\Gamma$, inicialmente definida para $\Re(s) > 0$, admite uma continuação analítica à uma função meromorfa em $\C$ com polos simples nos inteiros não positivos. Além disso, o resíduo em $-n$ é $(-1)^{n}/n!$ para todo $n \in \N \cup \{0\}$. A expressão que a define é
+        %
+        $$\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(s+n)} + \int_{1}^{\infty}e^{-t}t^{s-1} \, dt.$$
+        %
+    \end{teorema}
+    
+    Uma equação funcional é uma maneira muito boa de se obter informações sobre uma função. Por exemplo, a função $\sen(s)$ definida para $s \in \C$ satisfaz a equação $\sen(s) = \sen(s + 2\pi)$ e isso mostra que, para conhecer a imagem desta função no plano todo, basta saber a imagem de uma faixa vertical da forma $\{s : \Re(s_0) < \Re(s) < \Re(s_0) + 2\pi\}$ para algum $s_0$ arbitrário. A função $\Gamma$ satisfaz outra equação funcional que nos permite perceber uma certa simetria em relação ao ponto $(1/2,0)$. 
+    
+    \begin{teorema}
+    Para todo $s \in \C \setminus \{0,-1,-2, \dots\}$, temos 
+    %
+    $$\Gamma(s)\Gamma(1-s) = \frac{\pi}{\sen \pi s}$$
+    %
+    \end{teorema}
+    
+    Por conta do princípio da identidade e pelo fato de continuações analíticas preservarem as equações funcionais (nesse caso), basta provar este resultado para $0<s<1$. Portanto, mostramos primeiro o lema a seguir.
+    
+    \begin{lema}
+    Para todo $a \in (0,1)$, temos
+    %
+    $$\int_{0}^{\infty}\frac{x^{a-1}}{1+x} \, dx = \frac{\pi}{\sen \pi a}.$$
+    %
+    \end{lema}
+    \begin{proof}
+        Demonstramos este lema com o auxílio de uma função complexa usando o Teorema dos Resíduos. Primeiro, considere a mudança de varáveis $x = e^u$. Na variável $u$, a integral fica
+        %
+        $$\int_{-\infty}^{\infty}\frac{e^{au}}{1+e^u} \, du. $$
+        %
+        Considere, então, a função $f(s) = e^{as}/(1+e^s)$ e observe que ela tem polo em $i\pi$, uma vez que $e^{i\pi} + 1 = 0$. Podemos calcular o resíduo de $f$ em $i\pi$ fazendo
+        %
+        \begin{align*}
+            \res(f,i\pi) &= \lim_{s \to i\pi} (s-i\pi) f(s) \\
+            %
+            &= \lim_{s \to i\pi} (s-i\pi)\frac{e^{as}}{(1+e^s)} \\
+            %
+            \lim_{s \to i\pi} e^{as}\frac{(s-i\pi)}{(e^s - e^{i\pi})} \\
+            %
+            &= e^{ai\pi}\frac{1}{\exp'(i\pi)} \\
+            %
+            &= e^{ai\pi}e^{-i\pi} = -e^{ai\pi}
+        \end{align*}
+        %
+        
+        Considere a curva $\gamma$ como no diagrama abaixo, onde $R>1$.
+        \\
+        %
+        \textcolor{red}{diagrama página 35 aula 21}
+        %
+        \\
+        Denote por $\gamma_1$ a curva com parametrização $R + 2\pi i t$ com $t \in [0,1]$. A integral de $f$ ao longo de $\gamma_1$ deve ir a $0$ quando $R \to \infty$. Basta observar que 
+        %
+        \begin{align*}
+            \left | \int_{\gamma_1}f(z) dz   \right | &= 2\pi \left | \int_{0}^{1} \frac{e^{a(R + 2\pi i t)}}{1 + e^{R + 2\pi i t}} dt   \right |
+            %
+            &\leq \int_{0}^{1} \frac{|e^{a(R + 2\pi i t)}|}{|1 + e^{R + 2\pi i t}|} dt.
+        \end{align*}
+        %
+        Temos $|e^{a(R + 2\pi i t)}| = e^{aR}$ e, conforme $t$ varia em $[0,1]$, $e^{R + 2\pi i t}$ varia varia no bordo do disco $D(0,e^R)$. Agora, $|1 + e^{R + 2\pi i t}| = |e^{R + 2\pi i t} - (-1)| \geq e^R - 1$, pois $-1$ está no interior de $D(0,e^R)$. Segue que
+        %
+        \begin{align*}
+            \left | \int_{\gamma_1}f(z) dz   \right | &\leq \int_{0}^{1} \frac{|e^{a(R + 2\pi i t)}|}{|1 + e^{R + 2\pi i t}|} dt \\
+            %
+            &\leq \int_{0}^{1}\frac{e^{aR}}{e^R-1} \, dt\\
+            %
+            &=\frac{e^{aR}}{e^R-1} = \frac{e^{R(a-1)}}{1 - e^{-R}} \xrightarrow{R \to \infty} 0.
+        \end{align*}
+        %
+        
+        Analogamente, a integral ao longo de $\gamma_3 = -R + 2\pi i t$ vai a $0$ conforme $R$ cresce. Denote por $I$ a integral ao longo de $\gamma_4 = t$ com $t \in [-R,R]$. $\gamma_2$ é a curva com parametrização $-t + 2\pi i$, observe que
+        %
+        \begin{align*}
+            \int_{\gamma_2}f(s) \, ds &= -\int_{-R}^{R}f(-t + 2\pi i) \, dt \\
+            %
+            &= -\int_{-R}^{R}\frac{e^{a(-t + 2 \pi i)}}{1 + e^{-t + 2\pi i}} \, dt \\
+            %
+            &= -e^{a2\pi i}\int_{-R}^{R}\frac{e^{-at}}{1 + e^{-t}e^{2\pi i}} \, dt \\
+            %
+            &= -e^{a2\pi i}\int_{-R}^{R}\frac{e^{at}}{1 + e^{t}} \, dt \\
+            %
+            &= -e^{a2\pi i}I.
+        \end{align*}
+        %
+        
+        Portanto concluímos que 
+        %
+        \begin{align*}
+        \int_\gamma f(z) \, dz &= \int_{\gamma_1} f(z) \, dz + \int_{\gamma_2} f(z) \, dz + \int_{\gamma_3} f(z) \, dz + \int_{\gamma_4} f(z) \, dz \\
+        %
+        &= \int_{\gamma_1} f(z) \, dz + \int_{\gamma_3} f(z) \, dz + (1 - e^{a 2\pi i}) I.
+        \end{align*}
+        %
+        Tomando o limite $R \to \infty$, temos
+        %
+        $$-2\pi ie^{a\pi i} = 2\pi i \res(f,i\pi) = (1 - e^{a 2\pi i}) \lim_{R \to \infty}I.$$
+        %
+        A integral que queremos obter é, exatamente $\lim_{R \to \infty}I$, concluímos que este limite é igual a
+        %
+        \begin{align*}
+            \frac{2\pi ie^{a\pi i}}{e^{a 2\pi i} - 1} &= \frac{2\pi ie^{a\pi i}}{e^{a 2\pi i} - 1} \\
+            %
+            &= \pi \frac{ e^{a\pi i} \cdot 2i}{e^{a \pi i}(e^{a \pi i} - e^{-a \pi i})}\\
+            %
+            &= \pi \frac{1}{\sen \pi a},
+        \end{align*}
+        o que conclui a demonstração do Lema.
+    \end{proof}
     
     % a continuar
     
@@ -4771,9 +4905,9 @@ o que encerra a prova do teorema.
     necessariamente ter $\zeta(1-s)\neq 0$, ou seja, $\zeta$ não se anula no
     semi-plano $\Re(s) < 0$.
     %
-    \begin{center}
-        {\bf DIAGRAMA DO ESPELHO DE $s$ SLIDE 33 AULA 22}
-    \end{center}
+    \begin{figure}[H]\centering
+        \includegraphics{Figuras/espelho de s.pdf}
+    \end{figure}
     %
     \begin{center}
         \red{Falar das quádruplas de zeros}
@@ -4943,9 +5077,9 @@ o que encerra a prova do teorema.
         
         Se $|\Im(s)| > 1$, então $|n+1-s| \geq 1$, como ilustra o diagrama abaixo.
         %
-        \begin{center}
-            {\bf DIAGRAMA SLIDE 15 AULA 25}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/Im(s)>1.pdf}
+        \end{figure}
         %
         Daí, segue pela desigualdade triangular que
         %
@@ -4975,9 +5109,9 @@ o que encerra a prova do teorema.
         %
         Isso reduz nossa análise a retângulos, como o ilustrado abaixo.
         %
-        \begin{center}
-            {\bf DIAGRAMA SLIDE 17 AULA 25}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/K>=1.pdf}
+        \end{figure}
         %
         Para terminar, dividimos a análise novamente em dois sub-casos: $k\geq 1$ e $k\leq 0$.
         
@@ -5024,9 +5158,9 @@ o que encerra a prova do teorema.
         %
         conforme ilustra o diagrama abaixo. 
         %
-        \begin{center}
-            {\bf DIAGRAMA SLIDE 20 AULA 25}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/K<=0.pdf}
+        \end{figure}
         %
         Logo, temos a estimativa
         %
@@ -5169,5 +5303,167 @@ o que encerra a prova do teorema.
         %
         donde segue que $A = \y + 2\pi ik, k\in\Z$. Ora, mas como $\Gamma(s)\in\R, \, \forall s\in\R$,
         segue que $k = 0$ e $A = \y$, completando a demonstração.
+    \end{proof}
+    %
+    Agora, vamos voltar a tratar da função $\zeta$. Mostramos
+    anteriormente que essa função não se anula fora da faixa
+    $0 \leq \Re(s) \leq 1$. Vamos, agora, mostrar que
+    $\zeta$ não se anula na reta $\Re(s) = 1$ (isso implicará,
+    pela simetria da função, que ela não se anula na reta 
+    $\Re(s) = 0$ e, portanto, que todos os zeros não triviais
+    da $\zeta$ estão no interior da faixa $0<\Re(s)<1$.
+    
+    Para provar o resultado, vamos precisar de três lemas
+    auxiliares.
+    %
+    \begin{lema}
+    \label{lema-log-zeta}
+        Para todo $s\in\C$ tal que $\Re(s)>1$, vale a identidade
+        %
+        \[
+        \log\zeta(s) = \sum_{p,m} \frac{p^{-ms}}{m} 
+                     = \sum_{n=1}^{\infty} c_nn^{-s},
+        \]
+        %
+        onde $p$ percorre o conjunto dos números primos, 
+        $m$ percorre o conjunto dos números naturais,
+        $c_n\geq 0$ para todo $n$ e a convergência das séries
+        é absoluta.
+    \end{lema}
+    %
+    \begin{proof}
+        a
+    \end{proof}
+    %
+    \begin{lema}
+    \label{lema-des-cosseno}
+        Para todo $\theta\in\R$, vale a desigualdade
+        %
+        \[
+        3 + 4\cos\theta + \cos 2\theta \geq 0.
+        \]
+        %
+    \end{lema}
+    %
+    \begin{proof}
+        Basta notar que
+        %
+        \[
+        3 + 4\cos\theta + \cos 2\theta 
+        = 3 + 4\cos\theta + 2\cos^2\theta - 1
+        = 2(1 + \cos\theta)^2 \geq 0.
+        \]
+        %
+    \end{proof}
+    %
+    O último lema que precisaremos para demonstrar o 
+    teorema desejado é consequência dessa desigualdade.
+    %
+    \begin{lema}
+    \label{lema-log-produto-zetas}
+        Para todos $\sigma>1$ e $t\in\R$, vale a desigualdade
+        %
+        \[
+        \ln|\zeta^3(\sigma)\zeta^4(\sigma + it)\zeta(\sigma + 2it)|
+        \geq 0.
+        \]
+        %
+    \end{lema}
+    %
+    \begin{proof}
+        Seja $s = \sigma + it$. Note que
+        %
+        \[
+        \Re(n^{-s})
+        = \Re(e^{-(\sigma + it)\ln n})
+        = \Re(e^{-\sigma\ln n}e^{-it\ln n})
+        = e^{-\sigma\ln n}\cos(t\ln n)
+        = n^{-\sigma}\cos(t\ln n).
+        \]
+        %
+        Usando esse fato e o Lema \ref{lema-log-zeta}, temos
+        %
+        \begin{align*}
+            \ln|\zeta^3(\sigma)\zeta^4(\sigma + it)\zeta(\sigma + 2it)|
+            &= \ln|\zeta^3(\sigma)| + \ln|\zeta^4(\sigma + it)|
+                                    + \ln|\zeta(\sigma + 2it)| \\
+            &= 3\ln|\zeta(\sigma)| + 4\ln|\zeta(\sigma + it)| 
+                                   + \ln|\zeta(\sigma + 2it)| \\
+            &= 3\Re(\log(\zeta(\sigma))) + 4\Re(\log(\zeta(\sigma + it)))
+                                         + \Re(\log(\zeta(\sigma + 2it))) \\
+            &= \sum_{n=1}^{\infty} c_n \left[\Re(n^{-\sigma}) 
+                                        + \Re(n^{-\sigma - it})
+                                        + \Re(n^{-\sigma} - 2it) \right] \\
+            &= \sum_{n=1}^{\infty} c_n n^{-\sigma}\left[3 + 4\cos\theta_n
+                                                        + \cos 2\theta_n \right],
+        \end{align*}
+        %
+        sendo $\theta_n = t\ln n$ e $c_n\geq 0$ como definidos na prova
+        do Lema \ref{lema-log-zeta}. Pelo Lema \ref{lema-des-cosseno}, segue que
+        %
+        \[
+        \sum_{n=1}^{\infty} c_n n^{-\sigma}\left[3 + 4\cos\theta_n
+                                                        + \cos 2\theta_n \right]
+        \geq 0,
+        \]
+        %
+        e temos o resultado desejado.
+    \end{proof}
+    %
+    
+    \medskip
+    
+    
+    Podemos agora enunciar precisamente e demonstrar o teorema desejado.
+    %
+    \begin{teorema}
+    \label{teo-zeta-nao-nula-re1}
+        A função $\zeta$ não se anula na reta $\Re(s) = 1$, ou seja,
+        $\zeta(1 + it) \neq 0$ para todo $t\in\R$.
+    \end{teorema}
+    %
+    \begin{proof}
+        Suponha, por absurdo, que $\zeta(1 + it_0) = 0$ para algum 
+        $t_0\in\R^*$. Como $\zeta$ é holomorfa em $1 + it_0$, existe
+        uma vizinhança desse ponto tal que
+        %
+        \[
+        \zeta(s) = (s - (1 + it_0))^n g(s),
+        \]
+        %
+        onde $g(s)$ é uma função holomorfa e que não se anula em $1 + it_0$
+        na vizinhança. Daí, para $2 > \sigma > 1$ temos
+        %
+        \[
+        |\zeta(\sigma + it_0)|^4 = |\sigma-1|^{4n}|g(1 + it_0)|^4
+                                 \leq C_1(\sigma-1)^4,
+        \]
+        %
+        sendo $C_1 = |g(1+it_0)|^4$. Ademais, como $s=1$ é polo simples
+        de $\zeta$, sabemos que
+        %
+        \[
+        |\zeta(\sigma)|^3 = \frac{C_2}{(\sigma - 1)^3},
+        \]
+        %
+        para alguma constante positiva $C_2$. Por último, como $\zeta$ 
+        também é holomorfa em $\sigma + 2it_0$, segue que
+        $|\zeta(\sigma + 2it_0)|$ é limitado na vizinhança que estamos
+        considerando por, digamos, $C_3 > 0$. Portanto,
+        %
+        \[
+        |\zeta(\sigma)^3\zeta^4(\sigma + it_0)\zeta(\sigma + 2it_0)|
+        \leq C_1C_2C_3(\sigma - 1) \xrightarrow{\sigma\to 1} 0,
+        \]
+        %
+        ou seja,
+        %
+        \[
+        \ln|\zeta(\sigma)^3\zeta^4(\sigma + it_0)\zeta(\sigma + 2it_0)| 
+        \xrightarrow{\sigma\to 1} -\infty,
+        \]
+        %
+        contrariando o Lema \ref{lema-log-produto-zetas}. Portanto,
+        $\zeta$ não se anula na reta $\Re(s) = 1$, como afirmado.
     \end{proof}
     %
