@@ -4985,24 +4985,59 @@ o que encerra a prova do teorema.
     %
     Vamos tratar de mais algumas propriedades da função $\Gamma$ que nos
     serão úteis mais à frente, a saber: a ordem de crescimento de $1/\Gamma$
-    e sua expressão em termos de uma fórmula de produto.
+    e sua expressão em termos de uma fórmula de produto. 
+    
+    Para lidar com a ordem de crescimento de $1/\Gamma$, vamos precisar
+    do seguinte lema auxiliar.
+    %
+    \begin{lema}
+    \label{lema-aux-cresc-inv-gama}
+        Para todo $s\in\C$ com $1\leq|s|$ e dado $k>0$ fixado qualquer,
+        vale a desigualdade
+        %
+        \[
+        e^{k|s|} \leq e^k e^{k|s|\ln|s|}.
+        \]
+        %
+    \end{lema}
+    %
+    \begin{proof}
+        Observe que para mostrar a validade da desigualdade, basta 
+        mostrar que
+        %
+        \[
+        e^{k|s|(1 - \ln|s|)} \leq e^k
+        \]
+        %
+        e que mostrar essa última desigualdade, por sua vez, é equivalente a mostrar que
+        a função $f$ definida por $f(x) = x(1-\ln x)$ para $x\geq 1$ tem máximo igual a 1.
+        Para verificar esse fato, basta observar que
+        %
+        \[
+        f'(x) = 1 - \ln x - x(1/x) = -\ln x \leq 0
+        \]
+        %
+        para todo $x\geq 1$. Portanto, $f$ admite um máximo em $x=1$, que é igual a $1$,
+        e fica mostrada a validade do lema.
+    \end{proof}
     %
     \begin{teorema}
     \label{teo-ordem-cresc-inv-gama}
         A função $1/\Gamma$ é tal que
         %
         \[
-        \left| \frac{1}{\Gamma(s)} \right| \leq C_1e^{C_2|s|\ln|s|} \, \forall s\in \C
+        \left| \frac{1}{\Gamma(s)} \right| \leq K_1e^{K_2|s|\ln|s|}
         \]
         %
-        para um par de constantes $C_1,C_2\in\R$,
+        para todo $s\in\C$, sendo $K_1$ e $K_2$ constantes reais positivas,
         ou seja, a ordem de crescimento de $1/\Gamma$ é 1 no sentido de que
         para todo $\e>0$ existe $C(\e)>0$ tal que
         %
         \[
-        \left| \frac{1}{\Gamma(s)} \right| \leq C(\e)e^{C_2|s|^{1+\e}} \, \forall s\in C.
+        \left| \frac{1}{\Gamma(s)} \right| \leq C(\e)e^{K_2|s|^{1+\e}},
         \]
         %
+        para todo $s\in\C$.
     \end{teorema}
     %
     \begin{proof}
@@ -5099,33 +5134,8 @@ o que encerra a prova do teorema.
             e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq 2e^2e^{|s|\ln|s|}.
         \end{align*}
         %
-        Agora, para obter a majoração no caso $1\leq|s|$, vamos primeiro mostrar que, se $k$
-        é uma constante real positiva fixada qualquer, vale
-        %
-        \begin{equation}
-        \label{eq-aux-cota-exp}    
-            e^{k|s|} \leq e^k e^{k|s|\ln|s|},
-        \end{equation}
-        %
-        para todo $1\leq|s|$. De fato, observe que mostrar essa desigualdade é equivalente a 
-        mostrar que
-        %
-        \[
-        e^{k|s|(1 - \ln|s|)} \leq e^k
-        \]
-        %
-        e que mostrar essa última desigualdade, por sua vez, é equivalente a mostrar que
-        a função $f$ definida por $f(x) = x(1-\ln x)$ para $x\geq 1$ tem máximo igual a 1.
-        Para verificar esse fato, basta observar que
-        %
-        \[
-        f'(x) = 1 - \ln x - x(1/x) = -\ln x \leq 0
-        \]
-        %
-        para todo $x\geq 1$. Portanto, $f$ admite um máximo em $x=1$, que é igual a $1$,
-        e fica mostrada a validade de \eqref{eq-aux-cota-exp}.
-        
-        Usando \eqref{eq-aux-cota-exp}, podemos majorar a exponencial desejada como segue no caso $1\leq|s|$:
+        Agora, para $1\leq|s|$, usamos o Lema \ref{lema-aux-cresc-inv-gama}
+        e obtemos
         %
         \begin{align*}
             e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq e^{(|s|+1)\ln(|s|+1)} \\
@@ -5136,8 +5146,9 @@ o que encerra a prova do teorema.
                                             &\leq e^2e^{4|s|\ln|s|}.
         \end{align*}
         %
-        Ademais, sabemos que $|\sen(\pi s)| \leq e^{\pi |s|}$ pela Fórmula de Euler. Portanto,
-        usando novamente a desigualdade \eqref{eq-aux-cota-exp},
+        Ademais, sabemos que $|\sen(\pi s)| \leq e^{\pi |s|}$ pela Fórmula de Euler. 
+        Portanto,
+        usando novamente o Lema \ref{lema-aux-cresc-inv-gama},
         a segunda parcela de \eqref{eq-expressao-inv-gama} é majorada por
         %
         \begin{equation}
@@ -5149,13 +5160,13 @@ o que encerra a prova do teorema.
         sendo
         %
         \[
-        \begin{cases}
-            C_1 = 2e^{\pi + 2}/\pi, \, 0 < |s| < 1 \\
-            C_1 = e^{\pi + 2}/\pi, \, 1\leq |s|
+        C_1 = \begin{cases}
+            2e^{\pi + 2}/\pi, \, 0 < |s| < 1 \\
+            e^{\pi + 2}/\pi, \, 1\leq |s|
         \end{cases} \qquad \text{ e } \qquad
-        \begin{cases}
-            C_2 = 1, \, 0 < |s| < 1 \\
-            C_2 = 4, \, 1\leq |s|
+        C_2 = \begin{cases}
+            1, \, 0 < |s| < 1 \\
+            4, \, 1\leq |s|
         \end{cases}.
         \]
         %
@@ -5178,16 +5189,18 @@ o que encerra a prova do teorema.
         = e.
         \]
         %
-        Portanto, como $|\sen(\pi s)| \leq e^{\pi |s|}$ temos que para todo $s\in\C$ com $|\Im(s)|>1$
+        Portanto, como $|\sen(\pi s)| \leq e^{\pi |s|}$ temos que para 
+        todo $s\in\C$ com $|\Im(s)|>1$
         vale
         %
         \[
         \left| \left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi} \right|
         \leq \frac{e}{\pi} e^{\pi |s|}
-        \red{\leq C_4e^{C_5|s|\ln|s|}},
+        \leq C_3e^{C_4|s|\ln|s|},
         \]
         %
-        sendo $C_4 = $ e $C_5 = $ ...
+        sendo $C_3 = e^{\pi + 1}/\pi$ e $C_4 = \pi$ 
+        pelo Lema \ref{lema-aux-cresc-inv-gama}.
         
         Agora, se $|\Im(s)| \leq 1$, escolhemos $k\in\Z$ tal que
         %
@@ -5220,16 +5233,18 @@ o que encerra a prova do teorema.
         = 1.
         \]
         %
-        Ademais, se $n\neq k$ então $|n+1-s| \geq 1/2$ e, portanto,
+        Ademais, se $n\neq k$ então $|n+1-s| \geq 1/2$ e, usando o
+        Lema \ref{lema-aux-cresc-inv-gama}, temos
         %
         \begin{align*}
             \left|\left(\sum_{\substack{n\in\N \\ n\neq k}}^{\infty} 
             \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right|
-            \leq 2\sum_{\substack{n\in\N \\ n\neq k}} \frac{1}{n!}e^{\pi |s|}
-            \leq C_3e^{\pi |s|},
+            \leq \frac{2}{\pi}\sum_{\substack{n\in\N \\ n\neq k}} \frac{1}{n!}e^{\pi |s|}
+            \leq 2\frac{e}{\pi} e^{\pi |s|}
+            \leq C_5e^{C_6 |s|\ln|s|}
         \end{align*}
         %
-        sendo $C_3 = 2e$.
+        sendo $C_5 = 2e^{\pi + 1}/\pi$ e $C_6 = \pi$.
         %
         \paragraph{Caso ii): $k\leq 0$.} Nesse caso, temos $\Re(s) < 1/2$ já que estamos
         supondo que 
@@ -5250,42 +5265,71 @@ o que encerra a prova do teorema.
             \includegraphics{Figuras/K<=0.pdf}
         \end{figure}
         %
-        Logo, temos a estimativa
+        Logo, novamente usando o Lema \ref{lema-aux-cresc-inv-gama}, temos a estimativa
         %
         \[
         \left|\left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right|
-        \leq C_3e^{\pi |s|},
+        \leq 2\frac{e}{\pi} e^{\pi |s|} 
+        \leq C_7 e^{C_8 |s|\ln|s|}
         \]
         %
-        sendo $C_3 = 2e$ novamente.
+        sendo $C_7 = 2e^{\pi + 1}/\pi$ e $C_8 = \pi$ novamente.
         
-        Juntando todas as estimativas obtidas, obtemos finalmente
+        Recapitulando, vimos que
+        %
+        \[
+        \left| \left( \int_0^{\infty} e^{-t}t^{-s} \, dt \right)\frac{\sen(\pi s)}{\pi} \right| \leq C_1e^{C_2|s|\ln|s|}
+        \]
+        %
+        sendo
+        %
+        \[
+        C_1 = \begin{cases}
+            2e^{\pi + 2}/\pi, \, 0 < |s| < 1 \\
+            e^{\pi + 2}/\pi, \, 1\leq |s|
+        \end{cases}, \qquad
+        C_2 = \begin{cases}
+            1, \, 0 < |s| < 1 \\
+            4, \, 1\leq |s|
+        \end{cases}.
+        \]
+        %
+        e que
+        %
+        \[
+        \left|\left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right| \leq C_3e^{C_4|s|\ln|s|},
+        \]
+        %
+        sendo
+        %
+        \[
+        C_3 = \begin{cases}
+            e^{\pi + 1}/\pi, |\Im(s)| > 1 \\
+            2e^{\pi + 1}/\pi, |\Im(s)| \leq 1
+        \end{cases}, \qquad 
+        C_4 = \pi.
+        \]
+        %
+        Portanto, podemos tomar $C_1 = 2e^{\pi + 2}/\pi = C_3$, $C_2 = 4 = C_4$,
+        para que as cotas sejam
+        válidas para todo $s\in\C$.
+        
+        Daí, obtemos finalmente
         %
         \begin{align*}
             \left| \frac{1}{\Gamma(s)} \right| 
             &\leq \left|\left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right|
             + \left| \left( \int_1^{\infty} e^{-t} t^{-s} \, dt \right)\frac{\sen(\pi s)}{\pi} \right| \\[0.3cm]
-            &\leq C_3e^{\pi |s|} + C_1(s)e^{C_1|s|\ln|s|} \\[0.3cm]
-            &\leq 4C_3(e^{-1/e})e^{\pi |s|} + C_1(s)e^{C_1|s|\ln|s|} \\[0.3cm]
-            &\leq 4C_3e^{|s|\ln|s|} + C_1(s)e^{C_1|s|\ln|s|} \\[0.3cm]
-            &\leq K_1(s)e^{K_2|s|\ln|s|},
+            &\leq C_3e^{C_4|s|\ln|s|} + C_1e^{C_2|s|\ln|s|} \\[0.3cm]
+            &= K_1e^{K_2|s|\ln|s|},
         \end{align*}
         %
-        onde a constante $e^{-1/e}$ aparece por ser o valor mínimo da função $e^{x\ln x}, x>0$. De fato,
-        derivando essa expressão e igualando a derivada a zero, temos
+        sendo
         %
         \[
-        (e^{x\ln x})' = e^{x\ln x}(1 + \ln x) = 0 \iff x = 1/e.
+        K_1 = 2\frac{e^{\pi + 2}}{\pi} \qquad \text{ e } \qquad K_2 = 4.
         \]
         %
-        Derivando novamente, temos que
-        %
-        \[
-        (e^{x\ln x})'' = e^{x\ln x}(1 + \ln x)^2 + e^{x\ln x}\frac{1}{x}
-        \]
-        %
-        e, em $x = 1/e$, a segunda derivada vale $e^{1 - 1/e} > 0$, de modo que $x = -1/e$
-        é, de fato, ponto de mínimo.
     \end{proof}
     %
     
