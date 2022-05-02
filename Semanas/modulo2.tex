@@ -91,7 +91,7 @@
         & = 0.
     \end{align*}
     %
-    Como $G$ é conexo, concluímos que $z\exp{-F(z)}$ é constante. Calculando o 
+    Como $G$ é conexo, concluímos que $z\exp(-F(z))$ é constante. Calculando o 
     valor da expressão em $z = 1$, obtemos o resultado. Mostramos agora a última
     parte. Como $1 \in G$ e $G$ é aberto, existe um intervalo aberto 
     $I \subseteq \R$ contendo $1$ tal que, para $x \in I$,
@@ -105,15 +105,13 @@
     %
     \begin{lema}%Teorema 6.2 cap 3 Stein
     \label{lema-ramo-log}
-        Se $f : G \to \C$ é holomorfa e não se anula na região simplesmente conexa 
-        $G \subseteq C$, então existe uma função $g$ definida e holomorfa em $G$ 
-        tal que 
+        Sejam $G\subset \C$ um domínio simplesmente conexo e $f:G \to \C$ uma função holomorfa tal que $f(z)\neq 0$ para todo $z\in G$. Então existe uma função holomorfa $g:G\to\C$ tal que
         %
         \begin{equation*}
-            f(z) = \exp{g(z)}
+            f(z) = \exp(g(z)), \qquad \forall z\in G.
         \end{equation*}
         %
-        para todo $z \in G$.
+        A função $g$ é chamada de um ramo do logaritmo de $f$ em $G$.
     \end{lema}
     %
     \begin{proof}
@@ -134,9 +132,9 @@
             g'(z) = \frac{f'(z)}{f(z)}.
         \end{equation*}
         %
-        Derivando a expressão $f(z)\exp{-g(z)}$ e usando a conexidade de $G$, vemos
+        Derivando a expressão $f(z)\exp(-g(z))$ e usando a conexidade de $G$, vemos
         que ela é constante. O seu valor em $z = z_0$ é 1, então concluímos que 
-        $f(z) = \exp{g(z)}$.
+        $f(z) = \exp(g(z))$.
     \end{proof}
     %
     
@@ -538,8 +536,9 @@
                 \rho > 0 :
                 \begin{array}{c}
                     \exists m\ \textrm{constantes}\  
-                    A\equiv A(\rho)>0\ \text{e}\ B\equiv B(\rho)>0\ \text{tais que}
+                    A\equiv A(\rho)>0\ \text{e}\ B\equiv B(\rho)>0 
                     \\[0.2cm]
+                    \text{tais que}\ 
                     |f(z)| \leq A\exp(B|z|^{\rho}), \quad \forall z\in\C
                 \end{array}
             \right\}.
@@ -866,6 +865,7 @@
         $\dis{ \prod_{n=1}^{\infty} (1+a_n) }$ converge. Ademais, o produto converge
         para zero se, e somente se, um de seus fatores é nulo, ou seja, existe
         $k\in\N$ tal que $1+a_k = 0$.
+        {\red comentar que nesse caso o produtório é invariante por permutação dos fatores}
     \end{proposicao}
     %
     \begin{proof}
@@ -2306,8 +2306,8 @@
     %
     \begin{lema}
     \label{lema:majoracao}
-        $x+1 > x^\alpha, \, \forall x>0$, 
-        $0 < \alpha < 1$.
+        Para qualquer $0 < \alpha < 1$ fixado, temos que
+        $x+1 > x^\alpha, \ \forall x>0$. 
     \end{lema}
     %
     Este lema nos será muito útil em algumas majorações, e o usaremos sem cerimônia.
@@ -3809,14 +3809,14 @@
         %
         $$\int_{-\infty}^{\infty}\frac{e^{au}}{1+e^u} \, du. $$
         %
-        Considere, então, a função $f(s) = e^{as}/(1+e^s)$ e observe que ela tem polo em $i\pi$, uma vez que $e^{i\pi} + 1 = 0$. Podemos calcular o resíduo de $f$ em $i\pi$ fazendo
+        Considere, então, a função $f(s) = e^{as}/(1+e^s)$ e observe que ela tem polo simples em $z=i\pi$, já que $e^{i\pi} + 1 = 0$. Podemos calcular o resíduo de $f$ em $i\pi$ da seguinte forma
         %
         \begin{align*}
             \res(f,i\pi) &= \lim_{s \to i\pi} (s-i\pi) f(s) \\
             %
             &= \lim_{s \to i\pi} (s-i\pi)\frac{e^{as}}{(1+e^s)} \\
             %
-            \lim_{s \to i\pi} e^{as}\frac{(s-i\pi)}{(e^s - e^{i\pi})} \\
+            &=\lim_{s \to i\pi} e^{as}\frac{(s-i\pi)}{(e^s - e^{i\pi})} \\
             %
             &= e^{ai\pi}\frac{1}{\exp'(i\pi)} \\
             %
@@ -5458,40 +5458,53 @@ o que encerra a prova do teorema.
     \label{lema-log-zeta}
         Para todo $s\in\C$ tal que $\Re(s)>1$, vale a identidade
         %
-        \[
-        \log\zeta(s) = \sum_{p,m} \frac{p^{-ms}}{m} 
-                     = \sum_{n=1}^{\infty} c_nn^{-s},
-        \]
+        \begin{align}
+        \label{eq1-log-zeta}
+        \log\zeta(s) 
+        = 
+        \sum_{p\in \mathbb{P}}\sum_{m=1}^{\infty} \frac{p^{-ms}}{m} 
+        = 
+        \sum_{n=1}^{\infty} c_nn^{-s},
+        \end{align}
         %
-        onde $p$ percorre o conjunto dos números primos, 
-        $m$ percorre o conjunto dos números naturais,
-        $c_n\geq 0$ para todo $n$ e a convergência das séries
-        é absoluta.
+        onde $p$ percorre o conjunto dos números primos. Além do mais,
+        para cada $n\in\N$ temos $c_n\geq 0$ e cada uma das séries acima convergem absolutamente.
     \end{lema}
     %
     \begin{proof}
-        Frisamos, novamente, que a notação $\log\zeta(s)$ \textbf{não} denota uma composta
-        entre o ramo principal do logaritmo e a função $\zeta$, mas sim uma nova função, que
-        é chamada de logaritmo da $\zeta$ no sentido do Lema \ref{lema-ramo-log}. 
-        Para demonstrar o resultado, vamos primeiramente assumir que $s\in\R$ e $s>1$ e provar
-        a identidade para esse caso. Em seguida, usaremos extensão analítica para verificar que a
-        identidade vale em todo o semi-plano $\Re(s)>1$.
+        Frisamos, novamente, que a notação $\log\zeta(s)$ \textbf{não} denota a composta entre o ramo principal do logaritmo e a função $\zeta$, mas sim um ramo abstrato do logaritmo de $\zeta$ que é fornecido pela aplicação do Lema \ref{lema-ramo-log}, que realmente pode ser usado neste caso já que $\Re(s)>1$ é um domínio simplesmente conexo onde a função $\zeta$ não se anula.
         
-        Então, supondo $s>1$, podemos representar o logaritmo natural através da seguinte série 
-        de potências
+        
+        \medskip 
+        
+        
+        Para demonstrar este lema, vamos primeiramente mostrar a validade da identidade \eqref{eq1-log-zeta} quando $s\in\R$ e $s>1$.  
+        Em seguida, usaremos um argumento de 
+        extensão analítica para verificar que a
+        identidade se estende à todo o semi-plano $\Re(s)>1$.
+        
+        \medskip 
+        
+        
+        Primeiro recordamos que para todo $x\in \R$ tal que $|x|<1$ temos
         %
         \[
         \ln\left( \frac{1}{1-x} \right) = \sum_{m=1}^{\infty} \frac{x^m}{m},
         \]
         %
-        que é válida para $0\leq x < 1$ e converge absolutamente nesse intervalo. 
-        Daí, recordando que $\zeta(s)\in\R_+$ para $s\in\R$
-        e usando a representação em produto para $\zeta$, segue que
-        %
+        com a série acima sendo absolutamente convergente.
+        
+        Já que $\zeta(s)\in\R_+$ sempre que $s\in\R$ e $s>1$
+        podemos usar a representação em produto para $\zeta$ para
+        obter a seguinte igualdade%
         \[
-        \ln(\zeta(s)) = \ln\left( \prod_{p\in\mathbb{P}} \frac{1}{1 - p^{-s}} \right)
-                      = \sum_{p\in\mathbb{P}} \ln\left( \frac{1}{1 - p^{-s}} \right)
-                      = \sum_{p,m} \frac{p^{-ms}}{m}.
+        \ln(\zeta(s)) 
+        = 
+        \ln\left( \prod_{p\in\mathbb{P}} \frac{1}{1 - p^{-s}} \right)
+        = 
+        \sum_{p\in\mathbb{P}} \ln\left( \frac{1}{1 - p^{-s}} \right)
+        = 
+        \sum_{p\in \mathbb{P}}\sum_{m=1}^{\infty} \frac{p^{-ms}}{m}.
         \]
         %
         Agora, tomando $c_n = 1/m$ se $n = p^m$ e $c_n = 0$ caso contrário, podemos reescrever
@@ -5507,7 +5520,7 @@ o que encerra a prova do teorema.
         existe $\log\zeta(s)$ pelo Lema \ref{lema-ramo-log}.
         
         Sabemos que esse ramo do logaritmo para $\zeta$ coincide com o somatório acima no intervalo
-        $(1, +\infty)$, que contém ponto de acumulação. Portanto, pelo 
+        $(1, +\infty)$, que é um conjunto contendo um ponto de aderência, onde estas duas funções coincidem. Portanto, pelo 
         Corolário \ref{cor-unicidade-ext-analiticas}, podemos representar $\log\zeta(s)$
         por
         %
@@ -5531,11 +5544,17 @@ o que encerra a prova do teorema.
     \begin{proof}
         Basta notar que
         %
-        \[
-        3 + 4\cos\theta + \cos 2\theta 
-        = 3 + 4\cos\theta + 2\cos^2\theta - 1
-        = 2(1 + \cos\theta)^2 \geq 0.
-        \]
+        \begin{align*}
+        0\leqslant 2(1 + \cos\theta)^2  
+        &=
+        2(1+2\cos\theta+\cos^2\theta)
+        \\
+        &=
+        2\left( 1+2\cos\theta+\frac{1+\cos2\theta}{2} \right)
+        \\
+        &=
+        3 + 4\cos\theta + \cos 2\theta.        
+        \end{align*}
         %
     \end{proof}
     %
@@ -5567,16 +5586,18 @@ o que encerra a prova do teorema.
         Usando esse fato e o Lema \ref{lema-log-zeta}, temos
         %
         \begin{align*}
-            \ln|\zeta^3(\sigma)\zeta^4(\sigma + it)\zeta(\sigma + 2it)|
+            \ln|\zeta^3(\sigma)\zeta^4(\sigma + it)
+            &\zeta(\sigma + 2it)|
+            \\[0.3cm]
             &= \ln|\zeta^3(\sigma)| + \ln|\zeta^4(\sigma + it)|
-                                    + \ln|\zeta(\sigma + 2it)| \\
+                                    + \ln|\zeta(\sigma + 2it)| \\[0.3cm]
             &= 3\ln|\zeta(\sigma)| + 4\ln|\zeta(\sigma + it)| 
-                                   + \ln|\zeta(\sigma + 2it)| \\
+                                   + \ln|\zeta(\sigma + 2it)| \\[0.3cm]
             &= 3\Re(\log(\zeta(\sigma))) + 4\Re(\log(\zeta(\sigma + it)))
-                                         + \Re(\log(\zeta(\sigma + 2it))) \\
+                                         + \Re(\log(\zeta(\sigma + 2it))) \\[0.3cm]
             &= \sum_{n=1}^{\infty} c_n \left[\Re(n^{-\sigma}) 
                                         + \Re(n^{-\sigma - it})
-                                        + \Re(n^{-\sigma} - 2it) \right] \\
+                                        + \Re(n^{-\sigma} - 2it) \right] \\[0.3cm]
             &= \sum_{n=1}^{\infty} c_n n^{-\sigma}\left[3 + 4\cos\theta_n
                                                         + \cos 2\theta_n \right],
         \end{align*}

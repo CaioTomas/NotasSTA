@@ -1,0 +1,456 @@
+\appendix
+
+\chapter{On the Number of Primes Less Than a Given Magnitude}
+
+%\hfill%
+%\begin{minipage}{10cm}
+\begin{flushleft}
+\rightskip=0.5cm
+by BERNHARD RIEMANN\footnote{Translated from \textit{Uber die Anzahl der Primzahlen unter einer gegebenen Grösse} by H.M. Edwards.}
+\end{flushleft}
+%\end{minipage}
+
+I believe I can best express my gratitude for the honor which the Academy 
+has bestowed on me in naming me as one of its correspondents by immediately 
+availing myself of the privilege this entails to communicate an investigation
+of the frequency of prime numbers, a subject which because of the interest
+shown in it by Gauss and Dirichlet over many years seems not wholly unworthy
+of such a communication.
+
+In this investigation I take as my starting point the observation of Euler
+that the product
+%
+\[
+\prod \frac{1}{1 - \dfrac{1}{p^s}} = \sum \frac{1}{n^s},
+\]
+%
+where $p$ ranges over all prime numbers and $n$ over all whole numbers. The
+function of a complex variable $s$ which these two expressions define when they
+converge I denote by $\zeta(s)$. They converge only when the real part of $s$
+is greater than $1$; however, it is easy yo find and expression of the function
+always is valid. By applying the equation
+%
+\[
+\int_0^{\infty} e^{-nx}x^{s-1} \, dx = \frac{\prod(s-1)}{n^s},
+\]
+%
+one finds first
+%
+\[
+\prod(s-1)\zeta(s) = \int_0^{\infty} \frac{x^{s-1}\, dx}{e^x - 1}.
+\]
+%
+If one considers the integral
+%
+\[
+\int \frac{(-x)^{s-1} \, dx}{e^x - 1}
+\]
+%
+from $+\infty$ to $+\infty$ in the positive sense around the boundary
+of a domain which contains the value 0 but no other singularity of the
+integrand in its interior, then it is easily seen to be equal to
+%
+\[
+(e^{-\pi si} - e^{\pi si})\int_0^{\infty} \frac{x^{s-1} \, dx}{e^x - 1},
+\]
+%
+provided that in the many-valued function $(-x)^{s-1} = e^{(s-1)\log(-x)}$
+the logarithm of $-x$ is determined in such a way that it is real for negative
+values of $x$. Thus
+%
+\[
+2\sin\pi s\prod(s-1)\zeta(s) 
+= i \int_{\infty}^{\infty} \frac{(-x)^{s-1} \, dx}{e^x - 1}
+\]
+%
+when the integral is defined as above.
+
+This equation gives the value of the function $\zeta(s)$ for all complex
+$s$ and shows that it is single-valued and finite for all values of $s$
+other than 1, and also that it vanishes when $s$ is a negative even integer.
+
+When the real part of $s$ is negative, the integral can be taken, instead
+of in the positive sense around the boundary of the given domain, in the
+negative sense around the complement of this domain because in that case
+(when $\Re s < 0$) the integral over values with infinitely large modulus
+is infinitely small. But inside this complementary domain the only singularities
+of the integrand are at the integer multiples of $2\pi i$, and the integral 
+is therefore equal to the sum of the integrals taken around these singularities
+in the negative sense. Since the integral around the value $n2\pi i$ is
+$(-n2\pi i)^{s-1}(-2\pi i)$, this gives
+%
+\[
+2\sin\pi s\prod(s-1)\zeta(s) = (2\pi)^s\sum n^{s-1}[(-i)^{s-1} + i^{s-1}],
+\]
+%
+and therefore a relation between $\zeta(s)$ and $\zeta(1-s)$ which, by making
+use of known properties of the function $\prod$, can also be formulated as the
+statement that
+%
+\[
+\prod\left(\frac{s}{2} - 1\right)\pi^{-s/2}\zeta(s)
+\]
+%
+remains unchanged when $s$ is replaced by $1-s$.
+
+This property of the function motivated me to consider the integral 
+$\prod ((s/2) - 1)$ instead of the integral $\prod(s-1)$ in the general
+term of $\sum n^{-s}$, which leads to a very convenient expression of
+the function $\zeta(s)$. In fact
+%
+\[
+\frac{1}{n^s}\prod\left(\frac{s}{2} - 1\right)\pi^{-s/2}
+= \int_0^{\infty} e^{-nn\pi x}x^{(s/2) - 1} \, dx;
+\]
+%
+so when one sets
+%
+\[
+\sum_{1}^{\infty} e^{-nn\pi x} = \psi(x),
+\]
+%
+it follows that
+%
+\[
+\prod\left(\frac{s}{2} - 1\right)\pi^{-s/2}\zeta(s)
+= \int_0^{\infty} \psi(x)x^{(s/2) - 1} \, dx
+\]
+%
+or, because
+%
+\begin{equation*}
+\tag{Jacobi, Fund., p. 184}
+2\psi(x) + 1 = x^{-1/2}\left[ 2\psi\left(\frac{1}{x}\right) + 1 \right],
+\end{equation*}
+%
+that
+%
+\begin{align*}
+    \prod\left(\frac{s}{2} - 1\right) 
+    &= \int_1^{\infty} \psi(x)x^{(s/2) - 1} \, dx
+    + \int_0^1 \psi\left(\frac{1}{x}\right) x^{(s-3)/2} \, dx \\
+    &+ \frac{1}{2}\int_0^1 (x^{(s-3)/2} - x^{(s/2) - 1}) \, dx \\
+    &= \frac{1}{s(s-1)} 
+    + \int_1^{\infty} \psi(x)(x^{(s/2) - 1} + x^{-(1+s)/2}) \, dx.
+\end{align*}
+%
+I now set $s = \frac{1}{2} + ti$ and
+%
+\[
+\prod\left(\frac{s}{2}\right)(s-1)\pi^{-s/2}\zeta(s) = \xi(t)
+\]
+%
+so that
+%
+\[
+\xi(t) = \frac{1}{2} - 
+\left(tt + \frac{1}{4}\right)\int_1^{\infty} \psi(x)x^{-3/4}
+\cos\left(\frac{1}{2}t\log x\right) \, dx
+\]
+%
+or also
+%
+\[
+\xi(t) = 4\int_1^{\infty} \frac{d[x^{3/2}\psi'(x)]}{dx}
+x^{-1/4}\cos\left(\frac{1}{2}t\log x\right) \, dx.
+\]
+%
+This function is finite for all finite values of $t$ and can be developed
+as a power series in $tt$ which converges very rapidly. Now since for values
+of $s$ with real part greater than 1, $\log\zeta(s) = - \sum \log(1 - p^{-s})$
+is finite and since the same is true of the other factors of $\xi(t)$, the
+function $\xi(t)$ can vanish only when the imaginary part of $t$ lies
+between $\frac{1}{2}i$ and $-\frac{1}{2}i$. The number of roots of $\xi(t) = 0$
+whose real parts lie between 0 and $T$ is about
+%
+\[
+= \frac{T}{2\pi}\log\frac{T}{2\pi} - \frac{T}{2\pi}
+\]
+%
+because the integral $\int d\log\xi(t)$ taken in the positive sense around the
+domain consisting of all values whose imaginary parts lie between $\frac{1}{2}i$
+and $-\frac{1}{2}i$ and whose real parts lie between 0 and $T$ is
+(up to a fraction of the order of magnitude of $1/T$) equal to
+$[T\log(T/2\pi) - T]i$ and is, on the other hand, equal to the number
+of roots within these bounds and it is very likely that all of the
+roots are real. One would of course like to have a rigorous proof
+of this, but I have put aside the search for such a proof after some fleeting
+vain attempts because it is not necessary for the immediate objetive of my
+investigation.
+
+If one denotes by $\alpha$ the roots of the equation $\xi(\alpha) = 0$,
+then one can express $\log\xi(t)$ as
+%
+\[
+\sum\log\left(1 - \frac{tt}{\alpha\alpha}\right) + \log\xi(0)
+\]
+%
+because, since the density of roots of size $t$ grows only like $\log(t/2\pi)$
+as $t$ grows, this expression converges and for infinite $t$ is only infinite
+like $t\log t$; thus it differs from $\log\xi(t)$ by a function of $tt$ which
+is continuous and finite for finite $t$ and which, when divided by $tt$, is
+infinitely small for infinite $t$. This difference is therefore a constant, 
+the value of which can be determined by setting $t=0$.
+
+With these preparatory facts, the number of primes less than $x$ can now be
+determined.
+
+Let $F(x)$, when $x$ is not exactly equal to a prime, be equal to this number,
+but when $x$ is a prime let it be greater by $\frac{1}{2}$ so that for an $x$
+where $F(x)$ jumps
+%
+\[
+F(x) = \frac{F(x+0) + F(x-0)}{2}.
+\]
+%
+If one sets
+%
+\[
+p^{-s} = s\int_p^{\infty} x^{-s-1} \, dx, 
+\qquad
+p^{-2s} = s\int_{p^2}^{\infty} x^{-s-2} \, dx,
+\qquad
+\dots
+\]
+%
+in the formula
+%
+\[
+\log\zeta(s) = -\sum\log(1 - p^{-s}) 
+             = \sum p^{-s} + \frac{1}{2}\sum p^{-2s} + \frac{1}{3}\sum p^{-3s}
+             + \cdots,
+\]
+%
+one finds
+%
+\[
+\frac{\log\zeta(s)}{s} = \int_1^{\infty} f(x)x^{-s-1} \, dx
+\]
+%
+when one denotes
+%
+\[
+F(x) + \frac{1}{2}F(x^{1/2}) + \frac{1}{3}F(x^{1/3}) + \cdots
+\]
+%
+by $f(x)$.
+
+This equation is valid for every complex value $a+bi$ os $s$ provided $a>1$.
+But when in such circumstances
+%
+\[
+g(s) = \int_0^{\infty} h(x)x^{-s} d\log x
+\]
+%
+is valid, the function $h$ can be expressed in terms of $g$ by means of 
+Fourier's theorem. The equation splits when $h$ is real and when 
+$g(a+bi) = g_1(b) + ig_2(b)$ into the equation
+%
+\begin{align*}
+    g_1(b) &= \int_0^{\infty} h(x)x^{-a}\cos(b\log x) d\log x, \\
+    ig_2(b) &= -i\int_0^{\infty} h(x)x^{-a}\sin(b\log x) d\log x.
+\end{align*}
+%
+When both equations are multiplied by $[cos(b\log y) + i\sin(b\log y)]\, db$
+and integrated from $-\infty$ to $+\infty$, one finds in both cases that the
+right side is $\pi h(y)y^{-\alpha}$ so that when they are added and multiplied
+by $iy^{\alpha}$
+%
+\[
+2\pi i h(y) = \int_{a - \infty y}^{a + \infty t} g(s) y^s \, ds,
+\]
+%
+where the integration is to be carried out in such a way that the real part
+of $s$ remains constant.
+
+The integral represents, for a value of $y$ where the function $h(y)$ has a
+jump, the middle value between the two values of $h$ on either side of the
+jump. The function $f$ was defined in such a way that it too has this property,
+so one has in full generality
+%
+\[
+f(y) 
+= \frac{1}{2\pi i}\int_{a-\infty i}^{a+\infty i} \frac{\log\zeta(s)}{s}y^s \, ds.
+\]
+%
+For $\log\zeta$ when can now substitute the expression
+%
+\begin{align*}
+    \frac{s}{2}\log\pi - \log(s-1) - \log\prod\left(\frac{s}{2}\right) \\
+    + \sum_{\alpha} \log\left[1 + \frac{(s - \frac{1}{2})^2}{\alpha\alpha}\right]
+    + \log\xi(0)
+\end{align*}
+%
+found above; the integrals of the individual terms of this expression will not
+converge, however, when they are taken to infinity, so it is advantageous to
+reformulate the equation as
+%
+\[
+f(x) = -\frac{1}{2\pi i}\frac{1}{\log x}
+\int_{a-\infty i}^{a+\infty i} \frac{d\frac{\log\zeta(s)}{s}}{ds} x^s \, ds
+\]
+%
+by integration by parts.
+
+Since
+%
+\[
+-\log\prod\left(\frac{s}{2}\right) 
+= \lim\left[ \sum_{n=1}^{m} \log\left( 1 + \frac{s}{2n} \right) 
+- \frac{s}{2}\log m \right]
+\]
+%
+for $m=\infty$ and therefore,
+%
+\[
+-\frac{d\frac{1}{2}\log\prod\left(\frac{s}{2}\right)}{ds}
+= \sum_{1}^{\infty} \frac{d\frac{1}{2}\log\left(1 + \frac{s}{2n}\right)}{ds},
+\]
+%
+all of the terms in the expression for $f(x)$ except for the term
+%
+\[
+\frac{1}{2\pi i}\frac{1}{\log x} 
+\int_{a-\infty i}^{a+\infty i} \frac{1}{ss}\log\xi(0)x^s \, ds = \log\xi(0)
+\]
+%
+take the form
+%
+\[
+\pm\frac{1}{2\pi i}\frac{1}{\log x}
+\int_{a-\infty i}^{a+\infty i} 
+\frac{d\left[\frac{1}{s}\log\left(1 - \frac{s}{\beta}\right)\right]}{ds}x^s \, ds.
+\]
+%
+But
+%
+\[
+\frac{d\left[\frac{1}{s}\log\left(1 - \frac{s}{\beta}\right)\right]}{d\beta} 
+= \frac{1}{(\beta - s)\beta}
+\]
+%
+and, when the real part of $s$ is greater than the real part of $\beta$,
+%
+\[
+-\frac{1}{2\pi i}\int_{a-\infty i}^{a+\infty i}
+\frac{x^s \, ds}{(\beta - s)\beta} 
+= \frac{x^{\beta}}{\beta}
+= \int_{\infty}^x x^{\beta - 1} \, dx
+\]
+%
+or
+%
+\[
+= \int_0^x x^{\beta - 1} \, dx
+\]
+%
+depending on whether the real part ot $\beta$ is negative or positive.
+Thus
+%
+\begin{align*}
+    \pm\frac{1}{2\pi i}\frac{1}{\log x}
+    \int_{a-\infty i}^{a+\infty i}
+    \frac{d\left[\frac{1}{s}\log\left(1 - \frac{s}{\beta}\right)\right]}
+    {ds}x^s \, ds \\
+    = -\frac{1}{2\pi i}\int_{a-\infty i}^{a+\infty i}
+    \frac{1}{s}\log\left( 1 - \frac{s}{\beta} \right)x^s \, ds \\
+    = \int_{\infty}^x \frac{x^{\beta - 1}}{\log x} \, dx + \text{const}
+\end{align*}
+%
+in the first case and
+%
+\[
+= \int_0^x \frac{x^{\beta - 1}}{\log x} \, dx + \text{const}
+\]
+%
+in the second case.
+
+In the first case the constant of integration can be determined by taking
+$\beta$ to be negative and infinite. In the second case the integral from
+0 to $x$ takes on two values which differ by $2\pi i$ depending on whether
+the path of integration is in the upper halfplane or in the lower halfplane;
+if the path of integration is in the upper halfplane, the ingral will be
+infinitely small when the coefficient of $i$ in $\beta$ is infinite and positive,
+and if the path is in the lower halfplane, the integral will be infinitely
+small when the coefficient of $i$ in $\log[1 - (s/\beta)]$ on the left side
+in such a way that the constants of integration drop out.
+
+By setting these values in the expression for $f(x)$ one finds
+%
+\begin{align*}
+    f(x) = \text{Li}(x) - 
+    \sum_{\alpha} 
+    [\text{Li}(x^{(1/2) + \alpha i}) + \text{Li}(x^{(1/2) - \alpha i})] \\
+    + \int_x^{\infty} \frac{1}{x^2 - 1}\frac{dx}{x\log x} + \log\xi(0),
+\end{align*}
+%
+where the sum $\sum_{\alpha}$ is over all positive roots (or all roots with
+positive real parts) of the equation $\xi(\alpha) = 0$, ordered according
+to their size. It is possible, by means of a more exact discussion of the
+function $\xi$, easily to show that with this ordering of the roots the sum
+of the series
+%
+\[
+\sum_{\alpha} 
+[\text{Li}(x^{(1/2) + \alpha i}) + \text{Li}(x^{(1/2) - \alpha i})]\log x
+\]
+%
+is the same as the limiting value of
+%
+\[
+\frac{1}{2\pi i}\int_{a-bi}^{a+bi} 
+\frac{d\frac{1}{s}\sum\log\left[1 + \frac{(s - \frac{1}{2})^2}{\alpha\alpha}\right]}{ds} x^s \, ds
+\]
+%
+as $b$ grows without bound; by a different ordering, however, it can approach
+any arbitrary real value.
+
+From $f(x)$ one can find $F(x)$ by inverting
+%
+\[
+f(x) = \sum \frac{1}{n}F(x^{1/n})
+\]
+%
+to find
+%
+\[
+F(x) = \sum (-1)^{\mu} \frac{1}{m} f(x^{1/m}),
+\]
+%
+where $m$ ranges over all positive integers which are not divisible by any square
+other than 1 and where $\mu$ denotes the number o prime factors of $m$.
+
+If $\sum_{\alpha}$ is restricted to a finite number of terms, then the derivative
+of the expression for $f(x)$ or, except for a part which decreases very rapidly
+as $x$ increases,
+%
+\[
+\frac{1}{\log x} - 2\sum_{\alpha}\frac{\cos(\alpha\log x)x^{-1/2}}{\log x}
+\]
+%
+gives an approximate expression for the density of primes + half the density of
+prime squares + $\frac{1}{3}$ the density of prime cubes, etc., of magnitude $x$.
+
+Thus the known approximation $F(x) = \text{Li}(x)$ is correct only to an order
+of magnitude of $x^{1/2}$ and gives a value which is somewhat too large, because
+the nonperiodic terms in the expression of $F(x)$ are, except for quantities
+which remain bounded as $x$ increases, 
+%
+\begin{align*}
+\text{Li}(x) - \frac{1}{2}\text{Li}(x^{1/2}) - \frac{1}{3}\text{Li}(x^{1/3})
+- \frac{1}{5}\text{Li}(x^{1/5}) \\ 
++ \frac{1}{6}\text{Li}(x^{1/6}) - \frac{1}{7}\text{Li}(x^{1/7}) + \cdots.
+\end{align*}
+%
+In fact the comparison of $\text{Li}(x)$ with the number of primes less than
+$x$ which was undertaken by Gauss and Goldschmidt and which was pursued up
+to $x=$ three million shows that the number of primes is already less than
+$\text{Li}(x)$ in the first hundred thousand and that the difference, with
+minor fluctuations, increases gradually as $x$ increases. The thickening
+and thinning of primes which is representend by the periodic terms in the
+formula has also been observed in the counts of primes, without, however, any
+possibility of establishing a law for it having been noticed. It would be
+interesting in a future count to examine the influence of individual periodic
+terms in the formula for the density of primes. More regular than the behavior
+of $F(x)$ is the behavior of $f(x)$ which already in the first hundred is on
+average very nearly equal to $\text{Li}(x) + \log\xi(0)$.
