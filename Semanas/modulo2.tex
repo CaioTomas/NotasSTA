@@ -865,7 +865,13 @@
         $\dis{ \prod_{n=1}^{\infty} (1+a_n) }$ converge. Ademais, o produto converge
         para zero se, e somente se, um de seus fatores é nulo, ou seja, existe
         $k\in\N$ tal que $1+a_k = 0$.
-        {\red comentar que nesse caso o produtório é invariante por permutação dos fatores}
+        Por último, a ordem dos fatores no produtório é irrelevante, ou seja, 
+        %
+        \[
+        \prod_{n=1}^{\infty} (1+a_n) = \prod_{n=1}^{\infty} (1+a_{\tau(n)})
+        \]
+        %
+        para qualquer permutação $\tau$ de $\N$.
     \end{proposicao}
     %
     \begin{proof}
@@ -914,21 +920,26 @@
        $B\in\C$ tal que $B_n \xrightarrow{n\to\infty} B$. Ora, já que
        %
        \begin{equation*}
-           \prod_{j=1}^n (1+a_n) = e^{B_n},
+           \prod_{j=1}^n (1+a_j) = e^{B_n},
        \end{equation*}
        %
        segue que existe
        %
        \begin{equation*}
-           \lim_{n\to\infty} \prod_{j=1}^n (1+a_n) = \lim_{n\to\infty} e^{B_n} = e^B.
+           \lim_{n\to\infty} \prod_{j=1}^n (1+a_j) = \lim_{n\to\infty} e^{B_n} = e^B.
        \end{equation*}
        %
-       Por fim, observe que se $1+a_n \neq 0 \, \forall n\in \N$, então
+       Além disso, observe que se $1+a_n \neq 0$ para todo $n\in \N$, então
        %
        \begin{equation*}
            \left| \prod_{j=1}^{\infty} (1+a_j) \right| = |e^B| \neq 0.
        \end{equation*}
        %
+       Por último, note que se $\tau$ for uma permutação em $\N$ e 
+       trocarmos $a_j$ por $a_{\tau(j)}$ nas expressões
+       envolvendo os $B_n$'s, chegaremos à conclusão de que, ainda assim,
+       $B_n\xrightarrow{n\to\infty} B$. Portanto, a convergência do produtório de Weierstrass
+       é invariante por permutação dos fatores.
     \end{proof}
     %
     
@@ -5530,6 +5541,14 @@ o que encerra a prova do teorema.
         %
         para todo $s\in\C$ com $\Re(s)>1$.
     \end{proof}
+    %
+    \begin{observacao}
+        Na demonstração do lema acima, utilizamos a notação $\prod_{p\in\mathbb{P}}$ para
+        o produtório. A rigor, esse símbolo não está bem definido assim como foi o caso
+        para os somatórios. Entretanto, como estamos trabalhando com produtos de Weierstrass,
+        a Proposição \ref{prop:prod-inf} garante que nessas condições a ordem dos índices
+        é irrelevante para o cálculo.
+    \end{observacao}
     %
     \begin{lema}
     \label{lema-des-cosseno}
