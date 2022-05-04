@@ -1,3 +1,164 @@
 Introdução do texto
 
 Colocar a tradução do Cap1 do Edwards
+
+    % \begin{center}
+    %     \textbf{Capítulo 1: O artigo de Riemann}
+    % \end{center}
+    \section*{Contexto Histórico}
+
+    Este livro é um estudo do artigo de 8 páginas ``On the number of primes less than a given magnitude''\footnote{The german title is Ueber die Ahzahl der Primzahlen unter einer gegebenen Grösse.} de Bernhard Riemann que marcou época e dos subsequentes desenvolvimentos da teoria que este artigo inaugura. O primeiro capítulo é uma análise do artigo em si e os 11 capítulos restantes são voltados para o trabalho que foi feito, desde 1859, sobre as questões que Riemann deixou sem resposta.
+
+    A teoria para a qual o artigo de Riemann é uma contribuição tem seu início no Teorema de Euler, provado em 1737, da divergência da soma dos recíprocos dos números primos
+    %
+    \begin{equation}
+    \label{Soma-Recip-primos}
+    \frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \frac{1}{11} + \frac{1}{13} + \frac{1}{17} + \cdots.
+    \end{equation}
+    %
+    Este teorema vai além do clássico \textcolor{red}{(antigo)} Teorema de Euclides, sobre a infinitude dos números primos, e mostra que os números primos são densos no conjunto dos números inteiros - mais densos que os quadrados, por exemplo, no sentido de que a soma dos recíprocos dos quadrados converge.
+    
+    Euler vai além de simplesmente enunciar a divergência de \eqref{Soma-Recip-primos} e diz que, como $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \cdots$ diverge como o logaritmo e (\ref{Soma-Recip-primos}) diverge como o logaritmo de
+    \footnote
+    {Isto é verdade por conta da fórmula de Euler $\sum(1/n) = \prod (1-p^{-1})^{-1}$, então $\log (\sum(1/n)) = - \log(\prod(1-p^{-1})^{-1}) = -\log(\prod(1-p^{-1})) = -\sum (p^{-1} + \frac{1}{2}p^{-2} + \frac{1}{3}p^{-3} + \cdots ) = \sum(1/p) + \text{ convergente}.$}
+    $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \cdots$, a série \eqref{Soma-Recip-primos} deve divergir como o $\log$ do $\log$, que Euler escreve como 
+    %
+    \begin{equation}
+    \label{Soma-Recip-primos-log}
+    \frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \frac{1}{11} + \frac{1}{13} + \frac{1}{17} + \cdots = \log(\log \infty).
+    \end{equation}
+    %
+    Não é claro o que esta equação significava para Euler - isto se a entendia como algo além de algo \textcolor{red}{mnemônico} - mas uma interpretação óbvia dela poderia ser
+    %
+    \begin{equation}
+    \label{Soma-Recip-primos-x}
+    \sum_{p<x}\frac{1}{p} \approx \log(\log x) \ \ \ \ \ \ (x \to \infty),
+    \end{equation}
+    %
+    onde o lado esquerdo denota a soma de $1/p$ sobre todos os primos $p$ menores que $x$ e o símbolo $\approx$ significa que o erro relativo é arbitrariamente pequeno para $x$ suficientemente grande ou, o que é a mesma coisa, que a razão entre os dois lados se aproxima de $1$ conforme $x \to \infty$. Agora,
+    %
+    $$\log(\log x) = \int_{1}^{\log x} \frac{du}{u} = \int_{e}^{x} \frac{dv}{v\log v},$$
+    %
+    então \eqref{Soma-Recip-primos-x} significa que a integral de $1/v$ relativa à métrica $dv/\log v$ diverge da mesma maneira que a integral de $1/v$ relativa à \textcolor{red}{métrica discreta} que dá peso 1 para os primos e peso 0 para todos os outros pontos. Neste sentido, \eqref{Soma-Recip-primos-x} tem a interpretação de que a densidade dos primos é, essencialmente, $1/\log v$. No entanto, não há evidências de que Euler tenha pensado na densidade dos números primos e seus métodos eram inadequados para provar a formulação \eqref{Soma-Recip-primos-x} do que ele enuncia em \eqref{Soma-Recip-primos-log}.
+    
+    Gauss afirma, em uma carta escrita em 1849, que ele havia observado por volta de 1792 ou 1793 que a densidade dos primos aparenta ser, em média, $1/\log x$ e diz que cada nova tabela de primos publicada em anos subsequentes vinha a confirmar sua crença da precisão desta aproximação. No entanto, ele não menciona a fórmula de Euler \eqref{Soma-Recip-primos-log} e não dá nenhuma base analítica para esta aproximação, que é apresentada somente com base em observações empíricas. Ele mostra a Tabela \ref{Tabela-Gauss}.
+    %
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+             $x$& número de primos $< x$ & $\displaystyle \int \frac{dn}{\log n}$ &  Diferença\\
+             \hline
+             500.000   & 41.556  & 41.606,4  & 50,4 \\
+             1.000.000 & 78.501  & 78.627,5  & 126,5 \\
+             1.500.000 & 114.112 & 114.263,1 & 151,1 \\
+             2.000.000 & 148.883 & 149.054,8 & 171,8 \\
+             2.500.000 & 183.016 & 183.245,0 & 229,0 \\
+             3.000.000 & 216.745 & 216.970,6 & 225,6
+        \end{tabular}
+        \caption{}
+        \label{Tabela-Gauss}
+    \end{table}
+    %
+    
+    Gauss não diz exatamente o que significa o símbolo $\int (dn/\log n)$, mas os dados na Tabela \ref{Tabela-Lehmer}, \textcolor{red}{tirada de D. N. Lehmer [L9]}, indica que $n$ é uma variável contínua integrada de $2$ a $x$, ou seja, $\int_{2}^{x}(dt/\log t)$. Observe que a contagem de primos de Lehmer
+    %
+    \footnote{Lehmer insiste em contar 1 como número primo. Para adequar ao consenso comum, sua contagem foi reduzida em uma unidade na Tabela \ref{Tabela-Lehmer}}
+    %
+    , que podemos seguramente considerar precisa, difere da de Gauss e que a diferença corrobora a estimativa de Gauss para os valores grandes de $x$.
+    
+    %
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+             $x$& número de primos $< x$ & $\displaystyle \int_{2}^{x} \frac{dt}{\log t}$ &  Diferença\\
+             \hline
+             500.000   & 41.538  & 41.606  & 68  \\
+             1.000.000 & 78.498  & 78.628  & 130 \\
+             1.500.000 & 114.155 & 114.263 & 108 \\
+             2.000.000 & 148.933 & 149.055 & 122 \\
+             2.500.000 & 183.072 & 183.245 & 173 \\
+             3.000.000 & 216.816 & 216.971 & 155
+        \end{tabular}
+        \caption{}
+        \label{Tabela-Lehmer}
+    \end{table}
+    %
+    
+    Por volta de 1800, Legendre publicou em sua obra \textit{Theorie des nombres} \textcolor{red}{[L11]} uma fórmula empírica para o número de primos menores que um dado valor, \textcolor{red}{que acarretou mais ou menos} no mesmo resultado, isto é, que a densidade dos primos é $1/\log x$. Mesmo com a tentativa de Legendre de provar sua fórmula, o seu argumento se reduz a nada mais que a afirmação de que, se assumimos que a densidade dos primos tem a forma
+    %
+    $$\frac{1}{A_1x^{m_1} + A_1x^{m_2} + \cdots},$$
+    %
+    onde $m_1 > m_2> \cdots$, então $m_1$ não pode ser positivo (porque a soma \eqref{Soma-Recip-primos} convergiria neste caso), então $m_1$ deve ser "infinitamente pequeno" e a densidade deve ser da forma
+    %
+    $$\frac{1}{A \log x + B}.$$
+    %
+    Ele, então, determina $A$ e $B$ de forma empírica. A fórmula de Legendre era bem conhecida no mundo matemático e foi mencionada por matemáticos como Abel \textcolor{red}{[A2]}, Dirichlet \textcolor{red}{[D3]} and Chebyschev \textcolor{red}{[C2]} no período de 1800 a 1850.
+    
+    Os primeiros resultados significativos além dos de Euler foram obtidos por Chebyshev por volta de 1850. Ele provou que o erro relativo na aproximação
+    %
+    \begin{equation}
+        \label{pi(x)-Li(x)}
+        \pi(x) \approx \int_{2}^{x} \frac{dt}{\log t},
+    \end{equation}
+    %
+    onde $\pi(x)$ denota o número de primos menores que $x$, é menor que 11\% para $x$ suficientemente grande; ou seja, ele provou
+    %
+    \footnote{
+    Chebyshev não enunciou seu resultado desta forma. Esta forma pode ser obtida das suas estimativas para o número de primos entre $l$ e $L$ \textcolor{red}{(veja Chebyshev [C3, seçaõ 6])} fixando $l$ e tomando $L \to \infty$ e usando $\int_{2}^{L}(dt/\log t) \approx L/\log L$.}
+    %
+    que
+    %
+    \begin{equation*}
+        (0,89)\int_{2}^{x} \frac{dt}{\log t} < \pi(x) < (1,11)\int_{2}^{x} \frac{dt}{\log t}
+    \end{equation*}
+    %
+    para todo $x$ suficientemente grande. Além disso, ele provou que nenhuma aproximação do tipo Legendre
+    %
+    $$ \pi(x) \approx \frac{x}{A\log x + B} $$
+    %
+    pode ser melhor que a aproximação \eqref{pi(x)-Li(x)} e, se a razão entre $\pi(x)$ e $\int_{2}^{x} (dt/\log t$ se aproxima de um limite conforme $x \to \infty$, então esse limite deve ser 1. Fica claro que Chebyshev estava tentando provar que o erro relativo na aproximação \eqref{pi(x)-Li(x)} se aproxima de zero quando $x \to \infty$, mas foi apenas quase 50 anos depois que este teorema, conhecido como "Teorema do número primo" foi provado. Mesmo o trabalho de Chebyshev sendo publicado na França muito antes do artigo de Riemann, ele não se refere a Chebyshev em seu artigo. No entanto, Riemann se refere a Dirichlet que \textcolor{red}{se correspondia com} Chebyshev (veja o relatório de Chebyshev sobre sua viagem à Europa Oriental \textcolor{red}{[C5, Vol. 5...]}). Dirichlet teria provavelmente informado Riemann sobre o trabalho de Chebyshev. Os trabalhos não publicados de Riemann contém muitas fórmulas de Chebyshev, o que indica que ele estudou o trabalho de Chebyshev, e contém pelo menos uma referência direta a Chebyshev \textcolor{red}{(veja a figura \ref{})}.
+    
+    A contribuição real do artigo de Riemann de 1859 não está em seus resultados, mas, sim, em seus métodos. O resultado principal é uma fórmula para $\pi(x)$ como uma soma de uma série infinita da qual $\int_{2}^{x}(dt/\log t)$ é, de longe, o maior termo. No entanto, a prova de Riemann deste fato é inadequada; em particular, não é, de forma alguma, claro, pelos argumentos de Riemann, que a série infinita para $\pi(x)$ convirja, muito menos que seu maior termo domine para valores grandes de $x$. Por outro lado, os métodos de Riemann, que incluem o estudo da função $\zeta(s)$ como uma função de uma variável complexa, o estudo dos zeros complexos de $\zeta(s)$, \textcolor{red}{inversão de Fourier}, \textcolor{red}{inversão de Möbius} e a representação de funções para funções do tipo $\pi(x)$ por "fórmulas explícitas" como sua série infinita foram importantes contribuições no desenvolvimento subsequente da teoria.
+    
+    Nos primeiros 30 anos após a publicação do artigo de Riemann, não houve praticamente nenhum avanço
+    %
+    \footnote{ Uma grande exceção foi o Teorema de Mertens \textcolor{red}{[M5]} de 1874 que afirma que \eqref{Soma-Recip-primos-x} é verdadeira no sentido de que a diferença dos dois lados se aproxima de um limite quando $x \to \infty$. Este limite é a constante de Euler adicionado de $\sum_{p}[\log(1-p^{-1}) + p^{-1}]$. Possivelmente, um enunciado mais natural para o Teorema de Mertens é 
+    %
+    $$\lim_{x \to \infty} \log \left( x \prod_{p<x}(1-p^{-1}) \right) = e^{-\gamma},$$
+    %
+    onde $\gamma$ é a constante de Euler. Veja Hardy e Wright \textcolor{red}{[H7]}}
+    %
+    na área. É como se o mundo matemático precisasse deste tempo todo para processar as ideias de Riemann. Então, em um período de 10 anos, Hadamard, Von Mangoldt e de la Vallée Poussin conseguiram provar a fórmula principal de Riemann para $\pi(x)$, o Teorema do número primo \eqref{pi(x)-Li(x)} e vários outros teoremas relacionados. As ideias de Riemann foram cruciais em todas as demonstrações. Desde esse período, não houve falta de novos problemas em Teoria Analítica dos Números e o progresso se manteve estável neste campo, boa parte deste progresso é inspirado pelas ideias de Riemann. 
+    
+    Nenhuma discussão do contexto histórico do artigo de Riemann estaria completa se não mencionasse a hipótese de Riemann. Ao longo do artigo, Riemann diz que considera "muito provável" que todos os zeros de $\zeta(s)$ tem parte real igual a $1/2$, mas que foi incapaz de provar a veracidade desta afirmação, que é conhecida, hoje em dia, como a "hipótese de Riemann". A experiência dos sucessores de Riemann com esta hipótese tem sido a mesma de Riemann - eles também consideram que ela provavelmente é verdadeira mas não foram capazes de prová-la. Hilber incluiu o problema de provar a hipótese de Riemann em sua lista \textcolor{red}{[H9]} dos problemas não resolvidos mais importantes do mundo matemático em 1900. Resolver este problema foi o foco de muitos dos melhores matemáticos do século 20. Este é, sem dúvidas, o problema mais celebrado da matemática e continua a atrair a atenção dos melhores matemáticos, não apenas porque continua sem solução por tanto tempo, mas também por que aparenta ser vulnerável e sua sua solução traria à luz técnicas importantíssimas e com grande potencial matemático. 
+    
+    
+    
+    \section*{A fórmula do produto de Euler}
+    
+    
+    Riemann toma, de início, a fórmula
+    %
+    \begin{equation}
+        \label{Euler-prod}
+        \sum_{n} \frac{1}{n^s} = \prod_{p} \frac{1}{\left( 1 - \frac{1}{p^s}\right)}
+    \end{equation}
+    %
+    devida a Euler.
+    
+    
+%regaça 
+%\o/
+
+
+
+
+
+
+
+
+
+
+
+
+

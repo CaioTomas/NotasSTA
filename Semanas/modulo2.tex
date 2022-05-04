@@ -3696,12 +3696,12 @@
         &\leq \int_{1}^{n}|t^{s}-t^{s_0}| \, dt 
     \end{align*}
     %
-    Observe que a função $s \mapsto t^s = \exp(s\ln t)$ é inteira e $J_n = [1,n]$ é compacto, então, dado $\e > 0$, podemos encontrar $\delta > 0$ tal que $\sup_{t \in J_n}|t^{s}-t^{s_0}| < \e$ se $|s-s_0| < \delta$. Analogamente ao que fizemos antes, temos 
+    Observe que a função $s \mapsto t^s = \exp(s\ln t)$ é inteira e $J_n = [1,n]$ é compacto, então, dado $\e > 0$, podemos encontrar $\delta > 0$ tal que $\sup_{t \in J_n}|t^{s}-t^{s_0}| < \e/(n-1)$ se $|s-s_0| < \delta$. Analogamente ao que fizemos antes, temos 
     %
     \begin{align*}
     |g_n(s) - g_n(s_0)| &\leq \int_{1}^{n}|t^{s}-t^{s_0}| \, dt \\
     %
-    &\leq \e \int_{1}^{n} \, dt = (n-1)\e \xrightarrow{\e \to 0} 0.
+    &\leq \frac{\e}{n-1} \int_{1}^{n} \, dt = \e.
     \end{align*}
     %
     Isto mostra que as funções $g_n$ são contínuas em $\C$. Se $\Delta$ é um triângulo qualquer
@@ -5382,7 +5382,7 @@ o que encerra a prova do teorema.
         Pelo Teorema do Valor Médio aplicado à função $f(y) = 1/y$, sabemos que
         %
         \[
-        \left| \frac{1}{j} - \frac{1}{x} \right| \leq \frac{1}{j^2}, \, \forall n\leq x\leq n+1.
+        \left| \frac{1}{j} - \frac{1}{x} \right| \leq \frac{1}{j^2}, \, \forall j\leq x\leq j+1.
         \]
         %
         Portanto,
@@ -5447,7 +5447,7 @@ o que encerra a prova do teorema.
                                 &= e^Ae^{-\y},
         \end{align*}
         %
-        donde segue que $A = \y + 2\pi ik, k\in\Z$. Ora, mas como $\Gamma(s)\in\R, \, \forall s\in\R$,
+        onde usamos $\ln(N+1) = \ln(N) + \ln(1 + 1/N)$ e segue que $A = \y + 2\pi ik, k\in\Z$. Ora, mas como $\Gamma(s)\in\R, \, \forall s\in\R$,
         segue que $k = 0$ e $A = \y$, completando a demonstração.
     \end{proof}
     %
@@ -5658,17 +5658,17 @@ o que encerra a prova do teorema.
         na vizinhança. 
         %
         \begin{center}
-            {\bf DIAGRAMA DA VIZINHANÇA}
+            {\bf DIAGRAMA SLIDE 11 AULA 26}
         \end{center}
         %
         Daí, para $2 > \sigma > 1$ temos
         %
         \[
-        |\zeta(\sigma + it_0)|^4 = |\sigma-1|^{4n}|g(1 + it_0)|^4
+        |\zeta(\sigma + it_0)|^4 = |\sigma-1|^{4n}|g(\sigma + it_0)|^4
                                  \leq C_1(\sigma-1)^4,
         \]
         %
-        sendo $C_1 = |g(1+it_0)|^4$. Ademais, como $s=1$ é polo simples
+        sendo $C_1 = |g(\sigma + it_0)|^4$. Ademais, como $s=1$ é polo simples
         de $\zeta$, sabemos que
         %
         \[
