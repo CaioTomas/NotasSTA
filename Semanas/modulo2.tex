@@ -5657,9 +5657,9 @@ o que encerra a prova do teorema.
         onde $g(s)$ é uma função holomorfa e que não se anula em $1 + it_0$
         na vizinhança. 
         %
-        \begin{center}
-            {\bf DIAGRAMA SLIDE 11 AULA 26}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/vizinhança.pdf}
+        \end{figure}
         %
         Daí, para $2 > \sigma > 1$ temos
         %
@@ -5704,7 +5704,175 @@ o que encerra a prova do teorema.
     Portanto, todos os zeros não triviais de $\zeta$ se encontram na
     chamada \textbf{faixa crítica}: $0 < \Re(s) < 1$.
     %
-    \begin{center}
-        {\bf DIAGRAMA FAIXA CRÍTICA}
-    \end{center}
+    \begin{figure}[H]\centering
+        \includegraphics{Figuras/faixa crítica.pdf}
+    \end{figure}
+    %
+    A famosa \textbf{hipótese de Riemann} afirma que todos os zeros não
+    triviais de $\zeta$ se encontram sobre a reta crítica, isto é,
+    são da forma $1/2 + it$, com $t\in\R$.
+    
+    
+    \subsection{A função zeta de Riemann e o Teorema do Número Primo}
+    
+    Nesta seção, vamos utilizar a função $\zeta$ para provar o
+    Teorema do Número Primo, que diz que
+    %
+    \[
+    \pi(x) \sim x/\log x,
+    \]
+    %
+    sendo $\pi(x)$ a quantidade de números primos menores ou iguais a $x$.
+    Para tanto, vamos precisar de alguns resultados que nos dão informação
+    acerca do crescimento de $\zeta$. O primeiro deles é o seguinte.
+    %
+    \begin{proposicao}
+    \label{prop-2.5-Stein}
+        Dado $s = \sigma + it$, com $\sigma, t\in\R$, 
+        existe uma sequência $\{f_n\}_{n\in\N}$ de funções inteiras
+        satisfazendo 
+        %
+        \[
+        |f_n(s)| \leq \frac{|s|}{n^{\sigma + 1}}
+        \]
+        %
+        e tais que, para todo $N\in\N^*$, vale
+        %
+        \begin{equation}
+        \label{eq-8-Stein}
+            \sum_{1\leq n < N} \frac{1}{n^s}
+            -
+            \int_1^N \frac{1}{x^s} \, dx
+            =
+            \sum_{1\leq n < N} f_n(s).
+        \end{equation}
+        %
+    \end{proposicao}
+    %
+    \begin{proof}
+        Para cada $n\in\N$, defina $f_n:\C\to\C$ por
+        %
+        \begin{equation}
+        \label{eq-def-fn}
+            f_n(s) = 
+            \int_n^{n+1} \left[ \frac{1}{n^s} - \frac{1}{x^s} \right] \, dx.
+        \end{equation}
+        %
+        Observe que $f_n$ é inteira para cada $n\in\N$. De fato, dado um triângulo 
+        $\Delta\subseteq\C$ qualquer, podemos usar o Teorema de Fubini
+        e o Teorema de Cauchy-Goursat para concluir que
+        %
+        \begin{align*}
+            \int_{\Delta} f_n(s) \, ds
+            &= 
+            \int_{\Delta}\left[\int_n^{n+1}\frac{1}{n^s} - \frac{1}{x^s} \, dx\right] \, ds \\
+            &= \int_n^{n+1}\left[\int_{\Delta}\frac{1}{n^s} - \frac{1}{x^s} \, ds\right] \, dx \\
+            &= \int_n^{n+1} 0 \, dx \\
+            &= 0.
+        \end{align*}
+        %
+        Como $\Delta$ era um triângulo qualquer, segue do Teorema de Cauchy-Goursat que
+        $f_n$ é inteira para cada $n\in\N$.
+        
+        {\red Agora, note que aplicando o Teorema do Valor Médio à função $f(x) = x^{-s}$, temos que}
+        %
+        \[
+        \left|\frac{1}{n^s} - \frac{1}{x^s}\right| \leq \frac{|s|}{n^{\sigma + 1}},
+        \]
+        %
+        para todo $n\leq x\leq n+1$. Pelo Lema Técnico (Lema \ref{lema-tecnico}) e por
+        \eqref{eq-def-fn}, segue que
+        %
+        \[
+        |f_n(s)| \leq \int_n^{n+1} \left|\frac{1}{n^s} - \frac{1}{x^s}\right| \, dx \leq \frac{|s|}{n^{\sigma + 1}}.
+        \]
+        %
+        Por outro lado, podemos escrever
+        %
+        \begin{equation}
+        \label{eq-int-reescrita}
+            \int_1^N \frac{1}{x^s} \, dx = \sum_{1\leq n < N} \int_n^{n+1} \frac{1}{x^s} \, dx.
+        \end{equation}
+        %
+        Logo, juntando \eqref{eq-int-reescrita} com \eqref{eq-def-fn} obtemos
+        %
+        \begin{align*}
+        \sum_{1\leq n < N} \frac{1}{n^s} - \int_1^N \frac{1}{x^s} \, dx
+        &= \sum_{1\leq n < N} \left[ \frac{1}{n^s} - \int_n^{n+1} \frac{1}{x^s} \, dx\right] \\
+        &= \sum_{1\leq n < N} \int_n^{n+1} \left[ \frac{1}{n^s} - \frac{1}{x^s} \right] \, dx \\
+        &= \sum_{1\leq n < N} f_n(s),
+        \end{align*}
+        %
+        como afirmado.
+    \end{proof}
+    %
+    O que nos será mais útil é o seguinte corolário desta proposição.
+    %
+    \begin{corolario}
+    \label{cor-zeta-menos-singularidade}
+        Para todo $s\in\C$ com $\Re(s) > 0$, temos
+        %
+        \[
+        \zeta(s) - \frac{1}{s-1} = H(s),
+        \]
+        %
+        onde
+        %
+        \[
+        H(s) = \sum_{n=1}^{\infty} f_n(s)
+        \]
+        %
+        define uma função holomorfa em $\Re(s) > 0$, sendo
+        %
+        \[
+        f_n(s) = \int_n^{n+1} \left[ \frac{1}{n^s} - \frac{1}{x^s} \right] \, dx.
+        \]
+        %
+    \end{corolario}
+    %
+    \begin{proof}
+        Para provar a analiticidade de $H$ no semi-plano $\Re(s) > 0$, vamos usar o
+        teste $M$ de Weierstrass.
+        
+        Seja $\delta > 0$ e suponha que $s$ está no semi-plano $\Re(s) > \delta$. 
+        {\red Então, para todo $s$ nesse semi-plano, sabemos que}
+        %
+        \[
+        |f_n(s)| \leq \frac{1}{n^{\delta + 1}},
+        \]
+        %
+        de modo que
+        %
+        \[
+        \sum_{n=1}^{\infty} \sup_{\Re(s) > \delta} |f_n(s)| 
+        \leq \sum_{n=1}^{\infty} \frac{1}{n^{\delta + 1}}
+        = \zeta(1 + \delta)
+        < +\infty.
+        \]
+        %
+        Portanto, pelo teste M de Weierstrass sabemos que $H$ é holomorfa no semi-plano
+        $\Re(s) > \delta$. Ora, como $\delta>0$ foi tomado arbitrariamente, então
+        $H$ é holomorfa no semi-plano $\Re(s) > 0$.
+        
+        {\red Agora, observe que para todo $s\in\C$ com $\Re(s) > 1$ podemos escrever}
+        %
+        \begin{align*}
+            \zeta(s) - \frac{1}{s-1} &= \sum_{n=1}^{\infty} \frac{1}{n^s} - \frac{1}{s-1} \\
+                                     &= \lim_{N\to\infty} \left(\sum_{n=1}^N \frac{1}{n^s} - \frac{1}{s-1} \right) \\
+                                     &= \lim_{N\to\infty} \left(\sum_{n=1}^N \frac{1}{n^s} 
+                                                            - \int_1^N \frac{1}{x^s} \, dx \right) \\
+                                     &= \lim_{N\to\infty} \sum_{n=1}^N f_n(s) \\
+                                     &= H(s)
+        \end{align*}
+        %
+        {\red notando que}
+        %
+        \[
+        \int_1^N x^{-s} \, dx = \frac{N^{-s + 1}}{-s+1} + \frac{1}{s-1}
+        \]
+        %
+        {\red e que a primeira parcela desaparece quando $N\to\infty$.}
+        
+        {\red checar o argumento e, se estiver certo, argumentar sobre a extensão analítica de $\zeta$}.
+    \end{proof}
     %

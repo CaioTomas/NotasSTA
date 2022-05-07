@@ -104,7 +104,7 @@ Colocar a tradução do Cap1 do Edwards
     onde $\pi(x)$ denota o número de primos menores que $x$, é menor que 11\% para $x$ suficientemente grande; ou seja, ele provou
     %
     \footnote{
-    Chebyshev não enunciou seu resultado desta forma. Esta forma pode ser obtida das suas estimativas para o número de primos entre $l$ e $L$ \textcolor{red}{(veja Chebyshev [C3, seçaõ 6])} fixando $l$ e tomando $L \to \infty$ e usando $\int_{2}^{L}(dt/\log t) \approx L/\log L$.}
+    Chebyshev não enunciou seu resultado desta forma. Esta forma pode ser obtida das suas estimativas para o número de primos entre $l$ e $L$ \textcolor{red}{(veja Chebyshev [C3, seção 6])} fixando $l$ e tomando $L \to \infty$ e usando $\int_{2}^{L}(dt/\log t) \approx L/\log L$.}
     %
     que
     %
@@ -144,7 +144,66 @@ Colocar a tradução do Cap1 do Edwards
         \sum_{n} \frac{1}{n^s} = \prod_{p} \frac{1}{\left( 1 - \frac{1}{p^s}\right)}
     \end{equation}
     %
-    devida a Euler.
+    devida a Euler. Aqui $n$ percorre todos os inteiros positivos $(n=1,2,3, \dots)$ e $p$, todos os primos $(p=2,3,5,7,11,\dots$. Esta fórmula, conhecida como "fórmula do produto de Euler", resulta de expandir todos os fatores à direita
+    %
+    $$\frac{1}{\left( 1 - \frac{1}{p^s}\right)} = 1 + \frac{1}{p^s} + \frac{1}{(p^2)^s} + \frac{1}{(p^3)^s} + \cdots $$
+    %
+    e observar que seu produto é uma soma de fatores da forma
+    %
+    $$\frac{1}{(p_1^{n_1} p_2^{n_2} \cdots p_r^{n_r})^s},$$
+    %
+    onde $p_1, \dots, p_r$ são primos distintos e $n_1, \dots, n_r$ são números naturais, e, então, usar o Teorema Fundamental da Aritmética (todo inteiro pode, essencialmente, ser escrito de uma única maneira como um produto de números primos) para concluir que esta soma é, de fato, $\sum_{n}(1/n^s)$. Euler usou esta fórmula principalmente como uma identidade formal e para valores inteiros de $s$ (veja, por exemplo, Euler \textcolor{red}{[E5]}).
+    
+    Dirichlet também baseou seu trabalho
+    %
+    \footnote{A maior contribuição de Dirichlet para a teoria foi sua demonstração de que, se $m$ coprimo com $n$, então há infinitos números primos $p$ satisfzendo $p \equiv m \ (\mod n)$. Ele também estava interessado em questões relacionadas à densidade da distribuição dos primos, mas ele não teve um sucesso significativo com estas questões. 
+    }
+    %
+    neste campo na fórmula do produto de Euler. Como Dirichlet foi um dos professores de Riemann e ele se refere a Dirichlet no primeiro parágrafo de seu artigo, o fato de Riemann ter usado a fórmula do produto foi provavelmente influenciado por Dirichlet. Diferentemente de Euler, Dirichlet usou a fórmula \eqref{Euler-prod} com $s$ sendo uma variável real e provou
+    %
+    \footnote{Dirichlet \textcolor{red}{[D3]}. Como os termos $p^{-s}$ são todos positivos, não há nada difícil relacionado a esta prova - é essencialmente uma reordenação de séries absolutamente convergentes - mas tem a importante efeito de transformar \eqref{Euler-prod} de uma identidade formal válida  para diversos valores de $s$ para uma expressão analítica verdadeira para todo número real $s>1$.
+    }
+    %
+    rigorosamente que esta equação é válida sempre que $s>1$.
+    
+    É natural esperar que Riemann, como um dos fundadores da teoria de funções de uma variável complexa, considerasse $s$ como uma variável complexa. É fácil mostrar que ambos os lados de \eqref{Euler-prod} converge para $s$ complexo no semiplano $\Re(s)>1$, mas Riemann vai muito além e mostra que, mesmo os dois lados da fórmula divergindo para outros valores de $s$, a função que eles definem tem significado para todo $s$ complexo, exceto por um polo em $s=1$. Esta extensão do domínio da função requer alguns fatos sobre a função fatorial que veremos na próxima seção.
+    
+    
+    \section*{A função fatorial}
+    
+    
+    Euler estendeu a função fatorial $n! = n(n-1)(n-2) \cdots 3 \cdot 2 \cdot 1$ dos números naturais $n$ para todo número real maior que $-1$ observando que 
+    %
+    \footnote{Euler escreveu a integral em termos de $y = e^{-x}$ como $\int_{0}^{1}(\log 1/y)^n \, dy$ (veja Euler \textcolor{red}{[E3]}
+    }
+    %
+    \begin{equation}
+        \label{factorial-Gamma}
+        n! = \int_{0}^{\infty}e^{-x}x^n \, dx \qquad (n = 1, 2, 3, \dots)
+    \end{equation}
+    %
+    (integração por partes) e observando, também, que que a integral à direita converge para valores não inteiros de $n$ desde que $n>-1$. Gauss \textcolor{red}{[G1]} introduziu a notação
+    %
+    \begin{equation}
+        \label{factorial-Gamma-pi}
+        \Pi(s) = \int_{0}^{\infty}e^{-x}x^s \, dx \qquad (s>-1)
+    \end{equation}
+    %
+    para a integral de Euler no lado direito de \eqref{factorial-Gamma}. Então $\Pi(s)$ é definida para todo número real $s$ maior que -1, na verdade, para todo $s$ complexo no semiplano $\Re(s)>-1$. Além disso, $\Pi(s) = s!$ sempre que $s$ é um número natural. Existe uma outra representação de $\Pi(s)$ que era conhecida
+    %
+    \footnote{Infelizmente, Legendre adotou $\Gamma(s)$ para $\Pi(s-1)$. As razões de Legendre para considerar $(n-1)!$ em vez de $n!$ são desconhecidas (talvez ele sentiu que fosse mais natural o primeiro polo ser em $s=0$ em vez de $s=-1$). De qualquer modo, esta notação prevaleceu na França e, por volta do fim do século 19, no resto do mundo também. A notação de Gauss me parece muito mais natural e o fato de Riemann tê-la usado me dá a oportunidade de trazê-la de volta.
+    }
+    %
+    por Euler
+    %
+    \begin{equation}
+        \label{\Pi(s)-lim-N}
+        \Pi(s) = \lim_{N \to \infty} \frac{1 \cdot 2 \cdots N}{(s+1)(s+2)\cdots (s+N)}(N+1)^s.
+    \end{equation}
+    
+    
+    Por outro lado, não é difícil mostrar [use a fórmula \eqref{Pi(s)-prod}] que 
+    
     
     
 %regaça 
