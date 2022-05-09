@@ -5952,12 +5952,185 @@ o que encerra a prova do teorema.
             %
             Aqui vamos dividir nossa análise em dois casos: quando $0 < \sigma \leq 2$ e quando $\sigma > 2$.
             %
-            \paragraph{Caso 1: $0 < \sigma \leq 2$.}
-            a
+            \begin{center}
+                {\bf DIAGRAMA SLIDE 18 AULA 27}
+            \end{center}
             %
-            \paragraph{Caso 2: $\sigma > 2$.}
-            a
+            \paragraph{Caso 1: $0 < \sigma \leq 2$.} Neste caso, temos
+            %
+            \begin{align*}
+                |\zeta(s)| &\leq 2|s|^{1 - \sigma_0 + \e}\zeta(1 + \e) + \frac{1}{|s-1|} \\
+                           &\leq 2(\sigma^2 + t^2)^{\frac{1}{2}(1 - \sigma_0 + \e)}\zeta(1 + \e) + \frac{1}{|s-1|} \\
+                           &\leq 2(4 + t^2)^{\frac{1}{2}(1 - \sigma_0 + \e)}\zeta(1 + \e) + \frac{1}{|s-1|} \\ 
+                           &\leq 2(5t^2)^{\frac{1}{2}(1 - \sigma_0 + \e)}\zeta(1 + \e) + \frac{1}{|s-1|} \\
+                           &= 2\sqrt{5}^{1 - \sigma_0 + \e}\zeta(1+\e)|t|^{1 - \sigma_0 + \e} + \frac{1}{|s-1|} \\
+                           &= \cdots
+            \end{align*}
+            %
+            {\red sendo}
+            %
+            \[
+            C_{\e} = \dots > 1
+            \]
+            %
+            \paragraph{Caso 2: $\sigma > 2$.} Neste caso, temos
+            %
+            \begin{align*}
+                |\zeta(s)| &= \left|\sum_{n=1}^{\infty} \frac{1}{n^s}\right| \\
+                           &\leq \sum_{n=1}^{\infty} \frac{1}{n^{\sigma}} \\
+                           &\leq \int_1^{\infty} x^{-\sigma} \, dx \\
+                           &= \frac{1}{\sigma - 1} \\
+                           &< 1 \\
+                           &\leq |t|^{1 - \sigma_0 + \e} \\
+                           &\leq C_{\e}|t|^{1 - \sigma_0 + \e},
+            \end{align*}
+            %
+            sendo $C_{\e}$ a mesma constante definida no primeiro caso. Isso conclui a prova do item i).
             
+            \item Para o segundo item, consideramos uma circunferência $\y$ de centro $s$ e raio
+            $r$ suficientemente pequeno de modo que a reta $x = \sigma_0$ não intercepte a circunferência,
+            ou seja, tal que $0 < r < 1 - \sigma_0$, como ilustra a figura abaixo. 
+            %
+            \begin{center}
+                {\bf DIAGRAMA SLIDE 3 AULA 28}
+            \end{center}
+            %
+            Com esse contorno, temos
+            %
+            \begin{align*}
+                \zeta'(s) &= \frac{1}{2\pi i}\int_{\y} \frac{\zeta(w)}{(w-s)^2} \, dw \\
+                          &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{\zeta(\y(\theta))}{(\y(\theta) - s)^2} \y'(\theta) \, d\theta \\
+                          &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{\zeta(s + re^{i\theta})ire^{i\theta}}{(re^{i\theta})^2} \, d\theta \\
+                          &= \frac{1}{r}\zeta(s + re^{i\theta}) e^{-i\theta}.
+            \end{align*}
+            %
+            Daí, segue que
+            %
+            \[
+            |\zeta'(s)| \leq \frac{1}{2\pi r}\int_0^{2\pi} |\zeta(s + re^{i\theta})| \, d\theta.
+            \]
+            %
+            Observe que podemos aplicar o item i) para cotar o integrando, de modo a obter
+            %
+            \begin{align*}
+                |\zeta'(s)| &\leq \frac{C_{\e}}{r}|t+r\cos\theta|^{1 - \sigma_0 + \e} \\
+                            &\leq \frac{C_{\e}}{r}(2|t|)^{1 - \sigma_0 + \e}.
+            \end{align*}
+            %
+            {\red Com isso, dado $\eta > 0$ qualquer tomamos $1 - \sigma_0 = \eta/2$ e $\e = \eta/2$. Daí, escolhemos $r=\eta/4$
+            e concluímos que}
+            %
+            \[
+            |\zeta'(s)| \leq K_{\eta}|t|^{\eta},
+            \]
+            %
+            sendo
+            %
+            \[
+            K_{\eta} = \frac{2^{\eta+2}C_{\eta/2}}{\eta}.
+            \]
+            %
         \end{enumerate}
+    \end{proof}
+    %
+    \begin{proposicao}
+    \label{prop-cota-inv-zeta}
+        Dado $\e>0$ qualquer, temos
+        %
+        \[
+        \frac{1}{|\zeta(s)|} \leq C_{\e}|t|^{\e},
+        \]
+        %
+        sendo $s = \sigma + it$ com $\sigma\geq 1$ e $|t|\geq 1$.
+    \end{proposicao}
+    %
+    \begin{proof}
+        Aqui, vamos utilizar o fato de que
+        %
+        \[
+        |\zeta(\sigma)|^3 \leq C'(\sigma - 1)^{-3}
+        \]
+        %
+        juntamente com o Lema \ref{lema-log-produto-zetas} na forma
+        %
+        \[
+        |\zeta^3(\sigma)\zeta^4(\sigma + it)\zeta(\sigma + 2it)| \geq 1.
+        \]
+        %
+        Primeiro notamos que essa última desigualdade implica em
+        %
+        \begin{equation}
+        \label{eq-aux-estrela}
+            |\zeta^4(\sigma + it)| = |\zeta(\sigma + it)|^4 \geq \frac{1}{|\zeta^3(\sigma)||\zeta(\sigma + 2it)|} 
+                                                            \geq \frac{1}{C'(\sigma - 1)^{-3}C_{\e}|2t|^{\e}} 
+                                                            = K_{\e}\frac{(\sigma - 1)^3}{|t|^{\e}}.
+        \end{equation}
+        %
+        Aqui, novamente, dividiremos a análise em dois casos.
+        %
+        \paragraph{Caso 1: existe $A>0$ tal que $A|t|^{-5\e} \leq \sigma - 1$.} Neste caso, podemos afirmar que
+        %
+        \begin{align*}
+            |\zeta(\sigma + it)| &\geq \frac{K_{\e}^{1/4}(\sigma - 1)^{3/4}}{|t|^{\e/4}} \\
+                                 &\geq \frac{K_{\e}^{1/4}A^{3/4}|t|^{-15\e/4}}{|t|^{\e/4}} \\
+                                 &= M_{\e}|t|^{-4\e},
+        \end{align*}
+        %
+        sendo $M_{\e} = K_{\e}^{1/4}A^{3/4}$. Logo,
+        %
+        \[
+        \frac{1}{|\zeta(\sigma + it)|} \leq \frac{1}{M_{\eta/4}}|t|^{\eta}.
+        \]
+        %
+        \paragraph{Caso 2: existe $A>0$ tal que $\sigma - 1 < A|t|^{-5\e}$.} Neste caso, começamos tomando $\sigma'>\sigma$
+        tal que
+        %
+        \[
+        \sigma' - 1 = \frac{A}{|t|^{5\e}}.
+        \]
+        %
+        Daí, usando a segunda desigualdade triangular, temos 
+        %
+        \[
+        |\zeta(\sigma + it)| = |\zeta(\sigma + it) + \zeta(\sigma' + it) + \zeta(\sigma' + it)|
+                             \geq |\zeta(\sigma' + it)| - |\zeta(\sigma + it) - \zeta(\sigma' + it)|.
+        \]
+        %
+        Note que, a priori, não sabemos o sinal dessa última expressão. Ela poderia ser negativa e, nesse
+        caso, teríamos uma desigualdade trivial. Nosso próximo passo será encontrar uma cota superior
+        para a segunda parcela.
+        
+        Usando o Teorema do Valor Médio, temos que
+        %
+        \[
+        |\zeta(\sigma + it) - \zeta(\sigma' + it)| \leq |\zeta'(\xi)|\cdot|\sigma - \sigma'|,
+        \]
+        %
+        sendo $\xi$ um ponto sobre o segmento de reta ligando $\sigma + it$ a $\sigma' + it$. Daí, 
+        usando a Proposição \ref{prop-2.7-Stein} e o fato que $\sigma' - \sigma < \sigma' - 1$, temos
+        %
+        \[
+        |\zeta(\sigma + it) - \zeta(\sigma' + it)| \leq C_{\e}(\sigma' - 1)|t|^{\e}.
+        \]
+        %
+        Daí, usando a cota inferior obtida em \eqref{eq-aux-estrela}, temos
+        %
+        \begin{align*}
+            |\zeta(\sigma + it)| &\geq K_{\e}^{1/4}\frac{(\sigma - 1)^{3/4}}{|t|^{3\e/4}} - C_{\e}(\sigma' - 1)|t|^{\e} \\
+                                 &= K_{\e}^{1/4}(\sigma' - 1)^{3/4}|t|^{-3/4} - C_{\e}(\sigma' - 1)|t|^{\e}.
+        \end{align*}
+        %
+        {\red Escolhendo}
+        %
+        \[
+        A = \frac{K_{\e}}{2^4C_{\e}^4},
+        \]
+        %
+        temos
+        %
+        \[
+        |\zeta(\sigma + it)| \geq A''_{\e} |t|^{-4\e} \implies \frac{1}{|\zeta(\sigma + it)|} \leq A_{\eta/4}''|t|^{\eta}.
+        \]
+        %
     \end{proof}
     %
