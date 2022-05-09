@@ -116,21 +116,81 @@ Colocar a tradução do Cap1 do Edwards
     %
     $$ \pi(x) \approx \frac{x}{A\log x + B} $$
     %
-    pode ser melhor que a aproximação \eqref{pi(x)-Li(x)} e, se a razão entre $\pi(x)$ e $\int_{2}^{x} (dt/\log t$ se aproxima de um limite conforme $x \to \infty$, então esse limite deve ser 1. Fica claro que Chebyshev estava tentando provar que o erro relativo na aproximação \eqref{pi(x)-Li(x)} se aproxima de zero quando $x \to \infty$, mas foi apenas quase 50 anos depois que este teorema, conhecido como "Teorema do número primo" foi provado. Mesmo o trabalho de Chebyshev sendo publicado na França muito antes do artigo de Riemann, ele não se refere a Chebyshev em seu artigo. No entanto, Riemann se refere a Dirichlet que \textcolor{red}{se correspondia com} Chebyshev (veja o relatório de Chebyshev sobre sua viagem à Europa Oriental \textcolor{red}{[C5, Vol. 5...]}). Dirichlet teria provavelmente informado Riemann sobre o trabalho de Chebyshev. Os trabalhos não publicados de Riemann contém muitas fórmulas de Chebyshev, o que indica que ele estudou o trabalho de Chebyshev, e contém pelo menos uma referência direta a Chebyshev \textcolor{red}{(veja a figura \ref{})}.
+    pode ser melhor que a aproximação \eqref{pi(x)-Li(x)} e, 
+    se a razão entre $\pi(x)$ e 
+    $\int_{2}^{x} (dt/\log t$ se aproxima de um limite conforme $x \to \infty$, 
+    então esse limite deve ser 1. Fica claro que Chebyshev estava tentando 
+    provar que o erro relativo na aproximação \eqref{pi(x)-Li(x)} 
+    se aproxima de zero quando $x \to \infty$, mas foi apenas 
+    quase 50 anos depois que este teorema, conhecido como 
+    ``Teorema do número primo'' foi provado. 
+    Mesmo o trabalho de Chebyshev sendo publicado na França muito antes 
+    do artigo de Riemann, ele não se refere a Chebyshev em seu artigo. 
+    No entanto, Riemann se refere a Dirichlet que 
+    {\red se correspondia com} Chebyshev 
+    (veja o relatório de Chebyshev sobre sua viagem à Europa Oriental 
+    {\red [C5, Vol. 5...]}). 
+    Dirichlet teria provavelmente informado Riemann sobre o trabalho de Chebyshev. 
+    Os trabalhos não publicados de Riemann contém muitas fórmulas de Chebyshev, 
+    o que indica que ele estudou o trabalho de Chebyshev, 
+    e contém pelo menos uma referência direta a Chebyshev {\red(veja a figura ???)}.
     
-    A contribuição real do artigo de Riemann de 1859 não está em seus resultados, mas, sim, em seus métodos. O resultado principal é uma fórmula para $\pi(x)$ como uma soma de uma série infinita da qual $\int_{2}^{x}(dt/\log t)$ é, de longe, o maior termo. No entanto, a prova de Riemann deste fato é inadequada; em particular, não é, de forma alguma, claro, pelos argumentos de Riemann, que a série infinita para $\pi(x)$ convirja, muito menos que seu maior termo domine para valores grandes de $x$. Por outro lado, os métodos de Riemann, que incluem o estudo da função $\zeta(s)$ como uma função de uma variável complexa, o estudo dos zeros complexos de $\zeta(s)$, \textcolor{red}{inversão de Fourier}, \textcolor{red}{inversão de Möbius} e a representação de funções para funções do tipo $\pi(x)$ por "fórmulas explícitas" como sua série infinita foram importantes contribuições no desenvolvimento subsequente da teoria.
+    A contribuição real do artigo de Riemann de 1859 não está em 
+    seus resultados, mas, sim, em seus métodos. 
+    O resultado principal é uma fórmula para $\pi(x)$ como uma soma de 
+    uma série infinita da qual $\int_{2}^{x}(dt/\log t)$ é, de longe, o maior termo. 
+    No entanto, a prova de Riemann deste fato é inadequada; 
+    em particular, não é, de forma alguma, claro, pelos argumentos de Riemann, 
+    que a série infinita para $\pi(x)$ convirja, muito menos que seu maior 
+    termo domine para valores grandes de $x$. Por outro lado, os métodos de Riemann, 
+    que incluem o estudo da função $\zeta(s)$ como uma função de uma variável complexa, 
+    o estudo dos zeros complexos de $\zeta(s)$, \textcolor{red}{inversão de Fourier}, 
+    \textcolor{red}{inversão de Möbius} e a representação de funções para 
+    funções do tipo $\pi(x)$ por "fórmulas explícitas" como sua série 
+    infinita foram importantes contribuições no desenvolvimento subsequente da teoria.
     
     Nos primeiros 30 anos após a publicação do artigo de Riemann, não houve praticamente nenhum avanço
     %
-    \footnote{ Uma grande exceção foi o Teorema de Mertens \textcolor{red}{[M5]} de 1874 que afirma que \eqref{Soma-Recip-primos-x} é verdadeira no sentido de que a diferença dos dois lados se aproxima de um limite quando $x \to \infty$. Este limite é a constante de Euler adicionado de $\sum_{p}[\log(1-p^{-1}) + p^{-1}]$. Possivelmente, um enunciado mais natural para o Teorema de Mertens é 
+    \footnote{ Uma grande exceção foi o Teorema de Mertens 
+    \textcolor{red}{[M5]} de 1874 que afirma que \eqref{Soma-Recip-primos-x} 
+    é verdadeira no sentido de que a diferença dos dois lados se 
+    aproxima de um limite quando $x \to \infty$. Este limite é a 
+    constante de Euler adicionado de $\sum_{p}[\log(1-p^{-1}) + p^{-1}]$. 
+    Possivelmente, um enunciado mais natural para o Teorema de Mertens é 
     %
     $$\lim_{x \to \infty} \log \left( x \prod_{p<x}(1-p^{-1}) \right) = e^{-\gamma},$$
     %
     onde $\gamma$ é a constante de Euler. Veja Hardy e Wright \textcolor{red}{[H7]}}
     %
-    na área. É como se o mundo matemático precisasse deste tempo todo para processar as ideias de Riemann. Então, em um período de 10 anos, Hadamard, Von Mangoldt e de la Vallée Poussin conseguiram provar a fórmula principal de Riemann para $\pi(x)$, o Teorema do número primo \eqref{pi(x)-Li(x)} e vários outros teoremas relacionados. As ideias de Riemann foram cruciais em todas as demonstrações. Desde esse período, não houve falta de novos problemas em Teoria Analítica dos Números e o progresso se manteve estável neste campo, boa parte deste progresso é inspirado pelas ideias de Riemann. 
+    na área. É como se o mundo matemático precisasse deste tempo 
+    todo para processar as ideias de Riemann. Então, em um período de 10 anos, 
+    Hadamard, Von Mangoldt e de la Vallée Poussin conseguiram provar a 
+    fórmula principal de Riemann para $\pi(x)$, o 
+    Teorema do número primo \eqref{pi(x)-Li(x)} e vários outros 
+    teoremas relacionados. As ideias de Riemann foram cruciais em 
+    todas as demonstrações. Desde esse período, não houve falta de 
+    novos problemas em Teoria Analítica dos Números e o progresso 
+    se manteve estável neste campo, boa parte deste progresso é 
+    inspirado pelas ideias de Riemann. 
     
-    Nenhuma discussão do contexto histórico do artigo de Riemann estaria completa se não mencionasse a hipótese de Riemann. Ao longo do artigo, Riemann diz que considera "muito provável" que todos os zeros de $\zeta(s)$ tem parte real igual a $1/2$, mas que foi incapaz de provar a veracidade desta afirmação, que é conhecida, hoje em dia, como a "hipótese de Riemann". A experiência dos sucessores de Riemann com esta hipótese tem sido a mesma de Riemann - eles também consideram que ela provavelmente é verdadeira mas não foram capazes de prová-la. Hilber incluiu o problema de provar a hipótese de Riemann em sua lista \textcolor{red}{[H9]} dos problemas não resolvidos mais importantes do mundo matemático em 1900. Resolver este problema foi o foco de muitos dos melhores matemáticos do século 20. Este é, sem dúvidas, o problema mais celebrado da matemática e continua a atrair a atenção dos melhores matemáticos, não apenas porque continua sem solução por tanto tempo, mas também por que aparenta ser vulnerável e sua sua solução traria à luz técnicas importantíssimas e com grande potencial matemático. 
+    Nenhuma discussão do contexto histórico do artigo de Riemann estaria 
+    completa se não mencionasse a hipótese de Riemann. Ao longo do artigo, 
+    Riemann diz que considera "muito provável" que todos os zeros de 
+    $\zeta(s)$ tem parte real igual a $1/2$, mas que foi incapaz de 
+    provar a veracidade desta afirmação, que é conhecida, hoje em dia, 
+    como a "hipótese de Riemann". A experiência dos sucessores de Riemann 
+    com esta hipótese tem sido a mesma de Riemann - eles também consideram 
+    que ela provavelmente é verdadeira mas não foram capazes de prová-la. 
+    Hilbert incluiu o problema de provar a hipótese de Riemann em sua 
+    lista \textcolor{red}{[H9]} dos problemas não resolvidos 
+    mais importantes do mundo matemático em 1900. 
+    Resolver este problema foi o foco de muitos dos melhores 
+    matemáticos do século 20. Este é, sem dúvidas, o 
+    problema mais celebrado da matemática e continua a atrair 
+    a atenção dos melhores matemáticos, não apenas porque 
+    continua sem solução por tanto tempo, mas também por 
+    que aparenta ser vulnerável e sua sua solução traria à 
+    luz técnicas importantíssimas e com grande potencial matemático. 
     
     
     
@@ -144,7 +204,9 @@ Colocar a tradução do Cap1 do Edwards
         \sum_{n} \frac{1}{n^s} = \prod_{p} \frac{1}{\left( 1 - \frac{1}{p^s}\right)}
     \end{equation}
     %
-    devida a Euler. Aqui $n$ percorre todos os inteiros positivos $(n=1,2,3, \dots)$ e $p$, todos os primos $(p=2,3,5,7,11,\dots$. Esta fórmula, conhecida como "fórmula do produto de Euler", resulta de expandir todos os fatores à direita
+    devida a Euler. Aqui $n$ percorre todos os inteiros positivos $(n=1,2,3, \dots)$ e $p$, 
+    todos os primos $(p=2,3,5,7,11,\dots$. 
+    Esta fórmula, conhecida como ``fórmula do produto de Euler'', resulta de expandir todos os fatores à direita
     %
     $$\frac{1}{\left( 1 - \frac{1}{p^s}\right)} = 1 + \frac{1}{p^s} + \frac{1}{(p^2)^s} + \frac{1}{(p^3)^s} + \cdots $$
     %
@@ -169,7 +231,7 @@ Colocar a tradução do Cap1 do Edwards
     É natural esperar que Riemann, como um dos fundadores da teoria de funções de uma variável complexa, considerasse $s$ como uma variável complexa. É fácil mostrar que ambos os lados de \eqref{Euler-prod} converge para $s$ complexo no semiplano $\Re(s)>1$, mas Riemann vai muito além e mostra que, mesmo os dois lados da fórmula divergindo para outros valores de $s$, a função que eles definem tem significado para todo $s$ complexo, exceto por um polo em $s=1$. Esta extensão do domínio da função requer alguns fatos sobre a função fatorial que veremos na próxima seção.
     
     
-    \section*{A função fatorial}
+    \section{A função fatorial}
     
     
     Euler estendeu a função fatorial $n! = n(n-1)(n-2) \cdots 3 \cdot 2 \cdot 1$ dos números naturais $n$ para todo número real maior que $-1$ observando que 
@@ -197,7 +259,7 @@ Colocar a tradução do Cap1 do Edwards
     por Euler
     %
     \begin{equation}
-        \label{\Pi(s)-lim-N}
+        \label{Pi(s)-lim-N}
         \Pi(s) = \lim_{N \to \infty} \frac{1 \cdot 2 \cdots N}{(s+1)(s+2)\cdots (s+N)}(N+1)^s.
     \end{equation}
     

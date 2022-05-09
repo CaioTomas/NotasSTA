@@ -5716,13 +5716,21 @@ o que encerra a prova do teorema.
     \subsection{A função zeta de Riemann e o Teorema do Número Primo}
     
     Nesta seção, vamos utilizar a função $\zeta$ para provar o
-    Teorema do Número Primo, que diz que
+    Teorema do Número Primo
+    \index{Teorema!do Número Primo}, que diz que
     %
     \[
     \pi(x) \sim x/\log x,
     \]
     %
-    sendo $\pi(x)$ a quantidade de números primos menores ou iguais a $x$.
+    sendo $\pi(x)$ a quantidade de números primos menores ou iguais a $x$, e
+    onde $\sim$ significa que $\pi(x)$ e $x/\log x$ são assintoticamente equivalentes
+    no infinito, isto é, que
+    %
+    \[
+    \lim_{x\to\infty} \frac{\pi(x)}{x/\log x} = 1.
+    \]
+    %
     Para tanto, vamos precisar de alguns resultados que nos dão informação
     acerca do crescimento de $\zeta$. O primeiro deles é o seguinte.
     %
@@ -5874,5 +5882,82 @@ o que encerra a prova do teorema.
         {\red e que a primeira parcela desaparece quando $N\to\infty$.}
         
         {\red checar o argumento e, se estiver certo, argumentar sobre a extensão analítica de $\zeta$}.
+    \end{proof}
+    %
+    \begin{proposicao}
+    \label{prop-2.7-Stein}
+        Suponha que $s = \sigma + it$, sendo $\sigma, t\in\R$. Então para cada $\sigma_0$ fixado
+        com $0\leq\sigma_0\leq1$ e para todo $\e>0$ existe uma uma constante $C_{\e}$ tal que
+        %
+        \begin{enumerate}[i)]
+            \item $|\zeta(s)| \leq C_{\e}|t|^{1-\sigma_0+\e}$ se $\sigma_0\leq\sigma$ e $|t|\geq 1$;
+            \item $|\zeta'(s)| \leq C_{\e}|t|^{\e}$ se $1\leq\sigma$ e $|t|\geq 1$.
+        \end{enumerate}
+        %
+    \end{proposicao}
+    %
+    \begin{observacao}
+        Note que essa proposição nos diz que
+        %
+        \[
+        |\zeta(1+it)| \leq C_{\e}|t|^{\e}, 
+        \]
+        %
+        para todo $t\gg 1$.
+    \end{observacao}
+    %
+    \begin{proof}
+        Vamos considerar a mesma sequência $\{f_n\}_{n\in\N}$ definida na Proposição \ref{prop-2.5-Stein}, a saber,
+        a sequência de funções $f_n:\C\to\C$ definida por
+        %
+        \[
+        f_n(s) = \int_n^{n+1} \left[ \frac{1}{n^s} - \frac{1}{x^s} \right] \, dx.
+        \]
+        %
+        \begin{enumerate}
+            \item Observe que, utilizando a desigualdade triangular, propriedades elementares da integral e o fato de que
+            $\sigma_0\leq\sigma$, temos
+            %
+            \begin{align*}
+                |f_n(s)| &\leq \int_n^{n+1} \left|\frac{1}{n^s} - \frac{1}{x^s}\right| \, dx \\
+                         &\leq \int_n^{n+1} \frac{1}{|n|^s} + \frac{1}{|x|^s} \, dx \\
+                         &\leq \int_n^{n+1} \frac{2}{|n|^s} \, dx \\
+                         &= \frac{2}{|n^s|} \\
+                         &= \frac{2}{n^{\sigma}} \\
+                         &\leq \frac{2}{n^{\sigma_0}}.
+            \end{align*}
+            %
+            Dado $\delta \geq 0$ qualquer, podemos usar essa cota e a Proposição \ref{prop-2.5-Stein} para deduzir que
+            %
+            \[
+            |f_n(s)| = |f_n(s)|^{\delta}|f_n(s)|^{1-\delta} 
+                     \leq \left(\frac{|s|}{n^{\sigma_0+1}}\right)^{\delta}\left(\frac{2}{n^{\sigma_0}}\right)^{1-\delta}
+                     \leq \frac{2|s|^{\delta}}{n^{\sigma_0+\delta}},
+            \]
+            %
+            sendo $0\leq\sigma_0\leq 1$ e $\sigma_0\leq\sigma$. Daí, tomando $\delta = 1 - \sigma_0 + \e$, temos
+            %
+            \[
+            |f_n(s)| \leq \frac{2|s|^{1 - \sigma_0 + \e}}{n^{\sigma_0 + 1 - \sigma_0 + \e}} = \frac{2|s|^{1 - \sigma_0 + \e}}{n^{1 + \e}}.
+            \]
+            %
+            Somando em $n\in\N$ e usando o Corolário \ref{cor-zeta-menos-singularidade}, segue que
+            %
+            \begin{align*}
+                |\zeta(s)| &= \left|\sum_{n=1}^{\infty} f_n(s) + \frac{1}{s-1}\right| \\
+                           &\leq \sum_{n=1}^{\infty} |f_n(s)| + \frac{1}{|s-1|} \\
+                           &\leq \sum_{n=1}^{\infty} \frac{2|s|^{1 - \sigma_0 + \e}}{n^{1+\e}} + \frac{1}{|s-1|} \\
+                           &\leq 2|s|^{1 - \sigma_0 + \e}\zeta(1 + \e) + \frac{1}{|s-1|}.
+            \end{align*}
+            %
+            Aqui vamos dividir nossa análise em dois casos: quando $0 < \sigma \leq 2$ e quando $\sigma > 2$.
+            %
+            \paragraph{Caso 1: $0 < \sigma \leq 2$.}
+            a
+            %
+            \paragraph{Caso 2: $\sigma > 2$.}
+            a
+            
+        \end{enumerate}
     \end{proof}
     %
