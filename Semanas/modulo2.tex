@@ -5890,20 +5890,20 @@ o que encerra a prova do teorema.
         com $0\leq\sigma_0\leq1$ e para todo $\e>0$ existe uma uma constante $C_{\e}$ tal que
         %
         \begin{enumerate}[i)]
-            \item $|\zeta(s)| \leq C_{\e}|t|^{1-\sigma_0+\e}$ se $\sigma_0\leq\sigma$ e $|t|\geq 1$;
-            \item $|\zeta'(s)| \leq C_{\e}|t|^{\e}$ se $1\leq\sigma$ e $|t|\geq 1$.
+            \item $|\zeta(s)| \leq C_{\e}|t|^{1-\sigma_0+\e}$, \quad  se $\sigma_0\leq\sigma$\ \ e \ \ $|t|\geq 1$;
+            \item $|\zeta'(s)| \leq C_{\e}|t|^{\e}$, \quad se $1\leq\sigma$\ \ e \ \ $|t|\geq 1$.
         \end{enumerate}
         %
     \end{proposicao}
     %
     \begin{observacao}
-        Note que essa proposição nos diz que
+        Note que essa proposição implica, em particular, que 
         %
         \[
         |\zeta(1+it)| \leq C_{\e}|t|^{\e}, 
         \]
         %
-        para todo $t\gg 1$.
+        para todo $t\geqslant 1$.
     \end{observacao}
     %
     \begin{proof}
@@ -5998,10 +5998,10 @@ o que encerra a prova do teorema.
             Com esse contorno, temos
             %
             \begin{align*}
-                \zeta'(s) &= \frac{1}{2\pi i}\int_{\y} \frac{\zeta(w)}{(w-s)^2} \, dw \\
-                          &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{\zeta(\y(\theta))}{(\y(\theta) - s)^2} \y'(\theta) \, d\theta \\
-                          &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{\zeta(s + re^{i\theta})ire^{i\theta}}{(re^{i\theta})^2} \, d\theta \\
-                          &= \frac{1}{r}\zeta(s + re^{i\theta}) e^{-i\theta}.
+                \zeta'(s) &= \frac{1}{2\pi i}\int_{\y} \frac{\zeta(w)}{(w-s)^2} \, dw \\[0.3cm]
+                          &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{\zeta(\y(\theta))}{(\y(\theta) - s)^2} \y'(\theta) \, d\theta \\[0.3cm]
+                          &= \frac{1}{2\pi i}\int_0^{2\pi} \frac{\zeta(s + re^{i\theta})ire^{i\theta}}{(re^{i\theta})^2} \, d\theta \\[0.3cm]
+                          &= \frac{1}{2\pi r}\int_0^{2\pi}\zeta(s + re^{i\theta}) e^{-i\theta}\, d\theta.
             \end{align*}
             %
             Daí, segue que
@@ -6134,3 +6134,319 @@ o que encerra a prova do teorema.
         %
     \end{proof}
     %
+    
+    \medskip
+    
+    Agora, vamos começar a caminhar para a demonstração do Teorema do Número Primo. O primeiro
+    passo da caminhada é tratarmos da chamada função $\psi$ de Tchebychev
+    \index{Função! $\psi$ de Tchebychev}, definida para todo $x\geq 2$:
+    %
+    \begin{equation}
+    \label{eq-def1-psi-tchebychev}
+        \psi(x) = \sum_{p^m \leq x} \ln p.
+    \end{equation}
+    %
+    O somatório é feito sobre os inteiros que são potências de um único primo menores ou iguais a $x$.
+    A figura abaixo mostra uma parte do gráfico de $\psi$. Observamos, em particular, que
+    $\psi$ é monótona não decrescente.
+    %
+    \begin{center}
+        {\bf DIAGRAMA GRÁFICO DE $\psi$}
+    \end{center}
+    %
+    Podemos, ainda, representar $\psi$ de outras duas maneiras. Cada uma delas nos será útil em
+    determinados momentos. Enunciamos estas duas formas nas proposições que seguem.
+    %
+    \begin{proposicao}
+    \label{prop-psi-tchebychev-von-mangoldt}
+        Para todo $x\geq 2$, podemos representar a função $\psi$ de Tchebychev por
+        %
+        \[
+        \psi(x) = \sum_{1\leq n\leq x} \Lambda (n),
+        \]
+        %
+        sendo
+        %
+        \[
+        \Lambda(n) = \begin{cases}
+            \ln p, \, \text{ se } n = p^m \text{ para algum primo } p \text{ e } m\geq 1 \\
+            0, \, \text{ caso contrário}
+        \end{cases},
+        \]
+        %
+        chamada função de Von Mangoldt\index{Função!de Von Mangoldt}.
+    \end{proposicao}
+    %
+    \begin{proof}
+        a
+    \end{proof}
+    %
+    \begin{proposicao}
+    \label{prop-psi-piso}
+        Para todo $x\geq 2$, podemos representar a função $\psi$ de Tchebychev por
+        %
+        \[
+        \psi(x) = \sum_{p\leq x} \left\lfloor \frac{\ln x}{\ln p} \right\rfloor\ln p,
+        \]
+        %
+        sendo $\lfloor\cdot\rfloor$ a função piso.
+    \end{proposicao}
+    %
+    \begin{proof}
+        Sejam $x\geq 2$ fixado e $p_j$ um primo menor ou igual a $x$. Seja ainda $k_j$ 
+        o maior inteiro tal que $p_j^{k_j} \leq x$. Ora, então $p_j^{k_j + 1} > x$ e
+        %
+        \[
+        k_j \leq \frac{\ln x}{\ln p_j} < k_j + 1 
+        \implies
+        \left\lfloor \frac{\ln x}{\ln p_j} \right\rfloor = k_j.
+        \]
+        %
+        Logo, a parcela correspondente a $p_j$ é
+        %
+        \[
+        \left\lfloor \frac{\ln x}{\ln p_j} \right\rfloor\ln p_j
+        =
+        k_j\ln p,
+        \]
+        %
+        que é igual à parcela correspondente à $p_j$ na definição de $\psi$
+        pois $k_j$ é o maior inteiro tal que $p_j^{k_j} \leq x$. Portanto,
+        segue que
+        %
+        \[
+        \psi(x) = \sum_{p\leq x} \left\lfloor \frac{\ln x}{\ln p} \right\rfloor\ln p,
+        \]
+        %
+        como afirmado.
+    \end{proof}
+    %
+    
+    \medskip
+    
+    Em particular, esta última representação nos será bastante útil para relacionar o
+    comportamento assintótico no infinito de $\psi(x)$ com o comportamento assintótico no
+    infinito de $\pi(x)$. De fato, a seguinte proposição nos diz precisamente como isso ocorre.
+    %
+    \begin{proposicao}
+    \label{prop-assint-psi-implica-assint-pi}
+        Temos $\psi(x) \sim x$ quando $x\to\infty$ se, e somente se,
+        %
+        \[
+        \pi(x) \sim \frac{x}{\ln x}
+        \]
+        %
+        quando $x\to\infty$.
+    \end{proposicao}
+    %
+    Dito de outro modo, o Teorema do Número Primo é equivalente ao fato de que $\psi(x)\sim x$.
+    Na prática, vamos usar apenas a ida desta proposição, mas a enunciamos em sua forma mais geral
+    por completude.
+    %
+    \begin{proof}
+        Para a ida, basta mostrarmos que para todo $x\geq 2$ valem
+        %
+        \begin{enumerate}[i)]
+            \item $\displaystyle{1 \leq \liminf_{x\to\infty} \pi(x)\frac{\ln x}{x}}$;
+            \item $\displaystyle{\limsup_{x\to\infty} \pi(x)\frac{\ln x}{x} \leq 1}$.
+        \end{enumerate}
+        %
+        Para a primeira desigualdade, observe que
+        %
+        \[
+        \psi(x) = \sum_{p\leq x} \left\lfloor \frac{\ln x}{\ln p} \right\rfloor\ln p
+                \leq \sum_{p\leq x} \frac{\ln x}{\ln p}\ln p
+                = \sum_{p\leq x} \ln x
+                = \pi(x)\ln x,
+        \]
+        %
+        já que
+        %
+        \[
+        p\leq x \implies \ln p \leq \ln x \iff 1 \leq \frac{\ln x}{\ln p}.
+        \]
+        %
+        Daí, segue que para todo $x\geq 2$ temos
+        %
+        \begin{align*}
+            \frac{\psi(x)}{x} \leq \pi(x)\frac{\ln x}{x}
+        \end{align*}
+        %
+        e, tomando o limite inferior em ambos os lados, temos por hipótese que
+        %
+        \begin{align*}
+            1 = \liminf_{x\to\infty} \frac{\psi(x)}{x} \leq \liminf_{x\to\infty} \pi(x)\frac{\ln x}{x}
+        \end{align*}
+        %
+        e fica mostrado o item i).
+        
+        Para a segunda desigualdade, precisamos de um argumento um pouco mais envolvido.
+        Primeiro, seja $0 < \alpha < 1$ fixado. Como $1 \leq \ln x/\ln p$, temos
+        %
+        \[
+        \psi(x) \geq \sum_{p\leq x} \ln p 
+                \geq \sum_{x^{\alpha} < p \leq x} \ln p
+                \geq \sum_{x^{\alpha} < p \leq x} \ln x^{\alpha}
+                = \alpha\ln x\left[ \pi(x) - \pi(x^{\alpha}) \right],
+        \]
+        %
+        ou seja,
+        %
+        \[
+        \psi(x) + \alpha\pi(x^{\alpha})\ln x \geq \alpha\pi(x)\ln x.
+        \]
+        %
+        Logo, dividindo por $x$ e observando que $\pi(x^{\alpha}) \leq x^{\alpha}$ para todo $x\geq 2$, temos
+        %
+        \begin{equation}
+        \label{eq-aux-limsup}
+            \frac{\psi(x)}{x} + \alpha x^{\alpha}\frac{\ln x}{x} \geq \alpha\pi(x)\frac{\ln x}{x}.
+        \end{equation}
+        %
+        Observe que, como $\alpha < 1$, temos $1 - \alpha > 0$ e, portanto,
+        %
+        \[
+        \limsup_{x\to\infty} \alpha x^{\alpha}\frac{\ln x}{x} 
+        = \alpha \limsup_{x\to\infty} \frac{\ln x}{x^{1 - \alpha}}
+        = 0.
+        \]
+        %
+        Logo, tomando o limite superior em \eqref{eq-aux-limsup} e usando a hipótese, temos
+        %
+        \begin{align*}
+            1 = \limsup_{x\to\infty} \left( \frac{\psi(x)}{x} + \alpha x^{\alpha}\frac{\ln x}{x} \right)
+            \geq \limsup_{x\to\infty} \left( \alpha\pi(x)\frac{\ln x}{x} \right)
+            = \alpha \limsup_{x\to\infty} \pi(x)\frac{\ln x}{x}.
+        \end{align*}
+        %
+        Portanto, para todo $0 < \alpha < 1$ temos
+        %
+        \[
+        1 \geq \alpha \limsup_{x\to\infty} \pi(x)\frac{\ln x}{x},
+        \]
+        %
+        donde segue que
+        %
+        \[
+        1 \geq \limsup_{x\to\infty} \pi(x)\frac{\ln x}{x}
+        \]
+        %
+        tomando-se o limite quando $\alpha\to 1^-$. Isso conclui a prova do item ii) e, portanto,
+        a prova da ida.
+        
+        {\red Para a volta, suponhamos que $\pi(x) \sim x/\ln x$...}
+    \end{proof}
+    %
+    
+    \medskip
+    
+    Basta, então, mostrarmos que $\psi(x)\sim x$ quando $x\to\infty$ para demonstrar o Teorema
+    do Número Primo. Para tanto, o próximo passo é trabalhar com uma função relacionada, dada por
+    %
+    \begin{equation}
+    \label{eq-psi1}
+        \psi_1(x) = \int_1^{x} \psi(u) \, du.
+    \end{equation}
+    %
+    {\red Falar mais dessa definição...}
+    
+    A proposição a seguir vai mostrar que o comportamento assintótico de $\psi$ segue do comportamento
+    assintótico de $\psi_1$.
+    %
+    \begin{proposicao}
+    \label{prop-assint-psi1-implica-assint-psi}
+        Supondo que $\psi_1(x) \sim x^2/2$ quando $x\to\infty$, então $\psi(x)\sim x$ quando $x\to\infty$ e,
+        em particular, $\pi(x) \sim x/\ln x$ quando $x\to\infty$.
+    \end{proposicao}
+    %
+    \begin{proof}
+        Sejam $\alpha < 1 < \beta$ fixados. 
+        Observe que, como $\psi$ é monótona não decrescente, temos
+        %
+        \[
+        \int_{\alpha x}^x \psi(u) \, du \leq \psi(x)(x-\alpha x)
+        \iff \frac{1}{(1 - \alpha)x}\int_{\alpha x}^x \psi(u) \, du \leq \psi(x),
+        \]
+        %
+        como ilustrado abaixo.
+        %
+        \begin{center}
+            {\bf DIAGRAMA ILUSTRANDO A COTA DA INTEGRAL}
+        \end{center}
+        %
+        Analogamente, temos também que
+        %
+        \[
+        \int_x^{\beta x} \psi(u) \, du \geq \psi(x)(\beta x - x) 
+        \iff \psi(x) \leq \frac{1}{(\beta - 1)x}\int_x^{\beta x} \psi(u) \, du,
+        \]
+        %
+        como ilustrado abaixo.
+        %
+        \begin{center}
+            {\bf DIAGRAMA ILUSTRANDO A COTA DA INTEGRAL}
+        \end{center}
+        %
+        Vamos proceder como na prova da ida da Proposição \ref{prop-assint-psi-implica-assint-pi}
+        e mostrar que
+        %
+        \begin{enumerate}[i)]
+            \item $\displaystyle{ \limsup_{x\to\infty} \frac{\psi(x)}{x} \leq 1 }$;
+            \item $\displaystyle{ 1 \leq \liminf_{x\to\infty} \frac{\psi(x)}{x} }$.
+        \end{enumerate}
+        %
+        Para o item i), observe que
+        %
+        \[
+        \psi(x) \leq \frac{1}{(\beta - 1)x}\int_x^{\beta x} \psi(u) \, du
+        \iff
+        \psi(x) \leq \frac{1}{(\beta - 1)x}\left[ \psi_1(\beta x) - \psi_1(x) \right]
+        \]
+        %
+        e, portanto,
+        %
+        \[
+        \frac{\psi(x)}{x} 
+        \leq \frac{1}{\beta - 1}\cdot
+        \left[ \beta^2\frac{\psi_1(\beta x)}{(\beta x)^2} - \frac{\psi_1(x)}{x^2} \right].
+        \]
+        %
+        Agora, tomando o limite superior e usando a hipótese, temos
+        %
+        \[
+        \limsup_{x\to\infty} \frac{\psi(x)}{x} \leq \frac{1}{\beta - 1}\cdot
+        \left[ \frac{1}{2}\beta^2 - \frac{1}{2} \right]
+        = \frac{1}{2}(\beta + 1).
+        \]
+        %
+        Daí, tomando o limite quando $\beta\to 1^+$, segue o item i).
+        
+        Para o item ii), utilizamos a cota de $\psi$ envolvendo $\alpha$. Temos
+        %
+        \[
+        \frac{1}{(1 - \alpha)x}\int_{\alpha x}^x \psi(u) \, du \leq \psi(x)
+        \iff
+        \frac{1}{(1 - \alpha)x}\left[ \psi_1(x) - \psi_1(\alpha x) \right] \leq \psi(x),
+        \]
+        %
+        donde segue que
+        %
+        \[
+        \frac{1}{1 - \alpha}\left[ \frac{\psi_1(x)}{x^2} - \alpha^2\frac{\psi_1(\alpha x)}{(\alpha x)^2} \right]
+        \leq \frac{\psi(x)}{x}.
+        \]
+        %
+        Tomando o limite inferior e usando a hipótese, segue que
+        %
+        \[
+        \frac{1}{2}(1 + \alpha)
+        = \frac{1}{1 - \alpha}\left[ \frac{1}{2} - \frac{1}{2}\alpha^2 \right] 
+        \leq \liminf_{x\to\infty} \frac{\psi(x)}{x}
+        \]
+        %
+        e, tomando o limite quando $\alpha\to 1^-$, obtemos o item ii) e fica demonstrada
+        a proposição.
+    \end{proof}
+    %
+    
+    \medskip
