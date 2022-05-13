@@ -5637,7 +5637,8 @@ o que encerra a prova do teorema.
     \medskip
     
     
-    Podemos agora enunciar precisamente e demonstrar o teorema desejado.
+    Podemos agora enunciar precisamente 
+    e demonstrar o teorema desejado.
     %
     \begin{teorema}
     \label{teo-zeta-nao-nula-re1}
@@ -5952,9 +5953,9 @@ o que encerra a prova do teorema.
             %
             Aqui vamos dividir nossa análise em dois casos: quando $0 < \sigma \leq 2$ e quando $\sigma > 2$.
             %
-            \begin{center}
-                {\bf DIAGRAMA SLIDE 18 AULA 27}
-            \end{center}
+            \begin{figure}[H]\centering
+                \includegraphics{Figuras/Re>2 e |Im|>1.pdf}
+            \end{figure}
             %
             \paragraph{Caso 1: $0 < \sigma \leq 2$.} Neste caso, temos
             %
@@ -5991,9 +5992,9 @@ o que encerra a prova do teorema.
             $r$ suficientemente pequeno de modo que a reta $x = \sigma_0$ não intercepte a circunferência,
             ou seja, tal que $0 < r < 1 - \sigma_0$, como ilustra a figura abaixo. 
             %
-            \begin{center}
-                {\bf DIAGRAMA SLIDE 3 AULA 28}
-            \end{center}
+            \begin{figure}[H]\centering
+                \includegraphics{Figuras/disco em Re=1.pdf}
+            \end{figure}
             %
             Com esse contorno, temos
             %
@@ -6150,9 +6151,9 @@ o que encerra a prova do teorema.
     A figura abaixo mostra uma parte do gráfico de $\psi$. Observamos, em particular, que
     $\psi$ é monótona não decrescente.
     %
-    \begin{center}
-        {\bf DIAGRAMA GRÁFICO DE $\psi$}
-    \end{center}
+    \begin{figure}[H]\centering
+        \includegraphics{Figuras/psi de Chebyshev.pdf}
+    \end{figure} % aprecie com moderação
     %
     Podemos, ainda, representar $\psi$ de outras duas maneiras. Cada uma delas nos será útil em
     determinados momentos. Enunciamos estas duas formas nas proposições que seguem.
@@ -6165,20 +6166,36 @@ o que encerra a prova do teorema.
         \psi(x) = \sum_{1\leq n\leq x} \Lambda (n),
         \]
         %
-        sendo
+        onde para cada $n\in\N$ 
         %
         \[
         \Lambda(n) = \begin{cases}
-            \ln p, \, \text{ se } n = p^m \text{ para algum primo } p \text{ e } m\geq 1 \\
-            0, \, \text{ caso contrário}
-        \end{cases},
+            \ln(p),&\text{se } n = p^m \text{ para algum primo } p \text{ e algum natural}\  m\geq 1; 
+            \\
+            0,&\text{ caso contrário}.
+        \end{cases}
         \]
         %
-        chamada função de Von Mangoldt\index{Função!de Von Mangoldt}.
     \end{proposicao}
     %
+    A função $n\longmapsto \Lambda(n)$ que aparece no enunciado da proposição acima é chamada de função de von Mangoldt\index{Função!de von Mangoldt}.
+    
     \begin{proof}
-        a
+        Note que as únicas parcelas não nulas de
+        %
+        \[
+        \sum_{1\leq n\leq x} \Lambda (n)
+        \]
+        %
+        são aquelas tais que $n = p^m$ para algum primo $p$ e algum natural $m\geq 1$. Ora, mas
+        essas parcelas contribuem precisamente com $\ln p$ para cada $n$ dessa forma, ou seja,
+        vale a igualdade
+        %
+        \[
+        \psi(x) = \sum_{p^m \leq x} \ln p = \sum_{1\leq n\leq x} \Lambda (n),
+        \]
+        %
+        como afirmado.
     \end{proof}
     %
     \begin{proposicao}
@@ -6189,7 +6206,7 @@ o que encerra a prova do teorema.
         \psi(x) = \sum_{p\leq x} \left\lfloor \frac{\ln x}{\ln p} \right\rfloor\ln p,
         \]
         %
-        sendo $\lfloor\cdot\rfloor$ a função piso.
+        onde $\lfloor y\rfloor$ denota o ``piso de $y$'', isto é, o maior inteiro menor que $y$. 
     \end{proposicao}
     %
     \begin{proof}
@@ -6230,7 +6247,7 @@ o que encerra a prova do teorema.
     %
     \begin{proposicao}
     \label{prop-assint-psi-implica-assint-pi}
-        Temos $\psi(x) \sim x$ quando $x\to\infty$ se, e somente se,
+        Temos $\psi(x) \sim x$, quando $x\to\infty$ se, e somente se,
         %
         \[
         \pi(x) \sim \frac{x}{\ln x}
@@ -6345,10 +6362,10 @@ o que encerra a prova do teorema.
     %
     \begin{equation}
     \label{eq-psi1}
-        \psi_1(x) = \int_1^{x} \psi(u) \, du.
+        \psi_1(x) = \int_1^{x} \psi(u) \, du
     \end{equation}
     %
-    {\red Falar mais dessa definição...}
+    para todo $x\geq 2$.
     
     A proposição a seguir vai mostrar que o comportamento assintótico de $\psi$ segue do comportamento
     assintótico de $\psi_1$.
@@ -6365,7 +6382,8 @@ o que encerra a prova do teorema.
         %
         \[
         \int_{\alpha x}^x \psi(u) \, du \leq \psi(x)(x-\alpha x)
-        \iff \frac{1}{(1 - \alpha)x}\int_{\alpha x}^x \psi(u) \, du \leq \psi(x),
+        \qquad \iff \qquad
+        \frac{1}{(1 - \alpha)x}\int_{\alpha x}^x \psi(u) \, du \leq \psi(x),
         \]
         %
         como ilustrado abaixo.
@@ -6378,7 +6396,8 @@ o que encerra a prova do teorema.
         %
         \[
         \int_x^{\beta x} \psi(u) \, du \geq \psi(x)(\beta x - x) 
-        \iff \psi(x) \leq \frac{1}{(\beta - 1)x}\int_x^{\beta x} \psi(u) \, du,
+        \qquad \iff \qquad 
+        \psi(x) \leq \frac{1}{(\beta - 1)x}\int_x^{\beta x} \psi(u) \, du,
         \]
         %
         como ilustrado abaixo.
@@ -6425,7 +6444,7 @@ o que encerra a prova do teorema.
         %
         \[
         \frac{1}{(1 - \alpha)x}\int_{\alpha x}^x \psi(u) \, du \leq \psi(x)
-        \iff
+        \quad\iff\quad
         \frac{1}{(1 - \alpha)x}\left[ \psi_1(x) - \psi_1(\alpha x) \right] \leq \psi(x),
         \]
         %
@@ -6450,3 +6469,258 @@ o que encerra a prova do teorema.
     %
     
     \medskip
+    
+    Daqui, o passo seguinte é relacionar $\psi$ e $\zeta$. Essa relação surge da igualdade
+    %
+    \[
+    \log\zeta(s) = \sum_{m,p} \frac{p^{-ms}}{m},
+    \]
+    %
+    válida para todo $s\in\C$ com $\Re(s) > 1$.
+    De fato, observe que se diferenciarmos ambos os lados com respeito a $s$ 
+    {\red e supusermos que a derivada comuta com o somatório duplo}, temos
+    %
+    \begin{equation}
+    \label{eq-der-logaritmica-zeta-e-psi}
+        \frac{\zeta'(s)}{\zeta(s)} = \sum_{m,p} \frac{d}{ds}\frac{\exp(-ms\ln p)}{m}
+                                   = -\sum_{m,p} \frac{\ln p}{p^{ms}}
+                                   = -\sum_{n=1}^{\infty} \frac{\Lambda(n)}{n^s}.
+    \end{equation}
+    %
+    O comportamento assintótico $\psi_1(x)\sim x^2/2$ será consequência via \eqref{eq-der-logaritmica-zeta-e-psi}
+    da relação entre $\psi_1$ e $\zeta$, que tratamos a seguir. Primeiro, enunciamos um lema
+    um puramente técnico que será necessário mais à frente.
+    %
+    \begin{lema}
+    \label{lema-integral-segmento}
+        Dados $a,b>0$ quaisquer, temos
+        %
+        \[
+        \frac{1}{2\pi i} \lim_{T\to\infty} \int_{b - iT}^{b + iT} \frac{a^s}{s(s+1)} \, ds
+        =
+        \begin{cases}
+            0, \, \text{ se } 0 < a \leq 1, \\
+            1 - 1/a, \, \text{ se } 1 \leq a,
+        \end{cases}
+        \]
+        %
+        onde a integral é calculada sobre o segmento de reta ligando $b-iT$ a $b+iT$.
+    \end{lema}
+    %
+    \begin{proof}
+        Dados $a,b>0$ quaisquer, temos 
+        %
+        \[
+        |a^s| = |\exp(s\ln a)| = \exp(c\ln a) = a^c
+        \]
+        %
+        e, portanto,
+        %
+        \[
+        \int_{b - iT}^{b + iT} \left|\frac{a^s}{s(s+1)}\right| \, ds 
+        =
+        \int_{-T}^T \frac{a^c}{|(c+it)(c+1+it)|} \, dt.
+        \]
+        %
+        Note que $|c+it| \geq |t|$ e $|c+1+it| \geq |t|$, de modo que
+        %
+        \[
+        \int_{-T}^T \frac{a^c}{|(c+it)(c+1+it)|} \, dt
+        \leq
+        \int_{-T}^T \frac{a^c}{t^2} \, dt
+        \]
+        %
+        {\red e a integral converge.}
+        Para prosseguirmos para o cálculo da integral em si, defina $f:C\setminus\{-1,0\}\to\C$ por
+        %
+        \[
+        f(s) = \frac{a^s}{s(s+1)}. 
+        \]
+        %
+        \paragraph{Caso 1: $1\leq a$}.
+        Nesse caso, podemos escrever $a = e^{\beta}$ com $\beta = \ln a \geq 0$ e temos
+        %
+        \[
+        f(s) = \frac{e^{s\beta}}{s(s+1)}.
+        \]
+        %
+        Logo, $f$ tem polos simples em $0$ e $-1$, com resíduos
+        %
+        \[
+        \res(f,0) = \lim_{s\to 0} sf(s) = \lim_{s\to 0} \frac{e^{s\beta}}{s+1} = 1
+        \]
+        %
+        e
+        %
+        \[
+        \res(f,-1) = \lim_{s\to -1} (s+1)f(s) = \lim_{s\to -1} \frac{e^{s\beta}}{s} = -\frac{1}{a}.
+        \]
+        %
+        Agora, para $T>0$, considere o caminho mostrado abaixo.
+        %
+        \begin{center}
+            {\bf DIGRAMA CONTORNO PRIMEIRO CASO}
+        \end{center}
+        %
+        Pelo Teorema de Cauchy, sabemos que para $T > c+1$ temos
+        %
+        \[
+        \frac{1}{2\pi i}\int_{\Gamma(T)} f(s) \, ds = 1 - 1/a.
+        \]
+        %
+        Por outro lado, pela definição de integral complexa também temos
+        %
+        \[
+        \frac{1}{2\pi i}\int_{\Gamma(T)} f(s) \, ds
+        =
+        \frac{1}{2\pi i}\left( \int_{c-iT}^{c+iT} f(s) \, ds + \int_{C(T)} f(s) \, ds \right),
+        \]
+        %
+        sendo $C(T) = c + Te^{it}$ com $t \in [\pi/2, 3\pi/2]$. Vamos mostrar que a integral sobre $C(T)$
+        vai a 0 quando $T\to\infty$ mostrando que
+        %
+        \[
+        \lim_{T\to\infty} \int_{C(T)} |f(s)| \, ds = 0.
+        \]
+        %
+        Para ver isso, primeiro note que para $s\in C(T)$ temos
+        %
+        \[
+        |s(s+1)| \geq \widetilde{K}T^2
+        \]
+        %
+        {\red para uma constante positiva $\widetilde{K}$},
+        donde segue que
+        %
+        \[
+        |f(s)| = \frac{|e^{s\beta}|}{|s(s+1)|} \leq \frac{e^{\beta\Re(s)}}{\widetilde{K}T^2}.
+        \]
+        %
+        Com esta estimativa, temos
+        %
+        \begin{align*}
+            \lim_{T\to\infty} \int_{C(T)} |f(s)| \, ds 
+            &\leq \lim_{T\to\infty} \frac{e^{\beta\Re(s)}}{\widetilde{K}T^2}\int_{C(T)} ds \\
+            &\leq \lim_{T\to\infty} \frac{e^{\beta c}}{\widetilde{K}T^2}\pi T \\
+            &= \frac{\pi e^{\beta c}}{\widetilde{K}}\lim_{T\to\infty}\frac{1}{T} \\
+            &= 0,
+        \end{align*}
+        %
+        concluindo o caso $1\leq a$.
+        %
+        \paragraph{Caso 2: $0 < a \leq 1$.}
+        Neste caso, procedemos de maneira análoga ao caso anterior, mas considerando o contorno
+        $\Gamma'(T)$ mostrado abaixo.
+        %
+        \begin{center}
+            {\bf DIAGRAMA CONTORNO SEGUNDO CASO}
+        \end{center}
+        %
+        Nessa situação, temos
+        %
+        \[
+        \int_{\Gamma'(T)} f(s) \, ds = 0,
+        \]
+        %
+        pois $f$ não tem polos na região delimitada por $\Gamma'(T)$. Ademais, por definição temos
+        também
+        %
+        \[
+        \int_{\Gamma'(T)} f(s) \, ds = \int_{c - iT}^{c + iT} f(s) \, ds + \int_{C'(T)} f(s) \, ds.
+        \]
+        %
+        Novamente, vamos mostrar que a integral de $|f(s)|$ sobre $C'(T)$ vai a 0 quando $T\to\infty$.
+        Para tanto, observe que
+        %
+        \[
+        |f(s)| \leq \frac{e^{\beta\Re(s)}}{\widetilde{K}T^2} \leq \frac{e^{\beta c}}{\widetilde{K}T^2},
+        \]
+        %
+        uma vez que $\beta = \ln a \leq 0$ pois $a\leq 1$. Logo,
+        %
+        \begin{align*}
+            \lim_{T\to\infty} \int_{C'(T)} |f(s)| \, ds 
+            &\leq \lim_{T\to\infty} \frac{e^{\beta c}}{\widetilde{K}T^2}\int_{C'(T)} ds \\
+            &= \frac{\pi e^{\beta c}}{\widetilde{K}}\lim_{T\to\infty}\frac{1}{T} \\
+            &= 0
+        \end{align*}
+        %
+        e, portanto, concluímos o segundo caso e a demonstração da proposição.
+    \end{proof}
+    %
+    
+    \medskip
+    
+    Agora, enunciamos a proposição que relaciona $\psi_1$ com $\zeta$.
+    %
+    \begin{proposicao}
+    \label{prop-psi1-zeta}
+        Para todo $c>1$, vale
+        %
+        \begin{equation}
+        \label{eq-psi1-zeta}
+            \psi_1(x) = \frac{1}{2\pi i}\lim_{T\to\infty} 
+            \int_{c - iT}^{c + iT} \frac{x^{s+1}}{s(s+1)} \left(-\frac{\zeta'(s)}{\zeta(s)}\right) \, ds.
+        \end{equation}
+        %
+    \end{proposicao}
+    %
+    \begin{proof}
+        Defina $f_n:\R\to\R$ por
+        %
+        \[
+        f_n(u) = \begin{cases}
+            1, n\leq u, \\
+            0, n > u.
+        \end{cases}
+        \]
+        %
+        \begin{center}
+            {\bf DIAGRAMA FUNÇÃO INDICADORA}
+        \end{center}
+        %
+        Então, podemos escrever
+        %
+        \[
+        \psi(u) = \sum_{n=1}^{\infty} \Lambda(n)f_n(u),
+        \]
+        %
+        donde segue que
+        %
+        \begin{align*}
+            \psi_1(x) = \int_1^x \psi(u) \, du 
+            &= \int_1^x \left( \sum_{n=1}^{\infty} \Lambda(n) f_n(u) \right) \, du \\
+            &= \int_1^x \left( \sum_{n=1}^{\lceil x \rceil} \Lambda(n) f_n(u) \right) \, du \\
+            &= \sum_{n=1}^{\lceil x \rceil} \Lambda(n) \int_1^x f_n(u) \, du \\
+            &= \sum_{n=1}^{\lceil x \rceil} \Lambda(n) \int_n^x du \\
+            &= \sum_{n\leq x} \Lambda(n)(x-n),
+        \end{align*}
+        %
+        ou seja,
+        %
+        \[
+        \psi_1(x) = \sum_{n\leq x} \Lambda(n)(x-n).
+        \]
+        %
+        Usando este fato, juntamente com o Lema \ref{lema-integral-segmento} e 
+        a equação \eqref{eq-der-logaritmica-zeta-e-psi}, temos
+        %
+        \begin{align*}
+            \frac{1}{2\pi i}\lim_{T\to\infty} 
+            \int_{c - iT}^{c + iT} \frac{x^{s+1}}{s(s+1)} \left(-\frac{\zeta'(s)}{\zeta(s)}\right) \, ds
+            &=
+            \frac{1}{2\pi i}\lim_{T\to\infty} 
+            \int_{c - iT}^{c + iT} \frac{x^{s+1}}{s(s+1)} \sum_{n=1}^{\infty} \frac{\Lambda(n)}{n^s} \, ds \\
+            &{\red = }
+            x \sum_{n=1}^{\infty}\Lambda(n)
+            \lim_{T\to\infty} \frac{1}{2\pi i}\int_{c - iT}^{c + iT} \frac{(x/n)^s}{s(s+1)} \, ds \\
+            &=
+            x\sum_{n\leq x} \Lambda(n)(1 - n/x) \\
+            &=
+            \psi_1(x),
+        \end{align*}
+        %
+        {\red onde pudemos trocar a ordem da série com a integral imprópria pois...}
+        Isto conclui a prova da proposição.
+    \end{proof}
+    %
