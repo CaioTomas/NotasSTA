@@ -6388,9 +6388,9 @@ o que encerra a prova do teorema.
         %
         como ilustrado abaixo.
         %
-        \begin{center}
-            {\bf DIAGRAMA ILUSTRANDO A COTA DA INTEGRAL}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/cota inferior de psi.pdf}
+        \end{figure}
         %
         Analogamente, temos também que
         %
@@ -6402,9 +6402,9 @@ o que encerra a prova do teorema.
         %
         como ilustrado abaixo.
         %
-        \begin{center}
-            {\bf DIAGRAMA ILUSTRANDO A COTA DA INTEGRAL}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/cota superior de psi.pdf}
+        \end{figure}
         %
         Vamos proceder como na prova da ida da Proposição \ref{prop-assint-psi-implica-assint-pi}
         e mostrar que
@@ -6666,12 +6666,12 @@ o que encerra a prova do teorema.
     \end{proposicao}
     %
     \begin{proof}
-        Defina $f_n:\R\to\R$ por
+        Para cada $n\in\N$ considere a função $f_n:\R\to\R$ dada por
         %
         \[
         f_n(u) = \begin{cases}
-            1, n\leq u, \\
-            0, n > u.
+            1,&\text{se}\ n\leq u, \\
+            0,&\text{se}\ u < n.
         \end{cases}
         \]
         %
@@ -6690,9 +6690,9 @@ o que encerra a prova do teorema.
         \begin{align*}
             \psi_1(x) = \int_1^x \psi(u) \, du 
             &= \int_1^x \left( \sum_{n=1}^{\infty} \Lambda(n) f_n(u) \right) \, du \\
-            &= \int_1^x \left( \sum_{n=1}^{\lceil x \rceil} \Lambda(n) f_n(u) \right) \, du \\
-            &= \sum_{n=1}^{\lceil x \rceil} \Lambda(n) \int_1^x f_n(u) \, du \\
-            &= \sum_{n=1}^{\lceil x \rceil} \Lambda(n) \int_n^x du \\
+            &= \int_1^x \left( \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n) f_n(u) \right) \, du \\
+            &= \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n) \int_1^x f_n(u) \, du \\
+            &= \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n) \int_n^x du \\
             &= \sum_{n\leq x} \Lambda(n)(x-n),
         \end{align*}
         %
