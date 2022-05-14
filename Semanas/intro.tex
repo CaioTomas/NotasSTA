@@ -264,11 +264,33 @@ Colocar a tradução do Cap1 do Edwards
         \label{Pi(s)-lim-N}
         \Pi(s) = \lim_{N \to \infty} \frac{1 \cdot 2 \cdots N}{(s+1)(s+2)\cdots (s+N)}(N+1)^s.
     \end{equation}
+    %
+    Esta fórmula é válida para todos os $s$ para os quais \eqref{factorial-Gamma-pi} define $\Pi(s)$, ou seja, para todo $s$ no semiplano $\Re(s)>-1$. Por outro lado, não é difícil mostrar [use a fórmula \eqref{Pi(s)-prod} abaixo] que o limite \eqref{Pi(s)-lim-N} existe para todo valor de $s$, real ou complexo, desde que o denominador não se anule, isto é, que $s$ não seja um inteiro negativo. Em suma, a fórmula \eqref{Pi(s)-lim-N} estende a definição de $\Pi(s)$ para todos os valores de $s$ exceto para $s = -1, -2, -3, \dots$.
+    
+    As fórmulas \eqref{factorial-Gamma-pi} e \eqref{Pi(s)-lim-N} coincidem para $\Re(s)> -1$. Também usaremos, sem demonstrar, os seguintes fatos:
+    %
+    \begin{align}
+        \label{Pi(s)-identidade}
+        \Pi(s) &= \prod_{n=1}^{\infty}\frac{n^{1-s}(n+1)^s}{s+n} =  \prod_{n=1}^{\infty}\left(1 + \frac{s}{n}\right)^{-1} \left(1 + \frac{1}{n}\right)^{s}  \\
+        %
+        \Pi(s) &= s\Pi(s-1)\\
+        %
+        \frac{\pi s}{\Pi(s)\Pi(-s)} &= \sin \pi s\\
+        %
+        \Pi(s) &= 2^s\Pi\left(\frac{s}{2}\right)\Pi\left(\frac{s-1}{2}\right)\pi^{-1/2}
+    \end{align}
+    %
+    Para a demonstração destes resultados o leitor é indicado a procurar qualquer livro que lida com a função fatorial ou a "função $\Gamma$", por exemplo, Edwards \textcolor{red}{[E1]}. A identidade \eqref{Pi(s)-identidade} é uma simples reformulação de \eqref{Pi(s)-lim-N}. Usando ela, pode-se provar que $\Pi(s)$ é uma função analítica da variável complexa $s$ que tem polos simples em $s = -1, -2, -3, \dots$ e não se anula. A identidade \eqref{Pi(s)-identidade-2} é chamada de "equação funcional da função fatorial"; juntamente com $\Pi(0)=1$ (de \eqref{Pi(s)-identidade}), obtemos $\Pi(n) = n!$ diretamente. A fórmula \eqref{Pi(s)-identidade-3} é, essencialmente, a fórmula do produto para o seno; quando $s = 1/2$, usamos \eqref{Pi(s)-identidade-2} para concluir que $\Pi(\frac{-1}{2}) = \Pi^{1/2}$. A identidade \eqref{Pi(s)-identidade-4} é conhecida como a relação de Legendre. É o caso $n=2$ de outra relação mais geral
+    %
+    \begin{equation*}
+        \frac{\Pi(s)}{n^s \Pi\left( \frac{s-1}{2}\right) \cdots \Pi\left( \frac{s-n + 1}{n}\right)} 
+        = \left[ \frac{2\pi n}{(2\pi)^n}\right]^{1/2}
+    \end{equation*}
+    %
+    que não será necessária.
     
     
-    Por outro lado, não é difícil mostrar [use a fórmula \eqref{Pi(s)-prod}] que 
-    
-    
+    \section{A função $\zeta(s)$}
     
 %regaça 
 %\o/

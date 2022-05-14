@@ -6558,9 +6558,9 @@ o que encerra a prova do teorema.
         %
         Agora, para $T>0$, considere o caminho mostrado abaixo.
         %
-        \begin{center}
-            {\bf DIGRAMA CONTORNO PRIMEIRO CASO}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/disco no SPE.pdf}
+        \end{figure}
         %
         Pelo Teorema de Cauchy, sabemos que para $T > c+1$ temos
         %
@@ -6612,9 +6612,9 @@ o que encerra a prova do teorema.
         Neste caso, procedemos de maneira análoga ao caso anterior, mas considerando o contorno
         $\Gamma'(T)$ mostrado abaixo.
         %
-        \begin{center}
-            {\bf DIAGRAMA CONTORNO SEGUNDO CASO}
-        \end{center}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/disco no SPD.pdf}
+        \end{figure}
         %
         Nessa situação, temos
         %
@@ -6724,3 +6724,258 @@ o que encerra a prova do teorema.
         Isto conclui a prova da proposição.
     \end{proof}
     %
+    
+    \medskip
+    
+    Agora, vamos mostrar, finalmente, o comportamento assintótico de $\psi_1$. Para tanto, fixe $c>1$
+    e considere $x\geq 2$. Observe o contorno abaixo, onde $R>T>1$.
+    %
+    \begin{figure}[H]\centering
+        \includegraphics{Figuras/de beta para phi.pdf}
+    \end{figure}
+    %
+    Vamos calcular a integral da Proposição \ref{prop-psi1-zeta} utilizando um argumento de deformação:
+    a nossa estratégia será mostrar que podemos deformar o contorno da direita no contorno mais à esquerda
+    quando $R\to\infty$ e, depois, usar o Teorema dos Resíduos para lidar com o polo em $s=1$. Então, defina
+    $F:\{s\in\C : \Re(s) > 0\}\setminus\{1\}\to\C$ por
+    %
+    \[
+    F(s) = \frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right).
+    \]
+    %
+    Observe que $F$ é holomorfa em seu domínio, que seu único polo é em $s=1$ e que
+    %
+    \[
+    \int_{\beta} F(s) \, ds + \int_{\beta_1} F(s) \, ds + \int_{\beta_2} F(s) \, ds = \int_{\phi} F(s) \, ds,
+    \]
+    %
+    sendo $\phi = \phi_1 * \phi_2 * \phi_3 * \phi_4 * \phi_5$. Vamos mostrar que as integrais em $\beta_1$
+    e $\beta_2$ vão a 0 quando $R\to\infty$. Para tanto, observe que se $s\in\beta_1$ então pelas
+    Proposições \ref{prop-2.7-Stein} e \ref{prop-cota-inv-zeta} temos
+    %
+    \[
+    \left| \frac{\zeta'(s)}{\zeta(s)} \right| \leq K_{\eta} R^{\eta},
+    \]
+    %
+    para $\eta > 0$ qualquer. Ora, então como $s = \sigma + iR$ temos
+    %
+    \begin{align*}
+        |F(s)| &\leq K_{\eta}R^{\eta} \frac{|x^{\sigma + 1 + iR}|}{|\sigma + iR||\sigma + 1 + iR|} \\
+               &\leq K_{\eta}R^{\eta} x^{\sigma + 1}R^{-2} \\
+               &\leq K_{\eta}R^{\eta - 2}x^{c + 1}.
+    \end{align*}
+    %
+    Daí, segue que
+    %
+    \[
+    \left| \int_{\beta_1} F(s) \, ds \right| \leq \frac{K_{\eta}(c-1)x^{c+1}}{R^{2 - \eta}} \xrightarrow{R\to\infty} 0.
+    \]
+    %
+    Analogamente, se $s\in\beta_2$ temos a mesma cota para a derivada logarítmica
+    %
+    \[
+    \left| \frac{\zeta'(s)}{\zeta(s)} \right| \leq K_{\eta} R^{\eta}
+    \]
+    %
+    e, como $s = \sigma - iR$, temos
+    %
+    \begin{align*}
+        |F(s)| &\leq K_{\eta}R^{\eta} \frac{|x^{\sigma + 1 - iR}|}{|\sigma - iR||\sigma + 1 - iR|} \\
+               &\leq K_{\eta}R^{\eta} x^{\sigma + 1}R^{-2} \\
+               &\leq K_{\eta}R^{\eta - 2}x^{c + 1}.
+    \end{align*}
+    %
+    Segue, portanto, que
+    %
+    \[
+    \left| \int_{\beta_2} F(s) \, ds \right| \leq \frac{K_{\eta}(c-1)x^{c+1}}{R^{2 - \eta}} \xrightarrow{R\to\infty} 0.
+    \]
+    %
+    Agora, vamos querer considerar o caminho $\phi$ do contorno acima juntamente com o caminho $\varphi$,
+    ilustrado abaixo.
+    %
+    \begin{figure}[H]\centering
+        \includegraphics{Figuras/de phi para varphi.pdf}
+    \end{figure}
+    %
+    Para aplicar o Teorema dos Resíduos mais à frente, precisamos calcular o resíduo de $F$ em $s=1$,
+    e isso envolve calcular o resíduo da derivada logarítmica de $\zeta$. Consideremos, então, $\e>0$ dado
+    e $s\in D(1,\e)$. Vimos que no semi-plano $\Re(s) > 0$ podemos escrever
+    %
+    \[
+    \zeta(s) - \frac{1}{s-1} = H(s),
+    \]
+    %
+    onde $H$ é uma função holomorfa nesse semi-plano. Derivando esta expressão com respeito a $s$, temos
+    %
+    \[
+    \zeta'(s) = H'(s) - \frac{1}{(s-1)^2}.
+    \]
+    %
+    Podemos dividir essa expressão por $\zeta(s)$, uma vez que $\zeta$ explode em $s=1$ e, portanto,
+    no disco $D(1,\e)$ podemos garantir que $\zeta(s) \neq 0$ para $\e$ suficientemente pequeno.
+    Isso nos dá
+    %
+    \begin{align*}
+        \frac{\zeta'(s)}{\zeta(s)} &= \frac{H'(s) - \frac{1}{(s-1)^2}}{H(s) + \frac{1}{s-1}} \\
+                                   &= \frac{H'(s)(s-1)^2 - 1}{H(s)(s-1) + 1}\cdot\frac{1}{s-1}.
+    \end{align*}
+    %
+    Daí, segue que
+    %
+    \[
+    \lim_{s\to 1} (s-1)\frac{\zeta'(s)}{\zeta(s)} = \lim_{s\to 1} \frac{H'(s)(s-1)^2 - 1}{H(s)(s-1) + 1} = -1
+    \]
+    %
+    e, portanto,
+    %
+    \[
+    \res(F,1) = \lim_{s\to 1} (s-1)F(s) = -\lim_{s\to 1} \frac{-x^{s+1}}{s(s+1)} = \frac{x^2}{2}.
+    \]
+    %
+    Agora, o próximo passo é escolher $T$ para, em seguida, escolhermos $\delta$. Isso se justifica
+    porque vamos querer integrar $F$ em um retângulo aplicando o Teorema dos Resíduos e, para isso,
+    precisamos garantir que a única singularidade de $F$ seja $s=1$. Faremos isto em dois passos:
+    %
+    \begin{enumerate}[i)]
+        \item escolhemos $T$ suficientemente grande de modo que as integrais em $\varphi_1$ e $\varphi_5$ 
+        fiquem pequenas;
+        \item escolhido $T$, podemos escolher $\delta$ suficientemente pequeno de maneira que no retângulo
+        $\mathcal{R} = [1-\delta,1+\delta]\times[-T,T]$ não tenhamos zeros de $\zeta$, ou seja, singularidades
+        de $F$. 
+    \end{enumerate}
+    %
+    Esses dois passos são necessários porque sabemos que $\zeta$ tem um número finito de zeros em qualquer compacto.
+    Em particular, $\zeta$ tem um número finito de zeros em qualquer retângulo. Portanto, definida a ``altura''
+    do retângulo (isto é, escolhido $T$), sabemos que $\zeta$ tem, digamos, $n$ zeros no retângulo 
+    $[0,1]\times[-T,T]$. Daí, se $d$ é a menor distância desses zeros à reta $\Re(s) = 1$, 
+    podemos escolher $\delta = d/2$.
+    Feitas estas observações, mãos à obra.
+    
+    Observe que
+    %
+    \begin{align*}
+        \left| \int_{\varphi_1} F(s) \, ds \right| &\leq \int_{\varphi_1} F(s) \, ds \\
+                                              &= \int_{-\infty}^{-T} 
+                                              \frac{|x^{2 + it}|}{|(1 + it)(2 + it)|}
+                                              \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt \\
+                                              &\leq \int_{-\infty}^{-T} 
+                                              \frac{x^2}{t^2}
+                                              \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt.
+    \end{align*}
+    %
+    Sendo $s = 1 + it$, podemos tomar a cota
+    %
+    \[
+    \left|\frac{\zeta'(s)}{\zeta(s)}\right| \leq K_{1/2}|t|^{1/2}.
+    \]
+    %
+    Daí, temos
+    %
+    \begin{align*}
+        \int_{-\infty}^{-T} \frac{x^2}{t^2} \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt
+        &\leq K_{1/2}x^2\int_{-\infty}^{-T} |t|^{-3/2} \, dt.
+    \end{align*}
+    %
+    Dado $\e>0$, seja $T_0 = 16K_{1/2}^2/\e^2$. Tomando $T \geq T_0$ e fazendo a troca de variáveis
+    $u = -t$, temos
+    %
+    \begin{align*}
+        \left| \int_{\varphi_1} F(s) \, ds \right| &\leq K_{1/2}x^2\int_{-\infty}^{-T} |t|^{-3/2} \, dt \\
+                                                   &= K_{1/2}x^2 \frac{u^{-1/2}}{-1/2}\Bigg|_T^{\infty} \\
+                                                   &= 2K_{1/2}x^2\frac{1}{T^{1/2}} \\
+                                                   &\leq \frac{\e}{2}x^2.
+    \end{align*}
+    %
+    Analogamente, para $\varphi_5$ temos
+    %
+    \begin{align*}
+        \left| \int_{\varphi_5} F(s) \, ds \right| &\leq \int_{\varphi_5} F(s) \, ds \\
+                                              &= \int_T^{+\infty} 
+                                              \frac{|x^{2 + it}|}{|(1 + it)(2 + it)|}
+                                              \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt \\
+                                              &\leq \int_T^{+\infty} 
+                                              \frac{x^2}{t^2}
+                                              \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt \\
+                                              &\leq K_{1/2}x^2\int_{-\infty}^{-T} |t|^{-3/2} \, dt \\
+                                              &= K_{1/2}x^2 \frac{t^{-1/2}}{-1/2}\Bigg|_T^{\infty} \\
+                                              &= 2K_{1/2}x^2\frac{1}{T^{1/2}} \\
+                                              &\leq \frac{\e}{2}x^2.
+    \end{align*}
+    %
+    Agora, note que sendo $\mathcal{R} = [1-\delta,1+\delta]\times[-T,T]$, temos pelo Teorema dos Resíduos que
+    %
+    \begin{align*}
+        \int_{\phi} F(s) \, ds - \int_{\varphi} F(s) \, ds &= \int_{\mathcal{R}} F(s) \, ds \\
+                                                           &= 2\pi i\res(F,1) \\
+                                                           &= 2\pi i\frac{x^2}{2}.
+    \end{align*}
+    %
+    Portanto,
+    %
+    \[
+    \psi_1(x) = \frac{1}{2\pi i} \int_{\phi} F(s) \, ds = \frac{x^2}{2} + \frac{1}{2\pi i}\int_{\varphi} F(s) \, ds.
+    \]
+    %
+    Até o momento, temos
+    %
+    \begin{align*}
+        \int_{\varphi} F(s) \, ds &= \int_{\varphi_1} F(s) \, ds + \int_{\varphi_5} F(s) \, ds 
+                                    + \int_{\varphi_2*\varphi_3*\varphi_4} F(s) \, ds \\
+                                  &\leq \e x^2 + \int_{\varphi_2*\varphi_3*\varphi_4} F(s) \, ds.
+    \end{align*}
+    %
+    O passo final é lidar com a integral de $F$ em $\varphi_2$, $\varphi_3$ e $\varphi_4$. Começamos com
+    $\varphi_2$. Observe que
+    %
+    \begin{align*}
+        \left| \int_{\varphi_2} F(s) \, ds \right| 
+        &\leq -\int_1^{1-\delta} \frac{|x^{-u + 3 - \delta - iT}|}{|(-u+3-\delta-iT)(-u+4-\delta - iT)|}K_{1/2}|T|^{1/2} \, du \\
+        &\leq \frac{K_{1/2}|T|^{1/2}}{T^2} \int_{1-\delta}^1 x^{-u+3-\delta} \, du \\
+        &= \widetilde{K} \int_{1-\delta}^1 e^{(-u+3-\delta) \ln x} \, du \\
+        &= \widetilde{K} \frac{1}{\ln x}(x^2 - x^{2 - \delta}).
+    \end{align*}
+    %
+    De maneira análoga,
+    %
+    \begin{align*}
+        \left| \int_{\varphi_4} F(s) \, ds \right| 
+        &\leq \int_{1-\delta}^1 \frac{|x^{u + 1 + iT}|}{|(u + iT)(u + 1 + iT)|}K_{1/2}|T|^{1/2} \, du \\
+        &\leq \frac{K_{1/2}|T|^{1/2}}{T^2} \int_{1-\delta}^1 x^{u+1} \, du \\
+        &= \widetilde{K} \int_{1-\delta}^1 e^{(u+1) \ln x} \, du \\
+        &= \widetilde{K} \frac{1}{\ln x}(x^2 - x^{2 - \delta}).
+    \end{align*}
+    %
+    {\red Por fim,}
+    %
+    \begin{align*}
+        \left| \int_{\varphi_3} F(s) \, ds \right|
+        &\leq \int_{-T}^T \frac{|x^{1 - \delta + 1 + it}|}{|(1 - \delta + it)(2 - \delta + it)|} K_{1/2}|T|^{1/2} \, dt \\
+        &\leq K_{1/2}|T|^{1/2} x^{2 - \delta} \int_{-T}^T \frac{1}{|(1-\delta)||(2-\delta)|} \, dt \\
+        &= \frac{2\widetilde{K}T^3}{|(1-\delta)||(2-\delta)|} x^{2 - \delta}.
+    \end{align*}
+    %
+    Consequentemente,
+    %
+    \begin{align*}
+        \left| \psi_1(x) - \frac{x^2}{2} \right| &= \frac{1}{2\pi}\left| \int_{\varphi} F(s) \, ds \right| \\
+                                                 &\leq \frac{1}{2\pi}\left[ \e x^2 + 2\widetilde{K}\frac{x^2}{\ln x}
+                                                 + \left(-2\frac{\widetilde{K}}{\ln x} 
+                                                 + \frac{2\widetilde{K}T^3}{|(1-\delta)||(2-\delta)|}\right)x^{2-\delta}
+                                                 \right]
+    \end{align*}
+    %
+    e, portanto,
+    %
+    \begin{align*}
+        \left| \frac{\psi_1(x)}{x^2/2} - 1 \right| &\leq \frac{1}{2\pi}\left[ 2\e + 4\frac{\widetilde{K}}{\ln x}
+                                                 + 2\left(-2\frac{\widetilde{K}}{\ln x} 
+                                                 + \frac{2\widetilde{K}T^3}{|(1-\delta)||(2-\delta)|}\right)\frac{1}{x^{\delta}}
+                                                 \right] \\
+                                                 &\leq \e + 2\frac{\widetilde{K}}{\ln x}
+                                                 + \left(-2\frac{\widetilde{K}}{\ln x} 
+                                                 + \frac{2\widetilde{K}T^3}{|(1-\delta)||(2-\delta)|}\right)\frac{1}{x^{\delta}}\\
+                                                 &{\red \leq 4\e}
+    \end{align*}
+    %
+    {\red para $x$ suficientemente grande, concluindo a prova do Teorema do Número Primo.}
