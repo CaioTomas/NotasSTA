@@ -270,12 +270,11 @@ Colocar a tradução do Cap1 do Edwards
     As fórmulas \eqref{factorial-Gamma-pi} e \eqref{Pi(s)-lim-N} coincidem para $\Re(s)> -1$. Também usaremos, sem demonstrar, os seguintes fatos:
     %
     \begin{align}
-        \label{Pi(s)-identidade}
-        \Pi(s) &= \prod_{n=1}^{\infty}\frac{n^{1-s}(n+1)^s}{s+n} =  \prod_{n=1}^{\infty}\left(1 + \frac{s}{n}\right)^{-1} \left(1 + \frac{1}{n}\right)^{s}  \\
+        \Pi(s) &= \prod_{n=1}^{\infty}\frac{n^{1-s}(n+1)^s}{s+n} =  \prod_{n=1}^{\infty}\left(1 + \frac{s}{n}\right)^{-1} \left(1 + \frac{1}{n}\right)^{s} \label{Pi(s)-identidade} \\[0.3cm]
         %
-        \Pi(s) &= s\Pi(s-1)\\
+        \Pi(s) &= s\Pi(s-1) \label{Pi(s)-identidade-2} \\[0.3cm]
         %
-        \frac{\pi s}{\Pi(s)\Pi(-s)} &= \sin \pi s\\
+        \frac{\pi s}{\Pi(s)\Pi(-s)} &= \sin \pi s  \label{Pi(s)-identidade-3} \\[0.3cm]
         %
         \Pi(s) &= 2^s\Pi\left(\frac{s}{2}\right)\Pi\left(\frac{s-1}{2}\right)\pi^{-1/2}
     \end{align}
@@ -290,7 +289,109 @@ Colocar a tradução do Cap1 do Edwards
     que não será necessária.
     
     
-    \section{A função $\zeta(s)$}
+    \section*{A função $\zeta(s)$}
+    
+    
+    Riemann não fala sobre a "continuação analítica" da função $\sum n^{-s}$ para além do semiplano $\Re(s)>1$, mas fala em encontrar uma fórmula para ela que "seja válida para todo $s$". Isto indica que ele enxergava este problema em termos mais próximos do problema da extensão da função fatorial pela fórmula \eqref{Pi(s)-lim-N} da seção anterior do que da extensão analítica da maneira que é vista atualmente. Enxergar a continuação analítica em termos de cadeias de discos e séries de potências convergentes em cada disco vem de Weierstrass e é quase a antítese da filosofia básica de Riemann, que deve-se lidar com funções analíticas de forma global e não localmente em termos de séries de potências. 
+    
+    Riemann obtém sua fórmula para $\sum n^{-s}$ que "se mantém válida para todo $s$" da forma seguinte. Ele substitui $nx$ no lugar de $x$ na integral de Euler para $\Pi(s-1)$ e obtém 
+    %
+    \begin{equation*}
+        \int_{0}^{\infty}e^{-nx}x^{s-1} \, dx = \frac{\Pi(s-1)}{n^s}
+    \end{equation*}
+    %
+    $(s > 0, n = 1, 2, \dots)$. Soma sobre $n$ e usa $\sum_{n=1}^{\infty} r^{-n} = (r-1)^{-1}$ para obter 
+    %
+    \footnote{
+    Esta fórmula com $s=2n$ ocorre em um artigo \textcolor{red}{[A1]} de Abel que foi incluído na edição de 1839 do Abel's collected works. Parece bastante provável que Riemann estivesse apar deste fato. Uma formula muito similar
+    %
+    $$\int_0^{\infty} (e^x-1)^{-1}e^{-x}x^p \, dx = \Pi(p)\sum_{n=2}^{\infty} n^{-1-p} $$
+    %
+    é o ponto de partida de um artigo de Chebyshev \textcolor{red}{[C2]} de 1848.
+    }
+    %
+    \begin{equation}
+        \label{int-zeta-Pi}
+        \int_0^{\infty} \frac{x^{s-1}}{e^{x} - 1} \, dx = \Pi(s-1)\sum_{n=1}^{\infty}\frac{1}{n^s}
+    \end{equation}
+    %
+    $(s > 1)$. A convergência da integral imprópria à esquerda e a validade da troca da soma com a integração não são difíceis de demonstrar. 
+    
+    A seguir, ele considera a integral de contorno 
+    %
+    \begin{equation*}
+        \int_{+\infty}^{+\infty} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x}.
+    \end{equation*}
+    %
+    Os limites de integração buscam indicar que o caminho de integração vem de $+\infty$, vai para a esquerda no eixo real, circula a origem uma vez com orientação positiva (anti-horária) e retorna, pelos reais positivos, a $+\infty$. $(-x)^s$ é definido como $\exp(s\log(-x))$, onde $\log(-x)$ coincide com a definição usual de $\log z$ para $z$ fora do eixo real negativo, ou seja, escolhendo o ramo do logaritmo que exclui os reais não positivos. Então $(-x)^s$ não está definido para $x$ real positivo e, a rigor, o caminho de integração escolhido deve estar um pouco acima do eixo real conforme vem de $+\infty$ para $0$ e um pouco abaixo do eixo real quando retorna de 0 para $+\infty$. Quando esta integral é escrita na forma 
+    %
+    \begin{equation*}
+         \int_{+\infty}^{+\delta} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x} +  \int_{|x| = \delta} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x} + \int_{\delta}^{+\infty} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x}
+    \end{equation*}
+    %
+    o termo do meio é $2\pi i$ multiplicado pela valor médio de $(-x)^s(e^x - 1)^{-1}$ no círculo $|x| = \delta$ [pois, neste círculo, $i d\theta = (dx/x)$]. Então este termo vai a zero conforme $\delta \to 0$ desde que $s>1$ [pois $x(e^x -1)$ é indeterminado em $x = 0$]. Os outros dois termos podem, então, ser combinados para obtermos 
+    %
+    \begin{align*}
+        \int_{+\infty}^{+\infty} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x}
+        %
+        &= \lim_{\delta \to 0} \left\{ \int_{+\infty}^{+\delta} \frac{\exp[s(\log(x)-i\pi)]}{(e^x - 1)x} \, dx + \int_{\delta}^{+\infty} \frac{\exp[s(\log(x)-i\pi)]}{(e^x - 1)x} \, dx \right\} \\
+        %
+        &= (e^{i\pi s} - e^{-i\pi s})\int_{0}^{+\infty} \frac{x^{s-1} }{e^x - 1} \, dx.
+    \end{align*}
+    %
+    Usando a fórmula \eqref{int-zeta-Pi}, temos
+    %
+    \begin{equation*}
+        \int_{+\infty}^{+\infty} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x} = 2 i \sen(\pi s)\Pi(s-1)\sum_{n=1}^{\infty}\frac{1}{n^s}.
+    \end{equation*}
+    %
+    Multiplicando ambos os lados por $\Pi(-s)s/2\pi i s$ e usando aidentidade \eqref{Pi(s)-identidade-3}, obtemos
+    %
+    \begin{equation}
+        \label{extensao-zeta-1}
+        \frac{\Pi(-s)}{2\pi i} \int_{+\infty}^{+\infty} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x} = \sum_{n=1}^{\infty}\frac{1}{n^s}.
+    \end{equation}
+    %
+    Em outras palavras, se $\zeta(s)$ é definida pela expressão
+    %
+    \footnote{
+    Esta expressão é enunciada de forma incorreta pelos editores dos trabalhos de Riemann nas notas. Eles colocam o fator $\pi$ no lado errado da equação deles.
+    }
+    %
+    \begin{equation}
+        \label{extensao-zeta-2}
+        \zeta(s) = \frac{\Pi(-s)}{2\pi i} \int_{+\infty}^{+\infty} \frac{(-x)^s}{e^x - 1} \, \frac{dx}{x},
+    \end{equation}
+    %
+    então, para valores reais de $s$ maiores que 1, $\zeta(s)$ é igual à função de Drichlet
+    %
+    \begin{equation}
+        \zeta(s) = \sum_{n=1}^{\infty}\frac{1}{n^s}
+    \end{equation}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 %regaça 
 %\o/

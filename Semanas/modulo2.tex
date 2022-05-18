@@ -6036,13 +6036,12 @@ o que encerra a prova do teorema.
     %
     \begin{proposicao}
     \label{prop-cota-inv-zeta}
-        Dado $\e>0$ qualquer, temos
-        %
+        Para cada $\e>0$ dado existe uma constante positiva $C_{\e}$ tal que %
         \[
         \frac{1}{|\zeta(s)|} \leq C_{\e}|t|^{\e},
         \]
         %
-        sendo $s = \sigma + it$ com $\sigma\geq 1$ e $|t|\geq 1$.
+        para todo $s = \sigma + it$ com $\sigma\geq 1$ e $|t|\geq 1$.
     \end{proposicao}
     %
     \begin{proof}
@@ -6060,16 +6059,26 @@ o que encerra a prova do teorema.
         %
         Primeiro notamos que essa última desigualdade implica em
         %
-        \begin{equation}
+        \begin{align}
         \label{eq-aux-estrela}
-            |\zeta^4(\sigma + it)| = |\zeta(\sigma + it)|^4 \geq \frac{1}{|\zeta^3(\sigma)||\zeta(\sigma + 2it)|} 
-                                                            \geq \frac{1}{C'(\sigma - 1)^{-3}C_{\e}|2t|^{\e}} 
-                                                            = K_{\e}\frac{(\sigma - 1)^3}{|t|^{\e}}.
-        \end{equation}
+            |\zeta^4(\sigma + it)| 
+            = |\zeta(\sigma + it)|^4 
+            &\geq 
+            \frac{1}{|\zeta^3(\sigma)||\zeta(\sigma + 2it)|} 
+            \nonumber\\
+            &\geq 
+            \frac{1}{C'(\sigma - 1)^{-3}C_{\e}|2t|^{\e}} 
+            \nonumber\\
+            &= 
+            K_{\e}\frac{(\sigma - 1)^3}{|t|^{\e}}.
+        \end{align}
         %
         Aqui, novamente, dividiremos a análise em dois casos.
+    
         %
-        \paragraph{Caso 1: existe $A>0$ tal que $A|t|^{-5\e} \leq \sigma - 1$.} Neste caso, podemos afirmar que
+    \bigskip 
+    Caso 1: existe $A>0$ tal que $A|t|^{-5\e} \leq \sigma - 1$. 
+    Neste caso, podemos afirmar que
         %
         \begin{align*}
             |\zeta(\sigma + it)| &\geq \frac{K_{\e}^{1/4}(\sigma - 1)^{3/4}}{|t|^{\e/4}} \\
@@ -6313,7 +6322,8 @@ o que encerra a prova do teorema.
         \psi(x) + \alpha\pi(x^{\alpha})\ln x \geq \alpha\pi(x)\ln x.
         \]
         %
-        Logo, dividindo por $x$ e observando que $\pi(x^{\alpha}) \leq x^{\alpha}$ para todo $x\geq 2$, temos
+        Logo, dividindo por $x$ e observando que 
+        $\pi(x^{\alpha}) \leq x^{\alpha}$ para todo $x\geq 2$, temos
         %
         \begin{equation}
         \label{eq-aux-limsup}
@@ -6367,12 +6377,14 @@ o que encerra a prova do teorema.
     %
     para todo $x\geq 2$.
     
-    A proposição a seguir vai mostrar que o comportamento assintótico de $\psi$ segue do comportamento
+    A proposição a seguir vai mostrar que o comportamento 
+    assintótico de $\psi$ segue do comportamento
     assintótico de $\psi_1$.
     %
     \begin{proposicao}
     \label{prop-assint-psi1-implica-assint-psi}
-        Supondo que $\psi_1(x) \sim x^2/2$ quando $x\to\infty$, então $\psi(x)\sim x$ quando $x\to\infty$ e,
+        Supondo que $\psi_1(x) \sim x^2/2$ quando 
+        $x\to\infty$, então $\psi(x)\sim x$ quando $x\to\infty$ e,
         em particular, $\pi(x) \sim x/\ln x$ quando $x\to\infty$.
     \end{proposicao}
     %
@@ -6463,14 +6475,16 @@ o que encerra a prova do teorema.
         \leq \liminf_{x\to\infty} \frac{\psi(x)}{x}
         \]
         %
-        e, tomando o limite quando $\alpha\to 1^-$, obtemos o item ii) e fica demonstrada
+        e, tomando o limite quando $\alpha\to 1^-$, 
+        obtemos o item ii) e fica demonstrada
         a proposição.
     \end{proof}
     %
     
     \medskip
     
-    Daqui, o passo seguinte é relacionar $\psi$ e $\zeta$. Essa relação surge da igualdade
+    Daqui, o passo seguinte é relacionar $\psi$ e $\zeta$. 
+    Essa relação surge da igualdade
     %
     \[
     \log\zeta(s) = \sum_{m,p} \frac{p^{-ms}}{m},
@@ -6487,55 +6501,111 @@ o que encerra a prova do teorema.
                                    = -\sum_{n=1}^{\infty} \frac{\Lambda(n)}{n^s}.
     \end{equation}
     %
-    O comportamento assintótico $\psi_1(x)\sim x^2/2$ será consequência via \eqref{eq-der-logaritmica-zeta-e-psi}
-    da relação entre $\psi_1$ e $\zeta$, que tratamos a seguir. Primeiro, enunciamos um lema
+    O comportamento assintótico $\psi_1(x)\sim x^2/2$ 
+    será consequência via \eqref{eq-der-logaritmica-zeta-e-psi}
+    da relação entre $\psi_1$ e $\zeta$, que tratamos a seguir. 
+    Primeiro, enunciamos um lema
     um puramente técnico que será necessário mais à frente.
     %
     \begin{lema}
     \label{lema-integral-segmento}
-        Dados $a,b>0$ quaisquer, temos
+        Dados $a,c>0$ quaisquer, temos
         %
         \[
-        \frac{1}{2\pi i} \lim_{T\to\infty} \int_{b - iT}^{b + iT} \frac{a^s}{s(s+1)} \, ds
+        \frac{1}{2\pi i} \lim_{T\to\infty} 
+        \int_{c - iT}^{c + iT} \frac{a^s}{s(s+1)} \, ds
         =
         \begin{cases}
-            0, \, \text{ se } 0 < a \leq 1, \\
-            1 - 1/a, \, \text{ se } 1 \leq a,
+            0,& \text{ se } 0 < a \leq 1; 
+            \\[0.2cm]
+            1 - \displaystyle\frac{1}{a},& \text{ se } 1 \leq a,
         \end{cases}
         \]
         %
-        onde a integral é calculada sobre o segmento de reta ligando $b-iT$ a $b+iT$.
+        onde a integral é calculada ao longo do segmento de 
+        reta que une os pontos $c-iT$ e $c+iT$.
     \end{lema}
     %
     \begin{proof}
-        Dados $a,b>0$ quaisquer, temos 
+        Observe que a variável de integração $s$ ao longo do segmento de reta unindo 
+        $c+iT$ à $c+iT$ é da forma $s=c+it$ com $t\in [-T,T]$. Desta forma,
+        para quaisquer $a,c>0$ dados, temos 
         %
-        \[
-        |a^s| = |\exp(s\ln a)| = \exp(c\ln a) = a^c
-        \]
+        \begin{align*}
+        |a^s| 
+        = 
+        |\exp(s\ln a)| 
+        &=
+        |\exp((c+it)\ln a)| 
+        \\[0.2cm]
+        &=
+        |\exp(c\ln a)||\exp(it\ln a)|
+        \\[0.2cm]
+        &= 
+        \exp(c\ln a) 
+        \\[0.2cm]
+        &= 
+        a^c
+        \end{align*}
         %
         e, portanto,
         %
-        \[
-        \int_{b - iT}^{b + iT} \left|\frac{a^s}{s(s+1)}\right| \, ds 
+        \begin{align}
+        \label{eq-aux1-lema-aux-tchebyschev}
+        \int_{b - iT}^{b + iT} \left|\frac{a^s}{s(s+1)}\right| \, |ds| 
         =
         \int_{-T}^T \frac{a^c}{|(c+it)(c+1+it)|} \, dt.
-        \]
+        \end{align}
         %
-        Note que $|c+it| \geq |t|$ e $|c+1+it| \geq |t|$, de modo que
+        Para poder tomar o limite, quando $T\to\infty$, na 
+        igualdade acima basta observar que podemos cotar inferiormente 
+        o denominador que a aparece na integral do lado direito 
+        da igualdade acima como segue
+        \[
+        |(c+it)(c+1+it)|
+        =
+        (c^2+t^2)^{\frac{1}{2}}( (c+1)^2+t^2 )^{\frac{1}{2}}
+        \geqslant
+        c^2+t^2.
+        \]
+        Assim ficamos com a seguinte estimativa
         %
         \[
         \int_{-T}^T \frac{a^c}{|(c+it)(c+1+it)|} \, dt
         \leq
-        \int_{-T}^T \frac{a^c}{t^2} \, dt
+        \int_{-T}^T \frac{a^c}{c^2+t^2} \, dt.
+        \]
+        
+        Da desigualdade acima e da identidade 
+        \eqref{eq-aux1-lema-aux-tchebyschev} podemos
+        concluir finalmente que existe o limite  
+        \[
+        \lim_{T\to\infty}
+        \int_{b - iT}^{b + iT} \left|\frac{a^s}{s(s+1)}\right|\, |ds|
+        \leqslant
+        a^c\lim_{T\to\infty} 
+        \int_{-T}^T \frac{1}{t^2+c^2} \, dt
+        =
+        2a^c\lim_{T\to\infty} 
+        \int_{0}^T \frac{1}{t^2+c^2} \, dt
+        =
+        \frac{a^c\pi}{c}.
         \]
         %
-        {\red e a integral converge.}
-        Para prosseguirmos para o cálculo da integral em si, defina $f:C\setminus\{-1,0\}\to\C$ por
+        Portanto, existe o limite da integral que aparece no 
+        enunciado do lema.
+        
+        Agora que sabemos que a integral imprópria do enunciado do lema existe, 
+        vamos obter seu valor exato. Para isto vamos considerar 
+        a função complexa auxiliar $f:\C\setminus\{-1,0\}\to\C$ 
+        dada por
         %
         \[
         f(s) = \frac{a^s}{s(s+1)}. 
         \]
+        
+        O cálculo da integral será feito analisando-se separadamente os seguintes dois casos. 
+        
         %
         \paragraph{Caso 1: $1\leq a$}.
         Nesse caso, podemos escrever $a = e^{\beta}$ com $\beta = \ln a \geq 0$ e temos
@@ -6556,19 +6626,23 @@ o que encerra a prova do teorema.
         \res(f,-1) = \lim_{s\to -1} (s+1)f(s) = \lim_{s\to -1} \frac{e^{s\beta}}{s} = -\frac{1}{a}.
         \]
         %
-        Agora, para $T>0$, considere o caminho mostrado abaixo.
+        
+        
+        No que segue consideramos $T>c+1$ e o caminho suave por partes mostrado na figura abaixo.
         %
         \begin{figure}[H]\centering
             \includegraphics{Figuras/disco no SPE.pdf}
         \end{figure}
         %
-        Pelo Teorema de Cauchy, sabemos que para $T > c+1$ temos
+        Como estamos assumindo que $T>1+c$, se $\Gamma(T)$ denota o caminho
+        suave por partes mostrado na figura acima, podemos aplicar o Teorema dos Resíduos para verificar que
         %
         \[
-        \frac{1}{2\pi i}\int_{\Gamma(T)} f(s) \, ds = 1 - 1/a.
+        \frac{1}{2\pi i}\int_{\Gamma(T)} f(s) \, ds = 1 - \frac{1}{a}.
         \]
         %
-        Por outro lado, pela definição de integral complexa também temos
+        Por outro lado, segue das propriedades elementares da 
+        integral complexa que
         %
         \[
         \frac{1}{2\pi i}\int_{\Gamma(T)} f(s) \, ds
@@ -6576,8 +6650,10 @@ o que encerra a prova do teorema.
         \frac{1}{2\pi i}\left( \int_{c-iT}^{c+iT} f(s) \, ds + \int_{C(T)} f(s) \, ds \right),
         \]
         %
-        sendo $C(T) = c + Te^{it}$ com $t \in [\pi/2, 3\pi/2]$. Vamos mostrar que a integral sobre $C(T)$
-        vai a 0 quando $T\to\infty$ mostrando que
+        sendo $C(T)$ o semi-circulo que aparece na figura acima, que pode ser pensado também como o traço do caminho $t\longmapsto c + Te^{it}$ com $t \in [\pi/2, 3\pi/2]$. 
+        
+        
+        Vamos mostrar que a integral ao longo do caminho $C(T)$ tende a zero, quando $T\to\infty$. Para isto é suficiente mostrar que
         %
         \[
         \lim_{T\to\infty} \int_{C(T)} |f(s)| \, ds = 0.
@@ -6666,19 +6742,26 @@ o que encerra a prova do teorema.
     \end{proposicao}
     %
     \begin{proof}
-        Para cada $n\in\N$ considere a função $f_n:\R\to\R$ dada por
-        %
-        \[
-        f_n(u) = \begin{cases}
-            1,&\text{se}\ n\leq u, \\
-            0,&\text{se}\ u < n.
-        \end{cases}
-        \]
-        %
-        \begin{center}
-            {\bf DIAGRAMA FUNÇÃO INDICADORA}
-        \end{center}
-        %
+        Para cada $n\in\N$ considere a função $f_n:\R\to\R$ dada por\\
+        
+        \begin{tabular}{%
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    		m{.5\textwidth}
+    		@{}
+    	}
+        	\centering
+        	\[
+            f_n(u) = \begin{cases}
+                1,&\text{se}\ u \geq n, \\
+                0,&\text{se}\ u < n.
+            \end{cases}
+            \]
+        	&
+        	\includegraphics{Figuras/função indicadora.pdf} 
+        \end{tabular}
+    
         Então, podemos escrever
         %
         \[
@@ -6736,21 +6819,30 @@ o que encerra a prova do teorema.
     %
     Vamos calcular a integral da Proposição \ref{prop-psi1-zeta} utilizando um argumento de deformação:
     a nossa estratégia será mostrar que podemos deformar o contorno da direita no contorno mais à esquerda
-    quando $R\to\infty$ e, depois, usar o Teorema dos Resíduos para lidar com o polo em $s=1$. Então, defina
-    $F:\{s\in\C : \Re(s) > 0\}\setminus\{1\}\to\C$ por
+    quando $R\to\infty$ e, depois, usar o Teorema dos Resíduos para lidar com o polo em $s=1$. 
+    
+    Seja
+    $F:\{s\in\C : \Re(s) > 0\}\setminus\{1\}\to\C$ 
     %
+    a função complexa dada por
     \[
     F(s) = \frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right).
     \]
     %
-    Observe que $F$ é holomorfa em seu domínio, que seu único polo é em $s=1$ e que
+    Observe que $F$ é holomorfa em seu domínio, que 
+    sua única singularidade ocorre em $s=1$. 
+    Portanto podemos aplicar o Teorema de Cauchy-Goursat 
+    para obter a seguinte igualdade
     %
     \[
     \int_{\beta} F(s) \, ds + \int_{\beta_1} F(s) \, ds + \int_{\beta_2} F(s) \, ds = \int_{\phi} F(s) \, ds,
     \]
     %
     sendo $\phi = \phi_1 * \phi_2 * \phi_3 * \phi_4 * \phi_5$. Vamos mostrar que as integrais em $\beta_1$
-    e $\beta_2$ vão a 0 quando $R\to\infty$. Para tanto, observe que se $s\in\beta_1$ então pelas
+    e $\beta_2$ vão a 0 quando $R\to\infty$. 
+    
+    
+    Para tanto, observe que se $s\in\beta_1$ então pelas
     Proposições \ref{prop-2.7-Stein} e \ref{prop-cota-inv-zeta} temos
     %
     \[
@@ -6798,9 +6890,13 @@ o que encerra a prova do teorema.
         \includegraphics{Figuras/de phi para varphi.pdf}
     \end{figure}
     %
-    Para aplicar o Teorema dos Resíduos mais à frente, precisamos calcular o resíduo de $F$ em $s=1$,
-    e isso envolve calcular o resíduo da derivada logarítmica de $\zeta$. Consideremos, então, $\e>0$ dado
-    e $s\in D(1,\e)$. Vimos que no semi-plano $\Re(s) > 0$ podemos escrever
+    Para aplicar o Teorema dos Resíduos mais à frente, 
+    precisamos calcular o resíduo de $F$ em $s=1$,
+    e isso envolve calcular o resíduo da 
+    derivada logarítmica de $\zeta$ em $s=1$. 
+    Seja $\e>0$ dado e $s\in D(1,\e)$. 
+    Usando o Corolário \ref{cor-zeta-menos-singularidade} 
+    sabemos que para todo $s$ pertencente ao semi-plano $\Re(s) > 0$, temos
     %
     \[
     \zeta(s) - \frac{1}{s-1} = H(s),
@@ -6812,26 +6908,47 @@ o que encerra a prova do teorema.
     \zeta'(s) = H'(s) - \frac{1}{(s-1)^2}.
     \]
     %
-    Podemos dividir essa expressão por $\zeta(s)$, uma vez que $\zeta$ explode em $s=1$ e, portanto,
-    no disco $D(1,\e)$ podemos garantir que $\zeta(s) \neq 0$ para $\e$ suficientemente pequeno.
+    Podemos dividir essa expressão por $\zeta(s)$, uma vez que $|\zeta|$
+    fica arbitrariamente grande para valores de $s$ suficientemente 
+    próximos de $s=1$. 
+    Portanto, no disco $D(1,\e)$ podemos garantir que 
+    $\zeta(s) \neq 0$, para $\e$ suficientemente pequeno.
     Isso nos dá
     %
     \begin{align*}
-        \frac{\zeta'(s)}{\zeta(s)} &= \frac{H'(s) - \frac{1}{(s-1)^2}}{H(s) + \frac{1}{s-1}} \\
-                                   &= \frac{H'(s)(s-1)^2 - 1}{H(s)(s-1) + 1}\cdot\frac{1}{s-1}.
+        \frac{\zeta'(s)}{\zeta(s)} 
+        &= 
+        \frac{H'(s) - \displaystyle\frac{1}{(s-1)^2}}
+        {H(s) +\displaystyle \frac{1}{s-1}} 
+        \\[0.4cm]
+        &= 
+        \frac{H'(s)(s-1)^2 - 1}{H(s)(s-1) + 1}\cdot\frac{1}{s-1}.
     \end{align*}
     %
     Daí, segue que
     %
     \[
-    \lim_{s\to 1} (s-1)\frac{\zeta'(s)}{\zeta(s)} = \lim_{s\to 1} \frac{H'(s)(s-1)^2 - 1}{H(s)(s-1) + 1} = -1
+    \lim_{s\to 1} (s-1)\frac{\zeta'(s)}{\zeta(s)} = \lim_{s\to 1} \frac{H'(s)(s-1)^2 - 1}{H(s)(s-1) + 1} = -1.
     \]
     %
-    e, portanto,
+    Consequentemente, temos
     %
-    \[
-    \res(F,1) = \lim_{s\to 1} (s-1)F(s) = -\lim_{s\to 1} \frac{-x^{s+1}}{s(s+1)} = \frac{x^2}{2}.
-    \]
+    \begin{align*}
+    \res(F,1) 
+    = 
+    \lim_{s\to 1} (s-1)F(s) 
+    &=
+    \lim_{s\to 1} (s-1)
+    \frac{x^{s+1}}{s(s+1)}\left(-\frac{\zeta'(s)}{\zeta(s)}\right)
+    \\[0.3cm]
+    &=
+    \lim_{s\to 1}\frac{x^{s+1}}{s(s+1)}
+    \ \cdot \ 
+    \lim_{s\to 1}(s-1)\left(-\frac{\zeta'(s)}{\zeta(s)}\right)
+    \\[0.3cm]
+    &= 
+    \frac{x^2}{2}.
+    \end{align*}
     %
     Agora, o próximo passo é escolher $T$ para, em seguida, escolhermos $\delta$. Isso se justifica
     porque vamos querer integrar $F$ em um retângulo aplicando o Teorema dos Resíduos e, para isso,
@@ -6841,8 +6958,8 @@ o que encerra a prova do teorema.
         \item escolhemos $T$ suficientemente grande de modo que as integrais em $\varphi_1$ e $\varphi_5$ 
         fiquem pequenas;
         \item escolhido $T$, podemos escolher $\delta$ suficientemente pequeno de maneira que no retângulo
-        $\mathcal{R} = [1-\delta,1+\delta]\times[-T,T]$ não tenhamos zeros de $\zeta$, ou seja, singularidades
-        de $F$. 
+        $\mathcal{R} \equiv [1-\delta,1+\delta]\times[-T,T]$ 
+        seja possível garantir que não temos nenhum zero de $\zeta$, ou seja, singularidades de $F$. 
     \end{enumerate}
     %
     Esses dois passos são necessários porque sabemos que $\zeta$ tem um número finito de zeros em qualquer compacto.
@@ -6877,7 +6994,8 @@ o que encerra a prova do teorema.
         &\leq K_{1/2}x^2\int_{-\infty}^{-T} |t|^{-3/2} \, dt.
     \end{align*}
     %
-    Dado $\e>0$, seja $T_0 = 16K_{1/2}^2/\e^2$. Tomando $T \geq T_0$ e fazendo a troca de variáveis
+    Dado $\e>0$, seja $T_0 = 16K_{1/2}^2/\e^2$. 
+    Tomando $T \geq T_0$ e fazendo a troca de variáveis
     $u = -t$, temos
     %
     \begin{align*}
@@ -6890,17 +7008,18 @@ o que encerra a prova do teorema.
     Analogamente, para $\varphi_5$ temos
     %
     \begin{align*}
-        \left| \int_{\varphi_5} F(s) \, ds \right| &\leq \int_{\varphi_5} F(s) \, ds \\
-                                              &= \int_T^{+\infty} 
-                                              \frac{|x^{2 + it}|}{|(1 + it)(2 + it)|}
-                                              \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt \\
-                                              &\leq \int_T^{+\infty} 
-                                              \frac{x^2}{t^2}
-                                              \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt \\
-                                              &\leq K_{1/2}x^2\int_{-\infty}^{-T} |t|^{-3/2} \, dt \\
-                                              &= K_{1/2}x^2 \frac{t^{-1/2}}{-1/2}\Bigg|_T^{\infty} \\
-                                              &= 2K_{1/2}x^2\frac{1}{T^{1/2}} \\
-                                              &\leq \frac{\e}{2}x^2.
+    \left| \int_{\varphi_5} F(s) \, ds \right| 
+    &\leq \int_{\varphi_5} |F(s)| \, |ds| \\
+    &= \int_T^{+\infty} 
+    \frac{|x^{2 + it}|}{|(1 + it)(2 + it)|}
+    \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt \\
+    &\leq \int_T^{+\infty} 
+    \frac{x^2}{t^2}
+    \left|\frac{\zeta'(s)}{\zeta(s)}\right| \, dt \\
+    &\leq K_{1/2}x^2\int_{-\infty}^{-T} |t|^{-3/2} \, dt \\
+    &= K_{1/2}x^2 \frac{t^{-1/2}}{-1/2}\Bigg|_T^{\infty} \\
+    &= 2K_{1/2}x^2\frac{1}{T^{1/2}} \\
+    &\leq \frac{\e}{2}x^2.
     \end{align*}
     %
     Agora, note que sendo $\mathcal{R} = [1-\delta,1+\delta]\times[-T,T]$, temos pelo Teorema dos Resíduos que
