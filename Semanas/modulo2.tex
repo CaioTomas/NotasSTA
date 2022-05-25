@@ -402,7 +402,7 @@
     	\includegraphics{Figuras/função salto.pdf} 
     \end{tabular}
     
-    Então $n_f(r) = \dis{\sum_{k=1}^{N} \eta_k(r)}$. Segue que
+    Então $n_f(r) = \dis \sum_{k=1}^{N} \eta_k(r)$. Segue que
     %
     \begin{align*}
         \sum_{k=1}^{N}\int_{|z_K|}^{R} \, \frac{dr}{r} 
@@ -1621,7 +1621,7 @@
     já que $|z| \leq 1/2 < 1$. Integrando esta equação, obtemos que
     %
     \[ 
-    \log(1-z) = - \sum_{n=0}^{\infty}\frac{z^n}{n}.
+    \log(1-z) = - \sum_{n=1}^{\infty}\frac{z^n}{n}.
     \]
     %
     Observe que 
@@ -3835,13 +3835,13 @@
         \end{align*}
         %
         
-        Considere a curva $\gamma$ como no diagrama abaixo, onde $R>1$.
-        \\
+        Considere a curva $\y$ como no diagrama abaixo, onde $R>1$.
         %
-        \textcolor{red}{diagrama página 35 aula 21}
+        \begin{figure}[H]\centering
+            \includegraphics{Figuras/curva gama.pdf}
+        \end{figure}
         %
-        \\
-        Denote por $\gamma_1$ a curva com parametrização $R + 2\pi i t$ com $t \in [0,1]$. A integral de $f$ ao longo de $\gamma_1$ deve ir a $0$ quando $R \to \infty$. Basta observar que 
+        Denote por $\y_1$ a curva com parametrização $R + 2\pi i t$ com $t \in [0,1]$. A integral de $f$ ao longo de $\y_1$ deve ir a $0$ quando $R \to \infty$. Basta observar que 
         %
         \begin{align*}
             \left | \int_{\gamma_1}f(z) dz   \right | &= 2\pi \left | \int_{0}^{1} \frac{e^{a(R + 2\pi i t)}}{1 + e^{R + 2\pi i t}} dt   \right |
@@ -5222,7 +5222,7 @@ o que encerra a prova do teorema.
         Isso reduz nossa análise a retângulos, como o ilustrado abaixo.
         %
         \begin{figure}[H]\centering
-            \includegraphics{Figuras/K>=1.pdf}
+            \includegraphics{Figuras/k>=1.pdf}
         \end{figure}
         %
         Para terminar, dividimos a análise novamente em dois sub-casos: $k\geq 1$ e $k\leq 0$.
@@ -5273,7 +5273,7 @@ o que encerra a prova do teorema.
         conforme ilustra o diagrama abaixo. 
         %
         \begin{figure}[H]\centering
-            \includegraphics{Figuras/K<=0.pdf}
+            \includegraphics{Figuras/k<=0.pdf}
         \end{figure}
         %
         Logo, novamente usando o Lema \ref{lema-aux-cresc-inv-gama}, temos a estimativa
@@ -5662,7 +5662,7 @@ o que encerra a prova do teorema.
             \includegraphics{Figuras/vizinhança.pdf}
         \end{figure}
         %
-        Daí, para $2 > \sigma > 1$ temos
+        Daí, para $1< \sigma <2$ temos
         %
         \[
         |\zeta(\sigma + it_0)|^4 = |\sigma-1|^{4n}|g(\sigma + it_0)|^4
@@ -6161,8 +6161,8 @@ o que encerra a prova do teorema.
     $\psi$ é monótona não decrescente.
     %
     \begin{figure}[H]\centering
-        \includegraphics{Figuras/psi de Chebyshev.pdf}
-    \end{figure} % aprecie com moderação
+        \includegraphics{Figuras/psi de Chebyshev com descontinuidades.pdf}
+    \end{figure} 
     %
     Podemos, ainda, representar $\psi$ de outras duas maneiras. Cada uma delas nos será útil em
     determinados momentos. Enunciamos estas duas formas nas proposições que seguem.

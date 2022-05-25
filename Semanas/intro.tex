@@ -7,7 +7,7 @@ Colocar a tradução do Cap1 do Edwards
     % \end{center}
     \section*{Contexto Histórico}
 
-    Este livro é um estudo do artigo de 8 páginas ``On the number of primes less than a given magnitude''\footnote{The german title is Ueber die Ahzahl der Primzahlen unter einer gegebenen Grösse.} de Bernhard Riemann que marcou época e dos subsequentes desenvolvimentos da teoria que este artigo inaugura. O primeiro capítulo é uma análise do artigo em si e os 11 capítulos restantes são voltados para o trabalho que foi feito, desde 1859, sobre as questões que Riemann deixou sem resposta.
+    Este livro é um estudo do artigo de 8 páginas ``On the number of primes less than a given magnitude''\footnote{O título em Alemão é Ueber die Ahzahl der Primzahlen unter einer gegebenen Gr\"osse.} de Bernhard Riemann que marcou época e dos subsequentes desenvolvimentos da teoria que este artigo inaugura. O primeiro capítulo é uma análise do artigo em si e os 11 capítulos restantes são voltados para o trabalho que foi feito, desde 1859, sobre as questões que Riemann deixou sem resposta.
 
     A teoria para a qual o artigo de Riemann é uma contribuição tem seu início no Teorema de Euler, provado em 1737, da divergência da soma dos recíprocos dos números primos
     %
@@ -16,9 +16,18 @@ Colocar a tradução do Cap1 do Edwards
     \frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \frac{1}{11} + \frac{1}{13} + \frac{1}{17} + \cdots.
     \end{equation}
     %
-    Este teorema vai além do clássico \textcolor{red}{(antigo)} Teorema de Euclides, sobre a infinitude dos números primos, e mostra que os números primos são densos no conjunto dos números inteiros - mais densos que os quadrados, por exemplo, no sentido de que a soma dos recíprocos dos quadrados converge.
+    Este teorema vai além do clássico 
+    Teorema de Euclides \cite{MR1932864}, sobre a infinitude 
+    dos números primos, e mostra que os números primos 
+    são densos no conjunto dos números inteiros - 
+    mais densos que os quadrados, por exemplo, 
+    no sentido de que a soma dos recíprocos dos quadrados converge.
     
-    Euler vai além de simplesmente enunciar a divergência de \eqref{Soma-Recip-primos} e diz que, como $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \cdots$ diverge como o logaritmo e (\ref{Soma-Recip-primos}) diverge como o logaritmo de
+    Euler vai além de simplesmente enunciar a divergência de
+    \eqref{Soma-Recip-primos} e diz que, como 
+    $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \cdots$ 
+    diverge como o logaritmo e 
+    (\ref{Soma-Recip-primos}) diverge como o logaritmo de
     \footnote
     {Isto é verdade por conta da fórmula de Euler $\sum(1/n) = \prod (1-p^{-1})^{-1}$, então $\log (\sum(1/n)) = - \log(\prod(1-p^{-1})^{-1}) = -\log(\prod(1-p^{-1})) = -\sum (p^{-1} + \frac{1}{2}p^{-2} + \frac{1}{3}p^{-3} + \cdots ) = \sum(1/p) + \text{ convergente}.$}
     $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \cdots$, a série \eqref{Soma-Recip-primos} deve divergir como o $\log$ do $\log$, que Euler escreve como 
@@ -28,7 +37,7 @@ Colocar a tradução do Cap1 do Edwards
     \frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \frac{1}{11} + \frac{1}{13} + \frac{1}{17} + \cdots = \log(\log \infty).
     \end{equation}
     %
-    Não é claro o que esta equação significava para Euler - isto se a entendia como algo além de algo \textcolor{red}{mnemônico} - mas uma interpretação óbvia dela poderia ser
+    Não é claro o que esta equação significava para Euler - isto se ele a entendia como algo além de um simples mnemônico. Entretanto uma interpretação óbvia dela poderia ser
     %
     \begin{equation}
     \label{Soma-Recip-primos-x}
@@ -62,7 +71,7 @@ Colocar a tradução do Cap1 do Edwards
     \end{table}
     %
     
-    Gauss não diz exatamente o que significa o símbolo $\int (dn/\log n)$, mas os dados na Tabela \ref{Tabela-Lehmer}, \textcolor{red}{tirada de D. N. Lehmer [L9]}, indica que $n$ é uma variável contínua integrada de $2$ a $x$, ou seja, $\int_{2}^{x}(dt/\log t)$. Observe que a contagem de primos de Lehmer
+    Gauss não diz exatamente o que significa o símbolo $\int (dn/\log n)$, mas os dados na Tabela \ref{Tabela-Lehmer}, tirada de D. N. Lehmer \cite{Lehmer13}, indica que $n$ é uma variável contínua integrada de $2$ a $x$, ou seja, $\int_{2}^{x}(dt/\log t)$. Observe que a contagem de primos de Lehmer
     %
     \footnote{Lehmer insiste em contar 1 como número primo. Para adequar ao consenso comum, sua contagem foi reduzida em uma unidade na Tabela \ref{Tabela-Lehmer}}
     %
@@ -86,7 +95,7 @@ Colocar a tradução do Cap1 do Edwards
     \end{table}
     %
     
-    Por volta de 1800, Legendre publicou em sua obra \textit{Theorie des nombres} \textcolor{red}{[L11]} uma fórmula empírica para o número de primos menores que um dado valor, \textcolor{red}{que acarretou mais ou menos} no mesmo resultado, isto é, que a densidade dos primos é $1/\log x$. Mesmo com a tentativa de Legendre de provar sua fórmula, o seu argumento se reduz a nada mais que a afirmação de que, se assumimos que a densidade dos primos tem a forma
+    Por volta de 1800, Legendre publicou em sua obra \textit{Theorie des nombres} \cite{legendre1830} uma fórmula empírica para o número de primos menores que um dado valor, que sugeria o mesmo resultado, isto é, que a densidade dos primos é $1/\log x$. Mesmo com a tentativa de Legendre de provar sua fórmula, o seu argumento se reduz a nada mais que a afirmação de que, se assumimos que a densidade dos primos tem a forma
     %
     $$\frac{1}{A_1x^{m_1} + A_1x^{m_2} + \cdots},$$
     %
@@ -94,7 +103,9 @@ Colocar a tradução do Cap1 do Edwards
     %
     $$\frac{1}{A \log x + B}.$$
     %
-    Ele, então, determina $A$ e $B$ de forma empírica. A fórmula de Legendre era bem conhecida no mundo matemático e foi mencionada por matemáticos como Abel \textcolor{red}{[A2]}, Dirichlet \textcolor{red}{[D3]} and Chebyschev \textcolor{red}{[C2]} no período de 1800 a 1850.
+    Ele, então, determina $A$ e $B$ de forma empírica. A fórmula de 
+    Legendre era bem conhecida no mundo matemático e foi mencionada por matemáticos como Abel \cite{Abel-Holmboe}, Dirichlet \cite{Dirichlet38} 
+    and Chebyschev \cite{Chebyshev52} no período de 1800 a 1850.
     
     Os primeiros resultados significativos além dos de Euler foram obtidos por Chebyshev por volta de 1850. Ele provou que o erro relativo na aproximação
     %
@@ -131,7 +142,7 @@ Colocar a tradução do Cap1 do Edwards
     No entanto, Riemann se refere a Dirichlet que 
     {\red se correspondia com} Chebyshev 
     (veja o relatório de Chebyshev sobre sua viagem à Europa Oriental 
-    {\red [C5, Vol. 5...]}). 
+    \cite{Chebyshev47} volume 5). 
     Dirichlet teria provavelmente informado Riemann sobre o trabalho de Chebyshev. 
     Os trabalhos não publicados de Riemann contém muitas fórmulas de Chebyshev, 
     o que indica que ele estudou o trabalho de Chebyshev, 
