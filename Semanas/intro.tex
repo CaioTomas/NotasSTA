@@ -377,19 +377,153 @@ Colocar a tradução do Cap1 do Edwards
     então, para valores reais de $s$ maiores que 1, $\zeta(s)$ é igual à função de Drichlet
     %
     \begin{equation}
+        \label{zeta-def-drich}
         \zeta(s) = \sum_{n=1}^{\infty}\frac{1}{n^s}
     \end{equation}
+    %
+    
+    No entanto, a expressão \eqref{extensao-zeta-2} para $\zeta(s)$ "se mantém válida para todo $s$". De fato, como a integral em \eqref{extensao-zeta-2} converge para todos os valores de $s$, real ou complexo (pois $e^x$ cresce muito mais rápido que $x^s$ conforme $s \to \infty$), e a função que ela define é analítica (porque a convergência é uniforme em compactos), a função $\zeta(s)$ de \eqref{extensao-zeta-2} está definida e é analítica em todos os pontos, exceto, possivelmente, pelos pontos $s = 1, 2, 3, \dots$, onde $\Pi(-s)$ tem polos. Mas a expressão \eqref{zeta-def-dric} mostra que $\zeta(s)$ não tem polos em $s = 2,3,4, \dots$ (então a integral em \eqref{extensao-zeta-2} deve ter zeros que cancelam os polos de $\Pi(-s)$ nesses pontos, este fato segue imediatamente do Teorema de Cauchy) e, em $s = 1$, \eqref{zeta-def-dric} mostra que $\lim_{s \to 1} \zeta(s) = \infty$, então $\zeta(s)$ tem um polo simples em $s=1$ (pois o polo de $\Pi(-s)$ é simples). Portanto, \textit{a expressão \eqref{extensao-zeta-2} define uma função $\zeta(s)$ que é analítica em todos os pontos do plano complexo exceto por um polo em $s = 1$}. Esta função coincide com $\sum n^{-s}$ para $s>1$ real e, por continuação, em todo o semiplano $\Re(s) > 1$.
+    
+    A função $\zeta(s)$ é conhecida como a função zeta de Riemann.
     
     
+    \section*{Valores de $\zeta(s)$}
     
     
+    A função $x(e^x - 1)^{-1}$ é analítica próximo de $x = 0$, logo, pode ser expressa em uma série de potências
+    %
+    \begin{equation}
+        \label{xexp-serie-pot}
+        \frac{x}{e^x - 1} = \sum_{n=0}^{\infty} \frac{B_n x^n}{n!}
+    \end{equation}
+    %
+    válida perto de zero (na verdade, é válida no disco $|x| < 2\pi$ e estende a função para as singularidades $x = \pm 2\pi i$ de $x(e^x - 1)^{-1}$). Os coeficientes $B_n$ são, por definição, números de Bernoulli; são os primeiros são facilmente determinados:
+    %
+    \begin{align*}
+        &B_0 = 1, \ \ \ \ &&B_1 = -\frac{1}{2}, \\
+        &B_2 = \frac{1}{6}, \ \ \ \ &&B_3 = 0, \\
+        &B_4 = -\frac{1}{30}, \ \ \ \ &&B_5 = 0, \\
+        &B_6 = \frac{1}{42}, \ \ \ \ &&B_7 = 0, \\
+        &B_8 = -\frac{1}{30}, \ \ \ \ &&B_9 = 0, 
+    \end{align*}
+    %
+    Os números de Bernoulli com índice ímpar são todos nulos
+    %
+    \footnote{ Isto pode ser mostrado facilmente notando que $(-t)(e^{-t} - 1)^{-1} + (-t/2) = (-te^t + t - t)(1 - e^t)^{-1} - (t/2) = t(e^t - 1)^{-1} + (t/2)$, ou seja, $t(e^t - 1)^{-1} + (t/2)$ é uma função par. \textcolor{red}{Para provas alternativas veja as notas da seção 1.6 e a expressão (10) da seção 6.2}
+    } 
+    %
+    após o primeiro e os de índice par podem ser determinados sucessivamente, mas não há uma fórmula simples para calculá-los. (Veja Euler \textcolor{red}{[E6]} para uma lista de valores de $(-1)^{n-1}B_{2n}$ até $B_{30}$).
+    
+    Quando $s = -n \ (n = 0, 1, 2, \dots)$, a expansão em \eqref{xexp-serie-pot} pode ser usada na definição de $\zeta(s)$ e obtém-se
+    %
+    \begin{align*}
+        \zeta(-n) &= \frac{\Pi(n)}{2\pi i} \int_{+\infty}^{+\infty} \frac{(-x)^{-n}}{e^x - 1} \frac{dx}{x} \\
+        %
+        &= \frac{\Pi(n)}{2\pi i} \int_{|x| = \delta} \left( \sum_{m=0}^{\infty} \frac{B_m x^m}{m!} \right) \frac{(-x)^{-n}}{x} \frac{dx}{x} \\
+        %
+        &= \sum_{m=0}^{\infty} \Pi(n)\frac{B_m}{m!}(-1)^n \cdot \frac{1}{2\pi} \int_{0}^{2\pi}  x^{m - n - 1} \, d\theta \\
+        %
+        &= n!\frac{B_{n+1}}{(n+1)!}(-1)^n = (-1)^n \frac{B_{n+1}}{n+1}.
+    \end{align*}
+    %
+    Riemann não mostra esta fórmula para $\zeta(-n)$, mas enuncia os resultados particulares $\zeta(-2) = \zeta(-4) = \zeta(-6) =  \cdots = 0$. Eles estava, certamente, ciente, no entanto, não apenas dos valores 
+    %
+    \footnote{ 
+    O editor dos trabalhos de Riemann escreve o valor incorreto $\zeta(0) = 1/2$.
+    }
+    %
+    \begin{equation*}
+        \zeta(0) = -1/2, \ \ \zeta(-1) = -1/12, \ \ \zeta(-3) = 1/120, 
+    \end{equation*}
+    %
+    etc., obtidos da fórmula, mas também dos valores
+    %
+    \begin{equation*}
+        \zeta(2) = \pi^2/6, \zeta(4) = \pi^4/9, \dots, 
+    \end{equation*}
+    %
+    e, em geral, 
+    %
+    \begin{equation}
+        \label{zeta(2n)}
+        \zeta(2n) = \frac{(2\pi)^{2n}(-1)^{n+1}B_{2n}}{2 \cdot (2n)!}
+    \end{equation}
+    %
+    que foi encontrada por Euler \textcolor{red}{[E6]}. Não há maneira fácil deduzir esta famosa fórmula de Euler a partir da fórmula integral de Riemann \eqref{extensao-zeta-2} e pode ter sido o problema de provar \eqref{zeta(2n)} que levou Riemann à descoberta
+    %
+    \footnote{ Na verdade, a equação funcional aparece primeiro em um trabalho de Euler \textcolor{red}{[E7]} numa forma ligeiramente diferente e é inteiramente possível que Riemann a encontrou lá. (Veja também Hardy \textcolor{red}{[H5]}) De qualquer modo, Euler tinha apenas uma prova empírica da equação funcional e Riemann, invertendo os papeis, deu a primeira prova rigorosa de um fato enunciado, mas não provado adequadamente, por outra pessoa.
+    }
+    %
+    da equação funcional da função zeta que é o assunto da próxima seção.
     
     
+    \section*{Primeira prova da equação funcional}
     
     
+    Para valores reais negativos de $s$, Riemann calcula a integral
+    %
+    \begin{equation}
+        \label{zeta-Pi-int}
+        \zeta(s) = \frac{\Pi(-s)}{2\pi i} \int_{\infty}^{\infty} \frac{(-x)^s}{e^x - 1} \frac{dx}{x}
+    \end{equation}
+    %
+    da seguinte maneira. Denote por $D$ o domínio do plano complexo que consiste dos pontos a uma distância menor que $\e$ do eixo real positivo ou a uma distância menor que $\e$ das singularidades $x = \pm 2 \pi i n$ do integrando de \eqref{zeta-Pi-int}. Seja $\partial D$ o bordo de $D$ orientado da maneira usual. Então, ignorando por um instante que $D$ não é compacto, temos, pelo Teorema de Cauchy, 
+    %
+    \begin{equation}
+        \label{Pi-int-zero}
+        \frac{\Pi(-s)}{2\pi i} \int_{\partial D} \frac{(-x)^s}{e^x - 1} \frac{dx}{x} = 0.
+    \end{equation}
+    %
+    Uma componente desta integral é integral em \eqref{zeta-Pi-int} com a orientação invertida e as outras partes são integrais nos círculos $|x \pm 2\pi i n| = \e$ orientadas no sentido horário. Logo, quando os círculos são orientados no sentido anti-horário, \eqref{Pi-int-zero} nos dá
+    %
+    \begin{equation}
+        \label{Pi-int-zero-2}
+        -\zeta(s) - \sum \frac{\Pi(-s)}{2\pi i} \int_{|x \pm 2\pi i n| = \e} \frac{(-x)^s}{e^x - 1} \frac{dx}{x} = 0.
+    \end{equation}
+    %
+    As integrais sobre os círculos podem ser calculadas definindo $x = 2\pi i n + y$ com $|y| = \e$
+    %
+    \begin{align*}
+        \frac{\Pi(-s)}{2\pi i} \int_{|y| = \e} \frac{(-2 \pi i n - y)^s}{e^{2 \pi i n + y} - 1} \frac{dy}{2\pi i n + y} 
+        &=
+        %
+        -\frac{\Pi(-s)}{2\pi i} \int_{|y| = \e} (-2 \pi i n - y)^{s-1} \frac{y}{e^y - 1} \frac{dy}{y} \\
+        %
+        &= - \Pi(-s)(-2\pi i n)^{s-1},
+    \end{align*}
+    %
+    onde usamos a fórmula integral de Cauchy. Somando sobre os inteiros $n$ não nulos e usando \eqref{Pi-int-zero-2}, obtemos
+    %
+    \begin{align*}
+        \zeta(s) &= \sum_{n=1}^{\infty} \Pi(-s)[(-2\pi i n)^{s-1} + (2\pi i n)^{s-1}] \\
+        %
+        &= \Pi(-s)(2\pi)^{s-1}[(i)^{s-1} + (-i)^{s-1}] \sum_{n=1}^{\infty} n^{s-1}.
+    \end{align*}
+    %
+    Finalmente, usando que
+    \begin{align*}
+        (i)^{s-1} + (-i)^{s-1} & = \frac{1}{i}(e^{s \log (i)} - e^{s \log (-i)}) \\
+        %
+        &= \frac{1}{i}(e^{s \pi i/2} - e^{-s \pi i/2}) = 2 \sen \frac{s\pi}{2},
+    \end{align*}
+    %
+    obtém-se a desejada fórmula
+    %
+    \begin{equation}
+        \label{zeta-eq-funcional}
+        \zeta(s) = \Pi(-s) (2\pi)^{s-1} 2 \sen (s\pi/2)\zeta(1-s).
+    \end{equation}
+    %
+    Esta relação entre $\zeta(s)$ e $\zeta(1-s)$ é conhecida como a \textit{equação funcional da função zeta}.
     
+    Para mostrar rigorosamente que \eqref{zeta-eq-funcional} é válida para $s<0$, é suficiente modificar o argumento acima definindo $D_n$ como a intercessão de $D$ com o disco $|s| \leq (2n+1)\pi$ e tomar o limite $n \to \infty$; então a integral  \eqref{Pi-int-zero} se separa em duas partes; uma sendo a integral sobre o círculo $|s| = (2n + 1)\pi$ com os pontos que distam menos que $\e$ do eixo real positivo deletados e a outra sendo uma integral cujo limite, conforme $n \to \infty$, é o lado esquerdo de \eqref{Pi-int-zero-2}. A primeira destas duas partes vai a zero, pois o tamanho do caminho de integração é menor que $2\pi (2n+1)\pi$, o fator $(e^x - 1)^{-1}$ é limitado no círculo $|s| = (2n + 1)\pi$ e o módulo de $(x)^s/x$ neste círculo é $|x|^{s-1} \leq [(2n + 1)\pi]^{-\delta -1}$ para $s \leq - \delta < 0$. Portanto, a segunda parte, que é o oposto da primeira pelo Teorema de Cauchy, também vai a zero, o que implica \eqref{Pi-int-zero-2} e, portanto, \eqref{zeta-eq-funcional}.
     
-    
+    Isto completa a prova da equação funcional \eqref{zeta-eq-funcional} no caso $s < 0$. No entanto, ambos os lados de \eqref{zeta-eq-funcional} são funções analíticas de $s$, então isto basta para provar \eqref{zeta-eq-funcional} para todos os valores de $s$ (exceto por $s = 0, 1, 2, \dots $, onde 
+    %
+    \footnote{ Quando $s = 2n + 1$, o fato de que $\zeta(s)$ não tem polo em $2n + 1$ implica que $\zeta(-2n) = 0$, uma vez que $\Pi$ tem um polo em $-2n-1$ e $\sen (s\pi/2)$ não tem zero em $2n + 1$. Portanto, pela fórmula para $\zeta(-2n)$ da seção anterior, os números de Bernoulli $B_3, B_5, \dots$ são todos nulos.
+    }
+    %
+    um ou mais dos termos de \eqref{zeta-eq-funcional} têm polos).
     
     
     
