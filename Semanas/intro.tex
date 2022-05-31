@@ -5,7 +5,7 @@ Colocar a tradução do Cap1 do Edwards
     % \begin{center}
     %     \textbf{Capítulo 1: O artigo de Riemann}
     % \end{center}
-    \section*{Contexto Histórico}
+    \section{Contexto Histórico}
 
     Este livro é um estudo do artigo de 8 páginas ``On the number of primes less than a given magnitude''\footnote{O título em Alemão é Ueber die Ahzahl der Primzahlen unter einer gegebenen Gr\"osse.} de Bernhard Riemann que marcou época e dos subsequentes desenvolvimentos da teoria que este artigo inaugura. O primeiro capítulo é uma análise do artigo em si e os 11 capítulos restantes são voltados para o trabalho que foi feito, desde 1859, sobre as questões que Riemann deixou sem resposta.
 
@@ -99,11 +99,14 @@ Colocar a tradução do Cap1 do Edwards
     %
     $$\frac{1}{A_1x^{m_1} + A_1x^{m_2} + \cdots},$$
     %
-    onde $m_1 > m_2> \cdots$, então $m_1$ não pode ser positivo (porque a soma \eqref{Soma-Recip-primos} convergiria neste caso), então $m_1$ deve ser "infinitamente pequeno" e a densidade deve ser da forma
+    onde $m_1 > m_2> \cdots$, então $m_1$ não pode ser positivo (porque a soma \eqref{Soma-Recip-primos} convergiria neste caso) mas sim ``infinitamente pequeno'' e 
+    em consequência disto a densidade 
+    deveria ser da forma
     %
     $$\frac{1}{A \log x + B}.$$
     %
-    Ele, então, determina $A$ e $B$ de forma empírica. A fórmula de 
+    Em seguida, Legendre determina as constantes $A$ e $B$ de forma empírica, usando cálculos numéricos. 
+    Ressaltamos que a fórmula de 
     Legendre era bem conhecida no mundo matemático e foi mencionada por matemáticos como Abel \cite{Abel-Holmboe}, Dirichlet \cite{Dirichlet38} 
     and Chebyschev \cite{Chebyshev52} no período de 1800 a 1850.
     
@@ -155,12 +158,11 @@ Colocar a tradução do Cap1 do Edwards
     No entanto, a prova de Riemann deste fato é inadequada; 
     em particular, não é, de forma alguma, claro, pelos argumentos de Riemann, 
     que a série infinita para $\pi(x)$ convirja, muito menos que seu maior 
-    termo domine para valores grandes de $x$. Por outro lado, os métodos de Riemann, 
-    que incluem o estudo da função $\zeta(s)$ como uma função de uma variável complexa, 
-    o estudo dos zeros complexos de $\zeta(s)$, \textcolor{red}{inversão de Fourier}, 
-    \textcolor{red}{inversão de Möbius} e a representação de funções para 
-    funções do tipo $\pi(x)$ por "fórmulas explícitas" como sua série 
-    infinita foram importantes contribuições no desenvolvimento subsequente da teoria.
+    termo seja realmente assintoticamente dominante para valores grandes de $x$. Por outro lado, os métodos de Riemann, 
+    que incluem: o estudo da função $\zeta(s)$, como uma função de uma variável complexa; 
+    o estudo dos zeros complexos de $\zeta(s)$;  \textcolor{red}{a inversão de Fourier}; 
+    \textcolor{red}{a inversão de Möbius} e a representação da função $\pi(x)$ por ``fórmulas explícitas'' como uma série 
+    infinita, foram importantes contribuições no desenvolvimento subsequente da teoria.
     
     Nos primeiros 30 anos após a publicação do artigo de Riemann, não houve praticamente nenhum avanço
     %
@@ -178,8 +180,8 @@ Colocar a tradução do Cap1 do Edwards
     na área. É como se o mundo matemático precisasse deste tempo 
     todo para processar as ideias de Riemann. Então, em um período de 10 anos, 
     Hadamard, Von Mangoldt e de la Vallée Poussin conseguiram provar a 
-    fórmula principal de Riemann para $\pi(x)$, o 
-    Teorema do número primo \eqref{pi(x)-Li(x)} e vários outros 
+    fórmula principal de Riemann para $\pi(x)$, 
+    o Teorema dos números primos (conforme a expressão \eqref{pi(x)-Li(x)}) e vários outros 
     teoremas relacionados. As ideias de Riemann foram cruciais em 
     todas as demonstrações. Desde esse período, não houve falta de 
     novos problemas em Teoria Analítica dos Números e o progresso 
@@ -188,26 +190,26 @@ Colocar a tradução do Cap1 do Edwards
     
     Nenhuma discussão do contexto histórico do artigo de Riemann estaria 
     completa se não mencionasse a hipótese de Riemann. Ao longo do artigo, 
-    Riemann diz que considera "muito provável" que todos os zeros de 
+    Riemann diz que considera ``muito provável'' que todos os zeros de 
     $\zeta(s)$ tem parte real igual a $1/2$, mas que foi incapaz de 
     provar a veracidade desta afirmação, que é conhecida, hoje em dia, 
-    como a "hipótese de Riemann". A experiência dos sucessores de Riemann 
+    como a ``hipótese de Riemann''. A experiência dos sucessores de Riemann 
     com esta hipótese tem sido a mesma de Riemann - eles também consideram 
     que ela provavelmente é verdadeira mas não foram capazes de prová-la. 
     Hilbert incluiu o problema de provar a hipótese de Riemann em sua 
-    lista \textcolor{red}{[H9]} dos problemas não resolvidos 
+    lista \cite{hilbert1902problemes} dos problemas não resolvidos 
     mais importantes do mundo matemático em 1900. 
     Resolver este problema foi o foco de muitos dos melhores 
-    matemáticos do século 20. Este é, sem dúvidas, o 
+    matemáticos do Século XX. Este é, sem dúvidas, o 
     problema mais celebrado da matemática e continua a atrair 
     a atenção dos melhores matemáticos, não apenas porque 
     continua sem solução por tanto tempo, mas também por 
-    que aparenta ser vulnerável e sua sua solução traria à 
-    luz técnicas importantíssimas e com grande potencial matemático. 
+    que aparenta ser vulnerável e também porque há uma grande expectativa que para resolver este problema novas técnicas de grande potencial matemático
+    tenha que ser desenvolvidas.
     
     
     
-    \section*{A fórmula do produto de Euler}
+    \section{A fórmula do produto de Euler}
     
     
     Riemann toma, de início, a fórmula
@@ -287,7 +289,7 @@ Colocar a tradução do Cap1 do Edwards
         %
         \frac{\pi s}{\Pi(s)\Pi(-s)} &= \sin \pi s  \label{Pi(s)-identidade-3} \\[0.3cm]
         %
-        \Pi(s) &= 2^s\Pi\left(\frac{s}{2}\right)\Pi\left(\frac{s-1}{2}\right)\pi^{-1/2}
+        \Pi(s) &= 2^s\Pi\left(\frac{s}{2}\right)\Pi\left(\frac{s-1}{2}\right)\pi^{-1/2} \label{Pi(s)-identidade-4}
     \end{align}
     %
     Para a demonstração destes resultados o leitor é indicado a procurar qualquer livro que lida com a função fatorial ou a "função $\Gamma$", por exemplo, Edwards \textcolor{red}{[E1]}. A identidade \eqref{Pi(s)-identidade} é uma simples reformulação de \eqref{Pi(s)-lim-N}. Usando ela, pode-se provar que $\Pi(s)$ é uma função analítica da variável complexa $s$ que tem polos simples em $s = -1, -2, -3, \dots$ e não se anula. A identidade \eqref{Pi(s)-identidade-2} é chamada de "equação funcional da função fatorial"; juntamente com $\Pi(0)=1$ (de \eqref{Pi(s)-identidade}), obtemos $\Pi(n) = n!$ diretamente. A fórmula \eqref{Pi(s)-identidade-3} é, essencialmente, a fórmula do produto para o seno; quando $s = 1/2$, usamos \eqref{Pi(s)-identidade-2} para concluir que $\Pi(\frac{-1}{2}) = \Pi^{1/2}$. A identidade \eqref{Pi(s)-identidade-4} é conhecida como a relação de Legendre. É o caso $n=2$ de outra relação mais geral
@@ -300,7 +302,7 @@ Colocar a tradução do Cap1 do Edwards
     que não será necessária.
     
     
-    \section*{A função $\zeta(s)$}
+    \section{A função $\zeta(s)$}
     
     
     Riemann não fala sobre a "continuação analítica" da função $\sum n^{-s}$ para além do semiplano $\Re(s)>1$, mas fala em encontrar uma fórmula para ela que "seja válida para todo $s$". Isto indica que ele enxergava este problema em termos mais próximos do problema da extensão da função fatorial pela fórmula \eqref{Pi(s)-lim-N} da seção anterior do que da extensão analítica da maneira que é vista atualmente. Enxergar a continuação analítica em termos de cadeias de discos e séries de potências convergentes em cada disco vem de Weierstrass e é quase a antítese da filosofia básica de Riemann, que deve-se lidar com funções analíticas de forma global e não localmente em termos de séries de potências. 
@@ -387,7 +389,7 @@ Colocar a tradução do Cap1 do Edwards
     A função $\zeta(s)$ é conhecida como a função zeta de Riemann.
     
     
-    \section*{Valores de $\zeta(s)$}
+    \section{Valores de $\zeta(s)$}
     
     
     A função $x(e^x - 1)^{-1}$ é analítica próximo de $x = 0$, logo, pode ser expressa em uma série de potências
@@ -457,7 +459,7 @@ Colocar a tradução do Cap1 do Edwards
     da equação funcional da função zeta que é o assunto da próxima seção.
     
     
-    \section*{Primeira prova da equação funcional}
+    \section{Primeira prova da equação funcional}
     
     
     Para valores reais negativos de $s$, Riemann calcula a integral
@@ -524,6 +526,234 @@ Colocar a tradução do Cap1 do Edwards
     }
     %
     um ou mais dos termos de \eqref{zeta-eq-funcional} têm polos).
+    
+    Para $s = 1-2n$, com a equação funcional e a identidade
+    %
+    \begin{equation*}
+        \zeta(-(2n-1)) = (-1)^{2n-1} \frac{B_{2n}}{2n}
+    \end{equation*}
+    %
+    da seção anterior, obtemos
+    %
+    \begin{equation*}
+        (-1)^{2n-1} \frac{B_{2n}}{2n} = \Pi(2n-1) (2\pi)^{-2n} 2 (-1)^n \zeta(2n),
+    \end{equation*}
+    %
+    donde segue a famosa fórmula de Euler para $\zeta(2n)$ (equação \eqref{zeta(2n)}).
+    
+    Riemann usa duas das identidades básicas da função fatorial (\eqref{Pi(s)-identidade-3} e \eqref{Pi(s)-identidade-4}) para reescrever a equação funcional \eqref{zeta-eq-funcional} na forma
+    %
+    \begin{equation*}
+        \zeta(s) = \pi^{-1/2} 2^{-s} \Pi\left( -\frac{s}{2} \right) \Pi\left( -\frac{s+1}{2} \right) 2^{s} \pi^{s-1} \frac{\pi s / 2}{\Pi\left( \frac{s}{2} \right)\Pi\left( -\frac{s}{2} \right)} \zeta(1-s)
+    \end{equation*}
+    %
+    e, portanto, na forma
+    %
+    \begin{equation}
+        \label{zeta-eq-funcional-2}
+        \Pi\left( \frac{s}{2} - 1 \right) \pi^{-s/2} \zeta(s) = \Pi\left( \frac{1 - s}{2} - 1 \right) \pi^{-(1 - s)/2} \zeta(1-s).
+    \end{equation}
+    %
+    Em palavras, a função à esquerda de \eqref{zeta-eq-funcional-2} é invariante pela substituição $s = 1-s$.
+    
+    Riemann considera, aparentemente, esta expressão simétrica \eqref{zeta-eq-funcional-2} como a forma natural de enunciar a equação funcional, pois ele dá 
+    %
+    \footnote{Como a segunda prova torna a primeira totalmente desnecessária, isto leva ao questionamento da razão pela qual Riemann incluiu a primeira. Talvez a primeira prova mostra o argumento pelo qual ele originalmente descobriu a equação funcional ou talvez ela exiba propriedades que eram importantes segundo seu entendimento da $\zeta$
+    }
+    %
+    uma prova alternativa que exibe esta simetria de uma maneira mais satisfatória. Mostramos esta segunda prova na próxima seção. 
+    
+    \section{Segunda prova da equação funcional}
+    
+    Riemann observa inicialmente que, com a substituição $x = n^2 \pi x$ na integral de Euler para $\Pi(s/2 - 1)$, obtém-se
+    %
+    \begin{equation*}
+        \frac{1}{n^s} \pi^{-s/2} \Pi \left( \frac{s}{2} - 1 \right) = \int_{0}^{\infty} e^{-n^2 \pi x} x^{s/2} \frac{dx}{x} \ \ \ (\Re(s) > 1).
+    \end{equation*}
+    %
+    Então a soma em $n$ implica
+    %
+    \begin{equation}
+        \label{zeta-eq-funcional-3}
+         \Pi \left( \frac{s}{2} - 1 \right) \pi^{-s/2} \zeta(s) = \int_{0}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} \ \ \ (\Re(s) > 1).
+    \end{equation}
+    %
+    onde 
+    %
+    \footnote{\textcolor{red}{Esta função $\psi(x)$ não tem relação com a função $\psi(x)$ que aparece no capítulo 3}
+    }
+    %
+    $\psi(x) = \sum_{n=1}^{\infty} \exp(-n^2 \pi x)$. A forma simétrica da equação funcional é a afirmação de que a função \eqref{zeta-eq-funcional-3} é invariante pela substituição $s = 1 - s$. Para provar diretamente que a integral no lado direito de \eqref{zeta-eq-funcional-3} é invariante por esta substituição, Riemann usa a \textit{equação funcional da função theta} numa forma tirada de um trabalho de Jacobi, isto é,
+    %
+    \footnote{Riemann refere à seção 65 do tratado "Fundmenta Nova Theoriae Functionum Ellipticarum" de Jacobi. Mesmo que a fórmula não seja dada explicitamente, Jacobi, em um outro trabalho \textcolor{red}{[J1]} mostra como a fórmula procurada segue de (6) da seção 65. Jacobi atribui a fórmula a Poisson. \textcolor{red}{Para uma prova da fórmula veja a seção 10.4}.
+    }
+    %
+    %
+    \begin{equation}
+        \label{psi-eq-funcional}
+        \frac{1 + 2\psi(x)}{1 + 2\psi(1/x)} = \frac{1}{\sqrt{x}}.
+    \end{equation}
+    %
+    (Como $\psi(x)$ se aproxima de zero muito rápido conforma $x \to \infty$, isto mostra, em particular, que $\psi(x)$ se comporta como $\frac{1}{2}(x^{-1/2} - 1)$ para $x$ próximo de zero e, portanto, que a integral ao lado direito de \eqref{zeta-eq-funcional-3} é convergente para $s>1$. A partir deste ponto, a validade de \eqref{zeta-eq-funcional-3} para $s>1$ pode ser mostrada por um argumento elementar usando convergência absoluta para justificar a troca entre a soma e a integral). Usando \eqref{psi-eq-funcional}, Riemann reescreve a integral do lado direito de \eqref{zeta-eq-funcional-3} como
+    %
+    \begin{align*}
+        \int_{0}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} &=
+        %
+        \int_{1}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} - \int_{\infty}^{1} \psi \left( \frac{1}{x} \right) x^{-s/2} \frac{dx}{x} \\
+        %
+        &= \int_{1}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} + \int_{1}^{\infty} \left[ x^{1/2} \psi(x) + \frac{x^{1/2}}{2} - \frac{1}{2} \right] x^{-s/2} \frac{dx}{x} \\
+        %
+        &= \int_{1}^{\infty} \psi(x) [x^{s/2} + x^{(1 - s)/2}] \frac{dx}{x} + \frac{1}{2} \int_{1}^{\infty} [x^{-(s-1)/2} - x^{- s/2}] \frac{dx}{x}
+    \end{align*}
+    %
+    Mas $\int_{1}^{\infty} x^{-a}(dx/x) = 1/a$ para $a > 0$, então a segunda integral é
+    %
+    \begin{equation*}
+        \frac{1}{2}\left[\frac{1}{(s-1)/2} - \frac{1}{s/2} \right] = \frac{1}{s(s-1)}
+    \end{equation*}
+    %
+    para $s>1$. Então, para $s>1$, vale
+    %
+    \begin{equation}
+        \label{zeta-eq-funcional-4}
+        \Pi \left( \frac{s}{2} - 1 \right) \pi^{-s/2} \zeta(s) = \int_{1}^{\infty} \psi(x) [x^{s/2} + x^{(1 - s)/2}] \frac{dx}{x} - \frac{1}{s(s-1)}.
+    \end{equation}
+    %
+    Mas, como $\psi(x)$ decresce mais rápido que qualquer potência de $x$ conforme $x \to \infty$, a integral nesta expressão converge para todo
+    %
+    \footnote{Observe que isto nos dá uma nova expressão para $\zeta(s)$ que é "válida para todo $s$" exceto $s = 0, 1$, ou seja, é uma prova alternativa de que $\zeta(s)$ pode ser continuada analiticamente.}
+    %
+    $s$. Uma vez que ambos os lados são analíticos, a mesma expressão vale para todo $s$. O lado direito é claramente invariante pela substituição $s = 1-s$, então está provada a equação funcional.
+    
+    \section{A função $\xi(s)$}
+    
+    A função $\Pi((s/2) - 1) \pi^{-s/2} \zeta(s)$, que ocorre na forma simétrica da equação funcional, tem polos $s=0$ e $s=1$ (isto segue imediatamente de \eqref{zeta-eq-funcional-4}). Riemann multiplica ela por $s(s - 1)/2$ e define
+    %
+    \footnote{Na verdade, Riemann usa $\xi$ para denotar a função que, atualmente, é usualmente denotada por $\Xi$, isto é, a função $\Xi(t) = \xi( \frac{1}{2} + it$ ) com $\xi$ como definida acima. Eu sigo Landau, e quase todos os escritores subsequentes, em rejeitar a mudança de variáveis $s = \frac{1}{2} + it$ por ser confusa. Há razões para acreditar que o próprio Riemann se confundia com ela (Veja as observações sobre $\xi(0)$ na Seção \ref{sec-0.16}).}
+    %
+    \begin{equation}
+        \label{xi(s)-1}
+        \xi(s) = \Pi(s/2) (s - 1) \pi^{-s/2} \zeta(s).
+    \end{equation}
+    %
+    $\xi(s)$ é uma função inteira - ou seja, uma função analítica de $s$ que está definida para todos os valores de $s$ - e a equação funcional da função zeta é equivalente a $\xi(s) = \xi(1-s)$.
+    
+    Em seguida, Riemann obtém a seguinte representação de $\xi(s)$. Usando \eqref{zeta-eq-funcional-4}, tem-se 
+    %
+    \begin{align*}
+        \xi(s) &= \frac{1}{2} - \frac{s(1-s)}{2} \int_{1}^{\infty} \psi(s) (x^{s/2} + x^{(1-s)/2}) \, \frac{dx}{x} \\
+        %
+        &= \frac{1}{2} - \frac{s(1-s)}{2} \int_{1}^{\infty} \frac{d}{dx} \left\{ \psi(x) \left[ \frac{x^{s/2}}{s/2} + \frac{x^{(1-s)/2}}{(1-s)/2} \right] \right\} \, dx \\
+        %
+        &+ \frac{s(1-s)}{2} \int_{1}^{\infty} \psi'(x) \left[ \frac{x^{s/2}}{s/2} + \frac{x^{(1-s)/2}}{(1-s)/2} \right]  \, dx \\
+        %
+        &= \frac{1}{2} - \frac{s(1-s)}{2} \psi(1) \left[ \frac{2}{s} + \frac{2}{1-s} \right] \\
+        %
+        &+ \int_{1}^{\infty} \psi'(x) \left[ (1-s) x^{s/2} + s x^{(1-s)/2} \right]  \, dx \\
+        %
+        &= \frac{1}{2} + \psi(1) + \int_{1}^{\infty} x^{3/2} \psi'(x) \left[(1-s) x^{(s-1)/2} + s x^{-(s/2) - 1} \right] \, dx \\
+        %
+        &= \frac{1}{2} + \psi(1) + \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x) (-2 x^{(s-1)/2} -2 x^{-(s/2)} )] \, dx \\
+        %
+        &- \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x)] [-2 x^{(s-1)/2} -2 x^{-(s/2)} ] \, dx \\
+        %
+        &= \frac{1}{2} + \psi(1) + \psi'(1)[-2 -2] \\
+        %
+        &+ \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x)] (2 x^{(s-1)/2} -+ 2 x^{-(s/2)} ) \, dx.
+    \end{align*}
+    %
+    Agora, a derivada de 
+    %
+    \begin{equation*}
+        2 \psi(x) + 1 = x^{-1/2}[ 2\psi(1/x) + 1]
+    \end{equation*}
+    %
+    nos dá
+    %
+    \begin{equation*}
+        \frac{1}{2} + \psi(1) + 4\psi'(1) = 0
+    \end{equation*}
+    %
+    e, usando este fato, obtemos a forma final da expressão de $\xi$
+    %
+    \begin{equation}
+        \label{xi(s)-2}
+        \xi(s) = 4\int_{1}^{\infty} \frac{d[x^{3/2}\psi'(x)]}{dx} x^{-1/4} \cosh \left[ \frac{1}{2} \left( s - \frac{1}{2} \right) \log x \right] \, dx,
+    \end{equation}
+    %
+    ou, na forma em que Riemann escreve,
+    %
+    \begin{equation*}
+        \label{xi(s)-2}
+        \xi \left( \frac{1}{2} + it \right) = 4\int_{1}^{\infty} \frac{d[x^{3/2}\psi'(x)]}{dx} x^{-1/4} \cos \left( \frac{t}{2} \log x \right) \, dx.
+    \end{equation*}
+    %
+    Se $\cosh \left[ \frac{1}{2} \left( s - \frac{1}{2} \right) \log x \right]$ é expandido em série de potências $\cosh y = \frac{1}{2}(e^y + e^{-y}) =  \sum y^{2n}/(2n)!$, a expressão \eqref{xi(s)-2} nos mostra que
+    %
+    \begin{equation}
+        \label{xi(s)-3}
+        \xi(s) = \sum_{n=0}^{\infty} a_{2n} \left(s - \frac{1}{2} \right)^{2n},
+    \end{equation}
+    %
+    onde
+    %
+    \begin{equation*}
+        a_{2n} = 4\int_{1}^{\infty} \frac{d[x^{3/2}\psi'(x)]}{dx} x^{-1/4} \frac{\left( \frac{1}{2} \log x \right)^{2n}}{(2n)!} \, dx.
+    \end{equation*}
+    %
+    Riemann enuncia que esta representação em série de $\xi(s)$ é uma função par de $s - \frac{1}{2}$ que "converge muito rapidamente", mas ele não dá estimativas explícitas nem fala qual a importância desta série nas afirmações que faz em seguida. 
+    
+    Os dois parágrafos seguintes à expressão \eqref{xi(s)-2} para $\xi(s)$ compõem a parte mais difícil do artigo de Riemann. O objetivo é, essencialmente, provar que $\xi(s)$ pode ser expandida como um produtório infinito
+    %
+    \begin{equation}
+        \label{xi(s)-4}
+        \xi(s) = \xi(0) \prod_{\rho} \left( 1 - \frac{s}{\rho}\right),
+    \end{equation}
+    %
+    onde $\rho$ varia
+    %
+    \footnote{As raízes múltiplas (se existirem) devem ser contadas com multiplicidade. O mesmo vale para quaisquer expressões (produtórios ou somas) que variam sobre raízes $\rho$.}
+    %
+    sobre as raízes da equação $\xi(\rho) = 0$. Qualquer polinômio $p(s)$ pode ser expandido como um produto finito $p(s) = p(0) \prod_{\rho}[1 - (s/\rho)]$ onde $\rho$ varia sobre as raízes da equação $p(\rho) = 0$ (exceto que, quando $p(0) = 0$, a fórmula é ligeiramente diferente), então a expressão \eqref{xi(s)-4} significa que $\xi(s)$ \textit{se comporta como um polinômio de grau infinito} (de forma parecida, Euler pensava em $\sen x$ como um "polinômio de grau infinito" quando ele conjecturou, e provou, a fórmula $\sen \pi x = \pi x \prod_{n=1}^{\infty} [1 - (x/n)^2])$. por outro lado, a afirmação de que a série \eqref{xi(s)-3} converge "muito rapidamente" também significa que $\xi(s)$ é como um polinômio de grau infinito - um número finito de termos da série dá uma aproximação muito boa em qualquer parte finita do plano. Então há alguma relação entre a série \eqref{xi(s)-3} e a fórmula do produto \eqref{xi(s)-4} - de fato, o rápido decrescimento dos coeficientes $a_n$ é uma condição necessária e suficiente para a validade da fórmula do produto, como provado por Hadamard em 1893 - mas os passos que Riemann seguiu para passar de uma para a outra são obscuros, para dizer o mínimo.
+    
+    A próxima Seção contém uma discussão sobre a distribuição das raízes $\rho$ de $\xi(\rho) = 0$ e a seção seguinte a ela retorna à discussão sobre a formula do produto para $\xi(s)$.
+    
+    
+    \section{As ráizes $\rho$ de $\xi$}
+    
+    
+    Para provar a convergência do produtório $\xi(s) = \xi(0) \prod_{\rho} [1 - (s/\rho)]$, Riemann precisava, claro, investigar a distribuição das raízes $\rho$ de $\xi(\rho) = 0$. Ele começa observando que a fórmula do produto de Euler 
+    %
+    \begin{equation*}
+        \zeta(s) = \prod_{p} (1 - p^{-s})^{-1} \ \ \ \ (\Re(s) > 1) 
+    \end{equation*}
+    %
+    mostra que $\zeta(s)$ não tem zeros no semiplano $\Re(s) > 1$ (pois um produto infinito convergente só pode ser zero se um dos seus fatores é zero). Como $\xi(s) = \Pi(s/2) (s-1) \pi^{-s/2} \zeta(s)$ e os fatores distintos de $\zeta(s)$ têm apenas o zero $s = 1$, segue que nenhuma raiz $\rho$ de $\xi(\rho) = 0$ está no semiplano $\Re(s) > 1$. Como $1 - \rho$ é uma raiz se, e somente se, $\rho$ é, isto implica que não há nenhuma raiz no semiplano $\Re(s) < 0$ e, portanto, que todas as raízes estão na faixa $0 \leq \Re(s) \leq 1$.
+    
+    Ele, então, procede e afirma que o número de raízes $\rho$ cuja parte imaginária está entre 0 e $T$ é, aproximadamente,
+    %
+    \begin{equation}
+        \label{sec-1.9-(1)}
+        \frac{T}{2 \pi} \log \frac{T}{2 \pi} - \frac{T}{2 \pi}
+    \end{equation}
+    %
+    e que o erro relativo
+    %
+    \footnote{Titchmarsh, num deslize que não percebeu no intervalo de 21 anos entre as publicações de seus dois livros sobre a função zeta, não percebeu que Riemann queria dizer o erro \textit{relativo} e acreditava que Riemann havia cometido um erro neste ponto. Veja Titchmarsh \textcolor{red}{[T8, pág. 213]}.}
+    %
+    nesta aproximação é da ordem $1/T$. Sua "prova" desta afirmação é simplesmente dizer que o número de raízes nesta região é igual à integral de $\xi'(s) ds / \xi(s) 2\pi i$ ao redor do bordo do retângulo $\{0 \leq \Re(s) \leq 1, 0 \leq \Im(s) \leq T \}$ e que esta integral é igual a \eqref{sec-1.9-(1)} com erro relativo $T^{-1}$. Infelizmente, ele não deu dica alguma do método que usado para estimar esta integral. Ele próprio era um mestre em calcular e estimar integrais definidas \textcolor{red}{(veja, por exemplo, Seção 1.14 ou Seção 7.4)} e é bem possível que ele assumiu que seus leitores seriam capazes de obter suas próprias estimativas desta integral; se foi isso, ele estava errado. Apenas em 1905 é que von Mangoldt conseguiu provar que a estimativa de Riemann estava correta \textcolor{red}{(Veja Seção 6.7)}.
+    
+    A próxima afirmação de Riemann é ainda mais desconcertante. Ele diz que o número de raízes na reta $\Re(s) = \frac{1}{2}$ é aproximadamente \eqref{sec-1.9-(1)}. Ele não torna preciso o sentido em que esta aproximação é verdadeira, mas é geralmente assumido que ele quis dizer que o erro relativo da aproximação do número de zeros de $\xi(\frac{1}{2} + it)$ para $0 \leq t \leq T$ por \eqref{sec-1.9-(1)} se aproxima de zero quando $T \to \infty$. Ele não dá qualquer indicação de prova de maneira alguma e ninguém, desde Riemann, foi capaz de provar ou mostrar a falsidade desta afirmação. Foi provado em 1914 que $\xi(\frac{1}{2} + it)$ tem infinitas raízes reais \textcolor{red}{(Hardy [H3])}; em 1921, que o número de raízes reais entre 0 e $T$ é, pelo menos, $KT$ para alguma constante positiva $K$ e $T$ suficientemente grande \textcolor{red}{(Hardy e Littlewood [H6])}; em 1942, que este número é, na verdade, $KT \log T$ para algum $K$ positivo e $T$ grande \textcolor{red}{(Selberg [S1])} e, em 1914, que o número de raízes complexas $t$ de $\xi(\frac{1}{2} + i) = 0$ no conjunto $\{0 \leq \Re(t) \leq T, -\e \leq \Im(t) \leq \e \}$ é igual, para qualquer $\e > 0$, a \eqref{sec-1.9-(1)} com um erro relativo que se aproxima de zero conforma $T \to \infty$ \textcolor{red}{(Bohr e Landau, [B8])}. No entanto, estes resultados parciais ainda estão longe da aafirmação feita por Riemann. Nós podemos apenas conjecturar o que está por trás desta afirmação \textcolor{red}{(Veja Siegel [S4, pág. 67], TitchMarshBohr [T8 pág. 213-214] ou Seção 7.8)}, mas sabemos que ela levou Riemann a conjecturar algo ainda mais forte, que todas as raízes estão em $\Re(s) = \frac{1}{2}$.
+    
+    Esta é, claro, a famosa "Hipótese de Riemann". Ele diz que considera "muito provável" que todas as raízes estejam na reta $\Re(s) = \frac{1}{2}$, mas diz que não foi capaz de provar isto (o que parece implicar que ele sentia que tinha provas rigorosas das duas afirmações precedentes). Como não é necessário para seu objetivo principal, que é a prova de sua fórmula para o número de primos menores que uma certa quantidade dada, ele simplesmente deixa de lado este assunto - onde permanece desde então - e continua para a fórmula do produto para $\xi(s)$.
+
+    
+    \section{A representação em produto de $\xi(s)$}
+    
+    
+    \section{Os termos remanescentes} \label{sec-0.16}
+    
+    
     
     
     

@@ -4686,7 +4686,7 @@ o que encerra a prova do teorema.
     \begin{teorema}
     \label{teo-cont-zeta}
         A função $\zeta:\{ s\in\C : \Re(s) > 1 \} \to \C$ admite uma continuação meromorfa a todo $\C$,
-        com apenas um polo simples em $s=1$ com resíduo $1$.
+        com apenas um polo simples em $s=1$, além do mais $\res(\zeta,1)=1$.
     \end{teorema}
     %
     \begin{proof}
@@ -4810,7 +4810,7 @@ o que encerra a prova do teorema.
         \end{align}
         %
         Daí, subtraindo \eqref{eq:tirando-pares-form-prod} da expressão
-        em série de Dirichlet de $\zeta$, ficamos com
+        da série de Dirichlet de $\zeta$, ficamos com
         %
         \begin{equation}
         \label{eq:zeta-sem-pares}
@@ -4946,7 +4946,7 @@ o que encerra a prova do teorema.
     Agora, vamos analisar as regiões nas quais a função zeta não se anula.
     O último teorema nos garante que no semi-plano $\Re(s)>1$, $\zeta(s) \neq 0$.
     Da equação funcional para $\zeta$, sabemos que os inteiros pares não positivos,
-    $\{0, -2, -4, -6, \dots\}$ são todos zeros dessa função, geralmente chamados
+    $\{0, -2, -4, -6, \dots\}$ são zeros dessa função, geralmente chamados
     \textbf{zeros triviais} de $\zeta$.
     %
     \begin{figure}[H]\centering
@@ -5064,10 +5064,11 @@ o que encerra a prova do teorema.
         \[
         \Gamma(s) = \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+s)} 
                     + \int_0^{\infty} e^{-t}t^{s-1} \, dt, \, 
-                    \forall s\in\C\setminus\{0, -1, -2, \dots\}.
+                    \qquad\forall s\in\C\setminus\{0, -1, -2, \dots\}.
         \]
         %
-        Com essas duas identidades, podemos escrever
+        Usando as duas identidades acima, podemos afirmar que para todo $s\in\C\setminus\Z$ temos 
+        a seguinte igualdade 
         %
         \begin{align}
         \label{eq-expressao-inv-gama}
@@ -5075,7 +5076,7 @@ o que encerra a prova do teorema.
                                 &= \left( \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)} \right)
                                 \frac{\sen(\pi s)}{\pi}
                                 + \left( \int_0^{\infty} e^{-t}t^{-s} \, dt \right)
-                                \frac{\sen(\pi s)}{\pi}, \, \forall s\in\C\setminus\Z.
+                                \frac{\sen(\pi s)}{\pi}.
         \end{align}
         %
         Com isso, dividiremos a prova em duas etapas. Primeiro, vamos estimar a parcela integral
@@ -5085,7 +5086,7 @@ o que encerra a prova do teorema.
         %
         \begin{equation}
         \label{eq-cota-int-parte-real}
-            \int_1^{\infty} e^{-t} t^{\sigma - 1} \, dt \leq e^{(\sigma + 1)\ln(\sigma + 1)},
+            \int_1^{\infty} e^{-t} t^{\sigma - 1} \, dt \leq \exp\Big((\sigma + 1)\ln(\sigma + 1)\Big),
         \end{equation}
         %
         sendo $\Re(s) = \sigma \geq 0$. De fato, escolha $n\in\N$ tal que 
@@ -5099,62 +5100,79 @@ o que encerra a prova do teorema.
             &= \Gamma(n+1) \\
             &= n! \\
             &\leq n^n \\
-            &= e^{n\ln n} \\
-            &\leq e^{(\sigma + 1)\ln(\sigma + 1)}.
+            &= \exp\Big(n\ln n\Big) \\
+            &\leq \exp\Big((\sigma + 1)\ln(\sigma + 1)\Big).
         \end{align*}
         %
         Essa desigualdade nos permite concluir que
         %
         \[
-        \left| \int_1^{\infty} e^{-t} t^s \, dt \right| \leq e^{(|\sigma|+1)\ln(|\sigma|+1)}, \, 
-        \forall s\in\C.
+        \left| \int_1^{\infty} e^{-t} t^s \, dt \right| \leq \exp\Big((|\sigma|+1)\ln(|\sigma|+1)\Big), \, 
+        \qquad \forall s\in\C.
         \]
         %
-        Para majorar a segunda parcela de \eqref{eq-expressao-inv-gama}, vamos majorar
-        $e^{(|\sigma|+1)\ln(|\sigma|+1)}$. Essa majoração será dividida em duas partes.
+        Para majorar a segunda parcela que aparece na expressão \eqref{eq-expressao-inv-gama}, precisamos majorar
+        $\exp\big((|\sigma|+1)\ln(|\sigma|+1)\big)$. 
+        Essa majoração será obtida analisando separadamente dois casos. 
         
-        Para $0 < |s| < 1$, podemos escrever
+        
+        \medskip 
+        
+        Primeiro, vamos considerar o caso $0 < |s| < 1$. Neste caso podemos afirmar que
         %
         \begin{align*}
-            e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq e^{(|s|+1)\ln(|s|+1)} \\
-                                            &= e^{|s|\ln(|s|+1)}e^{\ln(|s|+1)} \\
-                                            &\leq 2\exp\left[ |s|\ln\left( |s|(1 + 1/|s|) \right) \right] \\
-                                            &\leq 2e^{|s|\ln|s|}e^{|s|\ln(1 + 1/|s|)}.
+            \exp\Big((|\sigma|+1)\ln(|\sigma|+1)\Big) 
+                                            &\leq \exp\Big((|s|+1)\ln(|s|+1)\Big) \\[0.3cm]
+                                            &= \exp\Big(|s|\ln(|s|+1)\Big) \exp\Big(\ln(|s|+1)\Big) \\[0.3cm]
+                                            &\leq 2\exp\left( |s|\ln\left( |s|\Big(1 + \frac{1}{|s|}\Big) \right) \right) \\[0.3cm]
+                                            &\leq 2\exp\Big(|s|\ln|s|\Big)\exp\left(|s|\ln \Big(1 + \frac{1}{|s|}\Big)\right).
         \end{align*}
         %
         Observe que, pela Regra de L'Hôpital,
         %
         \begin{align*}
-            \lim_{s\to 0} \left[ |s|\ln\left( 1 + \frac{1}{|s|} \right) \right]
-            &= \lim_{s\to 0} \frac{\ln(1 + 1/|s|)}{1/|s|} \\
-            &= \lim_{x\to 0^+} \frac{\ln(1 + 1/x)}{1/x} \\
-            &= \lim_{x\to 0^+} (1 + 1/x)^{-1}(-1/x^2)/(-1/x^2) \\
+            \lim_{s\to 0} \left[ |s|\ln\left( 1 + \displaystyle\frac{1}{|s|} \right) \right]
+            &= \lim_{s\to 0} 
+            \frac{\ln \left(1 + \displaystyle\frac{1}{|s|}\right)}
+            {\displaystyle \frac{1}{|s|} } 
+            \\[0.5cm]
+            &= \lim_{x\to 0^+} 
+            \frac{\ln\left(1 + \displaystyle\frac{1}{x}\right)}
+            {\displaystyle\frac{1}{x}} 
+            \\[0.5cm]
+            &= \lim_{x\to 0^+} 
+            \frac{\left(1 + \displaystyle\frac{1}{x}\right)^{-1}
+            \left(-\displaystyle\frac{1}{x^2}\right)}{-\displaystyle\frac{1}{x^2}}
+            \\[0.5cm]
             &= 0.
         \end{align*}
         %
-        Portanto, dado $\e=1$ existe $0<\delta<1$ tal que se $|s|<\delta$ então
+        Portanto, pela definição de limite, dado $\e=1$ sabemos que existe $0<\delta<1$ tal que para todo $0<|s|<\delta$ temos
         %
         \[
-        \left| \frac{\ln(1 + 1/|s|)}{1/|s|} \right| < 1 \implies |\ln(1 + 1/|s|)| \leq 2/|s| 
-                                                        \implies |s|\ln(1+1/|s|) \leq 2.
+        \left| |s|\, \ln \left(1 + \displaystyle\frac{1}{|s|}\right) -0 \right| 
+        < 1 
+        \quad\implies \quad
+        |s|\ln\left(1+\frac{1}{|s|}\right) \leq 2.
         \]
         %
         Voltando à estimativa, temos que para $0<|s|<1$ vale que
         %
         \begin{align*}
-            e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq 2e^2e^{|s|\ln|s|}.
+            \exp\Big((|\sigma|+1)\ln(|\sigma|+1)\Big) &\leq 2e^2 \exp\Big(|s|\ln|s|\Big).
         \end{align*}
         %
         Agora, para $1\leq|s|$, usamos o Lema \ref{lema-aux-cresc-inv-gama}
         e obtemos
         %
         \begin{align*}
-            e^{(|\sigma|+1)\ln(|\sigma|+1)} &\leq e^{(|s|+1)\ln(|s|+1)} \\
-                                            &\leq e^{2|s|\ln(2|s|)} \\
-                                            &= e^{2|s|(\ln|s| + \ln 2)} \\
-                                            &\leq e^{2|s|\ln|s|}e^{2|s|} \\
-                                            &\leq e^{2|s|\ln|s|}e^2e^{2|s|\ln|s|} \\
-                                            &\leq e^2e^{4|s|\ln|s|}.
+            \exp\Big((|\sigma|+1)\ln(|\sigma|+1)\Big) 
+                                            &\leq \exp\Big((|s|+1)\ln(|s|+1)\Big) \\[0.3cm]
+                                            &\leq \exp\Big(2|s|\ln(2|s|)\Big) \\[0.3cm]
+                                            &= \exp\Big(2|s|(\ln|s| + \ln 2)\Big) \\[0.3cm]
+                                            &\leq \exp\Big(2|s|\ln|s|\Big) \exp\Big(2|s|\Big) \\[0.3cm]
+                                            &\leq \exp\Big(2|s|\ln|s|\Big) e^2\exp\Big(2|s|\ln|s|\Big) \\[0.3cm]
+                                            &\leq e^2 \exp\Big(4|s|\ln|s|\Big).
         \end{align*}
         %
         Ademais, sabemos que $|\sen(\pi s)| \leq e^{\pi |s|}$ pela Fórmula de Euler. 
@@ -5888,7 +5906,8 @@ o que encerra a prova do teorema.
     \begin{proposicao}
     \label{prop-2.7-Stein}
         Suponha que $s = \sigma + it$, sendo $\sigma, t\in\R$. Então para cada $\sigma_0$ fixado
-        com $0\leq\sigma_0\leq1$ e para todo $\e>0$ existe uma uma constante $C_{\e}$ tal que
+        com $0\leq\sigma_0\leq1$ e para cada $\e>0$ 
+        existe uma uma constante $C_{\e}>0$ tal que
         %
         \begin{enumerate}[i)]
             \item $|\zeta(s)| \leq C_{\e}|t|^{1-\sigma_0+\e}$, \quad  se $\sigma_0\leq\sigma$\ \ e \ \ $|t|\geq 1$;
@@ -6883,7 +6902,8 @@ o que encerra a prova do teorema.
     \left| \int_{\beta_2} F(s) \, ds \right| \leq \frac{K_{\eta}(c-1)x^{c+1}}{R^{2 - \eta}} \xrightarrow{R\to\infty} 0.
     \]
     %
-    Agora, vamos querer considerar o caminho $\phi$ do contorno acima juntamente com o caminho $\varphi$,
+    Agora, vamos querer considerar o caminho $\phi$ do contorno acima juntamente com o caminho 
+    $\varphi = \varphi_1 * \varphi_2 * \varphi_3 * var\phi_4 * \varphi_5$,
     ilustrado abaixo.
     %
     \begin{figure}[H]\centering
