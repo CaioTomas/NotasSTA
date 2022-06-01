@@ -3579,7 +3579,7 @@
     Portanto, fica demonstrado o seguinte teorema.
     
     \begin{teorema}\label{teo-eq-func-Gama}
-    Se $\Re(s)>0$, então $\Gamma(s+1) = s\Gamma(s)$.
+    Para todo $s\in\C$ tal que $\Re(s)>0$ temos $\Gamma(s+1) = s\Gamma(s)$.
     \end{teorema}
 
     Note que podemos concluir do teorema 
@@ -3662,14 +3662,15 @@
     \] 
     define uma função holomorfa em $\C \setminus \{0, -1, -2, \dots\}$. Pelo Teorema \ref{teo-eq-func-Gama} 
     segue que $f$ é identicamente nula em $\Re(s)> 0$. 
-    Já que $\C \setminus \{0, -1, -2, \dots\}$ é um domínio segue do principio da identicamente que $f$ é identicamente nula.
+    Já que $\C \setminus \{0, -1, -2, \dots\}$ é um domínio segue do Principio da Identidade que $f$ é identicamente nula.
     \end{proof}
     
     \medskip 
-    Esta equação funcional é bem conhecida para a função $\Gamma$ real. Então poderíamos usar este fato e ter procedido como fizemos acima para mostrar que ela vale se estende 
-    $\Re(s)> 0$. Bastaria definir $f(s)$ para $\Re(s)> 0$ e usar que ela é nula sobre os reais positivos.
+    Esta equação funcional é bem conhecida para a função $\Gamma$ real. Usando este fato poderíamos ter procedido, como fizemos acima, para mostrar que esta identidade se estende para o semiplano $\Re(s)> 0$. Para isto bastaria definir $f(s)$ no semiplano $\Re(s)> 0$ e usar que ela é identicamente nula sobre os reais positivos.
     
-    Podemos obter a continuação da função $\Gamma$ de uma forma alternativa analisando as integrais parciais
+    \medskip 
+    
+    Podemos obter a continuação da função $\Gamma$ de uma forma alternativa, decompondo em uma soma de duas parcelas sua representação integral como segue
     %
     \begin{equation}
     \label{eq-Gamma1}
@@ -3801,13 +3802,16 @@
     Uma equação funcional é uma maneira muito boa de se obter informações sobre uma função. Por exemplo, a função $\sen(s)$ definida para $s \in \C$ satisfaz a equação $\sen(s) = \sen(s + 2\pi)$ e isso mostra que, para conhecer a imagem desta função no plano todo, basta saber a imagem de uma faixa vertical da forma $\{s : \Re(s_0) < \Re(s) < \Re(s_0) + 2\pi\}$ para algum $s_0$ arbitrário. A função $\Gamma$ satisfaz outra equação funcional que nos permite perceber uma certa simetria em relação ao ponto $(1/2,0)$. 
     
     \begin{teorema}
+    \label{teo-gama-gamma-seno}
     Para todo $s \in \C \setminus \Z$, temos 
     %
     $$\Gamma(s)\Gamma(1-s) = \frac{\pi}{\sen \pi s}$$
     %
     \end{teorema}
     
-    Por conta do princípio da identidade e pelo fato de continuações analíticas preservarem as equações funcionais (nesse caso), basta provar este resultado para $0<s<1$. Portanto, mostramos primeiro o lema a seguir.
+    Por conta do princípio da identidade e pelo fato de continuações analíticas preservarem as equações funcionais (nesse caso), basta provar este resultado para $0<s<1$. 
+    
+    O primeiro passo da prova da equação funcional para $0<s<1$ é o lema a seguir.
     
     \begin{lema}
     Para todo $a \in (0,1)$, temos
@@ -3846,7 +3850,7 @@
         \begin{align*}
             \left | \int_{\gamma_1}f(z) dz   \right | &= 2\pi \left | \int_{0}^{1} \frac{e^{a(R + 2\pi i t)}}{1 + e^{R + 2\pi i t}} dt   \right |
             %
-            &\leq \int_{0}^{1} \frac{|e^{a(R + 2\pi i t)}|}{|1 + e^{R + 2\pi i t}|} dt.
+            \leq \int_{0}^{1} \frac{|e^{a(R + 2\pi i t)}|}{|1 + e^{R + 2\pi i t}|} dt.
         \end{align*}
         %
         Temos $|e^{a(R + 2\pi i t)}| = e^{aR}$ e, conforme $t$ varia em $[0,1]$, $e^{R + 2\pi i t}$ varia varia no bordo do disco $D(0,e^R)$. Agora, $|1 + e^{R + 2\pi i t}| = |e^{R + 2\pi i t} - (-1)| \geq e^R - 1$, pois $-1$ está no interior de $D(0,e^R)$. Segue que
@@ -3896,10 +3900,12 @@
             %
             &= \pi \frac{1}{\sen \pi a},
         \end{align*}
-        o que conclui a demonstração do Lema.
+        o que conclui a demonstração do lema.
     \end{proof}
     
-    Com este Lema, fica simples demonstrar o teorema. Com a mudança de variáveis, $x = tu$ para algum $t>0$, podemos escrever
+    De posse deste lema, estamos em condições de apresentar a demonstração do Teorema \ref{teo-gama-gamma-seno}.
+    
+    Usando a mudança de variáveis, $x = tu$ para algum $t>0$, podemos escrever
     %
     \begin{align*}
         \Gamma(1-s) &= \int_{0}^{\infty}e^{-x}x^{-s}\, dx \\
@@ -3910,19 +3916,20 @@
     De modo que podemos interpretar o produto $\Gamma(1-s)\Gamma(s)$ como uma integral dupla e calcular esta integral.
     %
     \begin{align*}
-        \Gamma(1-s)\Gamma(s) &= \Gamma(1-s)\int_{0}^{\infty}e^{-t}t^{s-1}\, dt \\
+        \Gamma(1-s)\Gamma(s) 
+        &= \Gamma(1-s)\int_{0}^{\infty}e^{-t}t^{s-1}\, dt \\[0.3cm]
         %
-        &= \int_{0}^{\infty}e^{-t}t^{s-1}\Gamma(1-s)\, dt
+        &= \int_{0}^{\infty}e^{-t}t^{s-1}\Gamma(1-s)\, dt \\[0.3cm]
         %
-        &= \int_{0}^{\infty}e^{-t}t^{s-1}\int_{0}^{\infty}e^{-tu}u^{-s}t^{1-s}\, du \, dt \\
+        &= \int_{0}^{\infty}e^{-t}t^{s-1}\int_{0}^{\infty}e^{-tu}u^{-s}t^{1-s}\, du \, dt \\[0.3cm]
         %
-        &= \int_{0}^{\infty}\int_{0}^{\infty}e^{-t(1+u)}u^{-s}\, du \, dt \\
+        &= \int_{0}^{\infty}\int_{0}^{\infty}e^{-t(1+u)}u^{-s}\, du \, dt \\[0.3cm]
         %
-        &= \int_{0}^{\infty} u^{-s}\int_{0}^{\infty}e^{-t(1+u)}\, dt \, du \\
+        &= \int_{0}^{\infty} u^{-s}\int_{0}^{\infty}e^{-t(1+u)}\, dt \, du \\[0.3cm]
         %
-        &= \int_{0}^{\infty} u^{-s} \left [-\frac{e^{-t(1+u)}}{1+u} \right]_{t=0}^{\infty} \, du \\
+        &= \int_{0}^{\infty} u^{-s} \left [-\frac{e^{-t(1+u)}}{1+u} \right]_{t=0}^{\infty} \, du \\[0.3cm]
         %
-        &= \int_{0}^{\infty} \frac{u^{-s}}{1+u}  \, du \\
+        &= \int_{0}^{\infty} \frac{u^{-s}}{1+u}  \, du \\[0.3cm]
         %
         &= \frac{\pi}{\sen(\pi(1-s))} = \frac{\pi}{\sen(\pi s)}.
     \end{align*}
@@ -3931,9 +3938,16 @@
     
     Observe que $\Gamma(s)$ tem polos $0,-1,-2, \dots $ e $\Gamma(1-s)$ tem polos $1, 2, 3, \dots$, por isso foi importante a hipótese $s \not \in \Z$. O Teorema que acabamos de provar deixa ainda mais explícita esta relação, uma vez que $\sen \pi s$ se anula exatamente em $\Z$. 
     
-    Observe agora, que a aplicação $s \mapsto 1-s$ pode ser vista como a reflexão em torno do ponto $1/2$. Para todo $s \in \C$ temos $\frac{s + (1-s)}{2} = \frac{1}{2}$ e isto mostra que $1/2$ é o ponto médio entre estes dois pontos. A função $\sen \pi s$ é bem conhecida e sabemos calcular os seus valores facilmente. Juntando isto ao teorema que acabamos de mostrar, concluímos que, se sabemos calcular $\Gamma(s)$ no semiplano $\Re(s) > 1/2$, então sabemos calculá-la também no semiplano $\Re(s) < 1/2$.
+    Observe agora, que a aplicação $s \mapsto 1-s$ pode ser vista como a reflexão em torno do ponto $1/2$. 
+    Para todo $s \in \C$ temos $\frac{s + (1-s)}{2} = \frac{1}{2}$ e isto mostra que $1/2$ 
+    é o ponto médio entre estes dois pontos. A função $\sen(\pi s)$ é bem conhecida 
+    e sabemos calcular os seus valores facilmente. 
+    Juntando isto ao teorema que acabamos de mostrar, concluímos que, 
+    se sabemos calcular $\Gamma(s)$ no semiplano $\Re(s) > 1/2$, 
+    então sabemos calculá-la também no semiplano $\Re(s) < 1/2$.
     
-    Outra consequência deste teorema é sobre a função recíproca da função $\Gamma(s)$, ou seja, $1/\Gamma(s)$. Podemos escrever
+    Outra consequência deste teorema é sobre a função recíproca da função 
+    $\Gamma(s)$, ou seja, $1/\Gamma(s)$. Podemos escrever
     %
     $$\frac{1}{\Gamma(s)} = \Gamma(1-s) \frac{\sen \pi s}{\pi},$$
     %
@@ -3957,10 +3971,11 @@
         &= n! \lim_{s \to -n} \frac{\sen \pi s}{\pi}  = 0.
     \end{align*}
     %
-    Portanto, demonstramos o teorema.
+    Portanto, o argumento apresentado acima demonstra o seguinte teorema.
     %
     \begin{teorema}
-    A função $1/\Gamma(s)$ é inteira e tem zeros simples em $0,-1,-2, \dots$.
+    A aplicação $s\longmapsto 1/\Gamma(s)$ 
+    pode ser estendida à uma função inteira que tem apenas zeros simples localizados em $s = 0,-1,-2, \dots$.
     \end{teorema}
     
     % a continuar
@@ -3995,8 +4010,7 @@
         \includegraphics{Figuras/S delta infinito.pdf}
     \end{figure}
     %
-    Seja $\delta>1$ e $S_{\delta, +\infty}$  
-    o semi-plano dado por
+    Seja $\delta>1$ e considere o semi-plano $S_{\delta, +\infty}$ definido por
     %
     \[
     S_{\delta, +\infty} 
@@ -4004,9 +4018,9 @@
     \left\{ s\in\C :\ \Re(s) > \delta \right\}.
     \]
     %
-    Para cada $n\in\N$ seja  
+    Para cada $n\in\N$, seja  
     $f_n: S_{\delta, +\infty}\to\C$
-    a função holomorfa definida por
+    a função holomorfa definida pela seguinte expressão
     %
     \[
     f_n(s) = \frac{1}{n^s} = \exp(-s\ln n).
@@ -4044,12 +4058,15 @@
     como $\delta > 1$ foi tomado arbitrariamente, segue que
     $\zeta$ é holomorfa em todo semi-plano $\Re(s) > 1$.
     
-    Agora, vamos mostrar que $\zeta$ admite uma extensão meromorfa a $\C$, com apenas
+    
+    \bigskip 
+    
+    Nosso próximo objetivo é mostrar que a função $\zeta$ admite uma extensão meromorfa à todo $\C$, com apenas
     um polo simples em $s=1$ com resíduo 1. Como veremos, o argumento da extensão de
     $\zeta$ é bem mais delicado que o da extensão da função $\Gamma$. De fato,
     para realizarmos a extensão vamos precisar considerar, além da função $\Gamma$, 
     outra função especial:
-    a função teta de Jacobi $\vartheta: \R\to\C$
+    a função teta de Jacobi $\vartheta: (0,\infty)\to\R$
     dada por
     %
     \begin{equation}
@@ -4058,12 +4075,12 @@
         \vartheta(t) = \sum_{n=-\infty}^{\infty} e^{-\pi n^2t}.
     \end{equation}
     %
-    Assim como $\Gamma$, a função $\vartheta$ também satisfaz uma equação funcional,
+    Veremos a seguir (Lema \ref{lema-eq-funcional}) que assim como $\Gamma$, a função $\vartheta$ também satisfaz uma equação funcional,
     a saber
     %
     \begin{equation}
     \label{eq-funcional-teta}
-        \vartheta(t) = t^{-1/2}\vartheta\left( \frac{1}{t} \right), \, \forall t\neq 0.
+        \vartheta(t) = t^{-1/2}\vartheta\left( \frac{1}{t} \right), \qquad \forall t>0.
     \end{equation}
     %
     Também vamos precisar das seguintes estimativas:
@@ -4080,7 +4097,7 @@
         A função $\vartheta$ satisfaz a equação funcional
         %
         \[
-        \vartheta(t) = t^{-1/2}\vartheta\left( \frac{1}{t} \right), \, \forall t\neq 0.
+        \vartheta(t) = t^{-1/2}\vartheta\left( \frac{1}{t} \right), \qquad \forall t>0.
         \]
         %
     \end{lema}
@@ -4218,14 +4235,14 @@
         \]
         é convergente para todo $u>0$, 
         por uma aplicação direta do teste da raiz $n$-ésima. 
-        Note que esta série não converge para $u=0$.
+        Note que esta série {\bf não} converge para $u=0$\,!
         
         Além do mais, segue do teste M de Weierstrass que para cada $s$ fixado a aplicação 
         \[
         u\longmapsto \sum_{n=1}^{\infty} e^{-\pi n^2u} u^{s/2-1}  
         \]
         é holomorfa no semiplano $\{u\in \C: \Re(u)>\delta\}$ para 
-        todo $\delta>0$. Consequentemente, como $\delta>0$ é arbitrário segue que a aplicação acima define uma função complexa contínua em $(0,+\infty)$ e portanto Riemann integrável em cada um dos intervalos limitados e fechados desta semi-reta.
+        cada $\delta>0$ fixado. Consequentemente, como $\delta>0$ é arbitrário segue que a aplicação acima define uma função complexa contínua em $(0,+\infty)$ e portanto Riemann integrável em cada um dos intervalos limitados e fechados desta semi-reta.
         
         O próximo passo na prova do lema é mostrar que para cada $s\in \C$ com $\Re(s)>1$ fixado,
         temos
@@ -4664,24 +4681,45 @@ o que encerra a prova do teorema.
         %
         define uma função inteira.
         
-        Considere então a extensão meromorfa de $\xi$ dada pelo lado direito da igualdade
+        Considere então a extensão meromorfa da função $\xi$ definida pelo lado direito da igualdade abaixo
         %
-        \[
-        \xi(s) = \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} [u^{s/2 - 1} + u^{-s/2 - 1/2}]\psi(u) \, du.
-        \]
+        \begin{align}
+        \label{eq-xi-aux1-polos-holomorfa}
+            \xi(s) 
+            &= 
+            \frac{1}{s-1} - \frac{1}{s} 
+            + 
+            \int_1^{\infty} 
+            [u^{s/2 - 1} + u^{-s/2 - 1/2}]\psi(u) \, du.
+            \nonumber\\[0.3cm]
+            &\equiv 
+            \frac{1}{s-1} - \frac{1}{s} + h(s),
+        \end{align}
         %
-        Notando que a soma das duas primeiras parcelas e o integrando na igualdade acima são invariantes pela aplicação $s\longmapsto 1-s$ podemos verificar  imediatamente que $\xi(s) = \xi(1-s)$. De fato, 
+        onde $h$ é a função inteira definida em 
+        \eqref{eq-aux1-cont-analitica-xi}. 
+        
+        
+        Notando que a soma das duas primeiras parcelas e o integrando 
+        na igualdade acima são invariantes pela aplicação $s\longmapsto 1-s$ 
+        podemos verificar  imediatamente que $\xi(s) = \xi(1-s)$. De fato, 
         %
         \begin{align*}
-            \xi(1-s) &= \frac{1}{1-s-1} - \frac{1}{1-s} 
-            + \int_1^{\infty} [u^{1/2 - s/2 - 1} + u^{-1/2 + s/2 - 1/2}]\psi(u) \, du \\
-            &= \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} [u^{s/2 - 1} + u^{-s/2 - 1/2}]\psi(u) \, du \\
+            \xi(1-s) 
+            &= \frac{1}{1-s-1} - \frac{1}{1-s} 
+            + \int_1^{\infty} [u^{1/2 - s/2 - 1} + u^{-1/2 + s/2 - 1/2}]\psi(u) \, du 
+            \\[0.3cm]
+            &= \frac{1}{s-1} - \frac{1}{s} + \int_1^{\infty} [u^{s/2 - 1} + u^{-s/2 - 1/2}]\psi(u) \, du 
+            \\[0.3cm]
             &= \xi(s).
         \end{align*}
         %
     \end{proof}
     %
-    Com esse teorema, podemos olhar agora para a função $\zeta$.
+
+
+
+    Com esse teorema, podemos finalmente apresentar o argumento que mostra que a função $\zeta$ admite uma extensão meromorfa à todo plano complexo, cuja a única singularidade é um polo simples localizado no ponto $s=1$. Além do mais, esta extensão tem  resíduo um nesta singularidade. 
     %
     \begin{teorema}
     \label{teo-cont-zeta}
@@ -4690,20 +4728,21 @@ o que encerra a prova do teorema.
     \end{teorema}
     %
     \begin{proof}
-        Já sabemos que para todo $s\in\C$ tal que $\Re(s) > 1$ vale
+        Pela definição da função $\xi$, equação \eqref{def-fun-xi}, sabemos que para todo $s\in\C$ tal que $\Re(s) > 1$ temos
         %
         \[
         \xi(s) = \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s).
         \]
         %
-        Também sabemos que, nessa região, $\Gamma(s/2)\neq 0$. Portanto, é lícito escrever
+        Também sabemos que, neste semi-plano, $\Gamma(s/2)\neq 0$. Portanto, é lícito escrever
         %
-        \[
+        \begin{align}
+        \label{eq-aux1-extensao-zeta}
         \zeta(s) 
         = 
         \pi^{s/2}\frac{1}{\Gamma(s/2)}\xi(s), 
         \qquad \forall s\in\C, \, \Re(s) > 1.
-        \]
+        \end{align}
         %
         Como $1/\Gamma$ é uma função inteira com zeros 
         de multiplicidade 1 nos inteiros pares não positivos,
@@ -4717,7 +4756,11 @@ o que encerra a prova do teorema.
         \frac{1}{\Gamma(s/2)} = \frac{s}{2}\cdot g\Big(\frac{s}{2}\Big).
         \]
         %
-        Portanto,
+        Da observação acima e das identidades 
+        \eqref{eq-aux1-extensao-zeta} 
+        e 
+        \eqref{eq-xi-aux1-polos-holomorfa}
+        segue que para $\Re(s)>1$ temos
         %
         \begin{align*}
             \zeta(s) &= 
@@ -4730,15 +4773,16 @@ o que encerra a prova do teorema.
             &= \frac{\pi^{s/2}}{2}\left( \frac{s}{s-1} - 1 + s\, h(s) \right)g\Big(\frac{s}{2}\Big),
         \end{align*}
         %
-        sendo $h$ a função inteira que aparece em \eqref{eq-aux1-cont-analitica-xi} 
-        ao longo 
-        da prova do teorema anterior. 
+        onde $h$ é a função inteira definida em \eqref{eq-aux1-cont-analitica-xi}.
+        
         O lado direito da identidade acima
-        é a extensão procurada, 
-        haja vista que define uma função holomorfa em $\C\setminus\{1\}$.
+        é a extensão de zeta desejada, 
+        haja vista que esta expressão define uma função holomorfa em $\C\setminus\{1\}$.
+        
+        
         Resta, portanto, mostrar que $s=1$ é 
         polo simples e calcular seu resíduo. Para tanto,
-        basta calcular
+        basta verificar que o seguinte limite existe e é um número complexo não-nulo
         %
         \begin{align*}
             \lim_{s\to 1} (s-1)\zeta(s) 
@@ -4753,7 +4797,7 @@ o que encerra a prova do teorema.
     \end{proof}
     %
     A seguir, vamos mostrar uma representação da função $\zeta$
-    em termos de um produtório.
+    em termos de um produto infinito.
     %
     \begin{teorema}[A Fórmula de Produto de Euler]
     \label{teo-form-prod-euler}
@@ -4943,8 +4987,13 @@ o que encerra a prova do teorema.
     
     \subsection{Regiões Livres de Zeros da Função Zeta de Riemann}
     
-    Agora, vamos analisar as regiões nas quais a função zeta não se anula.
-    O último teorema nos garante que no semi-plano $\Re(s)>1$, $\zeta(s) \neq 0$.
+    Nesta seção vamos determinar novas regiões do plano complexo nas quais a função zeta não se anula.
+    
+    
+    Lembramos que o Teorema \ref{teo-form-prod-euler} nos garante que no semi-plano $\Re(s)>1$, temos $\zeta(s) \neq 0$.
+    
+    Já que 
+    
     Da equação funcional para $\zeta$, sabemos que os inteiros pares não positivos,
     $\{0, -2, -4, -6, \dots\}$ são zeros dessa função, geralmente chamados
     \textbf{zeros triviais} de $\zeta$.
@@ -5003,49 +5052,59 @@ o que encerra a prova do teorema.
     %
     \begin{lema}
     \label{lema-aux-cresc-inv-gama}
-        Para todo $s\in\C$ com $1\leq|s|$ e dado $k>0$ fixado qualquer,
-        vale a desigualdade
+        Seja $k>0$ fixado. Para todo $s\in\C$  satisfazendo $|s|\geqslant 1$ temos
         %
         \[
-        e^{k|s|} \leq e^k e^{k|s|\ln|s|}.
+        e^{k|s|} \leq e^k \exp\Big(k\,|s|\,\ln|s|\Big).
         \]
         %
     \end{lema}
     %
     \begin{proof}
-        Observe que para mostrar a validade da desigualdade, basta 
-        mostrar que
+        Seja $k$ um número real positivo fixado. 
+        Observe que para mostrar a validade do lema, basta mostrar que para todo $|s|\geqslant 1$ temos
         %
         \[
-        e^{k|s|(1 - \ln|s|)} \leq e^k
+        \exp\Big(k\,|s|\,(1 - \ln|s|)\Big) \leq e^k.
         \]
         %
-        e que mostrar essa última desigualdade, por sua vez, é equivalente a mostrar que
-        a função $f$ definida por $f(x) = x(1-\ln x)$ para $x\geq 1$ tem máximo igual a 1.
-        Para verificar esse fato, basta observar que
+        Para verificar a validade desta desigualdade é suficiente mostrar que
+        a função $f:[1,+\infty)\to\R$ definida por $f(x) = x(1-\ln x)$, para $x\geq 1$, tem um ponto de máximo global em $x=1$.
+        
+        Esta última afirmação, por sua vez, pode ser verificada observando que 
         %
         \[
-        f'(x) = 1 - \ln x - x(1/x) = -\ln x \leq 0
+        f'(x) = 1 - \ln x - x \left(\frac{1}{x}\right) = -\ln x \leq 0, 
+        \qquad \forall x\geqslant 1.
         \]
         %
-        para todo $x\geq 1$. Portanto, $f$ admite um máximo em $x=1$, que é igual a $1$,
-        e fica mostrada a validade do lema.
+        Já que a desigualdade acima implica que $f$ é uma função monótona não-crescente e consequentemente que $x=1$ é um ponto de máximo global. Já que $f(1)=1$ segue da monotonicidade da função exponencial,
+        da positividade de $k$ e da hipótese $|s|\geqslant 1$, que 
+        $
+        \exp\big(k|s|(1-\ln|s|)\big)
+        =
+        \exp(kf(|s|))
+        \leqslant 
+        \exp(kf(1))
+        =
+        e^{k}
+        $, 
+        o que encerra a prova do lema.
     \end{proof}
     %
     \begin{teorema}
     \label{teo-ordem-cresc-inv-gama}
-        A função $1/\Gamma$ é tal que
+        Para todo $s\in \C$ temos
         %
         \[
-        \left| \frac{1}{\Gamma(s)} \right| \leq K_1e^{K_2|s|\ln|s|}
+        \left| \frac{1}{\Gamma(s)} \right| \leq K_1 \exp\Big(K_2\, |s|\, \ln|s|\Big),
         \]
         %
-        para todo $s\in\C$, sendo $K_1$ e $K_2$ constantes reais positivas,
-        ou seja, a ordem de crescimento de $1/\Gamma$ é 1 no sentido de que
-        para todo $\e>0$ existe $C(\e)>0$ tal que
+        onde $K_1$ e $K_2$ são constantes reais positivas. Consequentemente, a função $1/\Gamma$ tem ordem de crescimento um, 
+        isto é, para cada $\e>0$ existe uma constante positiva $C(\e)>0$ tal que
         %
         \[
-        \left| \frac{1}{\Gamma(s)} \right| \leq C(\e)e^{K_2|s|^{1+\e}},
+        \left| \frac{1}{\Gamma(s)} \right| \leq C(\e)\exp\Big(K_2|s|^{1+\e}\Big),
         \]
         %
         para todo $s\in\C$.
@@ -5056,14 +5115,16 @@ o que encerra a prova do teorema.
         a saber, a equação funcional de $\Gamma$:
         %
         \[
-        \Gamma(s)\Gamma(1-s) = \frac{\pi}{\sen(\pi s)}, \, \forall s\in\C\setminus\Z
+        \Gamma(s)\Gamma(1-s) = \frac{\pi}{\sen(\pi s)}, 
+        \qquad \forall s\in\C\setminus\Z;
         \]
         %
-        e a extensão de $\Gamma$:
+        e a seguinte representação de sua extensão meromorfa 
+        (Teorema \ref{teo-cont-meromorfa-gamma2})
         %
         \[
         \Gamma(s) = \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+s)} 
-                    + \int_0^{\infty} e^{-t}t^{s-1} \, dt, \, 
+                    + \int_1^{\infty} e^{-t}t^{s-1} \, dt, \, 
                     \qquad\forall s\in\C\setminus\{0, -1, -2, \dots\}.
         \]
         %
@@ -5075,14 +5136,14 @@ o que encerra a prova do teorema.
             \frac{1}{\Gamma(s)} &= \Gamma(1-s)\frac{\sen(\pi s)}{\pi} \nonumber \\ 
                                 &= \left( \sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)} \right)
                                 \frac{\sen(\pi s)}{\pi}
-                                + \left( \int_0^{\infty} e^{-t}t^{-s} \, dt \right)
+                                + \left( \int_1^{\infty} e^{-t}t^{-s} \, dt \right)
                                 \frac{\sen(\pi s)}{\pi}.
         \end{align}
         %
-        Com isso, dividiremos a prova em duas etapas. Primeiro, vamos estimar a parcela integral
-        da identidade acima e, após isso, vamos estimar a parcela em série.
+        Para facilitar o argumento, vamos decompor a prova em duas partes. Na primeira parte, vamos mostrar como estimar a integral
+        que aparece na segunda parcela de \eqref{eq-expressao-inv-gama}. Em seguida, vamos estimar a parcela correspondente a série que aparece na primeira parcela de \eqref{eq-expressao-inv-gama}.
         
-        Para a primeira etapa, começamos mostrando que
+        Para a primeira parte, vamos começar mostrando a validade da seguinte desigualdade
         %
         \begin{equation}
         \label{eq-cota-int-parte-real}
@@ -5090,17 +5151,17 @@ o que encerra a prova do teorema.
         \end{equation}
         %
         sendo $\Re(s) = \sigma \geq 0$. De fato, escolha $n\in\N$ tal que 
-        $\sigma \leq n\leq \sigma+1$. Então, usando o fato de que $0< 1/t \leq 1$ e também
+        $\sigma \leq n\leq \sigma+1$. Então, usando o fato de que $0< 1/t \leq 1$ para $t\geqslant 1$ e também
         a monotonicidade do logaritmo e da exponencial, temos
         %
         \begin{align*}
             \int_1^{\infty} e^{-t}t^{\sigma - 1} \, dt 
-            &\leq \int_1^{\infty} e^{-t}t^{\sigma} \, dt \\
-            &\leq \int_1^{\infty} e^{-t} t^n \, dt \\
-            &= \Gamma(n+1) \\
-            &= n! \\
-            &\leq n^n \\
-            &= \exp\Big(n\ln n\Big) \\
+            &\leq \int_1^{\infty} e^{-t}t^{\sigma} \, dt \\[0.3cm]
+            &\leq \int_1^{\infty} e^{-t} t^n \, dt \\[0.3cm]
+            &= \Gamma(n+1) \\[0.3cm]
+            &= n! \\[0.3cm]
+            &\leq n^n \\[0.3cm]
+            &= \exp\Big(n\ln n\Big) \\[0.3cm]
             &\leq \exp\Big((\sigma + 1)\ln(\sigma + 1)\Big).
         \end{align*}
         %
@@ -5111,20 +5172,29 @@ o que encerra a prova do teorema.
         \qquad \forall s\in\C.
         \]
         %
-        Para majorar a segunda parcela que aparece na expressão \eqref{eq-expressao-inv-gama}, precisamos majorar
+        Para majorar a segunda parcela que aparece na expressão \eqref{eq-expressao-inv-gama}, precisamos encontrar cotas superiores para a expressão 
         $\exp\big((|\sigma|+1)\ln(|\sigma|+1)\big)$. 
         Essa majoração será obtida analisando separadamente dois casos. 
         
         
         \medskip 
         
-        Primeiro, vamos considerar o caso $0 < |s| < 1$. Neste caso podemos afirmar que
+        Primeiro, vamos considerar o caso $0 < |s| < 1$.
+        Antes de prosseguir, vale a pena mencionar que embora a maior preocupação no estudo de ordem de crescimento seja voltada para valores grandes do parâmetro $|s|$, a estimativa para valores pequenos deste parâmetro é sempre parte do trabalho.  
+        
+        \medskip 
+        
+        %
+        Voltando à estimativa. No caso em que $0 < |s| < 1$ temos, das propriedades elementares do valor absoluto, da monotonicidade
+        da função logaritmo natural e das propriedades elementares da função exponencial que 
         %
         \begin{align*}
             \exp\Big((|\sigma|+1)\ln(|\sigma|+1)\Big) 
                                             &\leq \exp\Big((|s|+1)\ln(|s|+1)\Big) \\[0.3cm]
                                             &= \exp\Big(|s|\ln(|s|+1)\Big) \exp\Big(\ln(|s|+1)\Big) \\[0.3cm]
-                                            &\leq 2\exp\left( |s|\ln\left( |s|\Big(1 + \frac{1}{|s|}\Big) \right) \right) \\[0.3cm]
+                                            &\leq \exp\Big(|s|\ln(|s|+1)\Big) \exp\Big(\ln(1+1)\Big) \\[0.3cm]
+                                            &= 2\exp\Big(|s|\ln(|s|+1)\Big) \\[0.3cm]
+                                            &= 2\exp\left( |s|\ln\left( |s|\cdot \Big(1 + \frac{1}{|s|}\Big) \right) \right) \\[0.3cm]
                                             &\leq 2\exp\Big(|s|\ln|s|\Big)\exp\left(|s|\ln \Big(1 + \frac{1}{|s|}\Big)\right).
         \end{align*}
         %
@@ -5349,14 +5419,14 @@ o que encerra a prova do teorema.
             \left| \frac{1}{\Gamma(s)} \right| 
             &\leq \left|\left(\sum_{n=0}^{\infty} \frac{(-1)^n}{n!(n+1-s)}\right)\frac{\sen(\pi s)}{\pi}\right|
             + \left| \left( \int_1^{\infty} e^{-t} t^{-s} \, dt \right)\frac{\sen(\pi s)}{\pi} \right| \\[0.3cm]
-            &\leq C_3e^{C_4|s|\ln|s|} + C_1e^{C_2|s|\ln|s|} \\[0.3cm]
-            &= K_1e^{K_2|s|\ln|s|},
+            &\leq C_3 \exp\Big(C_4|s|\ln|s|\Big) + C_1 \exp\Big(C_2|s|\ln|s|\Big) \\[0.3cm]
+            &= K_1 \exp\Big(K_2|s|\ln|s|\Big),
         \end{align*}
         %
         sendo
         %
         \[
-        K_1 = 2\frac{e^{\pi + 2}}{\pi} \qquad \text{ e } \qquad K_2 = 4.
+        K_1 = \frac{2e^{\pi + 2}}{\pi} \qquad \text{ e } \qquad K_2 = 4.
         \]
         %
     \end{proof}
@@ -5374,13 +5444,13 @@ o que encerra a prova do teorema.
         \frac{1}{\Gamma(s)} = e^{\y s}s\prod_{n=1}^{\infty} \left( 1 + \frac{s}{n} \right)e^{-s/n},
         \]
         %
-        sendo
+        onde
         %
         \[
         \y \equiv \lim_{N\to\infty} \sum_{j=1}^N \frac{1}{j} - \ln N
         \]
         %
-        a constante de Euler-Mascheroni.
+        é a conhecida constante de Euler-Mascheroni.
         \index{Constante de Euler-Mascheroni}
     \end{teorema}
     %
