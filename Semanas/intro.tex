@@ -1,11 +1,8 @@
-Introdução do texto
+\chapter[Introdução]{Introdução}
+\chaptermark{}
 
-Colocar a tradução do Cap1 do Edwards
 
-    % \begin{center}
-    %     \textbf{Capítulo 1: O artigo de Riemann}
-    % \end{center}
-    \section{Contexto Histórico}
+\section{Contexto Histórico}
 
     Este livro é um estudo do artigo de 8 páginas ``On the number of primes less than a given magnitude''\footnote{O título em Alemão é Ueber die Ahzahl der Primzahlen unter einer gegebenen Gr\"osse.} de Bernhard Riemann que marcou época e dos subsequentes desenvolvimentos da teoria que este artigo inaugura. O primeiro capítulo é uma análise do artigo em si e os 11 capítulos restantes são voltados para o trabalho que foi feito, desde 1859, sobre as questões que Riemann deixou sem resposta.
 
@@ -167,15 +164,21 @@ Colocar a tradução do Cap1 do Edwards
     Nos primeiros 30 anos após a publicação do artigo de Riemann, não houve praticamente nenhum avanço
     %
     \footnote{ Uma grande exceção foi o Teorema de Mertens 
-    \textcolor{red}{[M5]} de 1874 que afirma que \eqref{Soma-Recip-primos-x} 
+    \cite{MR1579612} de 1874 que afirma que \eqref{Soma-Recip-primos-x} 
     é verdadeira no sentido de que a diferença dos dois lados se 
     aproxima de um limite quando $x \to \infty$. Este limite é a 
     constante de Euler adicionado de $\sum_{p}[\log(1-p^{-1}) + p^{-1}]$. 
     Possivelmente, um enunciado mais natural para o Teorema de Mertens é 
     %
-    $$\lim_{x \to \infty} \log \left( x \prod_{p<x}(1-p^{-1}) \right) = e^{-\gamma},$$
+    $$
+    \lim_{x \to \infty} 
+    \log \left( x \prod_{p<x}(1-p^{-1}) \right) 
+    = 
+    e^{-\gamma},
+    $$
     %
-    onde $\gamma$ é a constante de Euler. Veja Hardy e Wright \textcolor{red}{[H7]}}
+    onde $\gamma$ é a constante de Euler. 
+    Veja Hardy e Wright \cite{MR0067125}}
     %
     na área. É como se o mundo matemático precisasse deste tempo 
     todo para processar as ideias de Riemann. Então, em um período de 10 anos, 
@@ -229,7 +232,7 @@ Colocar a tradução do Cap1 do Edwards
     %
     $$\frac{1}{(p_1^{n_1} p_2^{n_2} \cdots p_r^{n_r})^s},$$
     %
-    onde $p_1, \dots, p_r$ são primos distintos e $n_1, \dots, n_r$ são números naturais, e, então, usar o Teorema Fundamental da Aritmética (todo inteiro pode, essencialmente, ser escrito de uma única maneira como um produto de números primos) para concluir que esta soma é, de fato, $\sum_{n}(1/n^s)$. Euler usou esta fórmula principalmente como uma identidade formal e para valores inteiros de $s$ (veja, por exemplo, Euler \textcolor{red}{[E5]}).
+    onde $p_1, \dots, p_r$ são primos distintos e $n_1, \dots, n_r$ são números naturais, e, então, usar o Teorema Fundamental da Aritmética (todo inteiro pode, essencialmente, ser escrito de uma única maneira como um produto de números primos) para concluir que esta soma é, de fato, $\sum_{n}(1/n^s)$. Euler usou esta fórmula principalmente como uma identidade formal e para valores inteiros de $s$ (veja, por exemplo, Euler \cite{MR0016336}).
     
     Dirichlet também baseou seu trabalho
     %
@@ -238,7 +241,7 @@ Colocar a tradução do Cap1 do Edwards
     %
     neste campo na fórmula do produto de Euler. Como Dirichlet foi um dos professores de Riemann e ele se refere a Dirichlet no primeiro parágrafo de seu artigo, o fato de Riemann ter usado a fórmula do produto foi provavelmente influenciado por Dirichlet. Diferentemente de Euler, Dirichlet usou a fórmula \eqref{Euler-prod} com $s$ sendo uma variável real e provou
     %
-    \footnote{Dirichlet \textcolor{red}{[D3]}. Como os termos $p^{-s}$ são todos positivos, não há nada difícil relacionado a esta prova - é essencialmente uma reordenação de séries absolutamente convergentes - mas tem a importante efeito de transformar \eqref{Euler-prod} de uma identidade formal válida  para diversos valores de $s$ para uma expressão analítica verdadeira para todo número real $s>1$.
+    \footnote{Dirichlet \cite{Dirichlet38}. Como os termos $p^{-s}$ são todos positivos, não há nada difícil relacionado a esta prova - é essencialmente uma reordenação de séries absolutamente convergentes - mas tem a importante efeito de transformar \eqref{Euler-prod} de uma identidade formal válida  para diversos valores de $s$ para uma expressão analítica verdadeira para todo número real $s>1$.
     }
     %
     rigorosamente que esta equação é válida sempre que $s>1$.
@@ -259,7 +262,7 @@ Colocar a tradução do Cap1 do Edwards
         n! = \int_{0}^{\infty}e^{-x}x^n \, dx \qquad (n = 1, 2, 3, \dots)
     \end{equation}
     %
-    (integração por partes) e observando, também, que que a integral à direita converge para valores não inteiros de $n$ desde que $n>-1$. Gauss \textcolor{red}{[G1]} introduziu a notação
+    (integração por partes) e observando, também, que que a integral à direita converge para valores não inteiros de $n$ desde que $n>-1$. Gauss \cite{gauss1813circa} introduziu a notação
     %
     \begin{equation}
         \label{factorial-Gamma-pi}
@@ -292,7 +295,20 @@ Colocar a tradução do Cap1 do Edwards
         \Pi(s) &= 2^s\Pi\left(\frac{s}{2}\right)\Pi\left(\frac{s-1}{2}\right)\pi^{-1/2} \label{Pi(s)-identidade-4}
     \end{align}
     %
-    Para a demonstração destes resultados o leitor é indicado a procurar qualquer livro que lida com a função fatorial ou a "função $\Gamma$", por exemplo, Edwards \textcolor{red}{[E1]}. A identidade \eqref{Pi(s)-identidade} é uma simples reformulação de \eqref{Pi(s)-lim-N}. Usando ela, pode-se provar que $\Pi(s)$ é uma função analítica da variável complexa $s$ que tem polos simples em $s = -1, -2, -3, \dots$ e não se anula. A identidade \eqref{Pi(s)-identidade-2} é chamada de "equação funcional da função fatorial"; juntamente com $\Pi(0)=1$ (de \eqref{Pi(s)-identidade}), obtemos $\Pi(n) = n!$ diretamente. A fórmula \eqref{Pi(s)-identidade-3} é, essencialmente, a fórmula do produto para o seno; quando $s = 1/2$, usamos \eqref{Pi(s)-identidade-2} para concluir que $\Pi(\frac{-1}{2}) = \Pi^{1/2}$. A identidade \eqref{Pi(s)-identidade-4} é conhecida como a relação de Legendre. É o caso $n=2$ de outra relação mais geral
+    Para a demonstração destes resultados o leitor é indicado a procurar qualquer livro que lida com a função fatorial ou a ``função $\Gamma$'', por exemplo, Edwards \cite{MR1319337}. 
+    A identidade \eqref{Pi(s)-identidade} é uma simples reformulação 
+    de \eqref{Pi(s)-lim-N}. Usando ela, pode-se provar que $\Pi(s)$ é uma 
+    função analítica da variável complexa $s$ que tem polos simples 
+    em $s = -1, -2, -3, \dots$ e não se anula. 
+    A identidade \eqref{Pi(s)-identidade-2} é chamada de 
+    ``equação funcional da função fatorial''; 
+    juntamente com $\Pi(0)=1$ (de \eqref{Pi(s)-identidade}), 
+    obtemos $\Pi(n) = n!$ diretamente. A fórmula \eqref{Pi(s)-identidade-3} é, 
+    essencialmente, a fórmula do produto para o seno; quando $s = 1/2$, 
+    usamos \eqref{Pi(s)-identidade-2} para concluir que 
+    $\Pi(\frac{-1}{2}) = \Pi^{1/2}$. 
+    A identidade \eqref{Pi(s)-identidade-4} é conhecida como a relação 
+    de Legendre. É o caso $n=2$ de outra relação mais geral
     %
     \begin{equation*}
         \frac{\Pi(s)}{n^s \Pi\left( \frac{s-1}{2}\right) \cdots \Pi\left( \frac{s-n + 1}{n}\right)} 
@@ -599,9 +615,11 @@ Colocar a tradução do Cap1 do Edwards
     \begin{align*}
         \int_{0}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} &=
         %
-        \int_{1}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} - \int_{\infty}^{1} \psi \left( \frac{1}{x} \right) x^{-s/2} \frac{dx}{x} \\
+        \int_{1}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} - \int_{\infty}^{1} \psi \left( \frac{1}{x} \right) x^{-s/2} \frac{dx}{x} 
+        \\[0.3cm]
         %
-        &= \int_{1}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} + \int_{1}^{\infty} \left[ x^{1/2} \psi(x) + \frac{x^{1/2}}{2} - \frac{1}{2} \right] x^{-s/2} \frac{dx}{x} \\
+        &= \int_{1}^{\infty} \psi(x) x^{s/2} \frac{dx}{x} + \int_{1}^{\infty} \left[ x^{1/2} \psi(x) + \frac{x^{1/2}}{2} - \frac{1}{2} \right] x^{-s/2} \frac{dx}{x} 
+        \\[0.3cm]
         %
         &= \int_{1}^{\infty} \psi(x) [x^{s/2} + x^{(1 - s)/2}] \frac{dx}{x} + \frac{1}{2} \int_{1}^{\infty} [x^{-(s-1)/2} - x^{- s/2}] \frac{dx}{x}
     \end{align*}
@@ -641,23 +659,23 @@ Colocar a tradução do Cap1 do Edwards
     Em seguida, Riemann obtém a seguinte representação de $\xi(s)$. Usando \eqref{zeta-eq-funcional-4}, tem-se 
     %
     \begin{align*}
-        \xi(s) &= \frac{1}{2} - \frac{s(1-s)}{2} \int_{1}^{\infty} \psi(s) (x^{s/2} + x^{(1-s)/2}) \, \frac{dx}{x} \\
+        \xi(s) &= \frac{1}{2} - \frac{s(1-s)}{2} \int_{1}^{\infty} \psi(s) (x^{s/2} + x^{(1-s)/2}) \, \frac{dx}{x} \\[0.3cm]
         %
-        &= \frac{1}{2} - \frac{s(1-s)}{2} \int_{1}^{\infty} \frac{d}{dx} \left\{ \psi(x) \left[ \frac{x^{s/2}}{s/2} + \frac{x^{(1-s)/2}}{(1-s)/2} \right] \right\} \, dx \\
+        &= \frac{1}{2} - \frac{s(1-s)}{2} \int_{1}^{\infty} \frac{d}{dx} \left\{ \psi(x) \left[ \frac{x^{s/2}}{s/2} + \frac{x^{(1-s)/2}}{(1-s)/2} \right] \right\} \, dx \\[0.3cm]
         %
-        &+ \frac{s(1-s)}{2} \int_{1}^{\infty} \psi'(x) \left[ \frac{x^{s/2}}{s/2} + \frac{x^{(1-s)/2}}{(1-s)/2} \right]  \, dx \\
+        &+ \frac{s(1-s)}{2} \int_{1}^{\infty} \psi'(x) \left[ \frac{x^{s/2}}{s/2} + \frac{x^{(1-s)/2}}{(1-s)/2} \right]  \, dx \\[0.3cm]
         %
-        &= \frac{1}{2} - \frac{s(1-s)}{2} \psi(1) \left[ \frac{2}{s} + \frac{2}{1-s} \right] \\
+        &= \frac{1}{2} - \frac{s(1-s)}{2} \psi(1) \left[ \frac{2}{s} + \frac{2}{1-s} \right] \\[0.3cm]
         %
-        &+ \int_{1}^{\infty} \psi'(x) \left[ (1-s) x^{s/2} + s x^{(1-s)/2} \right]  \, dx \\
+        &+ \int_{1}^{\infty} \psi'(x) \left[ (1-s) x^{s/2} + s x^{(1-s)/2} \right]  \, dx \\[0.3cm]
         %
-        &= \frac{1}{2} + \psi(1) + \int_{1}^{\infty} x^{3/2} \psi'(x) \left[(1-s) x^{(s-1)/2} + s x^{-(s/2) - 1} \right] \, dx \\
+        &= \frac{1}{2} + \psi(1) + \int_{1}^{\infty} x^{3/2} \psi'(x) \left[(1-s) x^{(s-1)/2} + s x^{-(s/2) - 1} \right] \, dx \\[0.3cm]
         %
-        &= \frac{1}{2} + \psi(1) + \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x) (-2 x^{(s-1)/2} -2 x^{-(s/2)} )] \, dx \\
+        &= \frac{1}{2} + \psi(1) + \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x) (-2 x^{(s-1)/2} -2 x^{-(s/2)} )] \, dx \\[0.3cm]
         %
-        &- \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x)] [-2 x^{(s-1)/2} -2 x^{-(s/2)} ] \, dx \\
+        &- \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x)] [-2 x^{(s-1)/2} -2 x^{-(s/2)} ] \, dx \\[0.3cm]
         %
-        &= \frac{1}{2} + \psi(1) + \psi'(1)[-2 -2] \\
+        &= \frac{1}{2} + \psi(1) + \psi'(1)[-2 -2] \\[0.3cm]
         %
         &+ \int_{1}^{\infty} \frac{d}{dx} [x^{3/2} \psi'(x)] (2 x^{(s-1)/2} -+ 2 x^{-(s/2)} ) \, dx.
     \end{align*}
@@ -749,6 +767,161 @@ Colocar a tradução do Cap1 do Edwards
 
     
     \section{A representação em produto de $\xi(s)$}
+    
+    
+    Um tema recorrente no trabalho de Riemann é a \textit{caracterização global de funções analíticas por suas singularidades}
+    %
+    \footnote{Veja, por exemplo, a Inalgural Dissertation, especialmente o artigo 20 \textcolor{red}{(Werke, pág. 37-39)} ou a parte 3 da introdução do artigo "Theorie de Abel'Schen Functionen", que tem o título "Determination of a fnction of a complex variable by boundary values and singularities" \textcolor{red}{[R1]}. Veja também a introdução de Riemann ao Paper XI do \textit{collected works}, onde ele escreve "... our method, wich is based on the determination of functions by means of their singuatities \textit{(Unstetigkeiten und Unendlichwerden)}... \textcolor{red}{[R1]}. Por fim, veja Ahlfors \textcolor{red}{[A3]}, a seção no fim entitulada "Riemann's point of view".}
+    %
+    . Como a função $\log \xi(s)$ tem singularidades logarítmicas nas raízes $\rho$ de $\xi(s)$ e nenhuma outra singularidade, ela tem as mesmas singularidades que a soma formal
+    %
+    \begin{equation}
+        \label{sec-1-10-(1)}
+        \sum_{\rho} \log \left( 1 - \frac{s}{\rho} \right).
+    \end{equation}
+    %
+    Então, se esta soma converge e a função definida por ela é, em algum sentido tão bem comportada perto de $\infty$ como $\log \xi(s)$ é, então isto deve significar que a soma \eqref{sec-1-10-(1)} deve diferir de $\log \xi(s)$ por, no máximo, uma constante aditiva. Colocando $s = 0$, obtemos o valor $\log \xi(0)$ para esta constante e, portanto, tomando a exponencial, temos
+    %
+    \begin{equation}
+        \label{sec-1-10-(2)}
+        \xi(s) = \xi(0) \prod_{\rho} \left( 1 - \frac{s}{\rho} \right)
+    \end{equation}
+    %
+    como desejado. Este é, essencialmente, o outline 
+    da prova da fórmula \eqref{sec-1-10-(2)} feito por Riemann.
+    
+    Existem dois problemas associados com a soma \eqref{sec-1-10-(1)}. 
+    O primeiro é a determinação das partes imaginárias dos logaritmos que ela contém. 
+    Riemann passa por este ponto sem dar muitos comentários e, de fato, 
+    este não é um problema muito sério. Para qualquer $s$ fixado, 
+    a ambiguidade na parte imaginária de $\log [1 - (s / \rho)]$ 
+    desaparece para $\rho$ suficientemente grande; então a soma 
+    \eqref{sec-1-10-(1)} está definida exceto por um múltiplo 
+    finito de $2 \pi i$, que se torna irrelevante quando se 
+    exponencia \eqref{sec-1-10-(2)}. Em suma, pode-se ignorar as 
+    partes imaginárias de uma vez só. As partes reais dos termos 
+    de \eqref{sec-1-10-(1)} não trazem qualquer ambiguidade e sua 
+    soma é uma função harmônica que difere de $\Re(\log \xi(s))$ 
+    por uma função harmônica sem singularidades e, se podemos 
+    mostrar que esta função diferença é constante, isto 
+    acarretará que sua harmônica conjugada também é constante. 
+    
+    O segundo problema associado com a soma 
+    \eqref{sec-1-10-(1)} é sua convergência. 
+    Ela é, na verdade, uma soma condicionalmente convergente e a 
+    ordem dos termos da série deve ser especificada para que a 
+    soma esteja bem determinada. De modo geral, a ordem natural 
+    seria aquela de $|\rho|$ crescente ou, talvez, 
+    de $|\rho - \frac{1}{2}|$ crescente. 
+    Mas é suficiente simplesmente associar a cada 
+    $\rho$ o seu par $\rho  \leftrightarrow 1 - \rho$
+    %
+    \begin{equation}
+        \label{sec-1-10-(3)}
+        \sum_{\Im(\rho) > 0} 
+        \left[ \log \left( 1 - \frac{s}{\rho} \right) + \log \left( 1 - \frac{s}{1-\rho} \right) \right],
+    \end{equation}
+    %
+    pois esta soma converge absolutamente. 
+    A prova da convergência absoluta de \eqref{sec-1-10-(3)} é, 
+    de maneira simplificada, como segue.
+    
+    Para provar a convergência absoluta de
+    %
+    \begin{equation*}
+        \sum_{\Im(\rho) > 0} \left[ \log \left( 1 - \frac{s}{\rho} \right) \left( 1 - \frac{s}{1-\rho} \right) \right]
+        %
+        = \sum_{\Im(\rho) > 0} \log \left[ \left( 1 - \frac{s(1-s)}{\rho(1-\rho)} \right) \right]
+    \end{equation*}
+    %
+    é suficiente provar a convergência absoluta de 
+    %
+    \begin{equation}
+        \label{sec-1-10-(4)}
+        \sum_{\Im(\rho) > 0} 
+        \frac{1}{\rho(1-\rho)}
+    \end{equation}
+    %
+    (em outras palavras, para provar a convergência absoluta de um 
+    produto $\prod (1 + a_i)$, é suficiente provar a convergência 
+    absoluta da soma $\sum a_i$). Mas as estimativas da distribuição das 
+    raízes $\rho$ da seção anterior indicam que a densidade é, na prática,
+    %
+    \begin{equation*}
+        d \left( \frac{T}{2\pi} \log \frac{T}{2\pi} - \frac{T}{2\pi} \right) = \frac{1}{2\pi} \log \frac{T}{2\pi} dT.
+    \end{equation*}
+    %
+    Portanto, 
+     %
+    \begin{equation*}
+        \sum_{\Im(\rho) > 0} \frac{1}{\rho(1-\rho)} \sim \int^{\infty} \frac{1}{T^2}\frac{1}{2\pi} \log \frac{T}{2\pi} \, dT < \infty
+    \end{equation*}
+    %
+    ou, resumindo, os termos se comportam como $T^{-2}$ e sua densidade se comporta como $\log T$, então a soma converge. Como vai ser visto no \textcolor{red}{capítulo 2}, o passo mais difícil para transformar isto numa prova rigorosa da convergência absoluta de \eqref{sec-1-10-(3)} é mostrar que a densidade vertical das raízes $\rho$ é, em algum sentido, uma constante multiplicada por $\log(T/2\pi)$. Riemann enuncia este fato sem demonstrá-lo.
+    
+    Riemann continua e diz que a função definida em \eqref{sec-1-10-(3)} cresce apenas tão rápido quanto $s \log s$ para $s$ suficientemente grande; então, como ela difere de $\log \xi(s)$ apenas por uma função par de $s - \frac{1}{2}$ (e também porque $\log \xi(s)$ cresce como $s \log s$ para $s$ grande), esta diferença deve ser constante, já que não pode ter termos da forma $(s - \frac{1}{2})^2$, $(s - \frac{1}{2})^4$, $\dots$. Vai ser mostrado no \textcolor{red}{capítulo 2} que os passos neste argumento podem ser completados mais ou menos como Riemann indica, mas devemos admitir que o outline da prova dado por Riemann é tão breve que quase o torna inútil para construir uma prova de \eqref{sec-1-10-(2)}.
+    
+    A primeira prova da representação em produto \eqref{sec-1-10-(2)} de $\xi(s)$ foi publicada por Hadamard \textcolor{red}{[H1]} em 1893.
+    
+    
+    \section{A conexão entre $\zeta(s)$ e os números primos}
+    
+    
+    A essência da relação de $\zeta(s)$ com os números primos está na fórmla do produto de Euler
+    %
+    \begin{equation}
+        \label{sec-1-11-(1)}
+        \zeta(s) = \prod_{p} \frac{1}{1 - p^{-s}} \ \ \ \ (\Re(s)>1)
+    \end{equation}
+    %
+    na qual o produto à direita é sobre todos os números primos. Tomando o $\log$ de ambos os lados e usando a série $\log(1-x) = -x - \frac{1}{2}x^2 - \frac{1}{3}x^3 - \cdots$ coloca esta expressão na forma
+    %
+    \begin{equation*}
+        \log \zeta(s) = \sum_{p} \left[ \sum_n (1/n)p^{-ns} \right] \ \ \ \ (\Re(s)>1).
+    \end{equation*}
+    %
+    Como a soma dupla à direita é absolutamente convergente, a ordem em que se soma não importa, então esta expressão pode ser escrita de forma mais simples como
+    %
+    \begin{equation}
+        \label{sec-1-11-(2)}
+        \log \zeta(s) = \sum_{p} \sum_n (1/n)p^{-ns} \ \ \ \ (\Re(s)>1).
+    \end{equation}
+    %
+    Vai ser conveniente no que vem a seguir escrever esta soma como uma integral de Stieltjes
+    %
+    \begin{equation}
+        \label{sec-1-11-(3)}
+        \log \zeta(s) = \int_{0}^{\infty} x^{-s} \, dJ(x) \ \ \ \ (\Re(s)>1)
+    \end{equation}
+    %
+    onde $J(x)$ é
+    %
+    \footnote{Riemann denota esta função por $f(x)$ e a maioria dos outros autores denota ela por $\Pi(x)$. Como $f(x)$ é, atualmente, usado para denotar uma função genérica e, neste livro, $\Pi(x)$ denota a função fatorial, eu tomei a liberdade de introduzir uma nova notação $J(x)$ para esta função.}
+    %
+    a função que começa em 0 para $x = 0$ e aumenta de um salto de uma unidade nos números primos, de um salto de $\frac{1}{2}$ nos quadrados de primos $p^2$, de um salto de $\frac{1}{3}$ nos cubos de primos $p^3$, e assim por diante. Como é usual na teoria de integrais de Stieltjes, o valorde $J(x)$ em cada salto é definido como a média entre seu valor antigo e seu novo valor. Então $J(x)$ é nula para $0 \leq x < 2$, é $\frac{1}{2}$ para $x = 2$, é 1 para $2 < x < 3$, é $1 + \frac{1}{2}$ para $x = 3$, é 2 para $3 < x < 4$, é $2 + \frac{1}{4}$ para $x = 4$, é $2 + \frac{1}{2}$ para $4 < x < 5$, é 3 para $x = 5$, é $3 + \frac{1}{2}$ para $5 < x < 7$ e assim por diante. Uma fórmula para $J(x)$ é 
+    %
+    \begin{equation*}
+        J(x) = \frac{1}{2} \left[ \sum_{p^n < x} \frac{1}{n} + \sum_{p^n \leq x} \frac{1}{n} \right].
+    \end{equation*}
+    %
+    
+    Riemann, claro, não tinha o vocabulário da integração de Stieltjes disponível para ele. Ele enunciou \eqref{sec-1-11-(3)} numa forma ligeiramente diferente
+    %
+    \begin{equation}
+        \label{sec-1-11-(4)}
+        \log \zeta(s) = s\int_{0}^{\infty} J(x)x^{-s-1} \, dx \ \ \ \ (\Re(s)>1)
+    \end{equation}
+    %
+    que pode ser obtida de \eqref{sec-1-11-(3)} usando integração por partes. (Conforme $x \downarrow 0$, temos $x^{-s}J(x) = 0$, pois $J(x) \equiv 0$ para $x<2$. Por outro lado, $J(x) < x$ para todo $x$, então $x^{-s}J(x) \to 0$ quando $x \to \infty$ para $\Re(s) > 1$). A integral em \eqref{sec-1-11-(4)} pode ser considerada uma integral de Riemann usual e a expressão em si pode ser obtida sem o uso da integração de Stieltjes se substituímos
+    %
+    \begin{equation*}
+        \label{sec-1-11-(4)}
+        p^{-ns} = s\int_{p^n}^{\infty} x^{-s-1} \, dx \ \ \ \ (\Re(s)>1)
+    \end{equation*}
+    %
+    em \eqref{sec-1-11-(2)}, que é a forma como Riemann obtém \eqref{sec-1-11-(4)}.
+    
+    As expressões \eqref{sec-1-11-(2)} - \eqref{sec-1-11-(4)} devem ser pensadas como variações pequenas da fórmula do produto de Euler \eqref{sec-1-11-(1)} que é a ideia básica que conecta $\zeta(s)$ e os números primos.
     
     
     \section{Os termos remanescentes} \label{sec-0.16}
