@@ -647,7 +647,7 @@
     
     A função $\Pi((s/2) - 1) \pi^{-s/2} \zeta(s)$, que ocorre na forma simétrica da equação funcional, tem polos $s=0$ e $s=1$ (isto segue imediatamente de \eqref{zeta-eq-funcional-4}). Riemann multiplica ela por $s(s - 1)/2$ e define
     %
-    \footnote{Na verdade, Riemann usa $\xi$ para denotar a função que, atualmente, é usualmente denotada por $\Xi$, isto é, a função $\Xi(t) = \xi( \frac{1}{2} + it$ ) com $\xi$ como definida acima. Eu sigo Landau, e quase todos os escritores subsequentes, em rejeitar a mudança de variáveis $s = \frac{1}{2} + it$ por ser confusa. Há razões para acreditar que o próprio Riemann se confundia com ela (Veja as observações sobre $\xi(0)$ na Seção \ref{sec-0.16}).}
+    \footnote{Na verdade, Riemann usa $\xi$ para denotar a função que, atualmente, é usualmente denotada por $\Xi$, isto é, a função $\Xi(t) = \xi( \frac{1}{2} + it$ ) com $\xi$ como definida acima. Eu sigo Landau, e quase todos os escritores subsequentes, em rejeitar a mudança de variáveis $s = \frac{1}{2} + it$ por ser confusa. Há razões para acreditar que o próprio Riemann se confundia com ela (Veja as observações sobre $\xi(0)$ na Seção \ref{sec-1-16}).}
     %
     \begin{equation}
         \label{xi(s)-1}
@@ -924,7 +924,96 @@
     As expressões \eqref{sec-1-11-(2)} - \eqref{sec-1-11-(4)} devem ser pensadas como variações pequenas da fórmula do produto de Euler \eqref{sec-1-11-(1)} que é a ideia básica que conecta $\zeta(s)$ e os números primos.
     
     
-    \section{Os termos remanescentes} \label{sec-0.16}
+    \section{Inversão de Fourier}
+    
+    
+    Riemann foi um mestre da análise de Fourier e seu trabalho no desenvolvimento desta teoria deve certamente ser contado entre suas grandes contribuições para a matemática. Portanto, não é surpreendente que ele tenha aplicado inversão de fourier à expressão
+    %
+    \begin{equation}
+        \label{sec-1-12-(1)} 
+        \frac{\log \zeta(s)}{s} = \int_{0}^{\infty} J(x) x^{-s-1} \, dx \ \ \ \ (\Re(s) > 1)
+    \end{equation}
+    %
+    para concluir que 
+    %
+    \begin{equation}
+        \label{sec-1-12-(2)} 
+        J(x) = \frac{1}{2\pi i} \int_{a - i \infty}^{a + i\infty} \log \zeta(s) x^{s} \frac{ds}{s} \ \ \ \ (a > 1).
+    \end{equation}
+    %
+    Então, usando uma fórmula alternativa para $\log \zeta(s)$, ele obtém uma fórmula alternativa para $J(x)$ que é o resultado principal do artigo.
+    
+    (A integral imprópria \eqref{sec-1-12-(2)} é apenas condicionalmente convergente, então uma ordem para a soma deve ser especificada. Aqui, a integra em \eqref{sec-1-12-(2)} é o limite, quando $T \to \infty$, da integral sobre o segmento vertical de $a - iT$ até $a + iT$. De forma mais geral, integrais e séries condicionalmente convergentes são muito comuns em análise de Fourier e é sempre entendido que tais integrais e séries são somadas em sua "ordem natural". Por exemplo
+    %
+    \begin{align*}
+        &\sum_{n=-\infty}^{\infty} c_n e^{inx} &&\text{significa} &&&\lim_{N \to \infty} \sum_{n=-N}^{N} c_n e^{inx} \\
+        %
+        &\int_{-\infty}^{\infty} f(y)e^{iyx} \, dy &&\text{significa} &&&\lim_{T \to \infty} \int_{-T}^{T} f(y)e^{iyx} \, dy.
+    \end{align*}
+    %
+    Isto é análogo à convenção de que funções descontínuas como $J(x)$ assumem o valor intermediário $J(x) = \frac{1}{2}[J(x-\e) + J(x+\e)]$ em qualquer salto $x$, que integrais divergentes como $\text{Li}(x)$ (veja Seção \ref{sec-1-14} abaixo) são tomadas como o valor principal de Cauchy, e que o produto $\prod [1 - (s/\rho)]$ é ordenada de modo a parear $\rho$ e $1 - \rho$ ou, como mais à frente, ordenada por $|\lim (\rho)|$.)
+    
+    Ao obter \eqref{sec-1-12-(2)} a partir de \eqref{sec-1-12-(1)}, Riemann faz uso do "Teorema de Fourier" que, para ele, é
+    %
+    \footnote{Veja \textcolor{red}{Riemann [R2,pág. 86]}}
+    %
+    a fórmula da inversão de Fourier
+    %
+    \begin{equation}
+        \label{sec-1-12-(3)} 
+        \phi(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \left[ \int_{-\infty}^{\infty} \phi(\lambda) e^{i(x-\lambda) \mu} \, d\lambda \right] \, d\mu.
+    \end{equation}
+    %
+    Enunciado de outra forma, o "Teorema de Fourier" diz que, para escrever uma dada função em termos de uma superposição de exponenciais
+    %
+    \begin{equation*}
+        \phi(x) =  \int_{-\infty}^{\infty}  \Phi(\mu) e^{i\mu x} \, d\mu,
+    \end{equation*}
+    %
+    é necessário e suficiente (sob certas condições) que os coeficientes $\Phi(\mu)$ sejam definidos por
+    %
+    \begin{equation*}
+        \Phi(x) =  \frac{1}{2\pi} \int_{-\infty}^{\infty}  \phi(\lambda) e^{-i\lambda \mu} \, d\lambda.
+    \end{equation*}
+    %
+    O enunciado do Teorema de Fourier traz à tona a analogia com as séries de Fourier
+    %
+    \begin{equation*}
+        f(x) = \sum_{-\infty}^{\infty} a_n e^{inx}  \Longleftrightarrow a_n = \frac{1}{2\pi} \int_{0}^{2\pi}  f(\lambda) e^{-in\lambda} \, d\lambda
+    \end{equation*}
+    %
+    e, de fato, o Teorema \eqref{sec-1-12-(3)} para integrais de Fourier segue de uma passagem ao limite no teorema para séries de Fourier.
+    
+    Para obter \eqref{sec-1-12-(2)} a partir de \eqref{sec-1-12-(1)}, seja $s = a + i\mu$, onde $a>1$ é uma constante e $\mu$ é uma variável, sejam $\lambda = \log x$ e $\phi(x) = 2 \pi J(e^x) e^{-ax}$. Então \eqref{sec-1-12-(1)} se torna
+    %
+    \begin{align*}
+        \frac{\log \zeta(a + i\mu)}{a + i\mu} &= \int_{-\infty}^{\infty} J(e^{\lambda}) e^{-(a + i\mu)\lambda} \, d\lambda \\
+        %
+        &= \frac{1}{2\pi} \int_{-\infty}^{\infty} \phi(\lambda) e^{-i\mu\lambda} \, d\lambda \ \ \ \ (a > 1).
+    \end{align*}
+    %
+    Quando esta função é colocada no lugar de $\Phi(\mu)$, o Teorema de Fourier implica que
+    %
+    \begin{align*}
+        2\pi J(e^x) e^{-ax} &= \int_{-\infty}^{\infty} \frac{\log \zeta(a + i\mu)}{a + i\mu} e^{i \mu x} \, d\mu, \\
+        %
+        J(y) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} \frac{\log \zeta(a + i\mu)}{a + i\mu} y^{a + i\mu} \, d\mu,
+    \end{align*}
+    %
+    dos quais \eqref{sec-1-12-(2)} segue imediatamente.
+    
+    Riemann ignora completamente a questão da aplicabilidade do Teorema de Fourier à função $J(e^x)e^{-ax}$ e simplesmente enuncia que \eqref{sec-1-12-(2)} vale de forma "completamente geral". No entanto, $J(e^x)e^{-ax}$ é uma função muito bem comportada - ela tem saltos simples e bem comportados, é identicamente nula para $x < 0$, e vai a zero mais rápido que $e^{-(1-a)x}$, conforme $x \to \infty$ - e os teoremas mais simples sobre integrais de Fourier são suficientes para mostrar rigorosamente a afirmação de Riemann de que \eqref{sec-1-12-(2)} vale de forma completamente geral.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    \section{A} \label{sec-1-14}
+    \section{Os termos remanescentes} \label{sec-1-16}
     
     
     
