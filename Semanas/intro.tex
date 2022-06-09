@@ -1002,17 +1002,84 @@
     %
     dos quais \eqref{sec-1-12-(2)} segue imediatamente.
     
-    Riemann ignora completamente a questão da aplicabilidade do Teorema de Fourier à função $J(e^x)e^{-ax}$ e simplesmente enuncia que \eqref{sec-1-12-(2)} vale de forma "completamente geral". No entanto, $J(e^x)e^{-ax}$ é uma função muito bem comportada - ela tem saltos simples e bem comportados, é identicamente nula para $x < 0$, e vai a zero mais rápido que $e^{-(1-a)x}$, conforme $x \to \infty$ - e os teoremas mais simples sobre integrais de Fourier são suficientes para mostrar rigorosamente a afirmação de Riemann de que \eqref{sec-1-12-(2)} vale de forma completamente geral.
+    Riemann ignora completamente a questão da aplicabilidade do Teorema de Fourier à função $J(e^x)e^{-ax}$ e simplesmente enuncia que \eqref{sec-1-12-(2)} vale de forma "completamente geral". No entanto, $J(e^x)e^{-ax}$ é uma função muito bem comportada - ela tem saltos simples e bem comportados, é identicamente nula para $x < 0$, e vai a zero mais rápido que $e^{-(1-a)x}$, conforme $x \to \infty$ - e os teoremas
+    %
+    \footnote{Veja, por exemplo, \textcolor{red}{Taylor [T2]}. A forma particular da inversão de Fourier usada por Riemann aqui - que é essencialmente análise de Fourier feita no grupo multiplicativo dos reais positivos em vez do grupo aditivo de todos os reais - é geralmente chamada de Inversão de Mellin. O trabalho de Riemann precede o de Mellin em 40 anos.} 
+    %
+    mais simples sobre integrais de Fourier são suficientes para mostrar rigorosamente a afirmação de Riemann de que \eqref{sec-1-12-(2)} vale de forma completamente geral.
+    
+    
+    \section{Um método para obter a fórmula de $J(x)$}
+    
+    
+    As fórmulas para $\xi(s)$
+    %
+    \begin{equation*}
+        \xi(s) = \Pi \left( \frac{s}{2} \right) \pi^{-s/2} (s-1) \zeta(s) \ \ \ \ \xi(s) = \xi(0) \prod_{\rho} \left( 1 - \frac{s}{\rho} \right)
+    \end{equation*}
+    %
+    se combinam e nos dão
+    %
+    \begin{align*}
+        \log \zeta(s) &= \log \xi(s) - \log \Pi \left( \frac{s}{2} \right) + \frac{s}{2} \log \pi - \log (s-1)\\
+        %
+        &= \log \xi(0) + \sum_{\rho} \log \left( 1 - \frac{s}{\rho} \right) - \log \Pi \left( \frac{s}{2} \right) + \frac{s}{2} \log \pi - \log (s-1).
+    \end{align*}
+    %
+    A fórmula de Riemann para $J(x)$, que é o principal resultado de seu artigo, é obtida essencialmente substituindo esta expressão para $\log \zeta(s)$ na expressão
+    %
+    \begin{equation*}
+        J(x) = \frac{1}{2\pi i} \int_{a - i\infty}^{a + i\infty} \log \zeta(s) x^s \frac{ds}{s} \ \ \ \ (a > 1)
+    \end{equation*}
+    %
+    (da seção anterior) e integrando termo a termo. No entanto, como a substituição direta resulta em integrais divergentes (o termo $(s/2) \log \pi$, por exemplo, leva a uma integral que é igual a uma constante multiplicada por $(i)^{-1} \int x^s \, ds = e^a \int e^{i u \log x} \, du$, que oscila e não converge mesmo condicionalmente), Riemann primeiro integra por partes para obter 
+    %
+    \begin{equation}
+        \label{sec-1-13-(1)}
+        J(x) = -\frac{1}{2 \pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i\infty} \frac{d}{ds} \left[ \frac{\log \zeta(s)}{s} \right] x^s \, ds\ \ \ \ (a>1)
+    \end{equation}
+    %
+    para depois substituir $\log \zeta(s)$ na expressão acima. A validade da integração por partes pela qual \eqref{sec-1-13-(1)} é obtida depende meramente de mostrar que 
+    %
+    \begin{equation}
+        \label{sec-1-13-(2)}
+        \lim_{T \to \infty} \frac{\log \zeta(a \pm iT)}{a \pm iT} x^{a \pm iT} = 0,
+    \end{equation}
+    %
+    que segue facilmente da inequação
+    %
+    \begin{equation}
+        \label{sec-1-13-(3)}
+        | \log \zeta(a \pm iT) | = \left| \sum_n \sum_p (1/n) p^{-n(a \pm iT)} \right| \leq  \sum_n \sum_p (1/n) p^{-na} = \log \zeta(a) = \textbf{const},
+    \end{equation}
+    %
+    pois isto mostra que o numerador em \eqref{sec-1-13-(2)} é limitado ao passo que o denominador vai a infinito.
+    
+    A substituição de 
+    %
+    \begin{equation*}
+        \log \zeta(s) = \log \xi(0) + \sum_{\rho} \log \left( 1 - \frac{s}{\rho} \right) - \log \Pi \left( \frac{s}{2} \right) + \frac{s}{2} \log \pi - \log (s-1)
+    \end{equation*}
+    %
+    em \eqref{sec-1-13-(1)} expressa $J(x)$ como uma soma de cinco termos (a integral de uma soma finita é sempre a soma das integrais desde que elas convirjam) e a obtenção da fórmula de Riemann para $J(x)$ depende do cálculo destas cinco integrais definidas.
+    
+    Deve ser notado que, para qualquer $s$ fixado, há certa ambiguidade na definição de $\log [1 - (s/\rho)]$ para as raízes $\rho$ que não são grandes comparativamente ao $s$. Para remover esta ambiguidade no semiplano $\Re(s) > 1$, definimos $\log [1 - (s/\rho)]$ como $\log (s - \rho) - \log (-\rho)$; isto resolve o problema, pois nenhum
+    %
+    \footnote{Veja a \textcolor{red}{Seção 2.3} ou observe que a série $1 - 2^{-s} + 3^{-s} - 4^{-s} + 5^{-s} - \cdots$ converge para um número positivo para $s>0$ e que este número é 
+    %
+    \begin{equation*}
+        \zeta(s) - 2 \cdot 2^{-s} ( 1 + 2^{-s} + 3^{-s} + \cdots) = (1 - 2^{1 - s})\zeta(s)
+    \end{equation*}
+    }
+    %
+    dos $\rho$'s são reais e maiores ou iguais a 0. Desta forma, $\log [1 - (s/\rho)]$ é definido sem ambiguidades em todo o semiplano $\Re(s) > 1$ e, em particular, no caminho de integração $\Re(s) = a > 1$.
+
+    
+    \section{O termo principal de $J(x)$} \label{sec-1-14}
     
     
     
     
-    
-    
-    
-    
-    
-    \section{A} \label{sec-1-14}
     \section{Os termos remanescentes} \label{sec-1-16}
     
     
