@@ -1075,7 +1075,113 @@
     dos $\rho$'s são reais e maiores ou iguais a 0. Desta forma, $\log [1 - (s/\rho)]$ é definido sem ambiguidades em todo o semiplano $\Re(s) > 1$ e, em particular, no caminho de integração $\Re(s) = a > 1$.
 
     
-    \section{O termo principal de $J(x)$} \label{sec-1-14}
+    \section{\textcolor{blue}{O termo principal} de $J(x)$} \label{sec-1-14}
+    
+    
+    Vamos ver nesta seção que \textcolor{blue}{o termo principal} na fórmula para $J(x)$ é o termo correspondente a $-\log(s-1)$ da expansão de $\log \zeta(s)$. Este termo é
+    %
+    \begin{equation*}
+        \frac{1}{2\pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i\infty} \frac{d}{ds} \left[ \frac{\log(s-1)}{s} \right] x^s \, ds \ \ \ \ (a>1).
+    \end{equation*}
+    %
+    Riemann mostra que, para $x > 1$, o valor desta integral definida é a integral logarítmica
+    %
+    \begin{equation*}
+         \text{Li}(x) = \lim_{\e \downarrow 0} \left[ \int_{0}^{1 - \e} \frac{dt}{\log t} + \int_{1 + \e}^{x} \frac{dt}{\log t}\right];
+    \end{equation*}
+    %
+    ou seja, é o Valor Principal de Cauchy da integral divergente $\int_{0}^{x}(dt/\log t)$. 
+    
+    Ele argumenta da seguinte forma. Fixe $x > 1$ e considere uma função de $\beta$ definida por 
+    %
+    \begin{equation*}
+         F(\beta) = \frac{1}{2\pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i\infty} \frac{d}{ds} \left\{ \frac{\log[(s/\beta)-1]}{s} \right\} x^s \, ds
+    \end{equation*}
+    %
+    de modo que o número desejado é $F(1)$. A definição de $F(\beta)$ pode ser estendida para todos os valores reais ou complexos de $\beta$, exceto para $\beta \leq 0$ real, tomando $a > \Re(\beta)$ e definindo $\log[(s/\beta) - 1]$ por $\log (s - \beta) - \log \beta$, onde, como é costumeiro, $\log z$ está definido para todo $z$ exceto $z \leq 0$ com a condição de que seja real para $z> 0$ real. A integral $F(\beta)$ converge absolutamente, pois
+    %
+    \begin{equation*}
+        \left | \frac{d}{ds} \left\{ \frac{\log[(s/\beta)-1]}{s} \right\} \right | \leq \frac{| \log[(s/\beta)-1] |}{|s|^2} + \frac{1}{|s(s-\beta)|}
+    \end{equation*}
+    %
+    é integrável e o termo $x^s$ oscila na reta de integração. Como
+    %
+    \begin{equation*}
+        \frac{d}{d\beta} \left\{ \frac{\log[(s/\beta)-1]}{s} \right\} = \frac{1}{(\beta -s) \beta},
+    \end{equation*}
+    %
+    a diferenciação sob o sinal de integração e integração por partes nos dá
+    %
+    \begin{align*}
+        F'(\beta) &= \frac{1}{2\pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i\infty} \frac{d}{ds} \left[ \frac{1}{(\beta - s) \beta} \right] x^s \, ds \\
+        %
+        &= -\frac{1}{2\pi i} \int_{a - i\infty}^{a + i\infty}  \frac{x^s}{(\beta - s) \beta} \, ds.
+    \end{align*}
+    %
+    Esta última integral pode ser calculada aplicando inversão de Fourier às expressões
+    %
+    \begin{align*}
+        \frac{1}{s -\beta} &= \int_{1}^{\infty} x^{-s}x^{\beta -1} \, dx \ \ \ \ (\Re(s-\beta) > 0), \\
+        %
+        \frac{1}{a + i\mu -\beta} &= \int_{0}^{\infty} e^{-i \lambda \mu}e^{\lambda(\beta - a)} \, d\lambda \ \ \ \ (a > \Re(\beta)),
+    \end{align*}
+    %
+    para obter
+    %
+    \begin{equation}
+        \label{sec-1-14-(1)}
+        \int_{-\infty}^{+\infty} \frac{1}{a + i\mu -\beta} e^{i \mu x} \, d\mu =
+        %
+        \begin{cases}
+            2 \pi e^{x(\beta - a)} &\text{ se } x > 0, \\
+            0 &\text{ se } x < 0,
+        \end{cases}
+    \end{equation}
+    %
+    donde segue que
+    %
+    \begin{equation}
+        \label{sec-1-14-(2)}
+        \frac{1}{2\pi i} \int_{a -i\infty}^{a + i\infty} \frac{1}{s -\beta} y^s \, ds =
+        %
+        \begin{cases}
+            y^{\beta} &\text{ se } y > 1, \\
+            0 &\text{ se } y < 1,
+        \end{cases}
+    \end{equation}
+    %
+    desde que $a > \Re(\beta)$. Como $x>1$ por hipótese, temos $F'(\beta) = x^{\beta}/\beta$.
+    
+    Agora, denotando por $t$ a variável complexa, seja $C^{+}$ o caminho que consiste do segmento de $0$ a $1 - \e$ (onde $\e$ é um número real positivo pequeno), seguido pelo semicírculo no semiplano superior $\Im(t) \geq 0$ de $1 - \e$ a $1 + \e$, seguido do seguimento de reta de $1 + \e$ até $x$ e seja
+    %
+    \begin{equation*}
+        G(\beta) = \int_{C^{+}} \frac{t^{\beta -1}}{\log t} \, dt.
+    \end{equation*}
+    %
+    Então
+    %
+    \begin{equation*}
+        G'(\beta) = \int_{C^{+}} t^{\beta -1} \, dt = \frac{t^{\beta}}{\beta} \Big |_{0}^{x} = F'(\beta).
+    \end{equation*}
+    %
+    $G(\beta)$ é definida e analítica para $\Re(\beta) > 0$ (se $\Re(\beta) < 0$, então a integral que define $G$ diverge em $t=0$) assim como $F(\beta)$; então elas diferem uma constante (que pode depender de $x$) por todo o semiplano $\Re(\beta) > 0$. Riemann diz que esta constante pode ser calculada deixando $\Re(\beta)$ fixado e deixando $\Im(\beta) \to \infty$ em ambos $F(\beta)$ e $G(\beta)$, mas ele não leva adiante estes cálculos.
+    
+    Para calcular o limite de $G(\beta)$, denote $\beta = \sigma + i \tau$, onde $\sigma$ é fixado e $\tau \to \infty$. A mudança de variáveis $t = e^u$, $u = \log t$ deixa $G(\beta)$ na forma
+    %
+    \begin{equation*}
+        \int_{i\delta - \infty}^{i \delta + \log x} \frac{e^{\beta u}}{u} \, du + \int_{i\delta + \log x}^{\log x} \frac{e^{\beta u}}{u} \, du,
+    \end{equation*}
+    %
+    onde o caminho de integração foi ligeiramente alterado usando o Teorema de Cauchy. A mudança de variáveis $u = i\delta + v$ na primeira integral e $u = \log x + iw$ na segunda coloca esta expressão na forma
+    %
+    \begin{equation*}
+        G(\beta) = e^{i \delta \sigma} e^{- \delta \tau} \int_{- \infty}^{\log x} \frac{e^{\sigma v}}{i \delta + v} e^{i \tau v} \, dv - i x^{\beta} \int_{0}^{\delta} \frac{e^{-\tau w} e^{\sigma i w}}{\log x + iw} \, dw.
+    \end{equation*}
+    %
+    
+    Ambas as integrais nesta expressão vão a zero quando $\tau \to \infty$, a primeira porque $e^{-\delta \tau} \to 0$ e a segunda porque $e^{- \tau w} \to 0$ (exceto em $w = 0$). Então o limite de $G(\beta)$
+    
+    
     
     
     
