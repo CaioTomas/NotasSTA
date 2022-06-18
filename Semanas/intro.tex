@@ -1179,7 +1179,65 @@
     \end{equation*}
     %
     
-    Ambas as integrais nesta expressão vão a zero quando $\tau \to \infty$, a primeira porque $e^{-\delta \tau} \to 0$ e a segunda porque $e^{- \tau w} \to 0$ (exceto em $w = 0$). Então o limite de $G(\beta)$
+    Ambas as integrais nesta expressão vão a zero quando $\tau \to \infty$, a primeira porque $e^{-\delta \tau} \to 0$ e a segunda porque $e^{- \tau w} \to 0$ (exceto em $w = 0$). Então o limite de $G(\beta)$ conforme $\tau \to \infty$ é zero. (Observe, no entanto, que este argumento não seria válido se o caminho $C^{+}$ fosse alterado para passar pelo semicírculo inferior pois, neste caso, $e^{-\delta \tau}$ seria substituído por $e^{\delta \tau}$ e $e^{-\tau w}$, por $e^{\tau w}$).
+    
+    Para calcular o limite de $F(\beta)$, defina
+    %
+    \begin{equation*}
+        H(\beta) = \frac{1}{2 \pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i \infty} \frac{d}{ds} \left\{ \frac{\log [1 - (s/\beta)]}{s}\right\} x^s\, ds,
+    \end{equation*}
+    %
+    onde $a > \Re (\beta)$ e $\log [1 - (s/\beta)]$ é definido como $\log(s-\beta) - \log(-\beta$ para todo número comlexo $\beta$ exceto para $\beta \geq 0$ real. A diferença $H(\beta) - F(\beta)$ está definido para todo número complexo fora do eixo real e, no semiplano superior $\Im(\beta) > 0$, é igual a
+    %
+    \begin{align*}
+        H(\beta) - F(\beta) &= \frac{1}{2 \pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i \infty} \frac{d}{ds} \left[ \frac{\log \beta - \log (-\beta)}{s}\right] x^s\, ds \\
+        %
+        &= \frac{1}{2 \pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i \infty} \frac{d}{ds} \left[ \frac{i\pi}{s}\right] x^s\, ds \\
+        %
+        &= -\frac{1}{2 \pi i}  \int_{a - i\infty}^{a + i \infty} \frac{i\pi}{s} x^s\, ds = - i\pi
+    \end{align*}
+    %
+    pelo caso $\beta = 0$ de \eqref{sec-1-14-(2)}. Logo, $F(\beta) = H(\beta) + i\pi$ em todo o semiplano superior e será suficiente calcular o limite de $H(\beta)$ conforme $\tau \to \infty$ ($\beta = \sigma + i\tau$). Agora, $1 - (s/\beta) \to 1$, então o $\log$ dessa expressão vai a zero e parece, portanto, plausível que $H(\beta)$ também vai a zero. Isto pode ser provado calculando a derivada
+    %
+    \begin{align*}
+        \frac{d}{ds}\left\{ \frac{\log[1 - (s/\beta)]}{s} \right\} &= -\frac{\log[1 - (s/\beta)]}{s^2} + \frac{1}{s(s-\beta)} \\
+        %
+        &= -\frac{\log[1 - (s/\beta)]}{s^2} + \frac{1}{\beta(s-\beta)} - \frac{1}{\beta s},
+    \end{align*}
+    %
+    multiplicando por $x^s ds/2\pi i$ e integrando de $a - i\infty$ a $a + i \infty$ (da forma usual, i.e., tomando o limite $T \to \infty$ da integral de $a - iT$ até $a + iT$). Por conta do termo $s^2$ no denominador da primeira integral, não é difícil mostrar, usando o Teorema da convergência dominada de Lebesgue (veja \textcolor{red}{Edwards [E1]}), que o limite desta integral é igual à integral do limite, isto é, zero. As duas integrais remanescentes podem ser calculadas usando \eqref{sec-1-14-(2)} e são iguais a $x^{\beta}/\beta - x^{0}/\beta = (x^{\beta} - 1)/\beta$. Como o numerador é limitado e $|\beta| \to \infty$, esta expressão vai a zero; segue que $H(\beta)$ vai a zero e $F(\beta)$ vai a $i\pi$. Portanto, $F(\beta) = G(\beta) + i\pi$ no semiplano $\Re(\beta) > 0$ e o número desejado $F(1)$ é 
+    %
+    \begin{equation*}
+        F(1) = \int_{0}^{1 - \e} \frac{dt}{\log t} + \int_{1 - \e}^{1 + \e} \frac{(t-1)}{\log t} \cdot \frac{dt}{t-1} + \int_{1 + \e}^{x} \frac{dt}{\log t} + i\pi,
+    \end{equation*}
+    %
+    onde a segunda integral é feita sobre o semicírculo no semiplano superior. Conforme $\e \downarrow 0$, a razão $(t-1)/ \log t$ se aproxima de $1$ ao longo desta semicircunferência e, portanto, a integral $\int_{1 - \e}^{1 + \e} dt/(t-1) = - i\pi$. Segue que o limite da expressão acima, quando $\e \downarrow 0$, é
+    %
+    \begin{equation*}
+        F(1) = \text{Li}(x)
+    \end{equation*}
+    %
+    como queriamos mostrar.
+    
+    
+    \section{O termo envolvendo as raízes $\rho$}
+    
+    
+    Considere o seguinte termo na fórmula de $J(x)$ que surge do termo $\sum \log [1 - (s/\rho)]$ da expressão de $\log \zeta(s)$, ou seja, 
+    %
+    \begin{equation}
+        \label{sec-1-15-(1)}
+        -\frac{1}{2 \pi i} \frac{1}{\log x} \int_{a - i\infty}^{a + i\infty} \frac{d}{ds} \left\{ \frac{\sum \log [1 - (s/\rho)]}{s} \right\} x^s \, ds.
+    \end{equation}
+    %
+    Se a operação de soma sobre as raízes $\rho$ puder ser alternada com a integração e a diferenciação, então esta expressão é igual a $-\sum H(\rho)$, onde $H(\rho)$ é definido como na seção anterior. Foi mostrado que $H(\rho) \equiv G(\rho)$ para $\rho$ no primeiro quadrante ($\Re(\rho) > 0, \Im(\rho) > 0$) e, da mesma forma, pode ser mostrado que, para $\rho$ no quarto quadrante ($\Re(\rho) > 0, \Im(\rho) < 0$), o valor de $H(\rho)$ é igual à integral para $G(\rho)$ exceto que a integral deve ser feita sobre o caminho $C^{-}$ que passa pela semicircunferência inferior de $1 - \e$ a $1 + \e$, em vez da semicircunferência superior como fazia o caminho $C^{+}$. Então, calculando a soma associando pares de raízes $\rho$ da maneira usual, a integral \eqref{sec-1-15-(1)} se escreveria como
+    %
+    \begin{equation}
+        \label{sec-1-15-(2)}
+        -\sum_{\Im(\rho) > 0} \left( \int_{C^+} \frac{t^{\rho -1}}{\log t} \, dt + \int_{C^{-}} \frac{t^{-\rho}}{\log t} \, dt \right)
+    \end{equation}
+    %
+    se ela pudesse ser calculada termo a termo.
     
     
     
